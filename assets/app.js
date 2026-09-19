@@ -85,6 +85,7 @@
     searchLabel: document.getElementById("searchLabel"),
     searchHint: document.getElementById("searchHint"),
     browserPanel: document.querySelector(".browser-panel"),
+    browserToolbar: document.querySelector(".browser-toolbar"),
     welcomeTitle: document.getElementById("welcomeTitle"),
     welcomeText: document.getElementById("welcomeText"),
     errorTitle: document.getElementById("readerErrorTitle"),
@@ -317,6 +318,8 @@
     state.currentDir = path;
     els.results.hidden = true;
     els.browser.hidden = false;
+    els.breadcrumbs.hidden = false;
+    els.browserToolbar.hidden = false;
 
     const node = getDirNode(path);
     const entries = [...node.children.values()].sort((a, b) => {
@@ -484,8 +487,6 @@
     const q = query.trim();
 
     if (!q) {
-      els.results.hidden = true;
-      els.browser.hidden = false;
       renderDirectory(state.currentDir);
       return;
     }
@@ -493,6 +494,8 @@
     const found = state.files.filter(file => matches(file, q));
 
     els.browser.hidden = true;
+    els.breadcrumbs.hidden = true;
+    els.browserToolbar.hidden = true;
     els.results.hidden = false;
     els.results.innerHTML = `<h2>${escapeHtml(t("results"))}: ${found.length}</h2>`;
 
