@@ -1,1696 +1,738 @@
 # JavaScript — From Basics to Modern Front-End
-
-> A practical handbook for understanding browser JavaScript, DOM work, async code, modern tooling, frameworks and small interactive applications.
-
-# 1. What JavaScript does
-
-JavaScript adds behaviour to web pages:
-
-- reacts to user input,
-- changes the DOM,
-- validates forms,
-- calls APIs,
-- stores local state,
-- creates interactive interfaces,
-- powers frameworks such as React, Vue and Angular,
-- can also run outside the browser through Node.js.
-
-# 2. Adding JavaScript to a page
-
-Inline:
-
+# Table of Contents
+# 1. What JavaScript actually does
+JavaScript adds behavior to web pages, manipulates the DOM, communicates with APIs and can also run outside the browser in environments such as Node.js.
+# 2. How to include JavaScript on a page
+## 2.1. Code directly in HTML
 ```html
-<script>
-  console.log("Hello");
-</script>
+<script>console.log('hello')</script>
 ```
-
-External file:
-
+## 2.2. External JavaScript file
 ```html
-<script src="/js/app.js" defer></script>
+<script src="app.js" defer></script>
 ```
-
-Modern module:
-
+## 2.3. Modern approach: module
 ```html
-<script type="module" src="/js/app.js"></script>
+<script type="module" src="main.js"></script>
 ```
-
-# 3. async, defer and modules
-
-`defer` downloads in parallel and executes after HTML parsing.
-
-`async` executes as soon as download finishes; order is not guaranteed.
-
-`type="module"` behaves like deferred loading and enables `import` / `export`.
-
+# 3. `async`, `defer` and `type="module"`
+## `defer`
+Downloads in parallel and executes after HTML parsing, preserving script order.
+## `async`
+Downloads in parallel and executes as soon as ready; execution order is not guaranteed.
+## `type="module"`
+Enables ES modules, strict mode and deferred execution semantics.
 # 4. First script
-
 ```js
-console.log("Hello world");
+console.log('Hello JavaScript');
 ```
-
 # 5. Variables
-
-Prefer `const` by default:
-
-```js
-const name = "Alice";
-```
-
-Use `let` when reassignment is required:
-
-```js
-let count = 0;
-count += 1;
-```
-
-Avoid `var` in modern code unless reading legacy projects.
-
+## `const`
+Default choice when the binding will not be reassigned.
+## `let`
+Use when reassignment is needed.
+## `var`
+Legacy function-scoped declaration; avoid in modern code unless reading old projects.
 # 6. Data types
-
-Common values:
-
-```js
-const text = "hello";       // string
-const count = 42;           // number
-const enabled = true;       // boolean
-const nothing = null;       // intentional absence
-let missing;                // undefined
-const user = {};            // object
-const items = [];           // array
-const big = 123n;           // BigInt
-```
-
-Symbols are specialized unique identifiers.
-
-# 7. Checking types
-
+## String
+text.
+## Number
+floating-point numeric type.
+## Boolean
+true/false.
+## null
+explicit empty value.
+## undefined
+missing/unassigned value.
+## Object
+key/value objects.
+## Array
+ordered list object.
+## BigInt
+large integer type.
+## Symbol
+unique primitive identifier.
+# 7. Checking type
 ```js
 typeof value
 Array.isArray(value)
-value === null
 ```
-
-Remember:
-
-```js
-typeof null === "object"
-```
-
-is a historical JavaScript quirk.
-
 # 8. Operators
-
-Arithmetic:
-
-```text
-+ - * / % **
+```js
+a + b
+a - b
+a * b
+a / b
+a % b
+a ** b
 ```
-
-Comparison:
-
-```text
-=== !== < <= > >=
-```
-
-Prefer strict equality `===` / `!==`.
-
 # 9. Logical operators
-
 ```js
 a && b
 a || b
 !a
 ```
-
-They short-circuit.
-
-# 10. Nullish coalescing
-
+# 10. Nullish coalescing `??`
 ```js
-const port = config.port ?? 8080;
+const value = input ?? 'default';
 ```
-
-Uses the fallback only for `null` or `undefined`.
-
-# 11. Optional chaining
-
+Falls back only for null/undefined, unlike `||`.
+# 11. Optional chaining `?.`
 ```js
-const city = user?.address?.city;
+user.address?.city
 ```
-
-Stops safely if an intermediate value is nullish.
-
 # 12. Template strings
-
 ```js
-const message = `Hello ${name}`;
+const msg = `Hello ${name}`;
 ```
-
 # 13. Conditions
-
 ```js
-if (age >= 18) {
-  console.log("adult");
-} else if (age >= 13) {
-  console.log("teen");
-} else {
-  console.log("child");
-}
+if (x > 0) { ... } else if (x === 0) { ... } else { ... }
 ```
-
 # 14. Ternary operator
-
 ```js
-const label = active ? "Active" : "Inactive";
+const label = active ? 'on' : 'off';
 ```
-
-# 15. switch
-
+# 15. `switch`
 ```js
 switch (status) {
-  case "ready":
-    break;
-  case "error":
-    break;
-  default:
-    break;
+  case 'ready': break;
+  default: break;
 }
 ```
-
 # 16. Loops
-
-Classic:
-
+## `for`
 ```js
-for (let i = 0; i < 10; i += 1) {
-}
+for (let i = 0; i < 10; i++) { ... }
 ```
-
-Values:
-
+## `for...of`
 ```js
-for (const item of items) {
-}
+for (const item of items) { ... }
 ```
-
-Array method:
-
+## `forEach`
 ```js
-items.forEach((item) => {
-  console.log(item);
-});
+items.forEach(item => console.log(item));
 ```
-
-While:
-
+## `while`
 ```js
-while (running) {
-}
+while (condition) { ... }
 ```
-
 # 17. Functions
-
+## Classic function
 ```js
-function add(a, b) {
-  return a + b;
-}
+function add(a, b) { return a + b; }
 ```
-
-# 18. Arrow functions
-
+# 18. Arrow function
 ```js
 const add = (a, b) => a + b;
 ```
-
-Arrow functions do not have their own `this`.
-
 # 19. Default parameters
-
 ```js
-function greet(name = "World") {
-  return `Hello ${name}`;
-}
+function greet(name = 'world') { ... }
 ```
-
 # 20. Objects
-
 ```js
-const user = {
-  id: 1,
-  name: "Alice",
-  active: true,
-};
+const user = { name: 'Ada', age: 30 };
 ```
-
-Read:
-
-```js
-user.name
-user["name"]
-```
-
 # 21. Object methods
-
 ```js
 const user = {
-  name: "Alice",
-  greet() {
-    return `Hello ${this.name}`;
-  },
+  greet() { return `Hi ${this.name}`; }
 };
 ```
-
 # 22. Arrays
-
 ```js
-const items = ["a", "b", "c"];
-
-items.push("d");
-items.pop();
+const items = [1,2,3];
+items.push(4);
 ```
-
 # 23. Destructuring
-
-Object:
-
 ```js
-const { name, age } = user;
-```
-
-Array:
-
-```js
+const {name, age} = user;
 const [first, second] = items;
 ```
-
-# 24. Spread
-
+# 24. Spread `...`
 ```js
-const copy = [...items];
-const updated = { ...user, active: false };
+const copy = {...user};
+const merged = [...a, ...b];
 ```
-
-# 25. Rest
-
+# 25. Rest `...`
 ```js
-function sum(...values) {
-  return values.reduce((a, b) => a + b, 0);
-}
+function sum(...values) { ... }
 ```
-
 # 26. DOM
-
 The DOM is the browser's object representation of the HTML document.
-
 # 27. Finding elements
-
 ```js
-const button = document.querySelector("#save");
-const form = document.querySelector(".contact-form");
+document.querySelector('#app')
+document.getElementById('app')
 ```
-
-# 28. querySelectorAll
-
+# 28. `querySelectorAll` and iteration
 ```js
-const buttons = document.querySelectorAll(".button");
-
-for (const button of buttons) {
-  console.log(button);
-}
+document.querySelectorAll('.item').forEach(el => { ... });
 ```
-
 # 29. Changing content
-
 ```js
-element.textContent = "New text";
+el.textContent = 'Hello';
+el.innerHTML = '<strong>Hello</strong>';
 ```
-
-Use `textContent` for plain text.
-
-Avoid assigning untrusted data to `innerHTML`.
-
 # 30. Attributes
-
 ```js
-link.setAttribute("href", "/about");
-const value = link.getAttribute("href");
+el.setAttribute('aria-label', 'Close');
+el.getAttribute('href')
 ```
-
-# 31. dataset
-
-HTML:
-
-```html
-<button data-user-id="42">Open</button>
-```
-
-JavaScript:
-
+# 31. `dataset`
 ```js
-button.dataset.userId
+el.dataset.id
+el.dataset.state = 'open';
 ```
-
 # 32. Events
-
 ```js
-button.addEventListener("click", () => {
-  console.log("clicked");
-});
+button.addEventListener('click', () => { ... });
 ```
-
-# 33. event object
-
+# 33. The `event` object
 ```js
-button.addEventListener("click", (event) => {
+button.addEventListener('click', event => {
   console.log(event.target);
 });
 ```
-
 # 34. Forms
-
-```js
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-});
-```
-
+Listen for `submit`, call `preventDefault()` when handling client-side, validate and send data deliberately.
 # 35. FormData
-
 ```js
 const data = new FormData(form);
-const email = data.get("email");
+console.log(data.get('email'));
 ```
-
 # 36. Creating elements
-
 ```js
-const li = document.createElement("li");
-li.textContent = "New item";
-list.append(li);
+const li = document.createElement('li');
+li.textContent = 'Item';
 ```
-
 # 37. Removing elements
-
 ```js
-element.remove();
+el.remove();
 ```
-
 # 38. Cloning
-
 ```js
-const copy = element.cloneNode(true);
+const copy = el.cloneNode(true);
 ```
-
 # 39. CSS classes
-
 ```js
-element.classList.add("active");
-element.classList.remove("active");
-element.classList.toggle("active");
-element.classList.contains("active");
+el.classList.add('active');
+el.classList.toggle('hidden');
 ```
-
 # 40. Inline styles
-
 ```js
-element.style.display = "none";
+el.style.display = 'none';
 ```
-
-Prefer classes for most visual state.
-
+Prefer classes for most styling.
 # 41. Event delegation
-
-Instead of attaching handlers to every child:
-
 ```js
-list.addEventListener("click", (event) => {
-  const button = event.target.closest("button[data-id]");
-  if (!button) return;
-
-  console.log(button.dataset.id);
+list.addEventListener('click', e => {
+  const btn = e.target.closest('button[data-id]');
+  if (!btn) return;
 });
 ```
-
-Useful for dynamic lists.
-
 # 42. Timers
-
+## `setTimeout`
 ```js
-const timeout = setTimeout(() => {
-  console.log("later");
-}, 1000);
-
-clearTimeout(timeout);
+setTimeout(() => console.log('later'), 1000);
 ```
-
-Interval:
-
+## `setInterval`
 ```js
-const timer = setInterval(tick, 1000);
-clearInterval(timer);
+const id = setInterval(refresh, 5000);
+clearInterval(id);
 ```
-
 # 43. JSON
-
 ```js
-const text = JSON.stringify(user);
-const data = JSON.parse(text);
+const text = JSON.stringify(data);
+const obj = JSON.parse(text);
 ```
-
 # 44. Fetch API
-
 ```js
-const response = await fetch("/api/users");
+const response = await fetch('/api/items');
 ```
-
-Fetch only rejects for network-level failures, not automatically for HTTP 404/500.
-
-# 45. Getting API data
-
+# 45. Fetching data from an API
 ```js
-const response = await fetch("/api/users");
-
-if (!response.ok) {
-  throw new Error(`HTTP ${response.status}`);
-}
-
-const users = await response.json();
+const r = await fetch('/api/items');
+if (!r.ok) throw new Error(`HTTP ${r.status}`);
+const data = await r.json();
 ```
-
 # 46. POST
-
 ```js
-const response = await fetch("/api/users", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    name: "Alice",
-  }),
+await fetch('/api/items', {
+  method: 'POST',
+  headers: {'Content-Type':'application/json'},
+  body: JSON.stringify(payload)
 });
 ```
-
 # 47. Promise
-
-A Promise represents a future result.
-
+A Promise represents a future result: pending, fulfilled or rejected.
+# 48. async/await
 ```js
-fetch("/api")
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error(error));
-```
-
-# 48. async / await
-
-```js
-async function loadUsers() {
-  const response = await fetch("/api/users");
-  return response.json();
+async function load() {
+  const r = await fetch('/api');
+  return r.json();
 }
 ```
-
-It is syntax around Promises.
-
 # 49. Error handling
-
 ```js
 try {
-  const data = await loadUsers();
-} catch (error) {
-  console.error(error);
+  await load();
+} catch (err) {
+  console.error(err);
 }
 ```
-
-# 50. Loading UI state
-
-Typical flow:
-
-```text
-idle
-↓
-loading
-↓
-success OR error
-```
-
-Do not leave users guessing whether an action is still running.
-
+# 50. UI state while loading
+Track loading/success/error states and disable duplicate actions where appropriate.
 # 51. localStorage
-
 ```js
-localStorage.setItem("theme", "dark");
-const theme = localStorage.getItem("theme");
-localStorage.removeItem("theme");
+localStorage.setItem('theme', 'dark');
+localStorage.getItem('theme');
 ```
-
-Values are strings.
-
-# 52. Storing objects
-
+# 52. Saving an object
 ```js
-localStorage.setItem("settings", JSON.stringify(settings));
-
-const settings = JSON.parse(
-  localStorage.getItem("settings") ?? "{}"
-);
+localStorage.setItem('user', JSON.stringify(user));
+const user = JSON.parse(localStorage.getItem('user') ?? 'null');
 ```
-
 # 53. sessionStorage
-
-Same basic API as localStorage, but scoped to the browser tab/session.
-
+Same API as localStorage, but scoped to the current browser tab/session.
 # 54. Modules
-
 ```js
-export function add(a, b) {
-  return a + b;
-}
+export function add(a,b){return a+b;}
+import {add} from './math.js';
 ```
-
-```js
-import { add } from "./math.js";
-```
-
 # 55. Default export
-
 ```js
-export default function App() {
-}
+export default function App() {}
+import App from './App.js';
 ```
-
-```js
-import App from "./App.js";
-```
-
-Use named exports when they make dependencies clearer.
-
-# 56. Module organization
-
-```text
-src/
-├── api.js
-├── dom.js
-├── state.js
-├── utils.js
-└── main.js
-```
-
-Split by responsibility, not arbitrarily.
-
+# 56. Sensible module organization
+Split by responsibility: API, state, DOM/components, utilities, feature modules.
 # 57. Classes
-
 ```js
 class User {
-  constructor(name) {
-    this.name = name;
-  }
-
-  greet() {
-    return `Hello ${this.name}`;
-  }
+  constructor(name) { this.name = name; }
 }
 ```
-
-Modern frontend code often uses plain objects/functions just as much as classes.
-
-# 58. Important array methods
-
-map:
-
+# 58. Most important array methods
+## `map`
 ```js
-const names = users.map((user) => user.name);
+items.map(x => x * 2)
 ```
-
-filter:
-
+## `filter`
 ```js
-const active = users.filter((user) => user.active);
+items.filter(x => x.active)
 ```
-
-find:
-
+## `find`
 ```js
-const user = users.find((user) => user.id === 42);
+items.find(x => x.id === id)
 ```
-
-some:
-
+## `some`
 ```js
-users.some((user) => user.admin);
+items.some(x => x.active)
 ```
-
-every:
-
+## `every`
 ```js
-users.every((user) => user.active);
+items.every(x => x.valid)
 ```
-
-reduce:
-
+## `reduce`
 ```js
-const total = values.reduce((sum, value) => sum + value, 0);
+items.reduce((sum,x)=>sum+x,0)
 ```
-
-sort:
-
+## `sort`
 ```js
-const sorted = [...users].sort((a, b) =>
-  a.name.localeCompare(b.name)
-);
+items.toSorted((a,b)=>a-b)
 ```
-
 # 59. Mutation and immutability
-
-Mutation:
-
-```js
-user.active = false;
-```
-
-Immutable-style update:
-
-```js
-const updated = {
-  ...user,
-  active: false,
-};
-```
-
-Framework state systems often prefer immutable updates.
-
-# 60. Event loop
-
-JavaScript runs code on a main execution thread, while browser APIs schedule work.
-
-Mental model:
-
-```text
-call stack
-↓
-browser / runtime APIs
-↓
-task queues
-↓
-event loop
-↓
-call stack
-```
-
+Know which methods mutate (`push`, `sort`) and which return new values (`map`, `filter`, `toSorted`).
+# 60. Event loop — basics
+JavaScript runs one call stack while browser/Node APIs schedule callbacks and promise jobs.
 # 61. Promise vs timer
-
-Promise callbacks (microtasks) normally run before later timer tasks in the same turn.
-
-You do not need every event-loop detail for daily frontend work, but you should know asynchronous ordering is not purely line-by-line.
-
+Promise microtasks run before timer macrotasks after the current stack finishes.
 # 62. Node.js
-
-Node.js runs JavaScript outside the browser.
-
-It provides filesystem, networking, process and server APIs.
-
-# 63. Modern environment
-
-Typical 2026 frontend environment may include:
-
-- Node.js,
-- npm / pnpm,
-- Vite,
-- ESLint,
-- Prettier or another formatter,
-- TypeScript,
-- a framework only if needed.
-
+Server/runtime environment for JavaScript outside the browser.
+# 63. Environment — state in 2026
+Modern JavaScript uses ES modules, async/await, native fetch in major runtimes, and build tools only when they add value.
 # 64. npm
-
-Initialize:
-
 ```bash
 npm init -y
+npm install package
+npm run dev
 ```
-
-Install:
-
+# 65. Vite
+Fast development/build tool for modern front-end projects.
+# 66. Vite without a generator
 ```bash
-npm install lodash
 npm install -D vite
 ```
-
-Run scripts:
-
-```bash
-npm run dev
-npm run build
-```
-
-# 65. Vite
-
-Create:
-
-```bash
-npm create vite@latest
-```
-
-Typical commands:
-
-```bash
-npm install
-npm run dev
-npm run build
-npm run preview
-```
-
-# 66. Vite without a generator
-
-Minimal `package.json`:
-
-```json
-{
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^7.0.0"
-  }
-}
-```
-
 # 67. Typical Vite structure
-
 ```text
-project/
-├── index.html
-├── package.json
-├── src/
-│   ├── main.js
-│   └── style.css
-└── public/
+index.html
+src/main.js
+src/style.css
+package.json
 ```
-
 # 68. package.json
-
-Defines scripts, dependencies and project metadata.
-
+Defines project metadata, scripts, dependencies and module behavior.
 # 69. dependencies vs devDependencies
-
-`dependencies` are runtime application dependencies.
-
-`devDependencies` are build/test/lint tooling.
-
-Frontend bundlers often include both in the development/build environment even though the final browser bundle contains only built assets.
-
-# 70. Importing npm libraries
-
+## `dependencies`
+Needed by the application at runtime/build consumption.
+## `devDependencies`
+Development/build/test tooling.
+# 70. Importing a library from npm
 ```js
-import dayjs from "dayjs";
+import something from 'package';
 ```
-
-The bundler resolves the package from node_modules.
-
 # 71. DevTools
-
-Core panels:
-
-- Elements,
-- Console,
-- Network,
-- Sources,
-- Application,
-- Performance.
-
+Browser developer tools are essential for frontend debugging.
 # 72. Console
-
-Use it for logs, errors and quick expressions.
-
-```js
-console.log(value);
-console.table(users);
-console.error(error);
-```
-
-# 73. Breakpoints
-
-Set a breakpoint in Sources, trigger the behaviour, then inspect variables and call stack.
-
+Inspect logs, values, errors and execute exploratory JavaScript.
+# 73. Breakpoint
+Pause execution and inspect scope/call stack.
 # 74. Network
-
-Use it to inspect:
-
-- API calls,
-- status codes,
-- headers,
-- payloads,
-- responses,
-- timing.
-
+Inspect requests, responses, timing, headers and failures.
 # 75. Application
-
-Inspect localStorage, sessionStorage, cookies, IndexedDB and service workers.
-
-# 76. Small Vanilla JS structure
-
+Inspect storage, cookies, service workers and other browser application state.
+# 76. Small Vanilla JS project structure
 ```text
-src/
-├── api.js
-├── ui.js
-├── storage.js
-└── main.js
+index.html
+src/main.js
+src/api.js
+src/ui.js
+src/style.css
 ```
-
-# 77. Tiny Todo example
-
-HTML:
-
-```html
-<form id="todo-form">
-  <input name="title" required>
-  <button>Add</button>
-</form>
-
-<ul id="todo-list"></ul>
-```
-
-JavaScript:
-
-```js
-const form = document.querySelector("#todo-form");
-const list = document.querySelector("#todo-list");
-
-const todos = [];
-
-function render() {
-  list.replaceChildren();
-
-  for (const todo of todos) {
-    const li = document.createElement("li");
-    li.textContent = todo.title;
-    list.append(li);
-  }
-}
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const data = new FormData(form);
-  todos.push({
-    title: data.get("title"),
-  });
-
-  form.reset();
-  render();
-});
-```
-
+# 77. Complete Vanilla JS example — todo list
+## HTML
+Form, input and list container.
+## JavaScript
+State array + render() + submit handler + delete handler + optional localStorage persistence.
 # 78. When Vanilla JS is enough
-
-Use plain JavaScript for:
-
-- small widgets,
-- forms,
-- simple dashboards,
-- internal tools,
-- mostly static sites,
-- pages with limited state.
-
-# 79. Why frameworks exist
-
-Frameworks help when UI has many components, shared state, routing, complex updates and long-term structure.
-
-They do not replace JavaScript knowledge.
-
-# 80. React
-
-React is a component-based UI library.
-
-# 81. React + Vite
-
+Small sites, widgets, forms, internal tools and pages with limited state.
+# 79. Why use a framework
+Component composition, state management patterns and large UI organization.
+# 80. React — what it is
+Component library centered on declarative rendering and state.
+# 81. Creating React + Vite project
 ```bash
-npm create vite@latest my-app -- --template react
-cd my-app
-npm install
-npm run dev
+npm create vite@latest myapp -- --template react
 ```
-
 # 82. Basic React structure
-
+main entry renders App; components live in src; state flows through props/hooks.
+# 83. React component
 ```jsx
-function App() {
-  return <h1>Hello</h1>;
-}
-
-export default App;
+function Hello({name}) { return <h1>Hello {name}</h1>; }
 ```
-
-# 83. Components
-
-```jsx
-function UserCard({ user }) {
-  return <article>{user.name}</article>;
-}
-```
-
 # 84. Props
-
-Props are inputs passed from parent to child components.
-
-# 85. State with useState
-
+Read-only inputs passed from parent to component.
+# 85. State — `useState`
 ```jsx
 const [count, setCount] = useState(0);
 ```
-
 # 86. Conditional rendering
-
 ```jsx
-return loggedIn ? <Dashboard /> : <Login />;
+{loading ? <Spinner/> : <Content/>}
 ```
-
-# 87. Lists
-
+# 87. Lists in React
 ```jsx
-{users.map((user) => (
-  <UserCard key={user.id} user={user} />
-))}
+items.map(item => <Row key={item.id} item={item}/>)
 ```
-
-# 88. React forms
-
-Controlled example:
-
-```jsx
-const [name, setName] = useState("");
-
-<input
-  value={name}
-  onChange={(event) => setName(event.target.value)}
-/>
-```
-
-# 89. useEffect
-
-Used for synchronizing with external systems such as network requests, subscriptions or browser APIs.
-
-Do not use effects for calculations that can happen directly during render.
-
-# 90. When React fits
-
-Good when:
-
-- component ecosystem matters,
-- team already knows React,
-- stateful UI is substantial,
-- routing/data libraries are useful.
-
-# 91. Vue
-
-Vue is a component framework with templates and reactive state.
-
+# 88. React form
+Use controlled inputs or form APIs/libraries as complexity grows.
+# 89. `useEffect`
+Synchronizes component with external systems; avoid using it for calculations that can happen during render.
+# 90. React — when
+Useful for component-heavy apps with meaningful client-side state.
+# 91. Vue — what it is
+Progressive component framework with templates, reactivity and Composition API.
 # 92. Creating Vue
-
 ```bash
 npm create vue@latest
 ```
-
-# 93. ref
-
+# 93. `ref`
 ```js
 const count = ref(0);
 ```
-
-# 94. computed
-
+# 94. `computed`
 ```js
-const doubled = computed(() => count.value * 2);
+const total = computed(() => price.value * qty.value);
 ```
-
 # 95. Vue conditions
-
 ```html
 <p v-if="ready">Ready</p>
 ```
-
 # 96. Vue loops
-
 ```html
-<li v-for="user in users" :key="user.id">
-  {{ user.name }}
-</li>
+<li v-for="item in items" :key="item.id">{{ item.name }}</li>
 ```
-
 # 97. Vue events
-
 ```html
-<button @click="count++">Add</button>
+<button @click="save">Save</button>
 ```
-
-# 98. Binding
-
+# 98. Vue binding
 ```html
-<a :href="url">Open</a>
+<img :src="url" :alt="title">
 ```
-
-# 99. v-model
-
+# 99. `v-model`
 ```html
 <input v-model="name">
 ```
-
-# 100. When Vue fits
-
-Useful when you want a component framework with approachable templates and reactivity.
-
-# 101. Angular
-
-Angular is a full application framework with strong conventions, dependency injection, routing, forms and tooling.
-
+# 100. Vue — when
+Good for approachable component apps and incremental adoption.
+# 101. Angular — what it is
+Full framework with strong architecture, TypeScript and batteries-included tooling.
 # 102. Creating Angular
-
 ```bash
-npx @angular/cli new my-app
+ng new myapp
 ```
-
-# 103. Standalone components
-
-Modern Angular favors standalone components instead of requiring NgModules everywhere.
-
-# 104. Signals
-
-Signals provide reactive state in modern Angular.
-
+# 103. Modern Angular and standalone components
+Standalone components reduce NgModule boilerplate in modern Angular.
+# 104. Angular and signals
+Signals provide reactive state primitives in modern Angular.
 # 105. Angular template
-
-```html
-<button (click)="increment()">
-  {{ count() }}
-</button>
-```
-
-# 106. Generate component
-
+Uses interpolation, bindings, directives/control flow and event syntax.
+# 106. Generating a component
 ```bash
-ng generate component user-card
+ng generate component feature
 ```
-
-# 107. When Angular fits
-
-Often useful for large business applications that benefit from a strict framework and consistent architecture.
-
+# 107. Angular — when
+Large structured applications and teams benefiting from strong conventions.
 # 108. React vs Vue vs Angular
-
-Vanilla JS:
-- smallest complexity,
-- browser-native,
-- ideal for limited interaction.
-
-React:
-- large ecosystem,
-- flexible architecture,
-- strong market adoption.
-
-Vue:
-- approachable,
-- cohesive,
-- template-centric.
-
-Angular:
-- full framework,
-- strong conventions,
-- heavier but structured.
-
-# 109. Do you need all three?
-
-No.
-
-Understand the ideas behind components, state, props, routing and data fetching.
-
-Then learn one ecosystem deeply enough for real work.
-
+## Vanilla JS
+small/simple interaction.
+## React
+large ecosystem/component apps.
+## Vue
+gentle component framework.
+## Angular
+full opinionated enterprise framework.
+# 109. Do you need to know all three?
+No. Know JavaScript deeply and one framework well; recognize the others.
 # 110. PixiJS
-
-PixiJS is a high-performance 2D rendering library using WebGL/WebGPU where supported.
-
-Useful for:
-
-- games,
-- maps,
-- visualizations,
-- animated canvas scenes.
-
+High-performance 2D rendering library using Canvas/WebGL/WebGPU abstractions.
 # 111. Installing PixiJS
-
 ```bash
 npm install pixi.js
 ```
-
-# 112. Minimal PixiJS
-
-```js
-import { Application, Graphics } from "pixi.js";
-
-const app = new Application();
-
-await app.init({
-  width: 800,
-  height: 600,
-});
-
-document.body.append(app.canvas);
-
-const box = new Graphics()
-  .rect(0, 0, 100, 100)
-  .fill(0xff0000);
-
-app.stage.addChild(box);
-```
-
-# 113. Pixi graphics
-
-Sprites, Graphics, Text and Containers are central scene objects.
-
-# 114. Animation
-
-Use the ticker:
-
-```js
-app.ticker.add(() => {
-  box.x += 1;
-});
-```
-
-# 115. Interaction
-
-Interactive display objects can respond to pointer events.
-
+# 112. Minimal PixiJS 8
+Create Application, initialize it, append canvas, add display objects.
+# 113. Graphics in PixiJS
+Use Graphics, Sprite and Text objects.
+# 114. PixiJS animation
+Use ticker/game loop to update state each frame.
+# 115. PixiJS interaction
+Enable eventMode and pointer events for interactive display objects.
 # 116. HTML or PixiJS?
-
-Use HTML/CSS for regular documents, forms and accessible UI.
-
-Use PixiJS when the main problem is high-performance 2D rendering.
-
+Use HTML for forms/content/accessibility; PixiJS for canvas-heavy 2D rendering.
 # 117. TypeScript
-
-TypeScript adds static type checking to JavaScript.
-
-```ts
-function add(a: number, b: number): number {
-  return a + b;
-}
-```
-
+JavaScript plus static type checking.
 # 118. TypeScript object
-
 ```ts
-type User = {
-  id: number;
-  name: string;
-};
+type User = { id: number; name: string };
 ```
-
 # 119. Learn TypeScript immediately?
-
-Learn core JavaScript first.
-
-Then TypeScript becomes much easier and helps with larger codebases.
-
+Learn core JavaScript first, then add TypeScript early for larger projects.
 # 120. Unit tests
-
-Popular choices:
-
-- Vitest,
-- Jest,
-- Node's built-in test runner for Node projects.
-
+Test small functions/components with tools such as Vitest/Jest.
 # 121. E2E tests
-
-Popular tools:
-
-- Playwright,
-- Cypress.
-
+Use Playwright/Cypress to test real browser workflows.
 # 122. ESLint
-
-Static analysis for JavaScript/TypeScript.
-
+```bash
+npx eslint .
+```
 # 123. Prettier
-
-Automatic formatting.
-
-Some teams use alternative formatters; follow the project.
-
-# 124. Security essentials
-
-Never trust input.
-
-Validate server-side even if the browser also validates.
-
+```bash
+npx prettier . --write
+```
+# 124. Security — key rules
+Treat browser code and client input as untrusted.
+## Do not trust input
+Validate on the server; client validation is UX, not authority.
 # 125. XSS
-
-Avoid injecting untrusted HTML.
-
-Prefer `textContent`.
-
-If rich HTML is necessary, sanitize it with a well-maintained library.
-
+Avoid injecting unsanitized HTML; prefer textContent and framework escaping.
 # 126. API keys
-
-A browser cannot safely hide a secret API key.
-
-Anything shipped to the frontend can be inspected.
-
-Keep real secrets on the backend.
-
+Secrets cannot be safely hidden in frontend JavaScript shipped to users.
 # 127. CORS
-
-CORS is a browser security policy, not authentication.
-
-Configure allowed origins deliberately.
-
+Browser access-control mechanism configured by the server; not authentication.
 # 128. Accessibility
-
-Interactive controls should be keyboard-accessible and have proper names.
-
-Prefer semantic HTML over custom clickable divs.
-
+Use semantic HTML, keyboard support, labels, focus states and sufficient contrast.
 # 129. ARIA
-
-Use ARIA when native HTML semantics are insufficient.
-
-Do not use ARIA to recreate controls that already exist in HTML.
-
+Use ARIA to supplement semantics, not replace native HTML controls.
 # 130. Performance
-
-Main costs:
-
-- too much JavaScript,
-- large dependencies,
-- unnecessary rerenders,
-- blocking main-thread work,
-- large images,
-- excessive network requests.
-
+Measure first: network, rendering, JS execution, bundle size and Core Web Vitals.
 # 131. Debounce
-
-Useful for search inputs:
-
 ```js
-function debounce(fn, delay) {
-  let timer;
-
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), delay);
-  };
-}
+const debounced = debounce(search, 300);
 ```
-
+Useful for search/input events that should not fire on every keystroke.
 # 132. Dynamic import
-
 ```js
-const module = await import("./feature.js");
+const module = await import('./heavy.js');
 ```
-
-Useful for code splitting.
-
 # 133. Do not use a framework just because it exists
-
-Complexity is a cost.
-
-Choose the smallest tool that solves the real problem.
-
-# 134. Do not build an SPA unless you need one
-
-Many websites are better served by server-rendered or mostly static HTML plus focused JavaScript.
-
+Framework cost is justified only when complexity benefits from it.
+# 134. Do not build an SPA if you do not need one
+Server-rendered/multi-page sites can be simpler, faster and easier to operate.
 # 135. JavaScript with a Go backend
-
-A simple architecture:
-
-```text
-browser JS
-   ↓ fetch JSON
-Go API / server
-   ↓
-database
-```
-
-Or Go can render HTML and JavaScript can progressively enhance it.
-
-# 136. Practical technology levels
-
-Level 1:
-plain HTML/CSS/JS.
-
-Level 2:
-ES modules + Vite.
-
-Level 3:
-component framework.
-
-Level 4:
-TypeScript.
-
-Level 5:
-special rendering such as PixiJS.
-
-# 137. Practical choices
-
-Small widget/form/internal tool:
+Go serves HTML/API/static assets; frontend JS handles interaction and fetch calls.
+# 136. My practical technology split
+## Level 1 — normal interactive page
 Vanilla JS.
-
-Small component-heavy app:
+## Level 2 — modern environment
+Vite + modules.
+## Level 3 — component application
+React/Vue/Angular.
+## Level 4 — typing
+TypeScript.
+## Level 5 — special graphics
+PixiJS/canvas.
+# 137. What I would choose for typical small projects
+## Simple widget / form / internal tool
+Vanilla JS.
+## Small app with many components
 Vue or React.
-
-Market-oriented frontend skill:
-React + TypeScript is a common path.
-
-Large enterprise panel:
-Angular can be a strong fit.
-
-2D visualization/game:
+## Project for marketable frontend skills
+React + TypeScript.
+## Large business panel with strict structure
+Angular or strongly structured React.
+## Visualization / game / animated canvas
 PixiJS.
-
-# 138. How to learn JavaScript effectively
-
-Build small things in sequence:
-
-1. variables/functions,
-2. DOM,
-3. forms,
-4. arrays,
-5. localStorage,
-6. fetch,
-7. modules,
-8. Vite,
-9. one framework.
-
-# 139. Stage 1 — language basics
-
-Build a calculator or text utility.
-
+# 138. How to really learn JavaScript
+## After variables, conditions and functions
+build tiny console logic.
+## After DOM
+build interactive FAQ/menu.
+## After forms
+validate and submit data.
+## After arrays
+filter/sort lists.
+## After localStorage
+persist a todo/settings app.
+## After fetch
+build API-backed UI.
+## After modules
+split code by responsibility.
+## After Vite
+use package tooling/build.
+## After framework
+build one complete app.
+# 139. Suggested path — stage 1
+Syntax, functions, arrays, objects and errors.
 # 140. Stage 2 — browser
-
-Build FAQ accordion, modal or tabs.
-
-# 141. Stage 3 — async
-
-Fetch and display data from an API.
-
+DOM, events, forms, storage.
+# 141. Stage 3 — asynchrony
+Promises, fetch, async/await, error/loading states.
 # 142. Stage 4 — code organization
-
-Split the application into modules.
-
+Modules, separation of concerns and small architecture.
 # 143. Stage 5 — tooling
-
-Use npm, Vite, linting and formatting.
-
+npm, Vite, ESLint, Prettier, tests.
 # 144. Stage 6 — framework
-
-Rebuild one known project in React or Vue.
-
-# 145. Exercise: FAQ
-
-Practice selectors, events and class toggling.
-
-# 146. Exercise: price calculator
-
-Practice numbers, forms and DOM updates.
-
-# 147. Exercise: Todo
-
-Practice arrays, localStorage and rendering.
-
-# 148. Exercise: product search
-
-Practice filter, debounce and URL parameters.
-
-# 149. Exercise: dashboard
-
-Practice API calls, loading/error states and charts.
-
-# 150. Exercise: PixiJS
-
-Practice rendering, ticker and pointer interaction.
-
-# 151. Exercise: frontend to Go backend
-
-Practice fetch, JSON, API errors and deployment boundaries.
-
+Choose one framework and build real components/state/data flow.
+# 145. Practice project 1 — FAQ
+Toggle questions using event listeners/classes.
+# 146. Project 2 — price calculator
+Form inputs + validation + calculation + formatted output.
+# 147. Project 3 — Todo
+CRUD state + localStorage.
+# 148. Project 4 — product search
+Fetch data + filters + debounce + loading/error.
+# 149. Project 5 — dashboard
+Multiple widgets/components + API data + state.
+# 150. Project 6 — PixiJS
+Interactive animated 2D scene.
+# 151. Project 7 — frontend for Go backend
+Go API + JS frontend + auth/forms/errors.
 # 152. Useful browser APIs
-
-Important examples:
-
-- URL / URLSearchParams,
-- Clipboard,
-- IntersectionObserver,
-- WebSocket,
-- CustomEvent,
-- Intl,
-- Date,
-- crypto.randomUUID.
-
+URL, Clipboard, IntersectionObserver, WebSocket, CustomEvent, Intl, crypto and more.
 # 153. URLSearchParams
-
 ```js
 const params = new URLSearchParams(location.search);
-const q = params.get("q");
 ```
-
 # 154. Clipboard
-
 ```js
-await navigator.clipboard.writeText("Hello");
+await navigator.clipboard.writeText(text);
 ```
-
-Requires secure context/permissions depending on environment.
-
 # 155. IntersectionObserver
-
-Useful for lazy behaviour and visibility tracking without scroll-event polling.
-
+Efficiently observe element visibility for lazy loading/animations.
 # 156. WebSocket
-
-Persistent bidirectional connection:
-
-```js
-const socket = new WebSocket("wss://example.com/ws");
-
-socket.addEventListener("message", (event) => {
-  console.log(event.data);
-});
-```
-
+Persistent bidirectional connection for realtime updates.
 # 157. Custom events
-
 ```js
-element.dispatchEvent(
-  new CustomEvent("saved", {
-    detail: { id: 42 },
-  })
-);
+el.dispatchEvent(new CustomEvent('saved', {detail: data}));
 ```
-
-# 158. Intl
-
+# 158. `Intl`
 ```js
-new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-}).format(1234.5);
+new Intl.NumberFormat('pl-PL', {style:'currency', currency:'PLN'}).format(123)
 ```
-
 # 159. Dates
-
-```js
-const now = new Date();
-console.log(now.toISOString());
-```
-
-Be careful with time zones.
-
-# 160. crypto.randomUUID
-
+Use Date carefully with time zones; prefer Intl for display and ISO formats for interchange.
+# 160. `crypto.randomUUID`
 ```js
 const id = crypto.randomUUID();
 ```
-
-Useful for client-generated unique identifiers.
-
-# 161. Modular app example
-
-```text
-src/
-├── api/
-│   └── users.js
-├── ui/
-│   └── user-list.js
-├── storage.js
-└── main.js
-```
-
-# 162. A framework does not replace JavaScript
-
-You still need to understand:
-
-- functions,
-- objects,
-- arrays,
-- modules,
-- Promises,
-- async/await,
-- events,
-- browser APIs.
-
-# 163. Things worth memorising
-
+# 161. Modular application — example
+main.js wires api.js, state.js, ui.js and feature modules.
+# 162. Framework does not replace JavaScript
+You still need closures, promises, arrays, objects, events and browser APIs.
+# 163. What to know “by heart”
+const/let, functions, arrays/objects, map/filter/find, DOM/events, fetch/async-await, modules, npm basics.
+# 164. What you do not need to memorize
+Every browser API, framework option or build-tool flag. Learn how to find documentation.
+# 165. Minimal daily cheat sheet
+## DOM
 ```js
-const
-let
-if
-for
-function
-=> 
-[]
-{}
-.map()
-.filter()
-.find()
-querySelector()
-addEventListener()
-fetch()
-async
-await
-import
-export
+document.querySelector
+addEventListener
+classList
 ```
-
-# 164. Things you do not need to memorise
-
-Exact signatures of every Web API, framework hook or build-tool option.
-
-Know the concept, then consult documentation.
-
-# 165. Daily cheat sheet
-
-DOM:
-
+## API
 ```js
-document.querySelector()
-document.querySelectorAll()
-element.textContent
-element.classList
-element.addEventListener()
+const r = await fetch(url);
+const data = await r.json();
 ```
-
-API:
-
-```js
-const response = await fetch(url);
-const data = await response.json();
-```
-
-Arrays:
-
+## Arrays
 ```js
 map
 filter
 find
 some
 every
-reduce
 ```
-
-Modules:
-
+## Modules
 ```js
 export
 import
 ```
-
-npm:
-
+## npm
 ```bash
 npm install
 npm run dev
-npm run build
+npm test
 ```
-
-# 166. Fast technology decision
-
-Only a little interaction?
-Use Vanilla JS.
-
-Many stateful components?
-Consider React/Vue.
-
-Large structured enterprise application?
-Consider Angular.
-
-Main challenge is 2D rendering?
-Consider PixiJS.
-
+# 166. Quick technology decision
+## Does the page need only a little interaction?
+Vanilla JS.
+## Does UI have many dependent components and lots of state?
+React/Vue.
+## Does project need large strongly imposed architecture?
+Angular.
+## Is the main problem high-performance 2D graphics?
+PixiJS.
 # 167. Final goal
-
-You should be able to:
-
-- read browser JavaScript,
-- manipulate the DOM,
-- handle forms,
-- call APIs,
-- understand Promises and async/await,
-- structure modules,
-- use npm and Vite,
-- understand why frameworks exist,
-- build a small app with one framework,
-- choose when not to use one.
-
+Be able to write interactive pages, call APIs, organize modules, use tooling and understand framework code.
 # 168. Official sources
-
-JavaScript and Web APIs:
-https://developer.mozilla.org/
-
-Node.js:
-https://nodejs.org/docs/
-
-Vite:
-https://vite.dev/
-
-React:
-https://react.dev/
-
-Vue:
-https://vuejs.org/
-
-Angular:
-https://angular.dev/
-
-PixiJS:
-https://pixijs.com/
-
-# 169. Shortest summary
-
-```text
-HTML = structure
-CSS = presentation
-JavaScript = behaviour
-
-Vanilla JS first
-↓
-DOM + events
-↓
-fetch + async
-↓
-modules
-↓
-npm + Vite
-↓
-one framework if needed
-↓
-TypeScript when the project benefits
-```
+## JavaScript and Web APIs
+MDN Web Docs.
+## Node.js
+nodejs.org/docs.
+## Vite
+vite.dev.
+## React
+react.dev.
+## Vue
+vuejs.org.
+## Angular
+angular.dev.
+## PixiJS
+pixijs.com.
+# 169. Shortest summary of the whole course
+Learn JavaScript first, browser APIs second, tooling third, and frameworks only when you need component/state architecture.
