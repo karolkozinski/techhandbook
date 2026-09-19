@@ -123,7 +123,7 @@
     s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
       '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
     s = s.replace(/\[([^\]]+)\]\(([^)\s]+\.md(?:#[^)\s]+)?)\)/g,
-      '<span title="Link do dokumentu źródłowego">$1</span>');
+      `<span title="${state.language === "en" ? "Link to source document" : "Link do dokumentu źródłowego"}">$1</span>`);
 
     return s;
   }

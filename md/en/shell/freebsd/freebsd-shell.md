@@ -1,315 +1,885 @@
 # FreeBSD — Practical Shell Handbook
 
-> Everyday command-line work and basic server administration on FreeBSD.
+# FreeBSD — Administration, System and Directories
 
-# FreeBSD — administrator, system and directories
+FreeBSD is a complete Unix-like operating system. The base system, kernel and core userland are developed together, while third-party applications are usually installed under /usr/local.
 
-Traditional root access:
+## `su`
 
-```bash
+Switch to another user, usually root:
+
+```sh
 su -
 ```
 
-If installed, `sudo` or `doas` may also be used.
+Use direct root sessions only when necessary. For routine work, sudo or doas can provide narrower privilege elevation.
 
-System version:
+## FreeBSD version
 
-```bash
+```sh
 freebsd-version
 uname -a
 ```
 
-Important directories:
+Use freebsd-version for the installed base-system version and uname for kernel/platform information.
+
+## Important directories
 
 ```text
 /etc            base-system configuration
-/usr/local/etc  package configuration
-/var            logs and variable data
-/home           user homes
-/root           root home
-/usr/local      third-party software
-/boot           boot configuration
+/usr/local/etc  third-party package configuration
+/var/log        logs
+/usr/home       common home location
+/home           often points to /usr/home
+/boot           boot files/config
+/usr/local/bin  third-party user commands
+/usr/local/sbin third-party admin commands
 ```
 
-# 1. Core shell commands
+# 1. Shell, terminal and commands — what are you actually doing?
 
-```bash
+The terminal is the interface. The shell interprets your commands. FreeBSD commonly uses sh for root/system scripts and tcsh for some interactive accounts, but other shells can be installed.
+
+# 2. `pwd` — where am I?
+
+```sh
 pwd
+```
+
+Prints the current working directory.
+
+# 3. `ls` — what is in the directory?
+
+```sh
+ls
+```
+
+## Important options
+
+### `-l`
+
+Long listing with permissions, owner, size and timestamps:
+
+```sh
+ls -l
+```
+
+### `-a`
+
+Include hidden files:
+
+```sh
+ls -a
+```
+
+### `-h`
+
+Human-readable sizes when combined with long listing:
+
+```sh
+ls -lh
+```
+
+### `-t`
+
+Sort by modification time:
+
+```sh
+ls -lt
+```
+
+### `-S`
+
+Sort by size:
+
+```sh
+ls -lS
+```
+
+## Most common form
+
+```sh
 ls -lah
-cd /path
-touch file
-mkdir -p dir/subdir
-cp -r src dst
-mv old new
-rm file
-less file
-head -n 20 file
-tail -f file
-grep -R pattern .
-find . -name '*.conf'
-command -v program
-file PATH
-stat PATH
-man COMMAND
 ```
 
-# 2. Redirection and pipelines
+# 4. `cd` — change directory
 
-```bash
-command > file
-command >> file
-command 2> errors
-command1 | command2
+```sh
+cd /usr/local/etc
 ```
 
-# 3. Identity and sessions
+## Important variants
 
-```bash
+### Parent directory
+
+```sh
+cd ..
+```
+
+### Home directory
+
+```sh
+cd
+cd ~
+```
+
+### Previous directory
+
+```sh
+cd -
+```
+
+# 5. Relative and absolute paths
+
+Absolute path starts at `/`, for example `/var/log/messages`. Relative path starts from the current directory.
+
+### `.`
+
+Means the current directory.
+
+### `..`
+
+Means the parent directory.
+
+# 6. `touch` — create an empty file or update timestamp
+
+```sh
+touch test.txt
+```
+
+# 7. `mkdir` — create directories
+
+```sh
+mkdir logs
+```
+
+## `-p`
+
+Create parent directories as needed:
+
+```sh
+mkdir -p /tmp/demo/a/b
+```
+
+# 8. `cp` — copy
+
+```sh
+cp source.conf copy.conf
+```
+
+## `-r`
+
+Recursive directory copy:
+
+```sh
+cp -r source_dir target_dir
+```
+
+## `-i`
+
+Ask before overwrite:
+
+```sh
+cp -i file target
+```
+
+## `-v`
+
+Verbose output:
+
+```sh
+cp -v file target
+```
+
+## Typical case
+
+Back up a config before editing:
+
+```sh
+cp /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.bak
+```
+
+# 9. `mv` — move and rename
+
+```sh
+mv old.txt new.txt
+mv file.txt /tmp/
+```
+
+## `-i`
+
+Prompt before overwrite.
+
+## `-v`
+
+Show performed operations.
+
+# 10. `rm` — delete
+
+```sh
+rm file.txt
+```
+
+## `-i`
+
+Prompt before removal.
+
+## `-r`
+
+Remove directories recursively.
+
+## `-f`
+
+Force removal without prompting for missing files.
+
+## `-rf`
+
+Recursive forced removal. Treat it as dangerous because path mistakes can destroy large directory trees.
+
+# 11. `cat` — quickly print a file
+
+```sh
+cat /etc/hosts
+```
+
+Good for small files. Use less for long files.
+
+# 12. `less` — read large files comfortably
+
+```sh
+less /var/log/messages
+```
+
+Useful keys: `/` search, `n` next match, `G` end, `g` start, `q` quit.
+
+# 13. `head` — start of a file
+
+```sh
+head file.txt
+```
+
+## `-n`
+
+```sh
+head -n 20 file.txt
+```
+
+# 14. `tail` — end of a file
+
+```sh
+tail file.txt
+```
+
+## `-n`
+
+```sh
+tail -n 50 /var/log/messages
+```
+
+## `-f`
+
+Follow a growing log:
+
+```sh
+tail -f /var/log/messages
+```
+
+# 15. `grep` — search text
+
+```sh
+grep error /var/log/messages
+```
+
+## `-i`
+
+Case-insensitive search.
+
+## `-n`
+
+Show line numbers.
+
+## `-R`
+
+Recursive directory search.
+
+## `-v`
+
+Invert match.
+
+## `-E`
+
+Use extended regular expressions.
+
+## Very practical
+
+```sh
+grep -RniE 'error|warning' /usr/local/etc
+```
+
+# 16. `find` — find files
+
+## `-name`
+
+```sh
+find /usr/local/etc -name '*.conf'
+```
+
+## `-iname`
+
+Case-insensitive filename match.
+
+## `-type`
+
+```sh
+find /var -type f
+find /usr/local -type d
+```
+
+## `-mtime`
+
+Find by modification age:
+
+```sh
+find /var/log -type f -mtime -7
+```
+
+## `-size`
+
+Example:
+
+```sh
+find /var -type f -size +100M
+```
+
+# 17. `which`, `command -v`, `whereis` — where is a program?
+
+```sh
+which nginx
+command -v sh
+whereis nginx
+```
+
+command -v is portable shell logic; whereis also searches known source/manual locations.
+
+# 18. `file` — what kind of file is this?
+
+```sh
+file /bin/sh
+file archive.tar.gz
+```
+
+# 19. `stat` — detailed file information
+
+```sh
+stat file.txt
+```
+
+Shows size, ownership, permissions and timestamps.
+
+# 20. `man` — command documentation
+
+```sh
+man service
+man rc.conf
+man 5 rc.conf
+```
+
+FreeBSD manual pages are first-class documentation.
+
+# 21. `echo` — print text and variables
+
+```sh
+echo hello
+echo "$HOME"
+```
+
+# 22. Redirection `>` and `>>`
+
+`>` overwrites a file. `>>` appends.
+
+```sh
+echo test > file.txt
+echo another >> file.txt
+```
+
+# 23. Pipe `|`
+
+A pipe sends stdout of one command into stdin of another:
+
+```sh
+sockstat -4 -l | grep nginx
+```
+
+# 24. `sort`, `uniq`, `wc`
+
+## `sort`
+
+```sh
+sort names.txt
+```
+
+## `uniq`
+
+Usually after sort:
+
+```sh
+sort names.txt | uniq
+```
+
+## `wc`
+
+Count lines, words or bytes:
+
+```sh
+wc -l file.txt
+```
+
+# 25. `whoami`, `id`, `groups`
+
+```sh
 whoami
 id
 groups
+```
+
+Use these to confirm identity and group memberships before debugging permission issues.
+
+# 26. `who` and `w`
+
+```sh
 who
 w
 ```
 
-# 4. Kernel and host
+Show logged-in users; `w` also shows activity/load information.
 
-```bash
+# 28. `uname` — kernel and platform
+
+## `-a`
+
+```sh
 uname -a
+```
+
+## `-r`
+
+```sh
 uname -r
+```
+
+# 30. `hostname`
+
+```sh
 hostname
+```
+
+# 31. `uptime`
+
+```sh
 uptime
 ```
 
-# 5. Processes
+Shows uptime and load averages.
 
-```bash
+# 32. `top` — processes and load
+
+```sh
 top
-ps aux
-pgrep nginx
-pgrep -af myapp
-kill PID
-pkill nginx
 ```
 
-# 6. Filesystems and disk usage
+Use it for a quick view of CPU, memory and busy processes.
 
-```bash
+# 33. `ps` — process list
+
+```sh
+ps aux
+```
+
+# 34. `pgrep` — find PID by name
+
+```sh
+pgrep nginx
+```
+
+## `-f`
+
+Match full command line.
+
+## `-l`
+
+Show process names with PIDs.
+
+# 35. `kill` and `pkill`
+
+```sh
+kill PID
+pkill processname
+```
+
+Try normal termination before stronger signals.
+
+# 36. `df` — free filesystem space
+
+```sh
 df -h
-du -sh *
+```
+
+# 37. `du` — directory size
+
+## `-s`
+
+Summary only.
+
+## `-h`
+
+Human-readable sizes:
+
+```sh
+du -sh /var/*
+```
+
+# 38. `mount` — what is mounted?
+
+```sh
 mount
 ```
 
-# 7. Disks
+On ZFS systems, also inspect `zfs list` and `zpool status`.
 
-```bash
+# 40. FreeBSD — disks
+
+Useful commands:
+
+```sh
 geom disk list
 gpart show
 camcontrol devlist
 ```
 
-# 8. ZFS
+# 41. ZFS
 
-```bash
+Core checks:
+
+```sh
 zpool status
 zpool list
 zfs list
 zfs list -t snapshot
 ```
 
-Create snapshot:
+# 43. FreeBSD — `ifconfig`
 
-```bash
-zfs snapshot pool/dataset@name
+```sh
+ifconfig
+ifconfig -a
 ```
 
-# 9. Networking — ifconfig and routing
+FreeBSD uses ifconfig as a primary network-interface tool.
 
-```bash
-ifconfig
-ifconfig em0
+# 44. Routing on FreeBSD
+
+```sh
 netstat -rn
 route -n get default
 ```
 
-# 10. Connectivity
+# 45. `ping`
 
-```bash
+```sh
 ping 1.1.1.1
 ping example.com
+```
+
+If IP works but hostname does not, investigate DNS.
+
+# 46. `curl`
+
+```sh
 curl -I https://example.com
 curl -v https://example.com
+```
+
+# 47. DNS — `host` and `dig`
+
+```sh
 host example.com
 dig example.com
 ```
 
-# 11. Listening ports — sockstat
+# 49. FreeBSD — `sockstat`
 
-```bash
-sockstat -4 -6
-sockstat -l
-sockstat -4 -l
-sockstat -4 -l | grep ':8080'
+Show listening sockets:
+
+```sh
+sockstat -4 -6 -l
 ```
 
-# 12. SSH
+Find a port:
 
-```bash
+```sh
+sockstat -4 -6 -l | grep ':8080'
+```
+
+# 50. `ssh`
+
+```sh
 ssh user@server
+```
+
+## Different port
+
+```sh
 ssh -p 2222 user@server
-ssh -v user@server
+```
+
+## More diagnostics
+
+```sh
+ssh -vvv user@server
+```
+
+# 51. `scp`
+
+```sh
 scp file user@server:/tmp/
+scp user@server:/tmp/file .
+```
+
+# 52. `ssh-keygen`
+
+```sh
 ssh-keygen -t ed25519
 ```
 
-# 13. Permissions
+# 53. `chmod`
 
-```bash
-chmod u+x script.sh
-chmod 640 config.yml
+## Add execute permission
+
+```sh
+chmod +x script.sh
+```
+
+## Numeric mode
+
+```sh
+chmod 640 config.conf
 chmod 755 script.sh
+```
+
+# 54. `chown`
+
+```sh
 chown user:group file
-chown -R app:app /srv/app
 ```
 
-# 14. pkg
+# 57. FreeBSD — `pkg`
 
-```bash
+## Update catalogue
+
+```sh
 pkg update
-pkg upgrade
-pkg install nginx
-pkg delete nginx
-pkg search nginx
-pkg info nginx
-pkg info
-pkg autoremove
-pkg which /usr/local/bin/nginx
 ```
 
-# 15. Services
+## Upgrade packages
 
-```bash
+```sh
+pkg upgrade
+```
+
+## Install
+
+```sh
+pkg install nginx
+```
+
+## Remove
+
+```sh
+pkg delete nginx
+```
+
+## Search
+
+```sh
+pkg search nginx
+```
+
+## Information
+
+```sh
+pkg info nginx
+```
+
+## All installed
+
+```sh
+pkg info
+```
+
+## Unneeded dependencies
+
+```sh
+pkg autoremove
+```
+
+## Which package owns a file
+
+```sh
+pkg which /usr/local/sbin/nginx
+```
+
+# 60. FreeBSD — services with `service`
+
+```sh
 service nginx status
 service nginx start
 service nginx stop
 service nginx restart
 ```
 
-# 16. sysrc
+Use `onestart` for a one-off start when the service is not enabled.
 
-Enable service:
+# 61. FreeBSD — `sysrc`
 
-```bash
-sysrc nginx_enable=YES
-```
+Read and modify rc.conf-style variables safely:
 
-Check:
-
-```bash
+```sh
 sysrc nginx_enable
-sysrc -a
+sysrc nginx_enable=YES
+sysrc nginx_enable=NO
 ```
 
-# 17. Logs
+# 62. FreeBSD — logs
 
-```bash
+Common location:
+
+```text
+/var/log
+```
+
+Typical system log:
+
+```sh
 tail -f /var/log/messages
 ```
 
-Third-party services may log under `/var/log` or application-specific locations.
+# 63. FreeBSD — base system and packages
 
-# 18. Base system vs packages
+Remember the separation: `/etc` and base tools belong to the operating system; `/usr/local` is where third-party packages normally live.
 
-FreeBSD separates the base operating system from third-party packages.
+# 64. FreeBSD — base-system updates
 
-Use `pkg` for packages.
+Update method depends on FreeBSD release and deployment model. Follow the procedure documented for your supported release and read release notes before upgrades.
 
-On supported release systems, binary base updates commonly use `freebsd-update`.
+# 66. `dmesg`
 
-# 19. Updating the base system
-
-```bash
-freebsd-update fetch
-freebsd-update install
+```sh
+dmesg
+dmesg | tail -n 50
 ```
 
-For upgrades between releases, follow official FreeBSD release documentation.
+Useful for boot, hardware, disk and driver messages.
 
-# 20. dmesg and sysctl
+# 68. FreeBSD — `sysctl`
 
-```bash
-dmesg
-sysctl kern.ostype
+Read kernel/system parameters:
+
+```sh
 sysctl hw.ncpu
 sysctl hw.physmem
 ```
 
-Search:
+Temporary changes may be possible with `sysctl name=value`; persistent settings belong in the correct configuration file.
 
-```bash
-sysctl -a | grep NAME
-```
+# 69. `date`
 
-# 21. date, history and shortcuts
-
-```bash
+```sh
 date
-history
 ```
 
-Useful interactive shortcuts in compatible shells:
+# 70. `history`
 
-```text
-Ctrl+R reverse history
-Ctrl+C interrupt
-Ctrl+D EOF/logout
-Ctrl+L clear
+Shows previous shell commands. Exact behavior depends on the shell.
+
+# 71. `Ctrl+R`
+
+In shells that support reverse history search, Ctrl+R searches previous commands interactively.
+
+# 72. Keyboard shortcuts
+
+Common terminal/shell shortcuts include Ctrl+C to interrupt, Ctrl+D for EOF/logout in many shells, Ctrl+L to clear, and Ctrl+Z to suspend a foreground job.
+
+# 73. `&&`, `||`, `;`
+
+## `&&`
+
+Run the next command only if the previous succeeded:
+
+```sh
+nginx -t && service nginx reload
 ```
 
-# 22. Command chaining
+## `||`
 
-```bash
-command1 && command2
-command1 || command2
-command1 ; command2
+Run the next command if the previous failed.
+
+## `;`
+
+Run commands sequentially regardless of status.
+
+# 74. Background processes
+
+Append `&` to launch in background:
+
+```sh
+long-command &
 ```
 
-# 23. Background jobs
+For remote sessions, tmux is safer for long interactive work.
 
-```bash
-command &
-jobs
-fg
-bg
-```
+# 75. `tmux`
 
-# 24. tmux
-
-```bash
+```sh
 pkg install tmux
-tmux new -s work
-tmux attach -t work
+tmux new -s admin
+tmux attach -t admin
 ```
 
-# 25. Archives
+A tmux session survives an SSH disconnect.
 
-```bash
+# 76. `tar` archives
+
+Create:
+
+```sh
 tar -czf backup.tar.gz directory/
+```
+
+Extract:
+
+```sh
 tar -xzf backup.tar.gz
+```
+
+# 77. `gzip`, `gunzip`
+
+```sh
 gzip file
 gunzip file.gz
 ```
 
-# 26. crontab
+# 78. `crontab`
 
-```bash
+```sh
 crontab -e
 crontab -l
 ```
 
-# 27. Quick troubleshooting
+Use cron for simple scheduled commands; FreeBSD also has the `periodic` framework for system maintenance.
 
-```bash
+# 82. Quick FreeBSD diagnostics
+
+```sh
 freebsd-version
 uptime
 df -h
@@ -317,134 +887,147 @@ zpool status
 ifconfig
 netstat -rn
 sockstat -4 -6 -l
-service SERVICE status
-tail -n 100 /var/log/messages
+ps aux
+tail -n 50 /var/log/messages
 ```
 
-# Real-life examples
+# Real-life examples — FreeBSD
 
-## Website stopped responding
+## 1. Website stopped responding
 
-```bash
+```sh
 service nginx status
-sockstat -4 -l | grep ':80\|:443'
+nginx -t
+sockstat -4 -6 -l | grep ':80\|:443'
 tail -n 100 /var/log/nginx/error.log
-curl -I http://127.0.0.1
+curl -v http://127.0.0.1/
 ```
 
-## Disk almost full
+## 2. Disk is almost full
 
-```bash
+```sh
 df -h
-du -sh /var/*
+zfs list
+du -sh /var/* | sort -h
 ```
 
-## Check ZFS health
+## 3. Check ZFS health
 
-```bash
+```sh
 zpool status
 zpool list
 zfs list
 ```
 
-## Find nginx configuration
+## 4. You forgot where nginx configuration is
 
-```bash
+```sh
+pkg info -l nginx | grep conf
 find /usr/local/etc -iname '*nginx*'
 ```
 
-## Who uses port 8080?
+## 5. Who uses port 8080?
 
-```bash
-sockstat -4 -l | grep ':8080'
+```sh
+sockstat -4 -6 -l | grep ':8080'
 ```
 
-## Network does not work
+## 6. Network does not work
 
-```bash
+```sh
 ifconfig
 netstat -rn
 ping 1.1.1.1
-dig example.com
+host example.com
+cat /etc/resolv.conf
 ```
 
-## Install nginx
+## 7. Install nginx from scratch
 
-```bash
+```sh
 pkg install nginx
 sysrc nginx_enable=YES
+nginx -t
 service nginx start
+sockstat -4 -6 -l | grep nginx
 ```
 
-## nginx fails after config change
+## 8. Configuration changed and nginx will not start
 
-```bash
+```sh
 nginx -t
 service nginx status
 tail -n 100 /var/log/nginx/error.log
 ```
 
-## Application consumes CPU
+Fix syntax before repeatedly restarting.
 
-```bash
+## 9. Application consumes CPU
+
+```sh
 top
 ps aux
+pgrep -af appname
 ```
 
-## Identify an unfamiliar server
+## 10. Quick recognition of an unfamiliar server
 
-```bash
+```sh
 freebsd-version
-uname -a
+hostname
 uptime
 df -h
 zpool status
-ifconfig
-sockstat -4 -6 -l
+pkg info | head
 service -e
+sockstat -4 -6 -l
 ```
 
-## Update packages
+## 11. Package update
 
-```bash
+```sh
 pkg update
 pkg upgrade
 ```
 
-## Update base system
+Read package messages after upgrades.
 
-```bash
-freebsd-update fetch
-freebsd-update install
-```
+## 12. Classic base-system update
 
-## Long SSH task
+Follow the supported update mechanism for the installed FreeBSD release. Create a ZFS boot environment or other rollback point where appropriate before major changes.
 
-```bash
+## 13. Long process over SSH
+
+```sh
 tmux new -s work
+long-command
 ```
 
-## Backup configuration
+Detach and later reattach instead of relying on one SSH connection.
 
-```bash
-tar -czf config-backup.tar.gz /etc /usr/local/etc
+## 14. Configuration backup
+
+```sh
+tar -czf /tmp/etc-backup.tar.gz /etc /usr/local/etc
 ```
 
-# Minimum to memorize
+For real backups, copy data off the machine and include application state/databases separately.
+
+# FreeBSD — minimal set to remember
 
 ```text
-pwd ls cd
-cp mv rm
-cat less tail
-grep find
-ps top pgrep kill
-df du
-ifconfig netstat sockstat
-curl dig ssh scp
-chmod chown
+pwd / ls / cd
+cp / mv / rm
+less / tail / grep / find
+ps / top / kill
+df / du
+ifconfig / netstat / sockstat
+ssh / scp
 pkg
-service sysrc
-zpool zfs
-sysctl
-tar tmux
+service / sysrc
+zpool / zfs
+dmesg / sysctl
+tmux / tar / crontab
 ```
+
+The practical FreeBSD pattern is: inspect first, use native tools, remember the `/usr/local` split, and read the manual page before forcing a change.
