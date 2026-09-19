@@ -1622,6 +1622,85 @@
         "debug"
       ],
       "language": "en"
+    },
+    {
+      "id": "junior-001",
+      "name": "01-jak-dziala-komputer.md",
+      "title": "01. Jak działa komputer?",
+      "path": "md/pl/junior/01-jak-dziala-komputer.md",
+      "category": "junior",
+      "tags": [
+        "junior",
+        "komputer",
+        "cpu",
+        "ram",
+        "dysk",
+        "system"
+      ],
+      "language": "pl",
+      "audience": "junior"
+    },
+    {
+      "id": "junior-002",
+      "name": "02-pliki-i-katalogi.md",
+      "title": "02. Pliki i katalogi",
+      "path": "md/pl/junior/02-pliki-i-katalogi.md",
+      "category": "junior",
+      "tags": [
+        "junior",
+        "pliki",
+        "katalogi",
+        "foldery",
+        "rozszerzenia"
+      ],
+      "language": "pl",
+      "audience": "junior"
+    },
+    {
+      "id": "junior-003",
+      "name": "03-terminal-bez-strachu.md",
+      "title": "03. Terminal bez strachu",
+      "path": "md/pl/junior/03-terminal-bez-strachu.md",
+      "category": "junior",
+      "tags": [
+        "junior",
+        "terminal",
+        "shell",
+        "powershell",
+        "linux"
+      ],
+      "language": "pl",
+      "audience": "junior"
+    },
+    {
+      "id": "junior-004",
+      "name": "04-html-pierwsza-strona.md",
+      "title": "04. HTML — pierwsza strona",
+      "path": "md/pl/junior/04-html-pierwsza-strona.md",
+      "category": "junior",
+      "tags": [
+        "junior",
+        "html",
+        "web",
+        "strona"
+      ],
+      "language": "pl",
+      "audience": "junior"
+    },
+    {
+      "id": "junior-005",
+      "name": "05-css-nadajemy-styl.md",
+      "title": "05. CSS — nadajemy styl",
+      "path": "md/pl/junior/05-css-nadajemy-styl.md",
+      "category": "junior",
+      "tags": [
+        "junior",
+        "css",
+        "web",
+        "styl"
+      ],
+      "language": "pl",
+      "audience": "junior"
     }
   ],
   "defaultLanguage": "pl",
@@ -1632,5 +1711,13 @@
   "roots": {
     "pl": "md/pl",
     "en": "md/en"
+  },
+  "modes": [
+    "standard",
+    "junior"
+  ],
+  "juniorRoots": {
+    "pl": "md/pl/junior",
+    "en": "md/en/junior"
   }
 }

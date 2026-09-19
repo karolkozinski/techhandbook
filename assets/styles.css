@@ -497,21 +497,40 @@ a { color: inherit; }
 }
 
 
-.language-picker {
+.language-picker,
+.mode-picker {
   display: inline-flex;
   align-items: center;
 }
 
-.language-picker select {
+.language-picker select,
+.mode-picker select {
   min-height: 36px;
   padding: 0 28px 0 10px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
   color: var(--text);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+}
+
+:root[data-mode="junior"] {
+  --radius: 18px;
+}
+
+:root[data-mode="junior"] .entry {
+  min-height: 48px;
+}
+
+:root[data-mode="junior"] .markdown-body {
+  max-width: 780px;
+  font-size: 1.03rem;
+}
+
+:root[data-mode="junior"] .markdown-body h1 {
+  line-height: 1.08;
 }
 
 .sr-only {

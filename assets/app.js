@@ -27,7 +27,9 @@
       checkIndex: "Sprawdź wpis w content-index.json i położenie pliku.",
       indexError: "Nie udało się wczytać content-index.json",
       themeLabel: "Zmień motyw",
-      homeLabel: "Tech Handbook — strona główna"
+      homeLabel: "Tech Handbook — strona główna",
+      juniorWelcomeTitle: "Technologia bez strachu.",
+      juniorWelcomeText: "Krótko, prosto i praktycznie. Wybierz temat i od razu spróbuj czegoś sam."
     },
     en: {
       about: "About",
@@ -54,7 +56,9 @@
       checkIndex: "Check content-index.json and the file location.",
       indexError: "Could not load content-index.json",
       themeLabel: "Change theme",
-      homeLabel: "Tech Handbook — home"
+      homeLabel: "Tech Handbook — home",
+      juniorWelcomeTitle: "Technology without the scary bits.",
+      juniorWelcomeText: "Short, clear and practical. Pick a topic and try something yourself."
     }
   };
 
@@ -63,6 +67,7 @@
     currentDir: "",
     currentDoc: null,
     language: "pl",
+    mode: "standard",
     contentRoot: "md/pl",
     files: []
   };
@@ -82,6 +87,7 @@
     theme: document.getElementById("themeButton"),
     indexInfo: document.getElementById("indexInfo"),
     language: document.getElementById("languageSelect"),
+    mode: document.getElementById("modeSelect"),
     searchLabel: document.getElementById("searchLabel"),
     searchHint: document.getElementById("searchHint"),
     browserPanel: document.querySelector(".browser-panel"),
@@ -530,14 +536,21 @@
 
     const supported = state.index?.languages || ["pl"];
     state.language = supported.includes(language) ? language : (state.index?.defaultLanguage || "pl");
-    state.contentRoot = state.index?.roots?.[state.language] || `md/${state.language}`;
-    state.files = (state.index?.files || []).filter(file => (file.language || "pl") === state.language);
+    state.contentRoot = state.mode === "junior"
+      ? (state.index?.juniorRoots?.[state.language] || `md/${state.language}/junior`)
+      : (state.index?.roots?.[state.language] || `md/${state.language}`);
+    state.files = (state.index?.files || []).filter(file =>
+      (file.language || "pl") === state.language &&
+      (file.audience || "standard") === state.mode
+    );
     state.tree = buildTree(state.files);
 
     document.documentElement.lang = state.language;
+    document.documentElement.dataset.mode = state.mode;
     localStorage.setItem("techhandbook-language", state.language);
 
     if (els.language) els.language.value = state.language;
+    if (els.mode) els.mode.value = state.mode;
     els.about.textContent = t("about");
     els.theme.setAttribute("aria-label", t("themeLabel"));
     els.searchLabel.textContent = t("search");
@@ -545,8 +558,8 @@
     els.searchHint.innerHTML = escapeHtml(t("searchHint")).replace("*", "<code>*</code>");
     els.browserPanel.setAttribute("aria-label", t("browserLabel"));
     els.breadcrumbs.setAttribute("aria-label", t("breadcrumbLabel"));
-    els.welcomeTitle.textContent = t("welcomeTitle");
-    els.welcomeText.textContent = t("welcomeText");
+    els.welcomeTitle.textContent = state.mode === "junior" ? t("juniorWelcomeTitle") : t("welcomeTitle");
+    els.welcomeText.textContent = state.mode === "junior" ? t("juniorWelcomeText") : t("welcomeText");
     els.errorTitle.textContent = t("errorTitle");
     els.brand.setAttribute("aria-label", t("homeLabel"));
     els.indexInfo.textContent = `${state.files.length} ${t("docs")} • ${t("index")} ${state.index?.updated || ""}`;
@@ -599,9 +612,21 @@
     renderDirectory("");
   }
 
+  function applyMode(mode) {
+    const supported = state.index?.modes || ["standard", "junior"];
+    state.mode = supported.includes(mode) ? mode : "standard";
+    localStorage.setItem("techhandbook-mode", state.mode);
+    if (els.mode) els.mode.value = state.mode;
+    applyLanguage(state.language, { preserveHash: false });
+  }
+
   function initLanguage() {
     const saved = localStorage.getItem("techhandbook-language");
+    const savedMode = localStorage.getItem("techhandbook-mode");
     const fallback = state.index?.defaultLanguage || "pl";
+    state.mode = (state.index?.modes || ["standard", "junior"]).includes(savedMode)
+      ? savedMode
+      : "standard";
     applyLanguage(saved || fallback, { preserveHash: true });
   }
 
@@ -679,6 +704,12 @@
   els.language.addEventListener("change", e => {
     applyLanguage(e.target.value, { preserveHash: true });
   });
+
+  if (els.mode) {
+    els.mode.addEventListener("change", e => {
+      applyMode(e.target.value);
+    });
+  }
 
   els.theme.addEventListener("click", () => {
     const current = document.documentElement.dataset.theme;
