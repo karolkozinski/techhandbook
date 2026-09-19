@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -1252,6 +1252,87 @@
         "bash",
         "scripting",
         "script"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-032",
+      "name": "termux.md",
+      "title": "Termux — Knowledge Handbook",
+      "path": "md/en/systems/android/termux.md",
+      "category": "systems/android",
+      "tags": [
+        "android",
+        "termux",
+        "linux"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-033",
+      "name": "debian-desktop-server.md",
+      "title": "Debian 13 — Desktop + Server Handbook",
+      "path": "md/en/systems/debian/debian-desktop-server.md",
+      "category": "systems/debian",
+      "tags": [
+        "debian",
+        "linux",
+        "gnome",
+        "kde",
+        "server"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-034",
+      "name": "freebsd-server.md",
+      "title": "FreeBSD as a Server — Administrator Handbook",
+      "path": "md/en/systems/freebsd/freebsd-server.md",
+      "category": "systems/freebsd",
+      "tags": [
+        "freebsd",
+        "server",
+        "unix"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-035",
+      "name": "linux-distributions.md",
+      "title": "Popular Linux Distributions",
+      "path": "md/en/systems/linux/linux-distributions.md",
+      "category": "systems/linux",
+      "tags": [
+        "linux",
+        "distributions",
+        "distros"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-036",
+      "name": "window-managers.md",
+      "title": "Linux Window Managers",
+      "path": "md/en/systems/linux/window-managers.md",
+      "category": "systems/linux",
+      "tags": [
+        "linux",
+        "window manager",
+        "wm"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-037",
+      "name": "windows-server-administration.md",
+      "title": "Windows Server in the Enterprise — Administrator Fundamentals",
+      "path": "md/en/systems/windows/windows-server-administration.md",
+      "category": "systems/windows",
+      "tags": [
+        "windows",
+        "server",
+        "active directory",
+        "administration"
       ],
       "language": "en"
     }
