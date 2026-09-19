@@ -391,7 +391,10 @@ a { color: inherit; }
 }
 
 .markdown-body pre {
-  overflow-x: auto;
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
   margin: 1.25em 0;
   padding: 16px;
   border-radius: 10px;
@@ -402,6 +405,10 @@ a { color: inherit; }
 }
 
 .markdown-body pre code {
+  display: block;
+  white-space: inherit;
+  overflow-wrap: inherit;
+  word-break: inherit;
   padding: 0;
   border: 0;
   background: transparent;
@@ -609,5 +616,46 @@ a { color: inherit; }
 
   .top-actions .icon-button {
     width: 36px;
+  }
+}
+
+.reader-back-wrap {
+  max-width: 900px;
+  margin: 0 auto 18px;
+}
+
+.reader-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel-2);
+  color: var(--text);
+  font: inherit;
+}
+
+.reader-back:hover,
+.reader-back:focus-visible {
+  background: var(--hover);
+  outline: none;
+}
+
+.browser-toolbar #locationLabel {
+  color: var(--text);
+  font-family: inherit;
+  font-weight: 650;
+}
+
+@media (max-width: 860px) {
+  html { scroll-behavior: auto; }
+
+  .markdown-body pre {
+    max-width: 100%;
+    white-space: pre-wrap;
+    overflow-x: hidden;
+    overflow-wrap: anywhere;
   }
 }

@@ -28,6 +28,11 @@
       indexError: "Nie udało się wczytać content-index.json",
       themeLabel: "Zmień motyw",
       homeLabel: "Tech Handbook — strona główna",
+      home: "Start",
+      back: "Wróć",
+      backTo: "Wróć do",
+      searchResults: "wyników wyszukiwania",
+      browse: "Przeglądaj",
       juniorWelcomeTitle: "Technologia bez strachu.",
       juniorWelcomeText: "Krótko, prosto i praktycznie. Wybierz temat i od razu spróbuj czegoś sam."
     },
@@ -57,6 +62,11 @@
       indexError: "Could not load content-index.json",
       themeLabel: "Change theme",
       homeLabel: "Tech Handbook — home",
+      home: "Home",
+      back: "Back",
+      backTo: "Back to",
+      searchResults: "search results",
+      browse: "Browse",
       juniorWelcomeTitle: "Technology without the scary bits.",
       juniorWelcomeText: "Short, clear and practical. Pick a topic and try something yourself."
     }
@@ -69,7 +79,8 @@
     language: "pl",
     mode: "standard",
     contentRoot: "md/pl",
-    files: []
+    files: [],
+    navigationContext: { type: "dir", path: "", query: "" }
   };
 
   const els = {
@@ -80,6 +91,8 @@
     search: document.getElementById("searchInput"),
     results: document.getElementById("searchResults"),
     reader: document.getElementById("reader"),
+    readerBack: document.getElementById("readerBack"),
+    readerBackLabel: document.getElementById("readerBackLabel"),
     welcome: document.getElementById("welcome"),
     error: document.getElementById("readerError"),
     errorText: document.getElementById("readerErrorText"),
@@ -279,6 +292,44 @@
       .map(cell => cell.trim());
   }
 
+  const CATEGORY_LABELS = {
+    pl: {
+      ai: "AI", architecture: "Architektura", cloud: "Chmura", "data-api": "Dane i API",
+      devops: "DevOps", digital: "Digital", programming: "Programowanie", security: "Bezpieczeństwo",
+      shell: "Shell", systems: "Systemy", testing: "Testowanie", tools: "Narzędzia",
+      troubleshooting: "Diagnostyka", web: "Web", android: "Android", debian: "Debian",
+      freebsd: "FreeBSD", linux: "Linux", windows: "Windows", c: "C", go: "Go",
+      javascript: "JavaScript", python: "Python", editors: "Edytory",
+      "file-managers": "Menedżery plików", regex: "Wyrażenia regularne",
+      scripting: "Skrypty", authentication: "Uwierzytelnianie", networking: "Sieci",
+      performance: "Wydajność", seo: "SEO", junior: "Junior"
+    },
+    en: {
+      ai: "AI", architecture: "Architecture", cloud: "Cloud", "data-api": "Data & API",
+      devops: "DevOps", digital: "Digital", programming: "Programming", security: "Security",
+      shell: "Shell", systems: "Systems", testing: "Testing", tools: "Tools",
+      troubleshooting: "Troubleshooting", web: "Web", android: "Android", debian: "Debian",
+      freebsd: "FreeBSD", linux: "Linux", windows: "Windows", c: "C", go: "Go",
+      javascript: "JavaScript", python: "Python", editors: "Editors",
+      "file-managers": "File Managers", regex: "Regular Expressions",
+      scripting: "Scripting", authentication: "Authentication", networking: "Networking",
+      performance: "Performance", seo: "SEO", junior: "Junior"
+    }
+  };
+
+  function displaySegment(segment) {
+    return CATEGORY_LABELS[state.language]?.[segment] ||
+      segment.replace(/-/g, " ").replace(/\b\w/g, ch => ch.toUpperCase());
+  }
+
+  function displayPath(path) {
+    if (!path) return t("home");
+    return path.split("/").map(displaySegment).join(" / ");
+  }
+
+  function setNavigationContext(context) {
+    state.navigationContext = { ...state.navigationContext, ...context };
+  }
   function buildTree(files) {
     const root = { type: "dir", name: state.contentRoot, path: "", children: new Map() };
 
@@ -333,7 +384,7 @@
       return a.name.localeCompare(b.name, state.language);
     });
 
-    els.location.textContent = `${state.contentRoot}/${path}${path ? "/" : ""}`;
+    els.location.textContent = displayPath(path);
     els.count.textContent = `${entries.length} ${entries.length === 1 ? t("item") : t("items")}`;
 
     els.browser.innerHTML = "";
@@ -342,8 +393,8 @@
       const parent = path.includes("/") ? path.split("/").slice(0, -1).join("/") : "";
       els.browser.appendChild(makeEntry({
         icon: "↰",
-        name: "..",
-        meta: t("parentDir"),
+        name: "← " + t("back"),
+        meta: displayPath(parent),
         arrow: "",
         onClick: () => navigateDir(parent)
       }));
@@ -353,7 +404,7 @@
       if (entry.type === "dir") {
         els.browser.appendChild(makeEntry({
           icon: "▣",
-          name: entry.name,
+          name: displaySegment(entry.name),
           meta: t("directory"),
           arrow: "›",
           onClick: () => navigateDir(entry.path)
@@ -364,7 +415,7 @@
           name: entry.file.title || entry.name.replace(/\.md$/i, ""),
           meta: entry.name,
           arrow: "›",
-          onClick: () => openDocument(entry.file)
+          onClick: () => openDocument(entry.file, { type: "dir", path: state.currentDir, query: "" })
         }));
       }
     }
@@ -395,7 +446,7 @@
     const rootBtn = document.createElement("button");
     rootBtn.className = "crumb";
     rootBtn.type = "button";
-    rootBtn.textContent = state.contentRoot;
+    rootBtn.textContent = t("home");
     rootBtn.addEventListener("click", () => navigateDir(""));
     els.breadcrumbs.appendChild(rootBtn);
 
@@ -413,7 +464,7 @@
       const btn = document.createElement("button");
       btn.className = "crumb";
       btn.type = "button";
-      btn.textContent = part;
+      btn.textContent = displaySegment(part);
       btn.addEventListener("click", () => navigateDir(target));
       els.breadcrumbs.appendChild(btn);
     }
@@ -421,11 +472,13 @@
 
   function navigateDir(path) {
     els.search.value = "";
-    history.replaceState(null, "", `#/${encodeURI(path)}`);
+    setNavigationContext({ type: "dir", path, query: "" });
+    history.replaceState(null, "", "#/" + encodeURI(path));
     renderDirectory(path);
   }
 
-  async function openDocument(file) {
+  async function openDocument(file, context = null) {
+    if (context) setNavigationContext(context);
     state.currentDoc = file;
     els.welcome.hidden = true;
     els.error.hidden = true;
@@ -438,13 +491,8 @@
       const text = await res.text();
       els.reader.innerHTML = renderMarkdown(text);
       document.title = `${file.title || file.name} — Tech Handbook`;
-      history.replaceState(null, "", `#/doc/${encodeURIComponent(file.id)}`);
-
-      if (window.innerWidth <= 860) {
-        els.reader.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      history.replaceState(null, "", "#/doc/" + encodeURIComponent(file.id));
+      updateReaderBack();
     } catch (err) {
       els.reader.hidden = true;
       els.error.hidden = false;
@@ -498,6 +546,7 @@
     }
 
     const found = state.files.filter(file => matches(file, q));
+    setNavigationContext({ type: "search", query: q, path: state.currentDir });
 
     els.browser.hidden = true;
     els.breadcrumbs.hidden = true;
@@ -522,13 +571,38 @@
         name: file.title || file.name,
         meta: file.path.replace(new RegExp(`^${state.contentRoot}/`), ""),
         arrow: "›",
-        onClick: () => openDocument(file)
+        onClick: () => openDocument(file, { type: "search", query: q, path: state.currentDir })
       }));
     }
 
     els.results.appendChild(container);
   }
 
+  function updateReaderBack() {
+    if (!els.readerBack || !state.currentDoc) return;
+    const ctx = state.navigationContext;
+    let label = t("home");
+    if (ctx.type === "search" && ctx.query) {
+      label = t("searchResults") + ": “" + ctx.query + "”";
+    } else if (ctx.path) {
+      label = displayPath(ctx.path);
+    }
+    els.readerBackLabel.textContent = t("backTo") + " " + label;
+    els.readerBack.hidden = false;
+  }
+
+  function goBackFromReader() {
+    const ctx = state.navigationContext;
+    if (ctx.type === "search" && ctx.query) {
+      els.search.value = ctx.query;
+      runSearch(ctx.query);
+    } else {
+      navigateDir(ctx.path || "");
+    }
+    if (window.innerWidth <= 860) {
+      els.browserPanel.scrollIntoView({ block: "start" });
+    }
+  }
   function applyLanguage(language, { preserveHash = false } = {}) {
     const currentHash = location.hash || "#/";
     const currentDocId = state.currentDoc?.id ||
@@ -568,6 +642,7 @@
     els.results.hidden = true;
     els.reader.hidden = true;
     els.error.hidden = true;
+    if (els.readerBack) els.readerBack.hidden = true;
     state.currentDoc = null;
 
     if (!state.files.length) {
@@ -660,6 +735,7 @@
         const rel = file.path.replace(new RegExp(`^${state.contentRoot}/`), "");
         const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
         renderDirectory(dir);
+        setNavigationContext({ type: "dir", path: dir, query: "" });
         openDocument(file);
         return;
       }
@@ -700,6 +776,10 @@
   });
 
   els.about.addEventListener("click", openReadme);
+
+  if (els.readerBack) {
+    els.readerBack.addEventListener("click", goBackFromReader);
+  }
 
   els.language.addEventListener("change", e => {
     applyLanguage(e.target.value, { preserveHash: true });
