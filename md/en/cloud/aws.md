@@ -1,380 +1,127 @@
 # Amazon Web Services (AWS) — Practical Handbook
-
 ## 1. What AWS is
-
-Amazon Web Services is a large public cloud platform offering compute, storage, databases, networking, identity, observability, serverless, container, analytics and AI services.
-
+AWS is a large public-cloud platform offering compute, storage, databases, networking, identity, observability, AI and managed application services.
 ## 2. How to think about AWS structure
-
-A useful hierarchy is:
-
-```text
-AWS account
-↓
-region
-↓
-availability zones
-↓
-resources
-```
-
-Most resources are regional, but some services such as IAM have global scope.
-
-## 3. Core services — map
-
-```text
-EC2        virtual machines
-VPC        networking
-S3         object storage
-EBS        block storage
-EFS        shared file storage
-RDS        managed relational databases
-Aurora     AWS relational database engine
-DynamoDB   managed NoSQL
-ECS/EKS    containers and Kubernetes
-Fargate    serverless container runtime
-Lambda     functions
-Route 53   DNS
-CloudFront CDN
-ALB/NLB    load balancing
-IAM        identities and permissions
-CloudWatch monitoring/logging
-CloudTrail audit trail
-ECR        container registry
-Bedrock    foundation-model platform
-```
-
-## 4. EC2
-
-EC2 provides virtual machines.
-
-Important concepts:
-
-- instance type,
-- AMI,
-- EBS volume,
-- security group,
-- key pair,
-- subnet,
-- IAM role.
-
-CLI examples:
-
+Think in layers: account → organization → region → availability zone → VPC/network → services/resources → IAM permissions.
+## 3. Most important services — map
+Compute: EC2/Lambda/ECS/EKS. Storage: S3/EBS/EFS. Database: RDS/Aurora/DynamoDB. Network: VPC/Route 53/CloudFront/ALB. Security: IAM/KMS/Secrets Manager.
+## 4. EC2 — classic server
+EC2 provides virtual machines. Choose instance type, image, storage, network, security group and IAM role.
+### Example CLI commands
 ```bash
 aws ec2 describe-instances
-aws ec2 describe-regions
+aws ec2 describe-security-groups
 ```
-
-## 5. VPC
-
-A Virtual Private Cloud is your isolated network.
-
-Core building blocks:
-
-- subnets,
-- route tables,
-- Internet Gateway,
-- NAT Gateway,
-- security groups,
-- network ACLs.
-
+## 5. VPC — network
+A VPC is your isolated virtual network containing subnets, route tables, gateways and network controls.
 ## 6. Security Groups
-
-Stateful virtual firewalls attached to resources such as EC2 instances and load balancers.
-
-Open only the ports and source ranges you actually need.
-
-## 7. S3
-
-Object storage for files, backups, static assets and data.
-
-Important concepts:
-
-- buckets,
-- objects,
-- prefixes,
-- lifecycle rules,
-- versioning,
-- storage classes,
-- bucket policies.
-
+Stateful virtual firewalls attached to resources such as EC2 and load balancers. Open only required ports from required sources.
+## 7. S3 — object storage
+Stores objects in buckets. Use for static files, backups, logs and data lakes. Understand bucket policies, versioning and lifecycle rules.
 ## 8. EBS and EFS
-
-EBS:
-block storage typically attached to EC2.
-
-EFS:
-managed shared network filesystem.
-
+EBS is block storage typically attached to EC2; EFS is managed shared network filesystem storage.
 ## 9. RDS and Aurora
-
-Managed relational databases.
-
-Common engines include PostgreSQL, MySQL and MariaDB.
-
-Managed services reduce operational work but cost more than self-hosting.
-
+Managed relational databases. AWS handles much of patching, backups and failover, but schema/query/application design remains your responsibility.
 ## 10. DynamoDB
-
-Managed key-value/document NoSQL database designed for high scale and low-latency access.
-
+Managed NoSQL key-value/document database designed for predictable low-latency access at scale.
 ## 11. ECS, EKS and Fargate
-
-ECS:
+### ECS
 AWS-native container orchestration.
-
-EKS:
-managed Kubernetes.
-
-Fargate:
-run containers without managing EC2 worker nodes directly.
-
+### EKS
+Managed Kubernetes control plane.
+### Fargate
+Serverless compute for containers so you do not manage worker servers directly.
 ## 12. Lambda
-
-Event-driven serverless functions.
-
-Good for short-running stateless jobs, APIs and event processing.
-
-## 13. Route 53, CloudFront, load balancers and API Gateway
-
-Route 53:
-DNS.
-
-CloudFront:
-CDN.
-
-ALB:
-Layer 7 HTTP/HTTPS load balancing.
-
-NLB:
-Layer 4 TCP/UDP load balancing.
-
-API Gateway:
-managed API entry point.
-
-## 14. IAM
-
-IAM controls identities and permissions.
-
-Use:
-
-- users sparingly,
-- roles for workloads,
-- groups for human access,
-- least privilege,
-- MFA for privileged users.
-
-Prefer temporary credentials over static access keys.
-
-## 15. Secrets Manager, Parameter Store and KMS
-
-Secrets Manager:
-managed secrets.
-
-Systems Manager Parameter Store:
-configuration and secrets.
-
-KMS:
-encryption-key management.
-
+Event-driven serverless functions billed around execution. Good for small jobs, APIs and integrations where the execution model fits.
+## 13. Route 53, CloudFront, ALB and API Gateway
+Route 53 = DNS, CloudFront = CDN/edge, ALB = HTTP load balancer, API Gateway = managed API front door.
+## 14. IAM — the most important security service
+IAM controls identities, roles, policies and permissions. Prefer roles and least privilege over long-lived access keys.
+## 15. Secrets Manager, Parameter Store, KMS
+Secrets Manager stores/rotates secrets, Parameter Store manages configuration/secrets, KMS manages encryption keys.
 ## 16. CloudWatch and CloudTrail
-
-CloudWatch:
-metrics, logs, dashboards and alarms.
-
-CloudTrail:
-audit history of API activity.
-
+CloudWatch provides metrics/logs/alarms; CloudTrail records API/account activity for audit.
 ## 17. AWS CLI
-
-Configure:
-
 ```bash
 aws configure
-```
-
-Identity check:
-
-```bash
-aws sts get-caller-identity
-```
-
-List regions:
-
-```bash
-aws ec2 describe-regions
-```
-
-## 18. Infrastructure as Code
-
-Common options:
-
-- CloudFormation,
-- AWS CDK,
-- Terraform,
-- Pulumi.
-
-Treat infrastructure definitions as code and keep them under version control.
-
-## 19. ECR and CI/CD
-
-ECR stores container images.
-
-A typical flow:
-
-```text
-Git push
-→ CI build/test
-→ image build
-→ push to ECR
-→ deploy to ECS/EKS
-```
-
-## 20. AI: Bedrock and SageMaker
-
-Bedrock provides managed access to foundation models and generative-AI tooling.
-
-SageMaker focuses more broadly on machine-learning development, training and deployment.
-
-## 21. Typical architectures
-
-### Small static site
-
-```text
-S3
-→ CloudFront
-→ Route 53
-```
-
-### Go backend + PostgreSQL
-
-```text
-ALB
-→ ECS/Fargate or EC2
-→ RDS PostgreSQL
-```
-
-### Serverless API
-
-```text
-API Gateway
-→ Lambda
-→ DynamoDB
-```
-
-### Classic VPS-style deployment
-
-```text
-EC2
-→ nginx
-→ application
-→ EBS
-```
-
-## 22. Costs — common traps
-
-Watch:
-
-- NAT Gateway,
-- cross-region transfer,
-- Internet egress,
-- idle EC2,
-- unattached EBS,
-- old snapshots,
-- large CloudWatch logs,
-- oversized managed databases.
-
-Use AWS Budgets and cost alerts early.
-
-## 23. Reserved capacity, Savings Plans and Spot
-
-Savings Plans/Reserved options:
-lower cost for predictable usage.
-
-Spot:
-deeply discounted spare capacity that can be interrupted.
-
-## 24. Backup and disaster recovery
-
-Use:
-
-- EBS snapshots,
-- RDS backups,
-- S3 versioning/lifecycle,
-- cross-region copies where required.
-
-Test recovery, not only backup creation.
-
-## 25. Security baseline
-
-- MFA,
-- least privilege,
-- IAM roles,
-- no public database ports,
-- encryption,
-- CloudTrail,
-- logging,
-- patching,
-- secret management.
-
-## 26. Small-project choices
-
-For a tiny project, prefer the simplest architecture that works.
-
-EC2 can be simpler than assembling many managed services.
-
-For containerized apps, ECS/Fargate is often simpler than EKS.
-
-## 27. Beginner administrator skills
-
-Know how to:
-
-- identify the active account/role,
-- choose a region,
-- create a VPC/subnet,
-- launch EC2,
-- configure security groups,
-- use S3,
-- inspect CloudWatch,
-- manage IAM roles,
-- estimate costs.
-
-## 28. CLI cheat sheet
-
-```bash
 aws sts get-caller-identity
 aws configure list
+```
+## 18. Infrastructure as Code
+Use CloudFormation, CDK, Terraform/OpenTofu or other IaC so infrastructure is reviewable and reproducible.
+## 19. ECR and CI/CD pipeline
+ECR stores container images. CI builds/tests/pushes images; deployment pulls a pinned image into ECS/EKS/EC2.
+## 20. AI: Bedrock and SageMaker
+Bedrock provides managed access to foundation models; SageMaker provides a broader ML development/training/deployment platform.
+## 21. Typical architectures
+### Small static website
+S3 + CloudFront + Route 53 + ACM.
+### Go backend + PostgreSQL
+ALB → ECS/EC2 → RDS PostgreSQL, with secrets in Secrets Manager and logs in CloudWatch.
+### Simple serverless API
+API Gateway → Lambda → DynamoDB or managed database.
+### Classic VPS in AWS
+EC2 + EBS + Security Group + Elastic IP/DNS; closest mental model to a normal VPS.
+## 22. Costs — where people get caught
+Idle EC2/RDS, NAT Gateway traffic, data transfer, oversized storage, snapshots, logs and forgotten resources can dominate bills.
+## 23. Reserved, Savings Plans and Spot
+Reservations/Savings Plans trade commitment for discounts. Spot uses spare capacity at lower cost but instances can be interrupted.
+## 24. Backup and disaster recovery
+Use snapshots, automated DB backups, S3 versioning/replication where appropriate and documented restore procedures. Test recovery.
+## 25. Security — minimum
+MFA, least-privilege IAM, no root access keys, private subnets where appropriate, encryption, CloudTrail, logging and regular review.
+## 26. What to choose for a small project
+For simplicity, a normal VPS may still be cheaper/easier. In AWS, EC2 + RDS or ECS Fargate + RDS are straightforward starting points.
+## 27. What a beginner AWS administrator should know
+Accounts/regions, IAM, VPC, EC2, S3, RDS, Security Groups, CloudWatch, billing and CLI basics.
+## 28. Command cheat sheet
+# who am I
+```bash
+aws sts get-caller-identity
+```
+# regions
+```bash
 aws ec2 describe-regions
+```
+# EC2
+```bash
 aws ec2 describe-instances
+```
+# networks
+```bash
+aws ec2 describe-vpcs
+aws ec2 describe-subnets
+aws ec2 describe-security-groups
+```
+# S3
+```bash
 aws s3 ls
+aws s3 cp file s3://bucket/
+```
+# RDS
+```bash
 aws rds describe-db-instances
+```
+# ECS
+```bash
 aws ecs list-clusters
+aws ecs list-services --cluster NAME
+```
+# Lambda
+```bash
 aws lambda list-functions
+```
+# IAM
+```bash
 aws iam list-roles
+```
+# logs
+```bash
 aws logs describe-log-groups
 ```
-
-## 29. AWS vocabulary
-
-```text
-EC2      VM
-S3       object storage
-EBS      block disk
-RDS      managed relational DB
-IAM      identity/permissions
-VPC      network
-ALB      HTTP load balancer
-ECR      container registry
-ECS      container platform
-EKS      Kubernetes
-Lambda   function
-```
-
+## 29. AWS name glossary
+ARN = resource identifier; AMI = machine image; AZ = availability zone; VPC = virtual network; SG = security group; IAM = identity/permissions; ECR = container registry.
 ## 30. Sources and further learning
-
-Official documentation:
-https://docs.aws.amazon.com/
-
-### Main idea
-
-AWS gives you many building blocks. The hard part is usually not creating resources, but choosing the smallest set that is secure, observable and cost-effective.
+Use current AWS documentation, service user guides, Well-Architected guidance and pricing calculators before production decisions.
+### Most important thought
+AWS is not one service but a toolbox. Start with the smallest set of services that solves the problem and understand cost/security boundaries before adding more.
