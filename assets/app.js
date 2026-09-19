@@ -1,12 +1,70 @@
 (() => {
   "use strict";
 
-  const CONTENT_ROOT = "md/pl";
+  const I18N = {
+    pl: {
+      about: "O projekcie",
+      search: "Szukaj",
+      searchPlaceholder: "np. dns, freebsd, git*",
+      searchHint: "Nazwa, katalog, tytuł i tagi. Obsługuje *.",
+      browserLabel: "Przeglądarka kompendiów",
+      breadcrumbLabel: "Ścieżka",
+      welcomeTitle: "Praktyczna baza wiedzy technicznej.",
+      welcomeText: "Wybierz katalog po lewej, a potem kompendium. Na telefonie przeglądarka plików pojawia się nad czytnikiem.",
+      errorTitle: "Nie udało się otworzyć dokumentu",
+      loading: "Wczytywanie…",
+      parentDir: "katalog nadrzędny",
+      directory: "katalog",
+      item: "pozycja",
+      items: "pozycji",
+      results: "Wyniki",
+      noResults: "Brak wyników dla",
+      contentPendingTitle: "Angielska wersja jest w przygotowaniu.",
+      contentPendingText: "Mechanizm językowy już działa. Dokumenty EN zostaną dodane w kolejnych etapach.",
+      docs: "dokumentów",
+      index: "indeks",
+      fetchError: "Nie udało się pobrać",
+      checkIndex: "Sprawdź wpis w content-index.json i położenie pliku.",
+      indexError: "Nie udało się wczytać content-index.json",
+      themeLabel: "Zmień motyw",
+      homeLabel: "Tech Handbook — strona główna"
+    },
+    en: {
+      about: "About",
+      search: "Search",
+      searchPlaceholder: "e.g. dns, freebsd, git*",
+      searchHint: "Name, directory, title and tags. Supports *.",
+      browserLabel: "Handbook browser",
+      breadcrumbLabel: "Path",
+      welcomeTitle: "A practical technical knowledge base.",
+      welcomeText: "Choose a directory on the left, then select a handbook. On mobile, the file browser appears above the reader.",
+      errorTitle: "Could not open the document",
+      loading: "Loading…",
+      parentDir: "parent directory",
+      directory: "directory",
+      item: "item",
+      items: "items",
+      results: "Results",
+      noResults: "No results for",
+      contentPendingTitle: "English content is being prepared.",
+      contentPendingText: "Language switching is ready. English documents will be added in the next stages.",
+      docs: "documents",
+      index: "index",
+      fetchError: "Could not fetch",
+      checkIndex: "Check content-index.json and the file location.",
+      indexError: "Could not load content-index.json",
+      themeLabel: "Change theme",
+      homeLabel: "Tech Handbook — home"
+    }
+  };
 
   const state = {
     index: null,
     currentDir: "",
-    currentDoc: null
+    currentDoc: null,
+    language: "pl",
+    contentRoot: "md/pl",
+    files: []
   };
 
   const els = {
@@ -22,8 +80,18 @@
     errorText: document.getElementById("readerErrorText"),
     about: document.getElementById("aboutButton"),
     theme: document.getElementById("themeButton"),
-    indexInfo: document.getElementById("indexInfo")
+    indexInfo: document.getElementById("indexInfo"),
+    language: document.getElementById("languageSelect"),
+    searchLabel: document.getElementById("searchLabel"),
+    searchHint: document.getElementById("searchHint"),
+    browserPanel: document.querySelector(".browser-panel"),
+    welcomeTitle: document.getElementById("welcomeTitle"),
+    welcomeText: document.getElementById("welcomeText"),
+    errorTitle: document.getElementById("readerErrorTitle"),
+    brand: document.querySelector(".brand")
   };
+
+  const t = (key) => I18N[state.language]?.[key] || I18N.pl[key] || key;
 
   const escapeHtml = (value = "") =>
     value.replace(/[&<>"']/g, ch => ({
@@ -205,10 +273,10 @@
   }
 
   function buildTree(files) {
-    const root = { type: "dir", name: CONTENT_ROOT, path: "", children: new Map() };
+    const root = { type: "dir", name: state.contentRoot, path: "", children: new Map() };
 
     for (const file of files) {
-      const parts = file.path.replace(new RegExp(`^${CONTENT_ROOT}/`), "").split("/");
+      const parts = file.path.replace(new RegExp(`^${state.contentRoot}/`), "").split("/");
       let node = root;
 
       parts.forEach((part, idx) => {
@@ -253,11 +321,11 @@
     const node = getDirNode(path);
     const entries = [...node.children.values()].sort((a, b) => {
       if (a.type !== b.type) return a.type === "dir" ? -1 : 1;
-      return a.name.localeCompare(b.name, "pl");
+      return a.name.localeCompare(b.name, state.language);
     });
 
-    els.location.textContent = `${CONTENT_ROOT}/${path}${path ? "/" : ""}`;
-    els.count.textContent = `${entries.length} ${entries.length === 1 ? "pozycja" : "pozycji"}`;
+    els.location.textContent = `${state.contentRoot}/${path}${path ? "/" : ""}`;
+    els.count.textContent = `${entries.length} ${entries.length === 1 ? t("item") : t("items")}`;
 
     els.browser.innerHTML = "";
 
@@ -266,7 +334,7 @@
       els.browser.appendChild(makeEntry({
         icon: "↰",
         name: "..",
-        meta: "katalog nadrzędny",
+        meta: t("parentDir"),
         arrow: "",
         onClick: () => navigateDir(parent)
       }));
@@ -277,7 +345,7 @@
         els.browser.appendChild(makeEntry({
           icon: "▣",
           name: entry.name,
-          meta: "katalog",
+          meta: t("directory"),
           arrow: "›",
           onClick: () => navigateDir(entry.path)
         }));
@@ -318,7 +386,7 @@
     const rootBtn = document.createElement("button");
     rootBtn.className = "crumb";
     rootBtn.type = "button";
-    rootBtn.textContent = CONTENT_ROOT;
+    rootBtn.textContent = state.contentRoot;
     rootBtn.addEventListener("click", () => navigateDir(""));
     els.breadcrumbs.appendChild(rootBtn);
 
@@ -353,7 +421,7 @@
     els.welcome.hidden = true;
     els.error.hidden = true;
     els.reader.hidden = false;
-    els.reader.innerHTML = `<p>Wczytywanie…</p>`;
+    els.reader.innerHTML = `<p>${escapeHtml(t("loading"))}</p>`;
 
     try {
       const res = await fetch(file.path, { cache: "no-cache" });
@@ -372,15 +440,14 @@
       els.reader.hidden = true;
       els.error.hidden = false;
       els.errorText.textContent =
-        `Nie udało się pobrać "${file.path}". ${err.message}. ` +
-        `Sprawdź wpis w content-index.json i położenie pliku.`;
+        `${t("fetchError")} "${file.path}". ${err.message}. ${t("checkIndex")}`;
     }
   }
 
   async function openReadme() {
     const file = {
       id: "__readme__",
-      title: "O projekcie",
+      title: t("about"),
       path: "README.md",
       name: "README.md"
     };
@@ -423,16 +490,16 @@
       return;
     }
 
-    const found = state.index.files.filter(file => matches(file, q));
+    const found = state.files.filter(file => matches(file, q));
 
     els.browser.hidden = true;
     els.results.hidden = false;
-    els.results.innerHTML = `<h2>Wyniki: ${found.length}</h2>`;
+    els.results.innerHTML = `<h2>${escapeHtml(t("results"))}: ${found.length}</h2>`;
 
     if (!found.length) {
       els.results.insertAdjacentHTML(
         "beforeend",
-        `<div class="no-results">Brak wyników dla „${escapeHtml(q)}”.</div>`
+        `<div class="no-results">${escapeHtml(t("noResults"))} „${escapeHtml(q)}”.</div>`
       );
       return;
     }
@@ -444,13 +511,68 @@
       container.appendChild(makeEntry({
         icon: "▤",
         name: file.title || file.name,
-        meta: file.path.replace(new RegExp(`^${CONTENT_ROOT}/`), ""),
+        meta: file.path.replace(new RegExp(`^${state.contentRoot}/`), ""),
         arrow: "›",
         onClick: () => openDocument(file)
       }));
     }
 
     els.results.appendChild(container);
+  }
+
+  function applyLanguage(language, { preserveHash = false } = {}) {
+    const supported = state.index?.languages || ["pl"];
+    state.language = supported.includes(language) ? language : (state.index?.defaultLanguage || "pl");
+    state.contentRoot = state.index?.roots?.[state.language] || `md/${state.language}`;
+    state.files = (state.index?.files || []).filter(file => (file.language || "pl") === state.language);
+    state.tree = buildTree(state.files);
+
+    document.documentElement.lang = state.language;
+    localStorage.setItem("techhandbook-language", state.language);
+
+    if (els.language) els.language.value = state.language;
+    els.about.textContent = t("about");
+    els.theme.setAttribute("aria-label", t("themeLabel"));
+    els.searchLabel.textContent = t("search");
+    els.search.placeholder = t("searchPlaceholder");
+    els.searchHint.innerHTML = escapeHtml(t("searchHint")).replace("*", "<code>*</code>");
+    els.browserPanel.setAttribute("aria-label", t("browserLabel"));
+    els.breadcrumbs.setAttribute("aria-label", t("breadcrumbLabel"));
+    els.welcomeTitle.textContent = t("welcomeTitle");
+    els.welcomeText.textContent = t("welcomeText");
+    els.errorTitle.textContent = t("errorTitle");
+    els.brand.setAttribute("aria-label", t("homeLabel"));
+    els.indexInfo.textContent = `${state.files.length} ${t("docs")} • ${t("index")} ${state.index?.updated || ""}`;
+
+    els.search.value = "";
+    els.results.hidden = true;
+    els.reader.hidden = true;
+    els.error.hidden = true;
+    state.currentDoc = null;
+
+    if (!state.files.length) {
+      state.currentDir = "";
+      els.browser.hidden = true;
+      els.breadcrumbs.innerHTML = "";
+      els.location.textContent = state.contentRoot + "/";
+      els.count.textContent = "0 " + t("items");
+      els.welcome.hidden = false;
+      els.welcomeTitle.textContent = t("contentPendingTitle");
+      els.welcomeText.textContent = t("contentPendingText");
+      if (!preserveHash) history.replaceState(null, "", "#/");
+      return;
+    }
+
+    els.browser.hidden = false;
+    els.welcome.hidden = false;
+    if (!preserveHash) history.replaceState(null, "", "#/");
+    renderDirectory("");
+  }
+
+  function initLanguage() {
+    const saved = localStorage.getItem("techhandbook-language");
+    const fallback = state.index?.defaultLanguage || "pl";
+    applyLanguage(saved || fallback, { preserveHash: true });
   }
 
   function applyTheme(theme) {
@@ -478,9 +600,9 @@
         openReadme();
         return;
       }
-      const file = state.index.files.find(item => item.id === id);
+      const file = state.files.find(item => item.id === id);
       if (file) {
-        const rel = file.path.replace(new RegExp(`^${CONTENT_ROOT}/`), "");
+        const rel = file.path.replace(new RegExp(`^${state.contentRoot}/`), "");
         const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
         renderDirectory(dir);
         openDocument(file);
@@ -501,13 +623,11 @@
       const res = await fetch("content-index.json", { cache: "no-cache" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       state.index = await res.json();
-      state.tree = buildTree(state.index.files || []);
-      els.indexInfo.textContent =
-        `${state.index.files.length} dokumentów • indeks ${state.index.updated || ""}`;
-      handleHash();
+      initLanguage();
+      if (state.files.length) handleHash();
     } catch (err) {
       els.browser.innerHTML =
-        `<div class="no-results">Nie udało się wczytać content-index.json: ${escapeHtml(err.message)}</div>`;
+        `<div class="no-results">${escapeHtml(t("indexError"))}: ${escapeHtml(err.message)}</div>`;
     }
   }
 
@@ -526,6 +646,10 @@
   });
 
   els.about.addEventListener("click", openReadme);
+
+  els.language.addEventListener("change", e => {
+    applyLanguage(e.target.value);
+  });
 
   els.theme.addEventListener("click", () => {
     const current = document.documentElement.dataset.theme;

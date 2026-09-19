@@ -491,3 +491,33 @@ a { color: inherit; }
   .layout { display: block; padding: 0; }
   .reader-panel { border: 0; box-shadow: none; padding: 0; }
 }
+
+
+.language-picker {
+  display: inline-flex;
+  align-items: center;
+}
+
+.language-picker select {
+  min-height: 36px;
+  padding: 0 28px 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

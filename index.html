@@ -28,6 +28,13 @@
       </a>
 
       <div class="top-actions">
+        <label class="language-picker" for="languageSelect">
+          <span class="sr-only">Język / Language</span>
+          <select id="languageSelect" aria-label="Język / Language">
+            <option value="pl">PL</option>
+            <option value="en">ENG</option>
+          </select>
+        </label>
         <button id="aboutButton" class="ghost-button" type="button">O projekcie</button>
         <button id="themeButton" class="ghost-button icon-button" type="button" aria-label="Zmień motyw">◐</button>
       </div>
@@ -36,7 +43,7 @@
     <main class="layout">
       <aside class="browser-panel" aria-label="Przeglądarka kompendiów">
         <div class="search-wrap">
-          <label for="searchInput">Szukaj</label>
+          <label id="searchLabel" for="searchInput">Szukaj</label>
           <div class="search-box">
             <input
               id="searchInput"
@@ -47,7 +54,7 @@
             >
             <kbd>/</kbd>
           </div>
-          <p class="search-hint">Nazwa, katalog, tytuł i tagi. Obsługuje <code>*</code>.</p>
+          <p id="searchHint" class="search-hint">Nazwa, katalog, tytuł i tagi. Obsługuje <code>*</code>.</p>
         </div>
 
         <nav id="breadcrumbs" class="breadcrumbs" aria-label="Ścieżka"></nav>
@@ -65,17 +72,14 @@
       <section class="reader-panel">
         <div id="welcome" class="welcome">
           <p class="eyebrow">NULL YARD / TECH HANDBOOK</p>
-          <h1>Praktyczna baza wiedzy technicznej.</h1>
-          <p>
-            Wybierz katalog po lewej, a potem kompendium. Na telefonie przeglądarka
-            plików pojawia się nad czytnikiem.
-          </p>
+          <h1 id="welcomeTitle">Praktyczna baza wiedzy technicznej.</h1>
+          <p id="welcomeText">Wybierz katalog po lewej, a potem kompendium. Na telefonie przeglądarka plików pojawia się nad czytnikiem.</p>
         </div>
 
         <article id="reader" class="markdown-body" hidden></article>
 
         <div id="readerError" class="reader-error" hidden>
-          <h2>Nie udało się otworzyć dokumentu</h2>
+          <h2 id="readerErrorTitle">Nie udało się otworzyć dokumentu</h2>
           <p id="readerErrorText"></p>
         </div>
       </section>
