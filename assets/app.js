@@ -1,6 +1,8 @@
 (() => {
   "use strict";
 
+  const CONTENT_ROOT = "md/pl";
+
   const state = {
     index: null,
     currentDir: "",
@@ -203,10 +205,10 @@
   }
 
   function buildTree(files) {
-    const root = { type: "dir", name: "md", path: "", children: new Map() };
+    const root = { type: "dir", name: CONTENT_ROOT, path: "", children: new Map() };
 
     for (const file of files) {
-      const parts = file.path.replace(/^md\//, "").split("/");
+      const parts = file.path.replace(new RegExp(`^${CONTENT_ROOT}/`), "").split("/");
       let node = root;
 
       parts.forEach((part, idx) => {
@@ -254,7 +256,7 @@
       return a.name.localeCompare(b.name, "pl");
     });
 
-    els.location.textContent = `md/${path}${path ? "/" : ""}`;
+    els.location.textContent = `${CONTENT_ROOT}/${path}${path ? "/" : ""}`;
     els.count.textContent = `${entries.length} ${entries.length === 1 ? "pozycja" : "pozycji"}`;
 
     els.browser.innerHTML = "";
@@ -316,7 +318,7 @@
     const rootBtn = document.createElement("button");
     rootBtn.className = "crumb";
     rootBtn.type = "button";
-    rootBtn.textContent = "md";
+    rootBtn.textContent = CONTENT_ROOT;
     rootBtn.addEventListener("click", () => navigateDir(""));
     els.breadcrumbs.appendChild(rootBtn);
 
@@ -442,7 +444,7 @@
       container.appendChild(makeEntry({
         icon: "▤",
         name: file.title || file.name,
-        meta: file.path.replace(/^md\//, ""),
+        meta: file.path.replace(new RegExp(`^${CONTENT_ROOT}/`), ""),
         arrow: "›",
         onClick: () => openDocument(file)
       }));
@@ -478,7 +480,7 @@
       }
       const file = state.index.files.find(item => item.id === id);
       if (file) {
-        const rel = file.path.replace(/^md\//, "");
+        const rel = file.path.replace(new RegExp(`^${CONTENT_ROOT}/`), "");
         const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
         renderDirectory(dir);
         openDocument(file);

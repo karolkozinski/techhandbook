@@ -1,97 +1,104 @@
 {
-  "version": 2,
+  "version": 3,
   "updated": "2026-09-19",
-  "root": "md",
+  "root": "md/pl",
   "files": [
     {
       "id": "doc-001",
       "name": "hermes-agent.md",
       "title": "Hermes Agent",
-      "path": "md/ai/hermes-agent.md",
+      "path": "md/pl/ai/hermes-agent.md",
       "category": "ai",
       "tags": [
         "ai",
         "hermes",
         "agent"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-002",
       "name": "prompting-ai.md",
       "title": "Promptowanie AI",
-      "path": "md/ai/prompting-ai.md",
+      "path": "md/pl/ai/prompting-ai.md",
       "category": "ai",
       "tags": [
         "ai",
         "prompt",
         "prompting",
         "llm"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-003",
       "name": "alibaba-cloud.md",
       "title": "Alibaba Cloud",
-      "path": "md/cloud/alibaba-cloud.md",
+      "path": "md/pl/cloud/alibaba-cloud.md",
       "category": "cloud",
       "tags": [
         "cloud",
         "alibaba"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-004",
       "name": "aws.md",
       "title": "Amazon Web Services (AWS)",
-      "path": "md/cloud/aws.md",
+      "path": "md/pl/cloud/aws.md",
       "category": "cloud",
       "tags": [
         "cloud",
         "aws",
         "amazon"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-005",
       "name": "azure.md",
       "title": "Microsoft Azure",
-      "path": "md/cloud/azure.md",
+      "path": "md/pl/cloud/azure.md",
       "category": "cloud",
       "tags": [
         "cloud",
         "azure",
         "microsoft"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-006",
       "name": "gcp.md",
       "title": "Google Cloud Platform (GCP)",
-      "path": "md/cloud/gcp.md",
+      "path": "md/pl/cloud/gcp.md",
       "category": "cloud",
       "tags": [
         "cloud",
         "gcp",
         "google"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-007",
       "name": "oci.md",
       "title": "Oracle Cloud Infrastructure (OCI)",
-      "path": "md/cloud/oci.md",
+      "path": "md/pl/cloud/oci.md",
       "category": "cloud",
       "tags": [
         "cloud",
         "oci",
         "oracle"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-008",
       "name": "api-integrations.md",
       "title": "API i integracje systemów",
-      "path": "md/data-api/api-integrations.md",
+      "path": "md/pl/data-api/api-integrations.md",
       "category": "data-api",
       "tags": [
         "api",
@@ -99,103 +106,111 @@
         "json",
         "webhook",
         "oauth"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-009",
       "name": "data-formats-json-yaml-toml-xml.md",
       "title": "JSON, YAML, TOML i XML",
-      "path": "md/data-api/data-formats-json-yaml-toml-xml.md",
+      "path": "md/pl/data-api/data-formats-json-yaml-toml-xml.md",
       "category": "data-api",
       "tags": [
         "json",
         "yaml",
         "toml",
         "xml"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-010",
       "name": "postgresql-sql.md",
       "title": "SQL i PostgreSQL dla developera",
-      "path": "md/data-api/postgresql-sql.md",
+      "path": "md/pl/data-api/postgresql-sql.md",
       "category": "data-api",
       "tags": [
         "sql",
         "postgres",
         "postgresql",
         "database"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-011",
       "name": "ci-cd-github-actions.md",
       "title": "CI/CD i GitHub Actions",
-      "path": "md/devops/ci-cd-github-actions.md",
+      "path": "md/pl/devops/ci-cd-github-actions.md",
       "category": "devops",
       "tags": [
         "ci",
         "cd",
         "github",
         "actions"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-012",
       "name": "docker.md",
       "title": "Docker",
-      "path": "md/devops/docker.md",
+      "path": "md/pl/devops/docker.md",
       "category": "devops",
       "tags": [
         "docker",
         "containers",
         "devops"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-013",
       "name": "git-team-workflows.md",
       "title": "Git w praktyce zespołowej",
-      "path": "md/devops/git-team-workflows.md",
+      "path": "md/pl/devops/git-team-workflows.md",
       "category": "devops",
       "tags": [
         "git",
         "branch",
         "merge",
         "rebase"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-014",
       "name": "github.md",
       "title": "GitHub",
-      "path": "md/devops/github.md",
+      "path": "md/pl/devops/github.md",
       "category": "devops",
       "tags": [
         "github",
         "git",
         "repo",
         "repository"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-015",
       "name": "logging-monitoring-troubleshooting.md",
       "title": "Logi, monitoring i troubleshooting",
-      "path": "md/devops/logging-monitoring-troubleshooting.md",
+      "path": "md/pl/devops/logging-monitoring-troubleshooting.md",
       "category": "devops",
       "tags": [
         "logs",
         "monitoring",
         "debug",
         "troubleshooting"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-016",
       "name": "computer-networks-for-developers.md",
       "title": "Sieci komputerowe dla developera",
-      "path": "md/networking/computer-networks-for-developers.md",
+      "path": "md/pl/networking/computer-networks-for-developers.md",
       "category": "networking",
       "tags": [
         "network",
@@ -203,26 +218,28 @@
         "udp",
         "ip",
         "vlan"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-017",
       "name": "dns-domains-routing.md",
       "title": "DNS, domeny i routing internetowy",
-      "path": "md/networking/dns-domains-routing.md",
+      "path": "md/pl/networking/dns-domains-routing.md",
       "category": "networking",
       "tags": [
         "dns",
         "domain",
         "domains",
         "routing"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-018",
       "name": "ssh-remote-administration.md",
       "title": "SSH i zdalna administracja",
-      "path": "md/networking/ssh-remote-administration.md",
+      "path": "md/pl/networking/ssh-remote-administration.md",
       "category": "networking",
       "tags": [
         "ssh",
@@ -230,71 +247,77 @@
         "sftp",
         "rsync",
         "tunnel"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-019",
       "name": "c-reading-building-debugging.md",
       "title": "C — czytanie, kompilacja i debugowanie",
-      "path": "md/programming/c/c-reading-building-debugging.md",
+      "path": "md/pl/programming/c/c-reading-building-debugging.md",
       "category": "programming/c",
       "tags": [
         "c",
         "gcc",
         "clang",
         "gdb"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-020",
       "name": "go-reading-code.md",
       "title": "Go — czytanie kodu",
-      "path": "md/programming/go/go-reading-code.md",
+      "path": "md/pl/programming/go/go-reading-code.md",
       "category": "programming/go",
       "tags": [
         "go",
         "golang"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-021",
       "name": "javascript-guide.md",
       "title": "JavaScript — kompendium",
-      "path": "md/programming/javascript/javascript-guide.md",
+      "path": "md/pl/programming/javascript/javascript-guide.md",
       "category": "programming/javascript",
       "tags": [
         "js",
         "javascript",
         "frontend"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-022",
       "name": "nodejs.md",
       "title": "Node.js",
-      "path": "md/programming/javascript/nodejs.md",
+      "path": "md/pl/programming/javascript/nodejs.md",
       "category": "programming/javascript",
       "tags": [
         "node",
         "nodejs",
         "javascript"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-023",
       "name": "python-basics.md",
       "title": "Python — podstawy",
-      "path": "md/programming/python/python-basics.md",
+      "path": "md/pl/programming/python/python-basics.md",
       "category": "programming/python",
       "tags": [
         "python"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-024",
       "name": "cybersecurity-basics-pentesting.md",
       "title": "Cybersecurity i pentesting — podstawy",
-      "path": "md/security/cybersecurity-basics-pentesting.md",
+      "path": "md/pl/security/cybersecurity-basics-pentesting.md",
       "category": "security",
       "tags": [
         "security",
@@ -304,13 +327,14 @@
         "burp",
         "owasp",
         "nmap"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-025",
       "name": "linux-server-security.md",
       "title": "Linux permissions i bezpieczeństwo serwera",
-      "path": "md/security/linux-server-security.md",
+      "path": "md/pl/security/linux-server-security.md",
       "category": "security",
       "tags": [
         "linux",
@@ -318,13 +342,14 @@
         "permissions",
         "ssh",
         "firewall"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-026",
       "name": "web-security.md",
       "title": "Bezpieczeństwo aplikacji webowych",
-      "path": "md/security/web-security.md",
+      "path": "md/pl/security/web-security.md",
       "category": "security",
       "tags": [
         "web",
@@ -333,89 +358,96 @@
         "xss",
         "csrf",
         "sql injection"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-027",
       "name": "debian-shell.md",
       "title": "Debian — shell",
-      "path": "md/shell/debian/debian-shell.md",
+      "path": "md/pl/shell/debian/debian-shell.md",
       "category": "shell/debian",
       "tags": [
         "debian",
         "shell",
         "bash"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-028",
       "name": "debian-shells-overview.md",
       "title": "Shelle w Debianie — przegląd",
-      "path": "md/shell/debian/debian-shells-overview.md",
+      "path": "md/pl/shell/debian/debian-shells-overview.md",
       "category": "shell/debian",
       "tags": [
         "debian",
         "shell",
         "bash",
         "zsh"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-029",
       "name": "freebsd-shell.md",
       "title": "FreeBSD — shell",
-      "path": "md/shell/freebsd/freebsd-shell.md",
+      "path": "md/pl/shell/freebsd/freebsd-shell.md",
       "category": "shell/freebsd",
       "tags": [
         "freebsd",
         "shell",
         "sh",
         "tcsh"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-030",
       "name": "freebsd-shells-overview.md",
       "title": "Shelle w FreeBSD — przegląd",
-      "path": "md/shell/freebsd/freebsd-shells-overview.md",
+      "path": "md/pl/shell/freebsd/freebsd-shells-overview.md",
       "category": "shell/freebsd",
       "tags": [
         "freebsd",
         "shell",
         "sh",
         "tcsh"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-031",
       "name": "shell-scripting.md",
       "title": "Programowanie w shellu",
-      "path": "md/shell/scripting/shell-scripting.md",
+      "path": "md/pl/shell/scripting/shell-scripting.md",
       "category": "shell/scripting",
       "tags": [
         "shell",
         "bash",
         "scripting",
         "script"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-032",
       "name": "termux.md",
       "title": "Termux",
-      "path": "md/systems/android/termux.md",
+      "path": "md/pl/systems/android/termux.md",
       "category": "systems/android",
       "tags": [
         "android",
         "termux",
         "linux"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-033",
       "name": "debian-desktop-server.md",
       "title": "Debian — desktop i serwer",
-      "path": "md/systems/debian/debian-desktop-server.md",
+      "path": "md/pl/systems/debian/debian-desktop-server.md",
       "category": "systems/debian",
       "tags": [
         "debian",
@@ -423,62 +455,67 @@
         "gnome",
         "kde",
         "server"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-034",
       "name": "freebsd-server.md",
       "title": "FreeBSD jako serwer",
-      "path": "md/systems/freebsd/freebsd-server.md",
+      "path": "md/pl/systems/freebsd/freebsd-server.md",
       "category": "systems/freebsd",
       "tags": [
         "freebsd",
         "server",
         "unix"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-035",
       "name": "linux-distributions.md",
       "title": "Dystrybucje Linuxa",
-      "path": "md/systems/linux/linux-distributions.md",
+      "path": "md/pl/systems/linux/linux-distributions.md",
       "category": "systems/linux",
       "tags": [
         "linux",
         "distributions",
         "distros"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-036",
       "name": "window-managers.md",
       "title": "Menedżery okien w Linuxie",
-      "path": "md/systems/linux/window-managers.md",
+      "path": "md/pl/systems/linux/window-managers.md",
       "category": "systems/linux",
       "tags": [
         "linux",
         "window manager",
         "wm"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-037",
       "name": "windows-server-administration.md",
       "title": "Windows Server — administracja korporacyjna",
-      "path": "md/systems/windows/windows-server-administration.md",
+      "path": "md/pl/systems/windows/windows-server-administration.md",
       "category": "systems/windows",
       "tags": [
         "windows",
         "server",
         "active directory",
         "administration"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-038",
       "name": "vi-vim-neovim.md",
       "title": "Vi, Vim, gVim i Neovim",
-      "path": "md/tools/editors/vi-vim-neovim.md",
+      "path": "md/pl/tools/editors/vi-vim-neovim.md",
       "category": "tools/editors",
       "tags": [
         "vi",
@@ -486,102 +523,110 @@
         "gvim",
         "neovim",
         "editor"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-039",
       "name": "vscode.md",
       "title": "Visual Studio Code",
-      "path": "md/tools/editors/vscode.md",
+      "path": "md/pl/tools/editors/vscode.md",
       "category": "tools/editors",
       "tags": [
         "vscode",
         "editor",
         "copilot",
         "codex"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-040",
       "name": "midnight-commander.md",
       "title": "Midnight Commander",
-      "path": "md/tools/file-managers/midnight-commander.md",
+      "path": "md/pl/tools/file-managers/midnight-commander.md",
       "category": "tools/file-managers",
       "tags": [
         "mc",
         "midnight commander",
         "file manager"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-041",
       "name": "small-web-apps.md",
       "title": "Architektura małych aplikacji webowych",
-      "path": "md/web/architecture/small-web-apps.md",
+      "path": "md/pl/web/architecture/small-web-apps.md",
       "category": "web/architecture",
       "tags": [
         "architecture",
         "web",
         "backend",
         "frontend"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-042",
       "name": "html-css.md",
       "title": "Nowoczesny HTML i CSS",
-      "path": "md/web/frontend/html-css.md",
+      "path": "md/pl/web/frontend/html-css.md",
       "category": "web/frontend",
       "tags": [
         "html",
         "css",
         "frontend",
         "web"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-043",
       "name": "ux-accessibility.md",
       "title": "UX i dostępność dla developera",
-      "path": "md/web/frontend/ux-accessibility.md",
+      "path": "md/pl/web/frontend/ux-accessibility.md",
       "category": "web/frontend",
       "tags": [
         "ux",
         "accessibility",
         "a11y",
         "wcag"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-044",
       "name": "http-https-tls.md",
       "title": "HTTP, HTTPS i TLS",
-      "path": "md/web/protocols/http-https-tls.md",
+      "path": "md/pl/web/protocols/http-https-tls.md",
       "category": "web/protocols",
       "tags": [
         "http",
         "https",
         "tls",
         "ssl"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-045",
       "name": "nginx-reverse-proxy.md",
       "title": "nginx i reverse proxy",
-      "path": "md/web/servers/nginx-reverse-proxy.md",
+      "path": "md/pl/web/servers/nginx-reverse-proxy.md",
       "category": "web/servers",
       "tags": [
         "nginx",
         "reverse proxy",
         "web server"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-046",
       "name": "browser-devtools.md",
       "title": "Browser DevTools — kompendium praktyczne",
-      "path": "md/web/frontend/browser-devtools.md",
+      "path": "md/pl/web/frontend/browser-devtools.md",
       "category": "web/frontend",
       "tags": [
         "devtools",
@@ -589,13 +634,14 @@
         "network",
         "console",
         "debug"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-047",
       "name": "technical-seo.md",
       "title": "Technical SEO — kompendium praktyczne",
-      "path": "md/web/seo/technical-seo.md",
+      "path": "md/pl/web/seo/technical-seo.md",
       "category": "web/seo",
       "tags": [
         "seo",
@@ -604,13 +650,14 @@
         "sitemap",
         "canonical",
         "cwv"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-048",
       "name": "web-performance.md",
       "title": "Web Performance — kompendium",
-      "path": "md/web/performance/web-performance.md",
+      "path": "md/pl/web/performance/web-performance.md",
       "category": "web/performance",
       "tags": [
         "performance",
@@ -620,13 +667,14 @@
         "cls",
         "cache",
         "images"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-049",
       "name": "software-testing.md",
       "title": "Testowanie oprogramowania — kompendium",
-      "path": "md/testing/software-testing.md",
+      "path": "md/pl/testing/software-testing.md",
       "category": "testing",
       "tags": [
         "testing",
@@ -635,13 +683,14 @@
         "e2e",
         "playwright",
         "go test"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-050",
       "name": "regular-expressions.md",
       "title": "Wyrażenia regularne (Regex) — kompendium praktyczne",
-      "path": "md/tools/regex/regular-expressions.md",
+      "path": "md/pl/tools/regex/regular-expressions.md",
       "category": "tools/regex",
       "tags": [
         "regex",
@@ -650,13 +699,14 @@
         "sed",
         "javascript",
         "python"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-051",
       "name": "oauth-oidc-jwt-sessions.md",
       "title": "OAuth 2.0, OpenID Connect, JWT i sesje",
-      "path": "md/security/authentication/oauth-oidc-jwt-sessions.md",
+      "path": "md/pl/security/authentication/oauth-oidc-jwt-sessions.md",
       "category": "security/authentication",
       "tags": [
         "oauth",
@@ -666,13 +716,14 @@
         "authentication",
         "authorization",
         "pkce"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-052",
       "name": "systemd-cron-schedulers.md",
       "title": "systemd, cron i schedulery",
-      "path": "md/devops/systemd-cron-schedulers.md",
+      "path": "md/pl/devops/systemd-cron-schedulers.md",
       "category": "devops",
       "tags": [
         "systemd",
@@ -680,13 +731,14 @@
         "timer",
         "scheduler",
         "service"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-053",
       "name": "web-analytics-tagging.md",
       "title": "Web analytics i tagging — kompendium praktyczne",
-      "path": "md/digital/web-analytics-tagging.md",
+      "path": "md/pl/digital/web-analytics-tagging.md",
       "category": "digital",
       "tags": [
         "analytics",
@@ -695,13 +747,14 @@
         "gtm",
         "datalayer",
         "utm"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-054",
       "name": "ab-testing-experiments.md",
       "title": "A/B testing i eksperymenty — kompendium praktyczne",
-      "path": "md/digital/ab-testing-experiments.md",
+      "path": "md/pl/digital/ab-testing-experiments.md",
       "category": "digital",
       "tags": [
         "ab testing",
@@ -709,13 +762,14 @@
         "conversion",
         "mde",
         "metrics"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-055",
       "name": "html-email-edm.md",
       "title": "HTML email / EDM — kompendium praktyczne",
-      "path": "md/digital/html-email-edm.md",
+      "path": "md/pl/digital/html-email-edm.md",
       "category": "digital",
       "tags": [
         "email",
@@ -723,13 +777,14 @@
         "edm",
         "outlook",
         "newsletter"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-056",
       "name": "technical-documentation.md",
       "title": "Dokumentowanie rozwiązań technicznych",
-      "path": "md/architecture/technical-documentation.md",
+      "path": "md/pl/architecture/technical-documentation.md",
       "category": "architecture",
       "tags": [
         "documentation",
@@ -738,13 +793,14 @@
         "rfc",
         "runbook",
         "openapi"
-      ]
+      ],
+      "language": "pl"
     },
     {
       "id": "doc-057",
       "name": "web-app-end-to-end-playbook.md",
       "title": "Troubleshooting aplikacji webowej end-to-end",
-      "path": "md/troubleshooting/web-app-end-to-end-playbook.md",
+      "path": "md/pl/troubleshooting/web-app-end-to-end-playbook.md",
       "category": "troubleshooting",
       "tags": [
         "troubleshooting",
@@ -754,7 +810,12 @@
         "backend",
         "database",
         "debug"
-      ]
+      ],
+      "language": "pl"
     }
+  ],
+  "defaultLanguage": "pl",
+  "languages": [
+    "pl"
   ]
 }
