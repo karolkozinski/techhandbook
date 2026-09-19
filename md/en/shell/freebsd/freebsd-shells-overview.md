@@ -2,69 +2,89 @@
 
 ## 1. What is a shell?
 
-A shell is a command interpreter used to run programs, expand variables/globs, create pipelines and write scripts.
+A shell is a command interpreter used to run programs, expand variables and globs, build pipelines and write scripts.
 
 ## 2. Base system vs additional software
 
-FreeBSD clearly separates the base system from third-party packages. Shells from packages commonly live under `/usr/local/bin`.
+FreeBSD clearly separates the base system from third-party packages. Base-system tools live under paths such as `/bin` and `/usr/bin`, while package-installed shells usually live under `/usr/local/bin`.
 
-## 3. Default shell
+## 3. Default FreeBSD shell
 
-Always check the actual account:
+Do not assume. Check the actual account configuration:
 
-```bash
+```sh
 getent passwd "$USER"
 ```
 
-## 4. Important shells
+Historically, FreeBSD has commonly used csh/tcsh-family shells for interactive accounts, while `/bin/sh` remains the base POSIX-style shell for scripts and system use.
 
-Common choices include sh, csh, tcsh, Bash, Zsh, Fish and KornShell-family shells.
+## 4. Most important shells
 
-## 5. sh on FreeBSD
+Common choices include:
 
-The system `/bin/sh` is part of the base system and is appropriate for POSIX-style scripts.
+- sh,
+- Bash,
+- Zsh,
+- Fish,
+- csh,
+- tcsh,
+- KornShell-family shells such as ksh93 or mksh.
+
+## 5. `sh` in FreeBSD
+
+The system `/bin/sh` is part of the base system.
 
 ```sh
 #!/bin/sh
 ```
 
-## 6. sh configuration
+It is the best default for portable system scripts.
 
-Interactive login configuration commonly involves:
+## 6. Configuring `sh`
+
+Typical login configuration:
 
 ```text
 ~/.profile
 ```
 
-## 7. Bash
+Keep POSIX shell startup files simple and portable.
+
+## 7. Bash in FreeBSD
 
 Install:
 
-```bash
+```sh
 pkg install bash
 ```
 
-Common path:
+Typical path:
 
 ```text
 /usr/local/bin/bash
 ```
 
-## 8. Bash configuration
+## 8. Configuring Bash
+
+Common files:
 
 ```text
 ~/.bashrc
-~/.profile
 ~/.bash_profile
+~/.profile
 ```
+
+Interactive Bash normally reads `.bashrc`; login behavior depends on how Bash is started.
 
 ## 9. Zsh
 
-```bash
+Install:
+
+```sh
 pkg install zsh
 ```
 
-Common path:
+Typical path:
 
 ```text
 /usr/local/bin/zsh
@@ -78,7 +98,9 @@ Configuration:
 
 ## 10. Fish
 
-```bash
+Install:
+
+```sh
 pkg install fish
 ```
 
@@ -90,31 +112,55 @@ Configuration:
 
 Fish is intentionally not POSIX-shell compatible.
 
-## 11. csh and tcsh
+## 11. csh
 
-FreeBSD historically has strong C-shell-family usage. Their syntax differs significantly from sh/Bash.
+csh uses a different syntax family from sh/Bash. You will encounter it in historical Unix and FreeBSD contexts.
 
-## 12. KornShell and mksh
+Typical configuration files include:
 
-Install the package available for your FreeBSD release, for example ksh93 or mksh.
+```text
+~/.cshrc
+~/.login
+```
 
-## 13. Available login shells
+## 12. tcsh
 
-```bash
+tcsh is an enhanced csh-compatible shell with better interactive features such as command-line editing and completion.
+
+Configuration commonly uses:
+
+```text
+~/.tcshrc
+~/.cshrc
+```
+
+## 13. KornShell and mksh
+
+FreeBSD packages provide KornShell-family options such as ksh93 or mksh depending on release and repository.
+
+Use them when you specifically want KornShell syntax or compatibility.
+
+## 14. List available login shells
+
+```sh
 cat /etc/shells
 ```
 
-## 14. Checking the shell
+Only shells listed there should normally be selected as login shells.
 
-```bash
+## 15. Checking the shell
+
+```sh
 echo "$SHELL"
 ps -p $$ -o comm=
 getent passwd "$USER"
 ```
 
-## 15. Start another shell
+These answer different questions: configured login shell versus the process currently running.
 
-```bash
+## 16. Starting another shell
+
+```sh
 sh
 bash
 zsh
@@ -122,83 +168,111 @@ fish
 tcsh
 ```
 
-## 16. exec
+This starts a child shell without changing the account's login shell.
 
-```bash
+## 17. `exec`
+
+```sh
 exec zsh
 ```
 
-Replaces the current shell process.
+`exec` replaces the current shell process instead of creating a child.
 
-## 17. Change login shell
+## 18. Changing the login shell
 
-```bash
+```sh
 chsh -s /usr/local/bin/zsh
 ```
 
 Use a path present in `/etc/shells`.
 
-## 18. Root — practical advice
+## 19. Root — important practice
 
-Keep root on a base-system shell unless you fully understand recovery implications. A package-installed shell under `/usr/local` may not be desirable for root recovery.
+Keep root on a shell from the FreeBSD base system unless you have a strong operational reason not to. During recovery, `/usr/local` may not be available.
 
-## 19. sudo -i and su -
+## 20. `sudo -i`
 
 If sudo is installed:
 
-```bash
+```sh
 sudo -i
 ```
 
-Traditional approach:
+Traditional alternative:
 
-```bash
+```sh
 su -
 ```
 
-## 20. Shebang
+Both create a privileged login-style environment; understand which shell and startup files will be used.
 
-Portable:
+## 21. Shebang
+
+Portable POSIX script:
 
 ```sh
 #!/bin/sh
 ```
 
-Bash:
+Bash-specific script:
 
-```bash
+```sh
 #!/usr/bin/env bash
 ```
 
-## 21. Why env bash helps
+## 22. Why `env bash` is useful
 
-FreeBSD Bash commonly lives in `/usr/local/bin/bash`, while Linux paths differ. `/usr/bin/env bash` finds Bash through PATH.
+On FreeBSD, package-installed Bash commonly lives in `/usr/local/bin/bash`, while on Linux it is often under `/bin` or `/usr/bin`.
 
-## 22. Do not replace system sh
+```sh
+#!/usr/bin/env bash
+```
 
-Install additional user shells without replacing `/bin/sh`.
+finds Bash through `PATH`.
 
-## 23. Redirections and pipelines
+## 23. Do not replace the system `sh`
 
-```bash
+Install additional shells for users, but do not replace `/bin/sh`. Base-system scripts expect FreeBSD's system shell behavior.
+
+## 24. Redirections
+
+```sh
 command > file
 command >> file
 command 2> errors
+command > all.log 2>&1
+```
+
+## 25. Pipes
+
+```sh
 command1 | command2
 ```
 
-## 24. Variables and quoting
+The stdout of the first command becomes stdin of the second.
 
-sh/Bash style:
+## 26. Variables
 
-```bash
+sh/Bash-style:
+
+```sh
 name="Alice"
 echo "$name"
 ```
 
-csh/tcsh use different syntax.
+csh/tcsh syntax differs.
 
-## 25. Globbing
+## 27. Quoting
+
+Use double quotes around variable expansions unless you deliberately need word splitting or glob expansion.
+
+```sh
+printf '%s\n' "$file"
+```
+
+Single quotes preserve literal text.
+
+## 28. Globbing
 
 ```text
 *.txt
@@ -206,80 +280,98 @@ file?.conf
 [abc]*
 ```
 
-## 26. Builtins
+Globbing is filename expansion performed by the shell before the command runs.
 
-```bash
+## 29. Builtins
+
+Some commands are implemented inside the shell itself.
+
+```sh
 type cd
 command -V printf
 ```
 
-## 27. Aliases
+## 30. Aliases
 
-```bash
+```sh
 alias ll='ls -lah'
 ```
 
-Interactive convenience only.
+Use aliases for interactive convenience, not as the basis of important automation.
 
-## 28. Functions
+## 31. Functions
 
 sh-style:
 
-```bash
+```sh
 mkcd() {
     mkdir -p "$1" && cd "$1"
 }
 ```
 
-## 29. History
+Functions are better than aliases for multi-step reusable shell logic.
 
-Bash, Zsh and tcsh provide history mechanisms.
+## 32. History
 
-## 30. Job control
+Bash, Zsh, tcsh and other interactive shells provide history.
 
-```bash
+Exact files and options depend on the shell.
+
+## 33. Job control
+
+```sh
 command &
 jobs
 fg
 bg
 ```
 
-## 31. PATH
+Job control is an interactive-shell feature for background and suspended jobs.
 
-```bash
+## 34. `$PATH`
+
+```sh
 echo "$PATH"
 ```
 
-Third-party commands commonly live under:
+Third-party FreeBSD commands commonly live in:
 
 ```text
 /usr/local/bin
 /usr/local/sbin
 ```
 
-## 32. Installing shells with pkg
+## 35. Installing shells with `pkg`
 
-```bash
+```sh
 pkg search zsh
 pkg install zsh
+pkg install bash
 ```
 
-## 33. Good FreeBSD setup
+After installation, verify the binary path and `/etc/shells`.
+
+## 36. Good FreeBSD setup
 
 ```text
-system/root recovery shell → base /bin/sh
-interactive user shell     → sh, Bash or Zsh
+root / recovery shell      → base-system shell
+interactive user shell     → sh, Bash, Zsh, Fish or tcsh
 portable scripts           → /bin/sh
 Bash-specific scripts      → /usr/bin/env bash
 ```
 
-## 34. What to learn
+## 37. What is worth learning best
 
-Learn POSIX sh basics plus FreeBSD path/service/pkg conventions. Use Bash or Zsh interactively if you prefer them.
+Learn:
 
-## 35. Quick reference
+- POSIX sh syntax for portable scripts,
+- one interactive shell well,
+- FreeBSD's `/usr/local` convention,
+- how login shells differ from script interpreters.
 
-```bash
+## 38. Quick cheat sheet
+
+```sh
 echo "$SHELL"
 ps -p $$ -o comm=
 cat /etc/shells
@@ -288,6 +380,13 @@ pkg install bash zsh
 exec sh
 ```
 
-## 36. Most important rule
+## 39. Most important rule
 
-Do not confuse interactive shell, login shell, script interpreter and system `/bin/sh`. They may all differ.
+Do not confuse:
+
+- the configured login shell,
+- the shell process currently running,
+- the interpreter selected by a script's shebang,
+- the system `/bin/sh`.
+
+They can all be different.

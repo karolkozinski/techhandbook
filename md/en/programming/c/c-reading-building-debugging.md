@@ -1,2148 +1,837 @@
 # C — Handbook for Reading, Building and Debugging Projects
-
-> Goal: understand unfamiliar C projects, read their structure, build them, diagnose compiler/linker/runtime problems and recognize the language constructs you are most likely to encounter.
-
 # 1. C in one sentence
-
-C is a compiled systems language with explicit memory management, simple syntax and very little runtime machinery.
-
-# 2. Smallest useful program
-
+C is a small, compiled systems language that gives you direct control over memory, data layout and operating-system APIs.
+# 2. The simplest program
 ```c
 #include <stdio.h>
 
 int main(void) {
-    printf("Hello\n");
+    puts("hello");
     return 0;
 }
 ```
-
-Compile:
-
-```bash
-cc main.c -o app
-./app
-```
-
-# 3. Common file extensions
-
+# 3. Basic file extensions
+Typical files: `.c` source, `.h` headers, `.o` object files, `.a` static libraries and `.so` shared libraries on Unix-like systems.
+# 4. What a typical project contains
 ```text
-.c    source file
-.h    header
-.o    object file
-.a    static library
-.so   shared library on Linux
-.dylib shared library on macOS
+src/        source files
+include/    public headers
+tests/      tests
+Makefile / CMakeLists.txt / meson.build
+README.md   build and usage notes
 ```
-
-# 4. Typical project layout
-
-```text
-project/
-├── src/
-│   ├── main.c
-│   ├── parser.c
-│   └── network.c
-├── include/
-│   ├── parser.h
-│   └── network.h
-├── tests/
-├── Makefile
-└── README.md
-```
-
-Larger projects may use CMake, Meson or Autotools.
-
-# 5. main()
-
-```c
-int main(void) {
-    return 0;
-}
-```
-
-With arguments:
-
-```c
-int main(int argc, char **argv) {
-    ...
-}
-```
-
-`argc` is argument count.
-
-`argv` is the argument array.
-
+# 5. The most important thing: `main()`
+For a normal executable, execution starts in `main`. Common signatures are `int main(void)` and `int main(int argc, char **argv)`.
 # 6. Variables
-
 ```c
-int count = 10;
-double price = 19.99;
+int count = 3;
+double price = 9.99;
 char letter = 'A';
 ```
-
-Fixed-width integers:
-
+# 7. `const`
+`const` expresses that code should not modify a value through that name or pointer.
+# 8. `sizeof`
 ```c
-#include <stdint.h>
-
-int32_t id;
-uint64_t size;
+size_t bytes = sizeof(int);
+size_t n = sizeof array / sizeof array[0];
 ```
-
-# 7. const
-
-```c
-const int max_retries = 5;
-```
-
-Pointer forms:
-
-```c
-const char *p;      /* data is const */
-char *const p2 = x; /* pointer is const */
-```
-
-# 8. sizeof
-
-```c
-sizeof(int)
-sizeof value
-sizeof array
-```
-
-Returns a value of type `size_t`.
-
 # 9. Operators
-
-Arithmetic:
-
-```text
-+ - * / %
-```
-
-Comparison:
-
-```text
-== != < <= > >=
-```
-
-Logical:
-
-```text
-&& || !
-```
-
-Bitwise:
-
-```text
-& | ^ ~ << >>
-```
-
-# 10. if
-
+Arithmetic, comparison, logical, bitwise, assignment and pointer operators are all common in C.
+# 10. The `if` statement
 ```c
 if (value > 0) {
-    ...
-} else if (value == 0) {
-    ...
+    puts("positive");
 } else {
-    ...
+    puts("not positive");
 }
 ```
-
-# 11. switch
-
+# 11. `switch`
 ```c
 switch (state) {
-case STATE_READY:
-    break;
-case STATE_ERROR:
+case READY:
     break;
 default:
     break;
 }
 ```
-
-Remember `break` unless fallthrough is deliberate.
-
 # 12. Loops
-
-for:
-
+## `for`
+Use when initialization, condition and update naturally belong together.
 ```c
-for (int i = 0; i < 10; i++) {
+for (size_t i = 0; i < n; i++) {
+    use(items[i]);
 }
 ```
-
-while:
-
-```c
-while (running) {
-}
-```
-
-do-while:
-
-```c
-do {
-} while (condition);
-```
-
-Infinite loop:
-
-```c
-for (;;) {
-}
-```
-
+## `while`
+Runs while the condition remains true.
+## `do while`
+Runs the body at least once before checking the condition.
+## infinite loop
+Common in event loops and daemons; provide an explicit exit or signal path.
 # 13. Functions
-
 ```c
 int add(int a, int b) {
     return a + b;
 }
 ```
-
-Void function:
-
+# 14. A function returning nothing
 ```c
-void log_message(const char *message) {
+void log_message(const char *msg) {
+    puts(msg);
 }
 ```
-
-Declaration:
-
-```c
-int add(int a, int b);
-```
-
-Definition contains the body.
-
-# 14. Header files
-
-Headers usually contain public declarations:
-
-```c
-#ifndef USER_H
-#define USER_H
-
-struct user;
-int user_load(int id);
-
-#endif
-```
-
-# 15. #include
-
-Standard/library header:
-
+# 15. Declaration vs definition
+A declaration tells the compiler that a symbol exists; a definition provides storage or function body.
+# 16. `.h` files
+Headers normally expose declarations, types, constants and macros shared between translation units.
+# 17. `#include`
 ```c
 #include <stdio.h>
+#include "project.h"
 ```
-
-Project header:
-
+# 18. Include guards
 ```c
-#include "user.h"
-```
-
-# 16. Include guards
-
-```c
-#ifndef PROJECT_CONFIG_H
-#define PROJECT_CONFIG_H
-
-...
-
+#ifndef PROJECT_H
+#define PROJECT_H
+/* declarations */
 #endif
 ```
-
-They prevent duplicate inclusion.
-
-# 17. Preprocessor
-
-The preprocessor handles directives before compilation.
-
+# 19. The preprocessor
+The preprocessor handles directives such as `#include`, `#define` and conditional compilation before normal compilation.
+# 20. Conditional compilation
 ```c
-#define BUFFER_SIZE 4096
-#include "config.h"
 #ifdef DEBUG
-...
+fprintf(stderr, "debug\n");
 #endif
 ```
-
-# 18. Conditional compilation
-
+# 21. Macros
+Macros perform token substitution. Prefer functions or typed constants when they are clearer and safer.
+# 22. `typedef`
 ```c
-#ifdef __linux__
-...
-#elif defined(__FreeBSD__)
-...
-#endif
+typedef unsigned long user_id_t;
 ```
-
-Build systems often define feature macros using `-DNAME=value`.
-
-# 19. Macros
-
-```c
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
-```
-
-Macros are text substitution. Be careful with side effects and parentheses.
-
-# 20. typedef
-
-```c
-typedef unsigned long ulong;
-
-typedef struct user {
-    int id;
-} user_t;
-```
-
-# 21. struct
-
+# 23. `struct`
 ```c
 struct user {
     int id;
-    char name[64];
+    const char *name;
 };
 ```
-
-Use:
-
+# 24. Pointer member access: `->`
 ```c
-struct user u;
-u.id = 1;
+struct user *u = get_user();
+printf("%d\n", u->id);
 ```
-
-Pointer access:
-
+# 25. `enum`
 ```c
-struct user *u = ...;
-u->id = 1;
+enum status { STATUS_OK, STATUS_ERROR };
 ```
-
-# 22. enum
-
+# 26. `union`
+A union stores different members in the same memory region. Only the active interpretation is meaningful.
+# 27. Arrays
 ```c
-enum state {
-    STATE_IDLE,
-    STATE_RUNNING,
-    STATE_ERROR
-};
+int values[4] = {1,2,3,4};
 ```
-
-Enums are useful for named integer states.
-
-# 23. union
-
-```c
-union value {
-    int i;
-    double d;
-};
-```
-
-Members share the same memory.
-
-# 24. Arrays
-
-```c
-int values[10];
-char name[64];
-```
-
-Array length:
-
-```c
-size_t n = sizeof values / sizeof values[0];
-```
-
-This works only while `values` is still an actual array, not a pointer parameter.
-
-# 25. Strings
-
-C strings are arrays of char terminated by `'\0'`.
-
-```c
-char name[] = "Alice";
-```
-
-Important functions:
-
-```c
-strlen
-strcmp
-strncmp
-strcpy
-strncpy
-snprintf
-strchr
-strstr
-```
-
-Be very careful with destination buffer sizes.
-
-# 26. Pointers
-
-A pointer stores an address.
-
+# 28. Text in C
+A C string is a sequence of bytes terminated by `\0`. It is not a distinct string object type.
+# 29. Basic string functions
+Recognize `strlen`, `strcmp`, `strcpy`/`strncpy`, `snprintf`, `strchr`, `strstr` and their safety constraints.
+# 30. Pointers — the thing you must learn to read
+A pointer stores an address. Read pointer-heavy code by asking what object it points to, whether it may be NULL and who owns that object.
+# 31. Pointer example
 ```c
 int value = 10;
-int *ptr = &value;
-
-printf("%d\n", *ptr);
+int *p = &value;
+printf("%d\n", *p);
 ```
-
-`&value` = address of value.
-
-`*ptr` = value stored at the pointed address.
-
-# 27. Why pointers exist
-
-Pointers are used for:
-
-- modifying caller-owned data,
-- passing large structures efficiently,
-- dynamic memory,
-- arrays/strings,
-- data structures,
-- callbacks,
-- OS APIs.
-
-# 28. NULL
-
-```c
-int *ptr = NULL;
-```
-
-Never dereference NULL.
-
-# 29. Pointer to pointer
-
+# 32. Why pointers exist
+Pointers enable mutation through references, dynamic data structures, buffers, callbacks and interaction with OS/library APIs.
+# 33. `NULL`
+`NULL` represents a null pointer constant. Check it before dereferencing when an API may return no object.
+# 34. Pointer to pointer
 ```c
 char **argv;
-struct user **out_user;
+struct node **head;
 ```
-
-This commonly appears when a function needs to modify a caller's pointer.
-
-# 30. Modifying through a pointer
-
+# 35. Functions modifying data through pointers
 ```c
-void increment(int *value) {
-    (*value)++;
+void reset(int *value) {
+    *value = 0;
 }
 ```
-
-# 31. Dynamic memory
-
-```c
-void *malloc(size_t size);
-void *calloc(size_t n, size_t size);
-void *realloc(void *ptr, size_t size);
-void free(void *ptr);
-```
-
-Typical pattern:
-
+# 36. Dynamic memory
+Heap allocation commonly uses `malloc`, `calloc`, `realloc` and `free`.
+# 37. Typical `malloc` pattern
 ```c
 struct user *u = malloc(sizeof *u);
 if (u == NULL) {
-    return NULL;
+    return -1;
 }
-
-...
-
+/* use u */
 free(u);
 ```
-
-# 32. Memory leaks
-
-A leak happens when allocated memory is no longer reachable and was never freed.
-
-Tools such as AddressSanitizer and Valgrind help detect leaks.
-
-# 33. Use-after-free
-
+# 38. Memory leak
+Allocated memory that is no longer reachable but was never freed.
+# 39. Use-after-free
+Accessing memory after it has been freed. This is undefined behavior and a serious security bug class.
+# 40. Stack and heap
+## stack
+Automatic storage tied to scope/function lifetime.
+## heap
+Dynamically allocated storage controlled explicitly by the program.
+# 41. Passing structures
+Small structs may be passed by value; larger/mutable objects are often passed by pointer.
+# 42. Function pointers
 ```c
-free(ptr);
-printf("%d\n", *ptr); /* invalid */
+int (*compare)(const void *, const void *);
 ```
-
-After free, the pointer does not become safe automatically.
-
-A common defensive pattern:
-
-```c
-free(ptr);
-ptr = NULL;
-```
-
-# 34. Stack and heap
-
-Stack:
-
-- automatic local variables,
-- lifetime tied to function scope,
-- fast allocation.
-
-Heap:
-
-- explicit allocation,
-- lifetime controlled by program,
-- requires `free`.
-
-# 35. Passing structures
-
-By value:
-
-```c
-void show(struct user u);
-```
-
-By pointer:
-
-```c
-void show(const struct user *u);
-```
-
-Pointer passing is common for large or mutable structures.
-
-# 36. Function pointers
-
-```c
-typedef int (*compare_fn)(const void *, const void *);
-```
-
-Example:
-
-```c
-qsort(array, count, sizeof array[0], compare);
-```
-
-Callbacks are common in C libraries.
-
-# 37. static
-
-Inside a function:
-
-```c
-static int counter;
-```
-
-Value persists across calls.
-
-At file scope:
-
-```c
-static void helper(void) {
-}
-```
-
-The symbol is private to that translation unit.
-
-# 38. extern
-
-```c
-extern int global_config;
-```
-
-Declares a symbol defined elsewhere.
-
-# 39. Global variables
-
-Global state exists for the whole program lifetime and can make code harder to test and reason about.
-
-Prefer explicit context objects when practical.
-
-# 40. Return codes and errno
-
-C APIs often return:
-
-```text
-0     success
--1    failure
-NULL  failure for pointer-returning APIs
-```
-
-POSIX calls often set `errno`.
-
-```c
-#include <errno.h>
-#include <string.h>
-
-fprintf(stderr, "%s\n", strerror(errno));
-```
-
-# 41. Standard I/O
-
-```c
-stdin
-stdout
-stderr
-```
-
-Functions:
-
-```c
-printf
-fprintf
-fputs
-fgets
-fread
-fwrite
-```
-
-# 42. printf formatting
-
-```c
-printf("%d\n", value);
-printf("%s\n", text);
-printf("%zu\n", size);
-printf("%p\n", (void *)ptr);
-```
-
-Use correct format specifiers; mismatches can be undefined behavior.
-
-# 43. Files
-
+# 43. `static`
+At file scope, `static` gives internal linkage. Inside a function, it gives static storage duration.
+# 44. `extern`
+Declares an object or function defined in another translation unit.
+# 45. Global variables
+Globals simplify access but create hidden coupling. Keep them limited and well-defined.
+# 46. Function return code
+Many C APIs return `0` or a value for success and a negative/nonzero code for failure. Always read the API contract.
+# 47. `errno`
+Some library/system calls set `errno` on failure. Read it only when the called API documents that behavior.
+# 48. Standard input and output
+Use `stdin`, `stdout`, `stderr` with functions such as `fgets`, `printf`, `fprintf` and `perror`.
+# 49. `printf` formatting
+Match format specifiers to types. Use `<inttypes.h>` macros for fixed-width integer portability.
+# 50. Files
 ```c
 FILE *f = fopen("data.txt", "r");
 if (f == NULL) {
     perror("fopen");
     return 1;
 }
-
 fclose(f);
 ```
-
-# 44. File descriptors
-
-POSIX APIs use integer descriptors:
-
-```c
-int fd = open(path, O_RDONLY);
-read(fd, buffer, size);
-close(fd);
-```
-
-`FILE *` is stdio; file descriptors are lower-level OS interfaces.
-
-# 45. C vs POSIX
-
-ISO C standard library is portable across many systems.
-
-POSIX adds Unix interfaces such as:
-
-- fork,
-- pipe,
-- sockets,
-- pthreads,
-- open/read/write.
-
-Not all POSIX code is portable to Windows.
-
-# 46. Standard headers worth knowing
-
-```text
-stdio.h    I/O
-stdlib.h   allocation, conversion, exit
-string.h   memory/string functions
-stdint.h   fixed-width integers
-stdbool.h  bool
-ctype.h    character classification
-time.h     time
-errno.h    errno
-assert.h   assertions
-```
-
-# 47. bool
-
+# 51. File descriptors
+POSIX uses integer file descriptors with calls such as `open`, `read`, `write`, `close`.
+# 52. C vs POSIX
+C defines the language and standard library; POSIX adds Unix APIs such as sockets, processes, pthreads and file descriptors.
+# 53. Most important standard headers
+## `stdio.h`
+Formatted I/O, FILE streams.
+## `stdlib.h`
+Allocation, conversions, process helpers.
+## `string.h`
+Byte/string operations.
+## `stdint.h`
+Fixed-width integer types.
+## `stdbool.h`
+`bool`, `true`, `false` for pre-C23 codebases.
+## `ctype.h`
+Character classification/conversion.
+## `time.h`
+Time/date functions.
+## `errno.h`
+`errno` and error constants.
+## `assert.h`
+Debug-time assertions.
+# 54. `bool`
 ```c
 #include <stdbool.h>
-
 bool ready = true;
 ```
-
-# 48. Assertions
-
+# 55. Assertions
 ```c
 #include <assert.h>
-
 assert(ptr != NULL);
 ```
-
-Assertions are for programmer assumptions, not user input validation.
-
-# 49. Compile one file
-
+Assertions are for programmer invariants, not normal user-input validation.
+# 56. Compiling one file
 ```bash
-cc main.c -o app
+cc -Wall -Wextra -g main.c -o app
 ```
-
-With warnings:
-
+# 57. Compiling several files at once
 ```bash
-cc -Wall -Wextra -Wpedantic main.c -o app
+cc -Wall -Wextra main.c util.c net.c -o app
 ```
-
-# 50. Compile several files
-
-```bash
-cc main.c parser.c network.c -o app
-```
-
-# 51. Compile in stages
-
+# 58. Compiling in stages
 ```bash
 cc -c main.c -o main.o
-cc -c parser.c -o parser.o
-cc main.o parser.o -o app
+cc -c util.c -o util.o
+cc main.o util.o -o app
 ```
-
-`-c` compiles but does not link.
-
-# 52. Important compiler flags
-
-```text
--Wall
--Wextra
--Wpedantic
--Werror
--g
--O0
--O2
--std=c11
--std=c17
--Ipath
--Lpath
--lname
--DNAME=value
-```
-
-# 53. Language standard
-
+# 59. What `-c` does
+Compiles source to an object file without performing the final link.
+# 60. Most important compiler flags
 ```bash
-cc -std=c17 ...
+cc -Wall -Wextra -Wpedantic -g -O0 file.c -o app
 ```
-
-Projects may use C99, C11, C17 or newer modes.
-
-# 54. Optimization
-
-Debug:
-
+# 61. Language standard
 ```bash
--O0 -g
+cc -std=c17 file.c -o app
+cc -std=c23 file.c -o app
 ```
-
-Typical release:
-
+# 62. Optimization
+Typical levels include `-O0`, `-O1`, `-O2`, `-O3`, `-Os`. Debug builds usually favor `-O0` or moderate optimization.
+# 63. Include path
 ```bash
--O2
+cc -Iinclude main.c -o app
 ```
-
-Higher optimization can make debugging harder.
-
-# 55. Include paths
-
+# 64. Libraries
+Libraries may be static archives or shared objects, and can be linked directly or through build-system discovery.
+# 65. `-L` and `-l`
 ```bash
-cc -Iinclude src/main.c
+cc main.c -L/usr/local/lib -lfoo -o app
 ```
-
-# 56. Libraries
-
-Static:
-
-```text
-libfoo.a
-```
-
-Shared:
-
-```text
-libfoo.so
-```
-
-Link:
-
-```bash
-cc main.o -L/path/to/lib -lfoo -o app
-```
-
-# 57. Compilation vs linking
-
-Compilation translates source files into object files.
-
-Linking resolves symbols between object files and libraries and creates the final executable/shared library.
-
-Typical linker error:
-
-```text
-undefined reference to ...
-```
-
-This usually means the declaration was visible but the implementation was not linked.
-
-# 58. pkg-config
-
+# 66. Compilation vs linking
+Compilation turns source into object code; linking resolves symbols and combines objects/libraries into a final binary.
+# 67. Typical linker error
+`undefined reference` usually means a required definition/object/library was not linked, or library order/configuration is wrong.
+# 68. `pkg-config`
 ```bash
 pkg-config --cflags --libs libcurl
 ```
-
-It prints the compiler and linker flags required by a library.
-
-# 59. Make
-
-```make
+# 69. Make
+Make executes build rules based on targets, prerequisites and recipes.
+# 70. Simple Makefile
+```text
+app: main.o util.o
+	$(CC) main.o util.o -o app
+```
+# 71. Most important `make` commands
+```bash
+make
 make clean
-make test
-make -j"$(nproc)"
+make install
 ```
-
-Simple Makefile:
-
-```make
-CC = cc
-CFLAGS = -Wall -Wextra -g
-
-app: main.o parser.o
-	$(CC) main.o parser.o -o app
-
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
-
-parser.o: parser.c
-	$(CC) $(CFLAGS) -c parser.c
-
-clean:
-	rm -f *.o app
+# 72. Inspecting Makefile targets
+Read the Makefile; `make -n` previews commands without executing them.
+# 73. Parallel compilation
+```bash
+make -j"$(nproc 2>/dev/null || sysctl -n hw.ncpu)"
 ```
-
-# 60. CMake
-
-Typical workflow:
-
+# 74. CMake
 ```bash
 cmake -S . -B build
 cmake --build build
-ctest --test-dir build
 ```
-
-Debug build:
-
+# 75. Debug build in CMake
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 ```
-
-Install:
-
+# 76. Installing a CMake project
 ```bash
 cmake --install build
 ```
-
-List cache variables:
-
-```bash
-cmake -L build
-```
-
-# 61. Meson
-
+# 77. Cleaning CMake
+Removing the out-of-tree build directory is the cleanest full reset for many CMake projects.
+# 78. Meson
 ```bash
 meson setup build
 meson compile -C build
-meson test -C build
 ```
-
-# 62. Autotools
-
-Common workflow:
-
+# 79. Autotools
 ```bash
 ./configure
 make
 make check
-sudo make install
 ```
-
-Some Git checkouts require:
-
-```bash
-autoreconf -fi
-```
-
-# 63. Recognising the build system
-
-Look for:
-
-```text
-Makefile
-CMakeLists.txt
-meson.build
-configure
-configure.ac
-Makefile.am
-```
-
-# 64. First steps after git clone
-
-```bash
-git clone REPO
-cd REPO
-ls
-sed -n '1,200p' README.md
-```
-
-Then identify the build system and dependencies.
-
-# 65. Reading an unfamiliar C project
-
-Start with:
-
-1. README,
-2. build files,
-3. public headers,
-4. `main()`,
-5. central structs,
-6. initialization,
-7. cleanup,
-8. I/O boundaries,
-9. tests.
-
-# 66. Public API of a module
-
-Header:
-
+# 80. How to recognize the build system
+Look for `Makefile`, `CMakeLists.txt`, `meson.build`, `configure`, `configure.ac`, `Makefile.am` and project documentation.
+# 81. First steps after `git clone`
+Read README, inspect build files, identify dependencies, build out-of-tree if possible, then run tests before changing code.
+# 82. How to read an unfamiliar C project
+Start from build files and `main`, then follow headers/APIs, ownership and call flow.
+# 83. Public module API
+Usually exposed in headers while implementation details remain in `.c` files.
+# 84. Opaque struct
 ```c
-/* parser.h */
-struct parser;
-
-struct parser *parser_create(void);
-int parser_parse(struct parser *, const char *);
-void parser_destroy(struct parser *);
+typedef struct client client_t;
 ```
-
-Implementation details can remain private in `parser.c`.
-
-# 67. Opaque structs
-
-Header:
-
-```c
-struct database;
-```
-
-Source:
-
-```c
-struct database {
-    int fd;
-    char *path;
-};
-```
-
-This hides implementation and stabilizes APIs.
-
-# 68. Program flow
-
-Trace:
-
-```text
-main
-↓
-initialization
-↓
-configuration
-↓
-event loop / request loop
-↓
-work
-↓
-cleanup
-```
-
-# 69. Searching symbols
-
+Callers know the type exists but not its fields, preserving encapsulation.
+# 85. Program flow
+Trace from `main` into initialization, event loop/request handlers and cleanup.
+# 86. Searching for a symbol
 ```bash
-rg 'function_name'
-grep -R 'function_name' .
+rg 'symbol_name' .
+grep -Rni 'symbol_name' .
 ```
-
-With ctags:
-
+# 87. `ctags`
 ```bash
 ctags -R .
 ```
-
-# 70. compile_commands.json
-
-Many tools understand:
-
-```text
-compile_commands.json
-```
-
-CMake can generate it:
-
+# 88. `compile_commands.json`
+Compilation database used by clangd, static analysis and editors to know exact compiler flags.
+# 89. Debugging with `printf`
+Still useful for state/timing questions, but remove noisy ad-hoc diagnostics or convert them to structured logging.
+# 90. GDB
 ```bash
-cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-```
-
-# 71. Debugging with printf
-
-Still useful:
-
-```c
-fprintf(stderr, "state=%d ptr=%p\n", state, (void *)ptr);
-```
-
-# 72. GDB
-
-Build with debug symbols:
-
-```bash
-cc -g -O0 main.c -o app
 gdb ./app
 ```
-
-Core commands:
-
+# 91. Most important GDB commands
 ```text
-run
 break main
-break function
+run
 next
 step
 continue
 print variable
-backtrace
-frame
-info locals
+bt
 quit
 ```
-
-# 73. Segmentation faults
-
-Run under GDB:
-
+# 92. Useful GDB commands
+```text
+info locals
+info args
+watch variable
+frame N
+thread apply all bt
+```
+# 93. Segmentation fault and GDB
 ```bash
 gdb ./app
-(gdb) run
-(gdb) bt
+run
+bt
 ```
-
-The backtrace often reveals where invalid memory access happened.
-
-# 74. Core dumps
-
-A core file captures process memory after a crash.
-
-On systems configured to save cores:
-
-```bash
-gdb ./app core
-```
-
-# 75. LLDB
-
-Clang/LLVM debugger:
-
+# 94. Core dump
+A core file captures process memory/state at crash time and can be examined with a debugger.
+# 95. LLDB
 ```bash
 lldb ./app
 ```
-
-Useful on systems where LLDB is standard.
-
-# 76. Sanitizers
-
-AddressSanitizer:
-
+# 96. Sanitizers
 ```bash
-cc -fsanitize=address -fno-omit-frame-pointer -g main.c -o app
+cc -g -fsanitize=address,undefined -fno-omit-frame-pointer main.c -o app
 ```
-
-UndefinedBehaviorSanitizer:
-
-```bash
-cc -fsanitize=undefined -g main.c -o app
-```
-
-Combined:
-
-```bash
-cc -fsanitize=address,undefined -g ...
-```
-
-ThreadSanitizer:
-
-```bash
-cc -fsanitize=thread -g ...
-```
-
-# 77. Valgrind
-
+# 97. UndefinedBehaviorSanitizer
+UBSan detects many forms of undefined behavior such as invalid shifts and signed overflow.
+# 98. ThreadSanitizer
+TSan detects many data races in multithreaded programs.
+# 99. Valgrind
 ```bash
 valgrind --leak-check=full ./app
 ```
-
-Useful for memory diagnostics where available.
-
-# 78. Static analysis
-
-Clang:
-
-```bash
-clang --analyze file.c
-```
-
-cppcheck:
-
-```bash
-cppcheck --enable=all src/
-```
-
-clang-tidy provides deeper checks when configured.
-
-# 79. clang-format
-
+# 100. Static code analysis
+## Clang
+Use Clang warnings, scan-build and clang-tidy.
+## cppcheck
+Lightweight static analyzer useful as an additional check.
+# 101. `clang-format`
 ```bash
 clang-format -i src/*.c include/*.h
 ```
-
-Projects often include `.clang-format`.
-
-# 80. Shared and static libraries
-
-Static archive:
-
+# 102. `clang-tidy`
+Performs configurable static analysis/refactoring using compilation information.
+# 103. Shared libraries
+Dynamically loaded `.so` libraries reduce duplication and allow independent updates but introduce ABI/runtime search concerns.
+# 104. Program symbols
+Functions/global objects become symbols that linkers/debuggers/loaders may reference.
+# 105. `file`
 ```bash
-ar rcs libfoo.a foo.o
+file ./app
 ```
-
-Shared library:
-
+# 106. `readelf`
 ```bash
-cc -fPIC -c foo.c
-cc -shared foo.o -o libfoo.so
+readelf -h ./app
+readelf -Ws ./app
 ```
-
-# 81. Binary inspection
-
+# 107. `objdump`
 ```bash
-file app
-nm app
-readelf -h app
-objdump -d app
-ldd app
+objdump -d ./app
 ```
-
-These help inspect architecture, symbols, dependencies and machine code.
-
-# 82. pthread
-
+# 108. Static libraries
+```bash
+ar rcs libfoo.a foo.o bar.o
+```
+# 109. Shared libraries
+```bash
+cc -shared -fPIC foo.c -o libfoo.so
+```
+# 110. `pthread`
+POSIX threads provide threads, mutexes, condition variables and related synchronization primitives.
+# 111. Networking
+POSIX networking commonly uses sockets: `socket`, `bind`, `listen`, `accept`, `connect`, `send`, `recv`.
+# 112. Event loop
+An event loop waits for I/O/timers/signals and dispatches callbacks, often using `poll`, `select`, `epoll`, `kqueue` or libraries.
+# 113. Popular C libraries you may encounter
+## libcurl
+HTTP and other URL transfers.
+## OpenSSL
+TLS and cryptography.
+## SQLite
+embedded SQL database.
+## libxml2
+XML parsing.
+## jansson
+JSON library.
+## cJSON
+small JSON library.
+## libpng
+PNG image handling.
+## SDL
+multimedia/game/window/input library.
+## raylib
+simple game/multimedia library.
+## ncurses
+terminal UI.
+## libuv
+cross-platform async I/O/event loop.
+# 114. `goto`
+Often avoided for general control flow, but a single cleanup path using `goto cleanup` is idiomatic in many C codebases.
+# 115. Typical cleanup pattern
 ```c
-#include <pthread.h>
-```
-
-Compile:
-
-```bash
-cc main.c -pthread -o app
-```
-
-Threads require careful synchronization.
-
-# 83. Networking
-
-POSIX sockets use functions such as:
-
-```text
-socket
-bind
-listen
-accept
-connect
-send
-recv
-close
-```
-
-Network code often combines sockets with poll/select/epoll/kqueue or a library.
-
-# 84. Event loops
-
-Typical model:
-
-```text
-wait for events
-↓
-read/write sockets
-↓
-dispatch callbacks
-↓
-repeat
-```
-
-Libraries such as libuv abstract this.
-
-# 85. Common libraries
-
-libcurl — HTTP and network transfers.
-
-OpenSSL — TLS/crypto.
-
-SQLite — embedded SQL database.
-
-libxml2 — XML.
-
-jansson / cJSON — JSON.
-
-libpng — PNG.
-
-SDL / raylib — graphics and games.
-
-ncurses — terminal UI.
-
-libuv — event loop and async I/O.
-
-# 86. goto
-
-`goto` is legal C.
-
-A common, reasonable use is centralized cleanup:
-
-```c
-int do_work(void) {
-    FILE *f = NULL;
-    void *buf = NULL;
-    int rc = -1;
-
-    f = fopen("data", "r");
-    if (!f)
-        goto cleanup;
-
-    buf = malloc(1024);
-    if (!buf)
-        goto cleanup;
-
-    rc = 0;
-
+int rc = -1;
+resource_t *r = acquire();
+if (!r) goto cleanup;
+/* work */
+rc = 0;
 cleanup:
-    free(buf);
-    if (f)
-        fclose(f);
-    return rc;
-}
+release(r);
+return rc;
 ```
-
-# 87. Bit operations
-
+# 116. Bits
 ```c
 flags |= FLAG_READ;
 flags &= ~FLAG_WRITE;
-if (flags & FLAG_READ) {
-}
+if (flags & FLAG_READ) { ... }
 ```
-
-Hex values:
-
+# 117. Hexadecimal
 ```c
-0xff
-0x80000000u
+unsigned mask = 0xffu;
 ```
-
-# 88. Endianness
-
-Endianness defines byte order for multi-byte integers.
-
-Network protocols commonly use big-endian “network byte order”.
-
-Functions:
-
+# 118. Endianness
+Byte order matters for binary formats and networking. Do not cast arbitrary buffers and assume host endianness.
+# 119. `volatile`
+Tells the compiler that a value may change outside ordinary code flow. It is not a thread-synchronization primitive.
+# 120. Atomics
+C11 `<stdatomic.h>` provides atomic operations and memory-order primitives for lock-free/synchronization code.
+# 121. `inline`
+A language/linkage hint related to function definitions; the compiler may inline regardless of the keyword.
+# 122. Ternary operator
 ```c
-htons
-htonl
-ntohs
-ntohl
+const char *label = ok ? "yes" : "no";
 ```
-
-# 89. volatile
-
-`volatile` tells the compiler that a value can change outside normal program flow.
-
-It is used for hardware registers and some signal-related cases.
-
-It is not a thread-synchronization primitive.
-
-# 90. Atomics
-
-C11:
-
+# 123. Structure initializers
 ```c
-#include <stdatomic.h>
-
-atomic_int counter;
+struct point p = { 1, 2 };
 ```
-
-Use atomics for carefully designed lock-free/shared state.
-
-# 91. inline
-
+# 124. Designated initializers
 ```c
-static inline int min_int(int a, int b) {
-    return a < b ? a : b;
-}
+struct point p = { .y = 2, .x = 1 };
 ```
-
-The compiler ultimately decides whether to inline.
-
-# 92. Ternary operator
-
+# 125. Zero initialization
 ```c
-int max = a > b ? a : b;
+struct config cfg = {0};
 ```
-
-# 93. Struct initialization
-
-```c
-struct user u = {0};
-```
-
-Designated initializers:
-
-```c
-struct user u = {
-    .id = 1,
-    .name = "Alice"
-};
-```
-
-# 94. memset
-
+# 126. `memset`
 ```c
 memset(buffer, 0, sizeof buffer);
 ```
-
-Use it for bytes. Do not assume it safely creates arbitrary non-zero typed values.
-
-# 95. Naming conventions
-
-Common patterns:
-
-```text
-module_create
-module_destroy
-module_init
-module_cleanup
-module_get
-module_set
-```
-
-The `_t` suffix often denotes a typedef.
-
-# 96. size_t
-
-Unsigned integer type suitable for sizes and array indexes.
-
-Use `%zu` with printf.
-
-# 97. Common compiler errors
-
-`implicit declaration of function` — missing declaration/header.
-
-`unknown type name` — type not declared or header missing.
-
-`undeclared identifier` — name not in scope.
-
-`conflicting types` — declaration and definition disagree.
-
-# 98. Common linker errors
-
-`undefined reference` — implementation/library missing from link.
-
-`multiple definition` — same global symbol defined more than once.
-
-# 99. Runtime failures
-
-Common classes:
-
-- segmentation fault,
-- double free,
-- heap corruption,
-- use-after-free,
-- buffer overflow,
-- integer overflow,
-- deadlock,
-- unhandled error code.
-
-# 100. Compiler warnings matter
-
-Use at least:
-
+Do not assume memset is correct for every semantic initialization of complex objects.
+# 127. Typical naming conventions
+Projects often use prefixes for modules/types and `_create`, `_destroy`, `_init`, `_free` patterns.
+# 128. The `_t` suffix
+Common for typedef names, though POSIX reserves many `_t` names for its own types.
+# 129. `size_t`
+Unsigned type used for object sizes and many library lengths/indexes.
+# 130. Common compile errors
+## `implicit declaration of function`
+The compiler has not seen a declaration/prototype before the call.
+## `unknown type name`
+Required typedef/header/feature macro is missing.
+## `undeclared identifier`
+Name is not visible in the current scope.
+## `conflicting types`
+Declarations/definitions disagree about a symbol's type.
+# 131. Common linker errors
+`undefined reference` and duplicate-symbol errors point to missing or conflicting definitions at link time.
+# 132. Common runtime errors
+Segfaults, aborts, assertion failures, leaks, races and corrupted output often stem from invalid memory/lifetime assumptions.
+# 133. Compiler warnings matter
+Build with strong warnings and fix them rather than normalizing noisy output.
+# 134. `-Werror`
+Turns warnings into errors. Useful in CI when the warning set/compiler version is controlled.
+# 135. Debug vs Release
+Debug favors symbols/assertions/sanitizers; Release favors optimization and production settings.
+# 136. Installing dependencies — Debian
 ```bash
--Wall -Wextra
+sudo apt install build-essential pkg-config cmake ninja-build
 ```
-
-Treat warnings as bugs until understood.
-
-Some projects use:
-
+# 137. Installing dependencies — FreeBSD
 ```bash
--Werror
+pkg install pkgconf cmake ninja
 ```
-
-which turns warnings into errors.
-
-# 101. Debug vs Release
-
-Debug:
-
-```text
--g -O0
-assertions enabled
-sanitizers possible
-```
-
-Release:
-
-```text
--O2 / -O3
-possibly NDEBUG
-optimized binary
-```
-
-# 102. Dependencies on Debian
-
-Development packages often end in `-dev`.
-
-Example:
-
-```bash
-sudo apt install libcurl4-openssl-dev
-```
-
-Find a package containing a file:
-
-```bash
-apt-file search header.h
-```
-
-# 103. Dependencies on FreeBSD
-
-```bash
-pkg search curl
-sudo pkg install curl
-```
-
-Ports can also be used, but binary packages are simpler for most users.
-
-# 104. Submodules
-
+# 138. `configure`: missing library
+Read the exact check failure and install the development package/header/library it requests.
+# 139. Development headers
+On Debian, libraries often have separate `-dev` packages; FreeBSD packages commonly install headers with the package.
+# 140. Find the package containing a file on Debian
+Use `apt-file search` after installing/updating apt-file, or `dpkg -S` for already-installed files.
+# 141. How to check what a project requires
+Read README, build files, pkg-config checks, CI workflows and container/package manifests.
+# 142. Git submodules
 ```bash
 git submodule update --init --recursive
 ```
-
-Always inspect `.gitmodules` in unfamiliar projects.
-
-# 105. Generated files
-
-Do not edit generated files unless the project expects it.
-
-Clues include:
-
-```text
-generated
-do not edit
-config.h
-parser.c generated from grammar
-```
-
-# 106. config.h
-
-Autotools/CMake projects may generate feature configuration headers.
-
-Do not manually recreate them unless the build documentation says so.
-
-# 107. Vendored libraries
-
-Some repositories include third-party dependencies in:
-
-```text
-vendor/
-third_party/
-deps/
-external/
-```
-
-# 108. Tests
-
-Look for:
-
-```text
-tests/
-test/
-*_test.c
-CTest
-make test
-make check
-```
-
-CMake:
-
+# 143. Git branch and build
+Do not reuse stale build artifacts blindly after switching branches with major build-system changes.
+# 144. Generated files
+Recognize generated sources/configure files and avoid hand-editing unless the project explicitly expects it.
+# 145. `config.h`
+Often generated by configure/CMake to record detected platform features.
+# 146. Vendored libraries
+Dependencies copied into the repository. Check version, patches, license and update process.
+# 147. Tests
+Look for `make test`, `make check`, CTest, Meson test or custom harnesses.
+# 148. CTest
 ```bash
 ctest --test-dir build --output-on-failure
 ```
-
-# 109. strace / truss / ltrace
-
-Linux system calls:
-
+# 149. Debugging a test
+Run the failing test directly under GDB/LLDB or with sanitizer options.
+# 150. `strace`
 ```bash
-strace ./app
+strace -f ./app
 ```
-
-FreeBSD equivalent:
-
+# 151. FreeBSD: `truss`
 ```bash
 truss ./app
 ```
-
-Library calls on Linux:
-
-```bash
-ltrace ./app
-```
-
-These tools help when you need to see which files, sockets or syscalls a program actually uses.
-
-# 110. Profiling
-
-gprof is an older profiler.
-
-Linux `perf` is very useful:
-
-```bash
-perf record ./app
-perf report
-```
-
-# 111. Multithreaded debugging
-
-In GDB:
-
-```text
-info threads
-thread N
-thread apply all bt
-```
-
-Deadlocks often appear as multiple threads waiting on locks.
-
-# 112. Attach to a running process
-
+# 152. `ltrace`
+On systems where available, traces dynamic-library calls.
+# 153. `gprof`
+Traditional compiler-instrumentation profiler; recognize it in older projects.
+# 154. `perf`
+Linux performance tooling for CPU sampling, counters and profiling.
+# 155. Multithreaded debugging
+Inspect all threads, locks, waits and shared state; use TSan when practical.
+# 156. Deadlock
+Occurs when threads wait in a cycle for locks/resources that can never become available.
+# 157. Attach GDB to a running process
 ```bash
 gdb -p PID
 ```
-
-# 113. Processes and signals
-
-POSIX process concepts include:
-
-```text
-fork
-exec
-wait
-kill
-signals
-```
-
-Signals:
-
-```text
-SIGTERM
-SIGINT
-SIGHUP
-SIGSEGV
-```
-
-A daemon should handle shutdown signals cleanly.
-
-# 114. Logging
-
-C programs may use stderr, syslog, journald integration or a custom logging library.
-
-Always find where logs actually go before debugging.
-
-# 115. README vs code
-
-README describes intended workflow.
-
-Build scripts and source code reveal the actual workflow.
-
-Use both.
-
-# 116. Show build commands
-
-Make:
-
+# 158. Child processes
+POSIX code may use `fork`, `exec`, pipes and `waitpid`.
+# 159. Signals
+Asynchronous process notifications such as SIGTERM and SIGINT. Signal handlers must use only async-signal-safe operations.
+# 160. Daemons
+Long-running background services need lifecycle, logging, privileges, signals and supervision.
+# 161. Logging
+Prefer structured levels/context and avoid leaking secrets.
+# 162. System logs
+On Linux services may log to journald/syslog; on FreeBSD commonly syslog/files under `/var/log`.
+# 163. README vs code
+README explains intended build/use; code and build scripts reveal the actual behavior. Check both.
+# 164. How to see compilation commands
 ```bash
 make V=1
-```
-
-CMake:
-
-```bash
+ninja -v
 cmake --build build --verbose
 ```
-
-Ninja:
-
-```bash
-ninja -C build -v
-```
-
-# 117. Choose Clang instead of GCC in CMake
-
+# 165. Set Clang instead of GCC in CMake
 ```bash
 CC=clang cmake -S . -B build
 ```
-
-# 118. Sanitizer build with CMake
-
+# 166. How to set flags
+Prefer build-system options/toolchain configuration over globally editing source files.
+# 167. Debug build with sanitizers in CMake
 ```bash
-cmake -S . -B build   -DCMAKE_BUILD_TYPE=Debug   -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-omit-frame-pointer"
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_FLAGS='-fsanitize=address,undefined -fno-omit-frame-pointer'
 ```
-
-# 119. Feature flags
-
-Projects often expose options:
-
+# 168. `cmake -L`
 ```bash
 cmake -L build
-./configure --help
-meson configure build
 ```
-
-# 120. Cross compilation
-
-Cross compilation means building for a different target architecture/OS.
-
-It requires a target compiler/toolchain and often a sysroot.
-
-# 121. Compile-time vs runtime
-
-Compile-time:
-
-- syntax,
-- types,
-- missing declarations,
-- build configuration.
-
-Link-time:
-
-- unresolved/duplicate symbols.
-
-Runtime:
-
-- invalid memory,
-- files,
-- networking,
-- permissions,
-- logic.
-
-Knowing the phase narrows the search dramatically.
-
-# 122. Undefined behavior
-
-C permits situations where the standard imposes no defined result.
-
-Examples:
-
-- out-of-bounds access,
-- use-after-free,
-- signed integer overflow,
-- invalid pointer dereference.
-
-Optimized builds may expose UB differently from debug builds.
-
-# 123. Buffer overflow
-
-Never copy unbounded data into fixed buffers.
-
-Prefer APIs where destination size is explicit and validate lengths.
-
-# 124. Integer overflow
-
-Unsigned overflow wraps modulo 2^N.
-
-Signed overflow is undefined behavior.
-
-Validate arithmetic when size calculations affect memory allocations.
-
-# 125. Check return values
-
-Many C bugs begin by ignoring failure.
-
+# 169. Feature flags
+Build-time options enable/disable optional components and platform capabilities.
+# 170. Cross compilation
+Build for another target using a cross compiler/toolchain file and target sysroot/libraries.
+# 171. Compile-time vs runtime
+Compile-time decisions affect generated binary; runtime decisions depend on input/config/environment.
+# 172. Undefined behavior
+Behavior not defined by the C standard; the compiler may optimize under the assumption it never occurs.
+# 173. Buffer overflow
+Writing past an object's bounds can corrupt memory and become a security vulnerability.
+# 174. Integer overflow
+Unsigned overflow wraps; signed overflow is undefined behavior in standard C.
+# 175. Checking return values
+Always check APIs where failure matters: allocation, file/network I/O, parsing and system calls.
+# 176. The `*_create` / `*_destroy` pattern
+Signals ownership: create allocates/returns a resource; destroy releases it.
+# 177. The `init` / `cleanup` pattern
+Often initializes caller-owned storage and later releases contained resources.
+# 178. Context object
+A struct that groups subsystem state/config/dependencies and is passed through APIs instead of globals.
+# 179. Callback + `void *userdata`
 ```c
-FILE *f = fopen(path, "r");
-if (f == NULL) {
-    ...
-}
+typedef void (*callback_fn)(int event, void *userdata);
 ```
-
-# 126. create/destroy and init/cleanup patterns
-
-Common ownership patterns:
-
-```c
-obj = object_create();
-...
-object_destroy(obj);
-```
-
-or:
-
-```c
-object_init(&obj);
-...
-object_cleanup(&obj);
-```
-
-Recognizing pairs helps understand lifetime.
-
-# 127. Context objects
-
-A project may pass one structure containing shared state:
-
-```c
-struct app_context {
-    struct logger *log;
-    struct database *db;
-    struct config cfg;
-};
-```
-
-This is preferable to many globals.
-
-# 128. Callback + void *userdata
-
-Classic C pattern:
-
-```c
-typedef void (*callback_fn)(void *userdata, int event);
-```
-
-The callback gets caller-provided context through `userdata`.
-
-# 129. Casts
-
-```c
-double x = (double)count;
-```
-
-Casts may be legitimate, but suspicious pointer casts deserve scrutiny.
-
-# 130. void *
-
-`void *` is a generic object pointer.
-
-malloc returns `void *`.
-
-Generic containers and callbacks often use it.
-
-# 131. Flexible array members
-
+Common C pattern for generic callbacks with caller-owned context.
+# 180. Casts
+Casts can document intentional conversion but can also hide type errors. Avoid unnecessary casts.
+# 181. `void *`
+Generic object pointer type used by allocators, callbacks and generic containers.
+# 182. Flexible array member
 ```c
 struct packet {
     size_t len;
     unsigned char data[];
 };
 ```
-
-Memory is allocated larger than the struct itself.
-
-# 132. container_of
-
-Kernel-style code may compute a parent structure pointer from a member pointer using offsets/macros.
-
-It looks unusual but is a common low-level C technique.
-
-# 133. Things that look scary but are normal
-
-```text
-char **argv
-void *userdata
-function pointers
-macro-heavy headers
-opaque structs
-goto cleanup
-manual allocation
-bit masks
-conditional compilation
-```
-
-The key is to trace ownership, lifetime and control flow.
-
-# 134. Completely unfamiliar repository workflow
-
-1. read README,
-2. inspect tree,
-3. identify build system,
-4. inspect dependencies,
-5. build unmodified,
-6. run tests,
-7. find main,
-8. identify public headers,
-9. map ownership and cleanup.
-
-# 135. Minimal Make workflow
-
+# 183. `container_of`
+Macro technique used to recover a containing struct from a member pointer; common in kernels/low-level libraries.
+# 184. Things that look scary but are normal
+Pointers, double pointers, bit masks, callbacks, macros, opaque structs and cleanup gotos are common once you know the local ownership rules.
+# 185. How to approach a completely unfamiliar repository
+## Step 1
+Read README and build instructions.
+## Step 2
+Identify the build system and dependencies.
+## Step 3
+Build the unmodified project.
+## Step 4
+Run tests.
+## Step 5
+Find executable entry points.
+## Step 6
+Read public headers/APIs.
+## Step 7
+Trace one feature from caller to implementation.
+## Step 8
+Inspect ownership and error paths.
+## Step 9
+Use debugger/search tools only after you know the structure.
+# 186. Minimal workflow for Make
 ```bash
-make
-make test
 make clean
+make -j4
+make test
 ```
-
-If it fails:
-
-```bash
-make V=1
-```
-
-# 136. Minimal CMake workflow
-
+# 187. Minimal workflow for CMake
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
-cmake --build build -j
+cmake --build build -j4
 ctest --test-dir build --output-on-failure
 ```
-
-# 137. Sanitizer workflow
-
+# 188. Minimal sanitizer workflow
 ```bash
-CC=clang CFLAGS="-g -O1 -fsanitize=address,undefined -fno-omit-frame-pointer" make
+CC=clang CFLAGS='-g -O1 -fsanitize=address,undefined -fno-omit-frame-pointer' make
 ```
-
-Then run tests/program normally.
-
-# 138. Crash debugging workflow
-
-1. reproduce the crash,
-2. build with `-g -O0`,
-3. run under GDB,
-4. get `bt`,
-5. inspect variables,
-6. enable ASan,
-7. fix,
-8. add a regression test.
-
-# 139. Memory bug workflow
-
-1. enable ASan,
-2. reproduce,
-3. inspect allocation/free stack traces,
-4. determine owner,
-5. fix lifetime,
-6. rerun tests,
-7. optionally verify with Valgrind.
-
-# 140. Program “does nothing”
-
-Check:
-
+# 189. Crash debugging — ready-made pattern
+Reproduce → capture exact input/version → run under debugger/sanitizer → get backtrace → inspect faulting frame and ownership.
+# 190. Memory bug debugging — ready-made pattern
+Build with ASan/UBSan or Valgrind, reproduce, inspect allocation/free stack traces, then add a regression test.
+# 191. Debugging “program does nothing”
+Check exit status, stdout/stderr, logs, blocking syscalls, expected inputs and whether you are running the correct binary.
+# 192. Debugging “missing library”
+Inspect linker/runtime-loader error, pkg-config output, library search paths and package installation.
+# 193. Debugging `undefined reference`
+Find the symbol definition and make sure its object/library is linked in the correct order/configuration.
+# 194. Debugging “header not found”
+Verify dependency development headers and compiler include paths (`-I`, pkg-config, build config).
+# 195. Useful shell commands for a C project
 ```bash
-echo $?
-strace ./app
-gdb ./app
-```
-
-Look for blocked reads, missing files, waiting sockets and early returns.
-
-# 141. Missing library
-
-Runtime:
-
-```bash
-ldd ./app
-```
-
-Build-time:
-
-```bash
-pkg-config --cflags --libs LIB
-```
-
-# 142. undefined reference
-
-Ask:
-
-- is the source file included in the build?
-- is the library linked?
-- is link order important?
-- is feature conditional compilation hiding the symbol?
-- do declarations and definitions match?
-
-# 143. header not found
-
-Check:
-
-- package installed?
-- development package installed?
-- include path?
-- generated header?
-- wrong build directory?
-- missing submodule?
-
-# 144. Useful shell commands for C projects
-
-```bash
+rg 'main\(' .
 find . -maxdepth 2 -type f | sort
-rg '#include'
-rg 'int main'
-rg 'malloc|calloc|realloc|free'
-rg 'TODO|FIXME'
 file build/app
-ldd build/app
-nm build/app
+ldd build/app 2>/dev/null || true
 ```
-
-# 145. Coding standard
-
-Look for:
-
+# 196. How to check the project's coding standard
+Look for `.clang-format`, `.clang-tidy`, CONTRIBUTING, CI lint jobs and formatting scripts.
+# 197. What you do not need to know to read 80–90% of projects
+You usually do not need compiler internals, linker-script mastery, exotic atomics or advanced macro metaprogramming.
+# 198. What you really need to know well
+Pointers/lifetimes, structs, functions, headers, build/linking, error handling, memory ownership and debugger basics.
+# 199. Mini glossary
+## compiler
+Translates source into machine/object code.
+## preprocessor
+Processes `#` directives before compilation.
+## object file
+Compiled but not fully linked machine code.
+## linker
+Resolves symbols and produces binaries/libraries.
+## header
+Declarations and shared definitions.
+## symbol
+Named function/object visible to compiler/linker/debugger.
+## shared library
+Runtime-loadable library.
+## static library
+Archive copied into link output.
+## ABI
+Binary calling/data-layout contract.
+## API
+Source-level interface contract.
+# 200. Cheat sheet: syntax
 ```text
-.clang-format
-.clang-tidy
-.editorconfig
-CONTRIBUTING.md
-```
-
-# 146. What you do not need for 80–90% of projects
-
-You do not need to master:
-
-- compiler internals,
-- assembly,
-- advanced lock-free algorithms,
-- linker scripts,
-- exotic preprocessor metaprogramming,
-- every POSIX function.
-
-# 147. What you should know well
-
-You should be comfortable with:
-
-- structs,
-- pointers,
-- arrays and strings,
-- ownership,
-- malloc/free,
-- headers,
-- build vs link phases,
-- Make/CMake basics,
-- compiler warnings,
-- GDB,
-- sanitizers,
-- common Unix tools.
-
-# 148. Mini glossary
-
-Compiler — source to object code.
-
-Preprocessor — handles `#include`, macros and conditional compilation.
-
-Object file — compiled translation unit before final linking.
-
-Linker — resolves symbols and creates binaries/libraries.
-
-Header — declarations and macros shared between files.
-
-Symbol — named function or global object visible to linker/debugger.
-
-Shared library — dynamically loaded code, e.g. `.so`.
-
-Static library — archive linked into the final binary.
-
-ABI — binary-level calling/layout conventions.
-
-API — source-level interface.
-
-# 149. Syntax cheat sheet
-
-```c
 int x = 1;
-const char *name = "Alice";
-
-if (x > 0) {
-}
-
-for (int i = 0; i < 10; i++) {
-}
-
-struct user {
-    int id;
-};
-
-struct user *u = malloc(sizeof *u);
-if (!u) {
-    return 1;
-}
-
-free(u);
+if (x) { }
+for (...) { }
+return 0;
 ```
-
-# 150. Pointer cheat sheet
-
-```c
-int x = 10;
-int *p = &x;
-
-*p = 20;
-```
-
-Read:
-
+# 201. Cheat sheet: pointers
 ```text
-&p = address
-*p = object pointed to
-T * = pointer to T
-T ** = pointer to pointer to T
+&x address
+*p dereference
+T * pointer to T
+T ** pointer to pointer
+-> member through pointer
 ```
-
-# 151. Build cheat sheet
-
+# 202. Cheat sheet: build
 ```bash
 cc -Wall -Wextra -g main.c -o app
-cc -c file.c
-cc a.o b.o -o app
-cc main.c -Iinclude -Llib -lfoo -o app
 ```
-
-# 152. GDB cheat sheet
-
+# 203. Cheat sheet: Make
+```bash
+make
+make -j4
+make clean
+make test
+```
+# 204. Cheat sheet: CMake
+```bash
+cmake -S . -B build
+cmake --build build
+ctest --test-dir build
+```
+# 205. Cheat sheet: GDB
 ```text
-break main
+break
 run
 next
 step
 continue
-print x
+print
 bt
-frame N
-info locals
-quit
 ```
-
-# 153. Diagnostic cheat sheet
-
-```bash
-file app
-ldd app
-nm app
-readelf -h app
-strace ./app
-valgrind ./app
-gdb ./app
-```
-
-# 154. How to mentally read a C function
-
-Ask:
-
-1. what are the inputs?
-2. who owns the inputs?
-3. what can be NULL?
-4. what gets allocated?
-5. what gets freed?
-6. what errors can return?
-7. what globals/context does it touch?
-8. what side effects occur?
-
-# 155. The ownership question
-
-The single most important memory question is:
-
+# 206. Cheat sheet: diagnostics
 ```text
-Who owns this memory?
+compiler warnings
+ASan/UBSan
+Valgrind
+GDB/LLDB
+strace/truss
+logs
 ```
-
-Look for names such as:
-
+# 207. Cheat sheet: entering an unfamiliar repo
 ```text
-create
-new
-alloc
-clone
-copy
-retain
-ref
-destroy
-free
-release
-unref
+README → build files → build → tests → main → headers → ownership → one feature flow
 ```
-
-# 156. Reference counting
-
-Libraries may use retain/release style ownership:
-
+# 208. How to mentally read a C function
+Identify inputs, outputs, nullable pointers, allocations, ownership transfers, error exits and cleanup.
+# 209. Most important questions when reading C code
+What can be NULL? Who allocates? Who frees? What is the lifetime? What does each return code mean? Can lengths overflow?
+# 210. Most important question: who owns the memory?
+Ownership determines who may mutate/free data and how long pointers remain valid.
+# 211. Names that suggest ownership
+Words such as `new`, `create`, `alloc`, `dup`, `copy`, `free`, `destroy`, `release`, `borrow`, `ref`, `unref` often reveal lifetime conventions.
+# 212. Refcount
+Reference counting keeps an object alive while its count is nonzero. Every retained reference must eventually be released.
+# 213. Very short map of the C world
 ```text
-ref++
-use object
-ref--
-destroy when zero
+source/header → compiler → object files → linker → binary
+runtime: stack + heap + OS/lib APIs
+debug: warnings + sanitizers + debugger + tracing
 ```
-
-Never mix refcounted ownership with unconditional free unless the API says so.
-
-# 157. Very short map of the C world
-
-```text
-source .c
- + headers .h
-      ↓ compiler
-object files .o
- + libraries
-      ↓ linker
-binary / shared library
-      ↓ runtime
-OS / libc / POSIX / external libraries
-```
-
-# 158. Final checklist
-
-When cloning an unfamiliar C project:
-
-- read README,
-- identify build system,
-- install dev dependencies,
-- initialize submodules,
-- build with warnings,
-- run tests,
-- find main,
-- map public APIs,
-- map allocations and frees,
-- use GDB/sanitizers for failures.
-
-# 159. Minimum knowledge to remember
-
-If you remember only the essentials:
-
-```text
-pointer       = address
-*ptr          = pointed value
-&value        = address of value
-malloc/free   = heap lifetime
-.h            = declarations
-.c            = implementation
-compile       = source → object
-link          = objects + libs → binary
--g            = debug symbols
--Wall -Wextra = warnings
-ASan/GDB      = first-line debugging tools
-```
+# 214. Final checklist
+Build cleanly, run tests, understand entry point, know ownership, check warnings, reproduce failures, use sanitizers/debugger, review cleanup/error paths.
+# 215. Minimum knowledge to remember
+Pointers and lifetimes, structs, headers, compilation/linking, Make/CMake, return-value checking, sanitizers and GDB are enough to understand most everyday C projects.
