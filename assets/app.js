@@ -17,6 +17,9 @@
       directory: "katalog",
       item: "pozycja",
       items: "pozycji",
+      article: "artykuł",
+      articlesFew: "artykuły",
+      articlesMany: "artykułów",
       results: "Wyniki",
       noResults: "Brak wyników dla",
       contentPendingTitle: "Angielska wersja jest w przygotowaniu.",
@@ -54,6 +57,9 @@
       directory: "directory",
       item: "item",
       items: "items",
+      article: "article",
+      articlesFew: "articles",
+      articlesMany: "articles",
       results: "Results",
       noResults: "No results for",
       contentPendingTitle: "English content is being prepared.",
@@ -336,6 +342,39 @@
   function setNavigationContext(context) {
     state.navigationContext = { ...state.navigationContext, ...context };
   }
+  function clearReader() {
+    state.currentDoc = null;
+    els.reader.hidden = true;
+    els.reader.innerHTML = "";
+    els.error.hidden = true;
+    els.errorText.textContent = "";
+    if (els.readerTop) els.readerTop.hidden = true;
+    els.welcome.hidden = true;
+    document.title = "Null Yard Tech Handbook";
+  }
+
+  function countArticles(node) {
+    if (!node) return 0;
+    if (node.type === "file") return 1;
+    let total = 0;
+    for (const child of node.children.values()) {
+      total += countArticles(child);
+    }
+    return total;
+  }
+
+  function articleCountLabel(count) {
+    if (state.language === "en") {
+      return count + " " + (count === 1 ? t("article") : t("articlesMany"));
+    }
+    const mod10 = count % 10;
+    const mod100 = count % 100;
+    if (count === 1) return count + " " + t("article");
+    if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) {
+      return count + " " + t("articlesFew");
+    }
+    return count + " " + t("articlesMany");
+  }
   function buildTree(files) {
     const root = { type: "dir", name: state.contentRoot, path: "", children: new Map() };
 
@@ -377,7 +416,8 @@
     return node;
   }
 
-  function renderDirectory(path = "") {
+  function renderDirectory(path = "", { clearContent = true } = {}) {
+    if (clearContent) clearReader();
     state.currentDir = path;
     els.results.hidden = true;
     els.browser.hidden = false;
@@ -387,7 +427,13 @@
     const node = getDirNode(path);
     const entries = [...node.children.values()].sort((a, b) => {
       if (a.type !== b.type) return a.type === "dir" ? -1 : 1;
-      return a.name.localeCompare(b.name, state.language);
+      const aLabel = a.type === "dir"
+        ? displaySegment(a.name)
+        : (a.file.title || a.name.replace(/\.md$/i, ""));
+      const bLabel = b.type === "dir"
+        ? displaySegment(b.name)
+        : (b.file.title || b.name.replace(/\.md$/i, ""));
+      return aLabel.localeCompare(bLabel, state.language, { sensitivity: "base" });
     });
 
     els.location.textContent = displayPath(path);
@@ -410,8 +456,8 @@
       if (entry.type === "dir") {
         els.browser.appendChild(makeEntry({
           icon: "▣",
-          name: displaySegment(entry.name),
-          meta: t("directory"),
+          name: displaySegment(entry.name).toLocaleUpperCase(state.language),
+          meta: "(" + articleCountLabel(countArticles(entry)) + ")",
           arrow: "›",
           onClick: () => navigateDir(entry.path)
         }));
@@ -557,6 +603,7 @@
   }
 
   function runSearch(query) {
+    clearReader();
     const q = query.trim();
 
     if (!q) {
