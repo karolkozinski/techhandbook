@@ -569,7 +569,11 @@
       container.appendChild(makeEntry({
         icon: "▤",
         name: file.title || file.name,
-        meta: file.path.replace(new RegExp(`^${state.contentRoot}/`), ""),
+        meta: (() => {
+          const rel = file.path.replace(new RegExp(`^${state.contentRoot}/`), "");
+          const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
+          return displayPath(dir);
+        })(),
         arrow: "›",
         onClick: () => openDocument(file, { type: "search", query: q, path: state.currentDir })
       }));
