@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -1455,6 +1455,49 @@
         "cloud",
         "oci",
         "oracle"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-008",
+      "name": "api-integrations.md",
+      "title": "APIs and System Integrations — Practical Handbook",
+      "path": "md/en/data-api/api-integrations.md",
+      "category": "data-api",
+      "tags": [
+        "api",
+        "rest",
+        "json",
+        "webhook",
+        "oauth"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-009",
+      "name": "data-formats-json-yaml-toml-xml.md",
+      "title": "JSON, YAML, TOML and XML — Data and Configuration Handbook",
+      "path": "md/en/data-api/data-formats-json-yaml-toml-xml.md",
+      "category": "data-api",
+      "tags": [
+        "json",
+        "yaml",
+        "toml",
+        "xml"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-010",
+      "name": "postgresql-sql.md",
+      "title": "SQL and PostgreSQL for Developers — Handbook",
+      "path": "md/en/data-api/postgresql-sql.md",
+      "category": "data-api",
+      "tags": [
+        "sql",
+        "postgres",
+        "postgresql",
+        "database"
       ],
       "language": "en"
     }
