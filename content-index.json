@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -971,6 +971,155 @@
         "cls",
         "cache",
         "images"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-011",
+      "name": "ci-cd-github-actions.md",
+      "title": "CI/CD and GitHub Actions",
+      "path": "md/en/devops/ci-cd-github-actions.md",
+      "category": "devops",
+      "tags": [
+        "ci",
+        "cd",
+        "github",
+        "actions"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-012",
+      "name": "docker.md",
+      "title": "Docker — Practical Handbook",
+      "path": "md/en/devops/docker.md",
+      "category": "devops",
+      "tags": [
+        "docker",
+        "containers",
+        "devops"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-013",
+      "name": "git-team-workflows.md",
+      "title": "Git in Team Workflows",
+      "path": "md/en/devops/git-team-workflows.md",
+      "category": "devops",
+      "tags": [
+        "git",
+        "branch",
+        "merge",
+        "rebase"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-014",
+      "name": "github.md",
+      "title": "GitHub — Practical Handbook",
+      "path": "md/en/devops/github.md",
+      "category": "devops",
+      "tags": [
+        "github",
+        "git",
+        "repo",
+        "repository"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-015",
+      "name": "logging-monitoring-troubleshooting.md",
+      "title": "Logging, Monitoring and Troubleshooting",
+      "path": "md/en/devops/logging-monitoring-troubleshooting.md",
+      "category": "devops",
+      "tags": [
+        "logs",
+        "monitoring",
+        "debug",
+        "troubleshooting"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-024",
+      "name": "cybersecurity-basics-pentesting.md",
+      "title": "Cybersecurity and Pentesting — Fundamentals",
+      "path": "md/en/security/cybersecurity-basics-pentesting.md",
+      "category": "security",
+      "tags": [
+        "security",
+        "cybersecurity",
+        "pentest",
+        "beef",
+        "burp",
+        "owasp",
+        "nmap"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-025",
+      "name": "linux-server-security.md",
+      "title": "Linux Permissions and Server Security",
+      "path": "md/en/security/linux-server-security.md",
+      "category": "security",
+      "tags": [
+        "linux",
+        "security",
+        "permissions",
+        "ssh",
+        "firewall"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-026",
+      "name": "web-security.md",
+      "title": "Web Application Security for Developers",
+      "path": "md/en/security/web-security.md",
+      "category": "security",
+      "tags": [
+        "web",
+        "security",
+        "owasp",
+        "xss",
+        "csrf",
+        "sql injection"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-051",
+      "name": "oauth-oidc-jwt-sessions.md",
+      "title": "OAuth 2.0, OpenID Connect, JWT and Sessions",
+      "path": "md/en/security/authentication/oauth-oidc-jwt-sessions.md",
+      "category": "security/authentication",
+      "tags": [
+        "oauth",
+        "oidc",
+        "jwt",
+        "session",
+        "authentication",
+        "authorization",
+        "pkce"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-052",
+      "name": "systemd-cron-schedulers.md",
+      "title": "systemd, cron and Schedulers",
+      "path": "md/en/devops/systemd-cron-schedulers.md",
+      "category": "devops",
+      "tags": [
+        "systemd",
+        "cron",
+        "timer",
+        "scheduler",
+        "service"
       ],
       "language": "en"
     }
