@@ -1,627 +1,751 @@
 # Debian 13 “Trixie” — Desktop + Server Handbook
-
-## 1. What Debian is
-
-Debian is a community-developed Linux distribution known for stability, a large package ecosystem and strong server use. Debian 13 is the Trixie release.
-
-## 2. Debian branches
-
-stable — production-oriented and conservative.
-
-testing — future stable branch with newer packages.
-
-unstable/Sid — continuously changing development branch.
-
-## 3. System structure
-
-Debian combines the Linux kernel, GNU/user-space tools, APT/dpkg packaging, systemd and a large repository ecosystem.
-
-## 4. Important directories
-
-```text
-/          filesystem root
-/home      user homes
-/root      root home
-/etc       system configuration
-/var       logs, caches, databases and changing data
-/usr       programs and shared resources
-/tmp       temporary files
-/run       runtime state
-/mnt       manual mounts
-/media     removable-media mounts
-/opt       optional software
-```
-
-## 5. Users and permissions
-
-Inspect identity:
-
+# 1. What Debian actually is
+Debian is a community-developed GNU/Linux distribution known for stability, broad architecture support, large repositories and a strong server ecosystem.
+# 2. Debian branches
+## stable
+Stable is the production-oriented branch with conservative updates.
+## testing
+Testing contains packages intended for the next stable release.
+## unstable / Sid
+Unstable is the continuously changing development branch.
+# 3. How the system is built
+Debian combines the Linux kernel, GNU/user-space tools, APT/dpkg packaging and, on normal installations, systemd.
+# 4. Important directories
+## `/`
+filesystem root.
+## `/home`
+user homes.
+## `/root`
+root home.
+## `/etc`
+system configuration.
+## `/var`
+logs, databases, caches and changing data.
+## `/usr`
+installed programs and shared resources.
+## `/bin, /sbin, /lib`
+compatibility paths, commonly merged into /usr.
+## `/tmp`
+temporary files.
+## `/run`
+runtime state.
+## `/mnt`
+manual mounts.
+## `/media`
+removable media.
+## `/opt`
+optional third-party software.
+# 5. Users and permissions
 ```bash
 whoami
 id
 groups
-```
-
-Create a user:
-
-```bash
 sudo adduser alice
 ```
-
-## 6. root and sudo
-
-Use sudo for administrative commands instead of staying logged in as root.
-
-## 7. chmod, chown and groups
-
+# 6. root and sudo
+Use sudo for administrative commands instead of remaining logged in as root.
+# 7. chmod, chown and groups
+## change owner
 ```bash
 sudo chown user:group file
+```
+## change permissions
+```bash
 chmod 640 file
 chmod u+x script.sh
+```
+## add user to a group
+```bash
 sudo usermod -aG GROUP USER
 ```
-
-## 8. APT package management
-
+# 8. Package management — APT
 ```bash
 sudo apt update
 sudo apt upgrade
+```
+# 9. Updating the system
+```bash
+sudo apt update && sudo apt upgrade
+```
+# 10. Installing packages
+```bash
 sudo apt install PACKAGE
+```
+# 11. Removing packages
+```bash
 sudo apt remove PACKAGE
 sudo apt purge PACKAGE
 sudo apt autoremove
+```
+# 12. Searching packages
+```bash
 apt search NAME
 apt show PACKAGE
 ```
-
-## 9. dpkg
-
+# 13. dpkg
 ```bash
 dpkg -l
 dpkg -L PACKAGE
 dpkg -S /path/to/file
 ```
-
-## 10. APT repositories
-
-Debian repositories are configured under /etc/apt/sources.list and /etc/apt/sources.list.d/. Components include main, contrib, non-free and non-free-firmware.
-
-## 11. Flatpak
-
-Flatpak is useful primarily for desktop applications that benefit from sandboxing and distribution-independent packaging.
-
-## 12. APT vs Flatpak
-
-Use APT for system packages, CLI tools, libraries and services. Use Flatpak when it gives a practical desktop-app advantage.
-
-## 13. Debian as a desktop
-
-Debian can run GNOME, KDE Plasma and many other desktop environments.
-
-## 14. GNOME and KDE Plasma
-
-GNOME emphasizes an integrated workflow. KDE Plasma emphasizes configurability and a traditional desktop model. Both can coexist on one installation, although duplicated applications/settings can be confusing.
-
-## 15. Wayland and X11
-
-Modern Debian desktops increasingly use Wayland by default while retaining X11 compatibility through XWayland or optional sessions.
-
-## 16. Display managers
-
+# 14. APT repositories
+Repository definitions live in /etc/apt/sources.list and /etc/apt/sources.list.d/.
+# 15. main, contrib, non-free, non-free-firmware
+## main
+Debian Free Software Guidelines-compatible software.
+## contrib
+free software depending on components outside main.
+## non-free
+software not meeting Debian free-software criteria.
+## non-free-firmware
+firmware separated from the main archive components.
+# 16. Flatpak
+Flatpak is useful mainly for desktop applications distributed independently of Debian packages.
+# 17. What to install with APT and what with Flatpak
+## APT
+Prefer for system software, libraries, CLI tools and services.
+## Flatpak
+Prefer when a desktop app benefits from newer sandboxed distribution-independent packaging.
+# 18. Debian as a desktop
+Debian supports GNOME, KDE Plasma and many lighter desktop environments.
+# 19. GNOME
+Integrated workflow-oriented desktop with Mutter and strong Wayland support.
+# 20. KDE Plasma
+Highly configurable desktop built around KWin and the Qt ecosystem.
+# 21. GNOME versus KDE
+Choose by workflow and preferences; both are fully capable.
+# 22. You can install GNOME and KDE together
+Possible, but duplicate apps, settings and services can make the system less tidy.
+# 23. Wayland and X11
+Wayland is the modern default on many setups; X11 remains available for compatibility.
+# 24. Display manager
 Common display managers include GDM, SDDM and LightDM.
-
-## 17. NetworkManager
-
+# 25. NetworkManager
 ```bash
 nmcli device
 nmcli connection show
 nmcli connection show --active
 ```
-
-## 18. IP, interfaces and DNS
-
+# 26. Checking IP addresses
 ```bash
 ip addr
+```
+# 27. Network interfaces
+```bash
 ip link
-ip route
+```
+# 28. DNS
+```bash
 resolvectl status
 dig example.com
 ```
-
-## 19. Network testing
-
+# 29. Testing networking
 ```bash
 ping 1.1.1.1
-curl -I https://example.com
-wget URL
 traceroute example.com
 nc -vz HOST PORT
 ```
-
-## 20. Audio and Bluetooth
-
-Modern Debian desktops commonly use PipeWire for audio. Bluetooth tooling depends on desktop integration and BlueZ underneath.
-
-## 21. Drivers and firmware
-
-Firmware packages may come from non-free-firmware. Intel and AMD graphics generally use in-kernel/open drivers. NVIDIA may require the proprietary driver depending on hardware and needs.
-
-## 22. Laptop power and sleep
-
-Inspect battery and power behavior through desktop tools, systemd/logind, kernel logs and firmware settings. Suspend failures should be diagnosed with journalctl and dmesg rather than guessed at.
-
-## 23. Printers
-
-CUPS is the standard printing system in many Linux setups.
-
-## 24. systemd and services
-
+# 30. curl and wget
+```bash
+curl -I https://example.com
+wget https://example.com/file
+```
+# 31. Audio — PipeWire
+Modern Debian desktops commonly use PipeWire for audio and media routing.
+# 32. Bluetooth
+BlueZ provides the underlying Linux Bluetooth stack; desktop environments add GUI integration.
+# 33. Drivers and firmware
+Firmware often comes from non-free-firmware; inspect hardware with lspci/lsusb and logs with journalctl/dmesg.
+# 34. NVIDIA
+Depending on hardware and workload, the proprietary NVIDIA driver may be appropriate.
+# 35. Intel and AMD
+Modern Intel/AMD graphics usually use open kernel/Mesa drivers.
+# 36. Laptop — battery and power
+Use desktop power controls, logind/systemd tools and firmware settings; inspect real logs when diagnosing battery behavior.
+# 37. Suspend
+Suspend issues require checking kernel logs, firmware, drivers and wake sources rather than guessing.
+# 38. Printers
+CUPS is the traditional Linux printing stack.
+# 39. systemd — service startup core
+systemd manages system boot, services, timers and much runtime state.
+# 40. systemctl
 ```bash
 systemctl status SERVICE
-sudo systemctl start SERVICE
-sudo systemctl stop SERVICE
 sudo systemctl restart SERVICE
-sudo systemctl reload SERVICE
-sudo systemctl enable SERVICE
+```
+# 41. Enable at boot
+```bash
 sudo systemctl enable --now SERVICE
 ```
-
-## 25. User services
-
+# 42. Is a service running?
+```bash
+systemctl is-active SERVICE
+systemctl status SERVICE
+```
+# 43. List running services
+```bash
+systemctl --type=service --state=running
+```
+# 44. User services
 ```bash
 systemctl --user status
 systemctl --user enable --now SERVICE
 ```
-
-## 26. Logs with journalctl
-
+# 45. Logs — journalctl
+```bash
+journalctl -b
+journalctl -p err
+```
+# 46. Logs for one service
 ```bash
 journalctl -u SERVICE
 journalctl -u SERVICE -f
-journalctl -b
-journalctl -k
-journalctl -p err
 ```
-
-## 27. Processes
-
+# 47. Kernel logs
+```bash
+journalctl -k
+dmesg
+```
+# 48. Processes
 ```bash
 ps aux
 top
 htop
-pgrep -af NAME
-kill PID
-pkill NAME
 ```
-
-## 28. RAM, CPU and load
-
+# 49. PID
+A PID uniquely identifies a process while it exists.
+# 50. pkill and killall
+```bash
+pkill NAME
+killall NAME
+```
+# 51. RAM
 ```bash
 free -h
+```
+# 52. CPU and load average
+```bash
+lscpu
 uptime
 top
-lscpu
 ```
-
-## 29. Disks and mounts
-
+# 53. Disks
 ```bash
 lsblk -f
 df -h
-du -sh *
+```
+# 54. Mounting disks
+```bash
 mount
 findmnt
 ```
-
-Persistent mounts are configured in /etc/fstab.
-
-## 30. Filesystems
-
-ext4 is a common default. Btrfs offers snapshots and advanced features. ZFS can be used but is not part of the Linux kernel tree and needs additional integration.
-
-## 31. SMART
-
+# 55. `/etc/fstab`
+fstab defines persistent mounts; test changes before rebooting.
+# 56. ext4
+Mature general-purpose Linux filesystem and common default.
+# 57. Btrfs
+Copy-on-write filesystem with snapshots, checksums and subvolumes.
+# 58. ZFS
+Powerful external filesystem/storage stack requiring additional integration on Debian.
+# 59. SMART
 ```bash
 sudo smartctl -a /dev/sdX
 ```
-
-## 32. Debian as a server
-
-Server administration centers on SSH, services, logs, networking, firewalling, updates, backups and observability.
-
-## 33. SSH
-
-Install:
-
+# 60. Debian as a server
+Server work centers on SSH, services, logs, networking, updates, backups and observability.
+# 61. Installing SSH
 ```bash
 sudo apt install openssh-server
 ```
-
-Connect:
-
+# 62. Connecting with SSH
 ```bash
 ssh user@server
 ```
-
-Keys:
-
+# 63. SSH keys
 ```bash
 ssh-keygen -t ed25519
+```
+# 64. ssh-copy-id
+```bash
 ssh-copy-id user@server
 ```
-
-Client config lives in ~/.ssh/config. Server config lives in /etc/ssh/sshd_config.
-
-## 34. SSH hardening
-
-Prefer keys, restrict root login, and disable password authentication only after verifying key access. Always test a new session before closing the old one.
-
-## 35. SCP and rsync
-
+# 65. authorized_keys
+Public keys authorized for login are commonly stored in ~/.ssh/authorized_keys.
+# 66. SSH client configuration
+Use ~/.ssh/config for host aliases, usernames, ports and key selection.
+# 67. sshd configuration
+Server configuration is primarily /etc/ssh/sshd_config.
+# 68. Disable root login over SSH
+Set an appropriate PermitRootLogin policy and test a normal privileged account first.
+# 69. Key-only login
+Disable password authentication only after verifying a second working key-based session.
+# 70. SCP
 ```bash
 scp file user@server:/tmp/
+```
+# 71. rsync
+```bash
 rsync -avz source/ user@server:/srv/app/
 ```
-
-## 36. Ports and listeners
-
+# 72. Ports
+Ports identify transport endpoints; services must listen on the intended interface/port.
+# 73. What is listening on the server
 ```bash
 ss -lntup
 sudo lsof -i :8080
 ```
-
-localhost means loopback-only. 0.0.0.0 means all IPv4 interfaces.
-
-## 37. Firewall
-
-nftables is Debian's native firewall framework. UFW is a simpler frontend for many common cases.
-
+# 74. localhost
+127.0.0.1/::1 is loopback-only and not reachable from other machines.
+# 75. 0.0.0.0
+Binding to 0.0.0.0 listens on all IPv4 interfaces.
+# 76. nftables — firewall
+nftables is Debian's native packet-filtering framework.
+# 77. Minimal firewall idea
+Allow established traffic, SSH from trusted sources and only required public application ports.
+# 78. UFW
 ```bash
 sudo ufw allow OpenSSH
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
 sudo ufw enable
 ```
-
-## 38. fail2ban
-
-fail2ban can react to repeated authentication failures, but it does not replace keys, MFA or proper service configuration.
-
-## 39. nginx
-
+# 79. fail2ban
+fail2ban can react to repeated failures, but does not replace strong authentication and firewall policy.
+# 80. Nginx
 ```bash
 sudo apt install nginx
+```
+# 81. Nginx configuration
+Main configuration is under /etc/nginx; site files are commonly under sites-available/sites-enabled.
+# 82. Test Nginx configuration
+```bash
 sudo nginx -t
-sudo systemctl reload nginx
 ```
-
-Reverse proxy example:
-
-```nginx
-server {
-    listen 80;
-    server_name app.example.com;
-
-    location / {
-        proxy_pass http://127.0.0.1:8080;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
+# 83. Reverse proxy
+Proxy public HTTP traffic to a backend bound to localhost or a private network.
+# 84. Certbot and HTTPS
+Let's Encrypt/Certbot can automate certificate issuance and renewal.
+# 85. Your application as a systemd service
+Create a unit with explicit User, WorkingDirectory, ExecStart and restart policy.
+# 86. `/usr/local/bin`
+Use for locally installed executables not managed by APT.
+# 87. PATH
+```bash
+echo "$PATH"
 ```
-
-## 40. HTTPS
-
-Let's Encrypt/Certbot can automate TLS certificate deployment for nginx.
-
-## 41. Your own app as a systemd service
-
-```ini
-[Unit]
-Description=My application
-After=network.target
-
-[Service]
-User=myapp
-WorkingDirectory=/srv/myapp
-ExecStart=/srv/myapp/myapp
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
+# 88. which and command -v
+```bash
+command -v nginx
+which nginx
 ```
-
-## 42. /usr/local/bin and PATH
-
-Locally installed administrative/user tools belong under /usr/local/bin or ~/.local/bin rather than random system directories.
-
-## 43. Cron and systemd timers
-
+# 89. Cron
 ```bash
 crontab -e
+crontab -l
+```
+# 90. systemd timers
+```bash
 systemctl list-timers
 ```
-
-systemd timers integrate better with journald and service units; cron remains simple and ubiquitous.
-
-## 44. Security updates and system version
-
+# 91. Security updates
+Keep package metadata fresh and apply security updates on a controlled schedule.
+# 92. Checking Debian version
 ```bash
-cat /etc/debian_version
 cat /etc/os-release
-sudo apt update
-sudo apt upgrade
+cat /etc/debian_version
 ```
-
-## 45. Hostname and time
-
+# 93. Hostname
 ```bash
 hostnamectl
+```
+# 94. Time and time zone
+```bash
 timedatectl
 ```
-
-Keep time synchronized; authentication and TLS can break when clocks drift badly.
-
-## 46. Useful shell tools
-
+# 95. Time synchronization
+Correct time is important for TLS, authentication, logs and distributed systems.
+# 96. `hostname`, `/etc/hosts` and DNS
+Hostname is local identity; /etc/hosts provides static mappings; DNS resolves names network-wide.
+# 97. Archives
 ```bash
-find
-grep
-less
-tail
-head
-tee
-tar
-zip
-unzip
+tar -czf backup.tar.gz directory/
+tar -xzf backup.tar.gz
 ```
-
-## 47. User shell configuration
-
-Typical files include ~/.profile, ~/.bashrc and ~/.zshrc depending on shell.
-
-## 48. Environment variables and aliases
-
-Use environment variables for runtime configuration and aliases only for interactive convenience.
-
-## 49. sudoedit
-
-Use sudoedit for safer editing of privileged configuration files:
-
+# 98. zip
+```bash
+zip -r archive.zip directory
+unzip archive.zip
+```
+# 99. `find`
+```bash
+find /etc -iname '*.conf'
+```
+# 100. grep
+```bash
+grep -Rni 'pattern' /etc
+```
+# 101. less
+```bash
+less /var/log/file.log
+```
+# 102. tail
+```bash
+tail -f /var/log/file.log
+```
+# 103. head
+```bash
+head -n 20 file
+```
+# 104. Pipes
+Use `|` to pass stdout from one command to stdin of another.
+# 105. Redirections
+Use `>` to overwrite and `>>` to append.
+# 106. `tee`
+```bash
+echo value | sudo tee /etc/example.conf
+```
+# 107. Editors
+vi/Vim/Neovim are reliable across servers; use whichever editor you can operate confidently.
+# 108. User shell configuration
+Common files include ~/.profile, ~/.bashrc and ~/.zshrc.
+# 109. Aliases
+Use aliases for interactive convenience, not critical automation.
+# 110. Environment variables
+```bash
+export APP_ENV=production
+env
+```
+# 111. `sudoedit`
 ```bash
 sudoedit /etc/ssh/sshd_config
 ```
-
-## 50. Troubleshooting method
-
-Ask in order: what exactly fails, is the process running, what do logs say, is it listening, does it work locally, does networking/firewall allow it, and does DNS point correctly.
-
-## 51. Slow boot
-
+# 112. Troubleshooting — step-by-step method
+## 1. What exactly is broken?
+Define the symptom precisely.
+## 2. Is the process running?
+Check service/process state.
+## 3. What do the logs say?
+Read errors before changing configuration.
+## 4. Is the service listening?
+Inspect ports and bind addresses.
+## 5. Does it work locally?
+Test localhost/backend directly.
+## 6. Does it work through the correct address?
+Test the actual interface/URL.
+## 7. Does the firewall allow it?
+Inspect local and provider firewall rules.
+## 8. Does DNS point to the correct address?
+Resolve the hostname and compare with the intended endpoint.
+# 113. When boot is slow
 ```bash
 systemd-analyze
 systemd-analyze blame
 systemd-analyze critical-chain
 ```
-
-## 52. Boot problems
-
-Use journalctl from the failed boot, recovery targets, kernel logs and GRUB/initramfs knowledge rather than random package removal.
-
-## 53. Disk full
-
+# 114. When the system does not boot correctly
+Use recovery mode, previous kernels, journalctl, GRUB and initramfs diagnostics rather than random package removal.
+# 115. When disk space suddenly disappears
 ```bash
 df -h
 df -i
 sudo du -xhd1 /var | sort -h
 ```
-
-## 54. DNS problems
-
+# 116. When DNS does not work
 ```bash
 resolvectl status
 dig example.com
 ping 1.1.1.1
 ```
-
-## 55. SSH problems
-
+# 117. When SSH does not work
 ```bash
 systemctl status ssh
 journalctl -u ssh
 ss -lntp | grep ':22'
 ssh -vvv user@server
 ```
-
-## 56. Application fails to start
-
+# 118. When an application will not start
 ```bash
 systemctl status myapp
 journalctl -u myapp -n 100
 ```
-
-Then test the binary manually under the service user if appropriate.
-
-## 57. Desktop configuration
-
-User settings commonly live under ~/.config, ~/.local/share and ~/.cache according to XDG conventions.
-
-## 58. GNOME and KDE advanced settings
-
-GNOME uses tools such as gsettings/dconf. KDE stores much configuration under ~/.config in KDE-specific files.
-
-## 59. Hardware information
-
+# 119. Desktop — where to look for user configuration
+Most user settings live under ~/.config, ~/.local/share and ~/.cache.
+# 120. XDG
+XDG Base Directory conventions standardize config/data/cache locations.
+# 121. GNOME — advanced settings
+Use Settings, gsettings and dconf carefully.
+# 122. KDE — configuration
+KDE stores many settings under ~/.config and exposes extensive GUI controls.
+# 123. Default applications
+Desktop environments manage MIME-type associations and preferred apps.
+# 124. Clipboard and Wayland
+Wayland isolates clients more strictly; tools such as wl-copy/wl-paste are common.
+# 125. Monitoring temperatures
+```bash
+sensors
+```
+# 126. Hardware information
 ```bash
 lscpu
 lspci
 lsusb
-sensors
 ```
-
-## 60. Development packages and Git
-
+# 127. Development packages
 ```bash
-sudo apt install build-essential git
+sudo apt install build-essential
+```
+# 128. Git
+```bash
+sudo apt install git
 git --version
 ```
-
-Install a local .deb with:
-
+# 129. `apt install ./package.deb`
 ```bash
 sudo apt install ./package.deb
 ```
-
-## 61. AppImage
-
-AppImage is a portable single-file desktop application format. It is not integrated into system package management by default.
-
-## 62. Docker
-
-Docker is suitable for isolated application deployment. It is not automatically the best answer for every service.
-
+# 130. AppImage
+Portable application format; executable directly after permission changes, but not managed like APT packages.
+# 131. Docker on Debian
+Docker can package/deploy applications; understand volumes, networks, images and update strategy.
+# 132. Container versus VM
+## container
+Shares the host kernel and isolates processes/filesystems.
+## virtual machine
+Runs its own guest kernel and provides a stronger isolation boundary at higher overhead.
+# 133. Docker Compose
 ```bash
-docker ps
 docker compose up -d
+docker compose ps
 ```
-
-## 63. Containers vs virtual machines
-
-Containers share the host kernel. VMs run their own guest kernel and provide stronger isolation boundaries at higher overhead.
-
-## 64. Backups
-
-Back up configuration, databases, user data and application state. Git is not a backup for databases/uploads.
-
-Useful tools include rsync, restic, Borg and rclone.
-
-## 65. Server security baseline
-
-Use updates, SSH keys, minimal open ports, separate service users, firewalling, backups, logs and least privilege.
-
-Changing the SSH port is not a substitute for authentication security.
-
-## 66. Do not run random Internet scripts blindly
-
-Read installation scripts and understand what they change, especially when run as root.
-
-## 67. After desktop installation
-
-Update packages, install firmware/drivers if needed, configure backups, power behavior, browser/dev tools and desktop applications.
-
-## 68. After server installation
-
-Create admin user, configure SSH keys, update system, configure firewall, install monitoring/backups and only then deploy services.
-
-## 69. Useful CLI tools
-
-Examples: curl, wget, git, vim/neovim, tmux, htop, ncdu, lsof, strace, jq, ripgrep and rsync.
-
-## 70. User administration
-
+# 134. When not to use Docker
+Do not containerize a simple native service only because containers are fashionable.
+# 135. Backups
+Back up configuration, databases, application data and user data; test restore procedures.
+# 136. rsync as a simple backup
+```bash
+rsync -aH --delete source/ backup/
+```
+# 137. Backup tools
+## restic
+Encrypted deduplicating backup tool with many backends.
+## Borg
+Deduplicating backup tool suitable for local/SSH repositories.
+## rclone
+Excellent for copying/synchronizing to cloud/object storage.
+# 138. Server security — sensible baseline
+Updates, SSH keys, least privilege, firewall, backups, logs, secret handling and minimal services.
+# 139. Changing the SSH port
+Can reduce noise but is not a security control equivalent to keys/MFA/firewalling.
+# 140. `sudo` instead of root
+Use temporary elevation and separate admin identities.
+# 141. Do not run random scripts from the Internet
+Read scripts first, especially before piping them to a root shell.
+# 142. `sudo apt install` versus manual installation
+Prefer package-managed software unless a manual install has a clear maintenance plan.
+# 143. What to do after installing Debian on desktop
+Update, install firmware/drivers, configure backups, power settings and the applications you actually use.
+# 144. What to do after installing Debian on server
+Create admin access, keys, updates, firewall, backups/monitoring, then deploy services.
+# 145. Useful CLI packages
+Examples: curl, wget, git, vim, tmux, htop, jq, ripgrep, rsync, lsof, strace and ncdu.
+# 146. `ncdu`
+```bash
+ncdu /var
+```
+# 147. `lsof`
+```bash
+sudo lsof -i :8080
+```
+# 148. `strace`
+```bash
+strace -f COMMAND
+```
+# 149. tmux
+```bash
+tmux new -s admin
+tmux attach -t admin
+```
+# 150. sudo and `visudo`
+```bash
+sudo visudo
+```
+# 151. Adding a user
 ```bash
 sudo adduser USER
-sudo usermod -aG GROUP USER
-sudo passwd -l USER
-who
-last
 ```
-
-## 71. Package troubleshooting
-
+# 152. Locking a user
+```bash
+sudo passwd -l USER
+```
+# 153. Who is logged in
+```bash
+who
+w
+```
+# 154. Recent SSH/logins
+```bash
+last
+lastlog
+```
+# 155. Basic desktop troubleshooting
+Check journalctl --user, journalctl -b, graphics/session logs, disk space and whether the app starts from a terminal.
+# 156. When a GUI application does not start
+Launch it from a terminal to capture stderr, then inspect user/system logs.
+# 157. When APT update fails
+Read the exact repository/signature/network error; verify sources, DNS, time and keys.
+# 158. Check where a package comes from
 ```bash
 apt policy PACKAGE
+```
+# 159. What a package installed
+```bash
 dpkg -L PACKAGE
-dpkg -S FILE
+```
+# 160. Which package owns a file
+```bash
+dpkg -S /path/to/file
+```
+# 161. Package documentation
+Check /usr/share/doc/PACKAGE and upstream docs.
+# 162. man
+```bash
 man COMMAND
+```
+# 163. `--help`
+```bash
 COMMAND --help
 ```
-
-## 72. systemd targets
-
+# 164. systemd targets
 Targets group units into system states such as multi-user.target and graphical.target.
-
-## 73. Kernel, GRUB and initramfs
-
-The kernel boots hardware support and core OS functionality. GRUB loads the kernel. initramfs provides early userspace needed before the real root filesystem is mounted.
-
-## 74. LUKS, swap and OOM
-
-LUKS provides disk encryption. Swap extends virtual memory but is not a substitute for RAM. The OOM killer terminates processes when memory is exhausted.
-
-## 75. SSH tunneling
-
+# 165. Starting GUI manually
+Usually use the display manager; advanced recovery may involve switching targets or starting a compositor/session manually.
+# 166. Kernel
+The Linux kernel provides scheduling, memory, drivers, networking and core system services.
+# 167. GRUB
+GRUB loads the selected kernel/initramfs and passes boot parameters.
+# 168. Initramfs
+Early userspace used before the real root filesystem is mounted.
+# 169. LUKS
+Standard Linux disk-encryption layer.
+# 170. Swap
+Extends virtual memory and can support hibernation, but is not a replacement for RAM.
+# 171. OOM
+The kernel OOM killer terminates processes when memory cannot be reclaimed.
+# 172. DNS tools
+```bash
+dig
+host
+resolvectl status
+```
+# 173. traceroute
+```bash
+traceroute example.com
+```
+# 174. netcat
+```bash
+nc -vz HOST PORT
+```
+# 175. SSH tunneling
 ```bash
 ssh -L 8080:127.0.0.1:8080 user@server
 ```
-
-## 76. PostgreSQL, Redis, Samba and NFS
-
-These are common server services. Run them only when required, bind them appropriately and keep database/storage ports private when possible.
-
-## 77. Administrator journal
-
-Document meaningful changes: what changed, when, why, how to roll back and where configuration lives.
-
-## 78. Snapshot is not backup
-
-Snapshots are useful for rollback but usually share the same storage failure domain. Keep independent backups.
-
-## 79. Reboots
-
-Some updates do not require immediate reboot; kernel and core-library updates may. Plan reboots rather than ignoring them indefinitely.
-
-## 80. Good desktop practices
-
-Keep the system updated, backups tested, user configuration in home, and do not solve every GUI issue by reinstalling the OS.
-
-## 81. Good server practices
-
-Minimal services, explicit configuration, logs, backups, monitoring, least privilege and repeatable deployment.
-
-## 82. Scenario: new VPS
-
-```text
-create admin user
-→ SSH key
-→ updates
-→ firewall
-→ backups/monitoring
-→ nginx/app/database
-→ TLS
-→ health check
+# 176. PostgreSQL — administrative basics
+```bash
+sudo systemctl status postgresql
+sudo -u postgres psql
 ```
-
-## 83. Scenario: site works locally but not from Internet
-
-Check listener address, firewall, VPS/provider firewall, nginx, DNS and TLS in that order.
-
-## 84. Scenario: Wi-Fi fails
-
-Check NetworkManager state, rfkill, device/driver, firmware, logs and access point connectivity.
-
-## 85. Scenario: Docker consumed disk
-
+# 177. Redis
+```bash
+sudo systemctl status redis-server
+redis-cli ping
+```
+# 178. Samba file server
+Samba provides SMB/CIFS file sharing for Windows-compatible networks.
+# 179. NFS
+NFS provides Unix/Linux network filesystem sharing.
+# 180. Administrator journal
+Document what changed, when, why, how to verify it and how to roll it back.
+# 181. Snapshot is not a backup
+Snapshots usually share the same storage failure domain; keep independent copies.
+# 182. Update without reboot?
+Many user-space packages can be updated without immediate reboot.
+# 183. Does the system require reboot?
+Kernel/core library updates may justify reboot; tools such as needrestart can help identify affected services.
+# 184. Good desktop practices
+Updates, tested backups, minimal random PPAs/scripts, understandable configuration and reproducible setup.
+# 185. Good server practices
+Minimal services, explicit configuration, logging, backups, monitoring, least privilege and controlled deployment.
+# 186. Practical scenario: new VPS
+Create admin user → SSH key → update → firewall → backup/monitoring → deploy services → verify.
+# 187. Practical scenario: publish a website
+DNS → nginx → TLS → document root/app → logs → external test.
+# 188. Practical scenario: Go application
+Build binary → create service user → systemd unit → localhost listener → nginx reverse proxy → TLS.
+# 189. Practical scenario: something occupies a port
+```bash
+sudo ss -lntup | grep ':PORT'
+sudo lsof -i :PORT
+```
+# 190. Practical scenario: site works locally but not from Internet
+Check bind address, firewall, cloud/provider firewall, reverse proxy, DNS and TLS.
+# 191. Practical scenario: Wi-Fi does not work
+```bash
+nmcli device
+rfkill list
+lspci -k
+journalctl -b | grep -i wifi
+```
+# 192. Practical scenario: laptop shuts down
+Inspect battery health, kernel/power logs, firmware and thermal events; reproduce systematically.
+# 193. Practical scenario: Docker filled disk
 ```bash
 docker system df
 docker image ls
 docker container ls -a
 ```
-
-Prune only after understanding what is unused.
-
-## 86. Before editing configuration
-
-Back up the file or keep it in version control, validate syntax before reload and have a rollback path.
-
-## 87. Service administration pattern
-
-```text
-status → logs → config test → local test → port → firewall → DNS/external
+# 194. Practical scenario: config file before editing
+```bash
+sudo cp FILE FILE.bak
+sudoedit FILE
 ```
-
-## 88. Five server commands to know instinctively
-
+# 195. Service administration pattern
+status → logs → config test → local test → port → firewall → DNS/external.
+# 196. Most important commands — cheat sheet
+## system
+```bash
+cat /etc/os-release; uptime
+```
+## packages
+```bash
+apt update; apt policy PACKAGE
+```
+## services
+```bash
+systemctl status SERVICE
+```
+## logs
+```bash
+journalctl -u SERVICE
+```
+## network
+```bash
+ip addr; ip route; ss -lntup
+```
+## processes
+```bash
+ps aux; top
+```
+## disks
+```bash
+lsblk -f; df -h
+```
+## files
+```bash
+find; grep; less; tail
+```
+## SSH
+```bash
+ssh; scp; rsync
+```
+# 197. Five commands to know instinctively on a server
 ```bash
 systemctl status SERVICE
 journalctl -u SERVICE
@@ -629,9 +753,7 @@ ss -lntup
 df -h
 ip route
 ```
-
-## 89. Five desktop commands worth knowing
-
+# 198. Five commands worth knowing on desktop
 ```bash
 journalctl -b
 nmcli device
@@ -639,46 +761,44 @@ lspci
 lsusb
 systemctl --user status
 ```
-
-## 90. Mental model of Debian
-
-```text
-packages + configuration + services + logs + users + network + storage
-```
-
-## 91. Important paths to remember
-
-```text
-/etc
-/var/log
-/srv
-/usr/local/bin
-/home
-/run
-```
-
-## 92. Help sources
-
-Use man pages, package documentation under /usr/share/doc, Debian documentation, service project docs and logs.
-
-## 93. Final troubleshooting cheat sheet
-
-Service: systemctl + journalctl.
-
-Network: ip + ping + dig + curl.
-
-Port: ss + lsof.
-
-Disk: df + du.
-
-RAM: free + top.
-
-Boot: journalctl -b + systemd-analyze.
-
-Package: apt policy + dpkg.
-
-Desktop app: terminal launch + journalctl --user.
-
-## 94. Most important rule
-
-Do not guess. Observe state, read logs, test one layer at a time and change only what you understand.
+# 199. How to think about Debian
+Think in layers: packages, configuration, services, logs, users, network and storage.
+# 200. Minimum Debian administrator knowledge
+APT/dpkg, systemd/journalctl, SSH, permissions, networking, storage, firewalling, backups and troubleshooting.
+# 201. GNOME/KDE versus server — key mental difference
+Desktop environments provide integrated UI services; servers expose the same underlying system concepts without the desktop layer.
+# 202. Useful work philosophy
+Observe first, change one thing at a time, keep rollback options and document non-obvious decisions.
+# 203. Important paths to remember
+/etc, /var/log, /srv, /usr/local/bin, /home, /run.
+# 204. Important files to remember
+/etc/fstab, /etc/hosts, /etc/ssh/sshd_config, repository definitions and service unit/config files.
+# 205. Important tools to remember
+apt, dpkg, systemctl, journalctl, ip, ss, ssh, rsync, find, grep, tar and editor of choice.
+# 206. Where to get help
+man pages, /usr/share/doc, Debian documentation, upstream project docs, logs and package metadata.
+# 207. Final cheat sheet: diagnose almost anything
+## Service problem
+systemctl + journalctl.
+## Network problem
+ip + ping + dig + curl.
+## Port problem
+ss + lsof.
+## Disk problem
+df + du + lsblk.
+## RAM problem
+free + top + OOM logs.
+## Boot problem
+journalctl -b + systemd-analyze.
+## Package problem
+apt policy + dpkg.
+## Configuration problem
+syntax check + diff + logs.
+## Desktop application problem
+terminal launch + journalctl --user.
+# 208. Most important rule
+Do not guess. Observe state, read logs, verify one layer at a time and make the smallest change you understand.
+# 209. Summary
+Debian is straightforward once you understand APT, systemd, filesystem layout, networking, permissions and logs.
+## Document status
+English edition aligned structurally with the Polish handbook.

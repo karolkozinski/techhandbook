@@ -1,219 +1,144 @@
-# Go — Handbook for Reading Code
-
-## Table of contents
-
-This handbook focuses on understanding Go code, project structure, build tooling, web backends, concurrency and common libraries.
-
+# Go — Handbook for Reading and Understanding Code
+## Table of Contents
 # 1. How to think about Go
-
-Go is a compiled, statically typed language designed around simplicity, fast builds, explicit error handling, concurrency and easy deployment.
-
-A Go program is usually compiled to a single native binary.
-
+Go is deliberately small, explicit and convention-heavy. Read code in terms of packages, structs, interfaces, functions and data flow rather than searching for framework magic.
 # 2. Installation and tools
-
-Debian:
-
+### Debian
 ```bash
-sudo apt install golang-go
-```
-
-FreeBSD:
-
-```bash
-sudo pkg install go
-```
-
-Check:
-
-```bash
+sudo apt install golang
 go version
 ```
-
-Useful editor tooling is provided by `gopls`.
-
+### FreeBSD
+```sh
+pkg install go
+go version
+```
+### Editor
+Any editor works. Neovim, Vim and VS Code with gopls are common choices.
 # 3. First program and file anatomy
-
 ```go
 package main
 
 import "fmt"
 
 func main() {
-    fmt.Println("Hello")
+    fmt.Println("hello")
 }
 ```
-
-`package main` defines an executable package.
-
-`func main()` is the program entry point.
-
-# 4. Syntax basics
-
-Blocks use braces.
-
-Semicolons are normally inserted automatically.
-
-Comments:
-
-```go
-// line comment
-
-/*
-block comment
-*/
-```
-
-Names beginning with an uppercase letter are exported from a package.
-
+## `package main`
+Marks an executable package.
+## `import "fmt"`
+Imports the standard fmt package.
+## `func main()`
+Entry point of an executable program.
+# 4. Syntax — the most important rules
+## Code blocks
+Curly braces delimit blocks.
+## Semicolons
+Normally omitted; the lexer inserts them automatically.
+## Comments
+Use `//` for line comments and `/* ... */` for block comments.
+## Names
+Exported identifiers begin with an uppercase letter; unexported identifiers begin with lowercase.
 # 5. Variables, constants and zero values
-
+## Full declaration
 ```go
 var count int = 10
-name := "Alice"
-const MaxRetries = 5
 ```
-
-Short declaration `:=` works inside functions.
-
-Zero values:
-
-```text
-int      0
-float    0
-bool     false
-string   ""
-pointer  nil
-slice    nil
-map      nil
-```
-
-# 6. Basic types
-
-Common integer types:
-
+## Short declaration `:=`
 ```go
-int
-int8
-int16
-int32
-int64
-uint
-uint64
+count := 10
 ```
-
-Floating point:
-
+Valid inside functions.
+## Multiple values
 ```go
-float32
-float64
+name, age := "Ada", 30
 ```
-
-Boolean:
-
+## Constants
 ```go
-bool
+const MaxRetries = 3
 ```
-
-Named types:
-
+## Zero values
+Numbers become 0, booleans false, strings empty, pointers/maps/slices/functions/interfaces nil where applicable.
+# 6. Basic data types
+## Integers
+Common types: int, int8/16/32/64 and unsigned variants.
+## Floating-point numbers
+Use float32 or float64; float64 is the common default.
+## Boolean
+```go
+var ok bool
+```
+## Character aliases
+`byte` is alias for uint8; `rune` is alias for int32.
+## Named types
 ```go
 type UserID int64
 ```
-
-# 7. string, byte and rune
-
-Go strings are UTF-8 byte sequences.
-
-`byte` is an alias for `uint8`.
-
-`rune` is an alias for `int32` and usually represents a Unicode code point.
-
+Named types improve domain clarity and are distinct from their underlying type.
+# 7. String, byte and rune
+Strings are immutable byte sequences, usually UTF-8 text.
+## UTF-8
+Range over a string to iterate Unicode code points:
 ```go
-for _, r := range "Zażółć" {
-    fmt.Printf("%c
-", r)
+for i, r := range s {
+    fmt.Println(i, r)
 }
 ```
-
 # 8. Arrays, slices and maps
-
-Array:
-
+## Array
 ```go
 var a [3]int
 ```
-
-Slice:
-
+Array length is part of the type.
+## Slice
 ```go
 items := []string{"a", "b"}
 items = append(items, "c")
 ```
-
-Map:
-
+### Important
+Slices are descriptors over backing arrays; copying a slice does not necessarily copy underlying data.
+## Map
 ```go
-users := map[string]int{
-    "alice": 42,
-}
+m := map[string]int{"a": 1}
+v, ok := m["a"]
 ```
-
-Read with presence check:
-
-```go
-age, ok := users["alice"]
-```
-
-# 9. Structs
-
+# 9. Struct — the basic data building block
 ```go
 type User struct {
     ID   int64
     Name string
 }
 ```
-
-Literal:
-
-```go
-u := User{
-    ID:   1,
-    Name: "Alice",
-}
-```
-
-Embedding:
-
+## Nesting
+A struct can contain another struct as a named field.
+## Embedding
 ```go
 type Admin struct {
     User
     Level int
 }
 ```
-
+Embedding promotes fields/methods but is composition, not inheritance.
 # 10. Pointers
-
 ```go
-value := 10
-ptr := &value
-fmt.Println(*ptr)
+p := &user
+fmt.Println(p.Name)
 ```
-
-Pointers are used to share/mutate values and avoid copies.
-
-Go has no pointer arithmetic.
-
-`nil` means no value/reference.
-
-# 11. Control flow
-
+## Why pointers?
+Use pointers to share/mutate a value, avoid large copies, or represent optional identity/reference semantics.
+## `nil`
+A pointer can be nil. Check before dereferencing when nil is possible.
+# 11. Control statements
+## `if`
 ```go
 if err != nil {
     return err
 }
 ```
-
+## `else`
+Go keeps braces explicit and discourages deeply nested logic through early returns.
+## `switch`
 ```go
 switch status {
 case "ready":
@@ -222,847 +147,645 @@ default:
     ...
 }
 ```
-
-Go has one loop keyword:
-
-```go
-for i := 0; i < 10; i++ {
-}
-```
-
-Range:
-
-```go
-for i, value := range items {
-}
-```
-
+## `for`
+Go has one loop keyword: `for`. It covers classic loops, while loops and range loops.
 # 12. Functions
-
 ```go
-func Add(a, b int) int {
-    return a + b
-}
+func Add(a, b int) int { return a + b }
 ```
-
-Multiple returns:
-
+## Multiple return values
 ```go
-func Load() (string, error) {
-    ...
-}
+func Lookup(id int) (User, error)
 ```
-
-Function value:
-
+## Named return values
+Allowed, but use sparingly when they genuinely improve clarity.
+## Function as a value
 ```go
-handler := func(name string) error {
-    return nil
-}
+f := strings.ToUpper
 ```
-
-Variadic:
-
+## Function as an argument
+Callbacks and higher-order helpers accept function values.
+## Function as a result
+Functions can return closures.
+## Variadic
 ```go
-func Log(values ...string) {
-}
+func Sum(values ...int) int
 ```
-
 # 13. Methods and receivers
-
-Value receiver:
-
+## Value receiver
 ```go
-func (u User) DisplayName() string {
-    return u.Name
-}
+func (u User) Label() string { return u.Name }
 ```
-
-Pointer receiver:
-
+## Pointer receiver
 ```go
-func (u *User) Rename(name string) {
-    u.Name = name
-}
+func (u *User) Rename(name string) { u.Name = name }
 ```
-
-Use pointer receivers when the method mutates the receiver or copying would be undesirable.
-
+Use when mutating receiver or avoiding copies.
 # 14. Interfaces
-
+Interfaces are satisfied implicitly.
+## Example
 ```go
-type Store interface {
-    Get(id int64) (*User, error)
+type Reader interface {
+    Read([]byte) (int, error)
 }
 ```
-
-Types satisfy interfaces implicitly.
-
-Empty interface is now commonly written as `any`.
-
-Type assertion:
-
+## Empty interface
+`any` is alias for `interface{}` and can hold any value.
+## Type assertion
 ```go
-value, ok := x.(string)
+s, ok := v.(string)
 ```
-
-Type switch:
-
+## Type switch
 ```go
-switch v := x.(type) {
+switch x := v.(type) {
 case string:
-    fmt.Println(v)
+    _ = x
 }
 ```
-
 # 15. Generics
-
+Generics parameterize functions/types over sets of types.
+## Constraints
 ```go
-func First[T any](items []T) T {
-    return items[0]
-}
+func Max[T cmp.Ordered](a, b T) T
 ```
-
-Constraint example:
-
+## Generic type
 ```go
-type Number interface {
-    ~int | ~int64 | ~float64
-}
+type Box[T any] struct { Value T }
 ```
-
-Use generics when they improve reuse without obscuring code.
-
-# 16. Errors
-
-Go treats errors as normal values.
-
-```go
-value, err := load()
-if err != nil {
-    return err
-}
-```
-
-Create:
-
+## Generic methods
+Methods may use type parameters already declared on the receiver type. Go does not allow methods to introduce their own independent type parameters.
+# 16. Errors — `error`
+Errors are normal return values.
+## Creating an error
 ```go
 errors.New("not found")
-```
-
-Wrap:
-
-```go
 fmt.Errorf("load user: %w", err)
 ```
-
-Check wrapped errors:
-
+## Wrapping errors
+Use `%w` so callers can inspect the original error with errors.Is/errors.As.
+## Sentinel errors
 ```go
-errors.Is(err, ErrNotFound)
+var ErrNotFound = errors.New("not found")
 ```
-
-# 17. defer, panic and recover
-
-`defer` schedules cleanup when the surrounding function returns.
-
-```go
-f, err := os.Open(path)
-if err != nil {
-    return err
-}
-defer f.Close()
-```
-
-`panic` is for unrecoverable programming/runtime failures, not routine business errors.
-
-`recover` can catch panics in deferred functions and is used sparingly.
-
+## Why is `if err != nil` everywhere?
+Because Go makes failure paths explicit instead of hiding them in exceptions.
+# 17. `defer`, `panic`, `recover`
+## `defer`
+Schedules a call when the surrounding function returns. Common for Close/Unlock cleanup.
+## `panic`
+Abort normal flow for truly exceptional programmer/runtime conditions, not ordinary validation errors.
+## `recover`
+Can intercept panic inside a deferred function. Usually used at process/request boundaries, not as routine control flow.
 # 18. Packages, modules and imports
-
-A directory normally contains one package.
-
-A module is defined by `go.mod`.
-
-```bash
-go mod init example.com/project
-```
-
-Imports:
-
-```go
-import (
-    "fmt"
-    "net/http"
-
-    "github.com/go-chi/chi/v5"
-)
-```
-
-# 19. Visibility
-
-Uppercase identifier = exported.
-
-Lowercase identifier = package-private.
-
-```go
-type User struct{}
-type internalConfig struct{}
-```
-
-# 20. Typical project structure
-
+## File
+A `.go` file belongs to exactly one package.
+## Package
+A directory normally contains source files for one package.
+## Module
+A module is a versioned collection of packages defined by go.mod.
+### Example
 ```text
-project/
+example.com/myapp
 ├── go.mod
-├── go.sum
-├── cmd/
-│   └── server/
-│       └── main.go
-├── internal/
-│   ├── http/
-│   ├── service/
-│   └── repository/
-└── migrations/
+├── cmd/server
+└── internal/app
 ```
-
-`internal/` prevents external modules from importing those packages.
-
-# 21. go.mod, go.sum and dependencies
-
+# 19. Name visibility
+Uppercase identifiers are exported from a package; lowercase identifiers are package-private.
+# 20. Typical project structure
+## `cmd/`
+Executable entry points, often one directory per binary.
+## `internal/`
+Packages importable only within the parent module tree.
+## `pkg/`
+Optional convention for reusable public packages; not required by Go.
+# 21. `go.mod`, `go.sum` and dependencies
+## Adding a library
 ```bash
-go get github.com/go-chi/chi/v5
+go get MODULE@VERSION
+```
+## Tidying dependencies
+```bash
 go mod tidy
+```
+## `go.sum`
+Contains checksums used to verify module content.
+## Module list
+```bash
 go list -m all
+```
+## Why does a dependency exist?
+```bash
 go mod why MODULE
+```
+## Dependency graph
+```bash
 go mod graph
 ```
-
-`go.sum` records module checksums.
-
-# 22. Run and build
-
+# 22. Running and compiling
+## Run project
 ```bash
 go run .
+```
+## Specific file
+```bash
 go run main.go
-go build .
-go build -o app .
+```
+## Build
+```bash
+go build
+```
+## Binary name
+```bash
+go build -o myapp .
+```
+## Build a specific program
+```bash
+go build ./cmd/server
+```
+## All packages
+```bash
 go build ./...
-go install ./cmd/tool
 ```
-
+## Install a program
+```bash
+go install example.com/tool@latest
+```
 # 23. Cross-compilation
-
 ```bash
-GOOS=linux GOARCH=amd64 go build -o app
+GOOS=linux GOARCH=amd64 go build .
 ```
-
-CGO can complicate cross-compilation.
-
-For pure-Go projects:
-
-```bash
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
-```
-
-# 24. Formatting and analysis
-
+## Important: CGO
+Pure Go cross-compiles easily. CGO introduces native compiler/library requirements.
+# 24. Formatting and code analysis
+## `gofmt`
 ```bash
 gofmt -w .
-go vet ./...
-staticcheck ./...
 ```
-
-Typical quality pass:
-
+Canonical formatting is part of Go culture.
+## `go vet`
+```bash
+go vet ./...
+```
+## `staticcheck`
+Third-party static analyzer that catches many bugs and suspicious patterns.
+## Practical set
 ```bash
 gofmt -w .
 go vet ./...
 go test ./...
 ```
-
 # 25. Tests
-
-File names end in `_test.go`.
-
+## One test
 ```go
 func TestAdd(t *testing.T) {
-    got := Add(2, 3)
-    if got != 5 {
-        t.Fatalf("got %d", got)
-    }
+    if got := Add(2,3); got != 5 { t.Fatalf("got %d", got) }
 }
 ```
-
-Run:
-
-```bash
-go test ./...
+## Table-driven tests
+Use slices of test cases and loop with `t.Run`.
+## HTTP test
+Use `net/http/httptest` to test handlers without binding a real port.
+# 26. Benchmarks, fuzzing and race detector
+## Benchmark
+```go
+func BenchmarkParse(b *testing.B) {
+    for i := 0; i < b.N; i++ { Parse(data) }
+}
 ```
-
-Table-driven tests are common.
-
-# 26. Benchmarks, coverage, race detector and fuzzing
-
-Benchmark:
-
-```bash
-go test -bench=. ./...
-```
-
-Coverage:
-
+## Coverage
 ```bash
 go test -cover ./...
 ```
-
-Race detector:
-
+## Race detector
 ```bash
 go test -race ./...
 ```
-
-Fuzzing:
-
-```bash
-go test -fuzz=FuzzName
-```
-
+## Fuzzing
+Use `FuzzXxx(*testing.F)` tests to explore unexpected input automatically.
 # 27. Debugging
-
-Simple diagnostics:
-
+Delve is the standard Go debugger.
+## Simplest debugging
+Start with tests/logging and `go test -run TestName -v`; use Delve when state/control flow needs interactive inspection.
+# 28. Files, directories and operating system
+## Read entire file
 ```go
-fmt.Printf("value=%+v
-", value)
+data, err := os.ReadFile(path)
 ```
-
-For interactive debugging, Delve is the standard choice.
-
-```bash
-dlv debug
-```
-
-# 28. Files and OS
-
-Read whole file:
-
+## Write
 ```go
-data, err := os.ReadFile("file.txt")
+err := os.WriteFile(path, data, 0644)
 ```
-
-Write:
-
+## Open file
 ```go
-err := os.WriteFile("file.txt", data, 0644)
+f, err := os.Open(path)
+defer f.Close()
 ```
-
-Paths:
-
+## Create directory
 ```go
-filepath.Join(root, "config.json")
+err := os.MkdirAll(path, 0755)
 ```
-
-Environment:
-
+## Paths
+Use `path/filepath` for OS filesystem paths.
+## Environment variables
 ```go
-os.Getenv("PORT")
+value := os.Getenv("APP_ENV")
 ```
-
 # 29. JSON
-
+## Encoding
 ```go
-type User struct {
-    Name string `json:"name"`
-    Age  int    `json:"age,omitempty"`
-}
-
-data, err := json.Marshal(user)
+data, err := json.Marshal(v)
 ```
-
-Decode:
-
+## Decoding
 ```go
-err := json.Unmarshal(data, &user)
+err := json.Unmarshal(data, &v)
 ```
-
-Ignore field:
-
+## HTTP
+Use json.NewEncoder(w).Encode and json.NewDecoder(r.Body).Decode for streams.
+## `omitempty`
+Omits zero-valued fields during encoding when the tag requests it.
+## Ignore field
 ```go
 Secret string `json:"-"`
 ```
-
 # 30. Time and dates
-
-```go
-now := time.Now()
-deadline := now.Add(5 * time.Minute)
-formatted := now.Format(time.RFC3339)
-```
-
+Use `time.Time`, `time.Duration`, `time.NewTicker`, `time.After` and explicit locations/time zones.
 # 31. Logging
-
-Standard:
-
+Standard library offers `log` and structured `log/slog`. Include useful context, not secrets.
+# 32. `context.Context`
+Context carries cancellation, deadlines and request-scoped values across API boundaries.
+## HTTP request
+Incoming requests expose `r.Context()`.
+## Timeout
 ```go
-log.Printf("started on %s", addr)
-```
-
-Modern Go also includes structured logging through `log/slog`.
-
-# 32. context.Context
-
-Contexts carry cancellation, deadlines and request-scoped values.
-
-```go
-ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+ctx, cancel := context.WithTimeout(parent, 2*time.Second)
 defer cancel()
 ```
-
-Pass context as the first parameter where appropriate.
-
-Do not store Context inside structs unless there is a specific design reason.
-
-# 33. Goroutines and channels
-
-Start concurrent work:
-
+## Important rules
+Pass context explicitly, usually as the first parameter. Do not store it in structs casually. Always call cancel when you create a cancellable child context.
+# 33. Concurrency: goroutines and channels
+## Goroutine
 ```go
-go worker()
+go work()
 ```
-
-Channel:
-
+## Anonymous function
+```go
+go func() { defer wg.Done(); work() }()
+```
+## Channel
 ```go
 ch := make(chan Result)
 ```
-
-Buffered:
-
+## Buffered channel
 ```go
 ch := make(chan Result, 10)
 ```
-
-Select:
-
+## Close
+The sender that owns completion usually closes a channel. Receivers should not close channels they do not own.
+## `select`
+Wait on multiple channel operations/cancellation cases.
+## Channel timeout
 ```go
 select {
-case result := <-ch:
-    fmt.Println(result)
-case <-ctx.Done():
-    return ctx.Err()
+case v := <-ch:
+    _ = v
+case <-time.After(time.Second):
 }
 ```
-
 # 34. Mutex, WaitGroup and atomics
-
-Mutex:
-
+## Mutex
+Protect shared mutable state with `sync.Mutex`.
+## RWMutex
+Useful when many readers and few writers justify the added complexity.
+## WaitGroup
+Wait for a set of goroutines to finish.
+## Atomics
+Use `sync/atomic` for simple lock-free counters/state where appropriate.
+# 35. HTTP in the standard library
+## Handler
+Anything implementing `ServeHTTP(http.ResponseWriter,*http.Request)`.
+## HandlerFunc
+Function adapter for handlers.
+## Modern ServeMux
+Recent Go versions support richer method/path patterns in `http.ServeMux`.
+## Status
 ```go
-var mu sync.Mutex
-
-mu.Lock()
-defer mu.Unlock()
+w.WriteHeader(http.StatusCreated)
 ```
-
-WaitGroup:
-
-```go
-var wg sync.WaitGroup
-wg.Add(1)
-
-go func() {
-    defer wg.Done()
-}()
-
-wg.Wait()
-```
-
-Use atomics for small lock-free counters/state when appropriate.
-
-# 35. HTTP standard library
-
-Handler:
-
-```go
-func hello(w http.ResponseWriter, r *http.Request) {
-    w.Write([]byte("hello"))
-}
-```
-
-ServeMux:
-
-```go
-mux := http.NewServeMux()
-mux.HandleFunc("GET /hello", hello)
-
-http.ListenAndServe(":8080", mux)
-```
-
-JSON response:
-
-```go
-w.Header().Set("Content-Type", "application/json")
-json.NewEncoder(w).Encode(data)
-```
-
-Use `http.Server` for production configuration and graceful shutdown.
-
-# 36. Templates and static files
-
-```go
-tmpl := template.Must(template.ParseFiles("page.html"))
-tmpl.Execute(w, data)
-```
-
-Static files:
-
-```go
-http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
-```
-
-# 37. embed
-
-Package files into the binary:
-
+## Header
+Set headers before writing status/body.
+## JSON response
+Set `Content-Type: application/json` and encode with json.Encoder.
+## Server with configuration
+Use `http.Server` with explicit timeouts and graceful shutdown rather than bare `http.ListenAndServe` for production.
+# 36. HTML templates and static files
+## Template
+Use `html/template` for escaped server-side HTML rendering.
+## Static files
+Use `http.FileServer` or embedded filesystem handlers.
+# 37. Embed — package files into the binary
 ```go
 //go:embed templates/*
-var templatesFS embed.FS
+var files embed.FS
 ```
-
-# 38. Routers and frameworks
-
-Standard `net/http` is often enough.
-
-Popular additions:
-
-- Chi — minimal router,
-- Gin — full-featured web framework,
-- Echo — web framework,
-- Fiber — API inspired by Express.
-
-Understand the standard library before relying heavily on a framework.
-
+# 38. Backend: routers and frameworks
+## 1. Standard `net/http`
+Excellent default for small/medium services.
+## 2. Chi
+Lightweight router that stays close to net/http.
+## 3. Gin
+Feature-rich HTTP framework with its own conventions.
+## 4. Echo
+Another mature web framework with routing/middleware helpers.
+## 5. Fiber
+Fast framework inspired by Express, built on fasthttp rather than net/http.
+## Mental model
+Learn net/http first; frameworks mostly add routing, middleware ergonomics and conventions.
 # 39. Databases
-
-`database/sql` provides a generic database API.
-
-PostgreSQL projects often use `pgx`.
-
-Pool example:
-
-```go
-pool, err := pgxpool.New(ctx, databaseURL)
-```
-
-Transactions are explicit.
-
+## Native pgx
+`pgx` is a strong PostgreSQL driver/toolkit.
+## Pool
+Use `pgxpool.Pool` for concurrent application access.
+## `database/sql`
+Standard abstraction used by many drivers/tools.
+## Transaction
+Begin, defer rollback, perform operations, then commit only after all succeed.
 # 40. ORM, sqlc and migrations
-
-GORM is a popular ORM.
-
-sqlc generates type-safe Go code from SQL.
-
-Migration tools manage schema versions.
-
-For small systems, direct SQL + pgx/sqlc is often clear and effective.
-
-# 41. Redis
-
-Use Redis when you have a concrete need such as cache, rate limiting, queues or shared state.
-
-Do not add it automatically.
-
+## GORM
+Full ORM; productive but adds abstraction and behavior you need to understand.
+## sqlc
+Generates type-safe Go code from SQL; good when you want explicit SQL.
+## Migrations
+Use versioned schema migrations with tools such as golang-migrate, Goose or framework-specific tooling.
+# 41. Redis and cache
+Use Redis for caching, queues or ephemeral coordination when the architecture needs it. Define expiration and failure behavior explicitly.
 # 42. Application configuration
-
-Prefer environment variables and explicit config structures.
-
-```go
-type Config struct {
-    Port string
-    DB   string
-}
-```
-
-Libraries such as Viper exist, but simple projects may not need them.
-
-# 43. CLI tools
-
-Cobra is a popular library for larger CLI applications.
-
-Simple tools can use the standard `flag` package.
-
+## `.env`
+Useful locally, but do not commit real secrets.
+## Viper
+Popular configuration library supporting files, env vars and multiple formats. Standard library plus explicit config structs are often enough for small apps.
+# 43. CLI and tools
+## Cobra
+Popular framework for larger command-line applications with subcommands and flags.
 # 44. Games in Go
-
-Go is suitable for small games and simulation projects, especially 2D.
-
-# 45. Ebitengine
-
-Ebitengine provides a practical 2D game loop with:
-
-- `Update`,
-- `Draw`,
-- `Layout`.
-
-Typical structure:
-
-```go
-type Game struct {
-    player Player
-}
-
-func (g *Game) Update() error {
-    return nil
-}
-
-func (g *Game) Draw(screen *ebiten.Image) {
-}
-
-func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
-    return 640, 360
-}
+Go is suitable for 2D games and tooling. Ecosystem is smaller than Unity/Godot but pleasant for code-first projects.
+# 45. Ebitengine — practical 2D game start
+Ebitengine provides a cross-platform game loop and graphics/audio/input APIs.
+## `Update`
+Update game state at fixed ticks.
+## `Draw`
+Render the current state.
+## `Layout`
+Define logical screen dimensions.
+## Run
+```bash
+go run .
 ```
-
-# 46. Other game libraries
-
-raylib-go — bindings for raylib.
-
-SDL bindings — lower-level multimedia.
-
-Pixel — older 2D library you may encounter.
-
-# 47. CGO
-
-CGO lets Go call C libraries.
-
-It affects portability, cross-compilation and deployment.
-
-Pure-Go dependencies are simpler operationally.
-
+## What belongs in `Game`?
+World state, player state, assets/references, timers and systems needed by update/draw.
+# 46. raylib-go and other game libraries
+## raylib-go
+Go bindings for raylib; simple and effective for 2D/3D experiments.
+## SDL
+Low-level multimedia bindings; powerful but more manual.
+## Pixel
+Older Go 2D library; useful to recognize in existing projects.
+# 47. CGO — when Go uses C
+CGO enables calls into C libraries but complicates builds, portability and cross-compilation. Prefer pure Go unless native integration is needed.
 # 48. Common Go idioms
-
-Error handling:
-
-```go
-if err != nil {
-    return err
-}
-```
-
-Ignore unused return value:
-
+## `if err != nil`
+Explicit error handling.
+## Ignoring a value
 ```go
 _, err := io.Copy(dst, src)
 ```
-
-Constructor-style function:
-
+## Compile-time interface check
 ```go
-func NewServer(cfg Config) *Server {
-    return &Server{cfg: cfg}
-}
+var _ io.Reader = (*MyReader)(nil)
 ```
-
-Compile-time interface check:
-
-```go
-var _ Store = (*PostgresStore)(nil)
+## Constructor-like function
+`NewClient(...) *Client` is a convention, not a language feature.
+## Functional options
+`NewServer(WithPort(8080), WithLogger(log))` pattern for configurable constructors.
+## `Must...`
+Convention for helpers that panic on failure when failure is programmer/startup error.
+## `New...`
+Convention for constructors.
+## `With...`
+Convention for options/modifiers.
+# 49. Things that look strange but are normal
+## `:=`
+Short variable declaration.
+## `&User{}`
+Pointer to a newly constructed User value.
+## `*User`
+Pointer-to-User type.
+## `[]User`
+Slice of User values.
+## `[]*User`
+Slice of pointers to User.
+## `map[string]User`
+Map string keys to User values.
+## `map[string][]User`
+Map string keys to slices of users.
+## `chan Result`
+Bidirectional channel of Result.
+## `<-chan Result`
+Receive-only channel.
+## `chan<- Result`
+Send-only channel.
+## `func() error`
+Function type returning error.
+## `func(context.Context, string) (*User, error)`
+Function type taking context/string and returning user pointer plus error.
+## `...string`
+Variadic string parameter.
+## `struct{}`
+Zero-size empty struct, commonly used as a signal/set value.
+## `map[string]any`
+Dynamic JSON-like object. Use typed structs when schema is known.
+# 50. How to read an unfamiliar Go project
+## Step 1 — find `go.mod`
+It reveals module path, Go version and top-level dependencies.
+## Step 2 — find `package main`
+Locate executables, often under cmd/.
+## Step 3 — see what `main()` constructs
+Follow dependency wiring: config, DB, services, handlers, server.
+## Step 4 — recognize layers
+### Handler
+HTTP/RPC boundary; parses requests and writes responses.
+### Service
+Business logic/application use cases.
+### Repository
+Persistence/data access.
+## Step 5 — read structs
+Struct fields show the application's main data and dependencies.
+## Step 6 — read interfaces
+Interfaces show boundaries and what implementations are expected to do.
+## Step 7 — find HTTP routes
+Search for Handle, HandleFunc, router.Get/Post or framework-specific registration.
+## Step 8 — find goroutines
+Search for `go ` and understand lifecycle/cancellation.
+## Step 9 — find I/O
+Database, HTTP, filesystem, queues and external APIs are major failure boundaries.
+## Step 10 — run tests
+```bash
+go test ./...
 ```
-
-Common names:
-
-- `New...`,
-- `Must...`,
-- `With...`.
-
-# 49. Syntax that looks unusual
-
-```go
-:=                    // short declaration
-&User{}               // pointer to struct
-*User                 // pointer type
-[]User                // slice of values
-[]*User               // slice of pointers
-map[string]User       // map
-chan Result           // bidirectional channel
-<-chan Result         // receive-only
-chan<- Result         // send-only
-func() error          // function type
-...string             // variadic
-struct{}              // zero-size struct
-map[string]any        // dynamic map
+# 51. Mini backend — complete shape
+```text
+cmd/server/main.go
+internal/http/handlers.go
+internal/service/users.go
+internal/repository/postgres.go
+internal/model/user.go
 ```
-
-# 50. Reading an unfamiliar Go project
-
-1. find `go.mod`,
-2. find `package main`,
-3. inspect what `main()` constructs,
-4. identify handlers/services/repositories,
-5. read structs,
-6. read interfaces,
-7. find HTTP routes,
-8. identify goroutines,
-9. identify I/O,
-10. run tests.
-
-# 51. Mini backend example
-
-```go
-package main
-
-import (
-    "encoding/json"
-    "net/http"
-)
-
-func main() {
-    mux := http.NewServeMux()
-
-    mux.HandleFunc("GET /health", func(w http.ResponseWriter, r *http.Request) {
-        json.NewEncoder(w).Encode(map[string]string{"status": "ok"})
-    })
-
-    http.ListenAndServe(":8080", mux)
-}
-```
-
-# 52. Mini game structure
-
+Main wires dependencies; handlers translate HTTP; services hold business rules; repositories persist data.
+# 52. Mini game — structure example
 ```text
 cmd/game/main.go
 internal/game/game.go
 internal/game/player.go
-assets/
+internal/assets/
 ```
-
-Keep game state inside a small number of explicit structures.
-
+Keep update/render state together and isolate reusable systems when complexity grows.
 # 53. Command cheat sheet
-
-Project:
-
+## Project
 ```bash
+go mod init example.com/app
 go run .
-go build .
 go build ./...
-go test ./...
 ```
-
-Dependencies:
-
+## Dependencies
 ```bash
 go get MODULE
 go mod tidy
-go list -m all
 go mod why MODULE
 ```
-
-Quality:
-
+## Quality
 ```bash
 gofmt -w .
 go vet ./...
 go test -race ./...
 ```
-
+## Information
+```bash
+go version
+go env
+go list ./...
+```
 # 54. Syntax cheat sheet
-
+## Variable
 ```go
 x := 1
-const Max = 10
-
-items := []string{"a", "b"}
-users := map[string]User{}
-
-type User struct {
-    Name string
-}
-
-func Load(id int64) (*User, error) {
-    return nil, nil
-}
-
-func (u *User) Rename(name string) {
-    u.Name = name
-}
-
-type Store interface {
-    Get(id int64) (*User, error)
-}
-
-go worker()
 ```
-
+## Constant
+```go
+const N = 10
+```
+## Slice
+```go
+xs := []int{1,2,3}
+```
+## Map
+```go
+m := map[string]int{}
+```
+## Struct
+```go
+type User struct { Name string }
+```
+## Pointer
+```go
+p := &u
+```
+## Function
+```go
+func Add(a,b int) int
+```
+## Function with error
+```go
+func Load() (Data, error)
+```
+## Method
+```go
+func (u User) Name() string
+```
+## Interface
+```go
+type Store interface { Save(User) error }
+```
+## `if`
+```go
+if ok { ... }
+```
+## `switch`
+```go
+switch x { case 1: ... }
+```
+## `for`
+```go
+for i := 0; i < 10; i++ { }
+```
+## `range`
+```go
+for i, v := range xs { _ = i; _ = v }
+```
+## Error handling
+```go
+if err != nil { return err }
+```
+## Goroutine
+```go
+go work()
+```
+## Channel
+```go
+ch := make(chan T)
+```
+## Context
+```go
+ctx, cancel := context.WithCancel(parent)
+```
+## JSON tag
+```go
+Name string `json:"name"`
+```
+## Grouped import
+```go
+import (
+    "context"
+    "fmt"
+ )
+```
 # 55. What to know now vs later
-
-Know well:
-
-- variables and types,
-- slices/maps/structs,
-- pointers,
-- functions/methods,
-- interfaces,
-- error handling,
-- packages/modules,
-- build/test commands,
-- basic goroutines/channels,
-- HTTP and JSON.
-
-Understand generally:
-
-- context,
-- synchronization,
-- database access,
-- generics,
-- CGO.
-
-Know that they exist:
-
-- advanced reflection,
-- unsafe,
-- compiler internals,
-- complex generic metaprogramming.
-
+## You must recognize well
+Packages/modules, structs, methods, interfaces, errors, slices/maps, pointers, net/http basics and tests.
+## You should understand generally
+Contexts, goroutines/channels, DB layers, generics and common project structure.
+## You can initially treat as 'I know it exists'
+Advanced reflection, unsafe, compiler internals, cgo edge cases and complex lock-free algorithms.
+## For web backends
+Focus on net/http/chi, context, JSON, PostgreSQL, configuration, logging, testing and graceful shutdown.
+## For games
+Focus on update loops, input, state, asset management, rendering and your chosen game library.
 # 56. Further documentation
-
-Official:
-
-- https://go.dev/doc/
-- https://pkg.go.dev/
-- https://go.dev/tour/
-
-Backend:
-
-- standard `net/http`,
-- Chi,
-- pgx.
-
-Games:
-
-- Ebitengine,
-- raylib-go.
-
+## Official Go
+https://go.dev/doc/
+https://pkg.go.dev/
+## Backend
+Read net/http, context, database/sql and your chosen router/database driver's documentation.
+## Games
+Ebitengine: https://ebitengine.org/
+Raylib: https://www.raylib.com/
 # Mental summary
-
-Go code is usually easy to follow if you identify:
-
 ```text
-package
-↓
-types
-↓
-interfaces
-↓
-constructors
-↓
-main wiring
-↓
-handlers/services/repositories
-↓
-I/O and concurrency
+module
+→ packages
+→ structs/interfaces/functions
+→ explicit errors
+→ goroutines/context for concurrency
+→ tests + gofmt + go vet
 ```
-
-# Final practical advice
-
-When reading unfamiliar Go, do not start from every function. Start from `go.mod`, `main()`, public types and interfaces, then follow the data flow.
+# One practical final tip
+When reading Go, start from `go.mod` and `main()`, then follow concrete values being constructed. Go code is usually easier to understand by tracing data and interfaces than by reading every file in directory order.
