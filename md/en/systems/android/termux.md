@@ -1,185 +1,247 @@
 # Termux — Knowledge Handbook
 
-## 1. What Termux is
+## Table of Contents
 
-Termux is a terminal emulator and Linux-like userspace environment for Android. It does **not** replace Android with a normal Linux distribution. It runs as an Android application inside the Android security model.
+This handbook explains what Termux is, how it differs from a normal Linux distribution, how to use it productively, and where Android's security model limits it.
 
-You get a shell, package manager, compilers, interpreters, SSH, Git and many Unix tools without rooting the phone.
+# 1. What Termux is
 
-## 2. How Termux works
+Termux is an Android terminal emulator and Linux-like userspace environment. It provides a shell, package manager, compilers, interpreters, SSH, Git and many Unix tools without replacing Android itself.
 
-### Kernel
+# 2. How Termux works internally
 
-Termux uses the Android device's existing Linux kernel. It does not boot its own kernel.
+## 2.1. Kernel
 
-### Bionic instead of glibc
+Termux uses the Android device's existing Linux kernel. It does not boot a separate kernel.
 
-Android normally uses the Bionic C library rather than glibc. This is why Linux binaries built for Debian or Ubuntu do not automatically run in native Termux.
+## 2.2. Bionic instead of glibc
 
-### Android sandbox
+Android normally uses Bionic rather than glibc. This is a major reason why arbitrary Debian/Ubuntu binaries do not automatically run in native Termux.
 
-Termux runs with the permissions granted to the application. Without root, it cannot simply read or modify arbitrary Android system files or other applications' private data.
+## 2.3. Android sandbox
 
-### Processes
+Termux runs as an Android application with the permissions granted to that application. Without root, it cannot freely inspect other apps or modify protected system areas.
 
-Termux processes are Android application processes from the kernel's point of view. Android may stop them to reclaim resources.
+## 2.4. Termux processes
 
-## 3. Termux vs Debian vs FreeBSD
+Processes launched in Termux are Android application processes from the kernel's point of view. Android may suspend or kill them to reclaim resources.
 
-Termux:
+# 3. Termux vs Debian, classic Linux and FreeBSD
 
-- Android kernel,
-- Android sandbox,
-- own package repository,
-- Bionic-based environment.
+## Termux
 
-Debian:
+Android kernel, Bionic-based userspace, app sandbox, Termux package repository.
 
-- full Linux distribution,
-- normal Linux filesystem hierarchy,
-- glibc,
-- systemd on standard installs.
+## Debian
 
-FreeBSD:
+Full Linux distribution with glibc, standard filesystem hierarchy and normal system-level privileges where root is available.
 
-- different kernel and userspace,
-- native pkg/Ports,
-- jails rather than Linux containers.
+## FreeBSD
 
-## 4. Installing Termux
+Separate operating system with its own kernel, base system, pkg/Ports and jails.
 
-Use a current supported source such as F-Droid or the project's official release channel.
+# 4. Installing Termux
 
-Do not mix application builds and plugin applications from different signing sources.
+## 4.1. Recommended sources
 
-## 5. First steps
+Use a current supported source such as F-Droid or the project's official release channel. Avoid obsolete Play Store builds.
 
-Update packages:
+## 4.2. Do not mix sources
+
+Termux and plugin apps must come from compatible signing sources. Mixing packages from different sources can cause signature and integration problems.
+
+# 5. First launch
+
+Start by updating packages and installing a few basic tools:
 
 ```bash
 pkg update
 pkg upgrade
-```
-
-Install essentials:
-
-```bash
 pkg install git openssh vim tmux curl
 ```
 
-## 6. Filesystem
+# 6. Termux filesystem
 
-Home:
+## 6.1. HOME
+
+Your main working directory:
 
 ```bash
 echo "$HOME"
 ```
 
-Termux prefix:
+Typical location is inside Termux's private application storage.
+
+## 6.2. PREFIX
+
+Termux installs its own userspace under:
 
 ```bash
 echo "$PREFIX"
 ```
 
-Typical program location:
+## 6.3. Where programs live
+
+Executables are normally under:
 
 ```text
 $PREFIX/bin
 ```
 
-Keep projects under your Termux home when possible:
+## 6.4. Where to keep projects
+
+Prefer directories under your Termux home, for example:
 
 ```text
-~/projects/
+~/projects
 ```
 
-## 7. Package management
+Shared Android storage has different Unix permission semantics.
+
+# 7. Packages: pkg and apt
+
+## Update package lists
 
 ```bash
 pkg update
+```
+
+## Upgrade installed packages
+
+```bash
 pkg upgrade
+```
+
+## Install
+
+```bash
 pkg install PACKAGE
+```
+
+## Remove
+
+```bash
 pkg uninstall PACKAGE
+```
+
+## Search
+
+```bash
 pkg search NAME
+```
+
+## Package information
+
+```bash
 pkg show PACKAGE
+```
+
+## Installed packages
+
+```bash
 pkg list-installed
 ```
 
-`pkg` is a friendly wrapper around APT for the Termux environment.
+## apt
 
-## 8. Shell configuration
+Termux uses APT underneath. `pkg` is the recommended friendly wrapper for normal package operations.
 
-Bash:
+# 8. Basic shell configuration
+
+## Bash
+
+Configuration:
 
 ```text
 ~/.bashrc
 ```
 
-Zsh:
+## Zsh
 
-```text
-~/.zshrc
+Install and configure separately:
+
+```bash
+pkg install zsh
 ```
 
-History and aliases work similarly to normal Unix shells.
+Config: `~/.zshrc`.
 
-tmux is especially useful because Android may interrupt the visible terminal session.
+## History
 
-## 9. Accessing shared Android storage
+Shell history works similarly to normal Unix systems. Protect it if commands may contain secrets.
 
-Run:
+## tmux
+
+```bash
+pkg install tmux
+tmux new -s work
+```
+
+tmux is especially useful because a dropped terminal or Android UI interruption does not have to kill the session.
+
+# 9. Accessing Android storage
+
+Grant shared-storage access:
 
 ```bash
 termux-setup-storage
 ```
 
-This creates convenient links such as:
+This creates convenient links under `~/storage/`.
 
-```text
-~/storage/shared
-~/storage/downloads
-```
+## 9.1. Important difference
 
-Shared storage has different permission and execution semantics from the Termux home directory.
+Shared storage is not a normal Unix filesystem. Executable permissions, symlinks and ownership behavior differ. Keep development projects in Termux home when possible.
 
-Do not use shared storage as the default place for Unix-style project files if you need normal executable permissions and symlinks.
+# 10. SSH
 
-## 10. SSH
-
-Client:
+## 10.1. SSH client
 
 ```bash
 ssh user@server
 ```
 
-Generate a key:
+## 10.2. SSH keys
 
 ```bash
 ssh-keygen -t ed25519
 ```
 
-Client config:
+Protect private keys and use passphrases where appropriate.
+
+## 10.3. SSH config
 
 ```text
 ~/.ssh/config
 ```
 
-Termux can also run an SSH server:
+Example:
+
+```text
+Host vps
+    HostName 203.0.113.10
+    User karol
+    IdentityFile ~/.ssh/id_ed25519
+```
+
+## 10.4. Termux as an SSH server
 
 ```bash
 pkg install openssh
 sshd
 ```
 
-Set a password if needed:
+Default port may differ from standard Linux server expectations. Check the Termux OpenSSH documentation/package behavior.
+
+## 10.5. Setting a password
 
 ```bash
 passwd
 ```
 
-Use key authentication and LAN/VPN exposure deliberately.
+Prefer key authentication for remote access.
 
-## 11. Git
+# 11. Git
 
 ```bash
 pkg install git
@@ -191,42 +253,65 @@ git commit
 git push
 ```
 
-## 12. Editors
+# 12. Text editors
 
-Vim:
+## Vim
 
 ```bash
 pkg install vim
 ```
 
-Neovim:
+## Neovim
 
 ```bash
 pkg install neovim
 ```
 
-nano and micro are also available.
+## nano
 
-## 13. Programming
+```bash
+pkg install nano
+```
 
-Termux can support Python, Go, C/C++, Node.js and many other development tools.
+## micro
 
-## 14. Python
+Install if available in the current repository and you prefer a simpler terminal editor.
+
+## In practice
+
+Use the same editor you know from Debian/FreeBSD so server and phone workflows stay consistent.
+
+# 13. Programming and compilation
+
+Termux can run real compilers and interpreters. It is excellent for small scripts, learning and emergency development work.
+
+# 14. Python
 
 ```bash
 pkg install python
 python --version
-python script.py
 ```
 
-Virtual environment:
+## pip
+
+```bash
+python -m pip install PACKAGE
+```
+
+## venv
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 ```
 
-## 15. Go
+## Running a file
+
+```bash
+python script.py
+```
+
+# 15. Go
 
 ```bash
 pkg install golang
@@ -235,16 +320,31 @@ go run .
 go build .
 ```
 
-## 16. C and C++
+# 16. C and C++
 
 ```bash
-pkg install clang make cmake
-clang --version
-make --version
-cmake --version
+pkg install clang
+clang hello.c -o hello
+./hello
 ```
 
-## 17. Node.js
+## make
+
+```bash
+pkg install make
+```
+
+## cmake
+
+```bash
+pkg install cmake
+```
+
+## Tools
+
+Useful packages include clang, make, cmake, gdb/lldb availability depending on repository/version, pkg-config and Git.
+
+# 17. Node.js and JavaScript
 
 ```bash
 pkg install nodejs
@@ -252,245 +352,546 @@ node --version
 npm --version
 ```
 
-## 18. Web servers
+# 18. Web servers
 
-Python:
+## Python
 
 ```bash
 python -m http.server 8080
 ```
 
-Go can run HTTP servers normally.
+## Go
 
-nginx is available as a Termux package.
+A Go HTTP server runs normally on an unprivileged port such as 8080.
 
-Privileged ports such as 80/443 are restricted without elevated privileges, so development servers commonly use ports above 1024.
+## nginx
 
-## 19. Background services
+```bash
+pkg install nginx
+```
 
-Install service support:
+Use it for experiments rather than assuming phone-hosted nginx should become production infrastructure.
+
+## Privileged ports
+
+Ports below 1024 traditionally require elevated privileges. On unrooted Android, use ports such as 8080, 8000 or 8443.
+
+# 19. Services and background processes
+
+## 19.1. termux-services
 
 ```bash
 pkg install termux-services
 ```
 
-Service management uses runit-style commands.
+Termux services use a runit-style mechanism.
 
-Wake lock:
+## Start service
+
+Use the service tooling documented by the package, for example `sv up SERVICE`.
+
+## Stop
+
+Use `sv down SERVICE`.
+
+## Enable autostart within the service mechanism
+
+Service enablement is handled through the runit service directory/symlinks used by termux-services.
+
+## Disable
+
+Disable the service using the corresponding service mechanism rather than killing the process only once.
+
+## Status
+
+Use `sv status SERVICE` where applicable.
+
+## 19.2. Wake lock
 
 ```bash
 termux-wake-lock
-```
-
-Release:
-
-```bash
 termux-wake-unlock
 ```
 
-This can reduce the chance that Android suspends work, but battery optimization still matters.
+A wake lock can reduce suspension risk but increases battery usage.
 
-## 20. Termux:API
+# 20. Termux:API — controlling Android from the shell
 
-Termux:API exposes selected Android functions to shell commands.
+Install the Termux:API application/plugin and package from compatible sources.
 
-Examples may include:
+## Examples
+
+### Battery status
 
 ```bash
 termux-battery-status
+```
+
+### Clipboard
+
+```bash
 termux-clipboard-get
-termux-clipboard-set "text"
-termux-notification --title "Done" --content "Task finished"
+termux-clipboard-set "hello"
+```
+
+### Notification
+
+```bash
+termux-notification --title "Done" --content "Task completed"
+```
+
+### Vibration
+
+```bash
 termux-vibrate
+```
+
+### Wi-Fi information
+
+```bash
 termux-wifi-connectioninfo
 ```
 
-Useful for automation that interacts with the phone.
+## What this is useful for
 
-## 21. proot-distro
+Termux:API connects shell automation to phone features, useful for notifications, status checks and lightweight personal automation.
 
-Install:
+# 21. proot-distro — Debian and other distributions
 
 ```bash
 pkg install proot-distro
 ```
 
-List:
+## List
 
 ```bash
 proot-distro list
 ```
 
-Install Debian:
+## Debian
 
 ```bash
 proot-distro install debian
-```
-
-Enter:
-
-```bash
 proot-distro login debian
 ```
 
-This gives a distribution-like userspace, not a real VM and not real root over Android.
+## This is not real root
 
-## 22. What root changes
+PRoot emulates parts of a root-like environment in userspace. It does not give kernel-level root over Android.
 
-With root, you may gain access to system-level networking, mounts, protected files and deeper Android administration.
+## Why use proot-distro
 
-Root also increases risk and can interfere with banking, DRM, enterprise policies and update workflows.
+Use it when software assumes Debian-style paths, glibc or package layout unavailable in native Termux.
 
-## 23. What native Termux cannot do without root
+## Cost
 
-Normally it cannot:
+PRoot adds overhead and complexity. Prefer native Termux packages when they fit the task.
 
-- mount arbitrary filesystems,
-- load kernel modules,
-- control the system firewall,
-- change global routing freely,
-- change kernel sysctls requiring privilege,
-- inspect other apps' private data,
-- become Android PID 1.
+# 22. What root gives you
 
-## 24. Docker
+Root can expose system files, global networking controls, mounts and other privileged Android/Linux capabilities. It also increases security and maintenance risk.
 
-Native Docker requires kernel features and privileges that standard unrooted Android/Termux does not expose in the normal way.
+# 23. What Termux cannot do without root
 
-PRoot is not Docker.
+## Mount
 
-If you need real Docker, use a VPS, Linux machine, VM or suitable rooted/custom environment.
+Cannot freely mount arbitrary filesystems at the system level.
 
-## 25. Networking
+## Kernel modules
 
-Useful commands:
+Cannot load kernel modules.
+
+## System firewall
+
+Cannot freely manage Android's global firewall stack as root could.
+
+## System routing
+
+Cannot arbitrarily rewrite global routing tables requiring privilege.
+
+## Sysctl
+
+Privileged kernel parameters are not generally writable.
+
+## Other applications
+
+Cannot read other apps' private data because of Android sandboxing.
+
+## PID 1
+
+Termux does not control Android's init process and does not become the system init.
+
+# 24. Docker and containers
+
+## PRoot is not Docker
+
+PRoot changes the userspace view of the filesystem/process environment. It is not a normal Linux container runtime.
+
+## If you need Docker
+
+Use a real Linux host, VPS, VM or a carefully designed rooted/custom Android environment with the required kernel capabilities.
+
+# 25. Networking
+
+## Interfaces
+
+Depending on Android/version permissions, tools such as `ip`, `ifconfig` or Termux-specific commands can expose network state.
+
+## Routing
 
 ```bash
-ip addr
 ip route
-ping HOST
-dig DOMAIN
-curl URL
-wget URL
+```
+
+Availability/output may vary by Android version.
+
+## DNS
+
+```bash
+dig example.com
+host example.com
+```
+
+## Ports
+
+```bash
 ss -lnt
 ```
 
-Availability can vary with Android and package versions.
+## curl
 
-## 26. Backup and migration
+```bash
+curl -I https://example.com
+curl -v https://example.com
+```
 
-Backup home:
+## wget
+
+```bash
+wget https://example.com/file
+```
+
+# 26. Backup and migration of Termux
+
+## HOME backup
+
+Example:
 
 ```bash
 tar -czf termux-home.tar.gz -C "$HOME" .
 ```
 
-Keep Git repositories pushed to remotes.
+## Git repositories
 
-Save package list:
+Push repositories to remote Git hosting so the phone is not the only copy.
+
+## Package list
 
 ```bash
 pkg list-installed > packages.txt
 ```
 
-Back up SSH keys securely.
+## SSH keys
 
-## 27. Security
+Back them up securely and never put private keys in public repositories.
 
-Do not pipe random internet scripts directly into a shell without reading them.
+# 27. Security
 
-Protect SSH keys and API tokens.
+## Do not execute blindly
 
-If you run sshd, do not expose it to the Internet casually.
+Do not pipe random Internet scripts into a shell without reading them.
 
-## 28. Performance and battery
+## SSH
 
-Android may stop background work.
+Use key authentication, passphrases where useful and a clear SSH config.
 
-Long-running tasks are better handled with:
+## SSH server on the phone
 
-- tmux,
-- wake locks when justified,
-- disabled battery optimization where appropriate,
-- a VPS/server for truly persistent workloads.
+Do not expose it directly to the Internet without a strong reason. Prefer LAN/VPN access.
 
-## 29. Common problems
+## Secrets
 
-### command not found
+Keep API tokens and passwords in protected files, environment stores or password managers, not Git.
 
-Install the package or check PATH.
+# 28. Performance and battery
 
-### Linux binary does not run
+Android optimizes battery aggressively. Long-running tasks may be stopped. Use tmux, wake locks when justified and a real server for persistent services.
 
-It may expect glibc or a different dynamic loader.
+# 29. Common problems
 
-### Script uses /bin/bash
+## `command not found`
 
-Termux paths differ. Prefer:
+Install the package or inspect `PATH`:
+
+```bash
+echo "$PATH"
+command -v COMMAND
+```
+
+## Packages do not work after a long time
+
+Update Termux packages and ensure the application itself is from a supported current source.
+
+## A Debian program does not run
+
+It may depend on glibc, a different dynamic loader or Linux filesystem assumptions. Use a native Termux package or proot-distro.
+
+## Script contains `#!/bin/bash`
+
+Use:
 
 ```bash
 #!/usr/bin/env bash
 ```
 
-### Permission denied in shared storage
+because Termux does not normally provide `/bin/bash` at the Android root filesystem.
 
-Android shared storage does not behave like a normal Unix filesystem.
+## `Permission denied` in `/sdcard`
 
-### Process disappears
+Shared storage does not support normal Unix executable permission behavior. Move scripts/projects into Termux home.
 
-Android may have killed the application or background process.
+## Process disappeared after some time
 
-### Termux:API does not work
+Android may have killed the app/background process. Check battery optimization and whether the task belongs on a persistent server instead.
 
-Make sure the matching API plugin/application and package are installed from compatible sources.
+## Termux:API does not work
 
-## 30. Real-life uses
+Check that the API app/plugin and Termux package come from compatible sources and permissions are granted.
 
-- emergency SSH terminal for a VPS,
-- quick Git fixes,
-- testing a static page,
-- running a local Go backend,
-- sending a phone notification after a script completes,
-- monitoring a webpage,
-- simple LAN file serving,
-- portable Debian userspace with proot-distro,
-- tmux + SSH administration from a phone.
+# 30. Real-life examples
 
-## 31. Cheat sheet
+## 30.1. Phone as emergency VPS terminal
 
 ```bash
-pkg update
-pkg upgrade
-pkg install git openssh vim tmux curl
-termux-setup-storage
-ssh user@server
+ssh vps
+tmux attach -t admin
+```
+
+## 30.2. Quick Git project fix
+
+```bash
 git clone REPO
-python script.py
+cd project
+nvim file
+git diff
+git commit
+git push
+```
+
+## 30.3. Test a simple website
+
+```bash
+cd site
+python -m http.server 8080
+```
+
+Open `http://127.0.0.1:8080` in the phone browser.
+
+## 30.4. Local Go backend
+
+```bash
 go run .
-node app.js
-tmux
+```
+
+Bind to `127.0.0.1:8080` for local-only testing or a LAN address deliberately when needed.
+
+## 30.5. Notification when a task finishes
+
+```bash
+long-command && termux-notification --title "Done" --content "Task finished"
+```
+
+## 30.6. Monitor a website
+
+```bash
+while sleep 300; do
+  curl -fsS https://example.com >/dev/null || termux-notification --title "Alert" --content "Site check failed"
+done
+```
+
+## 30.7. Phone as simple LAN file server
+
+```bash
+python -m http.server 8080 --directory ~/storage/shared
+```
+
+Use only on trusted networks and understand that this exposes files to clients that can reach the port.
+
+## 30.8. Debian in your pocket
+
+```bash
 proot-distro login debian
+```
+
+## 30.9. Termux + tmux + SSH
+
+```text
+phone
+→ Termux
+→ SSH
+→ tmux on server
+```
+
+This is one of the most practical mobile administration workflows.
+
+# 31. Cheat sheet
+
+## Update
+
+```bash
+pkg update && pkg upgrade
+```
+
+## Install
+
+```bash
+pkg install PACKAGE
+```
+
+## Search
+
+```bash
+pkg search NAME
+```
+
+## HOME
+
+```bash
+echo "$HOME"
+```
+
+## PREFIX
+
+```bash
+echo "$PREFIX"
+```
+
+## Phone storage
+
+```bash
+termux-setup-storage
+ls ~/storage/shared
+```
+
+## SSH
+
+```bash
+ssh user@host
+```
+
+## SSH server
+
+```bash
+sshd
+```
+
+## Git
+
+```bash
+git status
+```
+
+## Vim
+
+```bash
+vim file
+```
+
+## Neovim
+
+```bash
+nvim file
+```
+
+## Python
+
+```bash
+python script.py
+```
+
+## Go
+
+```bash
+go run .
+```
+
+## C/C++
+
+```bash
+clang file.c -o app
+```
+
+## Node
+
+```bash
+node app.js
+```
+
+## tmux
+
+```bash
+tmux
+```
+
+## Debian
+
+```bash
+proot-distro login debian
+```
+
+## Termux API
+
+```bash
+termux-battery-status
+```
+
+## Wake lock
+
+```bash
 termux-wake-lock
 ```
 
-# Mental model
+## System information
+
+```bash
+uname -a
+getprop ro.build.version.release
+```
+
+# Termux mental model
 
 ```text
-Android kernel
+Android Linux kernel
 ↓
-Android app sandbox
+Android application sandbox
 ↓
-Termux userspace
+Termux userspace (Bionic)
 ↓
 shell + Unix tools + compilers
 ```
 
-Use native Termux for lightweight Unix work.
+# When to use what
 
-Use proot-distro when you need a more familiar Debian-like userspace.
+## Native Termux
 
-Use a real Linux/FreeBSD server when you need persistent services, privileged networking or container infrastructure.
+Use for SSH, Git, shell scripting, small development tools and lightweight automation.
+
+## proot-distro
+
+Use when you need a Debian-like userspace or glibc-oriented software.
+
+## Debian/VPS
+
+Use for persistent services, Docker, privileged networking and production workloads.
+
+## Rooted Android
+
+Use only when you explicitly need system-level control and accept the security/update trade-offs.
+
+# 32. Sources
+
+Use the official Termux documentation/repository, Android platform documentation and package-specific docs. Because Termux changes with Android versions, verify current behavior before relying on an old tutorial.
 
 # Summary
 
-Termux turns an Android device into a powerful portable terminal and development environment without pretending that Android has become a normal Linux server.
+Termux is best understood as a powerful Unix userspace inside Android's application sandbox. It is excellent for administration, scripting and development on the move, but it is not a full Debian installation and not a replacement for a persistent server.
