@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -1120,6 +1120,69 @@
         "timer",
         "scheduler",
         "service"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-019",
+      "name": "c-reading-building-debugging.md",
+      "title": "C — Reading, Building and Debugging Projects",
+      "path": "md/en/programming/c/c-reading-building-debugging.md",
+      "category": "programming/c",
+      "tags": [
+        "c",
+        "gcc",
+        "clang",
+        "gdb"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-020",
+      "name": "go-reading-code.md",
+      "title": "Go — Reading Code",
+      "path": "md/en/programming/go/go-reading-code.md",
+      "category": "programming/go",
+      "tags": [
+        "go",
+        "golang"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-021",
+      "name": "javascript-guide.md",
+      "title": "JavaScript — From Basics to Modern Front-End",
+      "path": "md/en/programming/javascript/javascript-guide.md",
+      "category": "programming/javascript",
+      "tags": [
+        "js",
+        "javascript",
+        "frontend"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-022",
+      "name": "nodejs.md",
+      "title": "Node.js — Practical Handbook",
+      "path": "md/en/programming/javascript/nodejs.md",
+      "category": "programming/javascript",
+      "tags": [
+        "node",
+        "nodejs",
+        "javascript"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-023",
+      "name": "python-basics.md",
+      "title": "Python — Practical Handbook",
+      "path": "md/en/programming/python/python-basics.md",
+      "category": "programming/python",
+      "tags": [
+        "python"
       ],
       "language": "en"
     }
