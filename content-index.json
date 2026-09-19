@@ -1,5 +1,5 @@
 {
-  "version": 13,
+  "version": 14,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -1541,6 +1541,85 @@
         "e2e",
         "playwright",
         "go test"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-053",
+      "name": "web-analytics-tagging.md",
+      "title": "Web Analytics and Tagging — Practical Handbook",
+      "path": "md/en/digital/web-analytics-tagging.md",
+      "category": "digital",
+      "tags": [
+        "analytics",
+        "tagging",
+        "ga4",
+        "gtm",
+        "datalayer",
+        "utm"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-054",
+      "name": "ab-testing-experiments.md",
+      "title": "A/B Testing and Experiments — Practical Handbook",
+      "path": "md/en/digital/ab-testing-experiments.md",
+      "category": "digital",
+      "tags": [
+        "ab testing",
+        "experiments",
+        "conversion",
+        "mde",
+        "metrics"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-055",
+      "name": "html-email-edm.md",
+      "title": "HTML Email / EDM — Practical Handbook",
+      "path": "md/en/digital/html-email-edm.md",
+      "category": "digital",
+      "tags": [
+        "email",
+        "html email",
+        "edm",
+        "outlook",
+        "newsletter"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-056",
+      "name": "technical-documentation.md",
+      "title": "Documenting Technical Solutions — Handbook",
+      "path": "md/en/architecture/technical-documentation.md",
+      "category": "architecture",
+      "tags": [
+        "documentation",
+        "readme",
+        "adr",
+        "rfc",
+        "runbook",
+        "openapi"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-057",
+      "name": "web-app-end-to-end-playbook.md",
+      "title": "End-to-End Web Application Troubleshooting — Playbook",
+      "path": "md/en/troubleshooting/web-app-end-to-end-playbook.md",
+      "category": "troubleshooting",
+      "tags": [
+        "troubleshooting",
+        "dns",
+        "tls",
+        "nginx",
+        "backend",
+        "database",
+        "debug"
       ],
       "language": "en"
     }
