@@ -1,5 +1,5 @@
 {
-  "version": 12,
+  "version": 13,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -1498,6 +1498,49 @@
         "postgres",
         "postgresql",
         "database"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-001",
+      "name": "hermes-agent.md",
+      "title": "Hermes Agent — User Handbook",
+      "path": "md/en/ai/hermes-agent.md",
+      "category": "ai",
+      "tags": [
+        "ai",
+        "hermes",
+        "agent"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-002",
+      "name": "prompting-ai.md",
+      "title": "AI Prompting — Practical Handbook",
+      "path": "md/en/ai/prompting-ai.md",
+      "category": "ai",
+      "tags": [
+        "ai",
+        "prompt",
+        "prompting",
+        "llm"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-049",
+      "name": "software-testing.md",
+      "title": "Software Testing — Handbook",
+      "path": "md/en/testing/software-testing.md",
+      "category": "testing",
+      "tags": [
+        "testing",
+        "unit",
+        "integration",
+        "e2e",
+        "playwright",
+        "go test"
       ],
       "language": "en"
     }
