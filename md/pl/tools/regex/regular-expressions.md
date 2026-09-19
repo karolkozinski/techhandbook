@@ -1,4 +1,4 @@
-# Wyrażenia regularne (Regex) — kompendium praktyczne
+# regular-expressions
 
 ## 1. Czym jest regex
 

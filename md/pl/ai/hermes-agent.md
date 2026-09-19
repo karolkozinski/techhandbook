@@ -1,4 +1,4 @@
-# Hermes Agent — kompendium użytkownika
+# hermes-agent
 ## Debian jako host, FreeBSD jako host/maszyna zarządzana
 
 > Stan dokumentacji: 19 września 2026  

@@ -1,4 +1,4 @@
-# UX i dostępność dla developera — kompendium
+# ux-accessibility
 
 ## 1. UX dla developera
 

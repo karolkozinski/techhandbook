@@ -1,4 +1,4 @@
-# JavaScript od podstaw do nowoczesnego front-endu
+# javascript-guide
 
 > Praktyczne kompendium do tworzenia zwykłych, interaktywnych stron i małych aplikacji webowych.  
 > Stan narzędzi i przykładów: 2026-09-19.  

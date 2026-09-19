@@ -1,4 +1,4 @@
-# FreeBSD — Practical Shell Handbook
+# freebsd-shell
 
 # FreeBSD — Administration, System and Directories
 

@@ -1,4 +1,4 @@
-# JavaScript — From Basics to Modern Front-End
+# javascript-guide
 # Table of Contents
 # 1. What JavaScript actually does
 JavaScript adds behavior to web pages, manipulates the DOM, communicates with APIs and can also run outside the browser in environments such as Node.js.

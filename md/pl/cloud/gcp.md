@@ -1,4 +1,4 @@
-# Google Cloud Platform (GCP) — kompendium praktyczne
+# gcp
 
 > Aktualizacja: 2026-09-19  
 > Cel: zrozumieć Google Cloud jako platformę do VM, kontenerów, serverless, danych, AI i aplikacji webowych.

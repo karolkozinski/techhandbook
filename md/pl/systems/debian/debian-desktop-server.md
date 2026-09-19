@@ -1,4 +1,4 @@
-# Debian 13 „Trixie” — kompendium desktop + serwer
+# debian-desktop-server
 
 > **Zakres:** Debian jako codzienny system desktopowy z **GNOME** lub **KDE Plasma** oraz Debian jako **serwer zarządzany przez SSH i shell**.  
 > **Wersja odniesienia:** Debian 13 „Trixie”; aktualne stabilne wydanie w chwili przygotowania dokumentu: **13.7**.  

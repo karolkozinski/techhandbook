@@ -1,4 +1,4 @@
-# systemd, cron and Schedulers — Practical Handbook
+# systemd-cron-schedulers
 
 ## 1. The problem
 

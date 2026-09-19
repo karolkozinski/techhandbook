@@ -1,4 +1,4 @@
-# Linux permissions i bezpieczeństwo serwera — kompendium
+# linux-server-security
 
 ## 1. Użytkownicy i grupy
 

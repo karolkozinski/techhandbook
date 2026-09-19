@@ -1,4 +1,4 @@
-# Documenting Technical Solutions — Handbook
+# technical-documentation
 
 ## 1. Why document
 

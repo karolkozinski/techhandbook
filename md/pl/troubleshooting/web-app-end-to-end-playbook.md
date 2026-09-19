@@ -1,4 +1,4 @@
-# Troubleshooting aplikacji webowej end-to-end — playbook
+# web-app-end-to-end-playbook
 
 ## 1. Cel
 

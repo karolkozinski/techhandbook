@@ -1,4 +1,4 @@
-# 05. CSS — nadajemy styl
+# 05-css-nadajemy-styl
 
 HTML mówi, **co jest na stronie**. CSS mówi, **jak to wygląda**.
 

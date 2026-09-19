@@ -1,4 +1,4 @@
-# Web Analytics and Tagging — Practical Handbook
+# web-analytics-tagging
 
 ## 1. Purpose of analytics
 

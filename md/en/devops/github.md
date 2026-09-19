@@ -1,4 +1,4 @@
-# GitHub — Practical Handbook
+# github
 ## 1. Git and GitHub are not the same thing
 ### Git
 Git is a distributed version-control system that tracks file history locally.

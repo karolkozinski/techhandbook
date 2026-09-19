@@ -1,4 +1,4 @@
-# Docker — praktyczne kompendium używania
+# docker
 
 > Cel: nie nauczyć się „administracji Dockerem od zera do eksperta”, tylko swobodnie uruchamiać cudze projekty, tworzyć własne obrazy, przenosić je między komputerami i serwerami, diagnozować problemy oraz rozumieć, co Docker właściwie robi.
 

@@ -1,4 +1,4 @@
-# HTTP, HTTPS i TLS — kompendium developera
+# http-https-tls
 
 ## 1. Model klient–serwer
 

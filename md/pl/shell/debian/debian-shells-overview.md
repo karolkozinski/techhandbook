@@ -1,4 +1,4 @@
-# Kompendium shelli w Debianie
+# debian-shells-overview
 
 ## 1. Czym jest shell?
 

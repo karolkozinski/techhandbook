@@ -1,4 +1,4 @@
-# Linux Window Managers — Handbook
+# window-managers
 
 ## 1. What is a window manager?
 

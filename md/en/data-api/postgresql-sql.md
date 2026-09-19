@@ -1,4 +1,4 @@
-# SQL and PostgreSQL for Developers — Handbook
+# postgresql-sql
 
 ## 1. Relational model
 

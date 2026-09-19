@@ -1,4 +1,4 @@
-# SSH i zdalna administracja — kompendium
+# ssh-remote-administration
 
 ## 1. SSH
 

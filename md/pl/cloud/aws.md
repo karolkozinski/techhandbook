@@ -1,4 +1,4 @@
-# Amazon Web Services (AWS) — kompendium praktyczne
+# aws
 
 > Aktualizacja: 2026-09-19  
 > Cel: rozumieć AWS na tyle, aby świadomie uruchamiać aplikacje, serwery i usługi, czytać istniejącą architekturę, diagnozować problemy i nie zrobić sobie przypadkiem bardzo drogiego rachunku.

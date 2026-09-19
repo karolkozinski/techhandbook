@@ -1,4 +1,4 @@
-# Web analytics i tagging — kompendium praktyczne
+# web-analytics-tagging
 
 ## 1. Cel analityki
 

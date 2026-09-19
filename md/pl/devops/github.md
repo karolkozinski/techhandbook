@@ -1,4 +1,4 @@
-# GitHub – kompendium praktyczne
+# github
 
 > Kompendium do codziennej pracy z GitHubem i Gitem: repozytoria, commity, branche, synchronizacja, forki, Pull Requesty, Issues, Releases, GitHub CLI, SSH, konflikty i typowe workflow.
 

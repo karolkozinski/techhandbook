@@ -1,4 +1,4 @@
-# Hermes Agent — User Handbook
+# hermes-agent
 ## Debian as host, FreeBSD as host/managed machine
 # 1. What Hermes Agent is
 Hermes is an AI-agent environment that can combine model access, shell tools, files, memory, profiles, gateways and messaging integrations.

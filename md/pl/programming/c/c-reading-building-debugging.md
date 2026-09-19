@@ -1,4 +1,4 @@
-# C — kompendium do czytania, kompilowania i debugowania projektów
+# c-reading-building-debugging
 
 > Cel: nie nauczyć Cię „programować w C od zera”, tylko dać Ci taki poziom orientacji, żebyś po sklonowaniu projektu potrafił:
 >

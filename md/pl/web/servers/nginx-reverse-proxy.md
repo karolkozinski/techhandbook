@@ -1,4 +1,4 @@
-# nginx i reverse proxy — kompendium praktyczne
+# nginx-reverse-proxy
 
 ## 1. Do czego służy nginx
 

@@ -1,4 +1,4 @@
-# nginx and Reverse Proxy — Practical Handbook
+# nginx-reverse-proxy
 
 ## 1. What nginx is used for
 

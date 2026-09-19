@@ -1,4 +1,4 @@
-# Windows Server w korporacji — kompendium podstaw administratora
+# windows-server-administration
 
 ## Spis treści
 

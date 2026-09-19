@@ -1,4 +1,4 @@
-# Termux — Knowledge Handbook
+# termux
 
 ## Table of Contents
 

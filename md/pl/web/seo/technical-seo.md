@@ -1,4 +1,4 @@
-# Technical SEO — kompendium praktyczne
+# technical-seo
 
 ## 1. Czym jest Technical SEO
 

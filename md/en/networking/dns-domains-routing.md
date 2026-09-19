@@ -1,4 +1,4 @@
-# DNS, Domains and Internet Routing — Practical Handbook
+# dns-domains-routing
 
 ## 1. Why this matters
 

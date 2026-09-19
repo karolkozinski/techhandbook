@@ -1,4 +1,4 @@
-# Kompendium najpopularniejszych dystrybucji Linuxa
+# linux-distributions
 
 ## 1. Po co w ogóle są różne dystrybucje?
 

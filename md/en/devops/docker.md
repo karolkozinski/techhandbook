@@ -1,4 +1,4 @@
-# Docker — Practical Handbook
+# docker
 > Goal: not to become a Docker expert from scratch, but to confidently run existing projects, build your own images, move them between computers and servers, troubleshoot problems, and understand what Docker is actually doing.
 # 1. What Docker is
 Docker runs applications in containers. A container is an isolated process environment that shares the host kernel but can have its own filesystem, libraries, configuration, environment variables, ports, networks and resource limits.

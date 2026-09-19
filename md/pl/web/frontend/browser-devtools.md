@@ -1,4 +1,4 @@
-# Browser DevTools — kompendium praktyczne
+# browser-devtools
 
 ## 1. Po co znać DevTools
 

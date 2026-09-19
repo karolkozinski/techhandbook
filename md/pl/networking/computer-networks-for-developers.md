@@ -1,4 +1,4 @@
-# Sieci komputerowe dla developera — kompendium
+# computer-networks-for-developers
 
 ## 1. Cel
 

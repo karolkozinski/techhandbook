@@ -1,4 +1,4 @@
-# Technical SEO — Practical Handbook
+# technical-seo
 
 ## 1. What Technical SEO is
 

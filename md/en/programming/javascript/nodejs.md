@@ -1,4 +1,4 @@
-# Node.js and Me — Practical Handbook
+# nodejs
 # 1. What Node.js actually is
 Node.js is a JavaScript runtime built on V8 that lets JavaScript run outside the browser, especially for servers, CLI tools and build tooling.
 # 2. Node.js, npm and npx — what is what?

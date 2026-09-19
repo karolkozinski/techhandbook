@@ -1,4 +1,4 @@
-# FreeBSD as a Server — Administrator Handbook
+# freebsd-server
 # 1. How to think about FreeBSD
 FreeBSD is a complete operating system: kernel, base userland, documentation and release engineering are developed together. Third-party software is added separately through packages or Ports.
 # 2. System version

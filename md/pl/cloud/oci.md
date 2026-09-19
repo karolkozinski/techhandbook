@@ -1,4 +1,4 @@
-# Oracle Cloud Infrastructure (OCI) — kompendium praktyczne
+# oci
 
 > Aktualizacja: 2026-09-19  
 > Cel: poznać OCI od podstaw — tenancy, compartments, VCN, Compute, storage, bazy Oracle/PostgreSQL/MySQL, kontenery, IAM, CLI i automatyzację.

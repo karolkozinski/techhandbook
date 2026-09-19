@@ -1,4 +1,4 @@
-# 04. HTML — pierwsza strona
+# 04-html-pierwsza-strona
 
 HTML opisuje **co znajduje się na stronie internetowej**: nagłówki, tekst, obrazki, linki i inne elementy.
 

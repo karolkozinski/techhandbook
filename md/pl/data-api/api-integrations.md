@@ -1,4 +1,4 @@
-# API i integracje systemów — kompendium praktyczne
+# api-integrations
 
 ## 1. API
 

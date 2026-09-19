@@ -1,4 +1,4 @@
-# A/B testing i eksperymenty — kompendium praktyczne
+# ab-testing-experiments
 
 ## 1. Czym jest A/B test
 

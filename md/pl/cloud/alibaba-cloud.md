@@ -1,4 +1,4 @@
-# Alibaba Cloud — kompendium praktyczne
+# alibaba-cloud
 
 > Aktualizacja: 2026-09-19  
 > Cel: zrozumieć Alibaba Cloud jako dużą platformę IaaS/PaaS, szczególnie istotną w Chinach i Azji, oraz nauczyć się mapować jej usługi na znane pojęcia AWS/Azure/GCP.

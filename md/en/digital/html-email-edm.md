@@ -1,4 +1,4 @@
-# HTML Email / EDM — Practical Handbook
+# html-email-edm
 
 ## 1. Why HTML email is different
 

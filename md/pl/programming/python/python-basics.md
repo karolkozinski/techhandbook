@@ -1,4 +1,4 @@
-# Python — kompendium praktyczne
+# python-basics
 
 ## 1. Czym jest Python
 

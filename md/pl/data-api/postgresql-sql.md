@@ -1,4 +1,4 @@
-# SQL i PostgreSQL dla developera — kompendium
+# postgresql-sql
 
 ## 1. Model relacyjny
 

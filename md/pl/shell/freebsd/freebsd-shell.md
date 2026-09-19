@@ -1,4 +1,4 @@
-# FreeBSD — praktyczne kompendium shella
+# freebsd-shell
 
 Samodzielne kompendium do codziennej pracy we FreeBSD z terminala lub przez SSH.
 

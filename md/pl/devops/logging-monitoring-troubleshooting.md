@@ -1,4 +1,4 @@
-# Logi, monitoring i troubleshooting — kompendium
+# logging-monitoring-troubleshooting
 
 ## 1. Zasada
 

@@ -1,4 +1,4 @@
-# 03. Terminal bez strachu
+# 03-terminal-bez-strachu
 
 Terminal pozwala sterować komputerem tekstowymi poleceniami. To nie jest „tryb hakera”. To po prostu drugi sposób obsługi komputera.
 

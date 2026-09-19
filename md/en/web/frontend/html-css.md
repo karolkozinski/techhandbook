@@ -1,4 +1,4 @@
-# Modern HTML and CSS Handbook
+# html-css
 
 A practical reference for building modern, semantic, responsive and accessible websites.
 

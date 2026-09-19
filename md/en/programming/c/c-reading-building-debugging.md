@@ -1,4 +1,4 @@
-# C — Handbook for Reading, Building and Debugging Projects
+# c-reading-building-debugging
 # 1. C in one sentence
 C is a small, compiled systems language that gives you direct control over memory, data layout and operating-system APIs.
 # 2. The simplest program

@@ -1,4 +1,4 @@
-# Kompendium shelli w FreeBSD
+# freebsd-shells-overview
 
 ## 1. Czym jest shell?
 

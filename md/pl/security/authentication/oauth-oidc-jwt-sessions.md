@@ -1,4 +1,4 @@
-# OAuth 2.0, OpenID Connect, JWT i sesje — kompendium
+# oauth-oidc-jwt-sessions
 
 ## 1. Najpierw pojęcia
 

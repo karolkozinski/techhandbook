@@ -1,4 +1,4 @@
-# Programowanie w shellu — praktyczne kompendium dla Debiana i FreeBSD
+# shell-scripting
 
 Shell to nie tylko miejsce do wpisywania poleceń. Jest też językiem programowania, w którym można pisać małe narzędzia administracyjne, automatyzować powtarzalne czynności, pytać użytkownika o dane, reagować na jego wybory, sprawdzać wyniki poleceń i wyświetlać status operacji.
 

@@ -1,4 +1,4 @@
-# Software Testing — Handbook
+# software-testing
 
 ## 1. Why tests exist
 

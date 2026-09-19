@@ -1,4 +1,4 @@
-# Termux — kompendium wiedzy
+# termux
 
 > Praktyczne kompendium Termuxa na Androidzie: czym jest, jak działa, jak go używać jako środowiska uniksowego i developerskiego, gdzie kończy się Termux, a zaczyna Android, oraz co zmienia root.
 >

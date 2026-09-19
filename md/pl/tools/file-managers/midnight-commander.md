@@ -1,4 +1,4 @@
-# Midnight Commander — kompendium wiedzy
+# midnight-commander
 
 ## 1. Czym jest Midnight Commander?
 

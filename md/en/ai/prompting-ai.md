@@ -1,4 +1,4 @@
-# AI Prompting — Practical Handbook
+# prompting-ai
 
 ## 1. What a prompt is
 

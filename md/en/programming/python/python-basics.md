@@ -1,4 +1,4 @@
-# Python — Practical Handbook
+# python-basics
 ## 1. What Python is
 Python is a high-level interpreted language focused on readability and a large ecosystem.
 # 2. How Python works

@@ -1,4 +1,4 @@
-# Architecture of Small Web Applications — Handbook
+# small-web-apps
 
 ## 1. Goal
 

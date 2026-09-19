@@ -1,4 +1,4 @@
-# Computer Networks for Developers — Handbook
+# computer-networks-for-developers
 
 ## 1. Goal
 

@@ -1,4 +1,4 @@
-# Microsoft Azure — Practical Handbook
+# azure
 
 ## 1. What Azure is
 

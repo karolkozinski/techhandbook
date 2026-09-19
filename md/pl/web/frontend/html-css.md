@@ -1,4 +1,4 @@
-# Kompendium nowoczesnego HTML i CSS
+# html-css
 
 Praktyczne kompendium referencyjne dla osoby, która chce samodzielnie tworzyć współczesne, semantyczne, responsywne i dostępne strony internetowe.
 

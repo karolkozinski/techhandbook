@@ -1,4 +1,4 @@
-# Visual Studio Code — kompendium wiedzy
+# vscode
 
 > Praktyczny przewodnik po VS Code jako codziennym środowisku pracy z kodem, Gitem, terminalem, debugowaniem oraz agentami AI: GitHub Copilot i OpenAI Codex.
 >

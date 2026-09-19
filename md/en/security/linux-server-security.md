@@ -1,4 +1,4 @@
-# Linux Permissions and Server Security — Handbook
+# linux-server-security
 
 ## 1. Users and groups
 

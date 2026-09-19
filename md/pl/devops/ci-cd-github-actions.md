@@ -1,4 +1,4 @@
-# CI/CD i GitHub Actions — kompendium
+# ci-cd-github-actions
 
 ## 1. CI i CD
 

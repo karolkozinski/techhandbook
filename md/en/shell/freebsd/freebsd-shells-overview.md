@@ -1,4 +1,4 @@
-# Shells in FreeBSD — Handbook
+# freebsd-shells-overview
 
 ## 1. What is a shell?
 

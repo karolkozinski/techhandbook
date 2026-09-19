@@ -1,4 +1,4 @@
-# Regular Expressions (Regex) — Practical Handbook
+# regular-expressions
 
 ## 1. What regex is
 

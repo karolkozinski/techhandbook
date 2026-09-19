@@ -1,4 +1,4 @@
-# UX and Accessibility for Developers — Handbook
+# ux-accessibility
 
 ## 1. UX for developers
 

@@ -1,4 +1,4 @@
-# CI/CD and GitHub Actions — Handbook
+# ci-cd-github-actions
 
 ## 1. CI and CD
 

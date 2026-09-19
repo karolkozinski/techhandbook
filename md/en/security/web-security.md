@@ -1,4 +1,4 @@
-# Web Application Security for Developers — Handbook
+# web-security
 
 ## 1. Goal
 

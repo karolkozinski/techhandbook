@@ -1,4 +1,4 @@
-# FreeBSD jako serwer — kompendium administratora
+# freebsd-server
 
 > Praktyczny przewodnik po administracji FreeBSD na serwerze.  
 > Nacisk: usługi, `rc.conf`, `service`, pakiety, aktualizacje, sieć, SSH, ZFS, jails, firewall, logi, cron, diagnostyka i utrzymanie.  

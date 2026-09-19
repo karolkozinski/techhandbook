@@ -1,4 +1,4 @@
-# Visual Studio Code — Knowledge Handbook
+# vscode
 ## 1. What Visual Studio Code is
 VS Code is a cross-platform code editor with project navigation, Git integration, terminal, debugger, language servers, extensions and AI tooling. It sits between a simple editor and a full IDE.
 # 2. Installation

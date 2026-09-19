@@ -1,4 +1,4 @@
-# Kompendium menedżerów okien w Linuxie
+# window-managers
 
 ## 1. Czym jest menedżer okien?
 

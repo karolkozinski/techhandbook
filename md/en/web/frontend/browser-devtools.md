@@ -1,4 +1,4 @@
-# Browser DevTools — Practical Handbook
+# browser-devtools
 
 ## 1. Why DevTools matter
 

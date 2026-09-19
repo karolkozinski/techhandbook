@@ -1,4 +1,4 @@
-# systemd, cron i schedulery — kompendium praktyczne
+# systemd-cron-schedulers
 
 ## 1. Problem
 

@@ -1,4 +1,4 @@
-# Promptowanie AI — kompendium praktyczne
+# prompting-ai
 
 ## 1. Czym jest prompt
 

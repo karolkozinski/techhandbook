@@ -1,4 +1,4 @@
-# OAuth 2.0, OpenID Connect, JWT and Sessions — Handbook
+# oauth-oidc-jwt-sessions
 
 ## 1. Concepts first
 

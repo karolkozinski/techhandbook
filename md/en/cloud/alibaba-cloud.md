@@ -1,4 +1,4 @@
-# Alibaba Cloud — Practical Handbook
+# alibaba-cloud
 
 ## 1. What Alibaba Cloud is
 

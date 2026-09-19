@@ -1,4 +1,4 @@
-# 01. Jak działa komputer?
+# 01-jak-dziala-komputer
 
 Komputer nie jest magicznym pudełkiem. To maszyna, która bardzo szybko wykonuje polecenia.
 

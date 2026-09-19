@@ -1,4 +1,4 @@
-# Testowanie oprogramowania — kompendium
+# software-testing
 
 ## 1. Po co testy
 

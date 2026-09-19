@@ -1,4 +1,4 @@
-# 02. Pliki i katalogi
+# 02-pliki-i-katalogi
 
 Prawie wszystko na komputerze jest zapisane jako **plik**. Katalog, nazywany też folderem, służy do porządkowania plików i innych katalogów.
 

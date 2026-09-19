@@ -1,4 +1,4 @@
-# Bezpieczeństwo aplikacji webowych dla developera — kompendium
+# web-security
 
 ## 1. Cel
 

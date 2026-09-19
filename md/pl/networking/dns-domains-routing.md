@@ -1,4 +1,4 @@
-# DNS, domeny i routing internetowy — kompendium praktyczne
+# dns-domains-routing
 
 ## 1. Po co to znać
 

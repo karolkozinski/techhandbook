@@ -1,4 +1,4 @@
-# Dokumentowanie rozwiązań technicznych — kompendium
+# technical-documentation
 
 ## 1. Po co dokumentować
 

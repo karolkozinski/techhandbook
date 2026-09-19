@@ -1,4 +1,4 @@
-# Google Cloud Platform (GCP) — Practical Handbook
+# gcp
 
 ## 1. What Google Cloud is
 

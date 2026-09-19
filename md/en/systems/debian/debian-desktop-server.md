@@ -1,4 +1,4 @@
-# Debian 13 “Trixie” — Desktop + Server Handbook
+# debian-desktop-server
 # 1. What Debian actually is
 Debian is a community-developed GNU/Linux distribution known for stability, broad architecture support, large repositories and a strong server ecosystem.
 # 2. Debian branches

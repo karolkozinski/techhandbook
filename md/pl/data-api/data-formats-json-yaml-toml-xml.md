@@ -1,4 +1,4 @@
-# JSON, YAML, TOML i XML — kompendium plików danych i konfiguracji
+# data-formats-json-yaml-toml-xml
 
 ## 1. JSON
 

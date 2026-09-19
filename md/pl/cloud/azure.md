@@ -1,4 +1,4 @@
-# Microsoft Azure — kompendium praktyczne
+# azure
 
 > Aktualizacja: 2026-09-19  
 > Cel: rozumieć Azure jako administrator/developer — od Entra ID, subskrypcji i Resource Groups po VM, kontenery, bazy, storage, monitoring i automatyzację.

@@ -1,4 +1,4 @@
-# Handbook of Popular Linux Distributions
+# linux-distributions
 ## 1. Why are there different distributions?
 They package the Linux kernel and user-space differently, choose release cadence, package manager, defaults, support model and target audience.
 # 2. Key concepts

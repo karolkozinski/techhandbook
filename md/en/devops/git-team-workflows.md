@@ -1,4 +1,4 @@
-# Git in Team Workflows — Handbook
+# git-team-workflows
 
 ## 1. Git and GitHub
 

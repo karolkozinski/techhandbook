@@ -1,4 +1,4 @@
-# Debian — praktyczne kompendium shella
+# debian-shell
 
 Samodzielne kompendium do codziennej pracy w Debianie z terminala lub przez SSH.
 

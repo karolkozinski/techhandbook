@@ -1,4 +1,4 @@
-# Logging, Monitoring and Troubleshooting — Handbook
+# logging-monitoring-troubleshooting
 
 ## 1. Rule
 

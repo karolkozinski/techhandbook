@@ -1,4 +1,4 @@
-# Web Performance — kompendium
+# web-performance
 
 ## 1. Cel
 

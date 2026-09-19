@@ -1,4 +1,4 @@
-# SSH and Remote Administration — Handbook
+# ssh-remote-administration
 
 ## 1. SSH
 

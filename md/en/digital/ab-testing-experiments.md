@@ -1,4 +1,4 @@
-# A/B Testing and Experiments — Practical Handbook
+# ab-testing-experiments
 
 ## 1. What an A/B test is
 

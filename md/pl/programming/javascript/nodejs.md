@@ -1,4 +1,4 @@
-# Node.js i ja — kompendium praktyczne
+# nodejs
 
 > Cel tego dokumentu: **nie nauczyć Cię programować w Node.js od zera**, tylko sprawić, żebyś potrafił:
 >

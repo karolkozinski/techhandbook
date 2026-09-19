@@ -1,4 +1,4 @@
-# Architektura małych aplikacji webowych — kompendium
+# small-web-apps
 
 ## 1. Cel
 

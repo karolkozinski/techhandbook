@@ -1,4 +1,4 @@
-# Git w praktyce zespołowej — kompendium
+# git-team-workflows
 
 ## 1. Git a GitHub
 

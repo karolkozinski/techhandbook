@@ -1,4 +1,4 @@
-# Web Performance — Handbook
+# web-performance
 
 ## 1. Goal
 

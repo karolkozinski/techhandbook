@@ -1,4 +1,4 @@
-# vi / Vim / gVim / Neovim — krótkie kompendium pracy z plikami tekstowymi
+# vi-vim-neovim
 
 ## 1. Co masz zainstalowane
 

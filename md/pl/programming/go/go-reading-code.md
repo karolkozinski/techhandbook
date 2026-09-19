@@ -1,4 +1,4 @@
-# Go — kompendium do rozumienia kodu
+# go-reading-code
 
 > Cel tego materiału: po przeczytaniu nie musisz umieć samodzielnie projektować dużych aplikacji w Go. Masz natomiast rozumieć, **co robi kod, jak jest zbudowany, gdzie czego szukać i jak go uruchomić, skompilować oraz przetestować**.
 >

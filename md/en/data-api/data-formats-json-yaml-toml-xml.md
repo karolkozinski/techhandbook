@@ -1,4 +1,4 @@
-# JSON, YAML, TOML and XML — Data and Configuration Handbook
+# data-formats-json-yaml-toml-xml
 
 ## 1. JSON
 

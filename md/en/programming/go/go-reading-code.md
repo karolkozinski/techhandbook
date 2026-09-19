@@ -1,4 +1,4 @@
-# Go — Handbook for Reading and Understanding Code
+# go-reading-code
 ## Table of Contents
 # 1. How to think about Go
 Go is deliberately small, explicit and convention-heavy. Read code in terms of packages, structs, interfaces, functions and data flow rather than searching for framework magic.

@@ -1,4 +1,4 @@
-# Oracle Cloud Infrastructure (OCI) — Practical Handbook
+# oci
 
 ## 1. What OCI is
 

@@ -1,4 +1,4 @@
-# Debian — Practical Shell Handbook
+# debian-shell
 
 # Debian — Administrator, System and Directories
 
