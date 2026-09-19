@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -812,6 +812,167 @@
         "debug"
       ],
       "language": "pl"
+    },
+    {
+      "id": "doc-016",
+      "name": "computer-networks-for-developers.md",
+      "title": "Computer Networks for Developers",
+      "path": "md/en/networking/computer-networks-for-developers.md",
+      "category": "networking",
+      "tags": [
+        "network",
+        "tcp",
+        "udp",
+        "ip",
+        "vlan"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-017",
+      "name": "dns-domains-routing.md",
+      "title": "DNS, Domains and Internet Routing",
+      "path": "md/en/networking/dns-domains-routing.md",
+      "category": "networking",
+      "tags": [
+        "dns",
+        "domain",
+        "domains",
+        "routing"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-018",
+      "name": "ssh-remote-administration.md",
+      "title": "SSH and Remote Administration",
+      "path": "md/en/networking/ssh-remote-administration.md",
+      "category": "networking",
+      "tags": [
+        "ssh",
+        "scp",
+        "sftp",
+        "rsync",
+        "tunnel"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-041",
+      "name": "small-web-apps.md",
+      "title": "Architecture of Small Web Applications",
+      "path": "md/en/web/architecture/small-web-apps.md",
+      "category": "web/architecture",
+      "tags": [
+        "architecture",
+        "web",
+        "backend",
+        "frontend"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-042",
+      "name": "html-css.md",
+      "title": "Modern HTML and CSS",
+      "path": "md/en/web/frontend/html-css.md",
+      "category": "web/frontend",
+      "tags": [
+        "html",
+        "css",
+        "frontend",
+        "web"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-043",
+      "name": "ux-accessibility.md",
+      "title": "UX and Accessibility for Developers",
+      "path": "md/en/web/frontend/ux-accessibility.md",
+      "category": "web/frontend",
+      "tags": [
+        "ux",
+        "accessibility",
+        "a11y",
+        "wcag"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-044",
+      "name": "http-https-tls.md",
+      "title": "HTTP, HTTPS and TLS",
+      "path": "md/en/web/protocols/http-https-tls.md",
+      "category": "web/protocols",
+      "tags": [
+        "http",
+        "https",
+        "tls",
+        "ssl"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-045",
+      "name": "nginx-reverse-proxy.md",
+      "title": "nginx and Reverse Proxy",
+      "path": "md/en/web/servers/nginx-reverse-proxy.md",
+      "category": "web/servers",
+      "tags": [
+        "nginx",
+        "reverse proxy",
+        "web server"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-046",
+      "name": "browser-devtools.md",
+      "title": "Browser DevTools — Practical Handbook",
+      "path": "md/en/web/frontend/browser-devtools.md",
+      "category": "web/frontend",
+      "tags": [
+        "devtools",
+        "browser",
+        "network",
+        "console",
+        "debug"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-047",
+      "name": "technical-seo.md",
+      "title": "Technical SEO — Practical Handbook",
+      "path": "md/en/web/seo/technical-seo.md",
+      "category": "web/seo",
+      "tags": [
+        "seo",
+        "technical seo",
+        "robots",
+        "sitemap",
+        "canonical",
+        "cwv"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-048",
+      "name": "web-performance.md",
+      "title": "Web Performance",
+      "path": "md/en/web/performance/web-performance.md",
+      "category": "web/performance",
+      "tags": [
+        "performance",
+        "cwv",
+        "lcp",
+        "inp",
+        "cls",
+        "cache",
+        "images"
+      ],
+      "language": "en"
     }
   ],
   "defaultLanguage": "pl",
