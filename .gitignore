@@ -1,0 +1,22 @@
+# System
+.DS_Store
+Thumbs.db
+
+# Edytory / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Lokalne pliki tymczasowe
+*.tmp
+*.bak
+*.log
+
+# Python cache dla ewentualnych skryptów pomocniczych
+__pycache__/
+*.pyc
+
+# Robocze warianty ikon źródłowych
+/icons/

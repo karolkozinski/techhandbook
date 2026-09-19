@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Null Yard Tech Handbook — praktyczna baza wiedzy technicznej.">
+  <title>Null Yard Tech Handbook</title>
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#/" aria-label="Tech Handbook — strona główna">
+        <img
+          class="brand-mark"
+          src="assets/nullyard_techhandbook_76x76.png"
+          width="38"
+          height="38"
+          alt=""
+          aria-hidden="true"
+        >
+        <span>
+          <strong>Tech Handbook</strong>
+          <small>Null Yard</small>
+        </span>
+      </a>
+
+      <div class="top-actions">
+        <button id="aboutButton" class="ghost-button" type="button">O projekcie</button>
+        <button id="themeButton" class="ghost-button icon-button" type="button" aria-label="Zmień motyw">◐</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="browser-panel" aria-label="Przeglądarka kompendiów">
+        <div class="search-wrap">
+          <label for="searchInput">Szukaj</label>
+          <div class="search-box">
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="np. dns, freebsd, git*"
+              autocomplete="off"
+              spellcheck="false"
+            >
+            <kbd>/</kbd>
+          </div>
+          <p class="search-hint">Nazwa, katalog, tytuł i tagi. Obsługuje <code>*</code>.</p>
+        </div>
+
+        <nav id="breadcrumbs" class="breadcrumbs" aria-label="Ścieżka"></nav>
+
+        <div class="browser-toolbar">
+          <span id="locationLabel">md/</span>
+          <span id="entryCount"></span>
+        </div>
+
+        <div id="fileBrowser" class="file-browser" role="list"></div>
+
+        <div id="searchResults" class="search-results" hidden></div>
+      </aside>
+
+      <section class="reader-panel">
+        <div id="welcome" class="welcome">
+          <p class="eyebrow">NULL YARD / TECH HANDBOOK</p>
+          <h1>Praktyczna baza wiedzy technicznej.</h1>
+          <p>
+            Wybierz katalog po lewej, a potem kompendium. Na telefonie przeglądarka
+            plików pojawia się nad czytnikiem.
+          </p>
+        </div>
+
+        <article id="reader" class="markdown-body" hidden></article>
+
+        <div id="readerError" class="reader-error" hidden>
+          <h2>Nie udało się otworzyć dokumentu</h2>
+          <p id="readerErrorText"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Null Yard Tech Handbook</span>
+      <span id="indexInfo"></span>
+    </footer>
+  </div>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
