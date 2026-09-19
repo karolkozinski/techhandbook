@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -1333,6 +1333,64 @@
         "server",
         "active directory",
         "administration"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-038",
+      "name": "vi-vim-neovim.md",
+      "title": "vi / Vim / gVim / Neovim — Practical Text Editing Handbook",
+      "path": "md/en/tools/editors/vi-vim-neovim.md",
+      "category": "tools/editors",
+      "tags": [
+        "vi",
+        "vim",
+        "gvim",
+        "neovim",
+        "editor"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-039",
+      "name": "vscode.md",
+      "title": "Visual Studio Code — Knowledge Handbook",
+      "path": "md/en/tools/editors/vscode.md",
+      "category": "tools/editors",
+      "tags": [
+        "vscode",
+        "editor",
+        "copilot",
+        "codex"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-040",
+      "name": "midnight-commander.md",
+      "title": "Midnight Commander — Knowledge Handbook",
+      "path": "md/en/tools/file-managers/midnight-commander.md",
+      "category": "tools/file-managers",
+      "tags": [
+        "mc",
+        "midnight commander",
+        "file manager"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-050",
+      "name": "regular-expressions.md",
+      "title": "Regular Expressions (Regex) — Practical Handbook",
+      "path": "md/en/tools/regex/regular-expressions.md",
+      "category": "tools/regex",
+      "tags": [
+        "regex",
+        "regexp",
+        "grep",
+        "sed",
+        "javascript",
+        "python"
       ],
       "language": "en"
     }
