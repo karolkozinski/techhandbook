@@ -1,575 +1,229 @@
 # Midnight Commander — Knowledge Handbook
-
 ## 1. What Midnight Commander is
-
-Midnight Commander (MC) is a two-panel terminal file manager inspired by Norton Commander.
-
-It is especially useful on servers because it combines:
-
-- directory navigation,
-- copy/move/delete operations,
-- built-in viewer,
-- built-in editor,
-- shell command line,
-- archive browsing,
-- remote filesystem support.
-
-## 2. Installation
-
-Debian / Ubuntu:
-
+Midnight Commander (MC) is a two-panel terminal file manager inspired by Norton Commander. It combines file operations, a shell command line, viewer, editor and virtual filesystem features.
+# 2. Installation
+## Debian / Ubuntu
 ```bash
+sudo apt update
 sudo apt install mc
 ```
-
-FreeBSD:
-
-```bash
+## FreeBSD
+```sh
 pkg install mc
 ```
-
-Run:
-
+# 3. What the MC screen looks like
+The default screen contains two file panels, a menu bar, a command line and function-key hints.
+# 4. Basic navigation
+## Arrow keys
+Move selection up/down and navigate menus.
+## Enter
+Open directories, launch files according to associations or confirm selections.
+## Return to parent directory
+Select `..` and press Enter, or use the appropriate navigation shortcut.
+# 5. Switching panels
+Use Tab to move focus between the left and right panels.
+# 6. Function keys F1–F10
+The bottom bar shows the default actions mapped to function keys.
+# 7. F1 — help
+Opens context-sensitive help and key documentation.
+# 8. F2 — user menu
+Opens a configurable menu of custom shell commands/actions.
+# 9. F3 — file viewer
+View a file without editing it. Useful for configs, logs and quick inspection.
+# 10. F4 — edit file
+Opens the selected file in mcedit or the configured external editor.
+# 11. F5 — copy
+Copies selected files/directories to the opposite panel by default.
+# 12. F6 — move / rename
+Moves selected files or renames them when source/target are in the same directory context.
+# 13. F7 — create directory
+Creates a new directory in the active panel.
+# 14. F8 — delete
+Deletes selected files/directories after confirmation. Review the selection carefully.
+# 15. F9 — main menu
+Activates the top menu where panel, file, command and options features are available.
+# 16. F10 — quit
+Exits Midnight Commander.
+# 17. Selecting files
+## Insert
+Insert toggles selection/marking of the current file and usually moves to the next item.
+# 18. Selecting by mask
+Use group selection to mark files matching a shell-style pattern such as `*.log`.
+## Unselecting
+Use the group-unselect command or toggle marks individually.
+# 19. Quick directory change
+Use the Quick cd command to jump to a path without manually traversing every directory.
+# 20. Directory Hotlist
+Store frequently used directories for fast access.
+# 21. Quick directory preview
+Panel modes can show tree/info views to help orient yourself in unfamiliar filesystems.
+# 22. Sorting
+Sort by name, extension, size, modification time or other supported fields.
+# 23. Showing hidden files
+Toggle dotfiles when working with configuration directories such as `.ssh`, `.config` or `.git`.
+# 24. Refreshing a panel
+Refresh when external shell commands or other programs changed the directory contents.
+# 25. Shell inside MC
+The command line at the bottom runs normal shell commands in the active panel's directory.
+# 26. Hiding panels and using the full shell
+Use the panel toggle shortcut to temporarily hide panels and work with a full terminal view.
+# 27. Command history
+Recall previously executed shell commands from MC's command line.
+# 28. Insert filename into command line
+## Ctrl+Enter
+Insert the selected filename/path according to MC's shortcut behavior.
+## Ctrl+Shift+Enter
+Depending on terminal/MC version, inserts a more complete path variant. If the terminal intercepts the key, remap or use menus.
+# 29. Searching for files
+Use MC's Find File feature for recursive filename/content searches.
+# 30. mcedit — built-in editor
+mcedit is a capable terminal editor integrated with MC, useful for configs and quick remote edits.
+# 31. mcedit basics
+Navigate with arrows/PageUp/PageDown, type normally, and use function-key/menu commands for block operations and options.
+# 32. Saving a file in mcedit
+Use the Save command, typically F2 in mcedit. Confirm filename/permissions when editing system files.
+# 33. Searching text in mcedit
+Use Search to find text or regex-like patterns depending on configuration.
+# 34. Replacing text
+Use Replace carefully, especially in configuration/code files; review each replacement when risk is high.
+# 35. Selecting text
+Use block-marking commands to select text for copy, move or delete operations.
+# 36. Editing system files
+Launch the editor with appropriate privileges only for the specific file, e.g. `sudoedit` or root MC when absolutely necessary.
+# 37. File permissions
+MC can display and change Unix mode bits. Understand read/write/execute semantics before changing them.
+# 38. File owner
+Ownership operations correspond to `chown`/`chgrp`; use them deliberately.
+# 39. Symbolic links
+MC can create and inspect symlinks. Remember a symlink points to another path rather than containing data itself.
+# 40. Archives
+MC can browse many archives through its virtual filesystem layer and copy files in/out as if they were directories.
+# 41. MC as a server file manager
+MC is especially useful over SSH when you need a visual two-panel workflow without a GUI.
+# 42. SFTP / SSH connections
+MC's virtual filesystem can open remote locations over SSH/SFTP, depending on build/features.
+# 43. SSHFS versus MC VFS
+SSHFS mounts remote files into the normal filesystem; MC VFS keeps remote browsing inside MC. Use SSHFS when multiple tools need the mount.
+# 44. FTP
+MC can access FTP via VFS, but prefer SFTP/SSH for secure administration.
+# 45. Information panel
+Info panel can show metadata about the selected file/filesystem.
+# 46. Tree View
+Tree view helps navigate deep directory hierarchies quickly.
+# 47. Comparing directories
+Use panel comparison to mark differences between two directories. Verify criteria before synchronizing or deleting.
+# 48. Calculating directory sizes
+Use directory-size calculation to identify large directories without leaving MC.
+# 49. Shell commands and active directory
+Commands entered in MC run with the active panel's directory as the current working directory.
+# 50. Git and MC
+Use MC for file navigation and terminal Git for repository operations. Hidden `.git` remains a normal directory but should not be edited casually.
+# 51. Docker and MC
+MC is useful for browsing project/volume backup directories on Docker hosts, but container internals should normally be inspected with Docker commands.
+# 52. systemd and MC
+Use MC/mcedit to inspect unit files and configs, then use `systemctl` and `journalctl` for service control and logs.
+# 53. FreeBSD and MC
+MC works well on FreeBSD; remember package configs live mostly under `/usr/local/etc` and services use rc.d/sysrc.
+# 54. MC configuration
+Configure panel layout, confirmation behavior, editor/viewer, colors and other preferences through Options menus.
+# 55. Configuration files
+User configuration lives under MC's config directories, typically under `~/.config/mc/` on modern systems.
+# 56. External editor
+You can configure MC to use Vim/Neovim or another editor instead of mcedit.
+# 57. External viewer
+Similarly, file viewing can be delegated to another tool if preferred.
+# 58. Starting MC in a specific directory
 ```bash
-mc
+mc /etc
 ```
-
-## 3. Screen layout
-
-MC normally shows:
-
-- left panel,
-- right panel,
-- command line,
-- function-key menu.
-
-One panel is active.
-
-## 4. Basic navigation
-
-Arrow keys:
-move selection.
-
-Enter:
-open directory/file action.
-
-Parent directory:
-
-```text
-..
-```
-
-## 5. Switching panels
-
-```text
-Tab
-```
-
-## 6. F1–F10
-
-```text
-F1  Help
-F2  User menu
-F3  View
-F4  Edit
-F5  Copy
-F6  Move/Rename
-F7  Make directory
-F8  Delete
-F9  Menu
-F10 Quit
-```
-
-## 7. F3 — viewer
-
-Use F3 to read a file without editing it.
-
-Useful for:
-
-- configs,
-- logs,
-- source files,
-- text documents.
-
-## 8. F4 — editor
-
-F4 opens the configured editor, commonly MC's built-in `mcedit`.
-
-## 9. F5 — copy
-
-Copy selected files from the active panel to the directory displayed in the other panel.
-
-## 10. F6 — move/rename
-
-Move files between panels or rename within the current location.
-
-## 11. F7 — create directory
-
-Creates a directory in the active panel.
-
-## 12. F8 — delete
-
-Deletes the selected item(s). Check the selection before confirming.
-
-## 13. Selecting files
-
-```text
-Insert
-```
-
-toggles selection.
-
-## 14. Mask selection
-
-MC can select groups of files using filename masks.
-
-Useful patterns:
-
-```text
-*.log
-*.md
-*.conf
-```
-
-## 15. Quick directory changes
-
-Use the command line:
-
-```bash
-cd /var/log
-```
-
-MC panels follow directory changes depending on context.
-
-## 16. Directory Hotlist
-
-MC can store frequently used locations for fast access.
-
-Good candidates:
-
-```text
-/etc
-/usr/local/etc
-/var/log
-/srv
-/home/user/projects
-```
-
-## 17. Sorting
-
-Panels can sort by:
-
-- name,
-- size,
-- modification time,
-- extension.
-
-## 18. Hidden files
-
-Enable display of files beginning with `.` when needed.
-
-## 19. Refresh
-
-Refresh the active panel if external commands changed directory contents.
-
-## 20. Shell inside MC
-
-The bottom line is a normal shell command line.
-
-Example:
-
-```bash
-git status
-```
-
-runs in the active panel's directory.
-
-## 21. Hide panels
-
-MC can temporarily hide panels so you can use the full terminal shell while keeping MC running.
-
-This is one of its strongest features for administration.
-
-## 22. Command history
-
-MC integrates with shell command history and its own command-line interaction.
-
-## 23. Insert filename into command line
-
-MC provides shortcuts to insert selected filenames/paths into the command line.
-
-Exact key behavior can depend on terminal and MC configuration.
-
-## 24. Search files
-
-MC includes a file-search dialog that can search by filename and optionally text content.
-
-## 25. mcedit
-
-mcedit is MC's text editor.
-
-Run separately:
-
-```bash
-mcedit file.conf
-```
-
-## 26. mcedit basics
-
-Use cursor keys normally.
-
-Common operations include:
-
-- save,
-- search,
-- replace,
-- block selection,
-- clipboard-like copy/paste.
-
-The function-key bar shows current shortcuts.
-
-## 27. Editing system files
-
-Prefer:
-
-```bash
-sudoedit /etc/file
-```
-
-or run an elevated editor only when necessary.
-
-Do not run your entire file-management session as root without a reason.
-
-## 28. Permissions and ownership
-
-MC can inspect and change Unix permissions and ownership.
-
-Shell equivalents:
-
-```bash
-chmod 640 file
-chown user:group file
-```
-
-## 29. Symbolic links
-
-MC can display and create symbolic links.
-
-Shell equivalent:
-
-```bash
-ln -s TARGET LINK
-```
-
-## 30. Archives
-
-MC can browse many archives like directories through its virtual filesystem layer.
-
-This is convenient for quick inspection.
-
-For automation and large backups, use archive tools directly.
-
-## 31. MC on servers
-
-MC is useful when:
-
-- you need visual directory comparison,
-- you are moving config files,
-- you want quick built-in viewing/editing,
-- you are working through SSH.
-
-## 32. SFTP / SSH
-
-MC can access remote locations through its VFS mechanisms.
-
-For long-term mounts, SSHFS may be more predictable.
-
-For occasional remote browsing, MC's integrated remote access can be convenient.
-
-## 33. FTP
-
-MC also supports FTP-style VFS access, but SFTP/SSH is generally preferable for secure administration.
-
-## 34. Info and tree panels
-
-Panels can show alternative views such as directory tree or information.
-
-## 35. Comparing directories
-
-The two-panel layout makes manual comparison easy.
-
-For exact automated synchronization, use tools such as:
-
-```bash
-rsync
-diff
-git
-```
-
-## 36. Directory sizes
-
-MC can calculate directory sizes, but very large trees may take time.
-
-For shell use:
-
-```bash
-du -sh *
-```
-
-## 37. Git and MC
-
-A useful workflow:
-
-- navigate/edit with MC,
-- use Git commands in the command line,
-- inspect diffs with Git.
-
-Example:
-
-```bash
-git status
-git diff
-git add FILE
-git commit
-```
-
-## 38. Docker and MC
-
-MC can help inspect project files around Docker, but container operations should normally use:
-
-```bash
-docker
-docker compose
-```
-
-## 39. systemd and MC
-
-On Debian, edit service/config files with MC if convenient, but manage services with:
-
-```bash
-systemctl
-journalctl
-```
-
-## 40. FreeBSD and MC
-
-On FreeBSD, remember package configuration usually lives under:
-
-```text
-/usr/local/etc
-```
-
-Service management still uses:
-
-```bash
-service
-sysrc
-```
-
-## 41. Configuration
-
-User configuration is typically under:
-
-```text
-~/.config/mc/
-```
-
-Older setups may use:
-
-```text
-~/.mc/
-```
-
-## 42. External editor/viewer
-
-MC can be configured to use another editor such as Vim or Neovim.
-
-## 43. Start in a directory
-
-```bash
-mc /var/log
-```
-
-Start with two directories:
-
+# 59. MC with two directories
 ```bash
 mc /etc /usr/local/etc
 ```
-
-## 44. MC through SSH
-
+The directories become the initial left/right panel locations.
+# 60. MC over SSH
 ```bash
-ssh server
+ssh user@server
 mc
 ```
-
-This gives you a two-panel file manager directly on the remote machine.
-
-## 45. tmux and screen
-
-A strong server workflow:
-
+A simple and robust way to administer remote servers.
+# 61. tmux and screen sessions
+Run MC inside tmux/screen so your file-management session survives an SSH disconnect.
+# 62. Useful shortcuts — cheat sheet
 ```text
-SSH → tmux → mc
+Tab switch panels
+F3 view
+F4 edit
+F5 copy
+F6 move/rename
+F7 mkdir
+F8 delete
+F9 menu
+F10 quit
+Insert mark
+Ctrl+O hide/show panels
 ```
-
-If the connection drops, tmux keeps the session alive.
-
-## 46. Function keys and terminal problems
-
-Some terminals intercept F1–F10.
-
-If that happens, check terminal emulator shortcuts, function-key mode on the keyboard and MC alternative key combinations.
-
-## 47. Meta in MC documentation
-
-`Meta` usually means the Alt key in common terminal setups.
-
-## 48. MC and sudo
-
-Avoid launching MC as root for routine work.
-
-Better:
-
-- run MC as your user,
-- elevate specific commands,
-- use sudoedit for privileged files.
-
-## 49. Comfortable workflow
-
-```text
-left panel  → source
-right panel → destination
-bottom line → shell commands
-F3          → inspect
-F4          → edit
-F5/F6       → copy/move
-```
-
-## 50. Backup MC configuration
-
-Back up:
-
-```text
-~/.config/mc/
-```
-
-if you heavily customize the application.
-
-## 51. Large directories
-
-For directories with huge file counts, command-line tools may be faster and more scriptable.
-
-## 52. MC does not replace rsync
-
-MC is excellent for interactive copying.
-
-rsync is better for:
-
-- synchronization,
-- repeated backups,
-- resume/incremental transfer,
-- scripting.
-
-## 53. MC does not replace the shell
-
-Treat MC as a file-management interface around the shell, not as a reason to stop learning shell commands.
-
-## 54. Example — edit nginx
-
-```text
-open /etc/nginx
-F4 nginx.conf
-save
-```
-
-Then:
-
+# 63. Terminal and F1–F10 problems
+Laptop/terminal function keys may be intercepted by the desktop or terminal emulator. Use Fn, remap keys or choose menu commands.
+# 64. “Meta” in MC documentation
+Meta usually means Alt. If Alt combinations do not work, Esc followed by the key often acts as a Meta sequence.
+# 65. MC and sudo
+Avoid running an entire privileged MC session for routine work. Prefer normal-user MC and elevate only the exact edit/copy operation when practical.
+# 66. Comfortable workflow
+Left panel = source/project, right panel = destination/config/backup. Use shell commands at the bottom and viewer/editor only when needed.
+# 67. Backing up MC configuration
 ```bash
-sudo nginx -t
-sudo systemctl reload nginx
+tar -czf mc-config.tar.gz ~/.config/mc
 ```
-
-## 55. Example — Go deployment
-
-Use MC to inspect files, then shell commands for controlled deployment:
-
+# 68. Working with very large directories
+Disable expensive size calculations/sorting and use shell tools like `find`, `du`, `rg` or `fd` when MC becomes slow.
+# 69. MC does not replace rsync
+For repeatable synchronization/backups, use rsync or dedicated backup tools. MC is interactive.
+# 70. MC does not replace the shell
+Use MC for navigation and file operations; use shell commands for automation, filtering, bulk processing and reproducibility.
+# 71. Example 1 — editing nginx
+Navigate to `/etc/nginx` on Debian or `/usr/local/etc/nginx` on FreeBSD, inspect config with F3, edit carefully, then test with `nginx -t`.
+# 72. Example 2 — deploying a Go application
+One panel can show the release/build directory and the other `/srv/app`; copy the binary/config, then restart the service from MC's shell line.
+# 73. Example 3 — configuration backup
+Mark config files/directories and copy them to a dated backup location before changes.
+# 74. Example 4 — copying files from a VPS
+Use SFTP VFS or a normal SSH session plus `scp`/`rsync`; for repeated transfers, rsync is usually better.
+# 75. Example 5 — finding large files
+Use MC size calculation for quick inspection, or drop to shell with `du -xhd1 | sort -h` for large trees.
+# 76. Example 6 — searching configuration
+Use Find File to search names/content under `/etc` or `/usr/local/etc`, or run `grep -Rni` from the command line.
+# 77. Example 7 — working with logs
+Open `/var/log`, sort by time, use F3 to inspect, and switch to `tail -f` in shell for live logs.
+# 78. Example 8 — Git + MC
+Browse/edit files in MC, then use `git status`, `git diff`, `git add` and `git commit` in the command line.
+# 79. Example 9 — quick production vs development comparison
+Open corresponding directories in both panels and use Compare Directories, then manually verify meaningful differences.
+# 80. Example 10 — FreeBSD
+Left `/usr/local/etc`, right `/var/log`; use shell line for `service`, `sysrc`, `sockstat` and `pkg` commands.
+# 81. Proposed Karol workflow
+Use MC as the visual layer on servers: two panels for files, shell at the bottom, Vim/Neovim or mcedit for edits, tmux for persistence, Git/rsync for repeatable operations.
+# 82. Minimum worth remembering
+Tab, F3, F4, F5, F6, F7, F8, Ctrl+O, Insert, Quick cd, Find File and the command line.
+# 83. Cheat sheet — Debian
 ```bash
-git pull
-go build
-sudo systemctl restart myapp
+sudo apt install mc
+mc
+systemctl status SERVICE
+journalctl -u SERVICE
+sudoedit /etc/...
 ```
-
-## 56. Example — configuration backup
-
-Copy a config to a backup location with F5 or use:
-
-```bash
-cp file.conf file.conf.bak
+# 84. Cheat sheet — FreeBSD
+```sh
+pkg install mc
+mc
+service SERVICE status
+sysrc SERVICE_enable
+sockstat -4 -6 -l
 ```
-
-## 57. Example — copy from VPS
-
-Use SFTP/SSH VFS or simply:
-
-```bash
-scp user@server:/path/file .
-```
-
-## 58. Example — find large files
-
-MC can sort by size.
-
-For full-system analysis:
-
-```bash
-du -xhd1 /var | sort -h
-```
-
-## 59. Example — logs
-
-Open `/var/log` in one panel, inspect logs with F3, and use:
-
-```bash
-tail -f LOGFILE
-```
-
-when you need live output.
-
-## 60. Minimum to remember
-
-```text
-Tab  switch panel
-F3   view
-F4   edit
-F5   copy
-F6   move
-F7   mkdir
-F8   delete
-F10  quit
-Insert select
-```
-
-## 61. When MC is especially good
-
-- SSH administration,
-- visual file operations,
-- quick config edits,
-- browsing archives,
-- comparing directory trees.
-
-## 62. When another tool is better
-
-Use:
-
-- rsync for synchronization,
-- find/rg for large searches,
-- Git for versioned changes,
-- dedicated IDE/editor for large coding work,
-- scripts for repeatable operations.
-
+# 85. When MC is especially good
+Remote SSH sessions, unfamiliar directory trees, interactive copies/moves, config inspection and users who think spatially with two panels.
+# 86. When other tools are better
+Use rsync for synchronization, find/grep/ripgrep for large searches, Git for versioning, scripts for automation and dedicated backup tools for backups.
 # Summary
-
-Midnight Commander is a powerful bridge between graphical file-manager habits and Unix shell administration.
-
-Its greatest strength is not replacing the shell, but combining a visual two-panel workflow with the shell.
+Midnight Commander is most valuable as a fast two-panel terminal workspace that complements, rather than replaces, the Unix shell.

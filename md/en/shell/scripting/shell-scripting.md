@@ -1,948 +1,486 @@
 # Shell Scripting — Practical Handbook for Debian and FreeBSD
-
-> Goal: write useful scripts that run commands, display status, ask for input, react to that input and can be launched from any directory.
-
-# 1. Which shell should you choose?
-
-For portability between Debian and FreeBSD:
-
-```sh
-#!/bin/sh
-```
-
-Use Bash when you intentionally need Bash-specific features:
-
-```bash
-#!/usr/bin/env bash
-```
-
-Do not write Bash syntax under a `#!/bin/sh` shebang.
-
+# 1. Which shell should you choose for scripts?
+For portable system scripts use POSIX `sh`. Use Bash only when you intentionally need Bash-specific syntax. FreeBSD `/bin/sh` and Debian `/bin/sh` are not Bash.
 # 2. First script
-
 ```sh
 #!/bin/sh
 
 echo "Hello"
 ```
-
-Make it executable:
-
-```bash
-chmod +x hello
-./hello
-```
-
-# 3. echo and printf
-
+Make it executable with `chmod +x script.sh` and run `./script.sh`.
+# 3. `echo` and `printf` — printing information
 ```sh
 echo "Starting..."
-printf 'User: %s\n' "$USER"
+printf 'Status: %s\n' "$status"
 ```
-
-Prefer `printf` when formatting matters.
-
+Prefer `printf` when exact formatting matters.
 # 4. Variables
-
 ```sh
-name="Alice"
-count=5
-
+name="Karol"
 echo "$name"
 ```
-
-No spaces around `=`.
-
-Quote expansions:
-
-```sh
-"$name"
-```
-
+Do not put spaces around `=`. Quote variable expansions unless you explicitly want word splitting/globbing.
 # 5. Environment variables
-
 ```sh
-echo "$HOME"
-echo "$PATH"
-export APP_ENV="production"
+export APP_ENV=production
+printf '%s\n' "$APP_ENV"
 ```
-
-# 6. Read input
-
+# 6. Reading user input
 ```sh
-printf 'Your name: '
-read name
+printf 'Name: '
+read -r name
 printf 'Hello %s\n' "$name"
 ```
-
-# 7. Yes/no question
-
+# 7. Yes / no questions
 ```sh
 printf 'Continue? [y/N] '
-read answer
-
+read -r answer
 case "$answer" in
-    y|Y|yes|YES)
-        echo "Continuing"
-        ;;
-    *)
-        echo "Cancelled"
-        exit 0
-        ;;
+  y|Y|yes|YES) echo "Continuing" ;;
+  *) echo "Cancelled" ;;
 esac
 ```
-
-# 8. if
-
-```sh
-if [ "$name" = "Alice" ]; then
-    echo "Match"
-else
-    echo "Different"
-fi
-```
-
-# 9. test and [ ]
-
-```sh
-test -f file.txt
-[ -f file.txt ]
-```
-
-Spaces around brackets are required.
-
-# 10. Important tests
-
-```sh
-[ -f "$path" ]   # file
-[ -d "$path" ]   # directory
-[ -e "$path" ]   # exists
-[ -x "$path" ]   # executable
-[ -w "$path" ]   # writable
-[ -z "$value" ]  # empty
-[ -n "$value" ]  # non-empty
-```
-
-# 11. Numeric comparisons
-
-```sh
-[ "$count" -eq 5 ]
-[ "$count" -ne 5 ]
-[ "$count" -lt 10 ]
-[ "$count" -le 10 ]
-[ "$count" -gt 1 ]
-[ "$count" -ge 1 ]
-```
-
-# 12. case — ideal for menus
-
-```sh
-case "$choice" in
-    1)
-        echo "Status"
-        ;;
-    2)
-        echo "Restart"
-        ;;
-    q|Q)
-        exit 0
-        ;;
-    *)
-        echo "Unknown option"
-        ;;
-esac
-```
-
-# 13. React to command success
-
-```sh
-if ping -c 1 1.1.1 >/dev/null 2>&1; then
-    echo "Network OK"
-else
-    echo "Network unavailable"
-fi
-```
-
-# 14. Best way to test success
-
-Prefer:
-
+# 8. `if` statement
 ```sh
 if command; then
-    ...
+  echo "success"
+else
+  echo "failure"
 fi
 ```
-
-instead of reading `$?` later unless you need the numeric status.
-
-# 15. && and ||
-
+# 9. `test` and `[ ]`
 ```sh
-mkdir -p backup && echo "Created"
-command || echo "Failed"
-```
-
-# 16. Redirecting output
-
-```sh
-command > output.log
-command >> output.log
-command 2> error.log
-command >/dev/null 2>&1
-```
-
-# 17. Status messages
-
-```sh
-info() {
-    printf '[INFO] %s\n' "$*"
-}
-
-error() {
-    printf '[ERROR] %s\n' "$*" >&2
-}
-```
-
-# 18. Functions
-
-```sh
-check_service() {
-    service_name=$1
-
-    if service "$service_name" status >/dev/null 2>&1; then
-        echo "$service_name is running"
-    else
-        echo "$service_name is not running"
-    fi
-}
-```
-
-# 19. Script arguments
-
-```text
-$0  script name
-$1  first argument
-$2  second argument
-$#  number of arguments
-$@  all arguments
-```
-
-# 20. Required arguments
-
-```sh
-if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 HOST" >&2
-    exit 2
+if [ -f "$file" ]; then
+  echo "file exists"
 fi
 ```
-
-# 21. exit
-
+Spaces inside `[ ... ]` are mandatory because `[` is a command.
+# 10. Most important tests
+## Does a file exist?
 ```sh
-exit 0
-exit 1
+[ -f "$file" ]
 ```
-
-Zero means success; non-zero means failure.
-
-# 22. Negation
-
+## Does a directory exist?
 ```sh
-if ! command -v curl >/dev/null 2>&1; then
-    echo "curl is missing"
-fi
+[ -d "$dir" ]
 ```
-
-# 23. for loops
-
+## Does something exist regardless of type?
 ```sh
-for file in *.log; do
-    echo "$file"
-done
+[ -e "$path" ]
 ```
-
-Arguments:
-
+## Is the file executable?
 ```sh
-for arg in "$@"; do
-    echo "$arg"
-done
+[ -x "$file" ]
 ```
-
-# 24. while loop
-
+## Is the file writable?
 ```sh
-while true; do
-    echo "Running"
-    sleep 5
-done
+[ -w "$file" ]
 ```
-
-# 25. Menu loop
-
+## Is the variable empty?
 ```sh
-while true; do
-    echo "1) Status"
-    echo "2) Restart"
-    echo "q) Quit"
-
-    printf '> '
-    read choice
-
-    case "$choice" in
-        1) show_status ;;
-        2) restart_service ;;
-        q|Q) break ;;
-        *) echo "Unknown option" ;;
-    esac
-done
+[ -z "$value" ]
 ```
-
-# 26. Detect operating system
-
+## Is the variable non-empty?
 ```sh
-os=$(uname -s)
-
-case "$os" in
-    Linux)
-        echo "Linux"
-        ;;
-    FreeBSD)
-        echo "FreeBSD"
-        ;;
-    *)
-        echo "Unsupported system: $os" >&2
-        exit 1
-        ;;
+[ -n "$value" ]
+```
+# 11. Comparing numbers
+```sh
+[ "$a" -eq "$b" ]
+[ "$a" -lt "$b" ]
+[ "$a" -gt "$b" ]
+```
+# 12. `case` — ideal for menus
+```sh
+case "$choice" in
+  1) do_one ;;
+  2) do_two ;;
+  q|Q) exit 0 ;;
+  *) echo "Unknown option" ;;
 esac
 ```
-
-# 27. Debian + FreeBSD script
-
+# 13. Reacting to command result
 ```sh
-update_system() {
-    case "$(uname -s)" in
-        Linux)
-            sudo apt update &&
-            sudo apt upgrade
-            ;;
-        FreeBSD)
-            sudo pkg update &&
-            sudo pkg upgrade
-            ;;
-        *)
-            echo "Unsupported OS" >&2
-            return 1
-            ;;
-    esac
-}
+some_command
+status=$?
+echo "exit status: $status"
 ```
-
-# 28. Command substitution
-
+# 14. Best way to check command success
 ```sh
-hostname=$(hostname)
-now=$(date)
-```
-
-# 29. Arithmetic
-
-```sh
-count=$((count + 1))
-result=$((a + b))
-```
-
-# 30. Default variable value
-
-```sh
-port=${PORT:-8080}
-```
-
-Use `PORT` if set and non-empty; otherwise use 8080.
-
-# 31. Check whether a program exists
-
-```sh
-if command -v curl >/dev/null 2>&1; then
-    echo "curl available"
+if some_command; then
+  echo "OK"
 else
-    echo "curl missing"
+  echo "FAILED" >&2
 fi
 ```
-
-# 32. Safer scripts
-
-Bash often uses:
-
-```bash
-set -euo pipefail
-```
-
-Portable `sh` does not guarantee `pipefail`.
-
-A common portable baseline is:
-
+Usually test the command directly rather than checking `$?` later.
+# 15. `&&` and `||`
 ```sh
-set -eu
+build && deploy
+command || echo "failed" >&2
 ```
-
-Understand strict modes before applying them blindly.
-
-# 33. Comments
-
+# 16. Output redirection
 ```sh
-# Check Internet connectivity
+command >output.txt
+command >>output.txt
+command 2>errors.txt
+command >all.txt 2>&1
 ```
-
-Comment why something is done.
-
-# 34. Clear structure
-
+# 17. Status messages
 ```sh
-#!/bin/sh
-set -eu
-
-# Configuration
-DEFAULT_PORT=8080
-
-# Functions
+printf '[INFO] %s\n' "Starting backup"
+printf '[ERROR] %s\n' "Backup failed" >&2
+```
+# 18. Functions
+```sh
 log() {
-    printf '%s\n' "$*"
+  printf '[INFO] %s\n' "$*"
 }
 
-# Validation
-if ! command -v curl >/dev/null 2>&1; then
-    echo "curl missing" >&2
-    exit 1
-fi
-
-# Main
 log "Starting"
 ```
-
-# 35. stderr
+# 19. Arguments passed to the script
+```sh
+echo "$0"
+echo "$1"
+echo "$2"
+echo "$#"
+echo "$@"
+```
+# 20. Checking required arguments
+```sh
+if [ "$#" -lt 1 ]; then
+  echo "Usage: $0 FILE" >&2
+  exit 2
+fi
+```
+# 21. `exit` — ending a script
+Use `exit 0` for success and non-zero values for failure. Pick consistent exit codes for meaningful error classes.
+# 22. Negation `!`
+```sh
+if ! command -v git >/dev/null 2>&1; then
+  echo "git not found" >&2
+fi
+```
+# 23. `for` loops
+```sh
+for file in *.log; do
+  echo "$file"
+done
+```
+# 24. `while` loop
+```sh
+while read -r line; do
+  echo "$line"
+done < file.txt
+```
+# 25. Menu loop
+```sh
+while :; do
+  printf '1) status  q) quit\n> '
+  read -r choice
+  case "$choice" in
+    1) status_cmd ;;
+    q|Q) break ;;
+  esac
+done
+```
+# 26. Detecting the operating system
+```sh
+os=$(uname -s)
+case "$os" in
+  Linux) echo "Linux" ;;
+  FreeBSD) echo "FreeBSD" ;;
+  *) echo "Unsupported: $os" >&2; exit 1 ;;
+esac
+```
+# 27. Debian + FreeBSD script
+Branch only where platform commands differ, e.g. `apt/systemctl` on Debian versus `pkg/service/sysrc` on FreeBSD.
+# 28. Command substitution
+```sh
+hostname=$(hostname)
+now=$(date '+%F %T')
+```
+# 29. Arithmetic
+```sh
+count=$((count + 1))
+total=$((a + b))
+```
+# 30. Default variable value
+```sh
+port=${PORT:-8080}
+name=${1:-default}
+```
+# 31. Checking whether a program exists
+```sh
+if command -v curl >/dev/null 2>&1; then
+  echo "curl available"
+fi
+```
+# 32. Safer scripts
+Quote variables, validate inputs, stop on real errors deliberately, use temporary files safely and keep destructive operations explicit.
+# 33. Comments
+```sh
+# Explain why, not the obvious syntax.
+```
+**Check Internet connectivity**
 
 ```sh
-echo "Error" >&2
+if ping -c 1 1.1.1.1 >/dev/null 2>&1; then
+  echo "network reachable"
+fi
 ```
-
-# 36. Run a script without ./
-
-The script must be executable and in a directory listed in PATH.
-
-# 37. User scripts
-
-A good location:
-
+# 34. Clear script structure
+# Configuration
+Constants/defaults and configurable paths belong near the top.
+# Functions
+Put reusable actions into small named functions.
+# Validation
+Check required commands, arguments, files and privileges before changing anything.
+# Main program
+Keep the actual execution flow short and readable.
+# ...
+For larger scripts, split logic into separate files or move to a more suitable language.
+# 35. `stderr` — error messages
+```sh
+echo "error" >&2
+```
+# 36. Running a script without `./`
+Put it in a directory listed in `PATH`, such as `~/.local/bin`, and make it executable.
+# 37. Best place for your own user scripts
 ```text
 ~/.local/bin
 ```
-
-```bash
-mkdir -p ~/.local/bin
-mv mytool ~/.local/bin/
-chmod +x ~/.local/bin/mytool
-```
-
-# 38. Add ~/.local/bin to PATH
-
+# 38. Adding `~/.local/bin` to `PATH`
 ```sh
-PATH="$HOME/.local/bin:$PATH"
-export PATH
+export PATH="$HOME/.local/bin:$PATH"
 ```
-
-# 39. Where to configure PATH
-
-Bash:
-
-```text
-~/.profile
-~/.bashrc
+# 39. Where to configure `PATH`
+## Bash
+Usually `~/.profile` for login environment and `~/.bashrc` for interactive Bash-specific setup.
+## POSIX `sh`
+Use a login/profile file appropriate to the shell/session, commonly `~/.profile`.
+## Zsh
+Use `~/.zshenv`/`~/.zprofile`/`~/.zshrc` according to whether the setting is environment, login or interactive.
+## tcsh / csh
+Use the csh/tcsh configuration files and `setenv PATH ...` syntax.
+# 40. Reloading changes without logging out
+```sh
+. ~/.profile
 ```
-
-POSIX sh:
-
-```text
-~/.profile
-```
-
-Zsh:
-
-```text
-~/.zprofile
-~/.zshrc
-```
-
-# 40. Reload changes
-
-```bash
-. ~/.bashrc
-```
-
-For login environment changes, a new login session is often cleaner.
-
-# 41. Check which tool runs
-
-```bash
+For Bash interactive config use `source ~/.bashrc` or `. ~/.bashrc`.
+# 41. Checking where a script runs from
+```sh
 command -v mytool
-type mytool
+which mytool
 ```
-
-# 42. Scripts for all users
-
-```bash
-sudo install -m 755 mytool /usr/local/bin/mytool
-```
-
-# 43. Naming scripts
-
-CLI tools do not need a `.sh` extension.
-
-Examples:
-
-```text
-backup-server
-check-site
-update-lab
-```
-
+# 42. Scripts available to all users
+System-wide custom commands commonly belong in `/usr/local/bin`; install them as root with appropriate ownership/mode.
+# 43. Script filename
+Use simple lowercase names without spaces; a `.sh` suffix is optional for installed command-like tools.
 # 44. Aliases vs scripts
-
-Aliases are interactive shortcuts.
-
-Scripts are reusable programs, can take arguments and work from automation.
-
-# 45. Example — check server
-
+Aliases are interactive shortcuts; scripts are reusable programs that work from any shell/session with predictable behavior.
+# 45. Practical example — checking a server
 ```sh
 #!/bin/sh
-
-host=${1:-example.com}
-
-printf 'Checking %s...\n' "$host"
-
-if ping -c 1 "$host" >/dev/null 2>&1; then
-    echo "Host reachable"
-else
-    echo "Host unreachable"
-    exit 1
+set -u
+echo "Host: $(hostname)"
+uptime
+df -h
+if command -v systemctl >/dev/null 2>&1; then
+  systemctl --failed
 fi
 ```
-
-# 46. Example — administration menu
-
+# 46. Practical example — administration menu
+Use a `while` loop plus `case` to offer status, logs, restart and quit actions.
+# 47. Practical example — confirmation before operation
 ```sh
-#!/bin/sh
-
-while true; do
-    echo "1) Disk"
-    echo "2) Memory"
-    echo "3) Network"
-    echo "q) Quit"
-
-    printf '> '
-    read choice
-
-    case "$choice" in
-        1) df -h ;;
-        2)
-            if command -v free >/dev/null 2>&1; then
-                free -h
-            else
-                sysctl hw.physmem
-            fi
-            ;;
-        3)
-            case "$(uname -s)" in
-                Linux) ip addr ;;
-                FreeBSD) ifconfig ;;
-            esac
-            ;;
-        q|Q) exit 0 ;;
-        *) echo "Unknown option" ;;
-    esac
-done
+printf 'Delete %s? [y/N] ' "$target"
+read -r answer
+case "$answer" in y|Y) rm -- "$target" ;; *) exit 0 ;; esac
 ```
-
-# 47. Confirm before an operation
-
-```sh
-printf 'Delete backup? [y/N] '
-read answer
-
-case "$answer" in
-    y|Y)
-        rm -f backup.tar.gz
-        ;;
-    *)
-        echo "Cancelled"
-        ;;
-esac
-```
-
-# 48. System update script
-
-```sh
-#!/bin/sh
-set -e
-
-case "$(uname -s)" in
-    Linux)
-        sudo apt update
-        sudo apt upgrade
-        ;;
-    FreeBSD)
-        sudo pkg update
-        sudo pkg upgrade
-        ;;
-    *)
-        echo "Unsupported OS" >&2
-        exit 1
-        ;;
-esac
-```
-
-# 49. Commands with statuses
-
-```sh
-run_step() {
-    label=$1
-    shift
-
-    printf '[...] %s\n' "$label"
-
-    if "$@"; then
-        printf '[ OK ] %s\n' "$label"
-    else
-        printf '[FAIL] %s\n' "$label" >&2
-        return 1
-    fi
-}
-```
-
-# 50. Command-style tool
-
-```sh
-case "${1:-}" in
-    status)
-        show_status
-        ;;
-    restart)
-        restart_service
-        ;;
-    *)
-        echo "Usage: $0 {status|restart}" >&2
-        exit 2
-        ;;
-esac
-```
-
-# 51. Larger pattern
-
-```sh
-#!/bin/sh
-set -eu
-
-usage() {
-    echo "Usage: $0 HOST" >&2
-}
-
-check_dependency() {
-    command -v "$1" >/dev/null 2>&1 || {
-        echo "Missing dependency: $1" >&2
-        exit 1
-    }
-}
-
-main() {
-    [ "$#" -eq 1 ] || {
-        usage
-        exit 2
-    }
-
-    host=$1
-    check_dependency curl
-
-    if curl -fsS "https://$host" >/dev/null; then
-        echo "OK"
-    else
-        echo "FAILED" >&2
-        exit 1
-    fi
-}
-
-main "$@"
-```
-
-# 52. return vs exit
-
-`return` exits a function.
-
-`exit` terminates the whole script.
-
-# 53. Pipelines and searching text
-
+# 48. Practical example — system update script
+Detect OS, then run Debian `apt update/upgrade` or FreeBSD `pkg update/upgrade`, logging failures and exit status.
+# 49. Practical example — series of commands with statuses
+Wrap each operation in a function that prints `[OK]` or `[FAIL]` and returns a meaningful status.
+# 50. Practical example — tool accepting commands
+Use `case "$1"` to implement subcommands such as `status`, `start`, `stop`, `logs`.
+# 51. More elaborate example
+A useful admin tool can combine config variables, validation, OS detection, logging functions, subcommands and cleanup traps.
+# 52. `return` vs `exit`
+`return` leaves a function or sourced script. `exit` terminates the whole shell script process.
+# 53. Pipeline
 ```sh
 ps aux | grep nginx
-grep -i error logfile
-grep -R pattern directory
+find . -type f | sort | uniq
 ```
-
-# 54. Ctrl+C and trap
-
+# 54. Searching text
 ```sh
-cleanup() {
-    rm -f "$tmpfile"
-}
-
+grep -Rni 'error' /var/log
+grep -E 'error|warning' file.log
+```
+# 55. Handling Ctrl+C and `trap`
+```sh
+cleanup() { rm -f "$tmp"; }
 trap cleanup EXIT INT TERM
 ```
-
-# 55. Temporary files
-
+# 56. Temporary files
 ```sh
-tmpfile=$(mktemp)
-trap 'rm -f "$tmpfile"' EXIT
+tmp=$(mktemp) || exit 1
+trap 'rm -f "$tmp"' EXIT
 ```
-
-Avoid predictable temporary filenames.
-
-# 56. Debugging
-
-```bash
+# 57. Debugging a script
+```sh
 sh -x script.sh
-bash -x script.sh
 ```
-
-Inside the script:
-
+Use `set -x` only where useful because traces may expose secrets.
+# 58. Syntax checking
 ```sh
-set -x
-set +x
-```
-
-# 57. Syntax checking
-
-```bash
 sh -n script.sh
 bash -n script.sh
 ```
-
-# 58. ShellCheck
-
-Debian:
-
-```bash
-sudo apt install shellcheck
-```
-
-FreeBSD:
-
-```bash
-pkg install hs-ShellCheck
-```
-
-Run:
-
+# 59. ShellCheck
 ```bash
 shellcheck script.sh
 ```
-
-# 59. Permissions
-
-```bash
-ls -l script
-chmod +x script
+ShellCheck catches quoting, portability and logic issues.
+# 60. `shellcheck` + Vim
+Run ShellCheck from Vim/Neovim through a command, quickfix integration or linting plugin, but keep the CLI command usable independently.
+# 61. Permissions
+```sh
+chmod 755 ~/.local/bin/mytool
+ls -l ~/.local/bin/mytool
 ```
-
-# 60. Script requiring root
-
+# 62. Script requiring root
 ```sh
 if [ "$(id -u)" -ne 0 ]; then
-    echo "Run as root" >&2
-    exit 1
+  echo "Run as root" >&2
+  exit 1
 fi
 ```
-
-Prefer elevating only the commands that actually need root where practical.
-
-# 61. Configuration
-
-Use environment variables, command-line options, config files and sensible defaults.
-
-Do not hard-code secrets.
-
-# 62. User configuration
-
-A common path:
-
+Prefer narrow sudo rules or specific privileged commands where possible.
+# 63. Script configuration
+Keep non-secret defaults in a config file or environment variables; do not hard-code credentials.
+# 64. User configuration directory
 ```text
 ~/.config/mytool/config
 ```
-
-# 63. Basic tool template
-
+# 65. Colors — optional
+Use colors only for interactive terminals and provide plain output for logs/pipes. Check `[ -t 1 ]` before ANSI styling.
+# 66. Basic template for your own tool
 ```sh
 #!/bin/sh
-set -eu
+set -u
 
-usage() {
-    echo "Usage: $0 COMMAND" >&2
-}
+die() { echo "ERROR: $*" >&2; exit 1; }
 
 main() {
-    cmd=${1:-}
-
-    case "$cmd" in
-        status)
-            echo "OK"
-            ;;
-        *)
-            usage
-            exit 2
-            ;;
-    esac
+  command -v curl >/dev/null 2>&1 || die "curl required"
+  # work
 }
 
 main "$@"
 ```
-
-# 64. Install your own tool
-
-User:
-
+# 67. Example installation of your script
 ```bash
+mkdir -p ~/.local/bin
 install -m 755 mytool ~/.local/bin/mytool
+command -v mytool
 ```
-
-System-wide:
-
-```bash
-sudo install -m 755 mytool /usr/local/bin/mytool
-```
-
-# 65. getopts
-
+# 68. When the script should be really “installed”
+Use `/usr/local/bin` for the executable, `/usr/local/etc` or `/etc` for system config, documentation/man page if appropriate, and package it if many hosts/users need managed upgrades.
+# 69. What to learn next
+Quoting/word splitting, `getopts`, traps, robust temp files, text processing (`awk`, `sed`), and when to switch from shell to Python/Go.
+# 70. `getopts` — first step toward a proper CLI
 ```sh
-while getopts "h:p:" opt; do
-    case "$opt" in
-        h) host=$OPTARG ;;
-        p) port=$OPTARG ;;
-        *) exit 2 ;;
-    esac
+while getopts 'vf:' opt; do
+  case "$opt" in
+    v) verbose=1 ;;
+    f) file=$OPTARG ;;
+    *) exit 2 ;;
+  esac
 done
 ```
-
-# 66. Rules worth remembering
-
-Quote variables:
-
+# 71. Most important rules to remember
+## Quote variables
 ```sh
-"$var"
+rm -- "$file"
 ```
-
-Check failures.
-
-Use functions.
-
-Use `command -v` for dependencies.
-
-Run ShellCheck.
-
-# 67. Minimum knowledge
-
-Know:
-
-- shebang,
-- variables,
-- quoting,
-- input,
-- if,
-- case,
-- loops,
-- functions,
-- exit codes,
-- arguments,
-- redirections,
-- pipelines,
-- command substitution,
-- PATH,
-- executable permissions.
-
-# 68. Mental model
-
-```text
-read configuration/input
-↓
-validate environment
-↓
-run commands
-↓
-check results
-↓
-print useful status
-↓
-return meaningful exit code
-```
-
-# 69. Small project idea
-
-Create `server-check` that:
-
-1. accepts a host,
-2. checks ping,
-3. checks HTTPS with curl,
-4. prints DNS resolution,
-5. returns success/failure,
-6. runs from any directory.
-
-# Cheat sheet
-
+## Check errors
+Do not assume a command succeeded; test it or let the failure propagate deliberately.
+## Use functions
+Functions keep repeated actions and error handling readable.
+## Keep your own programs in the right place
+Use `~/.local/bin` for user tools and `/usr/local/bin` for system-wide local tools.
+## Use `command -v`
 ```sh
-#!/bin/sh
-
-name="Alice"
-
-read value
-
-if [ -f "$file" ]; then
-    ...
-fi
-
-case "$choice" in
-    1) ... ;;
-    *) ... ;;
-esac
-
-hello() {
-    echo "hello"
-}
-
-if command; then
-    ...
-fi
-
-value=$(command)
-command -v curl >/dev/null 2>&1
+command -v curl >/dev/null 2>&1 || exit 1
 ```
-
-Install to:
-
-```text
-~/.local/bin
-```
-
-Check:
-
-```bash
+## Check the script
+```sh
 sh -n script.sh
 shellcheck script.sh
 ```
-
+# 72. Minimum knowledge needed to write useful scripts
+Shebang, variables, quoting, input, if/test, case, loops, functions, arguments, exit codes, redirection, command substitution, PATH and error handling.
+# 73. How to think about a shell script
+A shell script is glue around existing commands. Use it to orchestrate tools; do not force complex data structures/business logic into shell when another language is clearer.
+# 74. Small project to build yourself
+Create a `serverctl` tool with `status`, `logs`, `restart`, `backup` and `update` subcommands, supporting Debian and FreeBSD.
+# Cheat sheet
+## Script start
+```sh
+#!/bin/sh
+```
+## Message
+```sh
+printf '%s\n' "hello"
+```
+## Variable
+```sh
+name=value
+echo "$name"
+```
+## Input
+```sh
+read -r value
+```
+## Condition
+```sh
+if [ -f "$file" ]; then ...; fi
+```
+## Menu
+```sh
+case "$choice" in ... esac
+```
+## Function
+```sh
+fn() { ...; }
+```
+## Command result
+```sh
+if command; then ...; fi
+```
+## Argument
+```sh
+first=$1
+```
+## Command result into variable
+```sh
+host=$(hostname)
+```
+## Check a program
+```sh
+command -v git
+```
+## Make available from every directory
+```bash
+install -m 755 tool ~/.local/bin/tool
+```
+## Check
+```bash
+sh -n tool
+shellcheck tool
+```
 # Summary
-
-Shell scripting is ideal for combining existing commands into small operational tools.
-
-For Debian + FreeBSD portability, start with POSIX `sh`.
-
-Use Bash when Bash-specific features genuinely help.
+Good shell scripts are small, explicit and defensive: quote input, validate assumptions, use exit codes, separate stderr, clean up temporary files and rely on existing Unix tools.
