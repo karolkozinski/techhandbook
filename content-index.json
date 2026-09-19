@@ -1,5 +1,5 @@
 {
-  "version": 10,
+  "version": 11,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -1391,6 +1391,70 @@
         "sed",
         "javascript",
         "python"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-003",
+      "name": "alibaba-cloud.md",
+      "title": "Alibaba Cloud — Practical Handbook",
+      "path": "md/en/cloud/alibaba-cloud.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "alibaba"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-004",
+      "name": "aws.md",
+      "title": "Amazon Web Services (AWS) — Practical Handbook",
+      "path": "md/en/cloud/aws.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "aws",
+        "amazon"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-005",
+      "name": "azure.md",
+      "title": "Microsoft Azure — Practical Handbook",
+      "path": "md/en/cloud/azure.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "azure",
+        "microsoft"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-006",
+      "name": "gcp.md",
+      "title": "Google Cloud Platform (GCP) — Practical Handbook",
+      "path": "md/en/cloud/gcp.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "gcp",
+        "google"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-007",
+      "name": "oci.md",
+      "title": "Oracle Cloud Infrastructure (OCI) — Practical Handbook",
+      "path": "md/en/cloud/oci.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "oci",
+        "oracle"
       ],
       "language": "en"
     }
