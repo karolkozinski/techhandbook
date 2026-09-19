@@ -1,992 +1,615 @@
 # GitHub — Practical Handbook
-
-> A handbook for everyday work with Git and GitHub: repositories, commits, branches, synchronization, forks, Pull Requests, Issues, Releases, GitHub CLI, SSH, conflicts and common workflows.
-
----
-
-# 1. Git and GitHub are not the same thing
-
-**Git** is a distributed version control system. It works locally and tracks project history.
-
-**GitHub** hosts Git repositories and adds collaboration features such as Pull Requests, Issues, Actions, Releases, Pages, Projects, code review and permissions.
-
-```text
-Git     = version control system
-GitHub  = hosting + interface + collaboration around Git
-```
-
-You can use Git without GitHub.
-
+## 1. Git and GitHub are not the same thing
+### Git
+Git is a distributed version-control system that tracks file history locally.
+### GitHub
+GitHub is a hosting/collaboration platform built around Git repositories.
 # 2. Core concepts
-
 ## Repository
-
-A project directory managed by Git. Local repositories contain a `.git/` directory with project history and metadata.
-
+project history and files.
 ## Working tree
-
-The current project files on disk.
-
+your checked-out files.
 ## Staging area
-
-The intermediate area between file changes and a commit.
-
-```bash
-git add
-```
-
+changes selected for the next commit.
 ## Commit
-
-A recorded point in project history: snapshot, message, author and date.
-
-```bash
-git commit -m "Add contact form"
-```
-
+recorded snapshot with metadata.
 ## Branch
-
-An independent line of work.
-
-```text
-main
-feature/login
-fix/mobile-menu
-experiment/new-layout
-```
-
+movable line of development.
 ## Remote
-
-A reference to a remote repository.
-
-```bash
-git remote -v
-```
-
-The main remote is commonly named `origin`.
-
+named external repository.
+## origin
+conventional name for the primary remote.
 ## upstream
-
-Common name for the original repository when working with a fork.
-
-```text
-origin   → your fork
-upstream → original project
-```
-
+conventional name for the original repo when working from a fork.
 ## HEAD
-
-Points to the currently checked-out commit/branch.
-
+current checked-out commit/branch reference.
 # 3. Installing Git
-
-Debian / Ubuntu:
-
+## Debian / Ubuntu
 ```bash
-sudo apt update
 sudo apt install git
 ```
-
-FreeBSD:
-
+## FreeBSD
 ```bash
-sudo pkg install git
+pkg install git
 ```
-
-Windows:
-
-```powershell
-winget install Git.Git
-```
-
-# 4. First configuration
-
+## Windows
+Install Git for Windows and use Git Bash, PowerShell or VS Code terminal.
+# 4. First Git configuration
 ```bash
-git config --global user.name "Your Name"
-git config --global user.email "address@example.com"
+git config --global user.name "Karol"
+git config --global user.email "you@example.com"
+```
+## Default branch main
+```bash
 git config --global init.defaultBranch main
-git config --global core.editor "vim"
-git config --global --list
 ```
-
-For VS Code:
-
+## Default editor
 ```bash
-git config --global core.editor "code --wait"
+git config --global core.editor "nvim"
 ```
-
-# 5. Creating a repository
-
+# 5. Creating a local repository
 ```bash
-cd my-project
+mkdir project && cd project
 git init
+```
+# 6. Cloning a repository
+```bash
+git clone URL
+```
+## Clone under a different directory name
+```bash
+git clone URL local-name
+```
+# 7. Daily workflow
+Edit → inspect → stage → commit → synchronize.
+# editing files
+```bash
 git status
 ```
-
-# 6. Cloning
-
-HTTPS:
-
+# 8. `git status`
 ```bash
-git clone https://github.com/user/project.git
-```
-
-SSH:
-
-```bash
-git clone git@github.com:user/project.git
-```
-
-Custom local directory:
-
-```bash
-git clone git@github.com:user/project.git local-project
-```
-
-# 7. Everyday workflow
-
-```bash
-git pull
 git status
-# edit files
-git diff
+```
+# 9. `git add`
+```bash
+git add file
 git add .
-git commit -m "Describe changes"
-git push
 ```
-
-Prefer small, logical commits.
-
-# 8. git status
-
+## Adding parts of changes
 ```bash
-git status
-git status -s
-```
-
-Shows current branch, modified files, untracked files, staged changes and relation to the remote branch.
-
-# 9. git add
-
-```bash
-git add README.md
-git add README.md main.go
-git add .
-git add -A
 git add -p
 ```
-
-`git add -p` lets you stage selected hunks and is excellent for clean commits.
-
-# 10. git diff
-
+# 10. `git diff`
 ```bash
 git diff
 git diff --staged
-git diff main
-git diff main..feature
 ```
-
-# 11. Commits
-
+# 11. Commit
 ```bash
-git commit -m "Add form validation"
-git commit
-git commit --amend
+git commit -m "Add feature"
 ```
-
-A good commit represents one logical change.
-
-Good:
-
-```text
-Add contact form validation
-Fix nginx proxy headers
-Document deployment
-```
-
-Weak:
-
-```text
-fix
-changes
-stuff
-```
-
-# 12. History
-
+## Good commit
+Small, coherent, understandable, and ideally leaves the project in a working state.
+# 12. Commit history
 ```bash
 git log
-git log --oneline
-git log --graph --oneline --decorate --all
-git show HEAD
 ```
-
-Useful alias:
-
+## Useful history view
 ```bash
-git config --global alias.lg "log --graph --oneline --decorate --all"
+git log --oneline --graph --decorate --all
 ```
-
 # 13. Branches
-
 ```bash
 git branch
-git switch feature/login
-git switch -c feature/login
-git branch -d feature/login
-git branch -D feature/login
-git push origin --delete feature/login
+git switch main
 ```
-
-Prefer `git switch` for branch work in modern Git.
-
-# 14. Merge
-
+## Create and switch at once
+```bash
+git switch -c feature/name
+```
+# 14. Deleting a branch
+```bash
+git branch -d feature/name
+```
+# 15. Merge
 ```bash
 git switch main
-git merge feature/login
+git merge feature/name
 ```
-
-A fast-forward merge simply moves the branch pointer when no divergent commits exist.
-
-# 15. Merge conflicts
-
-Git marks conflicts:
-
-```text
-<<<<<<< HEAD
-version A
-=======
-version B
->>>>>>> feature
-```
-
-Resolve the content, then:
-
-```bash
-git add file
-git commit
-```
-
-Abort a merge:
-
+# 16. Fast-forward merge
+Git simply moves the branch pointer when no divergent commits exist.
+# 17. Merge commit
+A merge commit records the joining of diverged histories.
+# 18. Conflicts
+Resolve conflicted files manually, stage them and continue the merge.
+## Abort merge
 ```bash
 git merge --abort
 ```
-
-# 16. fetch, pull and push
-
+# 19. Rebase
 ```bash
-git fetch
-git pull
-git pull --rebase
-git push
-git push -u origin feature/search
-```
-
-`fetch` updates remote-tracking information without merging.
-
-`pull` fetches and integrates.
-
-`push` uploads local commits.
-
-# 17. Rebase
-
-```bash
-git switch feature/login
 git rebase main
 ```
-
-Continue after conflict resolution:
-
+## Merge vs rebase
+Merge preserves branch topology; rebase rewrites commits onto a new base for a linear history.
+# 20. `git pull`
 ```bash
-git add .
-git rebase --continue
+git pull
 ```
-
-Abort:
-
+## Pull with rebase
 ```bash
-git rebase --abort
+git pull --rebase
 ```
-
-Do not casually rebase shared history.
-
-# 18. Stash
-
+# 21. `git fetch`
 ```bash
-git stash
-git stash list
-git stash pop
-git stash push -m "WIP login"
+git fetch --all --prune
 ```
-
-# 19. restore, reset and revert
-
-Restore a file:
-
+# 22. `git push`
 ```bash
-git restore file.txt
-git restore --staged file.txt
+git push
+git push -u origin feature/name
 ```
-
-Reset local history:
-
+# 23. Remote
 ```bash
-git reset --soft HEAD~1
-git reset HEAD~1
-git reset --hard HEAD~1
+git remote -v
 ```
-
-`--hard` discards working changes.
-
-Revert shared history safely:
-
+# 24. Local repository → GitHub
 ```bash
-git revert HASH
+git remote add origin git@github.com:user/repo.git
+git push -u origin main
 ```
-
-# 20. Cherry-pick
-
+# 25. `.gitignore`
+Lists files/patterns Git should not track.
+## Important
+Ignoring a file does not remove it from history if it was already committed.
+# 26. Never commit secrets
+Do not commit passwords, API keys, private keys or real `.env` files. Rotate credentials if they leak.
+# 27. Fork
+A fork is your GitHub-side copy of another repository.
+# 28. Why fork?
+### Open source
+Contribute without direct write access.
+### Experiment
+Try changes independently.
+### Long-lived custom variant
+Maintain your own divergence from upstream.
+# 29. Fork vs branch
+## Branch
+Lives inside one repository.
+## Fork
+Separate repository, typically under another account/org.
+# 30. Fork workflow
+Fork → clone your fork → add upstream → branch → commit → push → PR.
+# 31. Synchronizing a fork
 ```bash
-git cherry-pick HASH
+git fetch upstream
+git switch main
+git merge upstream/main
+git push origin main
 ```
-
-Copies a selected commit onto the current branch.
-
-# 21. Tags
-
+# 32. Pull Request
+A PR proposes merging one branch/repository into another and provides review/discussion context.
+# 33. Typical Pull Request
+Describe what changed, why, how to test and any risks.
+# 34. Draft Pull Request
+Use when work is visible but not ready to merge.
+# 35. Merge PR
+## Merge commit
+Keeps all branch commits and adds a merge commit.
+## Squash and merge
+Combines PR commits into one target-branch commit.
+## Rebase and merge
+Replays PR commits onto the target branch.
+# 36. Issues
+Track bugs, ideas, tasks and discussions around work.
+# 37. Automatically closing an Issue
+Use phrases like `Fixes #123` in a PR/commit description where supported.
+# 38. Labels
+Categorize issues and PRs.
+# 39. Milestones
+Group issues/PRs around a release or goal.
+# 40. Releases
+GitHub releases add downloadable release metadata/assets around Git tags.
+# 41. Git tags
 ```bash
 git tag v1.0.0
-git tag -a v1.0.0 -m "Release 1.0.0"
 git push origin v1.0.0
 ```
-
-# 22. .gitignore
-
-```gitignore
-.env
-node_modules/
-dist/
-*.log
-.DS_Store
-```
-
-If a file is already tracked:
-
+# 42. Semantic Versioning
+Major.Minor.Patch is a common versioning scheme for public APIs/releases.
+# 43. README.md
+Project entry point: purpose, setup, build, run, test and usage.
+# 44. LICENSE
+Defines legal permissions for using/copying/modifying the project.
+# 45. CONTRIBUTING.md
+Documents contribution workflow and standards.
+# 46. CODEOWNERS
+Maps paths to reviewers/owners.
+# 47. GitHub Actions
+GitHub's CI/CD automation system.
+# 48. GitHub Pages
+Static-site hosting from a repository.
+# 49. GitHub Projects
+Planning boards and project tracking around issues/PRs.
+# 50. GitHub Discussions
+Longer-form community discussion separate from Issues.
+# 51. GitHub CLI — `gh`
 ```bash
-git rm --cached file
+gh --version
 ```
-
-# 23. SSH access to GitHub
-
-Generate a key:
-
+# 52. Installing GitHub CLI
+## Debian
+Install from GitHub's supported package source or distro package.
+## FreeBSD
 ```bash
-ssh-keygen -t ed25519
+pkg install gh
 ```
-
-Test:
-
-```bash
-ssh -T git@github.com
-```
-
-SSH avoids repeatedly authenticating HTTPS Git operations.
-
-# 24. GitHub repositories
-
-Repositories may contain:
-
-- source code,
-- README,
-- license,
-- Issues,
-- Pull Requests,
-- Actions,
-- Releases,
-- Wiki,
-- Projects,
-- Pages configuration.
-
-A useful README normally explains what the project is, how to run it and where important files live.
-
-# 25. Public vs private repositories
-
-Public repositories are visible to everyone.
-
-Private repositories require access permission.
-
-Never assume private visibility is a replacement for secret management.
-
-# 26. Forks
-
-A fork is a separate repository copied under another account or organization.
-
-Typical open-source workflow:
-
-```text
-upstream repository
-      ↓ fork
-your fork
-      ↓ clone
-local repository
-      ↓ branch
-changes
-      ↓ push
-Pull Request
-      ↓
-upstream
-```
-
-Add upstream:
-
-```bash
-git remote add upstream git@github.com:ORG/REPO.git
-git fetch upstream
-```
-
-# 27. Pull Requests
-
-A Pull Request proposes merging one branch into another.
-
-Typical workflow:
-
-1. create a branch,
-2. make commits,
-3. push the branch,
-4. open PR,
-5. review,
-6. fix comments,
-7. merge.
-
-PRs are useful even in solo projects when you want a clean review point.
-
-# 28. GitHub CLI
-
-Install and authenticate:
-
+# 53. Logging in to GitHub CLI
 ```bash
 gh auth login
 ```
-
-Useful commands:
-
+# 54. Creating a repository via CLI
+```bash
+gh repo create
+```
+# 55. Cloning via gh
 ```bash
 gh repo clone owner/repo
-gh repo create
-gh repo fork owner/repo
-
+```
+# 56. Fork via CLI
+```bash
+gh repo fork owner/repo --clone
+```
+# 57. Pull Request via CLI
+```bash
 gh pr create
 gh pr list
 gh pr view
-gh pr checkout
-gh pr merge
-
+```
+# 58. Issues via CLI
+```bash
 gh issue list
 gh issue create
-
-gh release create
+```
+# 59. Releases via CLI
+```bash
+gh release list
+gh release create v1.0.0
+```
+# 60. Actions via CLI
+```bash
 gh run list
+gh run view
 ```
-
-# 29. Issues
-
-Issues are useful for bugs, tasks, feature requests and planning.
-
-A good issue explains context, expected behaviour, actual behaviour and acceptance criteria where useful.
-
-# 30. Releases
-
-Releases group a version/tag with notes and downloadable artifacts.
-
-Typical version tag:
-
-```text
-v1.2.0
+# 61. SSH to GitHub
+## Test connection
+```bash
+ssh -T git@github.com
 ```
-
-# 31. GitHub Actions
-
-Workflows live under:
-
-```text
-.github/workflows/
+## SSH repository address
+Use `git@github.com:owner/repo.git`.
+# 62. HTTPS vs SSH
+## HTTPS
+Simple through credential helpers/tokens.
+## SSH
+Convenient for frequent authenticated Git operations with keys.
+# 63. `git restore`
+```bash
+git restore file
 ```
-
-They can run tests, builds, linters, image builds, releases and deployments.
-
-# 32. Branch protection
-
-For team repositories you can protect `main` by requiring PRs, status checks or reviews.
-
-This helps keep the main branch stable.
-
-# 33. CODEOWNERS
-
-`CODEOWNERS` can map paths to responsible reviewers.
-
-This is useful in larger teams.
-
-# 34. GitHub Pages
-
-GitHub Pages can publish static content directly from a repository or through Actions.
-
-It works well for documentation, project pages and static websites.
-
-# 35. GitHub Packages / GHCR
-
-GitHub Container Registry:
-
-```text
-ghcr.io/OWNER/IMAGE
+## Remove file from staging
+```bash
+git restore --staged file
 ```
-
-Use it to publish Docker images tied to GitHub projects.
-
-# 36. Releases and semantic versions
-
-Semantic Versioning often uses:
-
-```text
-MAJOR.MINOR.PATCH
+# 64. `git reset`
+### Soft
+```bash
+git reset --soft HEAD~1
 ```
-
-Example:
-
-```text
-1.4.2
+### Mixed
+```bash
+git reset HEAD~1
 ```
-
-# 37. git reflog
-
+### Hard
+```bash
+git reset --hard HEAD~1
+```
+Hard reset discards changes. Use only when you understand the consequences.
+# 65. `git revert`
+```bash
+git revert COMMIT
+```
+Creates a new commit that reverses an earlier commit; safer for shared history.
+# 66. Amend
+```bash
+git commit --amend
+```
+# 67. Stash
+```bash
+git stash
+git stash pop
+```
+# 68. Practical stash example
+Stash unfinished work, switch branch for an urgent fix, then return and pop the stash.
+# 69. Cherry-pick
+```bash
+git cherry-pick COMMIT
+```
+# 70. Git blame
+```bash
+git blame file
+```
+# 71. Git show
+```bash
+git show COMMIT
+```
+# 72. Git grep
+```bash
+git grep pattern
+```
+# 73. Git clean
+```bash
+git clean -n
+git clean -fd
+```
+Preview first with `-n`.
+# 74. Force push
+```bash
+git push --force-with-lease
+```
+Prefer `--force-with-lease` over plain `--force`.
+# 75. Detached HEAD
+You checked out a commit rather than a branch. Create a branch if you want to keep new commits.
+# 76. GitHub branch protection / rulesets
+Require reviews, checks, signed commits, restricted pushes or linear history on important branches.
+# 77. GitHub Secrets
+Encrypted values for Actions/environments. Still scope permissions minimally.
+# 78. GitHub Organizations
+Shared ownership/permissions across repositories and teams.
+# 79. Public and private repository
+## Public
+World-readable.
+## Private
+Restricted to authorized users/teams.
+# 80. Typical workflow for your own project
+Main branch + short-lived feature branches + PR or direct reviewed merge.
+# work
+```bash
+git switch -c feature/x
+git add -p
+git commit
+git push -u origin feature/x
+```
+# 81. Typical solo workflow — simpler version
+For low-risk personal projects, small direct commits to main can be acceptable if you keep history clean and tests/checks.
+# work
+```bash
+git status
+git add -p
+git commit -m "Update"
+git push
+```
+# 82. Open-source workflow
+Fork → branch → changes → tests → push → PR to upstream.
+# 83. Updating a branch before PR
+```bash
+git fetch upstream
+git rebase upstream/main
+```
+# fix files
+Resolve conflicts, continue rebase, rerun tests, then push with force-with-lease if history changed.
+# 84. GitHub Web UI — useful areas
+## Code
+files/branches/releases.
+## Issues
+tasks and bugs.
+## Pull requests
+review and merge.
+## Actions
+automation runs.
+## Security
+alerts and security settings.
+## Insights
+traffic/contributors/history.
+## Settings
+repository configuration.
+# 85. Commit hash
+Unique identifier for a commit, commonly abbreviated.
+# 86. origin/main
+Remote-tracking reference for main on origin.
+# 87. Checking local vs remote difference
+```bash
+git fetch
+git log --oneline main..origin/main
+git log --oneline origin/main..main
+```
+# 88. Aliases for useful commands
+```bash
+git config --global alias.lg "log --oneline --graph --decorate --all"
+```
+# 89. Important GitHub files
+README, LICENSE, CONTRIBUTING, CODEOWNERS, issue/PR templates, workflows under `.github/workflows`.
+# 90. Pull Request Template
+## What changed?
+Keep the section concise and actionable.
+## How to test?
+Keep the section concise and actionable.
+## Related Issue
+Keep the section concise and actionable.
+## Checklist
+Keep the section concise and actionable.
+# 91. Issue Templates
+Standardize bug reports/feature requests and required diagnostic information.
+# 92. GitHub Actions — minimal idea
+Events trigger workflows, workflows contain jobs, jobs contain steps that run on runners.
+# 93. CI/CD
+## CI — Continuous Integration
+Automated build/test/lint on changes.
+## CD — Continuous Delivery / Deployment
+Automated packaging and/or deployment after successful validation.
+# 94. GitHub Packages
+Package/container registry integrated with GitHub.
+# 95. Gist
+Small Git repositories/snippets hosted by GitHub.
+# 96. Clone vs fork
+## Clone
+Local copy of a repository.
+## Fork
+Server-side copy under another account/org.
+# 97. Pull vs fetch
+## fetch
+Downloads refs/history without changing your working branch.
+## pull
+Fetch plus integration into the current branch.
+# 98. Add vs commit vs push
+add = stage, commit = record locally, push = send commits to remote.
+# 99. Pull Request is not `git pull`
+PR is a collaboration/review object; `git pull` is a local Git command.
+# 100. Fork is not a ZIP copy
+A fork is a Git repository with history and GitHub relationship metadata.
+# 101. Working with an existing project — safe procedure
+Clone → read README/contributing → install deps → run tests → create branch → change → test → diff → commit.
+# 102. How to read an unfamiliar repository
+Start with README, directory tree, package/build files, CI workflows and recent commits.
+# 103. How to see what changed recently
+```bash
+git log --oneline -20
+git show
+git diff HEAD~1
+```
+# 104. How to undo an accidental change
+```bash
+git restore file
+```
+# 105. How to find a lost commit
 ```bash
 git reflog
 ```
-
-Reflog records local movements of HEAD and branch references and is one of Git's most useful recovery tools.
-
-# 38. git bisect
-
-```bash
-git bisect start
-git bisect bad
-git bisect good v1.0.0
-```
-
-Git helps locate the commit that introduced a regression.
-
-# 39. Detached HEAD
-
-Checking out a commit directly:
-
-```bash
-git checkout HASH
-```
-
-puts you in detached HEAD state.
-
-To continue work:
-
-```bash
-git switch -c investigation
-```
-
-# 40. Common emergency situations
-
-## Changes on the wrong branch
-
-If not committed yet:
-
-```bash
-git switch -c correct-branch
-```
-
-## Commit on the wrong branch
-
-Create a branch at the current point, then repair the original branch with an appropriate reset/revert strategy.
-
-## Pull caused conflicts
-
-```bash
-git status
-```
-
-Resolve files and continue with commit or rebase.
-
-## Abort merge
-
+# 106. Common emergencies
+## “I changed files on the wrong branch”
+Create/switch to the intended branch before committing if possible.
+## “I committed on the wrong branch”
+Create the correct branch at that commit, then reset/revert the wrong branch as appropriate.
+## “Pull caused a conflict”
+Resolve or abort the merge/rebase depending on pull strategy.
+## “I want to back out of a merge”
 ```bash
 git merge --abort
 ```
-
-## Abort rebase
-
+## “I want to back out of a rebase”
 ```bash
 git rebase --abort
 ```
-
-# 41. Good practices
-
-1. Make small logical commits.
-2. Read `git status`.
-3. Use `git diff` before committing.
-4. Create a branch before substantial work.
-5. Synchronize regularly.
-6. Never commit secrets.
-7. Avoid `git push --force` unless you understand the consequences.
-8. Do not rebase shared history casually.
-9. Write meaningful commit messages.
-10. Maintain a useful README.
-11. Use Issues for larger tasks.
-12. Use PRs for changes worth reviewing.
-
-# 42. Simple solo branch model
-
-```text
-main
- ├── feature/*
- ├── fix/*
- └── experiment/*
-```
-
-Example:
-
+# 107. Good practices
+Small commits, meaningful messages, branches for risky work, tests before push, review diffs, never rewrite shared history casually.
+# 108. Simple model for personal projects
+main stays usable; feature branches for larger work; tag releases; push often enough to avoid single-machine risk.
+# 109. Sensible branch names
 ```bash
-git switch main
-git pull
-git switch -c feature/search
-
-# work
-
-git add .
-git commit -m "Add search"
-git push -u origin feature/search
-```
-
-Then open a PR and merge.
-
-# 43. Branch naming
-
-Examples:
-
-```text
+text
 feature/search
-feature/login
-fix/mobile-layout
-fix/api-timeout
-docs/install-guide
-refactor/database
-experiment/new-ui
+fix/login-timeout
+docs/readme
 ```
-
-# 44. Conventional Commits — optional
-
-```text
-feat: add search
-fix: repair mobile menu
-docs: update installation guide
-refactor: simplify API client
-test: add login tests
-chore: update dependencies
-```
-
-This convention can help automate changelogs and releases.
-
-# 45. Full feature workflow
-
+# 110. Conventional Commits — optional
 ```bash
-git switch main
-git pull --rebase
-
+text
+feat: add search
+fix: handle timeout
+docs: update setup
+```
+# 111. Full feature workflow example
+```bash
 git switch -c feature/search
-
-# edit
-
-git status
-git diff
-
-git add .
-git commit -m "feat: add story search"
-
+```
+# editing
+```bash
+git add -p
+git commit -m "feat: add search"
 git push -u origin feature/search
-
 gh pr create
 ```
-
-After merge:
-
+# 112. Bug-fix example
 ```bash
-git switch main
-git pull
-git branch -d feature/search
+git switch -c fix/timeout
 ```
-
-# 46. Fork synchronization
-
+# fix
 ```bash
+git add -p
+git commit -m "fix: handle timeout"
+git push -u origin fix/timeout
+```
+# 113. Fork synchronization example
+```bash
+git remote add upstream URL
 git fetch upstream
 git switch main
 git rebase upstream/main
 git push origin main
 ```
-
-Then start new work from the updated main.
-
-# 47. Command cheat sheet
-
-Status and diff:
-
+# 114. Useful commands — cheat sheet
+## Project state
 ```bash
-git status
-git status -s
-git diff
-git diff --staged
+git status; git diff
 ```
-
-History:
-
+## History
 ```bash
-git log
-git log --oneline
-git log --graph --oneline --decorate --all
-git show HEAD
-git reflog
+git log --oneline --graph --decorate --all
 ```
-
-Commits:
-
+## Commit
 ```bash
-git add .
-git add -p
-git commit -m "Message"
-git commit --amend
+git add -p; git commit
 ```
-
-Branches:
-
+## Branch
 ```bash
-git branch
-git switch main
-git switch -c new-branch
-git branch -d branch
+git switch -c NAME; git branch
 ```
-
-Synchronization:
-
+## Synchronization
 ```bash
-git fetch
-git pull
-git pull --rebase
-git push
-git push -u origin branch
+git fetch; git pull --rebase; git push
 ```
-
-Merge / rebase:
-
+## Remote
 ```bash
-git merge branch
-git merge --abort
-git rebase main
-git rebase --continue
-git rebase --abort
-```
-
-Undo:
-
-```bash
-git restore file
-git restore --staged file
-git reset --soft HEAD~1
-git revert HASH
-```
-
-Temporary work:
-
-```bash
-git stash
-git stash list
-git stash pop
-```
-
-# 48. Minimum daily command set
-
-```bash
-git clone
-git status
-git diff
-git add
-git commit
-git log
-git switch
-git branch
-git pull
-git fetch
-git push
-git merge
-git restore
-git stash
 git remote -v
 ```
-
-GitHub CLI:
-
+## Merge / rebase
 ```bash
-gh auth login
-gh pr create
-gh pr list
-gh repo clone
-gh repo fork
+git merge; git rebase
 ```
-
-# 49. Mental model: Git + GitHub
-
-```text
-WORKING DIRECTORY
-      │ git add
-      ▼
-STAGING AREA
-      │ git commit
-      ▼
-LOCAL REPOSITORY
-      │ git push
-      ▼
-GITHUB
-```
-
-Reverse direction:
-
-```text
-GITHUB
-   │ git fetch / git pull
-   ▼
-LOCAL REPOSITORY
-   ▼
-WORKING DIRECTORY
-```
-
-# 50. Mental model: Branch / Fork / PR
-
-```text
-UPSTREAM REPOSITORY
-        │ fork
-        ▼
-YOUR FORK
-        │ clone
-        ▼
-LOCAL REPOSITORY
-        │ branch
-        ▼
-FEATURE BRANCH
-        │ commits
-        ▼
-PUSH TO FORK
-        │ Pull Request
-        ▼
-UPSTREAM
-```
-
-# 51. Learn later
-
-Once the basics are natural, explore:
-
-- interactive rebase,
-- git bisect,
-- submodules,
-- worktrees,
-- signed commits,
-- Git LFS,
-- branch protection,
-- GitHub Actions,
-- GitHub Packages,
-- GitHub API,
-- Dependabot,
-- CODEOWNERS,
-- release automation,
-- conventional commits.
-
-# 52. The most important rule
-
-Git becomes much easier when you understand the model instead of memorising every command:
-
-```text
-change files
-↓
-select changes
-↓
-create commit
-↓
-push commit
-```
-
-and:
-
-```text
-branch = line of work
-fork   = separate repository
-PR     = proposal to merge changes
-```
-
-# 53. Personal daily workflow
-
-Start:
-
+## Undo
 ```bash
-git switch main
-git pull --rebase
+git restore; git revert; git reset
 ```
-
-New feature:
-
+## Temporary changes
 ```bash
-git switch -c feature/name
+git stash
 ```
-
-During work:
-
+## GitHub CLI
+```bash
+gh pr; gh issue; gh repo; gh run
+```
+# 115. Minimum for daily work
+status, diff, add -p, commit, log, switch, fetch, pull --rebase, push, restore, stash.
+# 116. Mental model Git + GitHub
+Git manages history locally; GitHub hosts remotes and collaboration objects around that history.
+# 117. Branch / Fork / PR — mental model
+Branch = line of work; fork = separate repo; PR = proposal to merge changes.
+# 118. What to learn later
+Interactive rebase, bisect, submodules/subtrees, signed commits, hooks, advanced Actions and release automation.
+# 119. Most important rule
+Before any destructive Git command, understand which commits/files it will move or delete.
+# 120. Handy workflow for one person
 ```bash
 git status
-git diff
-```
-
-Commit:
-
-```bash
+git pull --rebase
+git switch -c task/x
 git add -p
-git commit -m "feat: describe change"
+git commit
+git push -u origin task/x
 ```
-
-Publish:
-
-```bash
-git push -u origin feature/name
-```
-
-PR:
-
-```bash
-gh pr create
-```
-
-After merge:
-
-```bash
-git switch main
-git pull
-git branch -d feature/name
-```
-
-# 54. Official documentation
-
-- Git: https://git-scm.com/docs
-- GitHub Docs: https://docs.github.com/
-- GitHub CLI: https://docs.github.com/en/github-cli
-- GitHub CLI repository: https://github.com/cli/cli
-
-# Summary
-
-To work comfortably with GitHub, understand repository, commit, branch, remote, origin, upstream, fetch, pull, push, merge, rebase, fork, Pull Request, Issue and Release.
-
-Git stores history.
-
-GitHub hosts repositories and organises collaboration.
+## Official documentation
+Use git-scm.com and docs.github.com for authoritative/current details.
+## Summary
+Git gives you versioned history; GitHub adds hosting, review, automation and collaboration.
+# work
+Keep changes reviewable, testable and recoverable.

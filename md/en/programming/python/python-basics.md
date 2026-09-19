@@ -1,506 +1,300 @@
 # Python — Practical Handbook
-
 ## 1. What Python is
-
-Python is a high-level, general-purpose language used for scripting, automation, backend development, data processing, testing and AI/ML.
-
-Its strengths are readable syntax, a large standard library and a huge ecosystem.
-
-## 2. How Python runs
-
-Python source files usually use the `.py` extension.
-
-A Python interpreter reads and executes the program:
-
+Python is a high-level interpreted language focused on readability and a large ecosystem.
+# 2. How Python works
+Source is compiled to bytecode and executed by an interpreter such as CPython.
+# 3. Python 2 vs Python 3
+Use Python 3. Python 2 is obsolete.
+# 4. Installation
+## Debian / Ubuntu
 ```bash
-python3 script.py
+sudo apt install python3 python3-venv python3-pip
 ```
-
-Python normally compiles source internally to bytecode and executes it in the Python virtual machine.
-
-## 3. Python 2 vs Python 3
-
-Use Python 3.
-
-Check:
-
-```bash
-python3 --version
+## FreeBSD
+```sh
+pkg install python
 ```
-
-## 4. Installation
-
-Debian / Ubuntu:
-
-```bash
-sudo apt update
-sudo apt install python3 python3-pip python3-venv
-```
-
-FreeBSD:
-
-```bash
-sudo pkg install python3 py311-pip
-```
-
-Windows can use the official installer or package managers such as winget.
-
-## 5. Interactive interpreter
-
+## Windows
+Install Python 3 from python.org or approved package manager; enable launcher/PATH as needed.
+# 5. Interactive interpreter
 ```bash
 python3
 ```
-
-Exit with:
-
-```python
-exit()
-```
-
-## 6. Running a file
-
+# 6. Running a file
 ```bash
-python3 app.py
+python3 script.py
 ```
-
-Executable script:
-
+# 7. Python as executable script
 ```python
 #!/usr/bin/env python3
-
-print("Hello")
+print('hello')
 ```
-
-Then:
-
-```bash
-chmod +x app.py
-./app.py
-```
-
-## 7. Indentation is syntax
-
-Python uses indentation to define blocks.
-
-```python
-if ready:
-    print("Go")
-```
-
-Do not mix tabs and spaces.
-
-## 8. Comments
-
+# 8. Indentation is syntax
+Blocks are defined by indentation. Use consistent spaces.
+# 9. Comments
 ```python
 # comment
 ```
-
-## 9. Variables
-
+Comments should explain intent, not restate obvious code.
+# 10. Variables
 ```python
-name = "Alice"
-age = 42
-active = True
+name = 'Ada'
+count = 3
 ```
-
-Python is dynamically typed.
-
-## 10. Naming
-
-Common style:
-
+# 11. Variable names
+Use snake_case for variables/functions and clear descriptive names.
+# 12. Basic data types
+## int
 ```python
-user_name = "Alice"
-MAX_RETRIES = 5
+value = 42
 ```
-
-Use snake_case for functions and variables, PascalCase for classes and UPPER_CASE for constants.
-
-## 11. Basic data types
-
-Integer:
-
+## float
 ```python
-count = 10
+value = 3.14
 ```
-
-Float:
-
+## str
 ```python
-price = 19.99
+value = 'hello'
 ```
-
-String:
-
+## bool
 ```python
-name = "Alice"
+value = True
 ```
-
-Boolean:
-
+## None
 ```python
-enabled = True
+value = None
 ```
-
-No value:
-
-```python
-result = None
-```
-
-## 12. Checking and converting types
-
+# 13. Checking type
 ```python
 type(value)
-
-int("42")
-float("3.14")
-str(123)
-bool(1)
+isinstance(value, str)
 ```
-
-## 13. Operators
-
+# 14. Type conversions
 ```python
-+ - * / // % **
-== != < <= > >=
-and or not
+int('42')
+str(42)
+float('3.14')
+bool(value)
 ```
-
-## 14. Strings
-
+# 15. Arithmetic operators
 ```python
-text = "hello"
+a + b
+a - b
+a * b
+a / b
+a // b
+a % b
+a ** b
+```
+# 16. Comparisons
+```python
+a == b
+a != b
+a < b
+a >= b
+```
+# 17. Logical operators
+```python
+a and b
+a or b
+not a
+```
+# 18. Strings
+```python
+text = 'hello'
 text.upper()
-text.lower()
 text.strip()
-text.replace("h", "H")
 ```
-
-f-string:
-
+# 19. f-string
 ```python
-name = "Alice"
-print(f"Hello {name}")
+name = 'Ada'
+print(f'Hello {name}')
 ```
-
-Indexing and slicing:
-
+# 20. Accessing characters
 ```python
 text[0]
 text[-1]
 text[1:4]
 ```
-
-## 15. Lists
-
+# 21. Lists
 ```python
-items = ["a", "b", "c"]
-
-items.append("d")
-items.remove("b")
-print(items[0])
+items = [1, 2, 3]
+items.append(4)
 ```
-
-## 16. Tuples
-
-Immutable sequence:
-
+# 22. Tuple
 ```python
 point = (10, 20)
-x, y = point
 ```
-
-## 17. Dictionaries
-
+# 23. Dictionary — dict
 ```python
-user = {
-    "name": "Alice",
-    "age": 42,
-}
-
-print(user["name"])
-print(user.get("email"))
+user = {'name': 'Ada', 'age': 30}
+user['name']
 ```
-
-## 18. Sets
-
+# 24. Set
 ```python
-roles = {"admin", "editor"}
-roles.add("viewer")
+tags = {'go', 'python'}
+tags.add('js')
 ```
-
-Sets store unique values.
-
-## 19. Conditions
-
+# 25. if / elif / else
 ```python
-if age >= 18:
-    print("adult")
-elif age >= 13:
-    print("teen")
+if x > 0:
+    print('positive')
+elif x == 0:
+    print('zero')
 else:
-    print("child")
+    print('negative')
 ```
-
-Falsy values include `False`, `None`, zero and empty containers.
-
-## 20. Loops
-
+# 26. Values treated as False
+Examples: False, None, 0, 0.0, empty string/list/dict/set.
+# 27. for loop
 ```python
 for item in items:
     print(item)
 ```
-
+# 28. enumerate
 ```python
-for index, item in enumerate(items):
-    print(index, item)
+for i, item in enumerate(items):
+    print(i, item)
 ```
-
+# 29. zip
 ```python
-for a, b in zip(list_a, list_b):
-    print(a, b)
+for name, age in zip(names, ages):
+    print(name, age)
 ```
-
+# 30. while loop
 ```python
-while running:
-    ...
+while count > 0:
+    count -= 1
 ```
-
-Use `break` and `continue` when needed.
-
-## 21. Functions
-
+# 31. break and continue
+break exits a loop; continue skips to the next iteration.
+# 32. Functions
 ```python
 def add(a, b):
     return a + b
 ```
-
-Default argument:
-
+# 33. return
+Returns a value and exits the function.
+# 34. Default argument
 ```python
-def greet(name="World"):
-    print(f"Hello {name}")
+def greet(name='world'):
+    print(name)
 ```
-
-Keyword arguments:
-
+# 35. Named arguments
 ```python
-greet(name="Alice")
+greet(name='Ada')
 ```
-
-Variable arguments:
-
+# 36. *args
 ```python
-def total(*values):
-    return sum(values)
+def f(*args):
+    print(args)
 ```
-
-Keyword dictionary:
-
+# 37. **kwargs
 ```python
-def configure(**options):
-    print(options)
+def f(**kwargs):
+    print(kwargs)
 ```
-
-## 22. Type hints
-
+# 38. Optional typing — type hints
 ```python
 def add(a: int, b: int) -> int:
     return a + b
 ```
-
-Type hints improve tooling and readability but are not runtime enforcement by default.
-
-## 23. List comprehensions
-
+# 39. List comprehension
 ```python
-squares = [x * x for x in range(10)]
-active = [u for u in users if u["active"]]
+squares = [x*x for x in range(10)]
 ```
-
-## 24. Modules and imports
-
-```python
-import os
-from pathlib import Path
-from package import helper
-```
-
-## 25. Standard library
-
-Important modules include:
-
-- `os`,
-- `sys`,
-- `pathlib`,
-- `json`,
-- `datetime`,
-- `subprocess`,
-- `argparse`,
-- `logging`,
-- `sqlite3`,
-- `asyncio`.
-
-## 26. `__name__` and main
-
-```python
-def main():
-    print("start")
-
-if __name__ == "__main__":
-    main()
-```
-
-This allows a file to work as both an importable module and an executable script.
-
-## 27. Packages
-
-A package is a directory of Python modules, traditionally containing `__init__.py`.
-
-Modern projects often use a `src/` layout.
-
-## 28. pip
-
-```bash
-python3 -m pip install requests
-python3 -m pip list
-python3 -m pip show requests
-```
-
-Prefer `python -m pip` when you want to be sure which interpreter owns the package installation.
-
-## 29. Virtual environments
-
-Do not install every project dependency globally.
-
-Create:
-
-```bash
-python3 -m venv .venv
-```
-
-Activate on Linux:
-
-```bash
-source .venv/bin/activate
-```
-
-Deactivate:
-
-```bash
-deactivate
-```
-
-Add `.venv/` to `.gitignore`.
-
-## 30. requirements.txt
-
-```bash
-python3 -m pip install -r requirements.txt
-python3 -m pip freeze > requirements.txt
-```
-
-## 31. pyproject.toml
-
-Modern Python projects commonly define package metadata and tooling in `pyproject.toml`.
-
-A project may be installed with:
-
-```bash
-python3 -m pip install .
-```
-
-Editable mode:
-
-```bash
-python3 -m pip install -e .
-```
-
-## 32. Reading files
-
-Simple:
-
-```python
-from pathlib import Path
-
-text = Path("file.txt").read_text(encoding="utf-8")
-```
-
-Classic form:
-
-```python
-with open("file.txt", "r", encoding="utf-8") as f:
-    text = f.read()
-```
-
-Using `with` ensures cleanup.
-
-## 33. Writing files
-
-```python
-from pathlib import Path
-
-Path("output.txt").write_text("Hello", encoding="utf-8")
-```
-
-## 34. JSON
-
+# 40. Modules
 ```python
 import json
+from pathlib import Path
+```
+# 41. Standard library
+Python ships with batteries included: pathlib, json, argparse, logging, sqlite3, subprocess, asyncio and more.
+# 42. `__name__` and main
+```python
+def main():
+    ...
 
-data = json.loads('{"name":"Alice"}')
+if __name__ == '__main__':
+    main()
+```
+# 43. Packages
+A package groups modules, typically in directories and optionally with `__init__.py`.
+# 44. pip
+```bash
+python3 -m pip install requests
+```
+# 45. Why not install everything globally
+Global installs create dependency conflicts and make projects harder to reproduce.
+# 46. venv — virtual environment
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+# 47. `.venv` in Git
+Do not commit the virtual environment. Add `.venv/` to `.gitignore`.
+# 48. requirements.txt
+```bash
+python3 -m pip freeze > requirements.txt
+python3 -m pip install -r requirements.txt
+```
+# 49. pyproject.toml
+Modern standard place for project metadata/build-system/tool configuration.
+# 50. Installing a project
+```bash
+python3 -m pip install .
+python3 -m pip install -e .
+```
+# 51. Reading files
+```python
+text = Path('file.txt').read_text()
+```
+# 52. Classic `open()`
+```python
+f = open('file.txt', 'r', encoding='utf-8')
+```
+# 53. `with`
+```python
+with open('file.txt', encoding='utf-8') as f:
+    text = f.read()
+```
+# 54. JSON
+```python
+import json
+data = json.loads(text)
 text = json.dumps(data)
 ```
-
-Files:
-
-```python
-with open("data.json", "r", encoding="utf-8") as f:
-    data = json.load(f)
-```
-
-## 35. Exceptions
-
+# 55. Exceptions
+Exceptions represent error conditions that can propagate until handled.
+# 56. try / except / else / finally
 ```python
 try:
     value = int(text)
 except ValueError:
-    print("Invalid number")
+    ...
 else:
-    print(value)
+    ...
 finally:
-    print("done")
+    ...
 ```
-
-Raise:
-
+# 57. raise
 ```python
-raise ValueError("invalid value")
+raise ValueError('bad value')
 ```
-
-## 36. Classes
-
+# 58. Classes
 ```python
 class User:
     def __init__(self, name):
         self.name = name
-
-    def greet(self):
-        return f"Hello {self.name}"
 ```
-
-`self` refers to the current instance.
-
-Inheritance:
-
+# 59. self
+Reference to the current instance in instance methods.
+# 60. Inheritance
 ```python
 class Admin(User):
     pass
 ```
-
-## 37. dataclass
-
+# 61. dataclass
 ```python
 from dataclasses import dataclass
 
@@ -509,562 +303,349 @@ class User:
     name: str
     age: int
 ```
-
-Useful for data-oriented classes.
-
-## 38. Lambda
-
+# 62. Lambda
 ```python
-double = lambda x: x * 2
+key = lambda x: x['name']
 ```
-
-Use sparingly; normal functions are often clearer.
-
-## 39. pathlib
-
+# 63. import os
+```python
+import os
+os.getenv('HOME')
+```
+# 64. pathlib
 ```python
 from pathlib import Path
-
-root = Path("/srv/app")
-for file in root.glob("*.json"):
-    print(file)
+Path('data').mkdir(exist_ok=True)
 ```
-
-Prefer `pathlib` for portable path handling.
-
-## 40. sys
-
+# 65. sys
 ```python
 import sys
-
-print(sys.argv)
 print(sys.version)
+print(sys.argv)
 ```
-
-## 41. argparse
-
-```python
-import argparse
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--port", type=int, default=8080)
-args = parser.parse_args()
-```
-
-## 42. subprocess
-
+# 66. argparse
+Standard library CLI argument parser.
+# 67. subprocess
 ```python
 import subprocess
-
-result = subprocess.run(
-    ["git", "status"],
-    capture_output=True,
-    text=True,
-    check=True,
-)
+subprocess.run(['git', 'status'], check=True)
 ```
-
-Avoid shell=True with untrusted input.
-
-## 43. HTTP requests
-
-Third-party `requests`:
-
+# 68. requests
 ```python
 import requests
-
-response = requests.get("https://example.com", timeout=10)
-response.raise_for_status()
-print(response.text)
+r = requests.get('https://example.com', timeout=10)
 ```
-
-## 44. Web backends
-
-Flask is small and flexible.
-
-FastAPI is modern and API-oriented.
-
-Django is a larger full-stack framework.
-
-Choose based on project needs, not fashion.
-
-## 45. SQLite
-
+# 69. Web backend
+## Flask
+Minimal traditional web framework.
+## FastAPI
+Modern API framework with typing and OpenAPI integration.
+## Django
+Full-stack framework with ORM, admin, auth and strong conventions.
+# 70. SQLite
 ```python
 import sqlite3
-
-conn = sqlite3.connect("app.db")
-cursor = conn.execute("select sqlite_version()")
-print(cursor.fetchone())
-conn.close()
+con = sqlite3.connect('app.db')
 ```
-
-## 46. Logging
-
+# 71. Logging
 ```python
 import logging
-
 logging.basicConfig(level=logging.INFO)
-logging.info("Application started")
+logging.info('started')
 ```
-
-## 47. Tests
-
-Standard library:
-
+# 72. Tests
 ```bash
 python3 -m unittest
-```
-
-Common third-party choice:
-
-```bash
 pytest
 ```
-
-## 48. Debugging
-
-Print debugging:
-
-```python
-print(value)
+# 73. Debugging
+Use prints/logging, debugger, IDE integration and focused tests.
+# 74. Traceback
+Read from the bottom for the final exception, then trace upward through the call stack.
+# 75. Code formatting
+Use Black or Ruff formatter, or project-standard tooling.
+# 76. Ruff
+```bash
+ruff check .
+ruff format .
 ```
-
-Built-in debugger:
-
-```python
-breakpoint()
+# 77. mypy
+```bash
+mypy .
 ```
-
-Then run the program normally.
-
-## 49. Tracebacks
-
-Read from the bottom upward to find the final exception, then inspect the call stack above it.
-
-## 50. Formatting and linting
-
-Popular tools:
-
-- Black,
-- Ruff,
-- mypy.
-
-Ruff can handle linting and, in modern setups, formatting.
-
-## 51. Typical project structure
-
+# 78. Typical simple project structure
 ```text
 project/
 ├── pyproject.toml
-├── README.md
-├── src/
-│   └── app/
-│       ├── __init__.py
-│       └── main.py
-└── tests/
+├── src/app/
+├── tests/
+└── README.md
 ```
-
-## 52. Running an unfamiliar project
-
-1. read README,
-2. check `pyproject.toml` / `requirements.txt`,
-3. create `.venv`,
-4. install dependencies,
-5. identify entry point,
-6. check environment variables,
-7. run tests,
-8. run the app.
-
-## 53. Using `-m`
-
+# 79. How to run someone else's project
+Read README, identify pyproject/requirements, create venv, install dependencies, run tests, then run app.
+# 80. Typical workflow with requirements.txt
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+# 81. Typical workflow with pyproject.toml
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -e .
+```
+# 82. Running a module with `-m`
 ```bash
 python3 -m package.module
-python3 -m pip
-python3 -m unittest
 ```
-
-This runs a module using the selected interpreter.
-
-## 54. Interpreter path
-
+# 83. `python -m pip`
+Ensures pip belongs to the interpreter you are invoking.
+# 84. Checking interpreter
 ```bash
 which python3
 python3 -c 'import sys; print(sys.executable)'
 ```
-
-## 55. Python versions
-
-Use project metadata or documentation to determine required versions.
-
-Tools such as pyenv can manage multiple installed versions.
-
-## 56. `__pycache__`
-
-Python stores compiled bytecode there. It should usually not be committed.
-
-## 57. Environment variables
-
+# 85. Python versions
+```bash
+python3 --version
+```
+# 86. `__pycache__`
+Contains cached bytecode. Do not commit it.
+# 87. Environment variables
 ```python
 import os
-
-token = os.getenv("API_TOKEN")
+token = os.getenv('API_TOKEN')
 ```
-
-## 58. .env
-
-Many projects load development variables from a `.env` file using tools such as python-dotenv.
-
-Do not commit real secrets.
-
-## 59. Decorators
-
-```python
-@decorator
-def function():
-    ...
-```
-
-A decorator wraps or modifies a function/class.
-
-## 60. Generators and yield
-
+# 88. `.env`
+Convenient local config format, usually loaded by a library. Never commit real secrets.
+# 89. Decorators
+Functions/classes that wrap or modify other callables/classes using `@decorator` syntax.
+# 90. Generator and yield
 ```python
 def numbers():
     yield 1
     yield 2
 ```
-
-Generators produce values lazily.
-
-## 61. Iterators
-
-Objects used in `for` loops follow the iterator protocol.
-
-Usually you consume them rather than implementing them manually.
-
-## 62. async / await
-
+# 91. Iterator
+Object implementing iteration protocol; `iter()` returns an iterator and `next()` advances it.
+# 92. async / await
+Syntax for cooperative asynchronous I/O.
+# 93. await
+Suspends the current coroutine until an awaitable completes.
+# 94. threading
+Useful mainly for I/O-bound concurrency in CPython because of the GIL.
+# 95. multiprocessing
+Runs multiple processes and can use multiple CPU cores for CPU-bound work.
+# 96. Popular libraries
+## HTTP
+requests, httpx.
+## Backend
+Flask, FastAPI, Django.
+## Data
+pandas, polars, numpy.
+## Charts
+matplotlib, plotly.
+## AI / ML
+PyTorch, transformers, scikit-learn.
+## CLI
+Typer, Click.
+## Tests
+pytest.
+## Browser automation
+Playwright, Selenium.
+# 97. Where Python is a weaker choice
+Very low-latency systems, tiny static binaries, hard real-time, some memory-constrained environments.
+# 98. Python vs JavaScript
+Python dominates scripting/data/backend; JavaScript is native to browsers and strong across web stacks.
+# 99. Python vs Go
+Python is faster to write dynamically; Go gives simpler deployment, stronger static typing and predictable concurrency.
+# 100. Common beginner errors
+## Bad indentation
+IndentationError.
+## Typo in name
+NameError.
+## Wrong type
+TypeError.
+## Invalid value
+ValueError.
+## Missing key
+KeyError.
+## Missing list element
+IndexError.
+## Missing file
+FileNotFoundError.
+## Missing module
+ModuleNotFoundError.
+# 101. Check where a module is loaded from
 ```python
-import asyncio
-
-async def main():
-    await asyncio.sleep(1)
-
-asyncio.run(main())
+import requests
+print(requests.__file__)
 ```
-
-Use async primarily for concurrent I/O, not automatically for every program.
-
-## 63. Threads and processes
-
-`threading` is useful for some I/O workloads.
-
-`multiprocessing` uses separate processes and is suitable for CPU-bound parallel work.
-
-## 64. Popular libraries
-
-HTTP:
-- requests,
-- httpx.
-
-Backend:
-- Flask,
-- FastAPI,
-- Django.
-
-Data:
-- pandas,
-- NumPy.
-
-Charts:
-- matplotlib.
-
-AI/ML:
-- scikit-learn,
-- PyTorch,
-- TensorFlow.
-
-CLI:
-- Typer,
-- Click.
-
-Testing:
-- pytest.
-
-Browser automation:
-- Playwright,
-- Selenium.
-
-## 65. Where Python is weaker
-
-Python may be a weaker choice for:
-
-- tiny standalone binaries,
-- low-latency systems code,
-- mobile-native apps,
-- browser frontend code,
-- CPU-heavy workloads without native extensions.
-
-## 66. Python vs JavaScript
-
-Python is strong for automation, backend and data.
-
-JavaScript is native to the browser and central to frontend development.
-
-## 67. Python vs Go
-
-Python optimizes developer speed and ecosystem breadth.
-
-Go emphasizes static binaries, concurrency, simple deployment and predictable performance.
-
-## 68. Common beginner errors
-
-IndentationError — wrong indentation.
-
-NameError — unknown variable.
-
-TypeError — operation on incompatible type.
-
-ValueError — invalid value.
-
-KeyError — missing dictionary key.
-
-IndexError — list index out of range.
-
-FileNotFoundError — missing file.
-
-ModuleNotFoundError — dependency or import-path problem.
-
-## 69. Discovering modules
-
+# 102. help()
 ```python
-import module
-
-print(module.__file__)
-print(dir(module))
-help(module)
+help(str.split)
 ```
-
-## 70. pipx
-
-Use pipx for installing Python CLI tools globally in isolated environments.
-
-## 71. Poetry, uv and similar tools
-
-Modern Python has several project/dependency managers.
-
-`uv` is a fast modern tool that can manage environments, Python versions and dependencies.
-
-Do not introduce a tool just because it is popular; follow the project you are working on.
-
-## 72. Docker and Python
-
-Typical Dockerfile:
-
-```dockerfile
-FROM python:3.13-slim
-
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-CMD ["python", "app.py"]
+# 103. dir()
+```python
+dir(object)
 ```
-
-For production, pin dependencies and run as a non-root user where practical.
-
-## 73. Example .gitignore
-
+# 104. Function documentation
+Use docstrings and `help()`.
+# 105. dir + type + help
+A useful REPL trio for exploring unfamiliar objects.
+# 106. Installing CLI tools — pipx
+```bash
+pipx install TOOL
+```
+# 107. Poetry, uv and other tools
+Higher-level dependency/project tools manage environments, lockfiles and packaging.
+# 108. uv
+Fast modern Python project/package manager that can replace several pip/venv workflows.
+# 109. Docker and Python
+Use slim base images, virtualenv/build isolation as appropriate, pinned dependencies and non-root runtime users.
+# 110. Example `.gitignore`
+# Python
 ```gitignore
 __pycache__/
-*.py[cod]
+*.pyc
+```
+# virtualenv
+```gitignore
 .venv/
+```
+# secrets
+```gitignore
 .env
+```
+# tests / tools
+```gitignore
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-.vscode/
+```
+# IDE
+```gitignore
 .idea/
 ```
-
-## 74. Minimal CLI
-
+# 111. Minimal CLI program
 ```python
-#!/usr/bin/env python3
 import argparse
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("name")
-    args = parser.parse_args()
-    print(f"Hello {args.name}")
-
-if __name__ == "__main__":
-    main()
+p = argparse.ArgumentParser()
+p.add_argument('name')
+args = p.parse_args()
+print(args.name)
 ```
-
-## 75. Simple file-processing script
-
+# 112. Simple file-processing script
 ```python
 from pathlib import Path
-
-for path in Path(".").glob("*.txt"):
-    text = path.read_text(encoding="utf-8")
-    print(path.name, len(text))
+text = Path('input.txt').read_text()
+Path('output.txt').write_text(text.upper())
 ```
-
-## 76. Reading Python code — order
-
-1. find entry point,
-2. read imports,
-3. identify configuration,
-4. identify main data structures/classes,
-5. trace function calls,
-6. locate I/O and external services,
-7. inspect tests.
-
-## 77. Recognising the entry point
-
-Look for:
-
-```python
-if __name__ == "__main__":
-```
-
-or framework-specific startup configuration.
-
-## 78. Understanding imports
-
-Standard library:
-
-```python
-import os
-import json
-```
-
-Third party:
-
+# 113. Simple API request
 ```python
 import requests
+r = requests.get('https://api.example.com/items', timeout=10)
+data = r.json()
 ```
-
-Project code:
-
+# 114. `response.raise_for_status()`
 ```python
-from app.service import UserService
+r.raise_for_status()
 ```
-
-## 79. Useful commands
-
+# 115. Reading Python code — order
+Start with pyproject/requirements, entry point, package structure, key classes/functions and tests.
+# 116. How to recognize the entry point
+Look for `if __name__ == '__main__'`, console scripts in pyproject, framework commands or executable modules.
+# 117. How to find dependencies
+Check pyproject.toml, requirements files and lockfiles.
+# 118. How to inspect imports
+### standard library
+Modules shipped with Python.
+### external libraries
+Installed third-party packages.
+### project code
+Imports from your own package/module tree.
+# 119. How to read a traceback
+Identify final exception and line, then inspect preceding stack frames to find the call path.
+# 120. Useful commands
 ```bash
 python3 --version
 python3 -m venv .venv
-source .venv/bin/activate
 python3 -m pip install -r requirements.txt
-python3 -m pip list
 python3 -m pytest
-python3 -m unittest
-python3 -m package.module
+ruff check .
 ```
-
-## 80. Syntax cheat sheet
-
-Variable:
-
+# 121. Syntax cheat sheet
+## variable
 ```python
 x = 1
 ```
-
-List:
-
+## text
 ```python
-items = [1, 2, 3]
+s = 'hello'
 ```
-
-Dictionary:
-
+## list
 ```python
-user = {"name": "Alice"}
+xs = [1,2]
 ```
-
-Function:
-
+## dict
 ```python
-def add(a, b):
-    return a + b
+d = {'a': 1}
 ```
-
-Class:
-
+## if
 ```python
-class User:
-    pass
+if x: ...
 ```
-
-Exception:
-
+## for
 ```python
-try:
-    ...
-except Exception as exc:
-    ...
+for x in xs: ...
 ```
-
-## 81. Minimal new-project workflow
-
+## while
+```python
+while x: ...
+```
+## function
+```python
+def f(x): return x
+```
+## class
+```python
+class C: ...
+```
+## exception
+```python
+try: ... except Exception: ...
+```
+## import
+```python
+import json
+```
+## file
+```python
+Path('x').read_text()
+```
+# 122. Minimal workflow for a new project
 ```bash
-mkdir project
-cd project
+mkdir app && cd app
 python3 -m venv .venv
 source .venv/bin/activate
-python3 -m pip install -U pip
 ```
-
-Then add project metadata and source files.
-
-## 82. Minimal cloned-project workflow
-
+# 123. Minimal workflow for a downloaded project
 ```bash
-git clone REPOSITORY
-cd REPOSITORY
+git clone REPO
+cd PROJECT
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r requirements.txt
 ```
-
-Or follow `pyproject.toml` instructions.
-
-## 83. What to remember
-
-Understand:
-
-- indentation,
-- basic data types,
-- lists/dicts,
-- conditions and loops,
-- functions,
-- imports,
-- exceptions,
-- classes,
-- virtual environments,
-- pip,
-- project metadata,
-- files and JSON,
-- debugging tracebacks.
-
-## 84. Commands worth memorising
-
+# 124. Most important things to remember
+Indentation matters, use venv, prefer `python -m pip`, read tracebacks, keep dependencies explicit, use type hints/tests where useful.
+# 125. Commands worth memorizing
 ```bash
-python3
 python3 script.py
-python3 -m module
 python3 -m venv .venv
-python3 -m pip install PACKAGE
-python3 -m pip install -r requirements.txt
-python3 -m pip list
+python3 -m pip install ...
 python3 -m pytest
+python3 -m module
 ```

@@ -1,473 +1,237 @@
-# Popular Linux Distributions — Handbook
-
-## 1. Why different distributions exist
-
-A Linux distribution combines:
-
-- Linux kernel,
-- user-space tools,
-- package manager,
-- repositories,
-- installer,
-- release policy,
-- defaults,
-- documentation and community.
-
-The kernel may be similar, but package versions, administration tools and philosophy can differ significantly.
-
-## 2. Important concepts
-
-### Distribution
-
-A complete operating system built around Linux.
-
-### Distribution family
-
-A group sharing ancestry or packaging conventions.
-
-Examples:
-
-```text
-Debian → Ubuntu → Linux Mint
-Red Hat → Fedora / RHEL → Rocky / AlmaLinux
-Arch → EndeavourOS / Manjaro
-SUSE → openSUSE
-```
-
-## 3. Release models
-
-### Stable release
-
-Packages change conservatively within a release.
-
-### Rolling release
-
-Packages are continuously updated.
-
-### LTS
-
-Long-term support releases prioritize longer maintenance periods.
-
-## 4. Package managers
-
-Common ecosystems:
-
-```text
-Debian/Ubuntu  apt, dpkg
-Fedora/RHEL    dnf, rpm
-Arch           pacman
-openSUSE       zypper, rpm
-Alpine         apk
-Gentoo         emerge
-Void           xbps
-```
-
-## 5. Debian
-
-Characteristics:
-
-- conservative,
-- huge repositories,
-- strong server use,
-- excellent documentation,
-- clear stable/testing/unstable branches.
-
-Branches:
-
-```text
-stable
-testing
-unstable
-```
-
-Packages:
-
-```bash
-apt
-dpkg
-```
-
-Good for servers, desktops and learning core Linux administration.
-
-## 6. Ubuntu
-
-Built from Debian.
-
-Desktop and Server editions are widely used.
-
-Release types include regular releases and LTS releases.
-
-Package ecosystem:
-
-```text
-apt
-dpkg
-Snap
-```
-
-Strengths include broad hardware/software support and a large community.
-
-## 7. Linux Mint
-
-Desktop-focused distribution, usually based on Ubuntu.
-
-Known especially for Cinnamon.
-
-Good for users who want a traditional desktop experience.
-
-## 8. Fedora
-
-Community distribution closely associated with Red Hat.
-
-Uses:
-
-```bash
-dnf
-rpm
-```
-
-Fedora tends to ship newer technologies earlier than enterprise distributions.
-
-Good for developers and users who want a modern desktop/server stack.
-
-## 9. Red Hat Enterprise Linux
-
-Commercial enterprise Linux platform.
-
-Focus:
-
-- long lifecycle,
-- enterprise support,
-- certification,
-- stable ABI/API expectations.
-
-Uses RPM packages and DNF/YUM-family tooling.
-
-## 10. Rocky Linux
-
-Community enterprise distribution designed for RHEL compatibility.
-
-Common on servers where RHEL-like behaviour is wanted without a commercial subscription.
-
-## 11. AlmaLinux
-
-Another major RHEL-compatible enterprise distribution.
-
-## 12. Arch Linux
-
-Rolling-release distribution.
-
-Installation and administration are deliberately hands-on.
-
-Package manager:
-
-```bash
-pacman
-```
-
-Arch is excellent for learning how a Linux system is assembled.
-
-## 13. AUR
-
-Arch User Repository provides community package build recipes.
-
-It is powerful, but packages are community maintained and should be reviewed before building/installing.
-
-## 14. EndeavourOS
-
-Arch-based distribution with a friendlier installer and relatively light additional tooling.
-
-## 15. Manjaro
-
-Arch-based distribution with its own repositories and release approach.
-
-It aims to simplify desktop use but differs operationally from pure Arch.
-
-## 16. openSUSE
-
-Major RPM-based distribution family.
-
-## 17. openSUSE Leap
-
-More conservative release model.
-
-## 18. openSUSE Tumbleweed
-
-Rolling-release openSUSE edition.
-
-Package manager:
-
-```bash
-zypper
-```
-
-## 19. YaST
-
-openSUSE administration toolset for system configuration.
-
-## 20. Pop!_OS
-
-Desktop-oriented distribution from System76, historically Ubuntu-based, focused on workstation usability.
-
-## 21. Zorin OS
-
-Ubuntu-based desktop distribution aimed at users moving from Windows/macOS.
-
-## 22. elementary OS
-
-Ubuntu-based desktop distribution with a strongly opinionated visual/UX design.
-
-## 23. Kali Linux
-
-Debian-based security-testing distribution.
-
-Important:
-
-Kali is not “more secure Linux”. It is a toolbox for authorized security work and labs.
-
-## 24. Alpine Linux
-
-Small distribution widely used in containers and minimal systems.
-
-Uses:
-
-```bash
-apk
-```
-
-Notable characteristics:
-
-- musl libc,
-- BusyBox,
-- small image size.
-
-Some software assumes glibc and may require extra work.
-
-## 25. Gentoo
-
-Source-based distribution.
-
-Portage and USE flags let users control build-time features.
-
-Excellent for deep learning and customization, but administration takes more time.
-
-## 26. NixOS
-
-Declarative distribution built around the Nix package manager.
-
-System configuration can be described as code.
-
-Excellent reproducibility, but conceptually different from traditional Linux administration.
-
-## 27. Void Linux
-
-Independent rolling distribution.
-
-Uses runit instead of systemd.
-
-Package manager:
-
-```text
-xbps
-```
-
-## 28. Slackware
-
-One of the oldest Linux distributions.
-
-Conservative, simple and traditional, with less automation than many modern distributions.
-
-## 29. SteamOS
-
-Gaming-focused Linux distribution used by Valve, notably on Steam Deck.
-
-## 30. Proxmox VE
-
-Debian-based virtualization platform focused on KVM virtual machines, LXC containers, clustering and storage.
-
-It is more an infrastructure platform than a general desktop distribution.
-
-## 31. Desktop environment is not a distribution
-
-GNOME, KDE Plasma, Cinnamon, XFCE and LXQt are desktop environments.
-
-You can often install several on the same distribution.
-
-## 32. Common desktop environments
-
-GNOME:
-- integrated,
-- workflow-focused,
-- common on Fedora and Ubuntu.
-
-KDE Plasma:
-- highly configurable,
-- traditional desktop model,
-- strong Wayland support.
-
-Cinnamon:
-- familiar traditional layout.
-
-XFCE:
-- lightweight and mature.
-
-LXQt:
-- light Qt-based desktop.
-
-## 33. Flatpak
-
-Distribution-independent application packaging focused on desktop apps and sandboxing.
-
-## 34. Snap
-
-Canonical packaging/runtime ecosystem, especially associated with Ubuntu.
-
-## 35. AppImage
-
-Single-file desktop application distribution format.
-
-## 36. systemd
-
-Most major distributions use systemd.
-
-```bash
-systemctl status SERVICE
-systemctl restart SERVICE
-systemctl enable SERVICE
-journalctl -u SERVICE
-```
-
-## 37. Alternatives to systemd
-
-Examples include:
-
-- OpenRC,
-- runit,
-- s6,
-- traditional SysV-style systems.
-
-## 38. Main family comparison
-
-Debian family:
-- apt/dpkg,
-- enormous ecosystem,
-- common on desktop/server.
-
-Red Hat family:
-- rpm/dnf,
-- strong enterprise presence.
-
-Arch family:
-- pacman,
-- rolling model,
-- hands-on.
-
-SUSE family:
-- rpm/zypper,
-- YaST tooling.
-
-## 39. How to choose
-
-Want a stable server:
-Debian, Ubuntu LTS, RHEL-like systems.
-
-Want a modern developer desktop:
-Fedora, Debian, Ubuntu, openSUSE Tumbleweed.
-
-Want to learn Linux deeply:
-Debian, Arch, Gentoo.
-
-Want rolling releases:
-Arch, Tumbleweed, Void.
-
-Want old hardware:
-XFCE/LXQt-based setups on Debian or similar.
-
-Want gaming:
-SteamOS, Fedora/Arch-family systems or Ubuntu-based gaming setups can all work.
-
-## 40. What actually matters
-
-More important than distro branding:
-
-- package availability,
-- release policy,
-- hardware support,
-- documentation,
-- security update cadence,
-- community/support,
-- your own familiarity.
-
-## 41. What matters less than people think
-
-Default wallpaper, default applications and desktop theme can usually be changed.
-
-## 42. Distribution differences are shrinking in some areas
-
-Containers, Flatpak, language package managers and cross-platform tooling reduce some differences.
-
-But system administration, boot, packages and filesystem conventions still matter.
-
-## 43. Documentation and communities
-
-Debian:
-https://www.debian.org/doc/
-
-Ubuntu:
-https://help.ubuntu.com/
-
-Arch:
-https://wiki.archlinux.org/
-
-Fedora:
-https://docs.fedoraproject.org/
-
-openSUSE:
-https://doc.opensuse.org/
-
-## 44. Family shortcut
-
-```text
-Debian → Ubuntu → Mint / Pop!_OS / Zorin
-Red Hat → Fedora / RHEL → Rocky / AlmaLinux
-Arch → EndeavourOS / Manjaro
-SUSE → openSUSE Leap / Tumbleweed
-```
-
-## 45. Practical map of the Linux world
-
-Learn at least one Debian-family system well.
-
-Recognize RPM-based systems.
-
-Understand what rolling release means.
-
-Know that Alpine, NixOS and Gentoo use different assumptions.
-
-## 46. Five distributions worth recognizing
-
-Debian.
-
-Ubuntu.
-
-Fedora.
-
-Arch Linux.
-
-openSUSE.
-
-If you understand these, most mainstream Linux discussions become much easier to follow.
-
-## 47. Package managers worth recognizing
-
-```text
-apt
-dnf
-pacman
-zypper
-apk
-```
-
-## 48. Most important thing to remember
-
-Linux distributions differ mainly in packaging, release policy, defaults and administration culture—not because they are completely different operating-system species.
+# Handbook of Popular Linux Distributions
+## 1. Why are there different distributions?
+They package the Linux kernel and user-space differently, choose release cadence, package manager, defaults, support model and target audience.
+# 2. Key concepts
+## 2.1. Distribution
+A complete packaged operating system built around Linux.
+## 2.2. Distribution family
+Related distros sharing package formats, tooling or ancestry.
+# 3. Release models
+## 3.1. Stable release
+Versioned releases with conservative updates.
+## 3.2. Rolling release
+Continuous package updates without large periodic version jumps.
+## 3.3. LTS
+Long-Term Support release maintained for an extended period.
+# 4. Package managers
+APT/dpkg, DNF/RPM, pacman, zypper/RPM, apk, xbps and others.
+# 5. Debian
+## Characteristics
+Stable, conservative, community-driven, huge repository.
+## Debian branches
+### stable
+Production-oriented.
+### testing
+Next-release staging branch.
+### unstable
+Rapidly changing development branch.
+## Packages
+DEB via APT/dpkg.
+## Advantages
+Stability, documentation, broad architecture support.
+## Disadvantages
+Older package versions in stable.
+## For whom?
+Servers, desktops and users valuing predictability.
+# 6. Ubuntu
+## Ubuntu Desktop
+User-friendly desktop with GNOME by default.
+## Ubuntu Server
+Popular cloud/server platform.
+## Versions
+Regular releases plus LTS releases.
+## Packages
+DEB/APT plus Snap in Canonical ecosystem.
+## Advantages
+Large community, vendor support, hardware/cloud friendliness.
+## Disadvantages
+More vendor-specific choices than Debian.
+## For whom?
+General desktop, cloud, dev and server users.
+# 7. Linux Mint
+## Cinnamon
+Mint's flagship desktop, traditional layout.
+## Packages
+Ubuntu/Debian-based APT ecosystem.
+## Advantages
+Friendly desktop defaults.
+## Disadvantages
+Primarily desktop-focused.
+# 8. Fedora
+## Packages
+RPM via DNF.
+## Character
+Modern, upstream-oriented, fast-moving but structured.
+## Advantages
+New technologies, strong developer workstation.
+## Disadvantages
+Shorter release lifecycle than LTS systems.
+## For whom?
+Developers and users wanting current Linux tech.
+# 9. Red Hat Enterprise Linux — RHEL
+## Features
+Enterprise support, long lifecycle, certifications.
+## Packages
+RPM/DNF.
+# 10. Rocky Linux
+Community enterprise distribution compatible with the RHEL ecosystem.
+# 11. AlmaLinux
+Another RHEL-compatible community enterprise distribution.
+# 12. Arch Linux
+## Installation
+Manual/customizable installation with strong documentation.
+## Packages
+pacman.
+# 13. AUR
+## Advantages
+Huge community package recipe ecosystem.
+## Disadvantages
+Community-maintained content requires review and trust judgment.
+# 14. EndeavourOS
+## Advantages
+Arch-based system with easier installation and sane defaults.
+# 15. Manjaro
+## Advantages
+Arch-based with user-friendly tooling.
+## Disadvantages
+Different package timing can complicate AUR expectations.
+# 16. openSUSE
+SUSE-family distro with strong admin tooling.
+# 17. openSUSE Leap
+Stable release model.
+# 18. openSUSE Tumbleweed
+Rolling release.
+## Packages
+RPM via zypper.
+# 19. YaST
+Powerful system configuration/admin tool in the SUSE ecosystem.
+# 20. Pop!_OS
+## Advantages
+Desktop-focused Ubuntu-derived distro with strong laptop/workstation usability.
+# 21. Zorin OS
+Desktop distro aimed at approachable migration from Windows/macOS.
+# 22. elementary OS
+Design-focused desktop distribution.
+# 23. Kali Linux
+## Important
+Security testing distribution, not the best default daily OS for beginners.
+## Example tools
+Nmap, Burp Suite, Metasploit, Wireshark and many others.
+# 24. Alpine Linux
+## Characteristic features
+Small, musl libc, BusyBox, security/minimalism oriented.
+## Packages
+apk.
+## Advantages
+Tiny images and simple server/container use.
+## Disadvantages
+musl compatibility differences and smaller desktop focus.
+# 25. Gentoo
+## USE flags
+Compile-time feature selection.
+## Advantages
+Maximum customization and learning.
+## Disadvantages
+Time and maintenance cost.
+# 26. NixOS
+## Advantages
+Declarative, reproducible system configuration and generations/rollback.
+## Disadvantages
+Different mental model and steep learning curve.
+# 27. Void Linux
+## Init
+runit.
+## Packages
+xbps.
+# 28. Slackware
+Traditional, conservative distro with minimal automation and old-school Unix philosophy.
+# 29. SteamOS
+Gaming-focused Linux distribution used by Steam Deck.
+# 30. Proxmox VE
+Debian-based virtualization platform for KVM and LXC.
+# 31. Desktop environment is not a distribution
+GNOME/KDE/XFCE can run on many distros.
+# 32. Popular desktop environments
+## GNOME
+integrated modern desktop.
+## KDE Plasma
+highly configurable desktop.
+## Cinnamon
+traditional desktop.
+## XFCE
+lightweight mature desktop.
+## LXQt
+lightweight Qt desktop.
+# 33. Flatpak
+Distribution-independent desktop application packaging.
+# 34. Snap
+Canonical's cross-distro application package format.
+# 35. AppImage
+Portable single-file application format.
+# 36. systemd
+Dominant init/service manager on mainstream distros.
+## Managing services
+Use `systemctl` and `journalctl` on systemd systems.
+# 37. Alternatives to systemd
+runit, OpenRC, s6, SysV-style init and others.
+# 38. Comparison of major families
+Debian/Ubuntu: APT/DEB; Red Hat/Fedora: DNF/RPM; Arch: pacman; SUSE: zypper/RPM.
+# 39. How to choose a distribution?
+## I just want to use Linux
+Mint/Ubuntu/Debian desktop.
+## I want to learn Linux
+Debian, Fedora or Arch depending on depth.
+## I want a programming system
+Debian/Ubuntu/Fedora are safe defaults.
+## I want a stable server
+Debian, Ubuntu LTS, RHEL-family.
+## I want a homelab
+Debian, Ubuntu Server, Fedora Server, Proxmox.
+## I want the newest packages
+Arch or openSUSE Tumbleweed.
+## I have an old laptop
+XFCE/LXQt based distro.
+## I want gaming
+SteamOS-compatible choices, Fedora/Ubuntu-family, depending hardware.
+# 40. What really matters when choosing a distribution?
+Package availability, release model, hardware support, documentation, admin tooling and your actual workload.
+# 41. What matters less than it seems?
+## Appearance
+Desktop environment/themes are usually portable between distros.
+## Default applications
+You can replace most defaults.
+# 42. Differences between distributions are shrinking
+Containers, Flatpak, common desktops and cross-platform tooling reduce app-level differences, but package/admin conventions still matter.
+# 43. Important repositories and communities
+## Debian
+Debian repositories, wiki, handbook/man pages.
+## Ubuntu
+Ubuntu repositories, documentation and Launchpad ecosystem.
+## Arch
+Official repos, AUR and Arch Wiki.
+# 44. Distribution families — shortcut
+## Debian
+Debian, Ubuntu, Mint, Pop!_OS, Proxmox.
+## Red Hat
+Fedora, RHEL, Rocky, Alma.
+## Arch
+Arch, EndeavourOS, Manjaro.
+## SUSE
+openSUSE Leap/Tumbleweed, SLES.
+# 45. My practical map of the Linux world
+Stable server: Debian/RHEL-family. General desktop: Ubuntu/Mint/Fedora. Rolling/learning: Arch/Tumbleweed. Specialized: Alpine/NixOS/Proxmox/Kali.
+# 46. If I could know only five distributions
+## Debian
+stable universal baseline.
+## Ubuntu
+mainstream desktop/cloud ecosystem.
+## Fedora
+modern upstream workstation.
+## Arch Linux
+rolling/manual learning model.
+## openSUSE
+SUSE tooling plus Leap/Tumbleweed models.
+# 47. Five package managers worth recognizing
+apt/dpkg, dnf/rpm, pacman, zypper, apk.
+# 48. Most important thing to remember
+Pick the distro family whose tooling and lifecycle fit your workload; desktop appearance is secondary.
