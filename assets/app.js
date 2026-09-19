@@ -448,8 +448,8 @@
     const file = {
       id: "__readme__",
       title: t("about"),
-      path: "README.md",
-      name: "README.md"
+      path: state.language === "en" ? "README.en.md" : "README.md",
+      name: state.language === "en" ? "README.en.md" : "README.md"
     };
     await openDocument(file);
   }
@@ -521,6 +521,10 @@
   }
 
   function applyLanguage(language, { preserveHash = false } = {}) {
+    const currentHash = location.hash || "#/";
+    const currentDocId = state.currentDoc?.id ||
+      (currentHash.startsWith("#/doc/") ? decodeURIComponent(currentHash.slice(6)) : null);
+
     const supported = state.index?.languages || ["pl"];
     state.language = supported.includes(language) ? language : (state.index?.defaultLanguage || "pl");
     state.contentRoot = state.index?.roots?.[state.language] || `md/${state.language}`;
@@ -564,8 +568,31 @@
     }
 
     els.browser.hidden = false;
-    els.welcome.hidden = false;
-    if (!preserveHash) history.replaceState(null, "", "#/");
+    els.welcome.hidden = true;
+
+    if (preserveHash && currentDocId) {
+      if (currentDocId === "__readme__") {
+        openReadme();
+        return;
+      }
+
+      const counterpart = state.files.find(item => item.id === currentDocId);
+      if (counterpart) {
+        const rel = counterpart.path.replace(new RegExp(`^${state.contentRoot}/`), "");
+        const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
+        renderDirectory(dir);
+        openDocument(counterpart);
+        return;
+      }
+    }
+
+    if (preserveHash && currentHash.startsWith("#/") && !currentHash.startsWith("#/doc/")) {
+      const path = decodeURI(currentHash.slice(2));
+      renderDirectory(path);
+      return;
+    }
+
+    history.replaceState(null, "", "#/");
     renderDirectory("");
   }
 
@@ -624,7 +651,6 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       state.index = await res.json();
       initLanguage();
-      if (state.files.length) handleHash();
     } catch (err) {
       els.browser.innerHTML =
         `<div class="no-results">${escapeHtml(t("indexError"))}: ${escapeHtml(err.message)}</div>`;
@@ -648,7 +674,7 @@
   els.about.addEventListener("click", openReadme);
 
   els.language.addEventListener("change", e => {
-    applyLanguage(e.target.value);
+    applyLanguage(e.target.value, { preserveHash: true });
   });
 
   els.theme.addEventListener("click", () => {

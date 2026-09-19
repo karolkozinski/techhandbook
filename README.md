@@ -67,32 +67,36 @@ Zakres będzie rozwijany wraz z pojawianiem się nowych potrzeb.
 
 ## Struktura repozytorium
 
-Materiały są pogrupowane tematycznie w katalogu `md/`.
+Materiały są pogrupowane tematycznie w katalogu `md/` i rozdzielone według języka. Obecnie komplet dokumentów jest dostępny po polsku i po angielsku.
 
 Przykładowa struktura:
 
 ```text
 techhandbook/
 ├── README.md
+├── README.en.md
 ├── index.html
 ├── content-index.json
 ├── assets/
 └── md/
-    ├── ai/
-    ├── architecture/
-    ├── cloud/
-    ├── data-api/
-    ├── devops/
-    ├── digital/
-    ├── networking/
-    ├── programming/
-    ├── security/
-    ├── shell/
-    ├── systems/
-    ├── testing/
-    ├── tools/
-    ├── troubleshooting/
-    └── web/
+    ├── pl/
+    │   ├── ai/
+    │   ├── architecture/
+    │   ├── cloud/
+    │   ├── data-api/
+    │   ├── devops/
+    │   ├── digital/
+    │   ├── networking/
+    │   ├── programming/
+    │   ├── security/
+    │   ├── shell/
+    │   ├── systems/
+    │   ├── testing/
+    │   ├── tools/
+    │   ├── troubleshooting/
+    │   └── web/
+    └── en/
+        └── ... ten sam układ kategorii
 ```
 
 Każdy dokument jest niezależnym plikiem Markdown.
@@ -134,13 +138,13 @@ cd techhandbook
 Wyszukiwanie plików:
 
 ```bash
-find md -iname '*dns*'
+find md/pl md/en -iname '*dns*'
 ```
 
 Wyszukiwanie wewnątrz dokumentów:
 
 ```bash
-grep -Rni "reverse proxy" md/
+grep -Rni "reverse proxy" md/pl md/en
 ```
 
 Do wygodnego czytania można również używać wersji WWW.
