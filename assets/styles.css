@@ -619,29 +619,6 @@ a { color: inherit; }
   }
 }
 
-.reader-back-wrap {
-  max-width: 900px;
-  margin: 0 auto 18px;
-}
-
-.reader-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 38px;
-  padding: 0 11px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: var(--panel-2);
-  color: var(--text);
-  font: inherit;
-}
-
-.reader-back:hover,
-.reader-back:focus-visible {
-  background: var(--hover);
-  outline: none;
-}
 
 .browser-toolbar #locationLabel {
   color: var(--text);
@@ -658,4 +635,37 @@ a { color: inherit; }
     overflow-x: hidden;
     overflow-wrap: anywhere;
   }
+}
+
+.reader-top-wrap {
+  max-width: 900px;
+  margin: 30px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  text-align: right;
+}
+
+.reader-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel-2);
+  color: var(--text);
+  font: inherit;
+}
+
+.reader-top:hover,
+.reader-top:focus-visible {
+  background: var(--hover);
+  outline: none;
+}
+
+.crumb.current {
+  cursor: default;
+  color: var(--text);
+  font-weight: 650;
 }

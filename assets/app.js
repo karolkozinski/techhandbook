@@ -33,6 +33,8 @@
       backTo: "Wróć do",
       searchResults: "wyników wyszukiwania",
       browse: "Przeglądaj",
+      backToBrowse: "Wróć do katalogów",
+      toTop: "Do góry",
       juniorWelcomeTitle: "Technologia bez strachu.",
       juniorWelcomeText: "Krótko, prosto i praktycznie. Wybierz temat i od razu spróbuj czegoś sam."
     },
@@ -67,6 +69,8 @@
       backTo: "Back to",
       searchResults: "search results",
       browse: "Browse",
+      backToBrowse: "Back to folders",
+      toTop: "To top",
       juniorWelcomeTitle: "Technology without the scary bits.",
       juniorWelcomeText: "Short, clear and practical. Pick a topic and try something yourself."
     }
@@ -91,8 +95,8 @@
     search: document.getElementById("searchInput"),
     results: document.getElementById("searchResults"),
     reader: document.getElementById("reader"),
-    readerBack: document.getElementById("readerBack"),
-    readerBackLabel: document.getElementById("readerBackLabel"),
+    readerTop: document.getElementById("readerTop"),
+    readerTopLabel: document.getElementById("readerTopLabel"),
     welcome: document.getElementById("welcome"),
     error: document.getElementById("readerError"),
     errorText: document.getElementById("readerErrorText"),
@@ -415,7 +419,11 @@
           name: entry.file.title || entry.name.replace(/\.md$/i, ""),
           meta: entry.name,
           arrow: "›",
-          onClick: () => openDocument(entry.file, { type: "dir", path: state.currentDir, query: "" })
+          onClick: () => openDocument(
+            entry.file,
+            { type: "dir", path: state.currentDir, query: "" },
+            { focusReader: true }
+          )
         }));
       }
     }
@@ -477,7 +485,7 @@
     renderDirectory(path);
   }
 
-  async function openDocument(file, context = null) {
+  async function openDocument(file, context = null, { focusReader = false } = {}) {
     if (context) setNavigationContext(context);
     state.currentDoc = file;
     els.welcome.hidden = true;
@@ -492,7 +500,13 @@
       els.reader.innerHTML = renderMarkdown(text);
       document.title = `${file.title || file.name} — Tech Handbook`;
       history.replaceState(null, "", "#/doc/" + encodeURIComponent(file.id));
-      updateReaderBack();
+      if (els.readerTop) {
+        els.readerTop.hidden = false;
+        els.readerTopLabel.textContent = t("toTop");
+      }
+      if (focusReader && window.innerWidth <= 860) {
+        els.reader.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     } catch (err) {
       els.reader.hidden = true;
       els.error.hidden = false;
@@ -549,10 +563,41 @@
     setNavigationContext({ type: "search", query: q, path: state.currentDir });
 
     els.browser.hidden = true;
-    els.breadcrumbs.hidden = true;
-    els.browserToolbar.hidden = true;
+    els.breadcrumbs.hidden = false;
+    els.browserToolbar.hidden = false;
     els.results.hidden = false;
-    els.results.innerHTML = `<h2>${escapeHtml(t("results"))}: ${found.length}</h2>`;
+
+    els.breadcrumbs.innerHTML = "";
+    const homeBtn = document.createElement("button");
+    homeBtn.className = "crumb";
+    homeBtn.type = "button";
+    homeBtn.textContent = t("home");
+    homeBtn.addEventListener("click", () => navigateDir(""));
+    els.breadcrumbs.appendChild(homeBtn);
+
+    const sep = document.createElement("span");
+    sep.className = "crumb-separator";
+    sep.textContent = "/";
+    els.breadcrumbs.appendChild(sep);
+
+    const resultLabel = document.createElement("span");
+    resultLabel.className = "crumb current";
+    resultLabel.textContent = t("results");
+    els.breadcrumbs.appendChild(resultLabel);
+
+    els.location.textContent = t("results") + ": “" + q + "”";
+    els.count.textContent = found.length + " " + (found.length === 1 ? t("item") : t("items"));
+
+    els.results.innerHTML = "";
+
+    const backEntry = makeEntry({
+      icon: "↰",
+      name: "← " + t("back"),
+      meta: state.currentDir ? displayPath(state.currentDir) : t("home"),
+      arrow: "",
+      onClick: () => navigateDir(state.currentDir || "")
+    });
+    els.results.appendChild(backEntry);
 
     if (!found.length) {
       els.results.insertAdjacentHTML(
@@ -575,38 +620,17 @@
           return displayPath(dir);
         })(),
         arrow: "›",
-        onClick: () => openDocument(file, { type: "search", query: q, path: state.currentDir })
+        onClick: () => openDocument(
+          file,
+          { type: "search", query: q, path: state.currentDir },
+          { focusReader: true }
+        )
       }));
     }
 
     els.results.appendChild(container);
   }
 
-  function updateReaderBack() {
-    if (!els.readerBack || !state.currentDoc) return;
-    const ctx = state.navigationContext;
-    let label = t("home");
-    if (ctx.type === "search" && ctx.query) {
-      label = t("searchResults") + ": “" + ctx.query + "”";
-    } else if (ctx.path) {
-      label = displayPath(ctx.path);
-    }
-    els.readerBackLabel.textContent = t("backTo") + " " + label;
-    els.readerBack.hidden = false;
-  }
-
-  function goBackFromReader() {
-    const ctx = state.navigationContext;
-    if (ctx.type === "search" && ctx.query) {
-      els.search.value = ctx.query;
-      runSearch(ctx.query);
-    } else {
-      navigateDir(ctx.path || "");
-    }
-    if (window.innerWidth <= 860) {
-      els.browserPanel.scrollIntoView({ block: "start" });
-    }
-  }
   function applyLanguage(language, { preserveHash = false } = {}) {
     const currentHash = location.hash || "#/";
     const currentDocId = state.currentDoc?.id ||
@@ -646,7 +670,7 @@
     els.results.hidden = true;
     els.reader.hidden = true;
     els.error.hidden = true;
-    if (els.readerBack) els.readerBack.hidden = true;
+    if (els.readerTop) els.readerTop.hidden = true;
     state.currentDoc = null;
 
     if (!state.files.length) {
@@ -781,8 +805,11 @@
 
   els.about.addEventListener("click", openReadme);
 
-  if (els.readerBack) {
-    els.readerBack.addEventListener("click", goBackFromReader);
+
+  if (els.readerTop) {
+    els.readerTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
 
   els.language.addEventListener("change", e => {

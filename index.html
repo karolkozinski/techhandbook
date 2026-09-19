@@ -7,7 +7,7 @@
   <meta name="description" content="Null Yard Tech Handbook — praktyczna baza wiedzy technicznej.">
   <title>Null Yard Tech Handbook</title>
   <link rel="icon" href="favicon.ico" sizes="32x32">
-  <link rel="stylesheet" href="assets/styles.css?v=20260920-nav2">
+  <link rel="stylesheet" href="assets/styles.css?v=20260920-nav3">
 </head>
 <body>
   <div class="app-shell">
@@ -82,15 +82,14 @@
           <h1 id="welcomeTitle">Praktyczna baza wiedzy technicznej.</h1>
           <p id="welcomeText">Wybierz katalog po lewej, a potem kompendium. Na telefonie przeglądarka plików pojawia się nad czytnikiem.</p>
         </div>
+        <article id="reader" class="markdown-body" hidden></article>
 
-        <div id="readerBack" class="reader-back-wrap" hidden>
-          <button class="reader-back" type="button">
-            <span aria-hidden="true">←</span>
-            <span id="readerBackLabel">Wróć</span>
+        <div id="readerTop" class="reader-top-wrap" hidden>
+          <button class="reader-top" type="button">
+            <span aria-hidden="true">↑</span>
+            <span id="readerTopLabel">Do góry</span>
           </button>
         </div>
-
-        <article id="reader" class="markdown-body" hidden></article>
 
         <div id="readerError" class="reader-error" hidden>
           <h2 id="readerErrorTitle">Nie udało się otworzyć dokumentu</h2>
@@ -105,6 +104,6 @@
     </footer>
   </div>
 
-  <script src="assets/app.js?v=20260920-nav2" defer></script>
+  <script src="assets/app.js?v=20260920-nav3" defer></script>
 </body>
 </html>
