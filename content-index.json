@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "updated": "2026-09-19",
   "root": "md/pl",
   "files": [
@@ -1183,6 +1183,75 @@
       "category": "programming/python",
       "tags": [
         "python"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-027",
+      "name": "debian-shell.md",
+      "title": "Debian — Practical Shell Handbook",
+      "path": "md/en/shell/debian/debian-shell.md",
+      "category": "shell/debian",
+      "tags": [
+        "debian",
+        "shell",
+        "bash"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-028",
+      "name": "debian-shells-overview.md",
+      "title": "Shells in Debian",
+      "path": "md/en/shell/debian/debian-shells-overview.md",
+      "category": "shell/debian",
+      "tags": [
+        "debian",
+        "shell",
+        "bash",
+        "zsh"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-029",
+      "name": "freebsd-shell.md",
+      "title": "FreeBSD — Practical Shell Handbook",
+      "path": "md/en/shell/freebsd/freebsd-shell.md",
+      "category": "shell/freebsd",
+      "tags": [
+        "freebsd",
+        "shell",
+        "sh",
+        "tcsh"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-030",
+      "name": "freebsd-shells-overview.md",
+      "title": "Shells in FreeBSD",
+      "path": "md/en/shell/freebsd/freebsd-shells-overview.md",
+      "category": "shell/freebsd",
+      "tags": [
+        "freebsd",
+        "shell",
+        "sh",
+        "tcsh"
+      ],
+      "language": "en"
+    },
+    {
+      "id": "doc-031",
+      "name": "shell-scripting.md",
+      "title": "Shell Scripting — Debian and FreeBSD",
+      "path": "md/en/shell/scripting/shell-scripting.md",
+      "category": "shell/scripting",
+      "tags": [
+        "shell",
+        "bash",
+        "scripting",
+        "script"
       ],
       "language": "en"
     }
