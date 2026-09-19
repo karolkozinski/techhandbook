@@ -103,10 +103,6 @@
     error: document.getElementById("readerError"),
     errorText: document.getElementById("readerErrorText"),
     about: document.getElementById("aboutButton"),
-    aboutDialog: document.getElementById("aboutDialog"),
-    aboutContent: document.getElementById("aboutContent"),
-    aboutClose: document.getElementById("aboutClose"),
-    aboutTitle: document.getElementById("aboutTitle"),
     theme: document.getElementById("themeButton"),
     indexInfo: document.getElementById("indexInfo"),
     language: document.getElementById("languageSelect"),
@@ -510,7 +506,7 @@
         els.readerTop.hidden = false;
         els.readerTopLabel.textContent = t("toTop");
       }
-      if (focusReader && window.innerWidth <= 860) {
+      if (focusReader) {
         els.reader.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     } catch (err) {
@@ -521,30 +517,19 @@
     }
   }
 
-  async function openReadme() {
-    const path = state.language === "en" ? "README.en.md" : "README.md";
-    if (!els.aboutDialog || !els.aboutContent) return;
+  async function openReadme({ focusReader = true } = {}) {
+    const file = {
+      id: "__readme__",
+      title: t("about"),
+      path: state.language === "en" ? "README.en.md" : "README.md",
+      name: state.language === "en" ? "README.en.md" : "README.md"
+    };
 
-    els.aboutTitle.textContent = t("about");
-    els.aboutClose.textContent = t("close");
-    els.aboutContent.innerHTML = `<p>${escapeHtml(t("loading"))}</p>`;
-
-    if (!els.aboutDialog.open) {
-      els.aboutDialog.showModal();
-    }
-
-    try {
-      const res = await fetch(path, { cache: "no-cache" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const text = await res.text();
-      els.aboutContent.innerHTML = renderMarkdown(text);
-      els.aboutContent.scrollTop = 0;
-    } catch (err) {
-      els.aboutContent.innerHTML =
-        `<div class="reader-error"><h2>${escapeHtml(t("errorTitle"))}</h2><p>${escapeHtml(t("fetchError"))} "${escapeHtml(path)}". ${escapeHtml(err.message)}.</p></div>`;
-    }
+    els.search.value = "";
+    setNavigationContext({ type: "dir", path: "", query: "" });
+    renderDirectory("");
+    await openDocument(file, { type: "dir", path: "", query: "" }, { focusReader });
   }
-
   function compileWildcard(query) {
     const escaped = query
       .replace(/[.+?^${}()|[\]\\]/g, "\\$&")
@@ -775,8 +760,7 @@
     if (hash.startsWith("#/doc/")) {
       const id = decodeURIComponent(hash.slice(6));
       if (id === "__readme__") {
-        history.replaceState(null, "", "#/");
-        openReadme();
+        openReadme({ focusReader: false });
         return;
       }
       const file = state.files.find(item => item.id === id);
@@ -824,17 +808,9 @@
     }
   });
 
-  els.about.addEventListener("click", openReadme);
-
-  if (els.aboutClose) {
-    els.aboutClose.addEventListener("click", () => els.aboutDialog.close());
-  }
-
-  if (els.aboutDialog) {
-    els.aboutDialog.addEventListener("click", e => {
-      if (e.target === els.aboutDialog) els.aboutDialog.close();
-    });
-  }
+  els.about.addEventListener("click", () => {
+    openReadme({ focusReader: true });
+  });
 
   if (els.readerTop) {
     els.readerTop.addEventListener("click", () => {
@@ -843,9 +819,7 @@
   }
 
   els.language.addEventListener("change", e => {
-    const aboutWasOpen = Boolean(els.aboutDialog?.open);
     applyLanguage(e.target.value, { preserveHash: true });
-    if (aboutWasOpen) openReadme();
   });
 
   if (els.mode) {
