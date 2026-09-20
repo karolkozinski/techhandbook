@@ -1,6 +1,25 @@
-# docker
+# Docker
 
-> Cel: nie nauczyć się „administracji Dockerem od zera do eksperta”, tylko swobodnie uruchamiać cudze projekty, tworzyć własne obrazy, przenosić je między komputerami i serwerami, diagnozować problemy oraz rozumieć, co Docker właściwie robi.
+Docker pozwala uruchamiać aplikacje w powtarzalnych, izolowanych kontenerach. Najważniejszy model mentalny jest prosty: **image** jest szablonem, **container** jego uruchomioną instancją, **volume** przechowuje dane trwałe, a **Compose** opisuje zestaw współpracujących usług.
+
+**Kiedy ten materiał jest przydatny:** przy uruchamianiu gotowego projektu, budowaniu własnego obrazu, lokalnym developmentcie, wdrażaniu małej aplikacji na VPS-ie, przenoszeniu obrazów oraz diagnozowaniu problemów z portami, siecią, storage i logami.
+
+Kompendium używa współczesnego polecenia `docker compose` dostarczanego jako plugin Compose. Nie opiera się na starym, osobnym poleceniu `docker-compose`.
+
+Powiązane tematy: [Debian — desktop i serwer](techhandbook:doc-033), [systemd, cron i schedulery](techhandbook:doc-052), [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025) oraz [nginx i reverse proxy](techhandbook:doc-045).
+
+## Mapa kompendium
+
+- [Czym jest Docker](#1-czym-jest-docker)
+- [Kontenery i obrazy](#7-pierwszy-kontener)
+- [Porty i sieć](#16-porty)
+- [Volumes i trwałe dane](#27-volumes)
+- [Dockerfile i build](#37-dockerfile)
+- [Docker Compose](#45-docker-compose)
+- [Deployment i aktualizacje](#69-typowy-deployment-przez-registry)
+- [Backup i sprzątanie](#76-backup-volume)
+- [Diagnostyka](#91-debugowanie-krok-po-kroku)
+- [Bezpieczeństwo](#93-bezpieczenstwo)
 
 ---
 
@@ -429,6 +448,8 @@ http://localhost:8080
 ```
 
 trafia do portu 80 w kontenerze.
+
+**Uwaga:** zapis `-p 8080:80` publikuje port na interfejsach hosta zgodnie z konfiguracją Dockera. Jeżeli usługa nie ma być dostępna z sieci, bezpieczniej jawnie związać ją z `127.0.0.1`, jak w następnym przykładzie. Docker tworzy własne reguły filtrowania/NAT, więc zachowanie firewalla hosta trzeba sprawdzać razem z konfiguracją Dockera.
 
 ---
 
@@ -3157,6 +3178,23 @@ docker system prune
     `Git + Docker + Compose + nginx + backup`.
 
 ---
+
+# 127. Dokumentacja i źródła
+
+Oficjalna dokumentacja Dockera jest źródłem nadrzędnym dla składni i zachowania Engine, Build oraz Compose:
+
+- Docker Engine  
+  https://docs.docker.com/engine/
+- Instalacja Docker Engine na Debianie  
+  https://docs.docker.com/engine/install/debian/
+- Docker Compose  
+  https://docs.docker.com/compose/
+- Docker Build  
+  https://docs.docker.com/build/
+- Storage  
+  https://docs.docker.com/engine/storage/
+- Linux post-installation i uprawnienia grupy `docker`  
+  https://docs.docker.com/engine/install/linux-postinstall/
 
 # Koniec
 

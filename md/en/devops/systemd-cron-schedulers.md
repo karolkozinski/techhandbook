@@ -1,4 +1,10 @@
-# systemd-cron-schedulers
+# systemd, cron and Schedulers
+
+A background service and a periodically executed job are two different problems. On Debian and many other Linux distributions, **systemd** normally manages long-running services, while scheduling can be handled by **systemd timers**, classic **cron**, or an application-level scheduler.
+
+**When this handbook is useful:** when an application must start after boot, restart after failure, expose useful logs, or execute a task at a defined time without an interactive user session.
+
+For broader context, see [Debian 13 — Desktop + Server Handbook](techhandbook:doc-033), [Shell Scripting — Debian and FreeBSD](techhandbook:doc-031), and [Documenting Technical Solutions](techhandbook:doc-056).
 
 ## 1. The problem
 
@@ -266,3 +272,26 @@ Do not stop at “cron exists”. Monitor exit code, execution time, last succes
 ## 28. What you should know
 
 You should be able to write a simple systemd service, operate and troubleshoot it, read the journal, create a timer, write cron expressions, understand cron vs timers and design idempotent jobs.
+
+
+## 29. Documentation and sources
+
+For the installed system, the local manual pages are the most precise reference for the exact systemd and cron versions:
+
+```bash
+man systemd.service
+man systemd.timer
+man systemd.time
+man systemctl
+man journalctl
+man 5 crontab
+```
+
+Online references:
+
+- systemd project documentation  
+  https://systemd.io/
+- Debian Trixie `crontab(5)`  
+  https://manpages.debian.org/trixie/cron/crontab.5.en.html
+
+For scheduled jobs, always verify the time zone, process environment, output/error logging, and the behaviour after a missed schedule.

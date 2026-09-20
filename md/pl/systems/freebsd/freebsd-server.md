@@ -1,12 +1,26 @@
-# freebsd-server
+# FreeBSD jako serwer
 
-> Praktyczny przewodnik po administracji FreeBSD na serwerze.  
-> Nacisk: usługi, `rc.conf`, `service`, pakiety, aktualizacje, sieć, SSH, ZFS, jails, firewall, logi, cron, diagnostyka i utrzymanie.  
-> Shell jest opisany tylko pobieżnie — tyle, ile potrzeba do administracji.
+FreeBSD to kompletny system operacyjny z rodziny BSD, a nie dystrybucja Linuksa. Kernel, system bazowy, narzędzia administracyjne i dokumentacja powstają jako spójna całość, natomiast aplikacje dodatkowe trafiają zwykle do hierarchii `/usr/local` przez Packages lub Ports.
 
-**Stan wiedzy:** wrzesień 2026  
-**Punkt odniesienia:** FreeBSD 15.1-RELEASE  
-**Dla kogo:** osoba, która zna ogólne podstawy systemów uniksowych i chce rozumieć oraz sprawnie obsługiwać FreeBSD jako serwer.
+**Kiedy ten materiał jest przydatny:** przy budowie i utrzymaniu serwera FreeBSD, pracy z `rc.conf` i usługami rc.d, ZFS, jailami, PF, SSH, aktualizacjami oraz podczas diagnozowania problemów z siecią i usługami.
+
+**Punkt odniesienia:** FreeBSD **15.1-RELEASE**, aktualne wydanie Production w chwili audytu. Wiele opisanych mechanizmów administracyjnych pozostaje również wspólnych dla wspieranych wydań gałęzi 14.
+
+Dalsze tematy: [FreeBSD — shell](techhandbook:doc-029) oraz [SSH i zdalna administracja](techhandbook:doc-018). Dla porównania z kontenerami linuksowymi przydatne jest także kompendium [Docker](techhandbook:doc-012).
+
+## Mapa kompendium
+
+- [Model systemu FreeBSD](#1-jak-myslec-o-freebsd)
+- [Pakiety i Ports](#7-pakiety-pkg)
+- [Usługi, rc.conf i sysrc](#9-najwazniejsza-rzecz-system-uslug-freebsd)
+- [Aktualizacje systemu](#25-aktualizacje-systemu)
+- [Sieć](#30-siec-najwazniejsze-narzedzia)
+- [SSH i firewall](#34-ssh)
+- [ZFS](#43-zfs-dlaczego-warto)
+- [Cron](#56-cron)
+- [Jails](#64-jails-podstawowa-idea)
+- [Diagnostyka usług](#89-diagnostyka-uslugi-uniwersalny-schemat)
+- [Dokumentacja i źródła](#130-dokumentacja-i-zrodla)
 
 ---
 
@@ -4184,6 +4198,18 @@ https://man.freebsd.org/
 ## Informacje o wydaniach
 
 https://www.freebsd.org/releases/
+
+FreeBSD 15.1-RELEASE:
+
+https://www.freebsd.org/releases/15.1R/announce/
+
+Release Notes:
+
+https://www.freebsd.org/releases/15.1R/relnotes/
+
+Errata:
+
+https://www.freebsd.org/releases/15.1R/errata/
 
 ## Informacje o wsparciu i bezpieczeństwie
 

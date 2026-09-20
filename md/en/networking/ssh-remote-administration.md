@@ -1,4 +1,10 @@
-# ssh-remote-administration
+# SSH and Remote Administration
+
+SSH (Secure Shell) is the standard tool for secure remote login and command execution on Unix-like systems. This handbook covers the everyday toolkit: connections, keys, client configuration, file transfer, tunnelling, host keys and troubleshooting.
+
+**When this handbook is useful:** while administering a VPS or LAN server, automating connections, securely transferring files, reaching services through tunnels, or diagnosing authentication failures.
+
+For system context, see [Debian 13 — Desktop + Server Handbook](techhandbook:doc-033), [FreeBSD as a Server](techhandbook:doc-034), and [Linux Permissions and Server Security](techhandbook:doc-025).
 
 ## 1. SSH
 
@@ -212,3 +218,21 @@ Host *
 ## 20. What you should know
 
 You should be able to connect with a key, configure ~/.ssh/config, use scp/rsync/sftp, create a local tunnel and diagnose a connection with ssh -v.
+
+
+## 21. Documentation and sources
+
+OpenSSH's own manual pages are the primary reference:
+
+- `ssh(1)`  
+  https://man.openbsd.org/ssh
+- `ssh_config(5)`  
+  https://man.openbsd.org/ssh_config
+- `sshd_config(5)`  
+  https://man.openbsd.org/sshd_config
+- `ssh-keygen(1)`  
+  https://man.openbsd.org/ssh-keygen
+- `ssh-agent(1)`  
+  https://man.openbsd.org/ssh-agent
+
+Treat the private key as a secret. The public key is intended to be installed in `~/.ssh/authorized_keys` on the destination host.

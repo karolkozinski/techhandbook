@@ -1,8 +1,24 @@
-# debian-desktop-server
+# Debian — desktop i serwer
 
-> **Zakres:** Debian jako codzienny system desktopowy z **GNOME** lub **KDE Plasma** oraz Debian jako **serwer zarządzany przez SSH i shell**.  
-> **Wersja odniesienia:** Debian 13 „Trixie”; aktualne stabilne wydanie w chwili przygotowania dokumentu: **13.7**.  
-> **Cel:** nie tylko znać komendy, ale rozumieć *co Debian robi, gdzie tego szukać i jak diagnozować problemy*.
+Debian to stabilna, uniwersalna dystrybucja GNU/Linux używana zarówno na komputerach osobistych, jak i na serwerach. To kompendium zbiera najważniejsze mechanizmy potrzebne do codziennej pracy: pakiety, usługi, logi, sieć, uprawnienia, storage, środowiska GNOME/KDE oraz podstawy administracji serwerem.
+
+**Kiedy ten materiał jest przydatny:** przy konfiguracji nowego systemu, utrzymaniu stacji roboczej, administracji VPS-em, diagnozowaniu usług i sieci oraz wtedy, gdy trzeba zrozumieć, gdzie Debian przechowuje konfigurację i stan systemu.
+
+**Punkt odniesienia:** Debian 13 „Trixie”. Na 20 września 2026 aktualnym wydaniem stable jest **13.7**. Numer punktowy może się zmieniać, ale opisane tu podstawowe mechanizmy Debiana 13 pozostają te same.
+
+Tematy rozwijane osobno: [SSH i zdalna administracja](techhandbook:doc-018), [Docker](techhandbook:doc-012), [systemd, cron i schedulery](techhandbook:doc-052) oraz [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025).
+
+## Mapa kompendium
+
+- [Czym jest Debian](#1-czym-wlasciwie-jest-debian)
+- [Pakiety i APT](#8-zarzadzanie-pakietami-apt)
+- [Debian jako desktop](#18-debian-jako-desktop)
+- [Sieć i NetworkManager](#25-networkmanager)
+- [Usługi i logi](#39-systemd-serce-uruchamiania-uslug)
+- [Dyski i systemy plików](#53-dyski)
+- [Debian jako serwer](#60-debian-jako-serwer)
+- [Diagnostyka](#112-diagnostyka-metoda-krok-po-kroku)
+- [Dokumentacja i pomoc](#206-gdzie-szukac-pomocy)
 
 ---
 
@@ -5179,6 +5195,12 @@ Dokumentacja pakietu:
 
 Oficjalna dokumentacja Debiana:
 
+- Informacje o aktualnym wydaniu stable  
+  https://www.debian.org/releases/stable/
+
+- Aktualizacje Debian 13  
+  https://www.debian.org/News/
+
 - Debian Reference  
   https://www.debian.org/doc/manuals/debian-reference/
 
@@ -5362,4 +5384,3 @@ Reszta to w dużej mierze rozwinięcie tych kilku fundamentów.
 
 Dokument przygotowany dla Debiana 13 „Trixie”.  
 W chwili przygotowania aktualne wydanie stabilne Debiana to **13.7**.
-

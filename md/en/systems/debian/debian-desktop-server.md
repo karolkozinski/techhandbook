@@ -1,4 +1,25 @@
-# debian-desktop-server
+# Debian 13 — Desktop + Server Handbook
+
+Debian is a stable, general-purpose GNU/Linux distribution used on desktops, workstations and servers. This handbook focuses on the system model needed for practical administration: packages, services, logs, networking, permissions, storage, GNOME/KDE and server operation.
+
+**When this handbook is useful:** while setting up a new machine, maintaining a workstation or VPS, diagnosing services and networking, or learning where Debian keeps configuration and runtime state.
+
+**Reference release:** Debian 13 “Trixie”. As of September 20, 2026, the current stable point release is **13.7**. Point releases may advance, while the core Debian 13 administration model described here remains applicable.
+
+Related handbooks: [SSH and Remote Administration](techhandbook:doc-018), [Docker](techhandbook:doc-012), [systemd, cron and Schedulers](techhandbook:doc-052), and [Linux Permissions and Server Security](techhandbook:doc-025).
+
+## Handbook map
+
+- [What Debian is](#1-what-debian-actually-is)
+- [Packages and APT](#8-package-management-apt)
+- [Debian as a desktop](#18-debian-as-a-desktop)
+- [Networking and NetworkManager](#25-networkmanager)
+- [Services and logs](#39-systemd-service-startup-core)
+- [Disks and filesystems](#53-disks)
+- [Debian as a server](#60-debian-as-a-server)
+- [Troubleshooting](#112-troubleshooting-step-by-step-method)
+- [Documentation and help](#206-where-to-get-help)
+
 # 1. What Debian actually is
 Debian is a community-developed GNU/Linux distribution known for stability, broad architecture support, large repositories and a strong server ecosystem.
 # 2. Debian branches
@@ -777,6 +798,17 @@ Observe first, change one thing at a time, keep rollback options and document no
 apt, dpkg, systemctl, journalctl, ip, ss, ssh, rsync, find, grep, tar and editor of choice.
 # 206. Where to get help
 man pages, /usr/share/doc, Debian documentation, upstream project docs, logs and package metadata.
+## Official references
+
+- Debian stable release information  
+  https://www.debian.org/releases/stable/
+- Debian documentation  
+  https://www.debian.org/doc/
+- Debian Reference  
+  https://www.debian.org/doc/manuals/debian-reference/
+- Debian Administrator's Handbook  
+  https://debian-handbook.info/
+
 # 207. Final cheat sheet: diagnose almost anything
 ## Service problem
 systemctl + journalctl.

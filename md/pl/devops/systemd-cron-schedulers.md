@@ -1,4 +1,10 @@
-# systemd-cron-schedulers
+# systemd, cron i schedulery
+
+Usługa działająca w tle i zadanie uruchamiane okresowo to dwa różne problemy. W Debianie i wielu innych dystrybucjach Linuksa pierwszym zarządza zwykle **systemd**, a harmonogram można realizować przez **systemd timers**, klasyczny **cron** albo scheduler w samej aplikacji.
+
+**Kiedy ten materiał jest przydatny:** gdy aplikacja ma startować po bootowaniu, restartować się po awarii, zapisywać logi albo wykonywać zadanie o określonej porze bez aktywnej sesji użytkownika.
+
+Dla szerszego kontekstu: [Debian — desktop i serwer](techhandbook:doc-033), [Shell scripting](techhandbook:doc-031) i [Dokumentowanie rozwiązań technicznych](techhandbook:doc-056).
 
 ## 1. Problem
 
@@ -340,3 +346,26 @@ Monitoruj:
 - napisać cron expression,
 - rozumieć różnicę cron/timer,
 - projektować idempotentne joby.
+
+
+## 29. Dokumentacja i źródła
+
+Najpewniejszym źródłem dla konkretnego systemu są lokalne strony `man` odpowiadające zainstalowanej wersji:
+
+```bash
+man systemd.service
+man systemd.timer
+man systemd.time
+man systemctl
+man journalctl
+man 5 crontab
+```
+
+Dokumentacja online:
+
+- systemd project documentation  
+  https://systemd.io/
+- Debian `crontab(5)` dla Trixie  
+  https://manpages.debian.org/trixie/cron/crontab.5.en.html
+
+Przy zadaniach okresowych warto zawsze sprawdzić strefę czasową, środowisko procesu, logowanie wyniku oraz zachowanie po pominiętym terminie.

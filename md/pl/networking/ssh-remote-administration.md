@@ -1,4 +1,10 @@
-# ssh-remote-administration
+# SSH i zdalna administracja
+
+SSH (Secure Shell) to podstawowy protokół do bezpiecznego, zdalnego logowania i wykonywania poleceń na systemach uniksowych. Ten materiał obejmuje codzienny zestaw narzędzi: połączenia, klucze, konfigurację klienta, transfer plików, tunneling, host keys oraz diagnostykę.
+
+**Kiedy ten materiał jest przydatny:** przy administracji VPS-em lub serwerem w LAN, automatyzacji połączeń, bezpiecznym kopiowaniu plików, dostępie do usług przez tunel oraz diagnozowaniu problemów z uwierzytelnianiem.
+
+Dla kontekstu systemowego warto znać także [Debiana jako desktop i serwer](techhandbook:doc-033), [FreeBSD jako serwer](techhandbook:doc-034) oraz [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025).
 
 ## 1. SSH
 
@@ -222,3 +228,21 @@ Host *
 - używać scp/rsync/sftp,
 - zrobić tunnel lokalny,
 - diagnozować przez `ssh -v`.
+
+
+## 21. Dokumentacja i źródła
+
+OpenSSH jest najlepiej dokumentowany przez własne strony podręcznika:
+
+- `ssh(1)`  
+  https://man.openbsd.org/ssh
+- `ssh_config(5)`  
+  https://man.openbsd.org/ssh_config
+- `sshd_config(5)`  
+  https://man.openbsd.org/sshd_config
+- `ssh-keygen(1)`  
+  https://man.openbsd.org/ssh-keygen
+- `ssh-agent(1)`  
+  https://man.openbsd.org/ssh-agent
+
+Klucz prywatny należy traktować jak sekret. Klucz publiczny może zostać umieszczony w `~/.ssh/authorized_keys` na hoście docelowym.

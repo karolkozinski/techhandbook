@@ -1,5 +1,26 @@
-# docker
-> Goal: not to become a Docker expert from scratch, but to confidently run existing projects, build your own images, move them between computers and servers, troubleshoot problems, and understand what Docker is actually doing.
+# Docker — Practical Handbook
+
+Docker runs applications in repeatable, isolated containers. The core model is simple: an **image** is a template, a **container** is a running instance, a **volume** holds persistent data, and **Compose** describes a set of cooperating services.
+
+**When this handbook is useful:** when running an existing project, building an image, developing locally, deploying a small application to a VPS, moving images between hosts, or troubleshooting ports, networking, storage and logs.
+
+The handbook uses the modern `docker compose` command provided by the Compose plugin rather than the legacy standalone `docker-compose` command.
+
+Related topics: [Debian 13 — Desktop + Server Handbook](techhandbook:doc-033), [systemd, cron and Schedulers](techhandbook:doc-052), [Linux Permissions and Server Security](techhandbook:doc-025), and [nginx and reverse proxy](techhandbook:doc-045).
+
+## Handbook map
+
+- [What Docker is](#1-what-docker-is)
+- [Containers and images](#7-first-container)
+- [Ports and networking](#16-ports)
+- [Volumes and persistent data](#27-volumes)
+- [Dockerfile and builds](#37-dockerfile)
+- [Docker Compose](#45-docker-compose)
+- [Deployment and updates](#69-typical-deployment-through-a-registry)
+- [Backups and cleanup](#76-backing-up-a-volume)
+- [Troubleshooting](#91-step-by-step-debugging)
+- [Security](#93-security)
+
 # 1. What Docker is
 Docker runs applications in containers. A container is an isolated process environment that shares the host kernel but can have its own filesystem, libraries, configuration, environment variables, ports, networks and resource limits.
 It is not a full virtual machine.
@@ -108,6 +129,8 @@ HOST:CONTAINER
 8080:80
 ```
 Now `http://localhost:8080` reaches port 80 inside the container.
+
+**Note:** `-p 8080:80` publishes the port on host interfaces according to Docker's networking configuration. If the service should remain local to the host, bind it explicitly to `127.0.0.1`, as in the next example. Docker manages its own filtering/NAT rules, so host firewall behaviour must be considered together with Docker's rules.
 # 17. Port only on localhost
 ```bash
 docker run -d -p 127.0.0.1:8080:80 nginx
@@ -935,5 +958,22 @@ docker system prune
 ```
 # 126. Most important things to remember
 1. Image is a template; container is a running instance. 2. Containers should be disposable. 3. Keep persistent data in volumes or external storage. 4. Keep source and infrastructure config in Git. 5. Use Compose for multi-service apps. 6. Start troubleshooting with `docker logs`. 7. Use `docker inspect` for details. 8. Use save/load for images. 9. Export/import is for container filesystems and is rarely the right migration tool. 10. A small VPS usually needs only Git + Docker + Compose + nginx + backups.
+# 127. Documentation and sources
+
+Official Docker documentation is the primary reference for Engine, Build and Compose behaviour:
+
+- Docker Engine  
+  https://docs.docker.com/engine/
+- Install Docker Engine on Debian  
+  https://docs.docker.com/engine/install/debian/
+- Docker Compose  
+  https://docs.docker.com/compose/
+- Docker Build  
+  https://docs.docker.com/build/
+- Storage  
+  https://docs.docker.com/engine/storage/
+- Linux post-installation and `docker` group privileges  
+  https://docs.docker.com/engine/install/linux-postinstall/
+
 # End
 For small private projects you usually do not need Kubernetes or Swarm. Debian + Git + Docker + Compose + nginx + Let's Encrypt + regular backups is a perfectly sensible stack.

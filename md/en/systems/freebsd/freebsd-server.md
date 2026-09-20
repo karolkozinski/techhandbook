@@ -1,4 +1,27 @@
-# freebsd-server
+# FreeBSD as a Server — Administrator Handbook
+
+FreeBSD is a complete BSD operating system, not a Linux distribution. Its kernel, base system, administration tools and documentation are developed as a coherent platform, while third-party applications normally live under `/usr/local` and are installed through Packages or Ports.
+
+**When this handbook is useful:** while building or maintaining a FreeBSD server, working with `rc.conf` and rc.d services, ZFS, jails, PF, SSH, upgrades, or troubleshooting network and service problems.
+
+**Reference release:** FreeBSD **15.1-RELEASE**, the Production release at the time of this audit. Most administration concepts described here also apply to supported releases from the 14 branch.
+
+Related handbooks: [FreeBSD — Practical Shell Handbook](techhandbook:doc-029) and [SSH and Remote Administration](techhandbook:doc-018). For comparison with Linux containers, see [Docker — Practical Handbook](techhandbook:doc-012).
+
+## Handbook map
+
+- [How to think about FreeBSD](#1-how-to-think-about-freebsd)
+- [Packages and Ports](#7-packages-pkg)
+- [Services, rc.conf and sysrc](#9-the-most-important-thing-freebsd-service-system)
+- [System updates](#25-system-updates)
+- [Networking](#30-networking-key-tools)
+- [SSH and firewall](#34-ssh)
+- [ZFS](#43-zfs-why-it-matters)
+- [Cron](#56-cron)
+- [Jails](#64-jails-basic-idea)
+- [Service troubleshooting](#89-service-diagnostics-universal-pattern)
+- [Documentation and sources](#130-documentation-and-sources)
+
 # 1. How to think about FreeBSD
 FreeBSD is a complete operating system: kernel, base userland, documentation and release engineering are developed together. Third-party software is added separately through packages or Ports.
 # 2. System version
@@ -775,6 +798,15 @@ Use PF/IPFW Handbook chapters.
 Use man(1) locally.
 ## Release information
 https://www.freebsd.org/releases/
+
+FreeBSD 15.1-RELEASE announcement:
+https://www.freebsd.org/releases/15.1R/announce/
+
+Release Notes:
+https://www.freebsd.org/releases/15.1R/relnotes/
+
+Errata:
+https://www.freebsd.org/releases/15.1R/errata/
 ## Support and security information
 https://www.freebsd.org/security/
 # 131. Final thing to remember
