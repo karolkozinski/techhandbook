@@ -6,7 +6,7 @@ description: "API to kontrakt komunikacji między systemami."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "api"
   - "rest"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # API i integracje systemów
+
+API warto traktować jako kontrakt między systemami: określa format żądania, odpowiedzi, błędów, uwierzytelniania i zachowanie przy ponowieniu. Dobra integracja to nie tylko poprawny request, ale też timeouty, retry, idempotency i obsługa częściowych awarii.
+
+Powiązane tematy: [JSON, YAML, TOML i XML](techhandbook:doc-009), [HTTP, HTTPS i TLS](techhandbook:doc-044), [Testowanie oprogramowania](techhandbook:doc-049) oraz [DNS, domeny i routing](techhandbook:doc-017).
 
 ## 1. API
 
@@ -51,7 +55,7 @@ Request:
 
 ```json
 {
-  "name": "Karol",
+  "name": "Anna",
   "role": "manager"
 }
 ```
@@ -61,7 +65,7 @@ Response:
 ```json
 {
   "id": 42,
-  "name": "Karol",
+  "name": "Anna",
   "role": "manager"
 }
 ```
@@ -259,7 +263,7 @@ POST:
 ```bash
 curl -X POST \
   -H 'Content-Type: application/json' \
-  -d '{"name":"Karol"}' \
+  -d '{"name":"Anna"}' \
   https://api.example.com/users
 ```
 
@@ -349,3 +353,9 @@ Uwzględnij:
 - obsłużyć token,
 - rozumieć webhook i polling,
 - rozumieć pagination, rate limits i retry.
+
+## Oficjalne źródła
+
+- RFC 9110 - HTTP Semantics: https://www.rfc-editor.org/rfc/rfc9110
+- RFC 6749 - OAuth 2.0 Authorization Framework: https://www.rfc-editor.org/rfc/rfc6749
+- OpenAPI Specification: https://spec.openapis.org/oas/latest.html

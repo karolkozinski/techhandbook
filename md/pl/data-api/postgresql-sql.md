@@ -6,7 +6,7 @@ description: "Dane przechowujesz w tabelach."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "sql"
   - "postgres"
@@ -15,6 +15,12 @@ tags:
 ---
 
 # SQL i PostgreSQL dla developera
+
+Relacyjna baza danych nie jest tylko miejscem do zapisywania rekordów. Kluczowe są model danych, constraints, transakcje, indeksy i sposób wykonywania zapytań. Ten materiał skupia się na SQL i PostgreSQL z perspektywy developera.
+
+Stan na wrzesień 2026: PostgreSQL 18 jest najnowszą stabilną główną linią, a PostgreSQL 19 pozostaje w fazie beta. Przykłady niżej celowo opierają się głównie na mechanizmach, które nie wymagają konkretnego wydania.
+
+Powiązane tematy: [API i integracje systemów](techhandbook:doc-008), [Go - czytanie kodu](techhandbook:doc-020), [Node.js](techhandbook:doc-022), [Python - podstawy](techhandbook:doc-023) oraz [Testowanie oprogramowania](techhandbook:doc-049).
 
 ## 1. Model relacyjny
 
@@ -74,7 +80,7 @@ CREATE TABLE users (
 
 ```sql
 INSERT INTO users (email, name)
-VALUES ('user@example.com', 'Karol');
+VALUES ('user@example.com', 'Anna');
 ```
 
 Zwrócenie rekordu:
@@ -117,7 +123,7 @@ LIMIT 20;
 
 ```sql
 UPDATE users
-SET name = 'Karol K.'
+SET name = 'Anna K.'
 WHERE id = 42;
 ```
 
@@ -331,3 +337,11 @@ Przykład:
 - transakcje,
 - backup/restore,
 - podstawy migracji.
+
+## Oficjalne źródła
+
+- PostgreSQL documentation: https://www.postgresql.org/docs/current/
+- SQL commands: https://www.postgresql.org/docs/current/sql-commands.html
+- psql: https://www.postgresql.org/docs/current/app-psql.html
+- Backup and restore: https://www.postgresql.org/docs/current/backup.html
+- PostgreSQL release news: https://www.postgresql.org/about/news/

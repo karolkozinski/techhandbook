@@ -6,7 +6,7 @@ description: "JSON, YAML, TOML i XML — praktyczne kompendium TechHandbook."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "json"
   - "yaml"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # JSON, YAML, TOML i XML
+
+Format danych jest częścią interfejsu systemu. JSON dominuje w API, YAML i TOML są częste w konfiguracji, a XML nadal występuje w wielu starszych i korporacyjnych integracjach. Najważniejsze jest rozumienie składni, typów danych i ograniczeń każdego formatu.
+
+Powiązane tematy: [API i integracje systemów](techhandbook:doc-008), [Docker](techhandbook:doc-012), [Go - czytanie kodu](techhandbook:doc-020) oraz [Python - podstawy](techhandbook:doc-023).
 
 ## 1. JSON
 
@@ -226,3 +230,10 @@ PRIVATE_KEY
 - używać `jq`,
 - rozpoznawać błędy indentacji YAML,
 - dobierać format do zastosowania.
+
+## Oficjalne źródła
+
+- RFC 8259 - JSON: https://www.rfc-editor.org/rfc/rfc8259
+- YAML specification: https://yaml.org/spec/
+- TOML specification: https://toml.io/en/v1.0.0
+- W3C XML specification: https://www.w3.org/TR/xml/

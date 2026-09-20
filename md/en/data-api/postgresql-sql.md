@@ -6,7 +6,7 @@ description: "A relational database stores data in tables."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "sql"
   - "postgres"
@@ -15,6 +15,12 @@ tags:
 ---
 
 # SQL and PostgreSQL for Developers — Handbook
+
+A relational database is more than a place to store rows. Data modeling, constraints, transactions, indexes and query execution are central to reliable systems. This handbook focuses on SQL and PostgreSQL from a developer's perspective.
+
+As of September 2026, PostgreSQL 18 is the latest stable major line while PostgreSQL 19 is still in beta. The examples below intentionally focus on mechanisms that do not depend on one specific release.
+
+Related topics: [APIs and System Integrations](techhandbook:doc-008), [Go - Reading Code](techhandbook:doc-020), [Node.js](techhandbook:doc-022), [Python](techhandbook:doc-023) and [Software Testing](techhandbook:doc-049).
 
 ## 1. Relational model
 
@@ -388,3 +394,11 @@ You should understand:
 - migrations.
 
 The most important rule: treat the database schema as code and review every destructive query before execution.
+
+## Official references
+
+- PostgreSQL documentation: https://www.postgresql.org/docs/current/
+- SQL commands: https://www.postgresql.org/docs/current/sql-commands.html
+- psql: https://www.postgresql.org/docs/current/app-psql.html
+- Backup and restore: https://www.postgresql.org/docs/current/backup.html
+- PostgreSQL release news: https://www.postgresql.org/about/news/

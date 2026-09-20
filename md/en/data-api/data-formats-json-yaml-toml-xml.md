@@ -6,7 +6,7 @@ description: "JSON is a structured text format widely used by APIs and configura
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "json"
   - "yaml"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # JSON, YAML, TOML and XML — Data and Configuration Handbook
+
+A data format is part of a system interface. JSON dominates web APIs, YAML and TOML are common in configuration, and XML is still widespread in older and enterprise integrations. The important part is understanding syntax, data types and the limitations of each format.
+
+Related topics: [APIs and System Integrations](techhandbook:doc-008), [Docker](techhandbook:doc-012), [Go - Reading Code](techhandbook:doc-020) and [Python](techhandbook:doc-023).
 
 ## 1. JSON
 
@@ -260,3 +264,10 @@ You should be comfortable with:
 - keeping secrets separate from ordinary config.
 
 The main rule: choose the simplest format that matches the surrounding ecosystem.
+
+## Official references
+
+- RFC 8259 - JSON: https://www.rfc-editor.org/rfc/rfc8259
+- YAML specification: https://yaml.org/spec/
+- TOML specification: https://toml.io/en/v1.0.0
+- W3C XML specification: https://www.w3.org/TR/xml/

@@ -6,7 +6,7 @@ description: "An API is an interface that lets one system communicate with anoth
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "api"
   - "rest"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # APIs and System Integrations — Practical Handbook
+
+Treat an API as a contract between systems: request format, response format, errors, authentication and retry behavior all matter. A reliable integration is not only a valid request, but also timeouts, retries, idempotency and handling partial failures.
+
+Related topics: [JSON, YAML, TOML and XML](techhandbook:doc-009), [HTTP, HTTPS and TLS](techhandbook:doc-044), [Software Testing](techhandbook:doc-049) and [DNS, Domains and Internet Routing](techhandbook:doc-017).
 
 ## 1. API
 
@@ -378,3 +382,9 @@ You should understand:
 - timeouts.
 
 The key rule: treat every external API as a system that can fail, slow down, change or return unexpected data.
+
+## Official references
+
+- RFC 9110 - HTTP Semantics: https://www.rfc-editor.org/rfc/rfc9110
+- RFC 6749 - OAuth 2.0 Authorization Framework: https://www.rfc-editor.org/rfc/rfc6749
+- OpenAPI Specification: https://spec.openapis.org/oas/latest.html

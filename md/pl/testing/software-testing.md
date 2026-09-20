@@ -6,7 +6,7 @@ description: "Testy mają zmniejszać ryzyko regresji i dostarczać informacji o
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "testing"
   - "unit"
@@ -17,6 +17,10 @@ tags:
 ---
 
 # Testowanie oprogramowania — kompendium
+
+Testy mają dostarczać informacji o ryzyku, a nie tylko zwiększać licznik coverage. Dobry zestaw testów łączy szybkie testy małych fragmentów logiki z testami integracyjnymi i kilkoma ważnymi scenariuszami end-to-end.
+
+Powiązane tematy: [C - czytanie, kompilacja i debugowanie](techhandbook:doc-019), [Go - czytanie kodu](techhandbook:doc-020), [JavaScript](techhandbook:doc-021), [Node.js](techhandbook:doc-022), [Python](techhandbook:doc-023) oraz [API i integracje systemów](techhandbook:doc-008).
 
 ## 1. Po co testy
 
@@ -292,3 +296,10 @@ Manual jest dobry dla:
 - uruchamiać testy w CI,
 - rozpoznawać flaky tests,
 - pisać testy najważniejszych zachowań.
+
+## Oficjalne źródła
+
+- Go testing package: https://pkg.go.dev/testing
+- Node.js test runner: https://nodejs.org/api/test.html
+- pytest documentation: https://docs.pytest.org/
+- Playwright documentation: https://playwright.dev/docs/intro

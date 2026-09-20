@@ -6,7 +6,7 @@ description: "Tests reduce the chance of shipping regressions and make refactori
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "testing"
   - "unit"
@@ -17,6 +17,10 @@ tags:
 ---
 
 # Software Testing — Handbook
+
+Tests should provide information about risk, not merely increase a coverage number. A useful test suite combines fast tests of small units with integration tests and a smaller number of important end-to-end scenarios.
+
+Related topics: [C - Reading, Building and Debugging Projects](techhandbook:doc-019), [Go - Reading Code](techhandbook:doc-020), [JavaScript](techhandbook:doc-021), [Node.js](techhandbook:doc-022), [Python](techhandbook:doc-023) and [APIs and System Integrations](techhandbook:doc-008).
 
 ## 1. Why tests exist
 
@@ -316,3 +320,10 @@ You should understand:
 - release validation.
 
 The main rule: test important behavior, not just code lines.
+
+## Official references
+
+- Go testing package: https://pkg.go.dev/testing
+- Node.js test runner: https://nodejs.org/api/test.html
+- pytest documentation: https://docs.pytest.org/
+- Playwright documentation: https://playwright.dev/docs/intro
