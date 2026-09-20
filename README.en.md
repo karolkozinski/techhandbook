@@ -122,15 +122,27 @@ You can also use the web interface.
 
 ## Content index
 
-The web interface does not scan directories dynamically. Document metadata is stored in:
+The web interface does not scan directories dynamically. Its runtime index is stored in content-index.json.
 
-```text
-content-index.json
-```
+This file is generated and should not be edited manually.
 
-Each entry contains an ID, filename, title, path, category, tags and language.
+Article-owned metadata lives in Markdown front matter, paths and categories come from the filesystem, and editorial relationships live in content-relations.json.
 
-Polish and English counterparts intentionally share the same document ID so the web interface can switch languages while staying on the same handbook.
+Validate or regenerate the index with:
+
+    python3 -m pip install -r requirements-dev.txt
+    python3 scripts/content_index.py --check
+    python3 scripts/content_index.py --write
+
+GitHub Actions checks index consistency whenever content changes.
+
+Polish and English STANDARD counterparts intentionally share the same document ID so the web interface can switch languages while staying on the same handbook.
+
+## Deployment
+
+The production layout uses an nginx container bound only to the VPS loopback interface, with a host nginx instance handling the public domain and TLS.
+
+See DEPLOYMENT.md for the deployment procedure.
 
 ## Information freshness
 

@@ -151,22 +151,25 @@ Do wygodnego czytania można również używać wersji WWW.
 
 ## Indeks treści
 
-Interfejs webowy nie skanuje katalogów dynamicznie. Lista dokumentów jest przechowywana w:
+Interfejs webowy nie skanuje katalogów dynamicznie. Runtime index znajduje się w content-index.json.
 
-```text
-content-index.json
-```
+Ten plik jest generowany automatycznie i nie należy edytować go ręcznie.
 
-Po dodaniu nowego dokumentu należy dopisać jego:
+Źródłem metadanych artykułu jest front matter w Markdownzie, ścieżka i kategoria wynikają z filesystemu, a relacje między artykułami znajdują się w content-relations.json.
 
-- identyfikator,
-- nazwę,
-- tytuł,
-- ścieżkę,
-- kategorię,
-- tagi.
+Walidacja i regeneracja indeksu:
 
-Dzięki temu wyszukiwarka pozostaje prostą aplikacją statyczną.
+    python3 -m pip install -r requirements-dev.txt
+    python3 scripts/content_index.py --check
+    python3 scripts/content_index.py --write
+
+GitHub Actions sprawdza spójność indeksu przy zmianach treści.
+
+## Deployment
+
+Docelowy wariant produkcyjny wykorzystuje kontener nginx wystawiony wyłącznie na loopback VPS-a oraz hostowy nginx odpowiedzialny za domenę i TLS.
+
+Instrukcja znajduje się w DEPLOYMENT.md.
 
 ## Aktualność informacji
 

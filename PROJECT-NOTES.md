@@ -101,12 +101,21 @@ git*
 
 ## Publikacja
 
-Projekt działa na hostingu statycznym. Plik `.nojekyll` w katalogu głównym wyłącza przetwarzanie przez Jekyll na GitHub Pages, dzięki czemu pliki Markdown są publikowane jako surowe `.md` i mogą być pobierane przez frontend.
+GitHub Pages pozostaje wygodnym środowiskiem publicznym i testowym. Plik .nojekyll wyłącza przetwarzanie przez Jekyll, a 404.html obsługuje bezpośrednie wejścia na czyste trasy.
 
-Na GitHub Pages plik `404.html` przekazuje bezpośrednie wejścia na głębokie adresy do aplikacji. Docelowy nginx na VPS powinien zamiast tego wykonywać normalny fallback wszystkich tras aplikacji do `index.html`.
+Docelowy deployment VPS jest zdefiniowany w:
 
-Uwaga: otwieranie `index.html` bezpośrednio z `file://` może blokować `fetch()` do JSON i Markdownów z powodu polityki bezpieczeństwa przeglądarki.
+- Dockerfile,
+- compose.yaml,
+- deploy/container-nginx.conf,
+- deploy/host-nginx.conf.example,
+- DEPLOYMENT.md.
 
+Kontener jest dostępny tylko pod 127.0.0.1:8080. Hostowy nginx obsługuje domenę, TLS i reverse proxy. Kontenerowy nginx serwuje pliki statyczne, Markdown oraz fallback czystych tras aplikacji do index.html.
+
+Workflow .github/workflows/deploy-check.yml buduje obraz i wykonuje smoke test deploymentu.
+
+Uwaga: otwieranie index.html bezpośrednio z file:// może blokować fetch() do JSON i Markdownów z powodu polityki bezpieczeństwa przeglądarki.
 
 ## SEO i LLM discovery
 
