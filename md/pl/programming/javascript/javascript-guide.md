@@ -6,7 +6,7 @@ description: "Praktyczne kompendium do tworzenia zwykłych, interaktywnych stron
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "js"
   - "javascript"
@@ -15,10 +15,13 @@ tags:
 
 # JavaScript — kompendium
 
-> Praktyczne kompendium do tworzenia zwykłych, interaktywnych stron i małych aplikacji webowych.  
-> Stan narzędzi i przykładów: 2026-09-19.  
-> Zakładam, że przez „pixelJS” chodziło o **PixiJS**.
+JavaScript jest językiem przeglądarki i jednocześnie podstawą dużej części współczesnego webowego toolingu. Warto najpierw rozumieć język, DOM, zdarzenia, fetch i moduły, a frameworki traktować jako kolejną warstwę.
 
+Kompendium obejmuje vanilla JS, Node/npm/Vite oraz orientacyjny przegląd React, Vue, Angular, PixiJS i TypeScript.
+
+Powiązane tematy: [Nowoczesny HTML i CSS](techhandbook:doc-042), [Browser DevTools](techhandbook:doc-046), [API i integracje systemów](techhandbook:doc-008), [Node.js](techhandbook:doc-022) i [Testowanie oprogramowania](techhandbook:doc-049).
+
+> Praktyczne kompendium do tworzenia zwykłych, interaktywnych stron i małych aplikacji webowych.  
 ---
 
 # Spis treści
@@ -286,7 +289,7 @@ let
 ## `const`
 
 ```js
-const name = "Karol";
+const name = "Anna";
 ```
 
 Nie można przypisać do tej zmiennej nowej wartości:
@@ -327,7 +330,7 @@ Jeśli wartość musi się zmieniać — użyj let.
 ## String
 
 ```js
-const name = "Karol";
+const name = "Anna";
 ```
 
 ## Number
@@ -368,7 +371,7 @@ console.log(result);
 
 ```js
 const user = {
-  name: "Karol",
+  name: "Anna",
   age: 46
 };
 ```
@@ -724,7 +727,7 @@ function greet(name = "Gość") {
 
 ```js
 const user = {
-  name: "Karol",
+  name: "Anna",
   age: 46,
   active: true
 };
@@ -761,7 +764,7 @@ user.city = "Example City";
 
 ```js
 const user = {
-  name: "Karol",
+  name: "Anna",
 
   greet() {
     console.log(`Cześć, jestem ${this.name}`);
@@ -818,7 +821,7 @@ Obiekt:
 
 ```js
 const user = {
-  name: "Karol",
+  name: "Anna",
   age: 46
 };
 
@@ -848,7 +851,7 @@ Obiekty:
 
 ```js
 const user = {
-  name: "Karol",
+  name: "Anna",
   active: true
 };
 
@@ -1276,7 +1279,7 @@ JSON:
 
 ```json
 {
-  "name": "Karol",
+  "name": "Anna",
   "active": true
 }
 ```
@@ -1363,7 +1366,7 @@ Wywołanie:
 
 ```js
 createUser({
-  name: "Karol",
+  name: "Anna",
   active: true
 });
 ```
@@ -1629,7 +1632,7 @@ class User {
   }
 }
 
-const user = new User("Karol");
+const user = new User("Anna");
 
 user.greet();
 ```
@@ -2839,7 +2842,7 @@ Vite
 <script setup>
 import { ref } from "vue";
 
-const name = ref("Karol");
+const name = ref("Anna");
 
 function changeName() {
   name.value = "Adam";
@@ -2877,7 +2880,7 @@ Vue automatycznie rozpakowuje `ref`.
 <script setup>
 import { computed, ref } from "vue";
 
-const firstName = ref("Karol");
+const firstName = ref("Anna");
 const lastName = ref("Kowalski");
 
 const fullName = computed(() => {
@@ -4946,3 +4949,13 @@ To wystarczy, żeby przejść od:
 ```
 
 do normalnej, modularnej, interaktywnej aplikacji webowej.
+
+## Oficjalne źródła
+
+- ECMAScript specification: https://tc39.es/ecma262/
+- MDN JavaScript Guide: https://developer.mozilla.org/docs/Web/JavaScript/Guide
+- Vite documentation: https://vite.dev/guide/
+- React: https://react.dev/
+- Vue: https://vuejs.org/
+- Angular: https://angular.dev/
+- PixiJS: https://pixijs.com/

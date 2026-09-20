@@ -6,7 +6,7 @@ description: "C is a small, compiled systems language that gives you direct cont
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "c"
   - "gcc"
@@ -15,6 +15,11 @@ tags:
 ---
 
 # C — Reading, Building and Debugging Projects
+
+C remains common in operating systems, libraries, drivers, CLI tools and embedded software. This handbook focuses on reading existing code, building projects and understanding compiler, linker and memory-related failures.
+
+Related topics: [Software Testing](techhandbook:doc-049), [Shell Scripting](techhandbook:doc-031) and [Linux Permissions and Server Security](techhandbook:doc-025).
+
 # 1. C in one sentence
 C is a small, compiled systems language that gives you direct control over memory, data layout and operating-system APIs.
 # 2. The simplest program
@@ -851,3 +856,10 @@ debug: warnings + sanitizers + debugger + tracing
 Build cleanly, run tests, understand entry point, know ownership, check warnings, reproduce failures, use sanitizers/debugger, review cleanup/error paths.
 # 215. Minimum knowledge to remember
 Pointers and lifetimes, structs, headers, compilation/linking, Make/CMake, return-value checking, sanitizers and GDB are enough to understand most everyday C projects.
+
+## Official references
+
+- GCC documentation: https://gcc.gnu.org/onlinedocs/
+- Clang documentation: https://clang.llvm.org/docs/
+- CMake documentation: https://cmake.org/documentation/
+- GDB documentation: https://sourceware.org/gdb/documentation/

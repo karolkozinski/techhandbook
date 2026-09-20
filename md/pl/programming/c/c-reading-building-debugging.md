@@ -6,7 +6,7 @@ description: "Cel: nie nauczyć Cię „programować w C od zera”, tylko dać 
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "c"
   - "gcc"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # C — czytanie, kompilacja i debugowanie
+
+C nadal pojawia się w systemach operacyjnych, bibliotekach, sterownikach, narzędziach CLI i projektach embedded. Ten materiał służy przede wszystkim do czytania istniejącego kodu, budowania projektu i rozumienia błędów kompilatora, linkera oraz pamięci.
+
+Powiązane tematy: [Testowanie oprogramowania](techhandbook:doc-049), [Programowanie w shellu](techhandbook:doc-031) oraz [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025).
 
 > Cel: nie nauczyć Cię „programować w C od zera”, tylko dać Ci taki poziom orientacji, żebyś po sklonowaniu projektu potrafił:
 >
@@ -1040,7 +1044,7 @@ Nie istnieje specjalny typ `string`.
 Tekst to tablica `char`.
 
 ```c
-char name[] = "Karol";
+char name[] = "Anna";
 ```
 
 W pamięci:
@@ -3453,7 +3457,7 @@ int max = a > b ? a : b;
 ```c
 struct user u = {
     .id = 1,
-    .name = "Karol",
+    .name = "Anna",
     .active = 1
 };
 ```
@@ -5858,3 +5862,10 @@ truss        system calls FreeBSD
 ```
 
 To wystarczy, żeby zacząć czytać prawdziwy kod C bez poczucia, że patrzysz na hieroglify.
+
+## Oficjalne źródła
+
+- GCC documentation: https://gcc.gnu.org/onlinedocs/
+- Clang documentation: https://clang.llvm.org/docs/
+- CMake documentation: https://cmake.org/documentation/
+- GDB documentation: https://sourceware.org/gdb/documentation/

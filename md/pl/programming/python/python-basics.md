@@ -6,12 +6,16 @@ description: "Python to język programowania wysokiego poziomu, zaprojektowany t
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "python"
 ---
 
 # Python — podstawy
+
+Python jest dobrym językiem do automatyzacji, narzędzi CLI, backendu, testów i pracy z danymi. W praktyce ważniejsze od zapamiętywania wersji jest poprawne używanie środowisk wirtualnych, jawnych zależności i dokumentacji projektu.
+
+Powiązane tematy: [API i integracje systemów](techhandbook:doc-008), [JSON, YAML, TOML i XML](techhandbook:doc-009), [SQL i PostgreSQL dla developera](techhandbook:doc-010), [Testowanie oprogramowania](techhandbook:doc-049) oraz [Programowanie w shellu](techhandbook:doc-031).
 
 ## 1. Czym jest Python
 
@@ -379,7 +383,7 @@ Docstringi są używane do dokumentowania:
 Nie trzeba deklarować typu.
 
 ```python
-name = "Karol"
+name = "Anna"
 age = 46
 price = 19.99
 active = True
@@ -427,7 +431,7 @@ int("5") + 5
 Typowy styl:
 
 ```python
-user_name = "Karol"
+user_name = "Anna"
 max_connections = 100
 ```
 
@@ -479,13 +483,13 @@ price = 19.99
 Tekst:
 
 ```python
-name = "Karol"
+name = "Anna"
 ```
 
 lub:
 
 ```python
-name = 'Karol'
+name = 'Anna'
 ```
 
 ---
@@ -698,7 +702,7 @@ Sprawdzenie:
 Najwygodniejszy sposób składania tekstu:
 
 ```python
-name = "Karol"
+name = "Anna"
 age = 46
 
 print(f"{name} ma {age} lat")
@@ -775,7 +779,7 @@ Pyt
 Lista:
 
 ```python
-users = ["Anna", "Karol", "Piotr"]
+users = ["Anna", "Anna", "Piotr"]
 ```
 
 Dostęp:
@@ -839,7 +843,7 @@ Bardzo ważny typ.
 
 ```python
 user = {
-    "name": "Karol",
+    "name": "Anna",
     "age": 46,
     "admin": True
 }
@@ -1009,7 +1013,7 @@ range(0, 10, 2)
 Gdy potrzebujesz indeksu:
 
 ```python
-users = ["Anna", "Karol", "Jan"]
+users = ["Anna", "Anna", "Jan"]
 
 for index, user in enumerate(users):
     print(index, user)
@@ -1090,7 +1094,7 @@ def hello(name):
 Wywołanie:
 
 ```python
-hello("Karol")
+hello("Anna")
 ```
 
 ---
@@ -1119,7 +1123,7 @@ def hello(name="world"):
 
 ```python
 hello()
-hello("Karol")
+hello("Anna")
 ```
 
 ---
@@ -1134,7 +1138,7 @@ def user(name, age):
 Można:
 
 ```python
-user(age=30, name="Karol")
+user(age=30, name="Anna")
 ```
 
 ---
@@ -1164,14 +1168,14 @@ def show(**data):
 ```
 
 ```python
-show(name="Karol", age=30)
+show(name="Anna", age=30)
 ```
 
 otrzymasz słownik:
 
 ```python
 {
-    "name": "Karol",
+    "name": "Anna",
     "age": 46
 }
 ```
@@ -1190,7 +1194,7 @@ def add(a: int, b: int) -> int:
 Zmienne:
 
 ```python
-name: str = "Karol"
+name: str = "Anna"
 age: int = 46
 ```
 
@@ -1627,7 +1631,7 @@ Python → JSON:
 
 ```python
 data = {
-    "name": "Karol",
+    "name": "Anna",
     "age": 46
 }
 
@@ -1725,7 +1729,7 @@ class User:
 Utworzenie obiektu:
 
 ```python
-user = User("Karol")
+user = User("Anna")
 ```
 
 Wywołanie:
@@ -1788,7 +1792,7 @@ class User:
 Użycie:
 
 ```python
-user = User("Karol", 30)
+user = User("Anna", 30)
 ```
 
 Python automatycznie tworzy między innymi konstruktor.
@@ -1914,7 +1918,7 @@ print(args.name)
 Uruchomienie:
 
 ```bash
-python3 app.py Karol --verbose
+python3 app.py Anna --verbose
 ```
 
 Pomoc generowana automatycznie:
@@ -2880,7 +2884,7 @@ JavaScript
 Python:
 
 ```python
-name = "Karol"
+name = "Anna"
 
 if name:
     print(name)
@@ -2889,7 +2893,7 @@ if name:
 JavaScript:
 
 ```javascript
-const name = "Karol";
+const name = "Anna";
 
 if (name) {
     console.log(name);
@@ -3573,7 +3577,7 @@ x = 10
 ## tekst
 
 ```python
-name = "Karol"
+name = "Anna"
 ```
 
 ## lista
@@ -3585,7 +3589,7 @@ items = [1, 2, 3]
 ## słownik
 
 ```python
-user = {"name": "Karol"}
+user = {"name": "Anna"}
 ```
 
 ## if
@@ -3857,3 +3861,10 @@ deactivate
 ```
 
 Jeżeli swobodnie rozumiesz powyższe polecenia oraz konstrukcje opisane w tym kompendium, jesteś w stanie uruchomić, przejrzeć i wstępnie debugować większość zwykłych projektów napisanych w Pythonie.
+
+## Oficjalne źródła
+
+- Python documentation: https://docs.python.org/3/
+- Python downloads and supported releases: https://www.python.org/downloads/
+- venv: https://docs.python.org/3/library/venv.html
+- Packaging guide: https://packaging.python.org/

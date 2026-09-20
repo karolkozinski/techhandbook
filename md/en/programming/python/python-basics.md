@@ -6,12 +6,17 @@ description: "Python is a high-level interpreted language focused on readability
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "python"
 ---
 
 # Python — Practical Handbook
+
+Python is a strong fit for automation, CLI tools, backends, testing and data work. In practice, virtual environments, explicit dependencies and project documentation matter more than memorizing a particular interpreter version.
+
+Related topics: [APIs and System Integrations](techhandbook:doc-008), [JSON, YAML, TOML and XML](techhandbook:doc-009), [SQL and PostgreSQL for Developers](techhandbook:doc-010), [Software Testing](techhandbook:doc-049) and [Shell Scripting](techhandbook:doc-031).
+
 ## 1. What Python is
 Python is a high-level interpreted language focused on readability and a large ecosystem.
 # 2. How Python works
@@ -662,3 +667,10 @@ python3 -m pip install ...
 python3 -m pytest
 python3 -m module
 ```
+
+## Official references
+
+- Python documentation: https://docs.python.org/3/
+- Python downloads and supported releases: https://www.python.org/downloads/
+- venv: https://docs.python.org/3/library/venv.html
+- Packaging guide: https://packaging.python.org/

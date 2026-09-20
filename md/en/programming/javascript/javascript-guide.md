@@ -6,7 +6,7 @@ description: "JavaScript adds behavior to web pages, manipulates the DOM, commun
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "js"
   - "javascript"
@@ -14,6 +14,13 @@ tags:
 ---
 
 # JavaScript — From Basics to Modern Front-End
+
+JavaScript is both the browser language and the foundation of much of modern web tooling. Learn the language, DOM, events, fetch and modules first, then treat frameworks as another layer.
+
+The handbook covers vanilla JavaScript, Node/npm/Vite and an orientation to React, Vue, Angular, PixiJS and TypeScript.
+
+Related topics: [Modern HTML and CSS](techhandbook:doc-042), [Browser DevTools](techhandbook:doc-046), [APIs and System Integrations](techhandbook:doc-008), [Node.js](techhandbook:doc-022) and [Software Testing](techhandbook:doc-049).
+
 # Table of Contents
 # 1. What JavaScript actually does
 JavaScript adds behavior to web pages, manipulates the DOM, communicates with APIs and can also run outside the browser in environments such as Node.js.
@@ -751,3 +758,13 @@ angular.dev.
 pixijs.com.
 # 169. Shortest summary of the whole course
 Learn JavaScript first, browser APIs second, tooling third, and frameworks only when you need component/state architecture.
+
+## Official references
+
+- ECMAScript specification: https://tc39.es/ecma262/
+- MDN JavaScript Guide: https://developer.mozilla.org/docs/Web/JavaScript/Guide
+- Vite documentation: https://vite.dev/guide/
+- React: https://react.dev/
+- Vue: https://vuejs.org/
+- Angular: https://angular.dev/
+- PixiJS: https://pixijs.com/

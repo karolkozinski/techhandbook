@@ -6,13 +6,19 @@ description: "Cel tego materiału: po przeczytaniu nie musisz umieć samodzielni
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "go"
   - "golang"
 ---
 
 # Go — czytanie kodu
+
+Go jest małym językiem o silnych konwencjach i rozbudowanym toolchainie. Najwygodniej czytać projekt od `go.mod` i `main()`, a potem śledzić przepływ danych przez struktury, interfejsy, funkcje i błędy.
+
+Materiał obejmuje Go 1.27.x, w tym generic methods wprowadzone w Go 1.27.
+
+Powiązane tematy: [API i integracje systemów](techhandbook:doc-008), [SQL i PostgreSQL dla developera](techhandbook:doc-010), [Testowanie oprogramowania](techhandbook:doc-049) oraz [Docker](techhandbook:doc-012).
 
 > Cel tego materiału: po przeczytaniu nie musisz umieć samodzielnie projektować dużych aplikacji w Go. Masz natomiast rozumieć, **co robi kod, jak jest zbudowany, gdzie czego szukać i jak go uruchomić, skompilować oraz przetestować**.
 >
@@ -401,7 +407,7 @@ Najczęściej spotykana forma wewnątrz funkcji:
 
 ```go
 age := 46
-name := "Karol"
+name := "Anna"
 ```
 
 `:=` oznacza:
@@ -417,7 +423,7 @@ age = 47
 ## Kilka wartości
 
 ```go
-name, age := "Karol", 30
+name, age := "Anna", 30
 ```
 
 ## Stałe
@@ -565,7 +571,7 @@ To pozwala kompilatorowi wyłapywać pomyłki.
 String:
 
 ```go
-name := "Karol"
+name := "Anna"
 ```
 
 String w Go jest niezmienny.
@@ -712,7 +718,7 @@ Mapa to kolekcja klucz → wartość.
 
 ```go
 ages := map[string]int{
-    "Karol": 30,
+    "Anna": 30,
     "Anna": 40,
 }
 ```
@@ -720,7 +726,7 @@ ages := map[string]int{
 Odczyt:
 
 ```go
-age := ages["Karol"]
+age := ages["Anna"]
 ```
 
 Zapis:
@@ -738,7 +744,7 @@ delete(ages, "Jan")
 Sprawdzenie, czy klucz istnieje:
 
 ```go
-age, ok := ages["Karol"]
+age, ok := ages["Anna"]
 if ok {
     fmt.Println(age)
 }
@@ -783,7 +789,7 @@ Tworzenie:
 ```go
 u := User{
     ID:    1,
-    Name:  "Karol",
+    Name:  "Anna",
     Email: "user@example.com",
 }
 ```
@@ -797,7 +803,7 @@ fmt.Println(u.Name)
 Zmiana:
 
 ```go
-u.Name = "Karol K."
+u.Name = "Anna K."
 ```
 
 ## Zagnieżdżenie
@@ -1096,7 +1102,7 @@ handler := func(name string) {
     fmt.Println(name)
 }
 
-handler("Karol")
+handler("Anna")
 ```
 
 ## Funkcja jako argument
@@ -2276,7 +2282,7 @@ Mówią bibliotece JSON, jak ma nazywać pole.
 ## Kodowanie
 
 ```go
-u := User{ID: 1, Name: "Karol"}
+u := User{ID: 1, Name: "Anna"}
 
 data, err := json.Marshal(u)
 ```
@@ -2284,7 +2290,7 @@ data, err := json.Marshal(u)
 Wynik:
 
 ```json
-{"id":1,"name":"Karol"}
+{"id":1,"name":"Anna"}
 ```
 
 ## Dekodowanie
@@ -4830,3 +4836,10 @@ gdzie wraca error?
 ```
 
 Jeżeli umiesz przejść tę ścieżkę, potrafisz zrozumieć zaskakująco dużą część realnego projektu Go nawet wtedy, gdy sam jeszcze nie napisałbyś go od zera.
+
+## Oficjalne źródła
+
+- Go documentation: https://go.dev/doc/
+- Go 1.27 release notes: https://go.dev/doc/go1.27
+- Go language specification: https://go.dev/ref/spec
+- Standard library and packages: https://pkg.go.dev/

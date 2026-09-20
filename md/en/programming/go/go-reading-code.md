@@ -6,13 +6,20 @@ description: "Go is deliberately small, explicit and convention-heavy. Read code
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "go"
   - "golang"
 ---
 
 # Go — Reading Code
+
+Go is a small, convention-heavy language with a strong built-in toolchain. A practical way to read a project is to start with `go.mod` and `main()`, then follow data through structs, interfaces, functions and explicit errors.
+
+This handbook covers Go 1.27.x, including generic methods introduced in Go 1.27.
+
+Related topics: [APIs and System Integrations](techhandbook:doc-008), [SQL and PostgreSQL for Developers](techhandbook:doc-010), [Software Testing](techhandbook:doc-049) and [Docker](techhandbook:doc-012).
+
 ## Table of Contents
 # 1. How to think about Go
 Go is deliberately small, explicit and convention-heavy. Read code in terms of packages, structs, interfaces, functions and data flow rather than searching for framework magic.
@@ -803,3 +810,10 @@ module
 ```
 # One practical final tip
 When reading Go, start from `go.mod` and `main()`, then follow concrete values being constructed. Go code is usually easier to understand by tracing data and interfaces than by reading every file in directory order.
+
+## Official references
+
+- Go documentation: https://go.dev/doc/
+- Go 1.27 release notes: https://go.dev/doc/go1.27
+- Go language specification: https://go.dev/ref/spec
+- Standard library and packages: https://pkg.go.dev/

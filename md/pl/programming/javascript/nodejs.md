@@ -6,7 +6,7 @@ description: "Cel tego dokumentu: nie nauczyć Cię programować w Node.js od ze
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "node"
   - "nodejs"
@@ -14,6 +14,12 @@ tags:
 ---
 
 # Node.js
+
+Node.js jest środowiskiem uruchomieniowym JavaScript poza przeglądarką. Przy czytaniu projektu najważniejsze są `package.json`, lockfile, moduły, skrypty npm, konfiguracja środowiska oraz sposób uruchomienia procesu w development i production.
+
+Dla nowych projektów wybieraj wspieraną linię LTS zamiast przywiązywać projekt do przypadkowej wersji Current.
+
+Powiązane tematy: [JavaScript - kompendium](techhandbook:doc-021), [API i integracje systemów](techhandbook:doc-008), [SQL i PostgreSQL dla developera](techhandbook:doc-010), [Docker](techhandbook:doc-012) i [Testowanie oprogramowania](techhandbook:doc-049).
 
 > Cel tego dokumentu: **nie nauczyć Cię programować w Node.js od zera**, tylko sprawić, żebyś potrafił:
 >
@@ -581,7 +587,7 @@ let
 Starsza forma:
 
 ```js
-var name = "Karol";
+var name = "Anna";
 ```
 
 Obecnie zwykle się jej unika.
@@ -595,7 +601,7 @@ Jeżeli widzisz dużo `var`, prawdopodobnie patrzysz na starszy kod.
 JavaScript jest dynamicznie typowany.
 
 ```js
-const name = "Karol";
+const name = "Anna";
 const age = 46;
 const active = true;
 const nothing = null;
@@ -620,13 +626,13 @@ object
 # 15. Stringi
 
 ```js
-const name = "Karol";
+const name = "Anna";
 ```
 
 lub:
 
 ```js
-const name = 'Karol';
+const name = 'Anna';
 ```
 
 Template string:
@@ -642,7 +648,7 @@ To bardzo częsta konstrukcja.
 # 16. Tablice
 
 ```js
-const users = ["Anna", "Karol", "Jan"];
+const users = ["Anna", "Anna", "Jan"];
 ```
 
 Dostęp:
@@ -679,7 +685,7 @@ Bardzo ważne w JavaScript.
 
 ```js
 const user = {
-  name: "Karol",
+  name: "Anna",
   age: 46,
   active: true
 };
@@ -1621,7 +1627,7 @@ JSON:
 
 ```json
 {
-  "name": "Karol"
+  "name": "Anna"
 }
 ```
 
@@ -2171,7 +2177,7 @@ W Node spotkasz JSON wszędzie.
 
 ```json
 {
-  "name": "Karol",
+  "name": "Anna",
   "active": true
 }
 ```
@@ -3092,7 +3098,7 @@ POST:
 curl \
   -X POST \
   -H "Content-Type: application/json" \
-  -d '{"name":"Karol"}' \
+  -d '{"name":"Anna"}' \
   http://localhost:3000/api/users
 ```
 
@@ -5899,3 +5905,9 @@ Nginx + HTTPS
 ```
 
 Jeżeli potrafisz odpowiedzieć na te pytania, **rozumiesz operacyjnie projekt Node.js**, nawet jeżeli nie zamierzasz zawodowo pisać w nim kodu.
+
+## Oficjalne źródła
+
+- Node.js documentation: https://nodejs.org/docs/latest/api/
+- Node.js release schedule: https://nodejs.org/en/about/previous-releases
+- npm documentation: https://docs.npmjs.com/

@@ -6,7 +6,7 @@ description: "Node.js is a JavaScript runtime built on V8 that lets JavaScript r
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "node"
   - "nodejs"
@@ -14,6 +14,13 @@ tags:
 ---
 
 # Node.js — Practical Handbook
+
+Node.js is a JavaScript runtime outside the browser. When reading a project, focus on `package.json`, the lockfile, modules, npm scripts, environment configuration and how the process is started in development and production.
+
+For new projects, prefer a supported LTS line instead of tying the project to an arbitrary Current release.
+
+Related topics: [JavaScript](techhandbook:doc-021), [APIs and System Integrations](techhandbook:doc-008), [SQL and PostgreSQL for Developers](techhandbook:doc-010), [Docker](techhandbook:doc-012) and [Software Testing](techhandbook:doc-049).
+
 # 1. What Node.js actually is
 Node.js is a JavaScript runtime built on V8 that lets JavaScript run outside the browser, especially for servers, CLI tools and build tooling.
 # 2. Node.js, npm and npx — what is what?
@@ -738,3 +745,9 @@ nginx -t
 Streams/backpressure, profiling, worker threads, advanced ESM/package exports, framework internals, observability and supply-chain security.
 # 230. Final mental model
 A Node project is package metadata + JavaScript/TypeScript modules + dependencies + scripts + runtime config. Understand those five and most unfamiliar repositories become manageable.
+
+## Official references
+
+- Node.js documentation: https://nodejs.org/docs/latest/api/
+- Node.js release schedule: https://nodejs.org/en/about/previous-releases
+- npm documentation: https://docs.npmjs.com/
