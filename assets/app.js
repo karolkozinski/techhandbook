@@ -146,6 +146,24 @@
       .replace(/-+/g, "-");
 
 
+  function findHeadingTarget(fragment) {
+    if (!fragment) return null;
+
+    let decoded = fragment;
+    try {
+      decoded = decodeURIComponent(fragment);
+    } catch {
+      decoded = fragment;
+    }
+
+    const exact = document.getElementById(decoded);
+    if (exact) return exact;
+
+    const normalized = slugify(decoded);
+    if (!normalized) return null;
+    return document.getElementById(normalized);
+  }
+
   function normalizeRepoPath(path) {
     const parts = [];
     for (const part of path.split("/")) {
@@ -730,10 +748,15 @@
       if (els.readerTop) {
         els.readerTop.hidden = false;
         els.readerTopLabel.textContent = t("toTop");
+        const topButton = els.readerTop.querySelector(".reader-top");
+        if (topButton) {
+          topButton.setAttribute("aria-label", t("toTop"));
+          topButton.setAttribute("title", t("toTop"));
+        }
       }
       if (focusReader) {
         if (fragment) {
-          const target = document.getElementById(decodeURIComponent(fragment));
+          const target = findHeadingTarget(fragment);
           if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
           else els.reader.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
@@ -1149,7 +1172,7 @@
     const headingLink = e.target.closest("a[data-heading-id]");
     if (headingLink) {
       e.preventDefault();
-      const target = document.getElementById(decodeURIComponent(headingLink.dataset.headingId || ""));
+      const target = findHeadingTarget(headingLink.dataset.headingId || "");
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
