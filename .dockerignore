@@ -1,0 +1,15 @@
+.git
+.github
+.gitignore
+.nojekyll
+README.md
+README.en.md
+PROJECT-NOTES.md
+CONTENT-MODEL.md
+article.schema.json
+content-relations.json
+requirements-dev.txt
+scripts/
+DEPLOYMENT.md
+deploy/host-nginx.conf.example
+404.html

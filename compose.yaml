@@ -1,0 +1,9 @@
+services:
+  techhandbook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: techhandbook:local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${TECHHANDBOOK_PORT:-8080}:80"
