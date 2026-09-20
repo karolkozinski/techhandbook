@@ -1,4 +1,20 @@
-# windows-server-administration
+---
+id: "doc-037"
+title: "Windows Server in the Enterprise — Administrator Fundamentals"
+slug: "windows-server-in-the-enterprise-administrator-fundamentals"
+description: "This handbook focuses on the practical core of Windows Server administration in a corporate environment: Active Directory, permissions, Group Policy,…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "windows"
+  - "server"
+  - "active directory"
+  - "administration"
+---
+
+# Windows Server in the Enterprise — Administrator Fundamentals
 
 ## Table of Contents
 

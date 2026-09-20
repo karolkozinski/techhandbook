@@ -1,4 +1,23 @@
-# web-performance
+---
+id: "doc-048"
+title: "Web Performance"
+slug: "web-performance"
+description: "Page speed affects UX, conversion, accessibility, battery/data use and SEO."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "performance"
+  - "cwv"
+  - "lcp"
+  - "inp"
+  - "cls"
+  - "cache"
+  - "images"
+---
+
+# Web Performance
 
 ## 1. Goal
 

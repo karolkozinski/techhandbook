@@ -1,4 +1,17 @@
-# alibaba-cloud
+---
+id: "doc-003"
+title: "Alibaba Cloud"
+slug: "alibaba-cloud"
+description: "Aktualizacja: 2026-09-19 Cel: zrozumieć Alibaba Cloud jako dużą platformę IaaS/PaaS, szczególnie istotną w Chinach i Azji, oraz nauczyć się mapować jej…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "alibaba"
+---
+# Alibaba Cloud
 
 > Aktualizacja: 2026-09-19  
 > Cel: zrozumieć Alibaba Cloud jako dużą platformę IaaS/PaaS, szczególnie istotną w Chinach i Azji, oraz nauczyć się mapować jej usługi na znane pojęcia AWS/Azure/GCP.

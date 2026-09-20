@@ -1,4 +1,19 @@
-# javascript-guide
+---
+id: "doc-021"
+title: "JavaScript — From Basics to Modern Front-End"
+slug: "javascript-from-basics-to-modern-front-end"
+description: "JavaScript adds behavior to web pages, manipulates the DOM, communicates with APIs and can also run outside the browser in environments such as Node.js."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "js"
+  - "javascript"
+  - "frontend"
+---
+
+# JavaScript — From Basics to Modern Front-End
 # Table of Contents
 # 1. What JavaScript actually does
 JavaScript adds behavior to web pages, manipulates the DOM, communicates with APIs and can also run outside the browser in environments such as Node.js.

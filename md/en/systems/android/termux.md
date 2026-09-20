@@ -1,4 +1,19 @@
-# termux
+---
+id: "doc-032"
+title: "Termux — Knowledge Handbook"
+slug: "termux-knowledge-handbook"
+description: "This handbook explains what Termux is, how it differs from a normal Linux distribution, how to use it productively, and where Android's security model…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "android"
+  - "termux"
+  - "linux"
+---
+
+# Termux — Knowledge Handbook
 
 ## Table of Contents
 

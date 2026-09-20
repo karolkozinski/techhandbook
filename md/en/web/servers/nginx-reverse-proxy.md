@@ -1,4 +1,19 @@
-# nginx-reverse-proxy
+---
+id: "doc-045"
+title: "nginx and Reverse Proxy"
+slug: "nginx-and-reverse-proxy"
+description: "nginx can act as a static file server, reverse proxy, TLS terminator, load balancer and proxy cache."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "nginx"
+  - "reverse proxy"
+  - "web server"
+---
+
+# nginx and Reverse Proxy
 
 ## 1. What nginx is used for
 

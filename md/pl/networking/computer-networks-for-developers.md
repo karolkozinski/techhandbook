@@ -1,4 +1,21 @@
-# computer-networks-for-developers
+---
+id: "doc-016"
+title: "Sieci komputerowe dla developera"
+slug: "sieci-komputerowe-dla-developera"
+description: "Nie chodzi o przygotowanie do CCNA. Chodzi o sprawne rozumienie:"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "network"
+  - "tcp"
+  - "udp"
+  - "ip"
+  - "vlan"
+---
+
+# Sieci komputerowe dla developera
 
 ## 1. Cel
 

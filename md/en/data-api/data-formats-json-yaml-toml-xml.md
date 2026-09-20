@@ -1,4 +1,20 @@
-# data-formats-json-yaml-toml-xml
+---
+id: "doc-009"
+title: "JSON, YAML, TOML and XML — Data and Configuration Handbook"
+slug: "json-yaml-toml-and-xml-data-and-configuration-handbook"
+description: "JSON is a structured text format widely used by APIs and configuration files."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "json"
+  - "yaml"
+  - "toml"
+  - "xml"
+---
+
+# JSON, YAML, TOML and XML — Data and Configuration Handbook
 
 ## 1. JSON
 

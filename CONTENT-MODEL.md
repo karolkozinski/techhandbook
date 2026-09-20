@@ -254,11 +254,13 @@ Link do sekcji:
 
 ## Co trafia do content-index.json
 
-Po migracji wpis runtime będzie składany z trzech źródeł:
+Po migracji wpis runtime jest składany z trzech źródeł:
 
 1. front matter artykułu,
 2. położenie pliku,
 3. mapa relacji.
+
+Runtime index pozostaje celowo lekki. Walidator sprawdza także `description`, daty, `ai` i `seo`, ale pola niepotrzebne obecnemu frontendowi nie są jeszcze kopiowane do JSON. SEO będzie korzystać z front matter bez tworzenia drugiego źródła prawdy.
 
 Przykładowy wygenerowany wpis:
 
@@ -268,18 +270,11 @@ Przykładowy wygenerowany wpis:
   "name": "python-basics.md",
   "title": "Python — podstawy",
   "slug": "podstawy-pythona",
-  "description": "Praktyczne kompendium podstaw języka Python, składni i uruchamiania programów.",
   "path": "md/pl/programming/python/python-basics.md",
   "category": "programming/python",
   "tags": ["python", "programowanie"],
   "language": "pl",
   "audience": "standard",
-  "published": "2026-09-19",
-  "updated": "2026-09-20",
-  "seo": {
-    "index": true,
-    "ads": true
-  },
   "related": ["doc-008", "doc-009", "doc-031", "doc-039", "doc-049", "doc-050"]
 }
 ```

@@ -1,3 +1,20 @@
+---
+id: "doc-033"
+title: "Debian 13 — Desktop + Server Handbook"
+slug: "debian-13-desktop-server-handbook"
+description: "Debian is a stable, general-purpose GNU/Linux distribution used on desktops, workstations and servers. This handbook focuses on the system model needed for…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "debian"
+  - "linux"
+  - "gnome"
+  - "kde"
+  - "server"
+---
+
 # Debian 13 — Desktop + Server Handbook
 
 Debian is a stable, general-purpose GNU/Linux distribution used on desktops, workstations and servers. This handbook focuses on the system model needed for practical administration: packages, services, logs, networking, permissions, storage, GNOME/KDE and server operation.

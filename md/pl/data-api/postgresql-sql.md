@@ -1,4 +1,20 @@
-# postgresql-sql
+---
+id: "doc-010"
+title: "SQL i PostgreSQL dla developera"
+slug: "sql-i-postgresql-dla-developera"
+description: "Dane przechowujesz w tabelach."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "sql"
+  - "postgres"
+  - "postgresql"
+  - "database"
+---
+
+# SQL i PostgreSQL dla developera
 
 ## 1. Model relacyjny
 

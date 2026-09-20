@@ -1,4 +1,20 @@
-# ux-accessibility
+---
+id: "doc-043"
+title: "UX i dostępność dla developera"
+slug: "ux-i-dostepnosc-dla-developera"
+description: "UX i dostępność dla developera — praktyczne kompendium TechHandbook."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "ux"
+  - "accessibility"
+  - "a11y"
+  - "wcag"
+---
+
+# UX i dostępność dla developera
 
 ## 1. UX dla developera
 

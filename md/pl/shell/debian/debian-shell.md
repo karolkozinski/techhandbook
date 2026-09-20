@@ -1,4 +1,19 @@
-# debian-shell
+---
+id: "doc-027"
+title: "Debian — shell"
+slug: "debian-shell"
+description: "Samodzielne kompendium do codziennej pracy w Debianie z terminala lub przez SSH."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "debian"
+  - "shell"
+  - "bash"
+---
+
+# Debian — shell
 
 Samodzielne kompendium do codziennej pracy w Debianie z terminala lub przez SSH.
 

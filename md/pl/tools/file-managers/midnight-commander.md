@@ -1,4 +1,19 @@
-# midnight-commander
+---
+id: "doc-040"
+title: "Midnight Commander"
+slug: "midnight-commander"
+description: "Midnight Commander (MC) to tekstowy, dwupanelowy menedżer plików działający w terminalu."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "mc"
+  - "midnight commander"
+  - "file manager"
+---
+
+# Midnight Commander
 
 ## 1. Czym jest Midnight Commander?
 

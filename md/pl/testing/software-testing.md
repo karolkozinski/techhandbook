@@ -1,4 +1,22 @@
-# software-testing
+---
+id: "doc-049"
+title: "Testowanie oprogramowania — kompendium"
+slug: "testowanie-oprogramowania-kompendium"
+description: "Testy mają zmniejszać ryzyko regresji i dostarczać informacji o jakości systemu."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "testing"
+  - "unit"
+  - "integration"
+  - "e2e"
+  - "playwright"
+  - "go test"
+---
+
+# Testowanie oprogramowania — kompendium
 
 ## 1. Po co testy
 

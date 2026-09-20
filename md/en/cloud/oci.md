@@ -1,4 +1,19 @@
-# oci
+---
+id: "doc-007"
+title: "Oracle Cloud Infrastructure (OCI) — Practical Handbook"
+slug: "oracle-cloud-infrastructure-oci-practical-handbook"
+description: "Oracle Cloud Infrastructure is Oracle's public cloud platform, offering compute, networking, storage, databases, containers, serverless, observability and…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "oci"
+  - "oracle"
+---
+
+# Oracle Cloud Infrastructure (OCI) — Practical Handbook
 
 ## 1. What OCI is
 

@@ -1,4 +1,19 @@
-# prompting-ai
+---
+id: "doc-002"
+title: "Promptowanie AI"
+slug: "promptowanie-ai"
+description: "Prompt to instrukcja przekazana modelowi AI."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "ai"
+  - "prompt"
+  - "prompting"
+  - "llm"
+---
+# Promptowanie AI
 
 ## 1. Czym jest prompt
 

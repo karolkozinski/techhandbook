@@ -1,4 +1,19 @@
-# debian-shell
+---
+id: "doc-027"
+title: "Debian — Practical Shell Handbook"
+slug: "debian-practical-shell-handbook"
+description: "Debian is a Linux distribution built around the Linux kernel, GNU/user-space tools, APT/dpkg package management and usually systemd."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "debian"
+  - "shell"
+  - "bash"
+---
+
+# Debian — Practical Shell Handbook
 
 # Debian — Administrator, System and Directories
 

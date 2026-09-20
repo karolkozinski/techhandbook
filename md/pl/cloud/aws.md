@@ -1,4 +1,18 @@
-# aws
+---
+id: "doc-004"
+title: "Amazon Web Services (AWS)"
+slug: "amazon-web-services-aws"
+description: "Aktualizacja: 2026-09-19 Cel: rozumieć AWS na tyle, aby świadomie uruchamiać aplikacje, serwery i usługi, czytać istniejącą architekturę, diagnozować…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "aws"
+  - "amazon"
+---
+# Amazon Web Services (AWS)
 
 > Aktualizacja: 2026-09-19  
 > Cel: rozumieć AWS na tyle, aby świadomie uruchamiać aplikacje, serwery i usługi, czytać istniejącą architekturę, diagnozować problemy i nie zrobić sobie przypadkiem bardzo drogiego rachunku.

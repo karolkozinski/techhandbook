@@ -1,4 +1,19 @@
-# window-managers
+---
+id: "doc-036"
+title: "Menedżery okien w Linuxie"
+slug: "menedzery-okien-w-linuxie"
+description: "Window Manager (WM), czyli menedżer okien, odpowiada przede wszystkim za:"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "linux"
+  - "window manager"
+  - "wm"
+---
+
+# Menedżery okien w Linuxie
 
 ## 1. Czym jest menedżer okien?
 

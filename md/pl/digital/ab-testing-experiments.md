@@ -1,4 +1,21 @@
-# ab-testing-experiments
+---
+id: "doc-054"
+title: "A/B testing i eksperymenty — kompendium praktyczne"
+slug: "a-b-testing-i-eksperymenty-kompendium-praktyczne"
+description: "A/B test porównuje dwie lub więcej wersji rozwiązania na losowo podzielonym ruchu."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "ab testing"
+  - "experiments"
+  - "conversion"
+  - "mde"
+  - "metrics"
+---
+
+# A/B testing i eksperymenty — kompendium praktyczne
 
 ## 1. Czym jest A/B test
 

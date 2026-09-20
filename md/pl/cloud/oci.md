@@ -1,4 +1,19 @@
-# oci
+---
+id: "doc-007"
+title: "Oracle Cloud Infrastructure (OCI)"
+slug: "oracle-cloud-infrastructure-oci"
+description: "Aktualizacja: 2026-09-19 Cel: poznać OCI od podstaw — tenancy, compartments, VCN, Compute, storage, bazy Oracle/PostgreSQL/MySQL, kontenery, IAM, CLI i…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "oci"
+  - "oracle"
+---
+
+# Oracle Cloud Infrastructure (OCI)
 
 > Aktualizacja: 2026-09-19  
 > Cel: poznać OCI od podstaw — tenancy, compartments, VCN, Compute, storage, bazy Oracle/PostgreSQL/MySQL, kontenery, IAM, CLI i automatyzację.

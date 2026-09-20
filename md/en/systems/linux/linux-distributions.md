@@ -1,4 +1,19 @@
-# linux-distributions
+---
+id: "doc-035"
+title: "Popular Linux Distributions"
+slug: "popular-linux-distributions"
+description: "They package the Linux kernel and user-space differently, choose release cadence, package manager, defaults, support model and target audience."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "linux"
+  - "distributions"
+  - "distros"
+---
+
+# Popular Linux Distributions
 ## 1. Why are there different distributions?
 They package the Linux kernel and user-space differently, choose release cadence, package manager, defaults, support model and target audience.
 # 2. Key concepts

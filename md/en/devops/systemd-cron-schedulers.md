@@ -1,3 +1,20 @@
+---
+id: "doc-052"
+title: "systemd, cron and Schedulers"
+slug: "systemd-cron-and-schedulers"
+description: "A background service and a periodically executed job are two different problems. On Debian and many other Linux distributions, systemd normally manages…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "systemd"
+  - "cron"
+  - "timer"
+  - "scheduler"
+  - "service"
+---
+
 # systemd, cron and Schedulers
 
 A background service and a periodically executed job are two different problems. On Debian and many other Linux distributions, **systemd** normally manages long-running services, while scheduling can be handled by **systemd timers**, classic **cron**, or an application-level scheduler.

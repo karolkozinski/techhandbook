@@ -1,4 +1,22 @@
-# technical-documentation
+---
+id: "doc-056"
+title: "Documenting Technical Solutions — Handbook"
+slug: "documenting-technical-solutions-handbook"
+description: "Technical documentation reduces repeated explanation and makes systems easier to operate, maintain and hand over."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "documentation"
+  - "readme"
+  - "adr"
+  - "rfc"
+  - "runbook"
+  - "openapi"
+---
+
+# Documenting Technical Solutions — Handbook
 
 ## 1. Why document
 

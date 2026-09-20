@@ -1,4 +1,19 @@
-# azure
+---
+id: "doc-005"
+title: "Microsoft Azure — Practical Handbook"
+slug: "microsoft-azure-practical-handbook"
+description: "Microsoft Azure is a public cloud platform covering compute, networking, storage, databases, identity, containers, serverless, analytics, AI and enterprise…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "azure"
+  - "microsoft"
+---
+
+# Microsoft Azure — Practical Handbook
 
 ## 1. What Azure is
 

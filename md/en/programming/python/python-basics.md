@@ -1,4 +1,17 @@
-# python-basics
+---
+id: "doc-023"
+title: "Python — Practical Handbook"
+slug: "python-practical-handbook"
+description: "Python is a high-level interpreted language focused on readability and a large ecosystem."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "python"
+---
+
+# Python — Practical Handbook
 ## 1. What Python is
 Python is a high-level interpreted language focused on readability and a large ecosystem.
 # 2. How Python works

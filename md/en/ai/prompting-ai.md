@@ -1,4 +1,20 @@
-# prompting-ai
+---
+id: "doc-002"
+title: "AI Prompting — Practical Handbook"
+slug: "ai-prompting-practical-handbook"
+description: "A prompt is the instruction and context given to an AI model."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "ai"
+  - "prompt"
+  - "prompting"
+  - "llm"
+---
+
+# AI Prompting — Practical Handbook
 
 ## 1. What a prompt is
 

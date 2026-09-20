@@ -1,4 +1,20 @@
-# http-https-tls
+---
+id: "doc-044"
+title: "HTTP, HTTPS and TLS"
+slug: "http-https-and-tls"
+description: "A browser or application sends a request:"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "http"
+  - "https"
+  - "tls"
+  - "ssl"
+---
+
+# HTTP, HTTPS and TLS
 
 ## 1. Client-server model
 

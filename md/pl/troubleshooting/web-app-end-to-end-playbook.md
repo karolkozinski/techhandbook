@@ -1,4 +1,23 @@
-# web-app-end-to-end-playbook
+---
+id: "doc-057"
+title: "Troubleshooting aplikacji webowej end-to-end"
+slug: "troubleshooting-aplikacji-webowej-end-to-end"
+description: "Troubleshooting aplikacji webowej end-to-end — praktyczne kompendium TechHandbook."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "troubleshooting"
+  - "dns"
+  - "tls"
+  - "nginx"
+  - "backend"
+  - "database"
+  - "debug"
+---
+
+# Troubleshooting aplikacji webowej end-to-end
 
 ## 1. Cel
 

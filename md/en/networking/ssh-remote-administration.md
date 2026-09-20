@@ -1,3 +1,20 @@
+---
+id: "doc-018"
+title: "SSH and Remote Administration"
+slug: "ssh-and-remote-administration"
+description: "SSH (Secure Shell) is the standard tool for secure remote login and command execution on Unix-like systems. This handbook covers the everyday toolkit:…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "ssh"
+  - "scp"
+  - "sftp"
+  - "rsync"
+  - "tunnel"
+---
+
 # SSH and Remote Administration
 
 SSH (Secure Shell) is the standard tool for secure remote login and command execution on Unix-like systems. This handbook covers the everyday toolkit: connections, keys, client configuration, file transfer, tunnelling, host keys and troubleshooting.

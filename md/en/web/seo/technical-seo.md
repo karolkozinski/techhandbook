@@ -1,4 +1,22 @@
-# technical-seo
+---
+id: "doc-047"
+title: "Technical SEO — Practical Handbook"
+slug: "technical-seo-practical-handbook"
+description: "Technical SEO covers technical factors that affect whether a crawler can discover a page, index content, understand structure, select the correct URL and…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "seo"
+  - "technical seo"
+  - "robots"
+  - "sitemap"
+  - "canonical"
+  - "cwv"
+---
+
+# Technical SEO — Practical Handbook
 
 ## 1. What Technical SEO is
 

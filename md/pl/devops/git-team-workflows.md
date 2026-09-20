@@ -1,4 +1,20 @@
-# git-team-workflows
+---
+id: "doc-013"
+title: "Git w praktyce zespołowej"
+slug: "git-w-praktyce-zespolowej"
+description: "Git to system kontroli wersji."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "git"
+  - "branch"
+  - "merge"
+  - "rebase"
+---
+
+# Git w praktyce zespołowej
 
 ## 1. Git a GitHub
 

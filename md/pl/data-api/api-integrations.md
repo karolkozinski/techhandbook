@@ -1,4 +1,21 @@
-# api-integrations
+---
+id: "doc-008"
+title: "API i integracje systemów"
+slug: "api-i-integracje-systemow"
+description: "API to kontrakt komunikacji między systemami."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "api"
+  - "rest"
+  - "json"
+  - "webhook"
+  - "oauth"
+---
+
+# API i integracje systemów
 
 ## 1. API
 

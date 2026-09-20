@@ -1,4 +1,20 @@
-# postgresql-sql
+---
+id: "doc-010"
+title: "SQL and PostgreSQL for Developers — Handbook"
+slug: "sql-and-postgresql-for-developers-handbook"
+description: "A relational database stores data in tables."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "sql"
+  - "postgres"
+  - "postgresql"
+  - "database"
+---
+
+# SQL and PostgreSQL for Developers — Handbook
 
 ## 1. Relational model
 

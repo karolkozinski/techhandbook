@@ -1,4 +1,21 @@
-# linux-server-security
+---
+id: "doc-025"
+title: "Linux Permissions and Server Security"
+slug: "linux-permissions-and-server-security"
+description: "Linux Permissions and Server Security — a practical TechHandbook reference."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "linux"
+  - "security"
+  - "permissions"
+  - "ssh"
+  - "firewall"
+---
+
+# Linux Permissions and Server Security
 
 ## 1. Users and groups
 

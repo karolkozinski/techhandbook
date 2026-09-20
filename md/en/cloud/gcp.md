@@ -1,4 +1,19 @@
-# gcp
+---
+id: "doc-006"
+title: "Google Cloud Platform (GCP) — Practical Handbook"
+slug: "google-cloud-platform-gcp-practical-handbook"
+description: "Google Cloud is a public cloud platform offering compute, storage, databases, analytics, networking, containers, serverless and AI services."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "gcp"
+  - "google"
+---
+
+# Google Cloud Platform (GCP) — Practical Handbook
 
 ## 1. What Google Cloud is
 

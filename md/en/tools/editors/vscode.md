@@ -1,4 +1,20 @@
-# vscode
+---
+id: "doc-039"
+title: "Visual Studio Code — Knowledge Handbook"
+slug: "visual-studio-code-knowledge-handbook"
+description: "VS Code is a cross-platform code editor with project navigation, Git integration, terminal, debugger, language servers, extensions and AI tooling. It sits…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "vscode"
+  - "editor"
+  - "copilot"
+  - "codex"
+---
+
+# Visual Studio Code — Knowledge Handbook
 ## 1. What Visual Studio Code is
 VS Code is a cross-platform code editor with project navigation, Git integration, terminal, debugger, language servers, extensions and AI tooling. It sits between a simple editor and a full IDE.
 # 2. Installation

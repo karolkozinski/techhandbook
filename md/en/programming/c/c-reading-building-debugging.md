@@ -1,4 +1,20 @@
-# c-reading-building-debugging
+---
+id: "doc-019"
+title: "C — Reading, Building and Debugging Projects"
+slug: "c-reading-building-and-debugging-projects"
+description: "C is a small, compiled systems language that gives you direct control over memory, data layout and operating-system APIs."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "c"
+  - "gcc"
+  - "clang"
+  - "gdb"
+---
+
+# C — Reading, Building and Debugging Projects
 # 1. C in one sentence
 C is a small, compiled systems language that gives you direct control over memory, data layout and operating-system APIs.
 # 2. The simplest program

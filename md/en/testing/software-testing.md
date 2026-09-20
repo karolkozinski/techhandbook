@@ -1,4 +1,22 @@
-# software-testing
+---
+id: "doc-049"
+title: "Software Testing — Handbook"
+slug: "software-testing-handbook"
+description: "Tests reduce the chance of shipping regressions and make refactoring safer."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "testing"
+  - "unit"
+  - "integration"
+  - "e2e"
+  - "playwright"
+  - "go test"
+---
+
+# Software Testing — Handbook
 
 ## 1. Why tests exist
 

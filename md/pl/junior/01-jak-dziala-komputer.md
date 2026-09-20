@@ -1,4 +1,22 @@
-# 01-jak-dziala-komputer
+---
+id: "junior-001"
+title: "01. Jak działa komputer?"
+slug: "01-jak-dziala-komputer"
+description: "Komputer nie jest magicznym pudełkiem. To maszyna, która bardzo szybko wykonuje polecenia."
+lang: "pl"
+audience: "junior"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "junior"
+  - "komputer"
+  - "cpu"
+  - "ram"
+  - "dysk"
+  - "system"
+---
+
+# 01. Jak działa komputer?
 
 Komputer nie jest magicznym pudełkiem. To maszyna, która bardzo szybko wykonuje polecenia.
 

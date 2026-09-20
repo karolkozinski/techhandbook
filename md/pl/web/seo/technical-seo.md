@@ -1,4 +1,22 @@
-# technical-seo
+---
+id: "doc-047"
+title: "Technical SEO — kompendium praktyczne"
+slug: "technical-seo-kompendium-praktyczne"
+description: "Technical SEO obejmuje techniczne elementy wpływające na możliwość:"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "seo"
+  - "technical seo"
+  - "robots"
+  - "sitemap"
+  - "canonical"
+  - "cwv"
+---
+
+# Technical SEO — kompendium praktyczne
 
 ## 1. Czym jest Technical SEO
 

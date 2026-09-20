@@ -1,4 +1,21 @@
-# vi-vim-neovim
+---
+id: "doc-038"
+title: "Vi, Vim, gVim i Neovim"
+slug: "vi-vim-gvim-i-neovim"
+description: "Vi, Vim, gVim i Neovim — praktyczne kompendium TechHandbook."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "vi"
+  - "vim"
+  - "gvim"
+  - "neovim"
+  - "editor"
+---
+
+# Vi, Vim, gVim i Neovim
 
 ## 1. Co masz zainstalowane
 

@@ -1,4 +1,20 @@
-# c-reading-building-debugging
+---
+id: "doc-019"
+title: "C — czytanie, kompilacja i debugowanie"
+slug: "c-czytanie-kompilacja-i-debugowanie"
+description: "Cel: nie nauczyć Cię „programować w C od zera”, tylko dać Ci taki poziom orientacji, żebyś po sklonowaniu projektu potrafił:"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "c"
+  - "gcc"
+  - "clang"
+  - "gdb"
+---
+
+# C — czytanie, kompilacja i debugowanie
 
 > Cel: nie nauczyć Cię „programować w C od zera”, tylko dać Ci taki poziom orientacji, żebyś po sklonowaniu projektu potrafił:
 >

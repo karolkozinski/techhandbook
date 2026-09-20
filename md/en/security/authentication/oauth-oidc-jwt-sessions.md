@@ -1,4 +1,23 @@
-# oauth-oidc-jwt-sessions
+---
+id: "doc-051"
+title: "OAuth 2.0, OpenID Connect, JWT and Sessions"
+slug: "oauth-2-0-openid-connect-jwt-and-sessions"
+description: "OAuth 2.0, OpenID Connect, JWT and Sessions — a practical TechHandbook reference."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "oauth"
+  - "oidc"
+  - "jwt"
+  - "session"
+  - "authentication"
+  - "authorization"
+  - "pkce"
+---
+
+# OAuth 2.0, OpenID Connect, JWT and Sessions
 
 ## 1. Concepts first
 

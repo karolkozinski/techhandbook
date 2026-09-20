@@ -1,4 +1,21 @@
-# html-email-edm
+---
+id: "doc-055"
+title: "HTML email / EDM — kompendium praktyczne"
+slug: "html-email-edm-kompendium-praktyczne"
+description: "Email HTML nie działa jak nowoczesna strona WWW."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "email"
+  - "html email"
+  - "edm"
+  - "outlook"
+  - "newsletter"
+---
+
+# HTML email / EDM — kompendium praktyczne
 
 ## 1. Dlaczego email HTML jest inny
 

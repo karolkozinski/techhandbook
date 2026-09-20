@@ -1,4 +1,22 @@
-# web-analytics-tagging
+---
+id: "doc-053"
+title: "Web analytics i tagging — kompendium praktyczne"
+slug: "web-analytics-i-tagging-kompendium-praktyczne"
+description: "Analityka powinna odpowiadać na konkretne pytania."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "analytics"
+  - "tagging"
+  - "ga4"
+  - "gtm"
+  - "datalayer"
+  - "utm"
+---
+
+# Web analytics i tagging — kompendium praktyczne
 
 ## 1. Cel analityki
 

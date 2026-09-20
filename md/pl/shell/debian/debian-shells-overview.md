@@ -1,4 +1,20 @@
-# debian-shells-overview
+---
+id: "doc-028"
+title: "Shelle w Debianie — przegląd"
+slug: "shelle-w-debianie-przeglad"
+description: "Shell, czyli powłoka, to program pośredniczący między użytkownikiem a systemem operacyjnym."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "debian"
+  - "shell"
+  - "bash"
+  - "zsh"
+---
+
+# Shelle w Debianie — przegląd
 
 ## 1. Czym jest shell?
 

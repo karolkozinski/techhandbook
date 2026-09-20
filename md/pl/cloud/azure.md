@@ -1,4 +1,18 @@
-# azure
+---
+id: "doc-005"
+title: "Microsoft Azure"
+slug: "microsoft-azure"
+description: "Aktualizacja: 2026-09-19 Cel: rozumieć Azure jako administrator/developer — od Entra ID, subskrypcji i Resource Groups po VM, kontenery, bazy, storage,…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "azure"
+  - "microsoft"
+---
+# Microsoft Azure
 
 > Aktualizacja: 2026-09-19  
 > Cel: rozumieć Azure jako administrator/developer — od Entra ID, subskrypcji i Resource Groups po VM, kontenery, bazy, storage, monitoring i automatyzację.

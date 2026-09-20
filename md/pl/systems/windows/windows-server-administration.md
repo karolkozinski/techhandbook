@@ -1,4 +1,20 @@
-# windows-server-administration
+---
+id: "doc-037"
+title: "Windows Server — administracja korporacyjna"
+slug: "windows-server-administracja-korporacyjna"
+description: "Windows Server w środowisku korporacyjnym pełni najczęściej kilka podstawowych funkcji:"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "windows"
+  - "server"
+  - "active directory"
+  - "administration"
+---
+
+# Windows Server — administracja korporacyjna
 
 ## Spis treści
 

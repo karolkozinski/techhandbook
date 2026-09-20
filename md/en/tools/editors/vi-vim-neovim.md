@@ -1,4 +1,21 @@
-# vi-vim-neovim
+---
+id: "doc-038"
+title: "vi / Vim / gVim / Neovim — Practical Text Editing Handbook"
+slug: "vi-vim-gvim-neovim-practical-text-editing-handbook"
+description: "vi may be vim.tiny or another implementation; vim is full terminal Vim; gvim is graphical Vim; nvim is Neovim."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "vi"
+  - "vim"
+  - "gvim"
+  - "neovim"
+  - "editor"
+---
+
+# vi / Vim / gVim / Neovim — Practical Text Editing Handbook
 ## 1. What you have installed
 `vi` may be vim.tiny or another implementation; `vim` is full terminal Vim; `gvim` is graphical Vim; `nvim` is Neovim.
 ## 2. What to use and when

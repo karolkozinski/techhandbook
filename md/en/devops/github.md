@@ -1,4 +1,20 @@
-# github
+---
+id: "doc-014"
+title: "GitHub — Practical Handbook"
+slug: "github-practical-handbook"
+description: "Git is a distributed version-control system that tracks file history locally."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "github"
+  - "git"
+  - "repo"
+  - "repository"
+---
+
+# GitHub — Practical Handbook
 ## 1. Git and GitHub are not the same thing
 ### Git
 Git is a distributed version-control system that tracks file history locally.

@@ -1,4 +1,21 @@
-# linux-server-security
+---
+id: "doc-025"
+title: "Linux permissions i bezpieczeństwo serwera"
+slug: "linux-permissions-i-bezpieczenstwo-serwera"
+description: "Linux permissions i bezpieczeństwo serwera — praktyczne kompendium TechHandbook."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "linux"
+  - "security"
+  - "permissions"
+  - "ssh"
+  - "firewall"
+---
+
+# Linux permissions i bezpieczeństwo serwera
 
 ## 1. Użytkownicy i grupy
 

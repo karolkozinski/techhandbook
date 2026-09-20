@@ -1,4 +1,20 @@
-# debian-shells-overview
+---
+id: "doc-028"
+title: "Shells in Debian"
+slug: "shells-in-debian"
+description: "A shell is a command interpreter. It reads commands, expands variables and globs, handles pipelines/redirections and starts programs."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "debian"
+  - "shell"
+  - "bash"
+  - "zsh"
+---
+
+# Shells in Debian
 
 ## 1. What is a shell?
 

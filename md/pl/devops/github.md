@@ -1,4 +1,20 @@
-# github
+---
+id: "doc-014"
+title: "GitHub"
+slug: "github"
+description: "Kompendium do codziennej pracy z GitHubem i Gitem: repozytoria, commity, branche, synchronizacja, forki, Pull Requesty, Issues, Releases, GitHub CLI, SSH,…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "github"
+  - "git"
+  - "repo"
+  - "repository"
+---
+
+# GitHub
 
 > Kompendium do codziennej pracy z GitHubem i Gitem: repozytoria, commity, branche, synchronizacja, forki, Pull Requesty, Issues, Releases, GitHub CLI, SSH, konflikty i typowe workflow.
 

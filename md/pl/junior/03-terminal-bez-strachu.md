@@ -1,4 +1,21 @@
-# 03-terminal-bez-strachu
+---
+id: "junior-003"
+title: "03. Terminal bez strachu"
+slug: "03-terminal-bez-strachu"
+description: "Terminal pozwala sterować komputerem tekstowymi poleceniami. To nie jest „tryb hakera”. To po prostu drugi sposób obsługi komputera."
+lang: "pl"
+audience: "junior"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "junior"
+  - "terminal"
+  - "shell"
+  - "powershell"
+  - "linux"
+---
+
+# 03. Terminal bez strachu
 
 Terminal pozwala sterować komputerem tekstowymi poleceniami. To nie jest „tryb hakera”. To po prostu drugi sposób obsługi komputera.
 

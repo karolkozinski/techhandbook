@@ -1,4 +1,18 @@
-# hermes-agent
+---
+id: "doc-001"
+title: "Hermes Agent"
+slug: "hermes-agent"
+description: "Stan dokumentacji: 19 września 2026 Projekt: NousResearch Hermes Agent Oficjalna dokumentacja: https://hermes-agent.nousresearch.com/docs/"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "ai"
+  - "hermes"
+  - "agent"
+---
+# Hermes Agent
 ## Debian jako host, FreeBSD jako host/maszyna zarządzana
 
 > Stan dokumentacji: 19 września 2026  

@@ -1,4 +1,20 @@
-# logging-monitoring-troubleshooting
+---
+id: "doc-015"
+title: "Logging, Monitoring and Troubleshooting"
+slug: "logging-monitoring-and-troubleshooting"
+description: "Do not guess. Gather facts."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "logs"
+  - "monitoring"
+  - "debug"
+  - "troubleshooting"
+---
+
+# Logging, Monitoring and Troubleshooting
 
 ## 1. Rule
 

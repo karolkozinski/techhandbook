@@ -1,4 +1,18 @@
-# alibaba-cloud
+---
+id: "doc-003"
+title: "Alibaba Cloud — Practical Handbook"
+slug: "alibaba-cloud-practical-handbook"
+description: "Alibaba Cloud is a large public cloud platform offering compute, storage, networking, databases, containers, serverless, CDN, observability and AI services."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "alibaba"
+---
+
+# Alibaba Cloud — Practical Handbook
 
 ## 1. What Alibaba Cloud is
 

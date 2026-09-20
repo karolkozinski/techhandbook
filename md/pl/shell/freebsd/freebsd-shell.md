@@ -1,4 +1,20 @@
-# freebsd-shell
+---
+id: "doc-029"
+title: "FreeBSD — shell"
+slug: "freebsd-shell"
+description: "Samodzielne kompendium do codziennej pracy we FreeBSD z terminala lub przez SSH."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "freebsd"
+  - "shell"
+  - "sh"
+  - "tcsh"
+---
+
+# FreeBSD — shell
 
 Samodzielne kompendium do codziennej pracy we FreeBSD z terminala lub przez SSH.
 

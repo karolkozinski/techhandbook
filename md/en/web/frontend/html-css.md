@@ -1,4 +1,20 @@
-# html-css
+---
+id: "doc-042"
+title: "Modern HTML and CSS"
+slug: "modern-html-and-css"
+description: "A practical reference for building modern, semantic, responsive and accessible websites."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "html"
+  - "css"
+  - "frontend"
+  - "web"
+---
+
+# Modern HTML and CSS
 
 A practical reference for building modern, semantic, responsive and accessible websites.
 

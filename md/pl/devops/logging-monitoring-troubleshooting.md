@@ -1,4 +1,20 @@
-# logging-monitoring-troubleshooting
+---
+id: "doc-015"
+title: "Logi, monitoring i troubleshooting"
+slug: "logi-monitoring-i-troubleshooting"
+description: "Nie zgaduj. Zbieraj fakty."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "logs"
+  - "monitoring"
+  - "debug"
+  - "troubleshooting"
+---
+
+# Logi, monitoring i troubleshooting
 
 ## 1. Zasada
 

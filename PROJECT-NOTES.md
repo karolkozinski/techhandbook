@@ -45,13 +45,22 @@ mapa relacji           = źródło prawdy related
 content-index.json     = wygenerowany indeks runtime
 ```
 
-### Stan przejściowy
+### Generowanie indeksu
 
-Generator indeksu nie jest jeszcze wdrożony.
+`content-index.json` jest generowany z front matter artykułów, położenia plików oraz `content-relations.json`.
 
-Do zakończenia migracji istniejący `content-index.json` nadal jest wymagany przez frontend i pozostaje bieżącym runtime source. Po wdrożeniu parsera i migracji wszystkich artykułów nie będzie edytowany ręcznie.
+Nie edytuj go ręcznie.
 
-Stabilne `id` są już używane przez linki wewnętrzne i relacje. Nie wolno ich zmieniać podczas migracji.
+```bash
+python3 -m pip install -r requirements-dev.txt
+python3 scripts/content_index.py
+python3 scripts/content_index.py --check
+python3 scripts/content_index.py --write
+```
+
+Pierwsze polecenie skryptu waliduje treść bez zapisu. `--check` dodatkowo sprawdza, czy indeks w repo jest aktualny, a `--write` regeneruje indeks.
+
+Stabilne `id` są używane przez linki wewnętrzne i relacje. Nie wolno ich zmieniać przy przenoszeniu ani zmianie tytułu artykułu.
 
 ## Wyszukiwanie
 

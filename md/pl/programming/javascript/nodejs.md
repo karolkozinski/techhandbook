@@ -1,4 +1,19 @@
-# nodejs
+---
+id: "doc-022"
+title: "Node.js"
+slug: "node-js"
+description: "Cel tego dokumentu: nie nauczyć Cię programować w Node.js od zera, tylko sprawić, żebyś potrafił:"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "node"
+  - "nodejs"
+  - "javascript"
+---
+
+# Node.js
 
 > Cel tego dokumentu: **nie nauczyć Cię programować w Node.js od zera**, tylko sprawić, żebyś potrafił:
 >

@@ -1,4 +1,20 @@
-# shell-scripting
+---
+id: "doc-031"
+title: "Shell Scripting — Debian and FreeBSD"
+slug: "shell-scripting-debian-and-freebsd"
+description: "For portable system scripts use POSIX sh. Use Bash only when you intentionally need Bash-specific syntax. FreeBSD /bin/sh and Debian /bin/sh are not Bash."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "shell"
+  - "bash"
+  - "scripting"
+  - "script"
+---
+
+# Shell Scripting — Debian and FreeBSD
 # 1. Which shell should you choose for scripts?
 For portable system scripts use POSIX `sh`. Use Bash only when you intentionally need Bash-specific syntax. FreeBSD `/bin/sh` and Debian `/bin/sh` are not Bash.
 # 2. First script

@@ -1,3 +1,18 @@
+---
+id: "doc-012"
+title: "Docker"
+slug: "docker"
+description: "Docker pozwala uruchamiać aplikacje w powtarzalnych, izolowanych kontenerach. Najważniejszy model mentalny jest prosty: image jest szablonem, container jego…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "docker"
+  - "containers"
+  - "devops"
+---
+
 # Docker
 
 Docker pozwala uruchamiać aplikacje w powtarzalnych, izolowanych kontenerach. Najważniejszy model mentalny jest prosty: **image** jest szablonem, **container** jego uruchomioną instancją, **volume** przechowuje dane trwałe, a **Compose** opisuje zestaw współpracujących usług.

@@ -1,4 +1,19 @@
-# nodejs
+---
+id: "doc-022"
+title: "Node.js — Practical Handbook"
+slug: "node-js-practical-handbook"
+description: "Node.js is a JavaScript runtime built on V8 that lets JavaScript run outside the browser, especially for servers, CLI tools and build tooling."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "node"
+  - "nodejs"
+  - "javascript"
+---
+
+# Node.js — Practical Handbook
 # 1. What Node.js actually is
 Node.js is a JavaScript runtime built on V8 that lets JavaScript run outside the browser, especially for servers, CLI tools and build tooling.
 # 2. Node.js, npm and npx — what is what?

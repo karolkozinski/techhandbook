@@ -1,4 +1,18 @@
-# go-reading-code
+---
+id: "doc-020"
+title: "Go — Reading Code"
+slug: "go-reading-code"
+description: "Go is deliberately small, explicit and convention-heavy. Read code in terms of packages, structs, interfaces, functions and data flow rather than searching…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "go"
+  - "golang"
+---
+
+# Go — Reading Code
 ## Table of Contents
 # 1. How to think about Go
 Go is deliberately small, explicit and convention-heavy. Read code in terms of packages, structs, interfaces, functions and data flow rather than searching for framework magic.

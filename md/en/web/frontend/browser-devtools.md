@@ -1,4 +1,21 @@
-# browser-devtools
+---
+id: "doc-046"
+title: "Browser DevTools — Practical Handbook"
+slug: "browser-devtools-practical-handbook"
+description: "Browser developer tools are among the most important tools for working with web applications. They let you diagnose problems instead of guessing."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "devtools"
+  - "browser"
+  - "network"
+  - "console"
+  - "debug"
+---
+
+# Browser DevTools — Practical Handbook
 
 ## 1. Why DevTools matter
 

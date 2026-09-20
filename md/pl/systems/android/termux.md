@@ -1,4 +1,19 @@
-# termux
+---
+id: "doc-032"
+title: "Termux"
+slug: "termux"
+description: "Praktyczne kompendium Termuxa na Androidzie: czym jest, jak działa, jak go używać jako środowiska uniksowego i developerskiego, gdzie kończy się Termux, a…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "android"
+  - "termux"
+  - "linux"
+---
+
+# Termux
 
 > Praktyczne kompendium Termuxa na Androidzie: czym jest, jak działa, jak go używać jako środowiska uniksowego i developerskiego, gdzie kończy się Termux, a zaczyna Android, oraz co zmienia root.
 >

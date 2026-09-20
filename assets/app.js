@@ -268,6 +268,16 @@
     return s;
   }
 
+  function stripFrontMatter(markdown) {
+    const normalized = markdown.replace(/\r\n?/g, "\n");
+    if (!normalized.startsWith("---\n")) return normalized;
+
+    const end = normalized.indexOf("\n---\n", 4);
+    if (end === -1) return normalized;
+
+    return normalized.slice(end + 5).replace(/^\n+/, "");
+  }
+
   function normalizeArticleTitle(markdown, title) {
     if (!title) return markdown;
     const safeTitle = title.replace(/\r?\n/g, " ").trim();
@@ -729,7 +739,7 @@
     try {
       const res = await fetch(file.path, { cache: "no-cache" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const text = await res.text();
+      const text = stripFrontMatter(await res.text());
       const titledText = normalizeArticleTitle(text, file.title || file.name.replace(/\.md$/i, ""));
       els.reader.innerHTML = renderMarkdown(titledText) + renderRelatedArticles(file);
       document.title = `${file.title || file.name} — Tech Handbook`;

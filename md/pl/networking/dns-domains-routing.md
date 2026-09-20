@@ -1,4 +1,20 @@
-# dns-domains-routing
+---
+id: "doc-017"
+title: "DNS, domeny i routing internetowy"
+slug: "dns-domeny-i-routing-internetowy"
+description: "Jeśli publikujesz stronę, API albo aplikację na VPS, musisz rozumieć drogę od wpisania example.com w przeglądarce do odpowiedzi serwera. W praktyce oznacza…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "dns"
+  - "domain"
+  - "domains"
+  - "routing"
+---
+
+# DNS, domeny i routing internetowy
 
 ## 1. Po co to znać
 

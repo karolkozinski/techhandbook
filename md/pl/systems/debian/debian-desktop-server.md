@@ -1,3 +1,20 @@
+---
+id: "doc-033"
+title: "Debian — desktop i serwer"
+slug: "debian-desktop-i-serwer"
+description: "Debian to stabilna, uniwersalna dystrybucja GNU/Linux używana zarówno na komputerach osobistych, jak i na serwerach. To kompendium zbiera najważniejsze…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "debian"
+  - "linux"
+  - "gnome"
+  - "kde"
+  - "server"
+---
+
 # Debian — desktop i serwer
 
 Debian to stabilna, uniwersalna dystrybucja GNU/Linux używana zarówno na komputerach osobistych, jak i na serwerach. To kompendium zbiera najważniejsze mechanizmy potrzebne do codziennej pracy: pakiety, usługi, logi, sieć, uprawnienia, storage, środowiska GNOME/KDE oraz podstawy administracji serwerem.

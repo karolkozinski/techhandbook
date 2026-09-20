@@ -1,4 +1,20 @@
-# small-web-apps
+---
+id: "doc-041"
+title: "Architecture of Small Web Applications"
+slug: "architecture-of-small-web-applications"
+description: "A small project does not need microservices, Kubernetes and five databases."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "architecture"
+  - "web"
+  - "backend"
+  - "frontend"
+---
+
+# Architecture of Small Web Applications
 
 ## 1. Goal
 

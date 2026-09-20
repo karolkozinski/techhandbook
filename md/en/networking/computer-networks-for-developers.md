@@ -1,4 +1,21 @@
-# computer-networks-for-developers
+---
+id: "doc-016"
+title: "Computer Networks for Developers"
+slug: "computer-networks-for-developers"
+description: "This is not CCNA preparation. The goal is to understand the networking concepts a developer actually uses:"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "network"
+  - "tcp"
+  - "udp"
+  - "ip"
+  - "vlan"
+---
+
+# Computer Networks for Developers
 
 ## 1. Goal
 

@@ -1,4 +1,20 @@
-# html-css
+---
+id: "doc-042"
+title: "Nowoczesny HTML i CSS"
+slug: "nowoczesny-html-i-css"
+description: "Praktyczne kompendium referencyjne dla osoby, która chce samodzielnie tworzyć współczesne, semantyczne, responsywne i dostępne strony internetowe."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "html"
+  - "css"
+  - "frontend"
+  - "web"
+---
+
+# Nowoczesny HTML i CSS
 
 Praktyczne kompendium referencyjne dla osoby, która chce samodzielnie tworzyć współczesne, semantyczne, responsywne i dostępne strony internetowe.
 

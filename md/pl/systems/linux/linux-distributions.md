@@ -1,4 +1,19 @@
-# linux-distributions
+---
+id: "doc-035"
+title: "Dystrybucje Linuxa"
+slug: "dystrybucje-linuxa"
+description: "Linux nie jest jednym kompletnym systemem operacyjnym w takim sensie jak Windows czy macOS."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "linux"
+  - "distributions"
+  - "distros"
+---
+
+# Dystrybucje Linuxa
 
 ## 1. Po co w ogóle są różne dystrybucje?
 

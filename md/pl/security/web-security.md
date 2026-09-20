@@ -1,4 +1,22 @@
-# web-security
+---
+id: "doc-026"
+title: "Bezpieczeństwo aplikacji webowych"
+slug: "bezpieczenstwo-aplikacji-webowych"
+description: "Nie chodzi o pentesting. Chodzi o to, żeby nie wprowadzać typowych podatności do własnych aplikacji."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "web"
+  - "security"
+  - "owasp"
+  - "xss"
+  - "csrf"
+  - "sql injection"
+---
+
+# Bezpieczeństwo aplikacji webowych
 
 ## 1. Cel
 

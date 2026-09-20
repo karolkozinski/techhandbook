@@ -1,5 +1,5 @@
 {
-  "version": 14,
+  "version": 15,
   "updated": "2026-09-20",
   "root": "md/pl",
   "files": [
@@ -7,6 +7,7 @@
       "id": "doc-001",
       "name": "hermes-agent.md",
       "title": "Hermes Agent",
+      "slug": "hermes-agent",
       "path": "md/pl/ai/hermes-agent.md",
       "category": "ai",
       "tags": [
@@ -15,6 +16,7 @@
         "agent"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-002",
         "doc-008",
@@ -27,6 +29,7 @@
       "id": "doc-002",
       "name": "prompting-ai.md",
       "title": "Promptowanie AI",
+      "slug": "promptowanie-ai",
       "path": "md/pl/ai/prompting-ai.md",
       "category": "ai",
       "tags": [
@@ -36,6 +39,7 @@
         "llm"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-001",
         "doc-008",
@@ -45,9 +49,36 @@
       ]
     },
     {
+      "id": "doc-056",
+      "name": "technical-documentation.md",
+      "title": "Dokumentowanie rozwiązań technicznych",
+      "slug": "dokumentowanie-rozwiazan-technicznych",
+      "path": "md/pl/architecture/technical-documentation.md",
+      "category": "architecture",
+      "tags": [
+        "documentation",
+        "readme",
+        "adr",
+        "rfc",
+        "runbook",
+        "openapi"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-013",
+        "doc-014",
+        "doc-011",
+        "doc-041",
+        "doc-049",
+        "doc-057"
+      ]
+    },
+    {
       "id": "doc-003",
       "name": "alibaba-cloud.md",
       "title": "Alibaba Cloud",
+      "slug": "alibaba-cloud",
       "path": "md/pl/cloud/alibaba-cloud.md",
       "category": "cloud",
       "tags": [
@@ -55,6 +86,7 @@
         "alibaba"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-004",
         "doc-005",
@@ -67,6 +99,7 @@
       "id": "doc-004",
       "name": "aws.md",
       "title": "Amazon Web Services (AWS)",
+      "slug": "amazon-web-services-aws",
       "path": "md/pl/cloud/aws.md",
       "category": "cloud",
       "tags": [
@@ -75,6 +108,7 @@
         "amazon"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-003",
         "doc-005",
@@ -87,6 +121,7 @@
       "id": "doc-005",
       "name": "azure.md",
       "title": "Microsoft Azure",
+      "slug": "microsoft-azure",
       "path": "md/pl/cloud/azure.md",
       "category": "cloud",
       "tags": [
@@ -95,6 +130,7 @@
         "microsoft"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-003",
         "doc-004",
@@ -107,6 +143,7 @@
       "id": "doc-006",
       "name": "gcp.md",
       "title": "Google Cloud Platform (GCP)",
+      "slug": "google-cloud-platform-gcp",
       "path": "md/pl/cloud/gcp.md",
       "category": "cloud",
       "tags": [
@@ -115,6 +152,7 @@
         "google"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-003",
         "doc-004",
@@ -127,6 +165,7 @@
       "id": "doc-007",
       "name": "oci.md",
       "title": "Oracle Cloud Infrastructure (OCI)",
+      "slug": "oracle-cloud-infrastructure-oci",
       "path": "md/pl/cloud/oci.md",
       "category": "cloud",
       "tags": [
@@ -135,6 +174,7 @@
         "oracle"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-003",
         "doc-004",
@@ -147,6 +187,7 @@
       "id": "doc-008",
       "name": "api-integrations.md",
       "title": "API i integracje systemów",
+      "slug": "api-i-integracje-systemow",
       "path": "md/pl/data-api/api-integrations.md",
       "category": "data-api",
       "tags": [
@@ -157,6 +198,7 @@
         "oauth"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-009",
         "doc-010",
@@ -170,6 +212,7 @@
       "id": "doc-009",
       "name": "data-formats-json-yaml-toml-xml.md",
       "title": "JSON, YAML, TOML i XML",
+      "slug": "json-yaml-toml-i-xml",
       "path": "md/pl/data-api/data-formats-json-yaml-toml-xml.md",
       "category": "data-api",
       "tags": [
@@ -179,6 +222,7 @@
         "xml"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-008",
         "doc-010",
@@ -191,6 +235,7 @@
       "id": "doc-010",
       "name": "postgresql-sql.md",
       "title": "SQL i PostgreSQL dla developera",
+      "slug": "sql-i-postgresql-dla-developera",
       "path": "md/pl/data-api/postgresql-sql.md",
       "category": "data-api",
       "tags": [
@@ -200,6 +245,7 @@
         "database"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-008",
         "doc-020",
@@ -213,6 +259,7 @@
       "id": "doc-011",
       "name": "ci-cd-github-actions.md",
       "title": "CI/CD i GitHub Actions",
+      "slug": "ci-cd-i-github-actions",
       "path": "md/pl/devops/ci-cd-github-actions.md",
       "category": "devops",
       "tags": [
@@ -222,6 +269,7 @@
         "actions"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-013",
         "doc-014",
@@ -235,6 +283,7 @@
       "id": "doc-012",
       "name": "docker.md",
       "title": "Docker",
+      "slug": "docker",
       "path": "md/pl/devops/docker.md",
       "category": "devops",
       "tags": [
@@ -243,6 +292,7 @@
         "devops"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-011",
         "doc-015",
@@ -256,6 +306,7 @@
       "id": "doc-013",
       "name": "git-team-workflows.md",
       "title": "Git w praktyce zespołowej",
+      "slug": "git-w-praktyce-zespolowej",
       "path": "md/pl/devops/git-team-workflows.md",
       "category": "devops",
       "tags": [
@@ -265,6 +316,7 @@
         "rebase"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-014",
         "doc-011",
@@ -277,6 +329,7 @@
       "id": "doc-014",
       "name": "github.md",
       "title": "GitHub",
+      "slug": "github",
       "path": "md/pl/devops/github.md",
       "category": "devops",
       "tags": [
@@ -286,6 +339,7 @@
         "repository"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-013",
         "doc-011",
@@ -297,6 +351,7 @@
       "id": "doc-015",
       "name": "logging-monitoring-troubleshooting.md",
       "title": "Logi, monitoring i troubleshooting",
+      "slug": "logi-monitoring-i-troubleshooting",
       "path": "md/pl/devops/logging-monitoring-troubleshooting.md",
       "category": "devops",
       "tags": [
@@ -306,6 +361,7 @@
         "troubleshooting"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-052",
         "doc-057",
@@ -316,9 +372,107 @@
       ]
     },
     {
+      "id": "doc-052",
+      "name": "systemd-cron-schedulers.md",
+      "title": "systemd, cron i schedulery",
+      "slug": "systemd-cron-i-schedulery",
+      "path": "md/pl/devops/systemd-cron-schedulers.md",
+      "category": "devops",
+      "tags": [
+        "systemd",
+        "cron",
+        "timer",
+        "scheduler",
+        "service"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-031",
+        "doc-033",
+        "doc-015",
+        "doc-011",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-054",
+      "name": "ab-testing-experiments.md",
+      "title": "A/B testing i eksperymenty — kompendium praktyczne",
+      "slug": "a-b-testing-i-eksperymenty-kompendium-praktyczne",
+      "path": "md/pl/digital/ab-testing-experiments.md",
+      "category": "digital",
+      "tags": [
+        "ab testing",
+        "experiments",
+        "conversion",
+        "mde",
+        "metrics"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-053",
+        "doc-043",
+        "doc-048",
+        "doc-049",
+        "doc-055"
+      ]
+    },
+    {
+      "id": "doc-055",
+      "name": "html-email-edm.md",
+      "title": "HTML email / EDM — kompendium praktyczne",
+      "slug": "html-email-edm-kompendium-praktyczne",
+      "path": "md/pl/digital/html-email-edm.md",
+      "category": "digital",
+      "tags": [
+        "email",
+        "html email",
+        "edm",
+        "outlook",
+        "newsletter"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-042",
+        "doc-043",
+        "doc-053",
+        "doc-054",
+        "doc-046"
+      ]
+    },
+    {
+      "id": "doc-053",
+      "name": "web-analytics-tagging.md",
+      "title": "Web analytics i tagging — kompendium praktyczne",
+      "slug": "web-analytics-i-tagging-kompendium-praktyczne",
+      "path": "md/pl/digital/web-analytics-tagging.md",
+      "category": "digital",
+      "tags": [
+        "analytics",
+        "tagging",
+        "ga4",
+        "gtm",
+        "datalayer",
+        "utm"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-047",
+        "doc-048",
+        "doc-054",
+        "doc-055",
+        "doc-046"
+      ]
+    },
+    {
       "id": "doc-016",
       "name": "computer-networks-for-developers.md",
       "title": "Sieci komputerowe dla developera",
+      "slug": "sieci-komputerowe-dla-developera",
       "path": "md/pl/networking/computer-networks-for-developers.md",
       "category": "networking",
       "tags": [
@@ -329,6 +483,7 @@
         "vlan"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-017",
         "doc-018",
@@ -341,6 +496,7 @@
       "id": "doc-017",
       "name": "dns-domains-routing.md",
       "title": "DNS, domeny i routing internetowy",
+      "slug": "dns-domeny-i-routing-internetowy",
       "path": "md/pl/networking/dns-domains-routing.md",
       "category": "networking",
       "tags": [
@@ -350,6 +506,7 @@
         "routing"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-016",
         "doc-044",
@@ -362,6 +519,7 @@
       "id": "doc-018",
       "name": "ssh-remote-administration.md",
       "title": "SSH i zdalna administracja",
+      "slug": "ssh-i-zdalna-administracja",
       "path": "md/pl/networking/ssh-remote-administration.md",
       "category": "networking",
       "tags": [
@@ -372,6 +530,7 @@
         "tunnel"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-016",
         "doc-025",
@@ -384,6 +543,7 @@
       "id": "doc-019",
       "name": "c-reading-building-debugging.md",
       "title": "C — czytanie, kompilacja i debugowanie",
+      "slug": "c-czytanie-kompilacja-i-debugowanie",
       "path": "md/pl/programming/c/c-reading-building-debugging.md",
       "category": "programming/c",
       "tags": [
@@ -393,6 +553,7 @@
         "gdb"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-031",
         "doc-039",
@@ -405,6 +566,7 @@
       "id": "doc-020",
       "name": "go-reading-code.md",
       "title": "Go — czytanie kodu",
+      "slug": "go-czytanie-kodu",
       "path": "md/pl/programming/go/go-reading-code.md",
       "category": "programming/go",
       "tags": [
@@ -412,6 +574,7 @@
         "golang"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-008",
         "doc-010",
@@ -425,6 +588,7 @@
       "id": "doc-021",
       "name": "javascript-guide.md",
       "title": "JavaScript — kompendium",
+      "slug": "javascript-kompendium",
       "path": "md/pl/programming/javascript/javascript-guide.md",
       "category": "programming/javascript",
       "tags": [
@@ -433,6 +597,7 @@
         "frontend"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-022",
         "doc-042",
@@ -446,6 +611,7 @@
       "id": "doc-022",
       "name": "nodejs.md",
       "title": "Node.js",
+      "slug": "node-js",
       "path": "md/pl/programming/javascript/nodejs.md",
       "category": "programming/javascript",
       "tags": [
@@ -454,6 +620,7 @@
         "javascript"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-021",
         "doc-008",
@@ -467,12 +634,14 @@
       "id": "doc-023",
       "name": "python-basics.md",
       "title": "Python — podstawy",
+      "slug": "python-podstawy",
       "path": "md/pl/programming/python/python-basics.md",
       "category": "programming/python",
       "tags": [
         "python"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-008",
         "doc-009",
@@ -483,9 +652,36 @@
       ]
     },
     {
+      "id": "doc-051",
+      "name": "oauth-oidc-jwt-sessions.md",
+      "title": "OAuth 2.0, OpenID Connect, JWT i sesje",
+      "slug": "oauth-2-0-openid-connect-jwt-i-sesje",
+      "path": "md/pl/security/authentication/oauth-oidc-jwt-sessions.md",
+      "category": "security/authentication",
+      "tags": [
+        "oauth",
+        "oidc",
+        "jwt",
+        "session",
+        "authentication",
+        "authorization",
+        "pkce"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-008",
+        "doc-026",
+        "doc-044",
+        "doc-024",
+        "doc-041"
+      ]
+    },
+    {
       "id": "doc-024",
       "name": "cybersecurity-basics-pentesting.md",
       "title": "Cybersecurity i pentesting — podstawy",
+      "slug": "cybersecurity-i-pentesting-podstawy",
       "path": "md/pl/security/cybersecurity-basics-pentesting.md",
       "category": "security",
       "tags": [
@@ -498,6 +694,7 @@
         "nmap"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-025",
         "doc-026",
@@ -511,6 +708,7 @@
       "id": "doc-025",
       "name": "linux-server-security.md",
       "title": "Linux permissions i bezpieczeństwo serwera",
+      "slug": "linux-permissions-i-bezpieczenstwo-serwera",
       "path": "md/pl/security/linux-server-security.md",
       "category": "security",
       "tags": [
@@ -521,6 +719,7 @@
         "firewall"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-018",
         "doc-024",
@@ -534,6 +733,7 @@
       "id": "doc-026",
       "name": "web-security.md",
       "title": "Bezpieczeństwo aplikacji webowych",
+      "slug": "bezpieczenstwo-aplikacji-webowych",
       "path": "md/pl/security/web-security.md",
       "category": "security",
       "tags": [
@@ -545,6 +745,7 @@
         "sql injection"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-024",
         "doc-051",
@@ -558,6 +759,7 @@
       "id": "doc-027",
       "name": "debian-shell.md",
       "title": "Debian — shell",
+      "slug": "debian-shell",
       "path": "md/pl/shell/debian/debian-shell.md",
       "category": "shell/debian",
       "tags": [
@@ -566,6 +768,7 @@
         "bash"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-028",
         "doc-031",
@@ -578,6 +781,7 @@
       "id": "doc-028",
       "name": "debian-shells-overview.md",
       "title": "Shelle w Debianie — przegląd",
+      "slug": "shelle-w-debianie-przeglad",
       "path": "md/pl/shell/debian/debian-shells-overview.md",
       "category": "shell/debian",
       "tags": [
@@ -587,6 +791,7 @@
         "zsh"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-027",
         "doc-031",
@@ -598,6 +803,7 @@
       "id": "doc-029",
       "name": "freebsd-shell.md",
       "title": "FreeBSD — shell",
+      "slug": "freebsd-shell",
       "path": "md/pl/shell/freebsd/freebsd-shell.md",
       "category": "shell/freebsd",
       "tags": [
@@ -607,6 +813,7 @@
         "tcsh"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-030",
         "doc-031",
@@ -619,6 +826,7 @@
       "id": "doc-030",
       "name": "freebsd-shells-overview.md",
       "title": "Shelle w FreeBSD — przegląd",
+      "slug": "shelle-w-freebsd-przeglad",
       "path": "md/pl/shell/freebsd/freebsd-shells-overview.md",
       "category": "shell/freebsd",
       "tags": [
@@ -628,6 +836,7 @@
         "tcsh"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-029",
         "doc-031",
@@ -639,6 +848,7 @@
       "id": "doc-031",
       "name": "shell-scripting.md",
       "title": "Programowanie w shellu",
+      "slug": "programowanie-w-shellu",
       "path": "md/pl/shell/scripting/shell-scripting.md",
       "category": "shell/scripting",
       "tags": [
@@ -648,6 +858,7 @@
         "script"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-027",
         "doc-029",
@@ -660,6 +871,7 @@
       "id": "doc-032",
       "name": "termux.md",
       "title": "Termux",
+      "slug": "termux",
       "path": "md/pl/systems/android/termux.md",
       "category": "systems/android",
       "tags": [
@@ -668,6 +880,7 @@
         "linux"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-023",
         "doc-027",
@@ -680,6 +893,7 @@
       "id": "doc-033",
       "name": "debian-desktop-server.md",
       "title": "Debian — desktop i serwer",
+      "slug": "debian-desktop-i-serwer",
       "path": "md/pl/systems/debian/debian-desktop-server.md",
       "category": "systems/debian",
       "tags": [
@@ -690,6 +904,7 @@
         "server"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-027",
         "doc-018",
@@ -702,6 +917,7 @@
       "id": "doc-034",
       "name": "freebsd-server.md",
       "title": "FreeBSD jako serwer",
+      "slug": "freebsd-jako-serwer",
       "path": "md/pl/systems/freebsd/freebsd-server.md",
       "category": "systems/freebsd",
       "tags": [
@@ -710,6 +926,7 @@
         "unix"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-029",
         "doc-018",
@@ -722,6 +939,7 @@
       "id": "doc-035",
       "name": "linux-distributions.md",
       "title": "Dystrybucje Linuxa",
+      "slug": "dystrybucje-linuxa",
       "path": "md/pl/systems/linux/linux-distributions.md",
       "category": "systems/linux",
       "tags": [
@@ -730,6 +948,7 @@
         "distros"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-033",
         "doc-025",
@@ -741,6 +960,7 @@
       "id": "doc-036",
       "name": "window-managers.md",
       "title": "Menedżery okien w Linuxie",
+      "slug": "menedzery-okien-w-linuxie",
       "path": "md/pl/systems/linux/window-managers.md",
       "category": "systems/linux",
       "tags": [
@@ -749,6 +969,7 @@
         "wm"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-035",
         "doc-033",
@@ -760,6 +981,7 @@
       "id": "doc-037",
       "name": "windows-server-administration.md",
       "title": "Windows Server — administracja korporacyjna",
+      "slug": "windows-server-administracja-korporacyjna",
       "path": "md/pl/systems/windows/windows-server-administration.md",
       "category": "systems/windows",
       "tags": [
@@ -769,6 +991,7 @@
         "administration"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-016",
         "doc-018",
@@ -777,9 +1000,36 @@
       ]
     },
     {
+      "id": "doc-049",
+      "name": "software-testing.md",
+      "title": "Testowanie oprogramowania — kompendium",
+      "slug": "testowanie-oprogramowania-kompendium",
+      "path": "md/pl/testing/software-testing.md",
+      "category": "testing",
+      "tags": [
+        "testing",
+        "unit",
+        "integration",
+        "e2e",
+        "playwright",
+        "go test"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-020",
+        "doc-021",
+        "doc-022",
+        "doc-011",
+        "doc-046",
+        "doc-057"
+      ]
+    },
+    {
       "id": "doc-038",
       "name": "vi-vim-neovim.md",
       "title": "Vi, Vim, gVim i Neovim",
+      "slug": "vi-vim-gvim-i-neovim",
       "path": "md/pl/tools/editors/vi-vim-neovim.md",
       "category": "tools/editors",
       "tags": [
@@ -790,6 +1040,7 @@
         "editor"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-027",
         "doc-029",
@@ -802,6 +1053,7 @@
       "id": "doc-039",
       "name": "vscode.md",
       "title": "Visual Studio Code",
+      "slug": "visual-studio-code",
       "path": "md/pl/tools/editors/vscode.md",
       "category": "tools/editors",
       "tags": [
@@ -811,6 +1063,7 @@
         "codex"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-020",
         "doc-021",
@@ -824,6 +1077,7 @@
       "id": "doc-040",
       "name": "midnight-commander.md",
       "title": "Midnight Commander",
+      "slug": "midnight-commander",
       "path": "md/pl/tools/file-managers/midnight-commander.md",
       "category": "tools/file-managers",
       "tags": [
@@ -832,6 +1086,7 @@
         "file manager"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-027",
         "doc-029",
@@ -840,9 +1095,62 @@
       ]
     },
     {
+      "id": "doc-050",
+      "name": "regular-expressions.md",
+      "title": "Wyrażenia regularne (Regex) — kompendium praktyczne",
+      "slug": "wyrazenia-regularne-regex-kompendium-praktyczne",
+      "path": "md/pl/tools/regex/regular-expressions.md",
+      "category": "tools/regex",
+      "tags": [
+        "regex",
+        "regexp",
+        "grep",
+        "sed",
+        "javascript",
+        "python"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-019",
+        "doc-023",
+        "doc-031",
+        "doc-046",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-057",
+      "name": "web-app-end-to-end-playbook.md",
+      "title": "Troubleshooting aplikacji webowej end-to-end",
+      "slug": "troubleshooting-aplikacji-webowej-end-to-end",
+      "path": "md/pl/troubleshooting/web-app-end-to-end-playbook.md",
+      "category": "troubleshooting",
+      "tags": [
+        "troubleshooting",
+        "dns",
+        "tls",
+        "nginx",
+        "backend",
+        "database",
+        "debug"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-015",
+        "doc-017",
+        "doc-044",
+        "doc-045",
+        "doc-046",
+        "doc-010"
+      ]
+    },
+    {
       "id": "doc-041",
       "name": "small-web-apps.md",
       "title": "Architektura małych aplikacji webowych",
+      "slug": "architektura-malych-aplikacji-webowych",
       "path": "md/pl/web/architecture/small-web-apps.md",
       "category": "web/architecture",
       "tags": [
@@ -852,6 +1160,7 @@
         "frontend"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-008",
         "doc-010",
@@ -862,9 +1171,35 @@
       ]
     },
     {
+      "id": "doc-046",
+      "name": "browser-devtools.md",
+      "title": "Browser DevTools — kompendium praktyczne",
+      "slug": "browser-devtools-kompendium-praktyczne",
+      "path": "md/pl/web/frontend/browser-devtools.md",
+      "category": "web/frontend",
+      "tags": [
+        "devtools",
+        "browser",
+        "network",
+        "console",
+        "debug"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-021",
+        "doc-042",
+        "doc-048",
+        "doc-026",
+        "doc-049",
+        "doc-057"
+      ]
+    },
+    {
       "id": "doc-042",
       "name": "html-css.md",
       "title": "Nowoczesny HTML i CSS",
+      "slug": "nowoczesny-html-i-css",
       "path": "md/pl/web/frontend/html-css.md",
       "category": "web/frontend",
       "tags": [
@@ -874,6 +1209,7 @@
         "web"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-021",
         "doc-043",
@@ -887,6 +1223,7 @@
       "id": "doc-043",
       "name": "ux-accessibility.md",
       "title": "UX i dostępność dla developera",
+      "slug": "ux-i-dostepnosc-dla-developera",
       "path": "md/pl/web/frontend/ux-accessibility.md",
       "category": "web/frontend",
       "tags": [
@@ -896,6 +1233,7 @@
         "wcag"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-042",
         "doc-021",
@@ -905,97 +1243,10 @@
       ]
     },
     {
-      "id": "doc-044",
-      "name": "http-https-tls.md",
-      "title": "HTTP, HTTPS i TLS",
-      "path": "md/pl/web/protocols/http-https-tls.md",
-      "category": "web/protocols",
-      "tags": [
-        "http",
-        "https",
-        "tls",
-        "ssl"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-017",
-        "doc-045",
-        "doc-026",
-        "doc-051",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-045",
-      "name": "nginx-reverse-proxy.md",
-      "title": "nginx i reverse proxy",
-      "path": "md/pl/web/servers/nginx-reverse-proxy.md",
-      "category": "web/servers",
-      "tags": [
-        "nginx",
-        "reverse proxy",
-        "web server"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-017",
-        "doc-044",
-        "doc-012",
-        "doc-025",
-        "doc-041",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-046",
-      "name": "browser-devtools.md",
-      "title": "Browser DevTools — kompendium praktyczne",
-      "path": "md/pl/web/frontend/browser-devtools.md",
-      "category": "web/frontend",
-      "tags": [
-        "devtools",
-        "browser",
-        "network",
-        "console",
-        "debug"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-021",
-        "doc-042",
-        "doc-048",
-        "doc-026",
-        "doc-049",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-047",
-      "name": "technical-seo.md",
-      "title": "Technical SEO — kompendium praktyczne",
-      "path": "md/pl/web/seo/technical-seo.md",
-      "category": "web/seo",
-      "tags": [
-        "seo",
-        "technical seo",
-        "robots",
-        "sitemap",
-        "canonical",
-        "cwv"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-017",
-        "doc-042",
-        "doc-048",
-        "doc-053",
-        "doc-046"
-      ]
-    },
-    {
       "id": "doc-048",
       "name": "web-performance.md",
       "title": "Web Performance — kompendium",
+      "slug": "web-performance-kompendium",
       "path": "md/pl/web/performance/web-performance.md",
       "category": "web/performance",
       "tags": [
@@ -1008,358 +1259,21 @@
         "images"
       ],
       "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-042",
         "doc-046",
         "doc-047",
         "doc-053",
         "doc-041"
-      ]
-    },
-    {
-      "id": "doc-049",
-      "name": "software-testing.md",
-      "title": "Testowanie oprogramowania — kompendium",
-      "path": "md/pl/testing/software-testing.md",
-      "category": "testing",
-      "tags": [
-        "testing",
-        "unit",
-        "integration",
-        "e2e",
-        "playwright",
-        "go test"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-020",
-        "doc-021",
-        "doc-022",
-        "doc-011",
-        "doc-046",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-050",
-      "name": "regular-expressions.md",
-      "title": "Wyrażenia regularne (Regex) — kompendium praktyczne",
-      "path": "md/pl/tools/regex/regular-expressions.md",
-      "category": "tools/regex",
-      "tags": [
-        "regex",
-        "regexp",
-        "grep",
-        "sed",
-        "javascript",
-        "python"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-019",
-        "doc-023",
-        "doc-031",
-        "doc-046",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-051",
-      "name": "oauth-oidc-jwt-sessions.md",
-      "title": "OAuth 2.0, OpenID Connect, JWT i sesje",
-      "path": "md/pl/security/authentication/oauth-oidc-jwt-sessions.md",
-      "category": "security/authentication",
-      "tags": [
-        "oauth",
-        "oidc",
-        "jwt",
-        "session",
-        "authentication",
-        "authorization",
-        "pkce"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-008",
-        "doc-026",
-        "doc-044",
-        "doc-024",
-        "doc-041"
-      ]
-    },
-    {
-      "id": "doc-052",
-      "name": "systemd-cron-schedulers.md",
-      "title": "systemd, cron i schedulery",
-      "path": "md/pl/devops/systemd-cron-schedulers.md",
-      "category": "devops",
-      "tags": [
-        "systemd",
-        "cron",
-        "timer",
-        "scheduler",
-        "service"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-031",
-        "doc-033",
-        "doc-015",
-        "doc-011",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-053",
-      "name": "web-analytics-tagging.md",
-      "title": "Web analytics i tagging — kompendium praktyczne",
-      "path": "md/pl/digital/web-analytics-tagging.md",
-      "category": "digital",
-      "tags": [
-        "analytics",
-        "tagging",
-        "ga4",
-        "gtm",
-        "datalayer",
-        "utm"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-047",
-        "doc-048",
-        "doc-054",
-        "doc-055",
-        "doc-046"
-      ]
-    },
-    {
-      "id": "doc-054",
-      "name": "ab-testing-experiments.md",
-      "title": "A/B testing i eksperymenty — kompendium praktyczne",
-      "path": "md/pl/digital/ab-testing-experiments.md",
-      "category": "digital",
-      "tags": [
-        "ab testing",
-        "experiments",
-        "conversion",
-        "mde",
-        "metrics"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-053",
-        "doc-043",
-        "doc-048",
-        "doc-049",
-        "doc-055"
-      ]
-    },
-    {
-      "id": "doc-055",
-      "name": "html-email-edm.md",
-      "title": "HTML email / EDM — kompendium praktyczne",
-      "path": "md/pl/digital/html-email-edm.md",
-      "category": "digital",
-      "tags": [
-        "email",
-        "html email",
-        "edm",
-        "outlook",
-        "newsletter"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-042",
-        "doc-043",
-        "doc-053",
-        "doc-054",
-        "doc-046"
-      ]
-    },
-    {
-      "id": "doc-056",
-      "name": "technical-documentation.md",
-      "title": "Dokumentowanie rozwiązań technicznych",
-      "path": "md/pl/architecture/technical-documentation.md",
-      "category": "architecture",
-      "tags": [
-        "documentation",
-        "readme",
-        "adr",
-        "rfc",
-        "runbook",
-        "openapi"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-013",
-        "doc-014",
-        "doc-011",
-        "doc-041",
-        "doc-049",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-057",
-      "name": "web-app-end-to-end-playbook.md",
-      "title": "Troubleshooting aplikacji webowej end-to-end",
-      "path": "md/pl/troubleshooting/web-app-end-to-end-playbook.md",
-      "category": "troubleshooting",
-      "tags": [
-        "troubleshooting",
-        "dns",
-        "tls",
-        "nginx",
-        "backend",
-        "database",
-        "debug"
-      ],
-      "language": "pl",
-      "related": [
-        "doc-015",
-        "doc-017",
-        "doc-044",
-        "doc-045",
-        "doc-046",
-        "doc-010"
-      ]
-    },
-    {
-      "id": "doc-016",
-      "name": "computer-networks-for-developers.md",
-      "title": "Computer Networks for Developers",
-      "path": "md/en/networking/computer-networks-for-developers.md",
-      "category": "networking",
-      "tags": [
-        "network",
-        "tcp",
-        "udp",
-        "ip",
-        "vlan"
-      ],
-      "language": "en",
-      "related": [
-        "doc-017",
-        "doc-018",
-        "doc-025",
-        "doc-033",
-        "doc-034"
-      ]
-    },
-    {
-      "id": "doc-017",
-      "name": "dns-domains-routing.md",
-      "title": "DNS, Domains and Internet Routing",
-      "path": "md/en/networking/dns-domains-routing.md",
-      "category": "networking",
-      "tags": [
-        "dns",
-        "domain",
-        "domains",
-        "routing"
-      ],
-      "language": "en",
-      "related": [
-        "doc-016",
-        "doc-044",
-        "doc-045",
-        "doc-047",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-018",
-      "name": "ssh-remote-administration.md",
-      "title": "SSH and Remote Administration",
-      "path": "md/en/networking/ssh-remote-administration.md",
-      "category": "networking",
-      "tags": [
-        "ssh",
-        "scp",
-        "sftp",
-        "rsync",
-        "tunnel"
-      ],
-      "language": "en",
-      "related": [
-        "doc-016",
-        "doc-025",
-        "doc-033",
-        "doc-034",
-        "doc-052"
-      ]
-    },
-    {
-      "id": "doc-041",
-      "name": "small-web-apps.md",
-      "title": "Architecture of Small Web Applications",
-      "path": "md/en/web/architecture/small-web-apps.md",
-      "category": "web/architecture",
-      "tags": [
-        "architecture",
-        "web",
-        "backend",
-        "frontend"
-      ],
-      "language": "en",
-      "related": [
-        "doc-008",
-        "doc-010",
-        "doc-020",
-        "doc-021",
-        "doc-022",
-        "doc-045"
-      ]
-    },
-    {
-      "id": "doc-042",
-      "name": "html-css.md",
-      "title": "Modern HTML and CSS",
-      "path": "md/en/web/frontend/html-css.md",
-      "category": "web/frontend",
-      "tags": [
-        "html",
-        "css",
-        "frontend",
-        "web"
-      ],
-      "language": "en",
-      "related": [
-        "doc-021",
-        "doc-043",
-        "doc-046",
-        "doc-047",
-        "doc-048",
-        "doc-055"
-      ]
-    },
-    {
-      "id": "doc-043",
-      "name": "ux-accessibility.md",
-      "title": "UX and Accessibility for Developers",
-      "path": "md/en/web/frontend/ux-accessibility.md",
-      "category": "web/frontend",
-      "tags": [
-        "ux",
-        "accessibility",
-        "a11y",
-        "wcag"
-      ],
-      "language": "en",
-      "related": [
-        "doc-042",
-        "doc-021",
-        "doc-046",
-        "doc-048",
-        "doc-054"
       ]
     },
     {
       "id": "doc-044",
       "name": "http-https-tls.md",
-      "title": "HTTP, HTTPS and TLS",
-      "path": "md/en/web/protocols/http-https-tls.md",
+      "title": "HTTP, HTTPS i TLS",
+      "slug": "http-https-i-tls",
+      "path": "md/pl/web/protocols/http-https-tls.md",
       "category": "web/protocols",
       "tags": [
         "http",
@@ -1367,7 +1281,8 @@
         "tls",
         "ssl"
       ],
-      "language": "en",
+      "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-017",
         "doc-045",
@@ -1377,54 +1292,11 @@
       ]
     },
     {
-      "id": "doc-045",
-      "name": "nginx-reverse-proxy.md",
-      "title": "nginx and Reverse Proxy",
-      "path": "md/en/web/servers/nginx-reverse-proxy.md",
-      "category": "web/servers",
-      "tags": [
-        "nginx",
-        "reverse proxy",
-        "web server"
-      ],
-      "language": "en",
-      "related": [
-        "doc-017",
-        "doc-044",
-        "doc-012",
-        "doc-025",
-        "doc-041",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-046",
-      "name": "browser-devtools.md",
-      "title": "Browser DevTools — Practical Handbook",
-      "path": "md/en/web/frontend/browser-devtools.md",
-      "category": "web/frontend",
-      "tags": [
-        "devtools",
-        "browser",
-        "network",
-        "console",
-        "debug"
-      ],
-      "language": "en",
-      "related": [
-        "doc-021",
-        "doc-042",
-        "doc-048",
-        "doc-026",
-        "doc-049",
-        "doc-057"
-      ]
-    },
-    {
       "id": "doc-047",
       "name": "technical-seo.md",
-      "title": "Technical SEO — Practical Handbook",
-      "path": "md/en/web/seo/technical-seo.md",
+      "title": "Technical SEO — kompendium praktyczne",
+      "slug": "technical-seo-kompendium-praktyczne",
+      "path": "md/pl/web/seo/technical-seo.md",
       "category": "web/seo",
       "tags": [
         "seo",
@@ -1434,7 +1306,8 @@
         "canonical",
         "cwv"
       ],
-      "language": "en",
+      "language": "pl",
+      "audience": "standard",
       "related": [
         "doc-017",
         "doc-042",
@@ -1444,1013 +1317,33 @@
       ]
     },
     {
-      "id": "doc-048",
-      "name": "web-performance.md",
-      "title": "Web Performance",
-      "path": "md/en/web/performance/web-performance.md",
-      "category": "web/performance",
+      "id": "doc-045",
+      "name": "nginx-reverse-proxy.md",
+      "title": "nginx i reverse proxy",
+      "slug": "nginx-i-reverse-proxy",
+      "path": "md/pl/web/servers/nginx-reverse-proxy.md",
+      "category": "web/servers",
       "tags": [
-        "performance",
-        "cwv",
-        "lcp",
-        "inp",
-        "cls",
-        "cache",
-        "images"
-      ],
-      "language": "en",
-      "related": [
-        "doc-042",
-        "doc-046",
-        "doc-047",
-        "doc-053",
-        "doc-041"
-      ]
-    },
-    {
-      "id": "doc-011",
-      "name": "ci-cd-github-actions.md",
-      "title": "CI/CD and GitHub Actions",
-      "path": "md/en/devops/ci-cd-github-actions.md",
-      "category": "devops",
-      "tags": [
-        "ci",
-        "cd",
-        "github",
-        "actions"
-      ],
-      "language": "en",
-      "related": [
-        "doc-013",
-        "doc-014",
-        "doc-012",
-        "doc-049",
-        "doc-052",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-012",
-      "name": "docker.md",
-      "title": "Docker — Practical Handbook",
-      "path": "md/en/devops/docker.md",
-      "category": "devops",
-      "tags": [
-        "docker",
-        "containers",
-        "devops"
-      ],
-      "language": "en",
-      "related": [
-        "doc-011",
-        "doc-015",
-        "doc-025",
-        "doc-033",
-        "doc-041",
-        "doc-045"
-      ]
-    },
-    {
-      "id": "doc-013",
-      "name": "git-team-workflows.md",
-      "title": "Git in Team Workflows",
-      "path": "md/en/devops/git-team-workflows.md",
-      "category": "devops",
-      "tags": [
-        "git",
-        "branch",
-        "merge",
-        "rebase"
-      ],
-      "language": "en",
-      "related": [
-        "doc-014",
-        "doc-011",
-        "doc-039",
-        "doc-049",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-014",
-      "name": "github.md",
-      "title": "GitHub — Practical Handbook",
-      "path": "md/en/devops/github.md",
-      "category": "devops",
-      "tags": [
-        "github",
-        "git",
-        "repo",
-        "repository"
-      ],
-      "language": "en",
-      "related": [
-        "doc-013",
-        "doc-011",
-        "doc-039",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-015",
-      "name": "logging-monitoring-troubleshooting.md",
-      "title": "Logging, Monitoring and Troubleshooting",
-      "path": "md/en/devops/logging-monitoring-troubleshooting.md",
-      "category": "devops",
-      "tags": [
-        "logs",
-        "monitoring",
-        "debug",
-        "troubleshooting"
-      ],
-      "language": "en",
-      "related": [
-        "doc-052",
-        "doc-057",
-        "doc-011",
-        "doc-012",
-        "doc-046",
-        "doc-033"
-      ]
-    },
-    {
-      "id": "doc-024",
-      "name": "cybersecurity-basics-pentesting.md",
-      "title": "Cybersecurity and Pentesting — Fundamentals",
-      "path": "md/en/security/cybersecurity-basics-pentesting.md",
-      "category": "security",
-      "tags": [
-        "security",
-        "cybersecurity",
-        "pentest",
-        "beef",
-        "burp",
-        "owasp",
-        "nmap"
-      ],
-      "language": "en",
-      "related": [
-        "doc-025",
-        "doc-026",
-        "doc-051",
-        "doc-044",
-        "doc-046",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-025",
-      "name": "linux-server-security.md",
-      "title": "Linux Permissions and Server Security",
-      "path": "md/en/security/linux-server-security.md",
-      "category": "security",
-      "tags": [
-        "linux",
-        "security",
-        "permissions",
-        "ssh",
-        "firewall"
-      ],
-      "language": "en",
-      "related": [
-        "doc-018",
-        "doc-024",
-        "doc-033",
-        "doc-034",
-        "doc-052",
-        "doc-012"
-      ]
-    },
-    {
-      "id": "doc-026",
-      "name": "web-security.md",
-      "title": "Web Application Security for Developers",
-      "path": "md/en/security/web-security.md",
-      "category": "security",
-      "tags": [
-        "web",
-        "security",
-        "owasp",
-        "xss",
-        "csrf",
-        "sql injection"
-      ],
-      "language": "en",
-      "related": [
-        "doc-024",
-        "doc-051",
-        "doc-044",
-        "doc-046",
-        "doc-008",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-051",
-      "name": "oauth-oidc-jwt-sessions.md",
-      "title": "OAuth 2.0, OpenID Connect, JWT and Sessions",
-      "path": "md/en/security/authentication/oauth-oidc-jwt-sessions.md",
-      "category": "security/authentication",
-      "tags": [
-        "oauth",
-        "oidc",
-        "jwt",
-        "session",
-        "authentication",
-        "authorization",
-        "pkce"
-      ],
-      "language": "en",
-      "related": [
-        "doc-008",
-        "doc-026",
-        "doc-044",
-        "doc-024",
-        "doc-041"
-      ]
-    },
-    {
-      "id": "doc-052",
-      "name": "systemd-cron-schedulers.md",
-      "title": "systemd, cron and Schedulers",
-      "path": "md/en/devops/systemd-cron-schedulers.md",
-      "category": "devops",
-      "tags": [
-        "systemd",
-        "cron",
-        "timer",
-        "scheduler",
-        "service"
-      ],
-      "language": "en",
-      "related": [
-        "doc-031",
-        "doc-033",
-        "doc-015",
-        "doc-011",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-019",
-      "name": "c-reading-building-debugging.md",
-      "title": "C — Reading, Building and Debugging Projects",
-      "path": "md/en/programming/c/c-reading-building-debugging.md",
-      "category": "programming/c",
-      "tags": [
-        "c",
-        "gcc",
-        "clang",
-        "gdb"
-      ],
-      "language": "en",
-      "related": [
-        "doc-031",
-        "doc-039",
-        "doc-049",
-        "doc-050",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-020",
-      "name": "go-reading-code.md",
-      "title": "Go — Reading Code",
-      "path": "md/en/programming/go/go-reading-code.md",
-      "category": "programming/go",
-      "tags": [
-        "go",
-        "golang"
-      ],
-      "language": "en",
-      "related": [
-        "doc-008",
-        "doc-010",
-        "doc-011",
-        "doc-012",
-        "doc-041",
-        "doc-049"
-      ]
-    },
-    {
-      "id": "doc-021",
-      "name": "javascript-guide.md",
-      "title": "JavaScript — From Basics to Modern Front-End",
-      "path": "md/en/programming/javascript/javascript-guide.md",
-      "category": "programming/javascript",
-      "tags": [
-        "js",
-        "javascript",
-        "frontend"
-      ],
-      "language": "en",
-      "related": [
-        "doc-022",
-        "doc-042",
-        "doc-043",
-        "doc-046",
-        "doc-049",
-        "doc-041"
-      ]
-    },
-    {
-      "id": "doc-022",
-      "name": "nodejs.md",
-      "title": "Node.js — Practical Handbook",
-      "path": "md/en/programming/javascript/nodejs.md",
-      "category": "programming/javascript",
-      "tags": [
-        "node",
-        "nodejs",
-        "javascript"
-      ],
-      "language": "en",
-      "related": [
-        "doc-021",
-        "doc-008",
-        "doc-010",
-        "doc-012",
-        "doc-049",
-        "doc-041"
-      ]
-    },
-    {
-      "id": "doc-023",
-      "name": "python-basics.md",
-      "title": "Python — Practical Handbook",
-      "path": "md/en/programming/python/python-basics.md",
-      "category": "programming/python",
-      "tags": [
-        "python"
-      ],
-      "language": "en",
-      "related": [
-        "doc-008",
-        "doc-009",
-        "doc-031",
-        "doc-039",
-        "doc-049",
-        "doc-050"
-      ]
-    },
-    {
-      "id": "doc-027",
-      "name": "debian-shell.md",
-      "title": "Debian — Practical Shell Handbook",
-      "path": "md/en/shell/debian/debian-shell.md",
-      "category": "shell/debian",
-      "tags": [
-        "debian",
-        "shell",
-        "bash"
-      ],
-      "language": "en",
-      "related": [
-        "doc-028",
-        "doc-031",
-        "doc-033",
-        "doc-038",
-        "doc-040"
-      ]
-    },
-    {
-      "id": "doc-028",
-      "name": "debian-shells-overview.md",
-      "title": "Shells in Debian",
-      "path": "md/en/shell/debian/debian-shells-overview.md",
-      "category": "shell/debian",
-      "tags": [
-        "debian",
-        "shell",
-        "bash",
-        "zsh"
-      ],
-      "language": "en",
-      "related": [
-        "doc-027",
-        "doc-031",
-        "doc-033",
-        "doc-038"
-      ]
-    },
-    {
-      "id": "doc-029",
-      "name": "freebsd-shell.md",
-      "title": "FreeBSD — Practical Shell Handbook",
-      "path": "md/en/shell/freebsd/freebsd-shell.md",
-      "category": "shell/freebsd",
-      "tags": [
-        "freebsd",
-        "shell",
-        "sh",
-        "tcsh"
-      ],
-      "language": "en",
-      "related": [
-        "doc-030",
-        "doc-031",
-        "doc-034",
-        "doc-038",
-        "doc-040"
-      ]
-    },
-    {
-      "id": "doc-030",
-      "name": "freebsd-shells-overview.md",
-      "title": "Shells in FreeBSD",
-      "path": "md/en/shell/freebsd/freebsd-shells-overview.md",
-      "category": "shell/freebsd",
-      "tags": [
-        "freebsd",
-        "shell",
-        "sh",
-        "tcsh"
-      ],
-      "language": "en",
-      "related": [
-        "doc-029",
-        "doc-031",
-        "doc-034",
-        "doc-038"
-      ]
-    },
-    {
-      "id": "doc-031",
-      "name": "shell-scripting.md",
-      "title": "Shell Scripting — Debian and FreeBSD",
-      "path": "md/en/shell/scripting/shell-scripting.md",
-      "category": "shell/scripting",
-      "tags": [
-        "shell",
-        "bash",
-        "scripting",
-        "script"
-      ],
-      "language": "en",
-      "related": [
-        "doc-027",
-        "doc-029",
-        "doc-052",
-        "doc-050",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-032",
-      "name": "termux.md",
-      "title": "Termux — Knowledge Handbook",
-      "path": "md/en/systems/android/termux.md",
-      "category": "systems/android",
-      "tags": [
-        "android",
-        "termux",
-        "linux"
-      ],
-      "language": "en",
-      "related": [
-        "doc-023",
-        "doc-027",
-        "doc-031",
-        "doc-035",
-        "doc-038"
-      ]
-    },
-    {
-      "id": "doc-033",
-      "name": "debian-desktop-server.md",
-      "title": "Debian 13 — Desktop + Server Handbook",
-      "path": "md/en/systems/debian/debian-desktop-server.md",
-      "category": "systems/debian",
-      "tags": [
-        "debian",
-        "linux",
-        "gnome",
-        "kde",
-        "server"
-      ],
-      "language": "en",
-      "related": [
-        "doc-027",
-        "doc-018",
-        "doc-025",
-        "doc-012",
-        "doc-052"
-      ]
-    },
-    {
-      "id": "doc-034",
-      "name": "freebsd-server.md",
-      "title": "FreeBSD as a Server — Administrator Handbook",
-      "path": "md/en/systems/freebsd/freebsd-server.md",
-      "category": "systems/freebsd",
-      "tags": [
-        "freebsd",
-        "server",
-        "unix"
-      ],
-      "language": "en",
-      "related": [
-        "doc-029",
-        "doc-018",
-        "doc-016",
-        "doc-025",
-        "doc-052"
-      ]
-    },
-    {
-      "id": "doc-035",
-      "name": "linux-distributions.md",
-      "title": "Popular Linux Distributions",
-      "path": "md/en/systems/linux/linux-distributions.md",
-      "category": "systems/linux",
-      "tags": [
-        "linux",
-        "distributions",
-        "distros"
-      ],
-      "language": "en",
-      "related": [
-        "doc-033",
-        "doc-025",
-        "doc-036",
-        "doc-027"
-      ]
-    },
-    {
-      "id": "doc-036",
-      "name": "window-managers.md",
-      "title": "Linux Window Managers",
-      "path": "md/en/systems/linux/window-managers.md",
-      "category": "systems/linux",
-      "tags": [
-        "linux",
-        "window manager",
-        "wm"
-      ],
-      "language": "en",
-      "related": [
-        "doc-035",
-        "doc-033",
-        "doc-038",
-        "doc-039"
-      ]
-    },
-    {
-      "id": "doc-037",
-      "name": "windows-server-administration.md",
-      "title": "Windows Server in the Enterprise — Administrator Fundamentals",
-      "path": "md/en/systems/windows/windows-server-administration.md",
-      "category": "systems/windows",
-      "tags": [
-        "windows",
-        "server",
-        "active directory",
-        "administration"
-      ],
-      "language": "en",
-      "related": [
-        "doc-016",
-        "doc-018",
-        "doc-025",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-038",
-      "name": "vi-vim-neovim.md",
-      "title": "vi / Vim / gVim / Neovim — Practical Text Editing Handbook",
-      "path": "md/en/tools/editors/vi-vim-neovim.md",
-      "category": "tools/editors",
-      "tags": [
-        "vi",
-        "vim",
-        "gvim",
-        "neovim",
-        "editor"
-      ],
-      "language": "en",
-      "related": [
-        "doc-027",
-        "doc-029",
-        "doc-031",
-        "doc-039",
-        "doc-040"
-      ]
-    },
-    {
-      "id": "doc-039",
-      "name": "vscode.md",
-      "title": "Visual Studio Code — Knowledge Handbook",
-      "path": "md/en/tools/editors/vscode.md",
-      "category": "tools/editors",
-      "tags": [
-        "vscode",
-        "editor",
-        "copilot",
-        "codex"
-      ],
-      "language": "en",
-      "related": [
-        "doc-020",
-        "doc-021",
-        "doc-023",
-        "doc-038",
-        "doc-014",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-040",
-      "name": "midnight-commander.md",
-      "title": "Midnight Commander — Knowledge Handbook",
-      "path": "md/en/tools/file-managers/midnight-commander.md",
-      "category": "tools/file-managers",
-      "tags": [
-        "mc",
-        "midnight commander",
-        "file manager"
-      ],
-      "language": "en",
-      "related": [
-        "doc-027",
-        "doc-029",
-        "doc-038",
-        "doc-018"
-      ]
-    },
-    {
-      "id": "doc-050",
-      "name": "regular-expressions.md",
-      "title": "Regular Expressions (Regex) — Practical Handbook",
-      "path": "md/en/tools/regex/regular-expressions.md",
-      "category": "tools/regex",
-      "tags": [
-        "regex",
-        "regexp",
-        "grep",
-        "sed",
-        "javascript",
-        "python"
-      ],
-      "language": "en",
-      "related": [
-        "doc-019",
-        "doc-023",
-        "doc-031",
-        "doc-046",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-003",
-      "name": "alibaba-cloud.md",
-      "title": "Alibaba Cloud — Practical Handbook",
-      "path": "md/en/cloud/alibaba-cloud.md",
-      "category": "cloud",
-      "tags": [
-        "cloud",
-        "alibaba"
-      ],
-      "language": "en",
-      "related": [
-        "doc-004",
-        "doc-005",
-        "doc-006",
-        "doc-007",
-        "doc-016"
-      ]
-    },
-    {
-      "id": "doc-004",
-      "name": "aws.md",
-      "title": "Amazon Web Services (AWS) — Practical Handbook",
-      "path": "md/en/cloud/aws.md",
-      "category": "cloud",
-      "tags": [
-        "cloud",
-        "aws",
-        "amazon"
-      ],
-      "language": "en",
-      "related": [
-        "doc-003",
-        "doc-005",
-        "doc-006",
-        "doc-007",
-        "doc-016"
-      ]
-    },
-    {
-      "id": "doc-005",
-      "name": "azure.md",
-      "title": "Microsoft Azure — Practical Handbook",
-      "path": "md/en/cloud/azure.md",
-      "category": "cloud",
-      "tags": [
-        "cloud",
-        "azure",
-        "microsoft"
-      ],
-      "language": "en",
-      "related": [
-        "doc-003",
-        "doc-004",
-        "doc-006",
-        "doc-007",
-        "doc-016"
-      ]
-    },
-    {
-      "id": "doc-006",
-      "name": "gcp.md",
-      "title": "Google Cloud Platform (GCP) — Practical Handbook",
-      "path": "md/en/cloud/gcp.md",
-      "category": "cloud",
-      "tags": [
-        "cloud",
-        "gcp",
-        "google"
-      ],
-      "language": "en",
-      "related": [
-        "doc-003",
-        "doc-004",
-        "doc-005",
-        "doc-007",
-        "doc-016"
-      ]
-    },
-    {
-      "id": "doc-007",
-      "name": "oci.md",
-      "title": "Oracle Cloud Infrastructure (OCI) — Practical Handbook",
-      "path": "md/en/cloud/oci.md",
-      "category": "cloud",
-      "tags": [
-        "cloud",
-        "oci",
-        "oracle"
-      ],
-      "language": "en",
-      "related": [
-        "doc-003",
-        "doc-004",
-        "doc-005",
-        "doc-006",
-        "doc-016"
-      ]
-    },
-    {
-      "id": "doc-008",
-      "name": "api-integrations.md",
-      "title": "APIs and System Integrations — Practical Handbook",
-      "path": "md/en/data-api/api-integrations.md",
-      "category": "data-api",
-      "tags": [
-        "api",
-        "rest",
-        "json",
-        "webhook",
-        "oauth"
-      ],
-      "language": "en",
-      "related": [
-        "doc-009",
-        "doc-010",
-        "doc-020",
-        "doc-022",
-        "doc-051",
-        "doc-041"
-      ]
-    },
-    {
-      "id": "doc-009",
-      "name": "data-formats-json-yaml-toml-xml.md",
-      "title": "JSON, YAML, TOML and XML — Data and Configuration Handbook",
-      "path": "md/en/data-api/data-formats-json-yaml-toml-xml.md",
-      "category": "data-api",
-      "tags": [
-        "json",
-        "yaml",
-        "toml",
-        "xml"
-      ],
-      "language": "en",
-      "related": [
-        "doc-008",
-        "doc-010",
-        "doc-020",
-        "doc-021",
-        "doc-023"
-      ]
-    },
-    {
-      "id": "doc-010",
-      "name": "postgresql-sql.md",
-      "title": "SQL and PostgreSQL for Developers — Handbook",
-      "path": "md/en/data-api/postgresql-sql.md",
-      "category": "data-api",
-      "tags": [
-        "sql",
-        "postgres",
-        "postgresql",
-        "database"
-      ],
-      "language": "en",
-      "related": [
-        "doc-008",
-        "doc-020",
-        "doc-022",
-        "doc-041",
-        "doc-049",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-001",
-      "name": "hermes-agent.md",
-      "title": "Hermes Agent — User Handbook",
-      "path": "md/en/ai/hermes-agent.md",
-      "category": "ai",
-      "tags": [
-        "ai",
-        "hermes",
-        "agent"
-      ],
-      "language": "en",
-      "related": [
-        "doc-002",
-        "doc-008",
-        "doc-020",
-        "doc-023",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-002",
-      "name": "prompting-ai.md",
-      "title": "AI Prompting — Practical Handbook",
-      "path": "md/en/ai/prompting-ai.md",
-      "category": "ai",
-      "tags": [
-        "ai",
-        "prompt",
-        "prompting",
-        "llm"
-      ],
-      "language": "en",
-      "related": [
-        "doc-001",
-        "doc-008",
-        "doc-020",
-        "doc-023",
-        "doc-056"
-      ]
-    },
-    {
-      "id": "doc-049",
-      "name": "software-testing.md",
-      "title": "Software Testing — Handbook",
-      "path": "md/en/testing/software-testing.md",
-      "category": "testing",
-      "tags": [
-        "testing",
-        "unit",
-        "integration",
-        "e2e",
-        "playwright",
-        "go test"
-      ],
-      "language": "en",
-      "related": [
-        "doc-020",
-        "doc-021",
-        "doc-022",
-        "doc-011",
-        "doc-046",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-053",
-      "name": "web-analytics-tagging.md",
-      "title": "Web Analytics and Tagging — Practical Handbook",
-      "path": "md/en/digital/web-analytics-tagging.md",
-      "category": "digital",
-      "tags": [
-        "analytics",
-        "tagging",
-        "ga4",
-        "gtm",
-        "datalayer",
-        "utm"
-      ],
-      "language": "en",
-      "related": [
-        "doc-047",
-        "doc-048",
-        "doc-054",
-        "doc-055",
-        "doc-046"
-      ]
-    },
-    {
-      "id": "doc-054",
-      "name": "ab-testing-experiments.md",
-      "title": "A/B Testing and Experiments — Practical Handbook",
-      "path": "md/en/digital/ab-testing-experiments.md",
-      "category": "digital",
-      "tags": [
-        "ab testing",
-        "experiments",
-        "conversion",
-        "mde",
-        "metrics"
-      ],
-      "language": "en",
-      "related": [
-        "doc-053",
-        "doc-043",
-        "doc-048",
-        "doc-049",
-        "doc-055"
-      ]
-    },
-    {
-      "id": "doc-055",
-      "name": "html-email-edm.md",
-      "title": "HTML Email / EDM — Practical Handbook",
-      "path": "md/en/digital/html-email-edm.md",
-      "category": "digital",
-      "tags": [
-        "email",
-        "html email",
-        "edm",
-        "outlook",
-        "newsletter"
-      ],
-      "language": "en",
-      "related": [
-        "doc-042",
-        "doc-043",
-        "doc-053",
-        "doc-054",
-        "doc-046"
-      ]
-    },
-    {
-      "id": "doc-056",
-      "name": "technical-documentation.md",
-      "title": "Documenting Technical Solutions — Handbook",
-      "path": "md/en/architecture/technical-documentation.md",
-      "category": "architecture",
-      "tags": [
-        "documentation",
-        "readme",
-        "adr",
-        "rfc",
-        "runbook",
-        "openapi"
-      ],
-      "language": "en",
-      "related": [
-        "doc-013",
-        "doc-014",
-        "doc-011",
-        "doc-041",
-        "doc-049",
-        "doc-057"
-      ]
-    },
-    {
-      "id": "doc-057",
-      "name": "web-app-end-to-end-playbook.md",
-      "title": "End-to-End Web Application Troubleshooting — Playbook",
-      "path": "md/en/troubleshooting/web-app-end-to-end-playbook.md",
-      "category": "troubleshooting",
-      "tags": [
-        "troubleshooting",
-        "dns",
-        "tls",
         "nginx",
-        "backend",
-        "database",
-        "debug"
+        "reverse proxy",
+        "web server"
       ],
-      "language": "en",
+      "language": "pl",
+      "audience": "standard",
       "related": [
-        "doc-015",
         "doc-017",
         "doc-044",
-        "doc-045",
-        "doc-046",
-        "doc-010"
+        "doc-012",
+        "doc-025",
+        "doc-041",
+        "doc-057"
       ]
     },
     {
       "id": "junior-001",
       "name": "01-jak-dziala-komputer.md",
       "title": "01. Jak działa komputer?",
+      "slug": "01-jak-dziala-komputer",
       "path": "md/pl/junior/01-jak-dziala-komputer.md",
       "category": "junior",
       "tags": [
@@ -2468,6 +1361,7 @@
       "id": "junior-002",
       "name": "02-pliki-i-katalogi.md",
       "title": "02. Pliki i katalogi",
+      "slug": "02-pliki-i-katalogi",
       "path": "md/pl/junior/02-pliki-i-katalogi.md",
       "category": "junior",
       "tags": [
@@ -2484,6 +1378,7 @@
       "id": "junior-003",
       "name": "03-terminal-bez-strachu.md",
       "title": "03. Terminal bez strachu",
+      "slug": "03-terminal-bez-strachu",
       "path": "md/pl/junior/03-terminal-bez-strachu.md",
       "category": "junior",
       "tags": [
@@ -2500,6 +1395,7 @@
       "id": "junior-004",
       "name": "04-html-pierwsza-strona.md",
       "title": "04. HTML — pierwsza strona",
+      "slug": "04-html-pierwsza-strona",
       "path": "md/pl/junior/04-html-pierwsza-strona.md",
       "category": "junior",
       "tags": [
@@ -2515,6 +1411,7 @@
       "id": "junior-005",
       "name": "05-css-nadajemy-styl.md",
       "title": "05. CSS — nadajemy styl",
+      "slug": "05-css-nadajemy-styl",
       "path": "md/pl/junior/05-css-nadajemy-styl.md",
       "category": "junior",
       "tags": [
@@ -2525,6 +1422,1342 @@
       ],
       "language": "pl",
       "audience": "junior"
+    },
+    {
+      "id": "doc-001",
+      "name": "hermes-agent.md",
+      "title": "Hermes Agent — User Handbook",
+      "slug": "hermes-agent-user-handbook",
+      "path": "md/en/ai/hermes-agent.md",
+      "category": "ai",
+      "tags": [
+        "ai",
+        "hermes",
+        "agent"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-002",
+        "doc-008",
+        "doc-020",
+        "doc-023",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-002",
+      "name": "prompting-ai.md",
+      "title": "AI Prompting — Practical Handbook",
+      "slug": "ai-prompting-practical-handbook",
+      "path": "md/en/ai/prompting-ai.md",
+      "category": "ai",
+      "tags": [
+        "ai",
+        "prompt",
+        "prompting",
+        "llm"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-001",
+        "doc-008",
+        "doc-020",
+        "doc-023",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-056",
+      "name": "technical-documentation.md",
+      "title": "Documenting Technical Solutions — Handbook",
+      "slug": "documenting-technical-solutions-handbook",
+      "path": "md/en/architecture/technical-documentation.md",
+      "category": "architecture",
+      "tags": [
+        "documentation",
+        "readme",
+        "adr",
+        "rfc",
+        "runbook",
+        "openapi"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-013",
+        "doc-014",
+        "doc-011",
+        "doc-041",
+        "doc-049",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-003",
+      "name": "alibaba-cloud.md",
+      "title": "Alibaba Cloud — Practical Handbook",
+      "slug": "alibaba-cloud-practical-handbook",
+      "path": "md/en/cloud/alibaba-cloud.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "alibaba"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-004",
+        "doc-005",
+        "doc-006",
+        "doc-007",
+        "doc-016"
+      ]
+    },
+    {
+      "id": "doc-004",
+      "name": "aws.md",
+      "title": "Amazon Web Services (AWS) — Practical Handbook",
+      "slug": "amazon-web-services-aws-practical-handbook",
+      "path": "md/en/cloud/aws.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "aws",
+        "amazon"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-003",
+        "doc-005",
+        "doc-006",
+        "doc-007",
+        "doc-016"
+      ]
+    },
+    {
+      "id": "doc-005",
+      "name": "azure.md",
+      "title": "Microsoft Azure — Practical Handbook",
+      "slug": "microsoft-azure-practical-handbook",
+      "path": "md/en/cloud/azure.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "azure",
+        "microsoft"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-003",
+        "doc-004",
+        "doc-006",
+        "doc-007",
+        "doc-016"
+      ]
+    },
+    {
+      "id": "doc-006",
+      "name": "gcp.md",
+      "title": "Google Cloud Platform (GCP) — Practical Handbook",
+      "slug": "google-cloud-platform-gcp-practical-handbook",
+      "path": "md/en/cloud/gcp.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "gcp",
+        "google"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-003",
+        "doc-004",
+        "doc-005",
+        "doc-007",
+        "doc-016"
+      ]
+    },
+    {
+      "id": "doc-007",
+      "name": "oci.md",
+      "title": "Oracle Cloud Infrastructure (OCI) — Practical Handbook",
+      "slug": "oracle-cloud-infrastructure-oci-practical-handbook",
+      "path": "md/en/cloud/oci.md",
+      "category": "cloud",
+      "tags": [
+        "cloud",
+        "oci",
+        "oracle"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-003",
+        "doc-004",
+        "doc-005",
+        "doc-006",
+        "doc-016"
+      ]
+    },
+    {
+      "id": "doc-008",
+      "name": "api-integrations.md",
+      "title": "APIs and System Integrations — Practical Handbook",
+      "slug": "apis-and-system-integrations-practical-handbook",
+      "path": "md/en/data-api/api-integrations.md",
+      "category": "data-api",
+      "tags": [
+        "api",
+        "rest",
+        "json",
+        "webhook",
+        "oauth"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-009",
+        "doc-010",
+        "doc-020",
+        "doc-022",
+        "doc-051",
+        "doc-041"
+      ]
+    },
+    {
+      "id": "doc-009",
+      "name": "data-formats-json-yaml-toml-xml.md",
+      "title": "JSON, YAML, TOML and XML — Data and Configuration Handbook",
+      "slug": "json-yaml-toml-and-xml-data-and-configuration-handbook",
+      "path": "md/en/data-api/data-formats-json-yaml-toml-xml.md",
+      "category": "data-api",
+      "tags": [
+        "json",
+        "yaml",
+        "toml",
+        "xml"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-008",
+        "doc-010",
+        "doc-020",
+        "doc-021",
+        "doc-023"
+      ]
+    },
+    {
+      "id": "doc-010",
+      "name": "postgresql-sql.md",
+      "title": "SQL and PostgreSQL for Developers — Handbook",
+      "slug": "sql-and-postgresql-for-developers-handbook",
+      "path": "md/en/data-api/postgresql-sql.md",
+      "category": "data-api",
+      "tags": [
+        "sql",
+        "postgres",
+        "postgresql",
+        "database"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-008",
+        "doc-020",
+        "doc-022",
+        "doc-041",
+        "doc-049",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-011",
+      "name": "ci-cd-github-actions.md",
+      "title": "CI/CD and GitHub Actions",
+      "slug": "ci-cd-and-github-actions",
+      "path": "md/en/devops/ci-cd-github-actions.md",
+      "category": "devops",
+      "tags": [
+        "ci",
+        "cd",
+        "github",
+        "actions"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-013",
+        "doc-014",
+        "doc-012",
+        "doc-049",
+        "doc-052",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-012",
+      "name": "docker.md",
+      "title": "Docker — Practical Handbook",
+      "slug": "docker-practical-handbook",
+      "path": "md/en/devops/docker.md",
+      "category": "devops",
+      "tags": [
+        "docker",
+        "containers",
+        "devops"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-011",
+        "doc-015",
+        "doc-025",
+        "doc-033",
+        "doc-041",
+        "doc-045"
+      ]
+    },
+    {
+      "id": "doc-013",
+      "name": "git-team-workflows.md",
+      "title": "Git in Team Workflows",
+      "slug": "git-in-team-workflows",
+      "path": "md/en/devops/git-team-workflows.md",
+      "category": "devops",
+      "tags": [
+        "git",
+        "branch",
+        "merge",
+        "rebase"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-014",
+        "doc-011",
+        "doc-039",
+        "doc-049",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-014",
+      "name": "github.md",
+      "title": "GitHub — Practical Handbook",
+      "slug": "github-practical-handbook",
+      "path": "md/en/devops/github.md",
+      "category": "devops",
+      "tags": [
+        "github",
+        "git",
+        "repo",
+        "repository"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-013",
+        "doc-011",
+        "doc-039",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-015",
+      "name": "logging-monitoring-troubleshooting.md",
+      "title": "Logging, Monitoring and Troubleshooting",
+      "slug": "logging-monitoring-and-troubleshooting",
+      "path": "md/en/devops/logging-monitoring-troubleshooting.md",
+      "category": "devops",
+      "tags": [
+        "logs",
+        "monitoring",
+        "debug",
+        "troubleshooting"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-052",
+        "doc-057",
+        "doc-011",
+        "doc-012",
+        "doc-046",
+        "doc-033"
+      ]
+    },
+    {
+      "id": "doc-052",
+      "name": "systemd-cron-schedulers.md",
+      "title": "systemd, cron and Schedulers",
+      "slug": "systemd-cron-and-schedulers",
+      "path": "md/en/devops/systemd-cron-schedulers.md",
+      "category": "devops",
+      "tags": [
+        "systemd",
+        "cron",
+        "timer",
+        "scheduler",
+        "service"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-031",
+        "doc-033",
+        "doc-015",
+        "doc-011",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-054",
+      "name": "ab-testing-experiments.md",
+      "title": "A/B Testing and Experiments — Practical Handbook",
+      "slug": "a-b-testing-and-experiments-practical-handbook",
+      "path": "md/en/digital/ab-testing-experiments.md",
+      "category": "digital",
+      "tags": [
+        "ab testing",
+        "experiments",
+        "conversion",
+        "mde",
+        "metrics"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-053",
+        "doc-043",
+        "doc-048",
+        "doc-049",
+        "doc-055"
+      ]
+    },
+    {
+      "id": "doc-055",
+      "name": "html-email-edm.md",
+      "title": "HTML Email / EDM — Practical Handbook",
+      "slug": "html-email-edm-practical-handbook",
+      "path": "md/en/digital/html-email-edm.md",
+      "category": "digital",
+      "tags": [
+        "email",
+        "html email",
+        "edm",
+        "outlook",
+        "newsletter"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-042",
+        "doc-043",
+        "doc-053",
+        "doc-054",
+        "doc-046"
+      ]
+    },
+    {
+      "id": "doc-053",
+      "name": "web-analytics-tagging.md",
+      "title": "Web Analytics and Tagging — Practical Handbook",
+      "slug": "web-analytics-and-tagging-practical-handbook",
+      "path": "md/en/digital/web-analytics-tagging.md",
+      "category": "digital",
+      "tags": [
+        "analytics",
+        "tagging",
+        "ga4",
+        "gtm",
+        "datalayer",
+        "utm"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-047",
+        "doc-048",
+        "doc-054",
+        "doc-055",
+        "doc-046"
+      ]
+    },
+    {
+      "id": "doc-016",
+      "name": "computer-networks-for-developers.md",
+      "title": "Computer Networks for Developers",
+      "slug": "computer-networks-for-developers",
+      "path": "md/en/networking/computer-networks-for-developers.md",
+      "category": "networking",
+      "tags": [
+        "network",
+        "tcp",
+        "udp",
+        "ip",
+        "vlan"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-017",
+        "doc-018",
+        "doc-025",
+        "doc-033",
+        "doc-034"
+      ]
+    },
+    {
+      "id": "doc-017",
+      "name": "dns-domains-routing.md",
+      "title": "DNS, Domains and Internet Routing",
+      "slug": "dns-domains-and-internet-routing",
+      "path": "md/en/networking/dns-domains-routing.md",
+      "category": "networking",
+      "tags": [
+        "dns",
+        "domain",
+        "domains",
+        "routing"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-016",
+        "doc-044",
+        "doc-045",
+        "doc-047",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-018",
+      "name": "ssh-remote-administration.md",
+      "title": "SSH and Remote Administration",
+      "slug": "ssh-and-remote-administration",
+      "path": "md/en/networking/ssh-remote-administration.md",
+      "category": "networking",
+      "tags": [
+        "ssh",
+        "scp",
+        "sftp",
+        "rsync",
+        "tunnel"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-016",
+        "doc-025",
+        "doc-033",
+        "doc-034",
+        "doc-052"
+      ]
+    },
+    {
+      "id": "doc-019",
+      "name": "c-reading-building-debugging.md",
+      "title": "C — Reading, Building and Debugging Projects",
+      "slug": "c-reading-building-and-debugging-projects",
+      "path": "md/en/programming/c/c-reading-building-debugging.md",
+      "category": "programming/c",
+      "tags": [
+        "c",
+        "gcc",
+        "clang",
+        "gdb"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-031",
+        "doc-039",
+        "doc-049",
+        "doc-050",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-020",
+      "name": "go-reading-code.md",
+      "title": "Go — Reading Code",
+      "slug": "go-reading-code",
+      "path": "md/en/programming/go/go-reading-code.md",
+      "category": "programming/go",
+      "tags": [
+        "go",
+        "golang"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-008",
+        "doc-010",
+        "doc-011",
+        "doc-012",
+        "doc-041",
+        "doc-049"
+      ]
+    },
+    {
+      "id": "doc-021",
+      "name": "javascript-guide.md",
+      "title": "JavaScript — From Basics to Modern Front-End",
+      "slug": "javascript-from-basics-to-modern-front-end",
+      "path": "md/en/programming/javascript/javascript-guide.md",
+      "category": "programming/javascript",
+      "tags": [
+        "js",
+        "javascript",
+        "frontend"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-022",
+        "doc-042",
+        "doc-043",
+        "doc-046",
+        "doc-049",
+        "doc-041"
+      ]
+    },
+    {
+      "id": "doc-022",
+      "name": "nodejs.md",
+      "title": "Node.js — Practical Handbook",
+      "slug": "node-js-practical-handbook",
+      "path": "md/en/programming/javascript/nodejs.md",
+      "category": "programming/javascript",
+      "tags": [
+        "node",
+        "nodejs",
+        "javascript"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-021",
+        "doc-008",
+        "doc-010",
+        "doc-012",
+        "doc-049",
+        "doc-041"
+      ]
+    },
+    {
+      "id": "doc-023",
+      "name": "python-basics.md",
+      "title": "Python — Practical Handbook",
+      "slug": "python-practical-handbook",
+      "path": "md/en/programming/python/python-basics.md",
+      "category": "programming/python",
+      "tags": [
+        "python"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-008",
+        "doc-009",
+        "doc-031",
+        "doc-039",
+        "doc-049",
+        "doc-050"
+      ]
+    },
+    {
+      "id": "doc-051",
+      "name": "oauth-oidc-jwt-sessions.md",
+      "title": "OAuth 2.0, OpenID Connect, JWT and Sessions",
+      "slug": "oauth-2-0-openid-connect-jwt-and-sessions",
+      "path": "md/en/security/authentication/oauth-oidc-jwt-sessions.md",
+      "category": "security/authentication",
+      "tags": [
+        "oauth",
+        "oidc",
+        "jwt",
+        "session",
+        "authentication",
+        "authorization",
+        "pkce"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-008",
+        "doc-026",
+        "doc-044",
+        "doc-024",
+        "doc-041"
+      ]
+    },
+    {
+      "id": "doc-024",
+      "name": "cybersecurity-basics-pentesting.md",
+      "title": "Cybersecurity and Pentesting — Fundamentals",
+      "slug": "cybersecurity-and-pentesting-fundamentals",
+      "path": "md/en/security/cybersecurity-basics-pentesting.md",
+      "category": "security",
+      "tags": [
+        "security",
+        "cybersecurity",
+        "pentest",
+        "beef",
+        "burp",
+        "owasp",
+        "nmap"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-025",
+        "doc-026",
+        "doc-051",
+        "doc-044",
+        "doc-046",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-025",
+      "name": "linux-server-security.md",
+      "title": "Linux Permissions and Server Security",
+      "slug": "linux-permissions-and-server-security",
+      "path": "md/en/security/linux-server-security.md",
+      "category": "security",
+      "tags": [
+        "linux",
+        "security",
+        "permissions",
+        "ssh",
+        "firewall"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-018",
+        "doc-024",
+        "doc-033",
+        "doc-034",
+        "doc-052",
+        "doc-012"
+      ]
+    },
+    {
+      "id": "doc-026",
+      "name": "web-security.md",
+      "title": "Web Application Security for Developers",
+      "slug": "web-application-security-for-developers",
+      "path": "md/en/security/web-security.md",
+      "category": "security",
+      "tags": [
+        "web",
+        "security",
+        "owasp",
+        "xss",
+        "csrf",
+        "sql injection"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-024",
+        "doc-051",
+        "doc-044",
+        "doc-046",
+        "doc-008",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-027",
+      "name": "debian-shell.md",
+      "title": "Debian — Practical Shell Handbook",
+      "slug": "debian-practical-shell-handbook",
+      "path": "md/en/shell/debian/debian-shell.md",
+      "category": "shell/debian",
+      "tags": [
+        "debian",
+        "shell",
+        "bash"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-028",
+        "doc-031",
+        "doc-033",
+        "doc-038",
+        "doc-040"
+      ]
+    },
+    {
+      "id": "doc-028",
+      "name": "debian-shells-overview.md",
+      "title": "Shells in Debian",
+      "slug": "shells-in-debian",
+      "path": "md/en/shell/debian/debian-shells-overview.md",
+      "category": "shell/debian",
+      "tags": [
+        "debian",
+        "shell",
+        "bash",
+        "zsh"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-027",
+        "doc-031",
+        "doc-033",
+        "doc-038"
+      ]
+    },
+    {
+      "id": "doc-029",
+      "name": "freebsd-shell.md",
+      "title": "FreeBSD — Practical Shell Handbook",
+      "slug": "freebsd-practical-shell-handbook",
+      "path": "md/en/shell/freebsd/freebsd-shell.md",
+      "category": "shell/freebsd",
+      "tags": [
+        "freebsd",
+        "shell",
+        "sh",
+        "tcsh"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-030",
+        "doc-031",
+        "doc-034",
+        "doc-038",
+        "doc-040"
+      ]
+    },
+    {
+      "id": "doc-030",
+      "name": "freebsd-shells-overview.md",
+      "title": "Shells in FreeBSD",
+      "slug": "shells-in-freebsd",
+      "path": "md/en/shell/freebsd/freebsd-shells-overview.md",
+      "category": "shell/freebsd",
+      "tags": [
+        "freebsd",
+        "shell",
+        "sh",
+        "tcsh"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-029",
+        "doc-031",
+        "doc-034",
+        "doc-038"
+      ]
+    },
+    {
+      "id": "doc-031",
+      "name": "shell-scripting.md",
+      "title": "Shell Scripting — Debian and FreeBSD",
+      "slug": "shell-scripting-debian-and-freebsd",
+      "path": "md/en/shell/scripting/shell-scripting.md",
+      "category": "shell/scripting",
+      "tags": [
+        "shell",
+        "bash",
+        "scripting",
+        "script"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-027",
+        "doc-029",
+        "doc-052",
+        "doc-050",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-032",
+      "name": "termux.md",
+      "title": "Termux — Knowledge Handbook",
+      "slug": "termux-knowledge-handbook",
+      "path": "md/en/systems/android/termux.md",
+      "category": "systems/android",
+      "tags": [
+        "android",
+        "termux",
+        "linux"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-023",
+        "doc-027",
+        "doc-031",
+        "doc-035",
+        "doc-038"
+      ]
+    },
+    {
+      "id": "doc-033",
+      "name": "debian-desktop-server.md",
+      "title": "Debian 13 — Desktop + Server Handbook",
+      "slug": "debian-13-desktop-server-handbook",
+      "path": "md/en/systems/debian/debian-desktop-server.md",
+      "category": "systems/debian",
+      "tags": [
+        "debian",
+        "linux",
+        "gnome",
+        "kde",
+        "server"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-027",
+        "doc-018",
+        "doc-025",
+        "doc-012",
+        "doc-052"
+      ]
+    },
+    {
+      "id": "doc-034",
+      "name": "freebsd-server.md",
+      "title": "FreeBSD as a Server — Administrator Handbook",
+      "slug": "freebsd-as-a-server-administrator-handbook",
+      "path": "md/en/systems/freebsd/freebsd-server.md",
+      "category": "systems/freebsd",
+      "tags": [
+        "freebsd",
+        "server",
+        "unix"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-029",
+        "doc-018",
+        "doc-016",
+        "doc-025",
+        "doc-052"
+      ]
+    },
+    {
+      "id": "doc-035",
+      "name": "linux-distributions.md",
+      "title": "Popular Linux Distributions",
+      "slug": "popular-linux-distributions",
+      "path": "md/en/systems/linux/linux-distributions.md",
+      "category": "systems/linux",
+      "tags": [
+        "linux",
+        "distributions",
+        "distros"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-033",
+        "doc-025",
+        "doc-036",
+        "doc-027"
+      ]
+    },
+    {
+      "id": "doc-036",
+      "name": "window-managers.md",
+      "title": "Linux Window Managers",
+      "slug": "linux-window-managers",
+      "path": "md/en/systems/linux/window-managers.md",
+      "category": "systems/linux",
+      "tags": [
+        "linux",
+        "window manager",
+        "wm"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-035",
+        "doc-033",
+        "doc-038",
+        "doc-039"
+      ]
+    },
+    {
+      "id": "doc-037",
+      "name": "windows-server-administration.md",
+      "title": "Windows Server in the Enterprise — Administrator Fundamentals",
+      "slug": "windows-server-in-the-enterprise-administrator-fundamentals",
+      "path": "md/en/systems/windows/windows-server-administration.md",
+      "category": "systems/windows",
+      "tags": [
+        "windows",
+        "server",
+        "active directory",
+        "administration"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-016",
+        "doc-018",
+        "doc-025",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-049",
+      "name": "software-testing.md",
+      "title": "Software Testing — Handbook",
+      "slug": "software-testing-handbook",
+      "path": "md/en/testing/software-testing.md",
+      "category": "testing",
+      "tags": [
+        "testing",
+        "unit",
+        "integration",
+        "e2e",
+        "playwright",
+        "go test"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-020",
+        "doc-021",
+        "doc-022",
+        "doc-011",
+        "doc-046",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-038",
+      "name": "vi-vim-neovim.md",
+      "title": "vi / Vim / gVim / Neovim — Practical Text Editing Handbook",
+      "slug": "vi-vim-gvim-neovim-practical-text-editing-handbook",
+      "path": "md/en/tools/editors/vi-vim-neovim.md",
+      "category": "tools/editors",
+      "tags": [
+        "vi",
+        "vim",
+        "gvim",
+        "neovim",
+        "editor"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-027",
+        "doc-029",
+        "doc-031",
+        "doc-039",
+        "doc-040"
+      ]
+    },
+    {
+      "id": "doc-039",
+      "name": "vscode.md",
+      "title": "Visual Studio Code — Knowledge Handbook",
+      "slug": "visual-studio-code-knowledge-handbook",
+      "path": "md/en/tools/editors/vscode.md",
+      "category": "tools/editors",
+      "tags": [
+        "vscode",
+        "editor",
+        "copilot",
+        "codex"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-020",
+        "doc-021",
+        "doc-023",
+        "doc-038",
+        "doc-014",
+        "doc-056"
+      ]
+    },
+    {
+      "id": "doc-040",
+      "name": "midnight-commander.md",
+      "title": "Midnight Commander — Knowledge Handbook",
+      "slug": "midnight-commander-knowledge-handbook",
+      "path": "md/en/tools/file-managers/midnight-commander.md",
+      "category": "tools/file-managers",
+      "tags": [
+        "mc",
+        "midnight commander",
+        "file manager"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-027",
+        "doc-029",
+        "doc-038",
+        "doc-018"
+      ]
+    },
+    {
+      "id": "doc-050",
+      "name": "regular-expressions.md",
+      "title": "Regular Expressions (Regex) — Practical Handbook",
+      "slug": "regular-expressions-regex-practical-handbook",
+      "path": "md/en/tools/regex/regular-expressions.md",
+      "category": "tools/regex",
+      "tags": [
+        "regex",
+        "regexp",
+        "grep",
+        "sed",
+        "javascript",
+        "python"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-019",
+        "doc-023",
+        "doc-031",
+        "doc-046",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-057",
+      "name": "web-app-end-to-end-playbook.md",
+      "title": "End-to-End Web Application Troubleshooting — Playbook",
+      "slug": "end-to-end-web-application-troubleshooting-playbook",
+      "path": "md/en/troubleshooting/web-app-end-to-end-playbook.md",
+      "category": "troubleshooting",
+      "tags": [
+        "troubleshooting",
+        "dns",
+        "tls",
+        "nginx",
+        "backend",
+        "database",
+        "debug"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-015",
+        "doc-017",
+        "doc-044",
+        "doc-045",
+        "doc-046",
+        "doc-010"
+      ]
+    },
+    {
+      "id": "doc-041",
+      "name": "small-web-apps.md",
+      "title": "Architecture of Small Web Applications",
+      "slug": "architecture-of-small-web-applications",
+      "path": "md/en/web/architecture/small-web-apps.md",
+      "category": "web/architecture",
+      "tags": [
+        "architecture",
+        "web",
+        "backend",
+        "frontend"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-008",
+        "doc-010",
+        "doc-020",
+        "doc-021",
+        "doc-022",
+        "doc-045"
+      ]
+    },
+    {
+      "id": "doc-046",
+      "name": "browser-devtools.md",
+      "title": "Browser DevTools — Practical Handbook",
+      "slug": "browser-devtools-practical-handbook",
+      "path": "md/en/web/frontend/browser-devtools.md",
+      "category": "web/frontend",
+      "tags": [
+        "devtools",
+        "browser",
+        "network",
+        "console",
+        "debug"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-021",
+        "doc-042",
+        "doc-048",
+        "doc-026",
+        "doc-049",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-042",
+      "name": "html-css.md",
+      "title": "Modern HTML and CSS",
+      "slug": "modern-html-and-css",
+      "path": "md/en/web/frontend/html-css.md",
+      "category": "web/frontend",
+      "tags": [
+        "html",
+        "css",
+        "frontend",
+        "web"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-021",
+        "doc-043",
+        "doc-046",
+        "doc-047",
+        "doc-048",
+        "doc-055"
+      ]
+    },
+    {
+      "id": "doc-043",
+      "name": "ux-accessibility.md",
+      "title": "UX and Accessibility for Developers",
+      "slug": "ux-and-accessibility-for-developers",
+      "path": "md/en/web/frontend/ux-accessibility.md",
+      "category": "web/frontend",
+      "tags": [
+        "ux",
+        "accessibility",
+        "a11y",
+        "wcag"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-042",
+        "doc-021",
+        "doc-046",
+        "doc-048",
+        "doc-054"
+      ]
+    },
+    {
+      "id": "doc-048",
+      "name": "web-performance.md",
+      "title": "Web Performance",
+      "slug": "web-performance",
+      "path": "md/en/web/performance/web-performance.md",
+      "category": "web/performance",
+      "tags": [
+        "performance",
+        "cwv",
+        "lcp",
+        "inp",
+        "cls",
+        "cache",
+        "images"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-042",
+        "doc-046",
+        "doc-047",
+        "doc-053",
+        "doc-041"
+      ]
+    },
+    {
+      "id": "doc-044",
+      "name": "http-https-tls.md",
+      "title": "HTTP, HTTPS and TLS",
+      "slug": "http-https-and-tls",
+      "path": "md/en/web/protocols/http-https-tls.md",
+      "category": "web/protocols",
+      "tags": [
+        "http",
+        "https",
+        "tls",
+        "ssl"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-017",
+        "doc-045",
+        "doc-026",
+        "doc-051",
+        "doc-057"
+      ]
+    },
+    {
+      "id": "doc-047",
+      "name": "technical-seo.md",
+      "title": "Technical SEO — Practical Handbook",
+      "slug": "technical-seo-practical-handbook",
+      "path": "md/en/web/seo/technical-seo.md",
+      "category": "web/seo",
+      "tags": [
+        "seo",
+        "technical seo",
+        "robots",
+        "sitemap",
+        "canonical",
+        "cwv"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-017",
+        "doc-042",
+        "doc-048",
+        "doc-053",
+        "doc-046"
+      ]
+    },
+    {
+      "id": "doc-045",
+      "name": "nginx-reverse-proxy.md",
+      "title": "nginx and Reverse Proxy",
+      "slug": "nginx-and-reverse-proxy",
+      "path": "md/en/web/servers/nginx-reverse-proxy.md",
+      "category": "web/servers",
+      "tags": [
+        "nginx",
+        "reverse proxy",
+        "web server"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-017",
+        "doc-044",
+        "doc-012",
+        "doc-025",
+        "doc-041",
+        "doc-057"
+      ]
     }
   ],
   "defaultLanguage": "pl",

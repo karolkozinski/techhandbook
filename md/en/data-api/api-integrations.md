@@ -1,4 +1,21 @@
-# api-integrations
+---
+id: "doc-008"
+title: "APIs and System Integrations — Practical Handbook"
+slug: "apis-and-system-integrations-practical-handbook"
+description: "An API is an interface that lets one system communicate with another in a structured way."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "api"
+  - "rest"
+  - "json"
+  - "webhook"
+  - "oauth"
+---
+
+# APIs and System Integrations — Practical Handbook
 
 ## 1. API
 

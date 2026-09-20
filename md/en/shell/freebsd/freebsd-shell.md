@@ -1,4 +1,20 @@
-# freebsd-shell
+---
+id: "doc-029"
+title: "FreeBSD — Practical Shell Handbook"
+slug: "freebsd-practical-shell-handbook"
+description: "FreeBSD is a complete Unix-like operating system. The base system, kernel and core userland are developed together, while third-party applications are…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "freebsd"
+  - "shell"
+  - "sh"
+  - "tcsh"
+---
+
+# FreeBSD — Practical Shell Handbook
 
 # FreeBSD — Administration, System and Directories
 

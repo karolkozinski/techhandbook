@@ -1,4 +1,19 @@
-# nginx-reverse-proxy
+---
+id: "doc-045"
+title: "nginx i reverse proxy"
+slug: "nginx-i-reverse-proxy"
+description: "nginx i reverse proxy — praktyczne kompendium TechHandbook."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "nginx"
+  - "reverse proxy"
+  - "web server"
+---
+
+# nginx i reverse proxy
 
 ## 1. Do czego służy nginx
 

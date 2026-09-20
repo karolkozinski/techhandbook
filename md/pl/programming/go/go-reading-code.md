@@ -1,4 +1,18 @@
-# go-reading-code
+---
+id: "doc-020"
+title: "Go — czytanie kodu"
+slug: "go-czytanie-kodu"
+description: "Cel tego materiału: po przeczytaniu nie musisz umieć samodzielnie projektować dużych aplikacji w Go. Masz natomiast rozumieć, co robi kod, jak jest…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "go"
+  - "golang"
+---
+
+# Go — czytanie kodu
 
 > Cel tego materiału: po przeczytaniu nie musisz umieć samodzielnie projektować dużych aplikacji w Go. Masz natomiast rozumieć, **co robi kod, jak jest zbudowany, gdzie czego szukać i jak go uruchomić, skompilować oraz przetestować**.
 >

@@ -1,3 +1,20 @@
+---
+id: "doc-018"
+title: "SSH i zdalna administracja"
+slug: "ssh-i-zdalna-administracja"
+description: "SSH (Secure Shell) to podstawowy protokół do bezpiecznego, zdalnego logowania i wykonywania poleceń na systemach uniksowych. Ten materiał obejmuje codzienny…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "ssh"
+  - "scp"
+  - "sftp"
+  - "rsync"
+  - "tunnel"
+---
+
 # SSH i zdalna administracja
 
 SSH (Secure Shell) to podstawowy protokół do bezpiecznego, zdalnego logowania i wykonywania poleceń na systemach uniksowych. Ten materiał obejmuje codzienny zestaw narzędzi: połączenia, klucze, konfigurację klienta, transfer plików, tunneling, host keys oraz diagnostykę.

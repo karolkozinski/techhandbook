@@ -1,4 +1,20 @@
-# ux-accessibility
+---
+id: "doc-043"
+title: "UX and Accessibility for Developers"
+slug: "ux-and-accessibility-for-developers"
+description: "UX is not only appearance."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "ux"
+  - "accessibility"
+  - "a11y"
+  - "wcag"
+---
+
+# UX and Accessibility for Developers
 
 ## 1. UX for developers
 

@@ -1,4 +1,21 @@
-# 02-pliki-i-katalogi
+---
+id: "junior-002"
+title: "02. Pliki i katalogi"
+slug: "02-pliki-i-katalogi"
+description: "Prawie wszystko na komputerze jest zapisane jako plik. Katalog, nazywany też folderem, służy do porządkowania plików i innych katalogów."
+lang: "pl"
+audience: "junior"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "junior"
+  - "pliki"
+  - "katalogi"
+  - "foldery"
+  - "rozszerzenia"
+---
+
+# 02. Pliki i katalogi
 
 Prawie wszystko na komputerze jest zapisane jako **plik**. Katalog, nazywany też folderem, służy do porządkowania plików i innych katalogów.
 

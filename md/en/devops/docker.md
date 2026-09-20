@@ -1,3 +1,18 @@
+---
+id: "doc-012"
+title: "Docker — Practical Handbook"
+slug: "docker-practical-handbook"
+description: "Docker runs applications in repeatable, isolated containers. The core model is simple: an image is a template, a container is a running instance, a volume…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "docker"
+  - "containers"
+  - "devops"
+---
+
 # Docker — Practical Handbook
 
 Docker runs applications in repeatable, isolated containers. The core model is simple: an **image** is a template, a **container** is a running instance, a **volume** holds persistent data, and **Compose** describes a set of cooperating services.

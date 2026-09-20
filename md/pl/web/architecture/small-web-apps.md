@@ -1,4 +1,20 @@
-# small-web-apps
+---
+id: "doc-041"
+title: "Architektura małych aplikacji webowych"
+slug: "architektura-malych-aplikacji-webowych"
+description: "Mały projekt nie potrzebuje mikroserwisów, Kubernetesa i pięciu baz."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "architecture"
+  - "web"
+  - "backend"
+  - "frontend"
+---
+
+# Architektura małych aplikacji webowych
 
 ## 1. Cel
 

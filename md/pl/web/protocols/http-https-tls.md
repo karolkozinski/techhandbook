@@ -1,4 +1,20 @@
-# http-https-tls
+---
+id: "doc-044"
+title: "HTTP, HTTPS i TLS"
+slug: "http-https-i-tls"
+description: "Przeglądarka lub aplikacja wysyła request:"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "http"
+  - "https"
+  - "tls"
+  - "ssl"
+---
+
+# HTTP, HTTPS i TLS
 
 ## 1. Model klient–serwer
 

@@ -1,4 +1,20 @@
-# dns-domains-routing
+---
+id: "doc-017"
+title: "DNS, Domains and Internet Routing"
+slug: "dns-domains-and-internet-routing"
+description: "If you publish a website, API or application on a VPS, you should understand the path from entering a domain such as example.com in a browser to receiving…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "dns"
+  - "domain"
+  - "domains"
+  - "routing"
+---
+
+# DNS, Domains and Internet Routing
 
 ## 1. Why this matters
 

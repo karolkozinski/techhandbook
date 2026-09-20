@@ -1,4 +1,20 @@
-# vscode
+---
+id: "doc-039"
+title: "Visual Studio Code"
+slug: "visual-studio-code"
+description: "Praktyczny przewodnik po VS Code jako codziennym środowisku pracy z kodem, Gitem, terminalem, debugowaniem oraz agentami AI: GitHub Copilot i OpenAI Codex."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "vscode"
+  - "editor"
+  - "copilot"
+  - "codex"
+---
+
+# Visual Studio Code
 
 > Praktyczny przewodnik po VS Code jako codziennym środowisku pracy z kodem, Gitem, terminalem, debugowaniem oraz agentami AI: GitHub Copilot i OpenAI Codex.
 >

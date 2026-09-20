@@ -1,4 +1,20 @@
-# 05-css-nadajemy-styl
+---
+id: "junior-005"
+title: "05. CSS — nadajemy styl"
+slug: "05-css-nadajemy-styl"
+description: "HTML mówi, co jest na stronie. CSS mówi, jak to wygląda."
+lang: "pl"
+audience: "junior"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "junior"
+  - "css"
+  - "web"
+  - "styl"
+---
+
+# 05. CSS — nadajemy styl
 
 HTML mówi, **co jest na stronie**. CSS mówi, **jak to wygląda**.
 

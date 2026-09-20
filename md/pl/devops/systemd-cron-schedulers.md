@@ -1,3 +1,20 @@
+---
+id: "doc-052"
+title: "systemd, cron i schedulery"
+slug: "systemd-cron-i-schedulery"
+description: "Usługa działająca w tle i zadanie uruchamiane okresowo to dwa różne problemy. W Debianie i wielu innych dystrybucjach Linuksa pierwszym zarządza zwykle…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "systemd"
+  - "cron"
+  - "timer"
+  - "scheduler"
+  - "service"
+---
+
 # systemd, cron i schedulery
 
 Usługa działająca w tle i zadanie uruchamiane okresowo to dwa różne problemy. W Debianie i wielu innych dystrybucjach Linuksa pierwszym zarządza zwykle **systemd**, a harmonogram można realizować przez **systemd timers**, klasyczny **cron** albo scheduler w samej aplikacji.

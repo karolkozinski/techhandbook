@@ -1,4 +1,22 @@
-# regular-expressions
+---
+id: "doc-050"
+title: "Regular Expressions (Regex) — Practical Handbook"
+slug: "regular-expressions-regex-practical-handbook"
+description: "A regular expression is a pattern used to search, validate and transform text."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "regex"
+  - "regexp"
+  - "grep"
+  - "sed"
+  - "javascript"
+  - "python"
+---
+
+# Regular Expressions (Regex) — Practical Handbook
 
 ## 1. What regex is
 

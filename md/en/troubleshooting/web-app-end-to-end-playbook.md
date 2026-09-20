@@ -1,4 +1,23 @@
-# web-app-end-to-end-playbook
+---
+id: "doc-057"
+title: "End-to-End Web Application Troubleshooting — Playbook"
+slug: "end-to-end-web-application-troubleshooting-playbook"
+description: "Troubleshoot a web application systematically from user-visible symptom to root cause."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "troubleshooting"
+  - "dns"
+  - "tls"
+  - "nginx"
+  - "backend"
+  - "database"
+  - "debug"
+---
+
+# End-to-End Web Application Troubleshooting — Playbook
 
 ## 1. Goal
 

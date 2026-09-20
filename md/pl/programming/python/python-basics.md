@@ -1,4 +1,17 @@
-# python-basics
+---
+id: "doc-023"
+title: "Python — podstawy"
+slug: "python-podstawy"
+description: "Python to język programowania wysokiego poziomu, zaprojektowany tak, aby kod był możliwie czytelny."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "python"
+---
+
+# Python — podstawy
 
 ## 1. Czym jest Python
 

@@ -1,4 +1,19 @@
-# aws
+---
+id: "doc-004"
+title: "Amazon Web Services (AWS) — Practical Handbook"
+slug: "amazon-web-services-aws-practical-handbook"
+description: "AWS is a large public-cloud platform offering compute, storage, databases, networking, identity, observability, AI and managed application services."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "aws"
+  - "amazon"
+---
+
+# Amazon Web Services (AWS) — Practical Handbook
 ## 1. What AWS is
 AWS is a large public-cloud platform offering compute, storage, databases, networking, identity, observability, AI and managed application services.
 ## 2. How to think about AWS structure

@@ -1,4 +1,20 @@
-# shell-scripting
+---
+id: "doc-031"
+title: "Programowanie w shellu"
+slug: "programowanie-w-shellu"
+description: "Shell to nie tylko miejsce do wpisywania poleceń. Jest też językiem programowania, w którym można pisać małe narzędzia administracyjne, automatyzować…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "shell"
+  - "bash"
+  - "scripting"
+  - "script"
+---
+
+# Programowanie w shellu
 
 Shell to nie tylko miejsce do wpisywania poleceń. Jest też językiem programowania, w którym można pisać małe narzędzia administracyjne, automatyzować powtarzalne czynności, pytać użytkownika o dane, reagować na jego wybory, sprawdzać wyniki poleceń i wyświetlać status operacji.
 

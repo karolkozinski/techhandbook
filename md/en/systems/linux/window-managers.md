@@ -1,4 +1,19 @@
-# window-managers
+---
+id: "doc-036"
+title: "Linux Window Managers"
+slug: "linux-window-managers"
+description: "A window manager (WM) controls application windows: placement, size, focus, stacking order, borders, workspaces and keyboard-driven window operations."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "linux"
+  - "window manager"
+  - "wm"
+---
+
+# Linux Window Managers
 
 ## 1. What is a window manager?
 

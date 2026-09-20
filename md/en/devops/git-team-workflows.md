@@ -1,4 +1,20 @@
-# git-team-workflows
+---
+id: "doc-013"
+title: "Git in Team Workflows"
+slug: "git-in-team-workflows"
+description: "Git is a version control system."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "git"
+  - "branch"
+  - "merge"
+  - "rebase"
+---
+
+# Git in Team Workflows
 
 ## 1. Git and GitHub
 

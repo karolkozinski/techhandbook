@@ -1,3 +1,18 @@
+---
+id: "doc-034"
+title: "FreeBSD jako serwer"
+slug: "freebsd-jako-serwer"
+description: "FreeBSD to kompletny system operacyjny z rodziny BSD, a nie dystrybucja Linuksa. Kernel, system bazowy, narzędzia administracyjne i dokumentacja powstają…"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "freebsd"
+  - "server"
+  - "unix"
+---
+
 # FreeBSD jako serwer
 
 FreeBSD to kompletny system operacyjny z rodziny BSD, a nie dystrybucja Linuksa. Kernel, system bazowy, narzędzia administracyjne i dokumentacja powstają jako spójna całość, natomiast aplikacje dodatkowe trafiają zwykle do hierarchii `/usr/local` przez Packages lub Ports.

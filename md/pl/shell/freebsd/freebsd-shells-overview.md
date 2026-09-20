@@ -1,4 +1,20 @@
-# freebsd-shells-overview
+---
+id: "doc-030"
+title: "Shelle w FreeBSD — przegląd"
+slug: "shelle-w-freebsd-przeglad"
+description: "Shell, czyli powłoka, to program pośredniczący między użytkownikiem a systemem operacyjnym."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "freebsd"
+  - "shell"
+  - "sh"
+  - "tcsh"
+---
+
+# Shelle w FreeBSD — przegląd
 
 ## 1. Czym jest shell?
 

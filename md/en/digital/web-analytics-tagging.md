@@ -1,4 +1,22 @@
-# web-analytics-tagging
+---
+id: "doc-053"
+title: "Web Analytics and Tagging — Practical Handbook"
+slug: "web-analytics-and-tagging-practical-handbook"
+description: "Web analytics should answer concrete business and product questions."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "analytics"
+  - "tagging"
+  - "ga4"
+  - "gtm"
+  - "datalayer"
+  - "utm"
+---
+
+# Web Analytics and Tagging — Practical Handbook
 
 ## 1. Purpose of analytics
 

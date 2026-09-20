@@ -1,4 +1,22 @@
-# web-security
+---
+id: "doc-026"
+title: "Web Application Security for Developers"
+slug: "web-application-security-for-developers"
+description: "This is not a pentesting course. The goal is to avoid introducing common vulnerabilities into your own applications."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "web"
+  - "security"
+  - "owasp"
+  - "xss"
+  - "csrf"
+  - "sql injection"
+---
+
+# Web Application Security for Developers
 
 ## 1. Goal
 

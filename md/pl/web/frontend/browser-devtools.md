@@ -1,4 +1,21 @@
-# browser-devtools
+---
+id: "doc-046"
+title: "Browser DevTools — kompendium praktyczne"
+slug: "browser-devtools-kompendium-praktyczne"
+description: "Narzędzia deweloperskie przeglądarki są jednym z najważniejszych narzędzi przy pracy z aplikacjami webowymi. Pozwalają diagnozować problemy bez zgadywania."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "devtools"
+  - "browser"
+  - "network"
+  - "console"
+  - "debug"
+---
+
+# Browser DevTools — kompendium praktyczne
 
 ## 1. Po co znać DevTools
 

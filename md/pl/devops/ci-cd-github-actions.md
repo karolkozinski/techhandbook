@@ -1,4 +1,20 @@
-# ci-cd-github-actions
+---
+id: "doc-011"
+title: "CI/CD i GitHub Actions"
+slug: "ci-cd-i-github-actions"
+description: "CI/CD i GitHub Actions — praktyczne kompendium TechHandbook."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "ci"
+  - "cd"
+  - "github"
+  - "actions"
+---
+
+# CI/CD i GitHub Actions
 
 ## 1. CI i CD
 

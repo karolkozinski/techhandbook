@@ -1,4 +1,22 @@
-# technical-documentation
+---
+id: "doc-056"
+title: "Dokumentowanie rozwiązań technicznych"
+slug: "dokumentowanie-rozwiazan-technicznych"
+description: "Dokumentacja ma zmniejszyć koszt ponownego zrozumienia systemu."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "documentation"
+  - "readme"
+  - "adr"
+  - "rfc"
+  - "runbook"
+  - "openapi"
+---
+
+# Dokumentowanie rozwiązań technicznych
 
 ## 1. Po co dokumentować
 

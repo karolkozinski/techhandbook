@@ -1,4 +1,20 @@
-# data-formats-json-yaml-toml-xml
+---
+id: "doc-009"
+title: "JSON, YAML, TOML i XML"
+slug: "json-yaml-toml-i-xml"
+description: "JSON, YAML, TOML i XML — praktyczne kompendium TechHandbook."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "json"
+  - "yaml"
+  - "toml"
+  - "xml"
+---
+
+# JSON, YAML, TOML i XML
 
 ## 1. JSON
 

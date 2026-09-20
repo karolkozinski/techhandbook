@@ -1,4 +1,20 @@
-# freebsd-shells-overview
+---
+id: "doc-030"
+title: "Shells in FreeBSD"
+slug: "shells-in-freebsd"
+description: "A shell is a command interpreter used to run programs, expand variables and globs, build pipelines and write scripts."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "freebsd"
+  - "shell"
+  - "sh"
+  - "tcsh"
+---
+
+# Shells in FreeBSD
 
 ## 1. What is a shell?
 

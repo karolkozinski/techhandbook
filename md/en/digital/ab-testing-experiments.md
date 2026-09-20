@@ -1,4 +1,21 @@
-# ab-testing-experiments
+---
+id: "doc-054"
+title: "A/B Testing and Experiments — Practical Handbook"
+slug: "a-b-testing-and-experiments-practical-handbook"
+description: "An A/B test compares two or more variants under controlled conditions."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "ab testing"
+  - "experiments"
+  - "conversion"
+  - "mde"
+  - "metrics"
+---
+
+# A/B Testing and Experiments — Practical Handbook
 
 ## 1. What an A/B test is
 

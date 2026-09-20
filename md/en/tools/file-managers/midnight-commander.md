@@ -1,4 +1,19 @@
-# midnight-commander
+---
+id: "doc-040"
+title: "Midnight Commander — Knowledge Handbook"
+slug: "midnight-commander-knowledge-handbook"
+description: "Midnight Commander (MC) is a two-panel terminal file manager inspired by Norton Commander. It combines file operations, a shell command line, viewer, editor…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "mc"
+  - "midnight commander"
+  - "file manager"
+---
+
+# Midnight Commander — Knowledge Handbook
 ## 1. What Midnight Commander is
 Midnight Commander (MC) is a two-panel terminal file manager inspired by Norton Commander. It combines file operations, a shell command line, viewer, editor and virtual filesystem features.
 # 2. Installation

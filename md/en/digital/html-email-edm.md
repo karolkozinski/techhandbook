@@ -1,4 +1,21 @@
-# html-email-edm
+---
+id: "doc-055"
+title: "HTML Email / EDM — Practical Handbook"
+slug: "html-email-edm-practical-handbook"
+description: "Email clients do not behave like modern browsers."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "email"
+  - "html email"
+  - "edm"
+  - "outlook"
+  - "newsletter"
+---
+
+# HTML Email / EDM — Practical Handbook
 
 ## 1. Why HTML email is different
 

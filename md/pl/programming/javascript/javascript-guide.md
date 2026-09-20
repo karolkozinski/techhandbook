@@ -1,4 +1,19 @@
-# javascript-guide
+---
+id: "doc-021"
+title: "JavaScript — kompendium"
+slug: "javascript-kompendium"
+description: "Praktyczne kompendium do tworzenia zwykłych, interaktywnych stron i małych aplikacji webowych."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "js"
+  - "javascript"
+  - "frontend"
+---
+
+# JavaScript — kompendium
 
 > Praktyczne kompendium do tworzenia zwykłych, interaktywnych stron i małych aplikacji webowych.  
 > Stan narzędzi i przykładów: 2026-09-19.  

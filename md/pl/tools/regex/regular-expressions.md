@@ -1,4 +1,22 @@
-# regular-expressions
+---
+id: "doc-050"
+title: "Wyrażenia regularne (Regex) — kompendium praktyczne"
+slug: "wyrazenia-regularne-regex-kompendium-praktyczne"
+description: "Wyrażenie regularne opisuje wzorzec tekstu."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "regex"
+  - "regexp"
+  - "grep"
+  - "sed"
+  - "javascript"
+  - "python"
+---
+
+# Wyrażenia regularne (Regex) — kompendium praktyczne
 
 ## 1. Czym jest regex
 

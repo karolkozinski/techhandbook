@@ -1,4 +1,19 @@
-# hermes-agent
+---
+id: "doc-001"
+title: "Hermes Agent — User Handbook"
+slug: "hermes-agent-user-handbook"
+description: "Hermes is an AI-agent environment that can combine model access, shell tools, files, memory, profiles, gateways and messaging integrations."
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "ai"
+  - "hermes"
+  - "agent"
+---
+
+# Hermes Agent — User Handbook
 ## Debian as host, FreeBSD as host/managed machine
 # 1. What Hermes Agent is
 Hermes is an AI-agent environment that can combine model access, shell tools, files, memory, profiles, gateways and messaging integrations.

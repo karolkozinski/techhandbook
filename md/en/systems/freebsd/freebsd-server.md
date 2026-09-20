@@ -1,3 +1,18 @@
+---
+id: "doc-034"
+title: "FreeBSD as a Server — Administrator Handbook"
+slug: "freebsd-as-a-server-administrator-handbook"
+description: "FreeBSD is a complete BSD operating system, not a Linux distribution. Its kernel, base system, administration tools and documentation are developed as a…"
+lang: "en"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-20"
+tags:
+  - "freebsd"
+  - "server"
+  - "unix"
+---
+
 # FreeBSD as a Server — Administrator Handbook
 
 FreeBSD is a complete BSD operating system, not a Linux distribution. Its kernel, base system, administration tools and documentation are developed as a coherent platform, while third-party applications normally live under `/usr/local` and are installed through Packages or Ports.

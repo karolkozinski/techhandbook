@@ -1,4 +1,23 @@
-# web-performance
+---
+id: "doc-048"
+title: "Web Performance — kompendium"
+slug: "web-performance-kompendium"
+description: "Szybkość strony wpływa na:"
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "performance"
+  - "cwv"
+  - "lcp"
+  - "inp"
+  - "cls"
+  - "cache"
+  - "images"
+---
+
+# Web Performance — kompendium
 
 ## 1. Cel
 

@@ -1,4 +1,18 @@
-# gcp
+---
+id: "doc-006"
+title: "Google Cloud Platform (GCP)"
+slug: "google-cloud-platform-gcp"
+description: "Aktualizacja: 2026-09-19 Cel: zrozumieć Google Cloud jako platformę do VM, kontenerów, serverless, danych, AI i aplikacji webowych."
+lang: "pl"
+audience: "standard"
+published: "2026-09-19"
+updated: "2026-09-19"
+tags:
+  - "cloud"
+  - "gcp"
+  - "google"
+---
+# Google Cloud Platform (GCP)
 
 > Aktualizacja: 2026-09-19  
 > Cel: zrozumieć Google Cloud jako platformę do VM, kontenerów, serverless, danych, AI i aplikacji webowych.
