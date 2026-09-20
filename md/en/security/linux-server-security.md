@@ -6,7 +6,7 @@ description: "Linux Permissions and Server Security — a practical TechHandbook
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "linux"
   - "security"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # Linux Permissions and Server Security
+
+Server security starts with operating-system basics: users, groups, permissions, updates, limiting services and controlling what is exposed to the network. This is not a list of magic settings, but a set of mechanisms for reducing risk deliberately.
+
+Related topics: [SSH and Remote Administration](techhandbook:doc-018), [Debian Desktop and Server](techhandbook:doc-033), [Docker](techhandbook:doc-012) and [systemd, cron and Schedulers](techhandbook:doc-052).
 
 ## 1. Users and groups
 
@@ -241,3 +245,9 @@ Every component should have only the permissions it needs: users, files, databas
 ## 22. What you should know
 
 You should understand chmod/chown, users/groups, SSH key authentication, firewalling, systemd service users, open-port inspection and basic VPS hardening.
+
+## Official references
+
+- GNU Coreutils - file permissions: https://www.gnu.org/software/coreutils/manual/html_node/File-permissions.html
+- OpenSSH sshd_config: https://man.openbsd.org/sshd_config
+- Debian Security: https://www.debian.org/security/

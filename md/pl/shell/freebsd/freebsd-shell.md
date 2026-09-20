@@ -6,7 +6,7 @@ description: "Samodzielne kompendium do codziennej pracy we FreeBSD z terminala 
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "freebsd"
   - "shell"
@@ -15,6 +15,8 @@ tags:
 ---
 
 # FreeBSD — shell
+
+To kompendium dotyczy codziennej administracji FreeBSD z terminala. Dla wyboru i konfiguracji powłoki zobacz [Shelle w FreeBSD - przegląd](techhandbook:doc-030), a dla szerszej administracji [FreeBSD jako serwer](techhandbook:doc-034). Automatyzację opisuje [Programowanie w shellu](techhandbook:doc-031).
 
 Samodzielne kompendium do codziennej pracy we FreeBSD z terminala lub przez SSH.
 
@@ -55,7 +57,7 @@ freebsd-version
 Przykładowy wynik:
 
 ```text
-15.0-RELEASE-p3
+15.1-RELEASE
 ```
 
 Kernel:
@@ -2735,3 +2737,9 @@ zpool status
 zfs list
 tail -f /var/log/messages
 ```
+
+## Oficjalne źródła
+
+- FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/
+- FreeBSD manual pages: https://man.freebsd.org/
+- FreeBSD release information: https://www.freebsd.org/releases/

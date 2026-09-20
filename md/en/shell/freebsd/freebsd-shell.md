@@ -6,7 +6,7 @@ description: "FreeBSD is a complete Unix-like operating system. The base system,
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "freebsd"
   - "shell"
@@ -15,6 +15,8 @@ tags:
 ---
 
 # FreeBSD — Practical Shell Handbook
+
+This handbook covers day-to-day FreeBSD administration from the terminal. For shell selection and configuration see [Shells in FreeBSD](techhandbook:doc-030), for broader administration see [FreeBSD as a Server](techhandbook:doc-034), and for automation see [Shell Scripting](techhandbook:doc-031).
 
 # FreeBSD — Administration, System and Directories
 
@@ -1047,3 +1049,9 @@ tmux / tar / crontab
 ```
 
 The practical FreeBSD pattern is: inspect first, use native tools, remember the `/usr/local` split, and read the manual page before forcing a change.
+
+## Official references
+
+- FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/
+- FreeBSD manual pages: https://man.freebsd.org/
+- FreeBSD release information: https://www.freebsd.org/releases/

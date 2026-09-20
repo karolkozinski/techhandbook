@@ -6,7 +6,7 @@ description: "If you publish a website, API or application on a VPS, you should 
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "dns"
   - "domain"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # DNS, Domains and Internet Routing
+
+DNS connects domain names with services reachable over the network. In practice, the key skill is distinguishing a DNS problem from routing, firewall, reverse-proxy or application problems.
+
+Related topics: [Computer Networks for Developers](techhandbook:doc-016), [nginx and Reverse Proxy](techhandbook:doc-045) and [HTTP, HTTPS and TLS](techhandbook:doc-044).
 
 ## 1. Why this matters
 
@@ -338,3 +342,9 @@ Both names can reach the same nginx instance, which routes them to different app
 ## 20. What you should know
 
 You should understand domain → DNS → IP → server, diagnose DNS with dig, understand A/AAAA/CNAME/MX/TXT/NS records, understand NAT/routing/port forwarding and prepare a domain for a VPS and reverse proxy.
+
+## Official references
+
+- RFC 1034 - Domain Names: Concepts and Facilities: https://www.rfc-editor.org/rfc/rfc1034
+- RFC 1035 - Domain Names: Implementation and Specification: https://www.rfc-editor.org/rfc/rfc1035
+- RFC 7766 - DNS Transport over TCP: https://www.rfc-editor.org/rfc/rfc7766

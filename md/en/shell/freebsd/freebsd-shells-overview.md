@@ -6,7 +6,7 @@ description: "A shell is a command interpreter used to run programs, expand vari
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "freebsd"
   - "shell"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Shells in FreeBSD
+
+FreeBSD clearly separates the base system from package-installed software, so shell paths matter more than on many Linux distributions. This article organizes the shells included in the base system and those installed through pkg.
+
+For practical administration see [FreeBSD Practical Shell Handbook](techhandbook:doc-029), and for automation see [Shell Scripting](techhandbook:doc-031).
 
 ## 1. What is a shell?
 
@@ -406,3 +410,9 @@ Do not confuse:
 - the system `/bin/sh`.
 
 They can all be different.
+
+## Official references
+
+- FreeBSD Handbook - Shells: https://docs.freebsd.org/en/books/handbook/basics/#shells
+- FreeBSD manual pages: https://man.freebsd.org/
+- FreeBSD Ports and Packages: https://docs.freebsd.org/en/books/handbook/ports/

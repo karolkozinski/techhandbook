@@ -6,7 +6,7 @@ description: "For portable system scripts use POSIX sh. Use Bash only when you i
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "shell"
   - "bash"
@@ -15,6 +15,9 @@ tags:
 ---
 
 # Shell Scripting — Debian and FreeBSD
+
+Related topics: [Debian Practical Shell Handbook](techhandbook:doc-027), [FreeBSD Practical Shell Handbook](techhandbook:doc-029), [Shells in Debian](techhandbook:doc-028) and [Shells in FreeBSD](techhandbook:doc-030).
+
 # 1. Which shell should you choose for scripts?
 For portable system scripts use POSIX `sh`. Use Bash only when you intentionally need Bash-specific syntax. FreeBSD `/bin/sh` and Debian `/bin/sh` are not Bash.
 # 2. First script
@@ -32,7 +35,7 @@ printf 'Status: %s\n' "$status"
 Prefer `printf` when exact formatting matters.
 # 4. Variables
 ```sh
-name="Karol"
+name="user"
 echo "$name"
 ```
 Do not put spaces around `=`. Quote variable expansions unless you explicitly want word splitting/globbing.
@@ -500,3 +503,9 @@ shellcheck tool
 ```
 # Summary
 Good shell scripts are small, explicit and defensive: quote input, validate assumptions, use exit codes, separate stderr, clean up temporary files and rely on existing Unix tools.
+
+## Official references
+
+- POSIX Shell Command Language: https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html
+- Debian Reference - shell programming: https://www.debian.org/doc/manuals/debian-reference/ch12
+- FreeBSD sh(1): https://man.freebsd.org/cgi/man.cgi?query=sh&sektion=1

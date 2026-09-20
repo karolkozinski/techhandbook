@@ -6,7 +6,7 @@ description: "Linux permissions i bezpieczeństwo serwera — praktyczne kompend
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "linux"
   - "security"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # Linux permissions i bezpieczeństwo serwera
+
+Bezpieczeństwo serwera zaczyna się od podstaw systemu: użytkowników, grup, praw dostępu, aktualizacji, ograniczenia usług i kontroli tego, co jest wystawione do sieci. To nie jest lista magicznych ustawień, tylko zestaw mechanizmów do świadomego ograniczania ryzyka.
+
+Powiązane tematy: [SSH i zdalna administracja](techhandbook:doc-018), [Debian - desktop i serwer](techhandbook:doc-033), [Docker](techhandbook:doc-012) oraz [systemd, cron i schedulery](techhandbook:doc-052).
 
 ## 1. Użytkownicy i grupy
 
@@ -298,3 +302,9 @@ Dotyczy:
 - systemd service user,
 - kontrola otwartych portów,
 - podstawowy hardening VPS.
+
+## Oficjalne źródła
+
+- GNU Coreutils - prawa dostępu do plików: https://www.gnu.org/software/coreutils/manual/html_node/File-permissions.html
+- OpenSSH sshd_config: https://man.openbsd.org/sshd_config
+- Debian Security: https://www.debian.org/security/

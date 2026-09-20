@@ -6,7 +6,7 @@ description: "Samodzielne kompendium do codziennej pracy w Debianie z terminala 
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "debian"
   - "shell"
@@ -14,6 +14,8 @@ tags:
 ---
 
 # Debian — shell
+
+To kompendium dotyczy codziennej pracy administracyjnej w Debianie z powłoki. Dla przeglądu samych powłok zobacz [Shelle w Debianie - przegląd](techhandbook:doc-028), a dla automatyzacji [Programowanie w shellu](techhandbook:doc-031). Zdalną pracę opisuje [SSH i zdalna administracja](techhandbook:doc-018).
 
 Samodzielne kompendium do codziennej pracy w Debianie z terminala lub przez SSH.
 
@@ -2742,3 +2744,9 @@ systemctl status
 journalctl
 ss -ltnp
 ```
+
+## Oficjalne źródła
+
+- Debian Reference: https://www.debian.org/doc/manuals/debian-reference/
+- Debian manpages: https://manpages.debian.org/
+- Debian documentation: https://www.debian.org/doc/

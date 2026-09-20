@@ -6,7 +6,7 @@ description: "Debian is a Linux distribution built around the Linux kernel, GNU/
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "debian"
   - "shell"
@@ -14,6 +14,8 @@ tags:
 ---
 
 # Debian — Practical Shell Handbook
+
+This handbook covers day-to-day Debian administration from the shell. For shell choices see [Shells in Debian](techhandbook:doc-028), for automation see [Shell Scripting](techhandbook:doc-031), and for remote access see [SSH and Remote Administration](techhandbook:doc-018).
 
 # Debian — Administrator, System and Directories
 
@@ -922,3 +924,9 @@ tmux / tar / crontab
 ```
 
 The practical Debian pattern is: inspect state, read logs, test one layer at a time, then make the smallest change you understand.
+
+## Official references
+
+- Debian Reference: https://www.debian.org/doc/manuals/debian-reference/
+- Debian manpages: https://manpages.debian.org/
+- Debian documentation: https://www.debian.org/doc/

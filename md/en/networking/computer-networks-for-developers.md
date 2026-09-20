@@ -6,7 +6,7 @@ description: "This is not CCNA preparation. The goal is to understand the networ
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "network"
   - "tcp"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # Computer Networks for Developers
+
+Networking is the layer through which almost every modern application communicates. This handbook focuses on what matters when working with servers, APIs, databases, containers and connection troubleshooting.
+
+Related topics: [DNS, Domains and Internet Routing](techhandbook:doc-017), [SSH and Remote Administration](techhandbook:doc-018) and [HTTP, HTTPS and TLS](techhandbook:doc-044).
 
 ## 1. Goal
 
@@ -298,3 +302,9 @@ ss -lntup
 ## 23. What you should know
 
 You should be able to distinguish DNS problems from general network problems, find the process bound to a port, inspect routes, understand TCP/UDP, understand NAT and VLANs, and test connectivity with ping, nc, curl and tcpdump.
+
+## Official references
+
+- RFC 9293 - Transmission Control Protocol: https://www.rfc-editor.org/rfc/rfc9293
+- RFC 768 - User Datagram Protocol: https://www.rfc-editor.org/rfc/rfc768
+- RFC 8200 - Internet Protocol Version 6 (IPv6): https://www.rfc-editor.org/rfc/rfc8200

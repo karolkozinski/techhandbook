@@ -6,7 +6,7 @@ description: "Shell, czyli powłoka, to program pośredniczący między użytkow
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "freebsd"
   - "shell"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Shelle w FreeBSD — przegląd
+
+FreeBSD wyraźnie oddziela system bazowy od oprogramowania instalowanego z pakietów, dlatego ścieżka do powłoki ma tu większe znaczenie niż w wielu dystrybucjach Linuksa. Ten artykuł porządkuje powłoki dostępne w systemie bazowym i te instalowane przez pkg.
+
+Praktyczną administrację opisuje [FreeBSD - shell](techhandbook:doc-029), a automatyzację [Programowanie w shellu](techhandbook:doc-031).
 
 ## 1. Czym jest shell?
 
@@ -119,7 +123,7 @@ Przykład:
 ```sh
 #!/bin/sh
 
-NAME="Karol"
+NAME="user"
 
 if [ -f /etc/passwd ]; then
     echo "$NAME"
@@ -307,7 +311,7 @@ C shell należy do tradycji BSD.
 Przykład:
 
 ```csh
-set name = "Karol"
+set name = "user"
 ```
 
 Zmienne środowiskowe:
@@ -579,7 +583,7 @@ Shell tworzy potok między procesami.
 ## 26. Zmienne
 
 ```sh
-NAME="Karol"
+NAME="user"
 echo "$NAME"
 export EDITOR=vim
 DATE=$(date)
@@ -781,3 +785,9 @@ lub:
 ```text
 /usr/local/bin/zsh
 ```
+
+## Oficjalne źródła
+
+- FreeBSD Handbook - Shells: https://docs.freebsd.org/en/books/handbook/basics/#shells
+- FreeBSD manual pages: https://man.freebsd.org/
+- FreeBSD Ports and Packages: https://docs.freebsd.org/en/books/handbook/ports/

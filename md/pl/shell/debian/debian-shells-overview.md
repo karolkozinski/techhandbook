@@ -6,7 +6,7 @@ description: "Shell, czyli powłoka, to program pośredniczący między użytkow
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "debian"
   - "shell"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Shelle w Debianie — przegląd
+
+Ten artykuł porządkuje role Basha, Dasha, Zsh, Fish i innych powłok w Debianie. Najważniejsze jest rozróżnienie powłoki interaktywnej, login shella oraz interpretera wskazanego w shebangu skryptu.
+
+Praktyczną pracę z poleceniami opisuje [Debian - shell](techhandbook:doc-027), a pisanie skryptów [Programowanie w shellu](techhandbook:doc-031).
 
 ## 1. Czym jest shell?
 
@@ -239,7 +243,7 @@ Skrypt:
 ```sh
 #!/bin/sh
 
-NAME="Karol"
+NAME="user"
 
 if [ -f /etc/passwd ]; then
     echo "$NAME"
@@ -459,7 +463,7 @@ ps aux | grep nginx
 ## 21. Zmienne
 
 ```sh
-NAME="Karol"
+NAME="user"
 echo "$NAME"
 export EDITOR=vim
 DATE=$(date)
@@ -618,3 +622,9 @@ Jeśli potrzebujesz funkcji Basha:
 ```bash
 #!/usr/bin/env bash
 ```
+
+## Oficjalne źródła
+
+- Debian Reference - podstawowe środowisko Unix i shelle: https://www.debian.org/doc/manuals/debian-reference/ch01.en.html
+- Debian Reference - programowanie w shellu: https://www.debian.org/doc/manuals/debian-reference/ch12
+- Debian manpages: https://manpages.debian.org/

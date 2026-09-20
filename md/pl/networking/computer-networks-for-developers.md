@@ -6,7 +6,7 @@ description: "Nie chodzi o przygotowanie do CCNA. Chodzi o sprawne rozumienie:"
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "network"
   - "tcp"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # Sieci komputerowe dla developera
+
+Sieci są warstwą, przez którą przechodzi praktycznie każda współczesna aplikacja. Ten materiał skupia się na tym, co trzeba rozumieć przy pracy z serwerem, API, bazą danych, kontenerami i diagnostyką połączeń.
+
+Powiązane tematy: [DNS, domeny i routing internetowy](techhandbook:doc-017), [SSH i zdalna administracja](techhandbook:doc-018) oraz [HTTP, HTTPS i TLS](techhandbook:doc-044).
 
 ## 1. Cel
 
@@ -345,3 +349,9 @@ ss -lntup
 - rozumieć TCP/UDP,
 - rozumieć NAT i VLAN,
 - testować połączenie przez `ping`, `nc`, `curl`, `tcpdump`.
+
+## Oficjalne źródła
+
+- RFC 9293 - Transmission Control Protocol: https://www.rfc-editor.org/rfc/rfc9293
+- RFC 768 - User Datagram Protocol: https://www.rfc-editor.org/rfc/rfc768
+- RFC 8200 - Internet Protocol Version 6 (IPv6): https://www.rfc-editor.org/rfc/rfc8200

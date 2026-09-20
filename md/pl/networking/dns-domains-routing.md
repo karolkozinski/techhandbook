@@ -6,7 +6,7 @@ description: "Jeśli publikujesz stronę, API albo aplikację na VPS, musisz roz
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "dns"
   - "domain"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # DNS, domeny i routing internetowy
+
+DNS łączy nazwy domen z usługami działającymi w sieci. W praktyce trzeba umieć oddzielić problem DNS od problemu routingu, firewalla, reverse proxy albo samej aplikacji.
+
+Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016), [nginx i reverse proxy](techhandbook:doc-045) oraz [HTTP, HTTPS i TLS](techhandbook:doc-044).
 
 ## 1. Po co to znać
 
@@ -393,3 +397,9 @@ Po opanowaniu tego kompendium powinieneś:
 - rozumieć rekordy A, AAAA, CNAME, MX, TXT i NS,
 - rozumieć NAT, routing i port forwarding,
 - umieć przygotować domenę pod VPS i reverse proxy.
+
+## Oficjalne źródła
+
+- RFC 1034 - Domain Names: Concepts and Facilities: https://www.rfc-editor.org/rfc/rfc1034
+- RFC 1035 - Domain Names: Implementation and Specification: https://www.rfc-editor.org/rfc/rfc1035
+- RFC 7766 - DNS Transport over TCP: https://www.rfc-editor.org/rfc/rfc7766

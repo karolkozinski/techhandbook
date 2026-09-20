@@ -6,7 +6,7 @@ description: "Shell to nie tylko miejsce do wpisywania poleceń. Jest też języ
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "shell"
   - "bash"
@@ -15,6 +15,8 @@ tags:
 ---
 
 # Programowanie w shellu
+
+Powiązane tematy: [Debian - shell](techhandbook:doc-027), [FreeBSD - shell](techhandbook:doc-029), [Shelle w Debianie](techhandbook:doc-028) i [Shelle w FreeBSD](techhandbook:doc-030).
 
 Shell to nie tylko miejsce do wpisywania poleceń. Jest też językiem programowania, w którym można pisać małe narzędzia administracyjne, automatyzować powtarzalne czynności, pytać użytkownika o dane, reagować na jego wybory, sprawdzać wyniki poleceń i wyświetlać status operacji.
 
@@ -143,7 +145,7 @@ printf '%s\n' "Uruchamiam program..."
 Można też formatować dane:
 
 ```sh
-NAME="Karol"
+NAME="user"
 printf 'Użytkownik: %s\n' "$NAME"
 ```
 
@@ -161,13 +163,13 @@ printf 'Znaleziono %s plików.\n' "$COUNT"
 Przypisanie:
 
 ```sh
-NAME="Karol"
+NAME="user"
 ```
 
 Bardzo ważne:
 
 ```sh
-NAME="Karol"
+NAME="user"
 ```
 
 jest poprawne.
@@ -175,7 +177,7 @@ jest poprawne.
 To:
 
 ```sh
-NAME = "Karol"
+NAME = "user"
 ```
 
 jest błędne.
@@ -315,8 +317,8 @@ fi
 Przykład:
 
 ```sh
-if [ "$NAME" = "Karol" ]; then
-    echo "Witaj Karol."
+if [ "$NAME" = "user" ]; then
+    echo "Witaj."
 fi
 ```
 
@@ -339,7 +341,7 @@ fi
 To:
 
 ```sh
-[ "$NAME" = "Karol" ]
+[ "$NAME" = "user" ]
 ```
 
 jest tak naprawdę formą polecenia `test`.
@@ -347,13 +349,13 @@ jest tak naprawdę formą polecenia `test`.
 Można napisać:
 
 ```sh
-test "$NAME" = "Karol"
+test "$NAME" = "user"
 ```
 
 albo:
 
 ```sh
-[ "$NAME" = "Karol" ]
+[ "$NAME" = "user" ]
 ```
 
 Druga forma jest znacznie częściej używana.
@@ -361,7 +363,7 @@ Druga forma jest znacznie częściej używana.
 Uwaga na spacje:
 
 ```sh
-[ "$NAME" = "Karol" ]
+[ "$NAME" = "user" ]
 ```
 
 jest poprawne.
@@ -369,7 +371,7 @@ jest poprawne.
 To:
 
 ```sh
-["$NAME"="Karol"]
+["$NAME"="user"]
 ```
 
 jest błędne.
@@ -1113,13 +1115,13 @@ NAME="${1:-world}"
 Jeżeli podano pierwszy argument:
 
 ```sh
-script Karol
+script user
 ```
 
 `NAME` będzie:
 
 ```text
-Karol
+user
 ```
 
 Jeżeli nie:
@@ -2862,7 +2864,7 @@ echo "Tekst"
 ## Zmienna
 
 ```sh
-NAME="Karol"
+NAME="user"
 echo "$NAME"
 ```
 
@@ -2984,3 +2986,9 @@ Shell jest szczególnie dobry wtedy, gdy program przede wszystkim:
 Jeżeli logika programu zaczyna dominować nad wykonywaniem poleceń systemowych, kod robi się bardzo duży albo potrzebujesz skomplikowanych struktur danych, wtedy zwykle lepiej przejść do Pythona, Go lub innego pełnego języka programowania.
 
 Do małych narzędzi systemowych shell pozostaje jednak jednym z najszybszych i najbardziej naturalnych rozwiązań.
+
+## Oficjalne źródła
+
+- POSIX Shell Command Language: https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html
+- Debian Reference - shell programming: https://www.debian.org/doc/manuals/debian-reference/ch12
+- FreeBSD sh(1): https://man.freebsd.org/cgi/man.cgi?query=sh&sektion=1

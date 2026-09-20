@@ -6,7 +6,7 @@ description: "A shell is a command interpreter. It reads commands, expands varia
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "debian"
   - "shell"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Shells in Debian
+
+This article explains the roles of Bash, Dash, Zsh, Fish and other shells on Debian. The key distinction is between the interactive shell, the account login shell and the interpreter selected by a script's shebang.
+
+For day-to-day commands see [Debian Practical Shell Handbook](techhandbook:doc-027), and for scripting see [Shell Scripting](techhandbook:doc-031).
 
 ## 1. What is a shell?
 
@@ -343,3 +347,9 @@ exec bash
 ## 33. Most important rule
 
 The interactive shell and a script's interpreter do not have to be the same. Always read the shebang.
+
+## Official references
+
+- Debian Reference - Unix-like environment and shells: https://www.debian.org/doc/manuals/debian-reference/ch01.en.html
+- Debian Reference - shell programming: https://www.debian.org/doc/manuals/debian-reference/ch12
+- Debian manpages: https://manpages.debian.org/
