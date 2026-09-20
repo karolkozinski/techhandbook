@@ -143,19 +143,107 @@
       .replace(/\s+/g, "-")
       .replace(/-+/g, "-");
 
-  function inlineMarkdown(text) {
-    let s = escapeHtml(text);
 
-    s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
+  function normalizeRepoPath(path) {
+    const parts = [];
+    for (const part of path.split("/")) {
+      if (!part || part === ".") continue;
+      if (part === "..") parts.pop();
+      else parts.push(part);
+    }
+    return parts.join("/");
+  }
+
+  function resolveDocumentLink(target) {
+    const [rawPath, rawFragment = ""] = target.split("#", 2);
+
+    if (rawPath.startsWith("techhandbook:")) {
+      const id = rawPath.slice("techhandbook:".length);
+      const file = state.files.find(item => item.id === id);
+      return file ? { file, fragment: rawFragment } : null;
+    }
+
+    if (!/\.md$/i.test(rawPath)) return null;
+
+    const currentPath = state.currentDoc?.path || "";
+    const currentDir = currentPath.includes("/")
+      ? currentPath.split("/").slice(0, -1).join("/")
+      : "";
+
+    const candidate = rawPath.startsWith("md/")
+      ? normalizeRepoPath(rawPath)
+      : normalizeRepoPath((currentDir ? currentDir + "/" : "") + rawPath);
+
+    const file = state.files.find(item => item.path === candidate);
+    return file ? { file, fragment: rawFragment } : null;
+  }
+
+  function safeHref(target) {
+    const trimmed = target.trim();
+    if (/^(?:javascript|data|vbscript):/i.test(trimmed)) return null;
+    return trimmed;
+  }
+
+  function renderMarkdownLink(label, target) {
+    const safeLabel = escapeHtml(label);
+    const safeTarget = safeHref(target);
+    if (!safeTarget) return safeLabel;
+
+    if (safeTarget.startsWith("#")) {
+      const heading = safeTarget.slice(1);
+      return `<a href="${escapeHtml(safeTarget)}" data-heading-id="${escapeHtml(heading)}">${safeLabel}</a>`;
+    }
+
+    const internal = resolveDocumentLink(safeTarget);
+    if (internal) {
+      return `<a href="#/doc/${encodeURIComponent(internal.file.id)}" data-doc-id="${escapeHtml(internal.file.id)}" data-doc-fragment="${escapeHtml(internal.fragment || "")}">${safeLabel}</a>`;
+    }
+
+    const external = /^(?:https?:\/\/|mailto:)/i.test(safeTarget);
+    const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : "";
+    return `<a href="${escapeHtml(safeTarget)}"${attrs}>${safeLabel}</a>`;
+  }
+
+  function inlineMarkdown(text) {
+    const codeTokens = [];
+    const linkTokens = [];
+
+    let source = text.replace(/`([^`]+)`/g, (_, code) => {
+      const token = "\u0000CODE" + codeTokens.length + "\u0000";
+      codeTokens.push(code);
+      return token;
+    });
+
+    source = source.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, target) => {
+      const token = "\u0000LINK" + linkTokens.length + "\u0000";
+      linkTokens.push({ label, target: target.trim() });
+      return token;
+    });
+
+    let s = escapeHtml(source);
+
     s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
     s = s.replace(/__([^_]+)__/g, "<strong>$1</strong>");
     s = s.replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, "<em>$1</em>");
     s = s.replace(/(?<!_)_([^_\n]+)_(?!_)/g, "<em>$1</em>");
 
-    s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-    s = s.replace(/\[([^\]]+)\]\(([^)\s]+\.md(?:#[^)\s]+)?)\)/g,
-      `<span title="${state.language === "en" ? "Link to source document" : "Link do dokumentu źródłowego"}">$1</span>`);
+    s = s.replace(/(^|[\s(>])((?:https?:\/\/)[^\s<]+)/g, (match, prefix, url) => {
+      let trailing = "";
+      while (/[.,;:!?)]$/.test(url)) {
+        trailing = url.slice(-1) + trailing;
+        url = url.slice(0, -1);
+      }
+      return prefix + '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + "</a>" + trailing;
+    });
+
+    s = s.replace(/\u0000LINK(\d+)\u0000/g, (_, index) => {
+      const link = linkTokens[Number(index)];
+      return renderMarkdownLink(link.label, link.target);
+    });
+
+    s = s.replace(/\u0000CODE(\d+)\u0000/g, (_, index) =>
+      "<code>" + escapeHtml(codeTokens[Number(index)]) + "</code>"
+    );
 
     return s;
   }
@@ -546,7 +634,7 @@
     renderDirectory(path);
   }
 
-  async function openDocument(file, context = null, { focusReader = false } = {}) {
+  async function openDocument(file, context = null, { focusReader = false, fragment = "" } = {}) {
     if (context) setNavigationContext(context);
     state.currentDoc = file;
     els.welcome.hidden = true;
@@ -567,7 +655,13 @@
         els.readerTopLabel.textContent = t("toTop");
       }
       if (focusReader) {
-        els.reader.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (fragment) {
+          const target = document.getElementById(decodeURIComponent(fragment));
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+          else els.reader.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          els.reader.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
     } catch (err) {
       els.reader.hidden = true;
@@ -854,6 +948,33 @@
         `<div class="no-results">${escapeHtml(t("indexError"))}: ${escapeHtml(err.message)}</div>`;
     }
   }
+
+
+  els.reader.addEventListener("click", e => {
+    const docLink = e.target.closest("a[data-doc-id]");
+    if (docLink) {
+      e.preventDefault();
+      const file = state.files.find(item => item.id === docLink.dataset.docId);
+      if (!file) return;
+
+      const rel = file.path.replace(new RegExp(`^${state.contentRoot}/`), "");
+      const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
+      renderDirectory(dir);
+      openDocument(
+        file,
+        { type: "dir", path: dir, query: "" },
+        { focusReader: true, fragment: docLink.dataset.docFragment || "" }
+      );
+      return;
+    }
+
+    const headingLink = e.target.closest("a[data-heading-id]");
+    if (headingLink) {
+      e.preventDefault();
+      const target = document.getElementById(decodeURIComponent(headingLink.dataset.headingId || ""));
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
 
   els.search.addEventListener("input", e => runSearch(e.target.value));
 
