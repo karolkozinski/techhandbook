@@ -9,56 +9,61 @@ techhandbook/
 ├── README.md
 ├── index.html
 ├── content-index.json
+├── article.schema.json
+├── CONTENT-MODEL.md
 ├── assets/
 │   ├── app.js
 │   └── styles.css
 └── md/
-    ├── ai/
-    ├── cloud/
-    ├── devops/
-    └── ...
+    ├── pl/
+    └── en/
 ```
 
 ## Jak działa
 
 - żadnego backendu,
 - żadnego Go,
-- żadnego build systemu,
 - żadnych frameworków,
-- katalogi i pliki są renderowane z `content-index.json`,
-- wyszukiwarka przeszukuje wyłącznie dane z JSON,
+- katalogi i pliki są obecnie renderowane z `content-index.json`,
+- wyszukiwarka przeszukuje dane z indeksu,
 - dokument Markdown jest pobierany dopiero po kliknięciu,
 - użytkownik nie dostaje w interfejsie bezpośredniego linku do pliku `.md`,
 - routing interfejsu używa fragmentów `#/...`, więc działa na zwykłym hostingu statycznym.
 
-## Aktualizacja indeksu
+## Model treści
 
-Po dodaniu nowego kompendium dopisz wpis w `content-index.json`.
+Docelowy model metadanych opisuje [CONTENT-MODEL.md](CONTENT-MODEL.md).
 
-Przykład:
+Maszynowy schemat front matter znajduje się w [article.schema.json](article.schema.json).
 
-```json
-{
-  "id": "doc-999",
-  "name": "example.md",
-  "title": "Example",
-  "path": "md/example/example.md",
-  "category": "example",
-  "tags": ["example", "demo"]
-}
+Najważniejsza zasada:
+
+```text
+Markdown front matter = źródło prawdy danych artykułu
+filesystem            = źródło prawdy ścieżki i kategorii
+mapa relacji           = źródło prawdy related
+content-index.json     = wygenerowany indeks runtime
 ```
 
-`id` musi być unikalne.
+### Stan przejściowy
 
-Wyszukiwarka sprawdza:
+Generator indeksu nie jest jeszcze wdrożony.
 
-- `name`,
-- `title`,
-- `path`,
-- `category`,
-- `tags`.
+Do zakończenia migracji istniejący `content-index.json` nadal jest wymagany przez frontend i pozostaje bieżącym runtime source. Po wdrożeniu parsera i migracji wszystkich artykułów nie będzie edytowany ręcznie.
 
-Zwykłe wyszukiwanie działa jako case-insensitive substring, więc `dns` znajdzie dokument zawierający `dns` w nazwie, tytule, ścieżce lub tagach.
+Stabilne `id` są już używane przez linki wewnętrzne i relacje. Nie wolno ich zmieniać podczas migracji.
+
+## Wyszukiwanie
+
+Wyszukiwarka wykorzystuje m.in.:
+
+- nazwę,
+- tytuł,
+- ścieżkę,
+- kategorię,
+- tagi.
+
+Zwykłe wyszukiwanie działa jako case-insensitive substring.
 
 Obsługiwany jest też `*`, np.:
 
@@ -70,6 +75,6 @@ git*
 
 ## Publikacja
 
-Projekt nadaje się do dowolnego hostingu statycznego, np. GitHub Pages.
+Projekt działa na hostingu statycznym.
 
-Uwaga: otwieranie `index.html` bezpośrednio z `file://` może blokować `fetch()` do JSON i Markdownów z powodu polityki bezpieczeństwa przeglądarki. Na hostingu statycznym działa normalnie.
+Uwaga: otwieranie `index.html` bezpośrednio z `file://` może blokować `fetch()` do JSON i Markdownów z powodu polityki bezpieczeństwa przeglądarki.

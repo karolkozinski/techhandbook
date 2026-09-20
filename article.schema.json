@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://techhandbook.nullyard.com/schema/article.schema.json",
+  "title": "TechHandbook article front matter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "slug",
+    "description",
+    "lang",
+    "audience",
+    "published",
+    "updated"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*-[0-9]{3,}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lang": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(?:-[A-Z]{2})?$"
+    },
+    "audience": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "junior"
+      ]
+    },
+    "published": {
+      "type": "string",
+      "format": "date"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "ai": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "generated": {
+          "type": "boolean"
+        },
+        "assisted": {
+          "type": "boolean"
+        },
+        "human_reviewed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "seo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "type": "boolean",
+          "default": true
+        },
+        "ads": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    }
+  }
+}
