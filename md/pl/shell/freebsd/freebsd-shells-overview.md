@@ -1,6 +1,6 @@
 ---
 id: "doc-030"
-title: "Shelle w FreeBSD — przegląd"
+title: "Shelle w FreeBSD - przegląd"
 slug: "shelle-w-freebsd-przeglad"
 description: "Shell, czyli powłoka, to program pośredniczący między użytkownikiem a systemem operacyjnym."
 lang: "pl"
@@ -14,7 +14,7 @@ tags:
   - "tcsh"
 ---
 
-# Shelle w FreeBSD — przegląd
+# Shelle w FreeBSD - przegląd
 
 FreeBSD wyraźnie oddziela system bazowy od oprogramowania instalowanego z pakietów, dlatego ścieżka do powłoki ma tu większe znaczenie niż w wielu dystrybucjach Linuksa. Ten artykuł porządkuje powłoki dostępne w systemie bazowym i te instalowane przez pkg.
 
@@ -462,7 +462,7 @@ Fish:
 chsh -s /usr/local/bin/fish
 ```
 
-## 19. Root — ważna praktyka
+## 19. Root - ważna praktyka
 
 Root powinien korzystać z shella należącego do systemu bazowego.
 

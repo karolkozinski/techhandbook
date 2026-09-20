@@ -91,11 +91,11 @@ Use the right format and size, responsive images and lazy loading.
 
 ## 6. Formats
 
-- JPEG — photos,
-- PNG — transparency / graphics,
-- WebP — modern general-purpose format,
-- AVIF — very efficient compression,
-- SVG — vector graphics.
+- JPEG - photos,
+- PNG - transparency / graphics,
+- WebP - modern general-purpose format,
+- AVIF - very efficient compression,
+- SVG - vector graphics.
 
 ## 7. Lazy loading
 

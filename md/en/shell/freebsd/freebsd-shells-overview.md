@@ -206,7 +206,7 @@ chsh -s /usr/local/bin/zsh
 
 Use a path present in `/etc/shells`.
 
-## 19. Root — important practice
+## 19. Root - important practice
 
 Keep root on a shell from the FreeBSD base system unless you have a strong operational reason not to. During recovery, `/usr/local` may not be available.
 

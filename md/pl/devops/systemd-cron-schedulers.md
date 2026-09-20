@@ -21,7 +21,7 @@ Usługa działająca w tle i zadanie uruchamiane okresowo to dwa różne problem
 
 **Kiedy ten materiał jest przydatny:** gdy aplikacja ma startować po bootowaniu, restartować się po awarii, zapisywać logi albo wykonywać zadanie o określonej porze bez aktywnej sesji użytkownika.
 
-Dla szerszego kontekstu: [Debian — desktop i serwer](techhandbook:doc-033), [Shell scripting](techhandbook:doc-031) i [Dokumentowanie rozwiązań technicznych](techhandbook:doc-056).
+Dla szerszego kontekstu: [Debian - desktop i serwer](techhandbook:doc-033), [Shell scripting](techhandbook:doc-031) i [Dokumentowanie rozwiązań technicznych](techhandbook:doc-056).
 
 ## 1. Problem
 

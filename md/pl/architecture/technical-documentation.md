@@ -178,7 +178,7 @@ Database
 
 Nie każdy diagram wymaga ciężkiego narzędzia.
 
-## 12. C4 — idea
+## 12. C4 - idea
 
 Poziomy:
 

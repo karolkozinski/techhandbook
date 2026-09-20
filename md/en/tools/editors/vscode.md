@@ -1,6 +1,6 @@
 ---
 id: "doc-039"
-title: "Visual Studio Code — Knowledge Handbook"
+title: "Visual Studio Code - Knowledge Handbook"
 slug: "visual-studio-code-knowledge-handbook"
 description: "VS Code is a cross-platform code editor with project navigation, Git integration, terminal, debugger, language servers, extensions and AI tooling. It sits…"
 lang: "en"
@@ -14,7 +14,7 @@ tags:
   - "codex"
 ---
 
-# Visual Studio Code — Knowledge Handbook
+# Visual Studio Code - Knowledge Handbook
 
 VS Code is a workspace for the whole project: files, search, terminal, Git, debugging, language services, tasks and AI tooling share one context. Agents can now plan work, edit multiple files and run commands, but the result should still go through diff review, tests and normal code review.
 
@@ -42,7 +42,7 @@ Main file-editing area, supporting multiple tabs and split groups.
 Bottom area for Terminal, Problems, Output and Debug Console.
 ## Status Bar
 Shows branch, line/column, encoding, language mode, errors, remote state and extension-specific status.
-# 4. Command Palette — control center
+# 4. Command Palette - control center
 ```text
 Ctrl+Shift+P   Windows/Linux
 Cmd+Shift+P    macOS
@@ -252,7 +252,7 @@ go test ./...
 ```
 ## Rules
 Do not change public APIs without approval. Do not commit secrets. Run tests before finishing.
-# 53. AI in VS Code — three different levels
+# 53. AI in VS Code - three different levels
 ## 1. Autocomplete
 Predicts code as you type. Best for repetitive/local patterns.
 ## 2. Chat
@@ -397,7 +397,7 @@ Remote SSH turns VS Code into a comfortable client for editing and running tools
 Develop locally → commit/push → pull on server → build/restart using documented commands.
 # 107. Local development, Docker deployment
 Develop locally → build/test image → push registry or transfer → pull/recreate on server.
-# 108. Source Control + AI — good combination
+# 108. Source Control + AI - good combination
 Let AI modify files, but use Git diff/staging to inspect exactly what changed.
 # 109. Common beginner mistakes in VS Code
 ## Opening a single file instead of the project
@@ -440,9 +440,9 @@ Before multi-file or architectural changes.
 For repository-wide implementation, debugging, tests or repetitive multi-step work that can be validated.
 # 119. When it is better to work manually
 Tiny obvious edits, sensitive production changes, or situations where explaining the task costs more than doing it.
-# 120. Minimal extension set — example
+# 120. Minimal extension set - example
 Language extension for your primary stack, one formatter/linter integration, GitHub/remote tooling if needed, and one AI assistant. Add more only when justified.
-# 121. Minimal settings — example
+# 121. Minimal settings - example
 ```json
 {
   "editor.formatOnSave": true,
@@ -457,7 +457,7 @@ Pull → open project → check branch/status → work → run tests/lint → in
 Inspect → plan → small edit → test → diff review → iterate → commit.
 # 124. Most important AI coding rule
 AI may type faster than you, but you remain responsible for the repository and the deployed result.
-# 125. Cheat sheet — VS Code in 60 seconds
+# 125. Cheat sheet - VS Code in 60 seconds
 ```text
 Ctrl+P files
 Ctrl+Shift+P commands
@@ -467,7 +467,7 @@ F12 definition
 Shift+F12 references
 Source Control → diff/stage/commit
 ```
-# 126. Cheat sheet — AI in 60 seconds
+# 126. Cheat sheet - AI in 60 seconds
 ```text
 Ask = explain
 Plan = design work

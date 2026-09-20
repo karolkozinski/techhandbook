@@ -520,7 +520,7 @@ Pakiety są nowe, ale system nadal przechodzi intensywne testowanie.
 
 ---
 
-# 9. Red Hat Enterprise Linux — RHEL
+# 9. Red Hat Enterprise Linux - RHEL
 
 RHEL to komercyjna dystrybucja firmy Red Hat.
 
@@ -1562,7 +1562,7 @@ Arch Wiki jest jednym z najlepszych źródeł wiedzy o Linuxie również dla uż
 
 ---
 
-# 44. Rodziny dystrybucji — skrót
+# 44. Rodziny dystrybucji - skrót
 
 ## Debian
 

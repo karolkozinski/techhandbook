@@ -2,7 +2,7 @@
 id: "doc-025"
 title: "Linux permissions i bezpieczeństwo serwera"
 slug: "linux-permissions-i-bezpieczenstwo-serwera"
-description: "Linux permissions i bezpieczeństwo serwera — praktyczne kompendium TechHandbook."
+description: "Linux permissions i bezpieczeństwo serwera - praktyczne kompendium TechHandbook."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"

@@ -1,6 +1,6 @@
 ---
 id: "doc-048"
-title: "Web Performance — kompendium"
+title: "Web Performance - kompendium"
 slug: "web-performance-kompendium"
 description: "Szybkość strony wpływa na:"
 lang: "pl"
@@ -17,7 +17,7 @@ tags:
   - "images"
 ---
 
-# Web Performance — kompendium
+# Web Performance - kompendium
 
 Web performance warto optymalizować na podstawie pomiarów, a nie intuicji. Najpierw ustal, czy problem leży w sieci, backendzie, zasobach, JavaScriptcie czy renderowaniu, a dopiero potem zmieniaj kod.
 
@@ -124,11 +124,11 @@ Przykład:
 
 Najczęściej:
 
-- JPEG — fotografie,
-- PNG — przezroczystość / grafika,
-- WebP — nowoczesny format,
-- AVIF — bardzo dobra kompresja,
-- SVG — wektory.
+- JPEG - fotografie,
+- PNG - przezroczystość / grafika,
+- WebP - nowoczesny format,
+- AVIF - bardzo dobra kompresja,
+- SVG - wektory.
 
 ## 7. Lazy loading
 

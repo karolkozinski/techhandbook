@@ -1,6 +1,6 @@
 ---
 id: "doc-012"
-title: "Docker — Practical Handbook"
+title: "Docker - Practical Handbook"
 slug: "docker-practical-handbook"
 description: "Docker runs applications in repeatable, isolated containers. The core model is simple: an image is a template, a container is a running instance, a volume…"
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "devops"
 ---
 
-# Docker — Practical Handbook
+# Docker - Practical Handbook
 
 Docker runs applications in repeatable, isolated containers. The core model is simple: an **image** is a template, a **container** is a running instance, a **volume** holds persistent data, and **Compose** describes a set of cooperating services.
 
@@ -21,7 +21,7 @@ Docker runs applications in repeatable, isolated containers. The core model is s
 
 The handbook uses the modern `docker compose` command provided by the Compose plugin rather than the legacy standalone `docker-compose` command.
 
-Related topics: [Debian 13 — Desktop + Server Handbook](techhandbook:doc-033), [systemd, cron and Schedulers](techhandbook:doc-052), [Linux Permissions and Server Security](techhandbook:doc-025), and [nginx and reverse proxy](techhandbook:doc-045).
+Related topics: [Debian 13 - Desktop + Server Handbook](techhandbook:doc-033), [systemd, cron and Schedulers](techhandbook:doc-052), [Linux Permissions and Server Security](techhandbook:doc-025), and [nginx and reverse proxy](techhandbook:doc-045).
 
 ## Handbook map
 
@@ -432,7 +432,7 @@ docker run --cpus=1.0 myapp
 docker cp config.json web:/app/config.json
 docker cp web:/app/report.txt ./report.txt
 ```
-# 62. Exporting an image — `docker save`
+# 62. Exporting an image - `docker save`
 ```bash
 docker save myapp:1.0 -o myapp.tar
 docker load -i myapp.tar
@@ -488,12 +488,12 @@ docker compose up -d
 ```
 # 71. Best model for small projects
 A simple small-project layout is source + Dockerfile + compose.yaml in Git, with Docker and nginx on the VPS.
-## Variant A — build on the server
+## Variant A - build on the server
 ```bash
 git pull
 docker compose up -d --build
 ```
-## Variant B — prebuilt images
+## Variant B - prebuilt images
 Build in CI/local → push to registry → pull and restart on the VPS.
 # 72. Docker + nginx reverse proxy
 ```yaml
@@ -544,7 +544,7 @@ docker exec db pg_dump -U app app > backup.sql
 cat backup.sql | docker exec -i db psql -U app app
 ```
 For databases, logical backups are often safer than copying live database files.
-# 79. Prune — cleanup
+# 79. Prune - cleanup
 ```bash
 docker system df
 ```
@@ -593,7 +593,7 @@ docker compose up -d
 ```
 # 88. Containers cannot communicate
 Do not use `localhost` to reach another container. Use the Compose service name, e.g. `db:5432`.
-# 89. `localhost` — important rule
+# 89. `localhost` - important rule
 ```text
 on host: localhost = host
 inside container: localhost = that container
@@ -877,35 +877,35 @@ docker compose exec app sh
 docker compose down
 ```
 # 122. Real-life examples
-## Example 1 — quick nginx
+## Example 1 - quick nginx
 ```bash
 docker run -d --name nginx-test -p 8080:80 nginx
 docker logs nginx-test
 docker rm -f nginx-test
 ```
-## Example 2 — temporary Debian
+## Example 2 - temporary Debian
 ```bash
 docker run --rm -it debian:13 bash
 ```
-## Example 3 — PostgreSQL
+## Example 3 - PostgreSQL
 ```bash
 docker volume create pgdata
 docker run -d --name postgres -e POSTGRES_PASSWORD=secret -v pgdata:/var/lib/postgresql/data postgres:17
 ```
-## Example 4 — export image to another computer
+## Example 4 - export image to another computer
 ```bash
 docker build -t web-monitor:1.0 .
 docker save web-monitor:1.0 | gzip > web-monitor.tar.gz
 scp web-monitor.tar.gz server:/tmp/
 ```
-## Example 5 — Go application on VPS
+## Example 5 - Go application on VPS
 ```bash
 git clone git@github.com:user/app.git
 cd app
 docker compose up -d --build
 docker compose logs -f app
 ```
-# 123. Docker — mental map
+# 123. Docker - mental map
 ```text
 Dockerfile → docker build → IMAGE → docker run → CONTAINER
 CONTAINER uses ports + env + networks + volumes
@@ -913,7 +913,7 @@ compose.yaml → docker compose up → multiple coordinated services
 ```
 # 124. What you should know after this handbook
 You should understand image vs container, engine lifecycle, ports, logs, exec, volumes, networks, Dockerfiles, image builds, Compose, deployment, image transfer, backups, cleanup, troubleshooting and basic security.
-# 125. Cheat sheet — one screen
+# 125. Cheat sheet - one screen
 # status
 ```bash
 docker ps

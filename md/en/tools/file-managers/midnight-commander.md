@@ -1,6 +1,6 @@
 ---
 id: "doc-040"
-title: "Midnight Commander — Knowledge Handbook"
+title: "Midnight Commander - Knowledge Handbook"
 slug: "midnight-commander-knowledge-handbook"
 description: "Midnight Commander (MC) is a two-panel terminal file manager inspired by Norton Commander. It combines file operations, a shell command line, viewer, editor…"
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "file manager"
 ---
 
-# Midnight Commander — Knowledge Handbook
+# Midnight Commander - Knowledge Handbook
 
 Midnight Commander is a convenient visual layer over ordinary file operations and the shell. It works especially well on servers over SSH when you want to compare directories, copy files, inspect logs or drop into a normal command without leaving the program.
 
@@ -42,27 +42,27 @@ Open directories, launch files according to associations or confirm selections.
 Select `..` and press Enter, or use the appropriate navigation shortcut.
 # 5. Switching panels
 Use Tab to move focus between the left and right panels.
-# 6. Function keys F1–F10
+# 6. Function keys F1-F10
 The bottom bar shows the default actions mapped to function keys.
-# 7. F1 — help
+# 7. F1 - help
 Opens context-sensitive help and key documentation.
-# 8. F2 — user menu
+# 8. F2 - user menu
 Opens a configurable menu of custom shell commands/actions.
-# 9. F3 — file viewer
+# 9. F3 - file viewer
 View a file without editing it. Useful for configs, logs and quick inspection.
-# 10. F4 — edit file
+# 10. F4 - edit file
 Opens the selected file in mcedit or the configured external editor.
-# 11. F5 — copy
+# 11. F5 - copy
 Copies selected files/directories to the opposite panel by default.
-# 12. F6 — move / rename
+# 12. F6 - move / rename
 Moves selected files or renames them when source/target are in the same directory context.
-# 13. F7 — create directory
+# 13. F7 - create directory
 Creates a new directory in the active panel.
-# 14. F8 — delete
+# 14. F8 - delete
 Deletes selected files/directories after confirmation. Review the selection carefully.
-# 15. F9 — main menu
+# 15. F9 - main menu
 Activates the top menu where panel, file, command and options features are available.
-# 16. F10 — quit
+# 16. F10 - quit
 Exits Midnight Commander.
 # 17. Selecting files
 ## Insert
@@ -96,7 +96,7 @@ Insert the selected filename/path according to MC's shortcut behavior.
 Depending on terminal/MC version, inserts a more complete path variant. If the terminal intercepts the key, remap or use menus.
 # 29. Searching for files
 Use MC's Find File feature for recursive filename/content searches.
-# 30. mcedit — built-in editor
+# 30. mcedit - built-in editor
 mcedit is a capable terminal editor integrated with MC, useful for configs and quick remote edits.
 # 31. mcedit basics
 Navigate with arrows/PageUp/PageDown, type normally, and use function-key/menu commands for block operations and options.
@@ -169,7 +169,7 @@ mc
 A simple and robust way to administer remote servers.
 # 61. tmux and screen sessions
 Run MC inside tmux/screen so your file-management session survives an SSH disconnect.
-# 62. Useful shortcuts — cheat sheet
+# 62. Useful shortcuts - cheat sheet
 ```text
 Tab switch panels
 F3 view
@@ -183,7 +183,7 @@ F10 quit
 Insert mark
 Ctrl+O hide/show panels
 ```
-# 63. Terminal and F1–F10 problems
+# 63. Terminal and F1-F10 problems
 Laptop/terminal function keys may be intercepted by the desktop or terminal emulator. Use Fn, remap keys or choose menu commands.
 # 64. “Meta” in MC documentation
 Meta usually means Alt. If Alt combinations do not work, Esc followed by the key often acts as a Meta sequence.
@@ -201,31 +201,31 @@ Disable expensive size calculations/sorting and use shell tools like `find`, `du
 For repeatable synchronization/backups, use rsync or dedicated backup tools. MC is interactive.
 # 70. MC does not replace the shell
 Use MC for navigation and file operations; use shell commands for automation, filtering, bulk processing and reproducibility.
-# 71. Example 1 — editing nginx
+# 71. Example 1 - editing nginx
 Navigate to `/etc/nginx` on Debian or `/usr/local/etc/nginx` on FreeBSD, inspect config with F3, edit carefully, then test with `nginx -t`.
-# 72. Example 2 — deploying a Go application
+# 72. Example 2 - deploying a Go application
 One panel can show the release/build directory and the other `/srv/app`; copy the binary/config, then restart the service from MC's shell line.
-# 73. Example 3 — configuration backup
+# 73. Example 3 - configuration backup
 Mark config files/directories and copy them to a dated backup location before changes.
-# 74. Example 4 — copying files from a VPS
+# 74. Example 4 - copying files from a VPS
 Use SFTP VFS or a normal SSH session plus `scp`/`rsync`; for repeated transfers, rsync is usually better.
-# 75. Example 5 — finding large files
+# 75. Example 5 - finding large files
 Use MC size calculation for quick inspection, or drop to shell with `du -xhd1 | sort -h` for large trees.
-# 76. Example 6 — searching configuration
+# 76. Example 6 - searching configuration
 Use Find File to search names/content under `/etc` or `/usr/local/etc`, or run `grep -Rni` from the command line.
-# 77. Example 7 — working with logs
+# 77. Example 7 - working with logs
 Open `/var/log`, sort by time, use F3 to inspect, and switch to `tail -f` in shell for live logs.
-# 78. Example 8 — Git + MC
+# 78. Example 8 - Git + MC
 Browse/edit files in MC, then use `git status`, `git diff`, `git add` and `git commit` in the command line.
-# 79. Example 9 — quick production vs development comparison
+# 79. Example 9 - quick production vs development comparison
 Open corresponding directories in both panels and use Compare Directories, then manually verify meaningful differences.
-# 80. Example 10 — FreeBSD
+# 80. Example 10 - FreeBSD
 Left `/usr/local/etc`, right `/var/log`; use shell line for `service`, `sysrc`, `sockstat` and `pkg` commands.
 # 81. Example workflow
 Use MC as the visual layer on servers: two panels for files, shell at the bottom, Vim/Neovim or mcedit for edits, tmux for persistence, Git/rsync for repeatable operations.
 # 82. Minimum worth remembering
 Tab, F3, F4, F5, F6, F7, F8, Ctrl+O, Insert, Quick cd, Find File and the command line.
-# 83. Cheat sheet — Debian
+# 83. Cheat sheet - Debian
 ```bash
 sudo apt install mc
 mc
@@ -233,7 +233,7 @@ systemctl status SERVICE
 journalctl -u SERVICE
 sudoedit /etc/...
 ```
-# 84. Cheat sheet — FreeBSD
+# 84. Cheat sheet - FreeBSD
 ```sh
 pkg install mc
 mc

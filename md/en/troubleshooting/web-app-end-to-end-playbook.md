@@ -1,6 +1,6 @@
 ---
 id: "doc-057"
-title: "End-to-End Web Application Troubleshooting — Playbook"
+title: "End-to-End Web Application Troubleshooting - Playbook"
 slug: "end-to-end-web-application-troubleshooting-playbook"
 description: "Troubleshoot a web application systematically from user-visible symptom to root cause."
 lang: "en"
@@ -17,7 +17,7 @@ tags:
   - "debug"
 ---
 
-# End-to-End Web Application Troubleshooting — Playbook
+# End-to-End Web Application Troubleshooting - Playbook
 
 Web application troubleshooting should move layer by layer from the observable symptom toward the root cause. Start with reproduction and evidence, then inspect DNS/network/TLS, reverse proxy, backend, database and external APIs before making random configuration changes.
 

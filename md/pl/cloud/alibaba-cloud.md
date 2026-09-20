@@ -57,7 +57,7 @@ Model jest klasyczny:
 
 Przy usługach w Chinach trzeba dodatkowo brać pod uwagę lokalne wymogi prawne, dostępność usług oraz procesy związane z publicznym udostępnianiem stron, np. wymagania ICP zależnie od scenariusza.
 
-## 4. Najważniejsze usługi — mapa
+## 4. Najważniejsze usługi - mapa
 
 | Potrzeba | Alibaba Cloud |
 |---|---|
@@ -88,7 +88,7 @@ Przy usługach w Chinach trzeba dodatkowo brać pod uwagę lokalne wymogi prawne
 | IaC | Terraform / ROS |
 | AI | Model Studio / Qwen ecosystem |
 
-## 5. ECS — Elastic Compute Service
+## 5. ECS - Elastic Compute Service
 
 ECS to VM. Instancja składa się z:
 
@@ -167,8 +167,8 @@ W zależności od używanego narzędzia można korzystać z Alibaba Cloud CLI lu
 
 ## 9. Cloud Disks i NAS
 
-- cloud disk — storage blokowy dla ECS,
-- NAS — zarządzany współdzielony filesystem.
+- cloud disk - storage blokowy dla ECS,
+- NAS - zarządzany współdzielony filesystem.
 
 Tak samo jak w innych chmurach: rozdzielaj storage aplikacyjny od efemerycznego filesystemu kontenera.
 
@@ -190,7 +190,7 @@ PolarDB to cloud-native rodzina baz danych Alibaba, zaprojektowana do skalowania
 
 Dla aplikacji przenoszonej między chmurami klasyczny PostgreSQL/MySQL może ułatwiać portability. PolarDB jest ciekawsze, gdy świadomie korzystasz z funkcji ekosystemu Alibaba.
 
-## 12. ACK — Kubernetes
+## 12. ACK - Kubernetes
 
 Alibaba Cloud Container Service for Kubernetes (ACK) to zarządzany Kubernetes.
 
@@ -230,11 +230,11 @@ Model jest podobny do AWS Lambda/Azure Functions/Cloud Run functions.
 
 Alibaba używa kilku wariantów load balancingu:
 
-- ALB — warstwa aplikacyjna HTTP/HTTPS,
-- NLB — L4/high performance,
+- ALB - warstwa aplikacyjna HTTP/HTTPS,
+- NLB - L4/high performance,
 - starsze/ogólne nazewnictwo SLB może pojawiać się w dokumentacji i istniejących środowiskach.
 
-Nie zakładaj, że każda nazwa ze starego tutoriala odpowiada aktualnemu portfolio 1:1 — Alibaba intensywnie rozwija i porządkuje usługi.
+Nie zakładaj, że każda nazwa ze starego tutoriala odpowiada aktualnemu portfolio 1:1 - Alibaba intensywnie rozwija i porządkuje usługi.
 
 ## 16. CDN i DCDN
 
@@ -242,7 +242,7 @@ CDN przyspiesza dostarczanie treści statycznych. Dynamic Route for CDN/DCDN roz
 
 Szczególnie przy użytkownikach rozproszonych po Azji CDN może mieć duże znaczenie.
 
-## 17. RAM — Resource Access Management
+## 17. RAM - Resource Access Management
 
 RAM to odpowiednik IAM.
 
@@ -271,8 +271,8 @@ Klucze:
 
 ## 19. KMS i Secrets Manager
 
-- **KMS** — klucze szyfrujące.
-- **Secrets Manager** — sekrety.
+- **KMS** - klucze szyfrujące.
+- **Secrets Manager** - sekrety.
 
 Wzorzec:
 
@@ -326,10 +326,10 @@ Alibaba Cloud ma providera Terraform. Natywną usługą IaC jest Resource Orches
 
 Praktycznie:
 
-- Terraform — dobry wybór dla multi-cloud i popularnych zespołów DevOps,
-- ROS — natywne podejście Alibaba.
+- Terraform - dobry wybór dla multi-cloud i popularnych zespołów DevOps,
+- ROS - natywne podejście Alibaba.
 
-## 24. CEN — Cloud Enterprise Network
+## 24. CEN - Cloud Enterprise Network
 
 CEN służy do łączenia wielu VPC, regionów i sieci enterprise. Jest odpowiednikiem klasy rozwiązań typu AWS Transit Gateway / Azure Virtual WAN w zależności od scenariusza.
 
@@ -370,7 +370,7 @@ ALB -> ACK -> RDS/PolarDB -> OSS
 OSS/Event -> Function Compute -> DB/Queue
 ```
 
-## 27. Rynek chiński — ważne różnice
+## 27. Rynek chiński - ważne różnice
 
 Jeżeli aplikacja ma być hostowana w Chinach kontynentalnych, technologia to tylko połowa problemu. Trzeba sprawdzić aktualne wymagania prawne, rejestracyjne, domenowe i sieciowe, w tym czy dla danego typu publicznej strony wymagane jest ICP filing/licensing.
 
@@ -397,7 +397,7 @@ Pilnuj:
 - transferu między regionami,
 - logów i AI.
 
-## 29. Bezpieczeństwo — minimum
+## 29. Bezpieczeństwo - minimum
 
 - MFA na koncie głównym.
 - RAM users/roles zamiast root account.

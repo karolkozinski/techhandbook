@@ -1,6 +1,6 @@
 ---
 id: "doc-019"
-title: "C — Reading, Building and Debugging Projects"
+title: "C - Reading, Building and Debugging Projects"
 slug: "c-reading-building-and-debugging-projects"
 description: "C is a small, compiled systems language that gives you direct control over memory, data layout and operating-system APIs."
 lang: "en"
@@ -14,7 +14,7 @@ tags:
   - "gdb"
 ---
 
-# C — Reading, Building and Debugging Projects
+# C - Reading, Building and Debugging Projects
 
 C remains common in operating systems, libraries, drivers, CLI tools and embedded software. This handbook focuses on reading existing code, building projects and understanding compiler, linker and memory-related failures.
 
@@ -157,7 +157,7 @@ int values[4] = {1,2,3,4};
 A C string is a sequence of bytes terminated by `\0`. It is not a distinct string object type.
 # 29. Basic string functions
 Recognize `strlen`, `strcmp`, `strcpy`/`strncpy`, `snprintf`, `strchr`, `strstr` and their safety constraints.
-# 30. Pointers — the thing you must learn to read
+# 30. Pointers - the thing you must learn to read
 A pointer stores an address. Read pointer-heavy code by asking what object it points to, whether it may be NULL and who owns that object.
 # 31. Pointer example
 ```c
@@ -570,11 +570,11 @@ Build with strong warnings and fix them rather than normalizing noisy output.
 Turns warnings into errors. Useful in CI when the warning set/compiler version is controlled.
 # 135. Debug vs Release
 Debug favors symbols/assertions/sanitizers; Release favors optimization and production settings.
-# 136. Installing dependencies — Debian
+# 136. Installing dependencies - Debian
 ```bash
 sudo apt install build-essential pkg-config cmake ninja-build
 ```
-# 137. Installing dependencies — FreeBSD
+# 137. Installing dependencies - FreeBSD
 ```bash
 pkg install pkgconf cmake ninja
 ```
@@ -735,9 +735,9 @@ ctest --test-dir build --output-on-failure
 ```bash
 CC=clang CFLAGS='-g -O1 -fsanitize=address,undefined -fno-omit-frame-pointer' make
 ```
-# 189. Crash debugging — ready-made pattern
+# 189. Crash debugging - ready-made pattern
 Reproduce → capture exact input/version → run under debugger/sanitizer → get backtrace → inspect faulting frame and ownership.
-# 190. Memory bug debugging — ready-made pattern
+# 190. Memory bug debugging - ready-made pattern
 Build with ASan/UBSan or Valgrind, reproduce, inspect allocation/free stack traces, then add a regression test.
 # 191. Debugging “program does nothing”
 Check exit status, stdout/stderr, logs, blocking syscalls, expected inputs and whether you are running the correct binary.
@@ -756,7 +756,7 @@ ldd build/app 2>/dev/null || true
 ```
 # 196. How to check the project's coding standard
 Look for `.clang-format`, `.clang-tidy`, CONTRIBUTING, CI lint jobs and formatting scripts.
-# 197. What you do not need to know to read 80–90% of projects
+# 197. What you do not need to know to read 80-90% of projects
 You usually do not need compiler internals, linker-script mastery, exotic atomics or advanced macro metaprogramming.
 # 198. What you really need to know well
 Pointers/lifetimes, structs, functions, headers, build/linking, error handling, memory ownership and debugger basics.

@@ -24,7 +24,7 @@ Powiązane tematy: [Git w praktyce zespołowej](techhandbook:doc-013), [CI/CD i 
 
 ---
 
-## 1. Git a GitHub – to nie jest to samo
+## 1. Git a GitHub - to nie jest to samo
 
 ### Git
 
@@ -1035,7 +1035,7 @@ oryginał
 
 Jeżeli masz write access do projektu, zwykle wygodniej użyć brancha.
 
-Jeżeli go nie masz – często używa się forka.
+Jeżeli go nie masz - często używa się forka.
 
 ---
 
@@ -1401,7 +1401,7 @@ Brak licencji nie oznacza:
 rób co chcesz
 ```
 
-Wręcz przeciwnie – standardowo autor zachowuje prawa.
+Wręcz przeciwnie - standardowo autor zachowuje prawa.
 
 ---
 
@@ -1515,7 +1515,7 @@ Dobre do:
 
 ---
 
-# 51. GitHub CLI – `gh`
+# 51. GitHub CLI - `gh`
 
 GitHub posiada oficjalny CLI:
 
@@ -2199,7 +2199,7 @@ git branch -d feature/search
 
 ---
 
-# 81. Typowy workflow solo – prostszy wariant
+# 81. Typowy workflow solo - prostszy wariant
 
 Jeżeli projekt robisz sam i nie potrzebujesz PR do każdej zmiany:
 
@@ -2291,7 +2291,7 @@ git push --force-with-lease
 
 ---
 
-# 84. GitHub Web UI – rzeczy, które warto znać
+# 84. GitHub Web UI - rzeczy, które warto znać
 
 W repozytorium najczęściej zobaczysz:
 
@@ -2484,7 +2484,7 @@ Pomagają uzyskać kompletne zgłoszenia.
 
 ---
 
-# 92. GitHub Actions – minimalna idea
+# 92. GitHub Actions - minimalna idea
 
 Workflow może wyglądać koncepcyjnie tak:
 
@@ -2522,7 +2522,7 @@ wynik
 
 # 93. CI/CD
 
-## CI – Continuous Integration
+## CI - Continuous Integration
 
 Automatycznie:
 
@@ -2535,7 +2535,7 @@ security checks
 
 po push lub PR.
 
-## CD – Continuous Delivery / Deployment
+## CD - Continuous Delivery / Deployment
 
 Automatyczne:
 
@@ -2692,7 +2692,7 @@ Dzięki temu można:
 
 ---
 
-# 101. Praca z istniejącym projektem – bezpieczna procedura
+# 101. Praca z istniejącym projektem - bezpieczna procedura
 
 Po sklonowaniu:
 
@@ -2986,7 +2986,7 @@ Nie jest to wymóg GitHuba, tylko dobra organizacja.
 
 ---
 
-# 110. Conventional Commits – opcjonalnie
+# 110. Conventional Commits - opcjonalnie
 
 Popularna konwencja:
 
@@ -3070,7 +3070,7 @@ git switch -c fix/docs
 
 ---
 
-# 114. Przydatne polecenia – ściąga
+# 114. Przydatne polecenia - ściąga
 
 ## Stan projektu
 
@@ -3242,7 +3242,7 @@ WORKING DIRECTORY
 
 ---
 
-# 117. Branch / Fork / PR – model mentalny
+# 117. Branch / Fork / PR - model mentalny
 
 ```text
 UPSTREAM REPOSITORY

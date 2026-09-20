@@ -35,7 +35,7 @@ Nie chodzi o przygotowanie do CCNA. Chodzi o sprawne rozumienie:
 - firewalli,
 - podstaw diagnostyki.
 
-## 2. Warstwy — praktycznie
+## 2. Warstwy - praktycznie
 
 Uproszczony model:
 
@@ -90,7 +90,7 @@ Używany m.in.:
 Zakres:
 
 ```text
-0–65535
+0-65535
 ```
 
 Popularne:
@@ -166,10 +166,10 @@ Typowy router domowy zmienia prywatne adresy źródłowe na publiczny adres WAN.
 VLAN logicznie rozdziela jedną infrastrukturę warstwy 2.
 
 Przykład:
-- VLAN 10 — dom,
-- VLAN 20 — IoT,
-- VLAN 30 — goście,
-- VLAN 40 — serwery.
+- VLAN 10 - dom,
+- VLAN 20 - IoT,
+- VLAN 30 - goście,
+- VLAN 40 - serwery.
 
 Komunikacja między VLAN-ami wymaga routingu.
 
@@ -197,7 +197,7 @@ ping example.com
 
 Jeżeli IP działa, a domena nie, podejrzewaj DNS.
 
-Brak odpowiedzi na ping nie zawsze oznacza awarię — ICMP może być blokowany.
+Brak odpowiedzi na ping nie zawsze oznacza awarię - ICMP może być blokowany.
 
 ## 15. traceroute
 

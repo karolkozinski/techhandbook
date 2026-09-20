@@ -1,6 +1,6 @@
 ---
 id: "doc-046"
-title: "Browser DevTools — kompendium praktyczne"
+title: "Browser DevTools - kompendium praktyczne"
 slug: "browser-devtools-kompendium-praktyczne"
 description: "Narzędzia deweloperskie przeglądarki są jednym z najważniejszych narzędzi przy pracy z aplikacjami webowymi. Pozwalają diagnozować problemy bez zgadywania."
 lang: "pl"
@@ -15,7 +15,7 @@ tags:
   - "debug"
 ---
 
-# Browser DevTools — kompendium praktyczne
+# Browser DevTools - kompendium praktyczne
 
 DevTools pozwalają przejść od zgadywania do obserwacji: zobaczyć DOM, końcowe style, requesty, storage, wykonanie JavaScriptu i ślad wydajności. Nazwy paneli różnią się między przeglądarkami, ale sposób diagnozy pozostaje podobny.
 
@@ -370,11 +370,11 @@ DevTools potrafi wykonywać:
 
 Gdy „strona nie działa”:
 
-1. Console — błędy JS.
-2. Network — requesty 4xx/5xx.
-3. Elements — DOM i CSS.
-4. Storage — sesja/cookies.
-5. Performance — jeśli problem dotyczy szybkości.
+1. Console - błędy JS.
+2. Network - requesty 4xx/5xx.
+3. Elements - DOM i CSS.
+4. Storage - sesja/cookies.
+5. Performance - jeśli problem dotyczy szybkości.
 
 ## 25. Co trzeba umieć
 

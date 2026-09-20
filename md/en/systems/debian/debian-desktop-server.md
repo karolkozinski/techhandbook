@@ -1,6 +1,6 @@
 ---
 id: "doc-033"
-title: "Debian 13 — Desktop + Server Handbook"
+title: "Debian 13 - Desktop + Server Handbook"
 slug: "debian-13-desktop-server-handbook"
 description: "Debian is a stable, general-purpose GNU/Linux distribution used on desktops, workstations and servers. This handbook focuses on the system model needed for…"
 lang: "en"
@@ -15,7 +15,7 @@ tags:
   - "server"
 ---
 
-# Debian 13 — Desktop + Server Handbook
+# Debian 13 - Desktop + Server Handbook
 
 Debian is a stable, general-purpose GNU/Linux distribution used on desktops, workstations and servers. This handbook focuses on the system model needed for practical administration: packages, services, logs, networking, permissions, storage, GNOME/KDE and server operation.
 
@@ -96,7 +96,7 @@ chmod u+x script.sh
 ```bash
 sudo usermod -aG GROUP USER
 ```
-# 8. Package management — APT
+# 8. Package management - APT
 ```bash
 sudo apt update
 sudo apt upgrade
@@ -188,7 +188,7 @@ nc -vz HOST PORT
 curl -I https://example.com
 wget https://example.com/file
 ```
-# 31. Audio — PipeWire
+# 31. Audio - PipeWire
 Modern Debian desktops commonly use PipeWire for audio and media routing.
 # 32. Bluetooth
 BlueZ provides the underlying Linux Bluetooth stack; desktop environments add GUI integration.
@@ -198,13 +198,13 @@ Firmware often comes from non-free-firmware; inspect hardware with lspci/lsusb a
 Depending on hardware and workload, the proprietary NVIDIA driver may be appropriate.
 # 35. Intel and AMD
 Modern Intel/AMD graphics usually use open kernel/Mesa drivers.
-# 36. Laptop — battery and power
+# 36. Laptop - battery and power
 Use desktop power controls, logind/systemd tools and firmware settings; inspect real logs when diagnosing battery behavior.
 # 37. Suspend
 Suspend issues require checking kernel logs, firmware, drivers and wake sources rather than guessing.
 # 38. Printers
 CUPS is the traditional Linux printing stack.
-# 39. systemd — service startup core
+# 39. systemd - service startup core
 systemd manages system boot, services, timers and much runtime state.
 # 40. systemctl
 ```bash
@@ -229,7 +229,7 @@ systemctl --type=service --state=running
 systemctl --user status
 systemctl --user enable --now SERVICE
 ```
-# 45. Logs — journalctl
+# 45. Logs - journalctl
 ```bash
 journalctl -b
 journalctl -p err
@@ -336,7 +336,7 @@ sudo lsof -i :8080
 127.0.0.1/::1 is loopback-only and not reachable from other machines.
 # 75. 0.0.0.0
 Binding to 0.0.0.0 listens on all IPv4 interfaces.
-# 76. nftables — firewall
+# 76. nftables - firewall
 nftables is Debian's native packet-filtering framework.
 # 77. Minimal firewall idea
 Allow established traffic, SSH from trusted sources and only required public application ports.
@@ -455,7 +455,7 @@ env
 ```bash
 sudoedit /etc/ssh/sshd_config
 ```
-# 112. Troubleshooting — step-by-step method
+# 112. Troubleshooting - step-by-step method
 ## 1. What exactly is broken?
 Define the symptom precisely.
 ## 2. Is the process running?
@@ -504,13 +504,13 @@ ssh -vvv user@server
 systemctl status myapp
 journalctl -u myapp -n 100
 ```
-# 119. Desktop — where to look for user configuration
+# 119. Desktop - where to look for user configuration
 Most user settings live under ~/.config, ~/.local/share and ~/.cache.
 # 120. XDG
 XDG Base Directory conventions standardize config/data/cache locations.
-# 121. GNOME — advanced settings
+# 121. GNOME - advanced settings
 Use Settings, gsettings and dconf carefully.
-# 122. KDE — configuration
+# 122. KDE - configuration
 KDE stores many settings under ~/.config and exposes extensive GUI controls.
 # 123. Default applications
 Desktop environments manage MIME-type associations and preferred apps.
@@ -568,7 +568,7 @@ Encrypted deduplicating backup tool with many backends.
 Deduplicating backup tool suitable for local/SSH repositories.
 ## rclone
 Excellent for copying/synchronizing to cloud/object storage.
-# 138. Server security — sensible baseline
+# 138. Server security - sensible baseline
 Updates, SSH keys, least privilege, firewall, backups, logs, secret handling and minimal services.
 # 139. Changing the SSH port
 Can reduce noise but is not a security control equivalent to keys/MFA/firewalling.
@@ -685,7 +685,7 @@ nc -vz HOST PORT
 ```bash
 ssh -L 8080:127.0.0.1:8080 user@server
 ```
-# 176. PostgreSQL — administrative basics
+# 176. PostgreSQL - administrative basics
 ```bash
 sudo systemctl status postgresql
 sudo -u postgres psql
@@ -746,7 +746,7 @@ sudoedit FILE
 ```
 # 195. Service administration pattern
 status → logs → config test → local test → port → firewall → DNS/external.
-# 196. Most important commands — cheat sheet
+# 196. Most important commands - cheat sheet
 ## system
 ```bash
 cat /etc/os-release; uptime
@@ -803,7 +803,7 @@ systemctl --user status
 Think in layers: packages, configuration, services, logs, users, network and storage.
 # 200. Minimum Debian administrator knowledge
 APT/dpkg, systemd/journalctl, SSH, permissions, networking, storage, firewalling, backups and troubleshooting.
-# 201. GNOME/KDE versus server — key mental difference
+# 201. GNOME/KDE versus server - key mental difference
 Desktop environments provide integrated UI services; servers expose the same underlying system concepts without the desktop layer.
 # 202. Useful work philosophy
 Observe first, change one thing at a time, keep rollback options and document non-obvious decisions.

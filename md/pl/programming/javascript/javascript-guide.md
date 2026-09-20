@@ -1,6 +1,6 @@
 ---
 id: "doc-021"
-title: "JavaScript — kompendium"
+title: "JavaScript - kompendium"
 slug: "javascript-kompendium"
 description: "Praktyczne kompendium do tworzenia zwykłych, interaktywnych stron i małych aplikacji webowych."
 lang: "pl"
@@ -13,7 +13,7 @@ tags:
   - "frontend"
 ---
 
-# JavaScript — kompendium
+# JavaScript - kompendium
 
 JavaScript jest językiem przeglądarki i jednocześnie podstawą dużej części współczesnego webowego toolingu. Warto najpierw rozumieć język, DOM, zdarzenia, fetch i moduły, a frameworki traktować jako kolejną warstwę.
 
@@ -34,7 +34,7 @@ Powiązane tematy: [Nowoczesny HTML i CSS](techhandbook:doc-042), [Browser DevTo
 6. Funkcje
 7. Tablice i obiekty
 8. Destrukturyzacja, spread i rest
-9. DOM — sterowanie stroną
+9. DOM - sterowanie stroną
 10. Zdarzenia
 11. Formularze
 12. Tworzenie i usuwanie elementów
@@ -48,7 +48,7 @@ Powiązane tematy: [Nowoczesny HTML i CSS](techhandbook:doc-042), [Browser DevTo
 20. Moduły ES
 21. Klasy i programowanie obiektowe
 22. Przydatne metody tablic
-23. Event loop — dlaczego async działa tak, jak działa
+23. Event loop - dlaczego async działa tak, jak działa
 24. Nowoczesne środowisko: Node.js, npm i Vite
 25. package.json i zależności
 26. DevTools i debugowanie
@@ -320,7 +320,7 @@ Praktyczna zasada:
 
 ```text
 Najpierw używaj const.
-Jeśli wartość musi się zmieniać — użyj let.
+Jeśli wartość musi się zmieniać - użyj let.
 ```
 
 ---
@@ -1752,7 +1752,7 @@ W React niemutowalne aktualizacje stanu są bardzo ważne.
 
 ---
 
-# 60. Event loop — podstawy
+# 60. Event loop - podstawy
 
 JavaScript w przeglądarce wykonuje kod zasadniczo na jednym głównym wątku.
 
@@ -1846,7 +1846,7 @@ i jest to absolutnie normalne.
 
 ---
 
-# 63. Środowisko — stan na 2026
+# 63. Środowisko - stan na 2026
 
 Na moment przygotowania tego kompendium bezpiecznym wyborem do pracy developerskiej jest:
 
@@ -2248,7 +2248,7 @@ To już jest pełnoprawna mała aplikacja.
 
 ---
 
-# 77. Kompletny przykład Vanilla JS — lista zadań
+# 77. Kompletny przykład Vanilla JS - lista zadań
 
 ## HTML
 
@@ -2501,7 +2501,7 @@ zamiast ręcznie sterować każdą zmianą DOM.
 
 ---
 
-# 80. React — czym jest
+# 80. React - czym jest
 
 React jest biblioteką do budowania interfejsów z komponentów.
 
@@ -2610,7 +2610,7 @@ Props to dane przekazane z komponentu rodzica.
 
 ---
 
-# 85. State — `useState`
+# 85. State - `useState`
 
 ```jsx
 import { useState } from "react";
@@ -2765,7 +2765,7 @@ Używamy go głównie do synchronizacji komponentu ze światem zewnętrznym:
 
 ---
 
-# 90. React — kiedy
+# 90. React - kiedy
 
 Dobry wybór, jeśli:
 
@@ -2779,7 +2779,7 @@ Dla zwykłej strony firmowej React często nie jest konieczny.
 
 ---
 
-# 91. Vue — czym jest
+# 91. Vue - czym jest
 
 Vue jest frameworkiem do budowy interfejsów.
 
@@ -2974,7 +2974,7 @@ Bardzo wygodne dla formularzy.
 
 ---
 
-# 100. Vue — kiedy
+# 100. Vue - kiedy
 
 Dobry wybór, jeśli:
 
@@ -2988,7 +2988,7 @@ Dla człowieka dobrze znającego HTML i CSS Vue często wchodzi bardzo naturalni
 
 ---
 
-# 101. Angular — czym jest
+# 101. Angular - czym jest
 
 Angular jest pełnym frameworkiem aplikacyjnym.
 
@@ -3139,7 +3139,7 @@ CLI jest istotną częścią pracy z Angularem.
 
 ---
 
-# 107. Angular — kiedy
+# 107. Angular - kiedy
 
 Angular ma sens, gdy:
 
@@ -3552,7 +3552,7 @@ Prettier -> formatowanie
 
 ---
 
-# 124. Bezpieczeństwo — najważniejsze zasady
+# 124. Bezpieczeństwo - najważniejsze zasady
 
 ## Nie ufaj inputowi
 
@@ -3855,7 +3855,7 @@ Nie musisz przerabiać backendu na Node tylko dlatego, że używasz nowoczesnego
 
 # 136. Mój praktyczny podział technologii
 
-## Poziom 1 — zwykła interaktywna strona
+## Poziom 1 - zwykła interaktywna strona
 
 ```text
 HTML
@@ -3865,7 +3865,7 @@ ES modules
 fetch
 ```
 
-## Poziom 2 — nowoczesne środowisko
+## Poziom 2 - nowoczesne środowisko
 
 ```text
 Node LTS
@@ -3874,7 +3874,7 @@ Vite
 ESLint
 ```
 
-## Poziom 3 — aplikacja komponentowa
+## Poziom 3 - aplikacja komponentowa
 
 Wybierz jeden:
 
@@ -3884,13 +3884,13 @@ Vue
 Angular
 ```
 
-## Poziom 4 — typowanie
+## Poziom 4 - typowanie
 
 ```text
 TypeScript
 ```
 
-## Poziom 5 — grafika specjalna
+## Poziom 5 - grafika specjalna
 
 ```text
 PixiJS
@@ -3982,7 +3982,7 @@ To daje znacznie więcej niż 50 godzin oglądania tutoriali.
 
 ---
 
-# 139. Proponowana ścieżka — etap 1
+# 139. Proponowana ścieżka - etap 1
 
 Opanuj bardzo dobrze:
 
@@ -4008,7 +4008,7 @@ umiesz przekształcać dane bez patrzenia co chwilę do dokumentacji.
 
 ---
 
-# 140. Etap 2 — przeglądarka
+# 140. Etap 2 - przeglądarka
 
 Opanuj:
 
@@ -4032,7 +4032,7 @@ potrafisz stworzyć stronę reagującą na użytkownika.
 
 ---
 
-# 141. Etap 3 — asynchroniczność
+# 141. Etap 3 - asynchroniczność
 
 Opanuj:
 
@@ -4052,7 +4052,7 @@ potrafisz pobrać dane z backendu i pokazać loading/error/success.
 
 ---
 
-# 142. Etap 4 — organizacja kodu
+# 142. Etap 4 - organizacja kodu
 
 Opanuj:
 
@@ -4070,7 +4070,7 @@ projekt nie jest jednym `script.js` mającym 2500 linii.
 
 ---
 
-# 143. Etap 5 — tooling
+# 143. Etap 5 - tooling
 
 Opanuj:
 
@@ -4091,7 +4091,7 @@ potrafisz samodzielnie postawić środowisko.
 
 ---
 
-# 144. Etap 6 — framework
+# 144. Etap 6 - framework
 
 Najpierw wybierz jeden.
 
@@ -4112,7 +4112,7 @@ To są trzy sposoby rozwiązania podobnego problemu.
 
 ---
 
-# 145. Projekt ćwiczeniowy 1 — FAQ
+# 145. Projekt ćwiczeniowy 1 - FAQ
 
 Funkcje:
 
@@ -4134,7 +4134,7 @@ dostępność
 
 ---
 
-# 146. Projekt 2 — kalkulator ceny
+# 146. Projekt 2 - kalkulator ceny
 
 Funkcje:
 
@@ -4156,7 +4156,7 @@ Intl.NumberFormat
 
 ---
 
-# 147. Projekt 3 — Todo
+# 147. Projekt 3 - Todo
 
 Funkcje:
 
@@ -4179,7 +4179,7 @@ localStorage
 
 ---
 
-# 148. Projekt 4 — wyszukiwarka produktów
+# 148. Projekt 4 - wyszukiwarka produktów
 
 Funkcje:
 
@@ -4203,7 +4203,7 @@ debounce
 
 ---
 
-# 149. Projekt 5 — dashboard
+# 149. Projekt 5 - dashboard
 
 Funkcje:
 
@@ -4232,7 +4232,7 @@ Dopiero wtedy zobaczysz realną różnicę.
 
 ---
 
-# 150. Projekt 6 — PixiJS
+# 150. Projekt 6 - PixiJS
 
 Zrób:
 
@@ -4255,7 +4255,7 @@ animation loop
 
 ---
 
-# 151. Projekt 7 — frontend do backendu Go
+# 151. Projekt 7 - frontend do backendu Go
 
 Backend:
 
@@ -4508,7 +4508,7 @@ Nie zastępuje to logiki ID po stronie bazy danych, ale jest bardzo wygodne w UI
 
 ---
 
-# 161. Modułowa aplikacja — przykład
+# 161. Modułowa aplikacja - przykład
 
 ```text
 src/
@@ -4858,10 +4858,10 @@ Jeżeli umiesz te rzeczy, JavaScript przestaje być „czymś doczepionym do HTM
 
 - https://react.dev/
 
-- React — installation:
+- React - installation:
   https://react.dev/learn/installation
 
-- React — build from scratch:
+- React - build from scratch:
   https://react.dev/learn/build-a-react-app-from-scratch
 
 ## Vue

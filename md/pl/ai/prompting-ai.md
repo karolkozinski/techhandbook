@@ -194,13 +194,13 @@ Wejście:
 docker
 
 Wyjście:
-Docker — platforma do uruchamiania aplikacji w kontenerach.
+Docker - platforma do uruchamiania aplikacji w kontenerach.
 
 Wejście:
 nginx
 
 Wyjście:
-nginx — serwer HTTP i reverse proxy.
+nginx - serwer HTTP i reverse proxy.
 
 Teraz przygotuj taki sam opis dla:
 PostgreSQL

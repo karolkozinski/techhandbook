@@ -2,7 +2,7 @@
 id: "doc-038"
 title: "Vi, Vim, gVim i Neovim"
 slug: "vi-vim-gvim-i-neovim"
-description: "Vi, Vim, gVim i Neovim — praktyczne kompendium TechHandbook."
+description: "Vi, Vim, gVim i Neovim - praktyczne kompendium TechHandbook."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
@@ -299,7 +299,7 @@ Do nauki lepiej jednak używać:
 i
 ```
 
-Insert — pisz przed kursorem.
+Insert - pisz przed kursorem.
 
 ## `a`
 
@@ -307,7 +307,7 @@ Insert — pisz przed kursorem.
 a
 ```
 
-Append — pisz za kursorem.
+Append - pisz za kursorem.
 
 ## `I`
 

@@ -55,13 +55,13 @@ root compartment
 
 OCI używa pojęć:
 
-- **Region** — obszar geograficzny,
-- **Availability Domain (AD)** — niezależna domena dostępności,
-- **Fault Domain (FD)** — dodatkowa separacja sprzętowa wewnątrz AD.
+- **Region** - obszar geograficzny,
+- **Availability Domain (AD)** - niezależna domena dostępności,
+- **Fault Domain (FD)** - dodatkowa separacja sprzętowa wewnątrz AD.
 
 Dostępność liczby AD zależy od regionu.
 
-## 4. Najważniejsze usługi — mapa
+## 4. Najważniejsze usługi - mapa
 
 | Potrzeba | OCI |
 |---|---|
@@ -195,8 +195,8 @@ oci os object list --bucket-name BUCKET
 
 ## 10. Block Volume i File Storage
 
-**Block Volume** — dyski blokowe dla Compute.  
-**File Storage** — współdzielony system plików.
+**Block Volume** - dyski blokowe dla Compute.  
+**File Storage** - współdzielony system plików.
 
 Snapshot/backup woluminu nie zastępuje backupu spójnego aplikacyjnie dla każdej bazy, ale jest ważnym elementem DR.
 
@@ -304,9 +304,9 @@ Nie trzymaj haseł do DB i API keys w obrazie kontenera lub repo. Nadaj aplikacj
 
 ## 21. Monitoring, Logging i Audit
 
-- **Monitoring** — metryki i alarmy.
-- **Logging** — logi usług i aplikacji.
-- **Audit** — historia wywołań API/zdarzeń administracyjnych.
+- **Monitoring** - metryki i alarmy.
+- **Logging** - logi usług i aplikacji.
+- **Audit** - historia wywołań API/zdarzeń administracyjnych.
 
 W praktyce pierwsze dashboardy powinny obejmować:
 
@@ -321,8 +321,8 @@ W praktyce pierwsze dashboardy powinny obejmować:
 
 OCI ma klasyczny Load Balancer oraz Network Load Balancer.
 
-- Load Balancer — HTTP/HTTPS i funkcje warstwy aplikacyjnej.
-- NLB — wysoka wydajność L4.
+- Load Balancer - HTTP/HTTPS i funkcje warstwy aplikacyjnej.
+- NLB - wysoka wydajność L4.
 
 Publiczną aplikację projektuj tak, aby backend nie musiał mieć publicznych IP.
 
@@ -426,7 +426,7 @@ OCI historycznie oferuje zasoby Always Free/Free Tier, ale zakres promocji i lim
 
 Nigdy nie buduj istotnego systemu na założeniu, że promocja cenowa będzie wieczna.
 
-## 30. Bezpieczeństwo — minimum
+## 30. Bezpieczeństwo - minimum
 
 - MFA/federacja.
 - Compartmenty zamiast jednego wielkiego worka.

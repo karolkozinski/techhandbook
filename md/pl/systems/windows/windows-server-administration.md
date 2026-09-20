@@ -1,6 +1,6 @@
 ---
 id: "doc-037"
-title: "Windows Server — administracja korporacyjna"
+title: "Windows Server - administracja korporacyjna"
 slug: "windows-server-administracja-korporacyjna"
 description: "Windows Server w środowisku korporacyjnym pełni najczęściej kilka podstawowych funkcji:"
 lang: "pl"
@@ -14,7 +14,7 @@ tags:
   - "administration"
 ---
 
-# Windows Server — administracja korporacyjna
+# Windows Server - administracja korporacyjna
 
 To kompendium opisuje mechanizmy administracji spotykane w środowisku domenowym Windows: Active Directory Domain Services, Group Policy, uprawnienia, DNS, DHCP, PowerShell, wdrażanie stacji i podstawy bezpieczeństwa. Skupia się na mechanizmach wspólnych dla współczesnych wydań Windows Server, zamiast na jednej konkretnej wersji.
 
@@ -28,7 +28,7 @@ Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016) oraz
 4. [Użytkownicy, grupy i jednostki organizacyjne](#4-użytkownicy-grupy-i-jednostki-organizacyjne)
 5. [Uprawnienia NTFS i udziały sieciowe](#5-uprawnienia-ntfs-i-udziały-sieciowe)
 6. [Przydzielanie zasobów użytkownikom](#6-przydzielanie-zasobów-użytkownikom)
-7. [Group Policy — GPO](#7-group-policy--gpo)
+7. [Group Policy - GPO](#7-group-policy--gpo)
 8. [Instalacja i wdrażanie stacji roboczych](#8-instalacja-i-wdrażanie-stacji-roboczych)
 9. [Instalacja oprogramowania na końcówkach](#9-instalacja-oprogramowania-na-końcówkach)
 10. [DNS i DHCP](#10-dns-i-dhcp)
@@ -72,7 +72,7 @@ Windows Server w środowisku korporacyjnym pełni najczęściej kilka podstawowy
 
 W klasycznym środowisku Microsoft podstawowym elementem infrastruktury jest:
 
-**Active Directory Domain Services — AD DS**
+**Active Directory Domain Services - AD DS**
 
 czyli usługa katalogowa przechowująca informacje o:
 
@@ -113,7 +113,7 @@ PC-USER01.corp.example.local
 
 ---
 
-## Domain Controller — DC
+## Domain Controller - DC
 
 Kontroler domeny to serwer obsługujący Active Directory.
 
@@ -153,7 +153,7 @@ firma
 
 ---
 
-## OU — Organizational Unit
+## OU - Organizational Unit
 
 OU służy do logicznego organizowania obiektów w Active Directory.
 
@@ -177,7 +177,7 @@ OU jest bardzo ważne, ponieważ można do niego przypisać GPO.
 
 ---
 
-## GPO — Group Policy Object
+## GPO - Group Policy Object
 
 GPO pozwala centralnie konfigurować komputery i użytkowników.
 
@@ -544,7 +544,7 @@ M:
 
 ---
 
-# 7. Group Policy — GPO
+# 7. Group Policy - GPO
 
 GPO jest jednym z najważniejszych narzędzi administratora Windows.
 
@@ -1276,10 +1276,10 @@ WSUS
 Dobra praktyka:
 
 ```text
-Ring 0 — IT
-Ring 1 — pilot
-Ring 2 — część firmy
-Ring 3 — reszta organizacji
+Ring 0 - IT
+Ring 1 - pilot
+Ring 2 - część firmy
+Ring 3 - reszta organizacji
 ```
 
 Dzięki temu problematyczna aktualizacja nie trafia od razu do wszystkich komputerów.
@@ -1550,7 +1550,7 @@ Remove-ADGroupMember GG-Marketing jkowalski
 
 # 22. Typowe zadania z życia administratora
 
-## Przypadek 1 — nowy pracownik
+## Przypadek 1 - nowy pracownik
 
 Przychodzi nowa osoba do Marketingu.
 
@@ -1581,7 +1581,7 @@ DL-Marketing-RW
 
 ---
 
-# Przypadek 2 — użytkownik zmienia dział
+# Przypadek 2 - użytkownik zmienia dział
 
 Użytkownik przechodzi:
 
@@ -1613,7 +1613,7 @@ Reszta powinna wynikać z członkostwa w grupach.
 
 ---
 
-# Przypadek 3 — użytkownik nie ma dysku sieciowego
+# Przypadek 3 - użytkownik nie ma dysku sieciowego
 
 Najpierw:
 
@@ -1642,7 +1642,7 @@ Test-Path \\FS01\Marketing
 
 ---
 
-# Przypadek 4 — komputer nie widzi domeny
+# Przypadek 4 - komputer nie widzi domeny
 
 Sprawdzamy:
 
@@ -1672,7 +1672,7 @@ Test-Connection DC01
 
 ---
 
-# Przypadek 5 — konto jest zablokowane
+# Przypadek 5 - konto jest zablokowane
 
 PowerShell:
 
@@ -1692,7 +1692,7 @@ Częste powody:
 
 ---
 
-# Przypadek 6 — użytkownik nie ma dostępu do folderu
+# Przypadek 6 - użytkownik nie ma dostępu do folderu
 
 Sprawdzamy:
 
@@ -1704,7 +1704,7 @@ Sprawdzamy:
 
 ---
 
-# Przypadek 7 — nowa aplikacja dla całej firmy
+# Przypadek 7 - nowa aplikacja dla całej firmy
 
 Najpierw test:
 

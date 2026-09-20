@@ -112,7 +112,7 @@ Authorization: Bearer eyJ...
 
 Token może reprezentować użytkownika lub aplikację.
 
-## 7. OAuth 2.0 — praktycznie
+## 7. OAuth 2.0 - praktycznie
 
 OAuth służy delegowaniu dostępu.
 

@@ -1,6 +1,6 @@
 ---
 id: "doc-006"
-title: "Google Cloud Platform (GCP) — Practical Handbook"
+title: "Google Cloud Platform (GCP) - Practical Handbook"
 slug: "google-cloud-platform-gcp-practical-handbook"
 description: "Google Cloud is a public cloud platform offering compute, storage, databases, analytics, networking, containers, serverless and AI services."
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "google"
 ---
 
-# Google Cloud Platform (GCP) — Practical Handbook
+# Google Cloud Platform (GCP) - Practical Handbook
 
 Google Cloud is easiest to learn from projects, IAM/service accounts and VPC, then choose the runtime layer that matches the workload: Compute Engine, Cloud Run or GKE. For a simple container, Cloud Run is usually a much easier starting point than Kubernetes.
 
@@ -45,7 +45,7 @@ Regions are geographic locations.
 
 Zones are separate infrastructure locations inside a region.
 
-## 4. Core services — map
+## 4. Core services - map
 
 ```text
 Compute Engine      virtual machines

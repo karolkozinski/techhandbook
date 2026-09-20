@@ -1,6 +1,6 @@
 ---
 id: "doc-054"
-title: "A/B testing i eksperymenty — kompendium praktyczne"
+title: "A/B testing i eksperymenty - kompendium praktyczne"
 slug: "a-b-testing-i-eksperymenty-kompendium-praktyczne"
 description: "A/B test porównuje dwie lub więcej wersji rozwiązania na losowo podzielonym ruchu."
 lang: "pl"
@@ -15,7 +15,7 @@ tags:
   - "metrics"
 ---
 
-# A/B testing i eksperymenty — kompendium praktyczne
+# A/B testing i eksperymenty - kompendium praktyczne
 
 Dobry eksperyment zaczyna się przed zobaczeniem wyników: hipoteza, primary metric, guardraile, populacja i warunek zakończenia powinny być ustalone wcześniej. Dzięki temu test ogranicza ryzyko dopasowania interpretacji do wyniku.
 
@@ -28,8 +28,8 @@ A/B test porównuje dwie lub więcej wersji rozwiązania na losowo podzielonym r
 Przykład:
 
 ```text
-A — obecny przycisk
-B — nowy przycisk
+A - obecny przycisk
+B - nowy przycisk
 ```
 
 Celem jest sprawdzenie, czy zmiana wpływa na wybraną metrykę.

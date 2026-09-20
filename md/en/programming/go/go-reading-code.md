@@ -1,6 +1,6 @@
 ---
 id: "doc-020"
-title: "Go — Reading Code"
+title: "Go - Reading Code"
 slug: "go-reading-code"
 description: "Go is deliberately small, explicit and convention-heavy. Read code in terms of packages, structs, interfaces, functions and data flow rather than searching…"
 lang: "en"
@@ -12,7 +12,7 @@ tags:
   - "golang"
 ---
 
-# Go — Reading Code
+# Go - Reading Code
 
 Go is a small, convention-heavy language with a strong built-in toolchain. A practical way to read a project is to start with `go.mod` and `main()`, then follow data through structs, interfaces, functions and explicit errors.
 
@@ -52,7 +52,7 @@ Marks an executable package.
 Imports the standard fmt package.
 ## `func main()`
 Entry point of an executable program.
-# 4. Syntax — the most important rules
+# 4. Syntax - the most important rules
 ## Code blocks
 Curly braces delimit blocks.
 ## Semicolons
@@ -124,7 +124,7 @@ Slices are descriptors over backing arrays; copying a slice does not necessarily
 m := map[string]int{"a": 1}
 v, ok := m["a"]
 ```
-# 9. Struct — the basic data building block
+# 9. Struct - the basic data building block
 ```go
 type User struct {
     ID   int64
@@ -235,7 +235,7 @@ type Box[T any] struct { Value T }
 ```
 ## Generic methods
 Methods may use type parameters already declared on the receiver type. Go does not allow methods to introduce their own independent type parameters.
-# 16. Errors — `error`
+# 16. Errors - `error`
 Errors are normal return values.
 ## Creating an error
 ```go
@@ -504,7 +504,7 @@ Use `http.Server` with explicit timeouts and graceful shutdown rather than bare 
 Use `html/template` for escaped server-side HTML rendering.
 ## Static files
 Use `http.FileServer` or embedded filesystem handlers.
-# 37. Embed — package files into the binary
+# 37. Embed - package files into the binary
 ```go
 //go:embed templates/*
 var files embed.FS
@@ -550,7 +550,7 @@ Popular configuration library supporting files, env vars and multiple formats. S
 Popular framework for larger command-line applications with subcommands and flags.
 # 44. Games in Go
 Go is suitable for 2D games and tooling. Ecosystem is smaller than Unity/Godot but pleasant for code-first projects.
-# 45. Ebitengine — practical 2D game start
+# 45. Ebitengine - practical 2D game start
 Ebitengine provides a cross-platform game loop and graphics/audio/input APIs.
 ## `Update`
 Update game state at fixed ticks.
@@ -571,7 +571,7 @@ Go bindings for raylib; simple and effective for 2D/3D experiments.
 Low-level multimedia bindings; powerful but more manual.
 ## Pixel
 Older Go 2D library; useful to recognize in existing projects.
-# 47. CGO — when Go uses C
+# 47. CGO - when Go uses C
 CGO enables calls into C libraries but complicates builds, portability and cross-compilation. Prefer pure Go unless native integration is needed.
 # 48. Common Go idioms
 ## `if err != nil`
@@ -626,34 +626,34 @@ Zero-size empty struct, commonly used as a signal/set value.
 ## `map[string]any`
 Dynamic JSON-like object. Use typed structs when schema is known.
 # 50. How to read an unfamiliar Go project
-## Step 1 — find `go.mod`
+## Step 1 - find `go.mod`
 It reveals module path, Go version and top-level dependencies.
-## Step 2 — find `package main`
+## Step 2 - find `package main`
 Locate executables, often under cmd/.
-## Step 3 — see what `main()` constructs
+## Step 3 - see what `main()` constructs
 Follow dependency wiring: config, DB, services, handlers, server.
-## Step 4 — recognize layers
+## Step 4 - recognize layers
 ### Handler
 HTTP/RPC boundary; parses requests and writes responses.
 ### Service
 Business logic/application use cases.
 ### Repository
 Persistence/data access.
-## Step 5 — read structs
+## Step 5 - read structs
 Struct fields show the application's main data and dependencies.
-## Step 6 — read interfaces
+## Step 6 - read interfaces
 Interfaces show boundaries and what implementations are expected to do.
-## Step 7 — find HTTP routes
+## Step 7 - find HTTP routes
 Search for Handle, HandleFunc, router.Get/Post or framework-specific registration.
-## Step 8 — find goroutines
+## Step 8 - find goroutines
 Search for `go ` and understand lifecycle/cancellation.
-## Step 9 — find I/O
+## Step 9 - find I/O
 Database, HTTP, filesystem, queues and external APIs are major failure boundaries.
-## Step 10 — run tests
+## Step 10 - run tests
 ```bash
 go test ./...
 ```
-# 51. Mini backend — complete shape
+# 51. Mini backend - complete shape
 ```text
 cmd/server/main.go
 internal/http/handlers.go
@@ -662,7 +662,7 @@ internal/repository/postgres.go
 internal/model/user.go
 ```
 Main wires dependencies; handlers translate HTTP; services hold business rules; repositories persist data.
-# 52. Mini game — structure example
+# 52. Mini game - structure example
 ```text
 cmd/game/main.go
 internal/game/game.go

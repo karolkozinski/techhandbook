@@ -2,7 +2,7 @@
 id: "doc-045"
 title: "nginx i reverse proxy"
 slug: "nginx-i-reverse-proxy"
-description: "nginx i reverse proxy — praktyczne kompendium TechHandbook."
+description: "nginx i reverse proxy - praktyczne kompendium TechHandbook."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
@@ -242,7 +242,7 @@ curl -I https://app.example.com
 
 Jeżeli backend działa lokalnie, ale publicznie jest 502, szukaj w nginx/proxy.
 
-## 17. Security headers — podstawy
+## 17. Security headers - podstawy
 
 Przykładowo:
 

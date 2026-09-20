@@ -1,6 +1,6 @@
 ---
 id: "doc-005"
-title: "Microsoft Azure — Practical Handbook"
+title: "Microsoft Azure - Practical Handbook"
 slug: "microsoft-azure-practical-handbook"
 description: "Microsoft Azure is a public cloud platform covering compute, networking, storage, databases, identity, containers, serverless, analytics, AI and enterprise…"
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "microsoft"
 ---
 
-# Microsoft Azure — Practical Handbook
+# Microsoft Azure - Practical Handbook
 
 Azure is easiest to understand through its identity and resource hierarchy: Entra tenant, subscription, resource group, region, network and individual services. For small applications, App Service or Container Apps are often a simpler entry point than a full AKS cluster.
 
@@ -39,7 +39,7 @@ resource groups
 resources
 ```
 
-## 3. Core services — map
+## 3. Core services - map
 
 ```text
 Virtual Machines       compute

@@ -1,6 +1,6 @@
 ---
 id: "doc-047"
-title: "Technical SEO — kompendium praktyczne"
+title: "Technical SEO - kompendium praktyczne"
 slug: "technical-seo-kompendium-praktyczne"
 description: "Technical SEO obejmuje techniczne elementy wpływające na możliwość:"
 lang: "pl"
@@ -16,7 +16,7 @@ tags:
   - "cwv"
 ---
 
-# Technical SEO — kompendium praktyczne
+# Technical SEO - kompendium praktyczne
 
 Technical SEO dotyczy przede wszystkim możliwości odkrycia, pobrania, zrozumienia i prawidłowego zindeksowania strony. Canonical, hreflang, sitemap i robots.txt są sygnałami lub instrukcjami dla crawlerów, ale nie zastępują dobrej treści i poprawnego linkowania.
 
@@ -248,9 +248,9 @@ Ważna jest wzajemność linków.
 
 Najważniejsze:
 
-- LCP — Largest Contentful Paint,
-- INP — Interaction to Next Paint,
-- CLS — Cumulative Layout Shift.
+- LCP - Largest Contentful Paint,
+- INP - Interaction to Next Paint,
+- CLS - Cumulative Layout Shift.
 
 To nie są jedyne metryki wydajności, ale warto je monitorować.
 

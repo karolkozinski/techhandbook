@@ -1,6 +1,6 @@
 ---
 id: "doc-032"
-title: "Termux — Knowledge Handbook"
+title: "Termux - Knowledge Handbook"
 slug: "termux-knowledge-handbook"
 description: "This handbook explains what Termux is, how it differs from a normal Linux distribution, how to use it productively, and where Android's security model…"
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "linux"
 ---
 
-# Termux — Knowledge Handbook
+# Termux - Knowledge Handbook
 
 Related topics: [SSH and Remote Administration](techhandbook:doc-018), [Shell Scripting](techhandbook:doc-031), [GitHub](techhandbook:doc-014) and [Python](techhandbook:doc-023).
 
@@ -432,7 +432,7 @@ termux-wake-unlock
 
 A wake lock can reduce suspension risk but increases battery usage.
 
-# 20. Termux:API — controlling Android from the shell
+# 20. Termux:API - controlling Android from the shell
 
 Install the Termux:API application/plugin and package from compatible sources.
 
@@ -473,7 +473,7 @@ termux-wifi-connectioninfo
 
 Termux:API connects shell automation to phone features, useful for notifications, status checks and lightweight personal automation.
 
-# 21. proot-distro — Debian and other distributions
+# 21. proot-distro - Debian and other distributions
 
 ```bash
 pkg install proot-distro

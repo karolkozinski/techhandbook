@@ -21,7 +21,7 @@ A background service and a periodically executed job are two different problems.
 
 **When this handbook is useful:** when an application must start after boot, restart after failure, expose useful logs, or execute a task at a defined time without an interactive user session.
 
-For broader context, see [Debian 13 — Desktop + Server Handbook](techhandbook:doc-033), [Shell Scripting — Debian and FreeBSD](techhandbook:doc-031), and [Documenting Technical Solutions](techhandbook:doc-056).
+For broader context, see [Debian 13 - Desktop + Server Handbook](techhandbook:doc-033), [Shell Scripting - Debian and FreeBSD](techhandbook:doc-031), and [Documenting Technical Solutions](techhandbook:doc-056).
 
 ## 1. The problem
 

@@ -21,7 +21,7 @@ Docker pozwala uruchamiać aplikacje w powtarzalnych, izolowanych kontenerach. N
 
 Kompendium używa współczesnego polecenia `docker compose` dostarczanego jako plugin Compose. Nie opiera się na starym, osobnym poleceniu `docker-compose`.
 
-Powiązane tematy: [Debian — desktop i serwer](techhandbook:doc-033), [systemd, cron i schedulery](techhandbook:doc-052), [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025) oraz [nginx i reverse proxy](techhandbook:doc-045).
+Powiązane tematy: [Debian - desktop i serwer](techhandbook:doc-033), [systemd, cron i schedulery](techhandbook:doc-052), [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025) oraz [nginx i reverse proxy](techhandbook:doc-045).
 
 ## Mapa kompendium
 
@@ -255,7 +255,7 @@ docker run hello-world
 Docker:
 
 1. sprawdzi, czy obraz istnieje lokalnie,
-2. jeśli nie — pobierze go,
+2. jeśli nie - pobierze go,
 3. utworzy kontener,
 4. uruchomi program,
 5. program zakończy działanie.
@@ -1444,7 +1444,7 @@ docker cp web:/app/report.txt ./report.txt
 
 ---
 
-# 62. Eksport obrazu — `docker save`
+# 62. Eksport obrazu - `docker save`
 
 To właściwy sposób przenoszenia gotowego obrazu Dockera jako pliku.
 
@@ -1691,7 +1691,7 @@ VPS
 
 Możliwe są dwa workflow.
 
-## Wariant A — build na serwerze
+## Wariant A - build na serwerze
 
 ```bash
 git pull
@@ -1700,7 +1700,7 @@ docker compose up -d --build
 
 Najprostszy.
 
-## Wariant B — gotowe obrazy
+## Wariant B - gotowe obrazy
 
 CI albo komputer lokalny:
 
@@ -1800,7 +1800,7 @@ Jeżeli wszystko działa:
 Ctrl+C
 ```
 
-nie zatrzymuje kontenera — tylko kończy śledzenie logów.
+nie zatrzymuje kontenera - tylko kończy śledzenie logów.
 
 ---
 
@@ -1864,7 +1864,7 @@ cat backup.sql | docker exec -i db \
 
 ---
 
-# 79. Prune — sprzątanie
+# 79. Prune - sprzątanie
 
 Docker zostawia:
 
@@ -2051,7 +2051,7 @@ db:5432
 
 ---
 
-# 89. `localhost` — ważna zasada
+# 89. `localhost` - ważna zasada
 
 Host:
 
@@ -2921,7 +2921,7 @@ docker compose down
 
 # 122. Przykłady z prawdziwego życia
 
-## Przykład 1 — szybki nginx
+## Przykład 1 - szybki nginx
 
 ```bash
 docker run -d \
@@ -2950,7 +2950,7 @@ docker rm -f nginx-test
 
 ---
 
-## Przykład 2 — tymczasowy Debian
+## Przykład 2 - tymczasowy Debian
 
 ```bash
 docker run --rm -it debian:13 bash
@@ -2974,7 +2974,7 @@ Kontener znika.
 
 ---
 
-## Przykład 3 — PostgreSQL
+## Przykład 3 - PostgreSQL
 
 ```bash
 docker volume create pgdata
@@ -3002,7 +3002,7 @@ docker exec -it postgres bash
 
 ---
 
-## Przykład 4 — eksport obrazu na drugi komputer
+## Przykład 4 - eksport obrazu na drugi komputer
 
 Komputer A:
 
@@ -3031,7 +3031,7 @@ docker images
 
 ---
 
-## Przykład 5 — aplikacja Go na VPS
+## Przykład 5 - aplikacja Go na VPS
 
 Repo:
 
@@ -3068,7 +3068,7 @@ docker compose up -d --build
 
 ---
 
-# 123. Docker — mapa mentalna
+# 123. Docker - mapa mentalna
 
 ```text
 Dockerfile
@@ -3127,7 +3127,7 @@ Powinieneś rozumieć:
 
 ---
 
-# 125. Ściąga — jednoekranowa
+# 125. Ściąga - jednoekranowa
 
 ```bash
 # status

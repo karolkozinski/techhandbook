@@ -1,6 +1,6 @@
 ---
 id: "doc-027"
-title: "Debian — Practical Shell Handbook"
+title: "Debian - Practical Shell Handbook"
 slug: "debian-practical-shell-handbook"
 description: "Debian is a Linux distribution built around the Linux kernel, GNU/user-space tools, APT/dpkg package management and usually systemd."
 lang: "en"
@@ -13,11 +13,11 @@ tags:
   - "bash"
 ---
 
-# Debian — Practical Shell Handbook
+# Debian - Practical Shell Handbook
 
 This handbook covers day-to-day Debian administration from the shell. For shell choices see [Shells in Debian](techhandbook:doc-028), for automation see [Shell Scripting](techhandbook:doc-031), and for remote access see [SSH and Remote Administration](techhandbook:doc-018).
 
-# Debian — Administrator, System and Directories
+# Debian - Administrator, System and Directories
 
 Debian is a Linux distribution built around the Linux kernel, GNU/user-space tools, APT/dpkg package management and usually systemd.
 
@@ -53,17 +53,17 @@ uname -a
 /tmp        temporary files
 ```
 
-# 1. Shell, terminal and commands — what are you actually doing?
+# 1. Shell, terminal and commands - what are you actually doing?
 
 The terminal displays input/output. The shell interprets commands. Bash is common on Debian interactive accounts, while `/bin/sh` is typically dash for system scripting.
 
-# 2. `pwd` — where am I?
+# 2. `pwd` - where am I?
 
 ```bash
 pwd
 ```
 
-# 3. `ls` — what is in the directory?
+# 3. `ls` - what is in the directory?
 
 ```bash
 ls
@@ -97,7 +97,7 @@ Sort by size.
 ls -lah
 ```
 
-# 4. `cd` — change directory
+# 4. `cd` - change directory
 
 ```bash
 cd /etc
@@ -136,13 +136,13 @@ Current directory.
 
 Parent directory.
 
-# 6. `touch` — create empty file and update modification time
+# 6. `touch` - create empty file and update modification time
 
 ```bash
 touch file.txt
 ```
 
-# 7. `mkdir` — create directories
+# 7. `mkdir` - create directories
 
 ```bash
 mkdir logs
@@ -156,7 +156,7 @@ Create missing parents:
 mkdir -p project/logs/archive
 ```
 
-# 8. `cp` — copy
+# 8. `cp` - copy
 
 ```bash
 cp source target
@@ -182,7 +182,7 @@ Back up a configuration file before editing:
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 ```
 
-# 9. `mv` — move and rename
+# 9. `mv` - move and rename
 
 ```bash
 mv old.txt new.txt
@@ -196,7 +196,7 @@ Prompt before overwrite.
 
 Show performed operations.
 
-# 10. `rm` — delete
+# 10. `rm` - delete
 
 ```bash
 rm file.txt
@@ -218,13 +218,13 @@ Force mode.
 
 Recursive force. Dangerous when the path is wrong. Never type it mechanically.
 
-# 11. `cat` — quickly display a file
+# 11. `cat` - quickly display a file
 
 ```bash
 cat /etc/hosts
 ```
 
-# 12. `less` — read large files comfortably
+# 12. `less` - read large files comfortably
 
 ```bash
 less /var/log/syslog
@@ -232,7 +232,7 @@ less /var/log/syslog
 
 Useful keys: `/` search, `n` next, `G` end, `g` start, `q` quit.
 
-# 13. `head` — start of a file
+# 13. `head` - start of a file
 
 ```bash
 head file.txt
@@ -244,7 +244,7 @@ head file.txt
 head -n 20 file.txt
 ```
 
-# 14. `tail` — end of a file
+# 14. `tail` - end of a file
 
 ```bash
 tail file.txt
@@ -264,7 +264,7 @@ Follow a growing file:
 tail -f /var/log/nginx/error.log
 ```
 
-# 15. `grep` — search text
+# 15. `grep` - search text
 
 ```bash
 grep error file.log
@@ -296,7 +296,7 @@ Extended regular expressions.
 grep -RniE 'error|warning' /etc /var/log 2>/dev/null
 ```
 
-# 16. `find` — find files
+# 16. `find` - find files
 
 ## `-name`
 
@@ -326,7 +326,7 @@ find /var/log -type f -mtime -7
 find /var -type f -size +100M
 ```
 
-# 17. `which`, `command -v`, `whereis` — where is a program?
+# 17. `which`, `command -v`, `whereis` - where is a program?
 
 ```bash
 which nginx
@@ -334,26 +334,26 @@ command -v bash
 whereis nginx
 ```
 
-# 18. `file` — what kind of file is this?
+# 18. `file` - what kind of file is this?
 
 ```bash
 file /bin/bash
 ```
 
-# 19. `stat` — detailed file information
+# 19. `stat` - detailed file information
 
 ```bash
 stat file.txt
 ```
 
-# 20. `man` — command documentation
+# 20. `man` - command documentation
 
 ```bash
 man systemctl
 man 5 sshd_config
 ```
 
-# 21. `echo` — print text and variables
+# 21. `echo` - print text and variables
 
 ```bash
 echo hello
@@ -410,7 +410,7 @@ who
 w
 ```
 
-# 28. `uname` — kernel and platform
+# 28. `uname` - kernel and platform
 
 ## `-a`
 
@@ -437,7 +437,7 @@ hostnamectl
 uptime
 ```
 
-# 32. `top` — processes and load
+# 32. `top` - processes and load
 
 ```bash
 top
@@ -445,13 +445,13 @@ top
 
 Install htop if you prefer a more interactive display.
 
-# 33. `ps` — process list
+# 33. `ps` - process list
 
 ```bash
 ps aux
 ```
 
-# 34. `pgrep` — find PID by name
+# 34. `pgrep` - find PID by name
 
 ## `-f`
 
@@ -472,13 +472,13 @@ kill PID
 pkill processname
 ```
 
-# 36. `df` — free filesystem space
+# 36. `df` - free filesystem space
 
 ```bash
 df -h
 ```
 
-# 37. `du` — how much space does a directory use?
+# 37. `du` - how much space does a directory use?
 
 ## `-s`
 
@@ -492,21 +492,21 @@ Human-readable sizes.
 du -sh /var/*
 ```
 
-# 38. `mount` — what is mounted?
+# 38. `mount` - what is mounted?
 
 ```bash
 mount
 findmnt
 ```
 
-# 39. `lsblk` — disks on Debian
+# 39. `lsblk` - disks on Debian
 
 ```bash
 lsblk
 lsblk -f
 ```
 
-# 42. Debian — `ip`
+# 42. Debian - `ip`
 
 ```bash
 ip addr
@@ -528,7 +528,7 @@ curl -I https://example.com
 curl -v https://example.com
 ```
 
-# 47. DNS — `host` and `dig`
+# 47. DNS - `host` and `dig`
 
 ```bash
 host example.com
@@ -537,7 +537,7 @@ dig example.com
 
 Install `dnsutils` if needed.
 
-# 48. Debian — `ss`
+# 48. Debian - `ss`
 
 ```bash
 ss -lntup
@@ -596,7 +596,7 @@ chmod 755 script.sh
 sudo chown user:group file
 ```
 
-# 55. Debian — `apt`
+# 55. Debian - `apt`
 
 ## `apt update`
 
@@ -661,7 +661,7 @@ apt show nginx
 apt policy nginx
 ```
 
-# 56. Debian — `dpkg`
+# 56. Debian - `dpkg`
 
 ```bash
 dpkg -l
@@ -669,7 +669,7 @@ dpkg -L PACKAGE
 dpkg -S /path/to/file
 ```
 
-# 58. Debian — systemd and `systemctl`
+# 58. Debian - systemd and `systemctl`
 
 ```bash
 systemctl status nginx
@@ -679,7 +679,7 @@ sudo systemctl reload nginx
 sudo systemctl enable --now nginx
 ```
 
-# 59. Debian — `journalctl`
+# 59. Debian - `journalctl`
 
 ```bash
 journalctl -u nginx
@@ -688,7 +688,7 @@ journalctl -b
 journalctl -k
 ```
 
-# 65. Debian — NetworkManager
+# 65. Debian - NetworkManager
 
 ```bash
 nmcli device
@@ -704,7 +704,7 @@ dmesg | tail -n 50
 
 On restricted systems use `sudo dmesg` if required.
 
-# 67. `lscpu`, `lspci`, `lsusb` — Debian
+# 67. `lscpu`, `lspci`, `lsusb` - Debian
 
 ```bash
 lscpu
@@ -803,7 +803,7 @@ systemctl --failed
 journalctl -p err -b
 ```
 
-# Real-life examples — Debian
+# Real-life examples - Debian
 
 ## 1. Website stopped responding
 
@@ -908,7 +908,7 @@ sudo tar -czf /tmp/etc-backup.tar.gz /etc
 
 For a real backup, copy it off the server and include application data/databases separately.
 
-# Debian — minimal set to remember
+# Debian - minimal set to remember
 
 ```text
 pwd / ls / cd

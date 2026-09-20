@@ -567,7 +567,7 @@ Xfwm is XFCE's lightweight floating window manager.
 
 It is mature, fast and integrates tightly with XFCE.
 
-# 24. Important WMs — comparison
+# 24. Important WMs - comparison
 
 | WM | Display system | Style | Configuration |
 | --- | --- | --- | --- |

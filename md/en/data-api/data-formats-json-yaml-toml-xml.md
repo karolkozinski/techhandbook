@@ -1,6 +1,6 @@
 ---
 id: "doc-009"
-title: "JSON, YAML, TOML and XML — Data and Configuration Handbook"
+title: "JSON, YAML, TOML and XML - Data and Configuration Handbook"
 slug: "json-yaml-toml-and-xml-data-and-configuration-handbook"
 description: "JSON is a structured text format widely used by APIs and configuration files."
 lang: "en"
@@ -14,7 +14,7 @@ tags:
   - "xml"
 ---
 
-# JSON, YAML, TOML and XML — Data and Configuration Handbook
+# JSON, YAML, TOML and XML - Data and Configuration Handbook
 
 A data format is part of a system interface. JSON dominates web APIs, YAML and TOML are common in configuration, and XML is still widespread in older and enterprise integrations. The important part is understanding syntax, data types and the limitations of each format.
 

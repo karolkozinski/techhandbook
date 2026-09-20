@@ -73,7 +73,7 @@ node app.js
 
 ---
 
-# 2. Node.js, npm, npx — co jest czym?
+# 2. Node.js, npm, npx - co jest czym?
 
 ## Node.js
 
@@ -188,7 +188,7 @@ nvm use
 
 ---
 
-# 4. Projekt Node.js — najważniejsze pliki
+# 4. Projekt Node.js - najważniejsze pliki
 
 Typowy projekt może wyglądać tak:
 
@@ -1056,7 +1056,7 @@ To sygnał, że projekt używa ES Modules.
 
 ---
 
-# 33. import — jak go czytać
+# 33. import - jak go czytać
 
 ```js
 import express from "express";
@@ -1146,7 +1146,7 @@ await writeFile("output.txt", "hello");
 
 ---
 
-# 36. Asynchroniczność — klucz do Node.js
+# 36. Asynchroniczność - klucz do Node.js
 
 Node bardzo intensywnie korzysta z operacji asynchronicznych.
 
@@ -1243,7 +1243,7 @@ throw new Error("User not found");
 
 ---
 
-# 41. Event loop — wystarczy tyle
+# 41. Event loop - wystarczy tyle
 
 Node nie tworzy osobnego systemowego wątku dla każdego requestu.
 
@@ -2312,7 +2312,7 @@ To dobra wskazówka, czego użyć.
 
 ---
 
-# 76. npm run build — co naprawdę robi?
+# 76. npm run build - co naprawdę robi?
 
 Sprawdź:
 
@@ -3084,7 +3084,7 @@ sudo systemctl status nginx
 
 ---
 
-# 103. curl — bardzo ważny przy backendzie
+# 103. curl - bardzo ważny przy backendzie
 
 GET:
 
@@ -3205,7 +3205,7 @@ Nie zawsze aplikacja będzie potem kompletna, ale to przydatne przy analizie obc
 
 ---
 
-# 108. package.json — szybki audyt
+# 108. package.json - szybki audyt
 
 Przed uruchomieniem projektu sprawdź:
 
@@ -3591,7 +3591,7 @@ Bardzo dobre narzędzie do czytania kodu.
 
 ---
 
-# 124. rg — podstawy
+# 124. rg - podstawy
 
 Szukaj tekstu:
 
@@ -4047,9 +4047,9 @@ Przykład:
 4.2.7
 ```
 
-- MAJOR — zmiana niekompatybilna,
-- MINOR — nowe funkcje,
-- PATCH — poprawki.
+- MAJOR - zmiana niekompatybilna,
+- MINOR - nowe funkcje,
+- PATCH - poprawki.
 
 ---
 
@@ -5041,7 +5041,7 @@ sudo systemctl restart myapp
 curl -f http://127.0.0.1:3000/health
 ```
 
-Jeżeli wszystko przechodzi — deploy jest prawdopodobnie OK.
+Jeżeli wszystko przechodzi - deploy jest prawdopodobnie OK.
 
 ---
 
@@ -5089,7 +5089,7 @@ z `devDependencies`.
 
 ---
 
-# 200. Build i deploy — dobre rozdzielenie
+# 200. Build i deploy - dobre rozdzielenie
 
 Model:
 
@@ -5113,7 +5113,7 @@ To bardziej przewidywalne niż kompilowanie wszystkiego bezpośrednio na serwerz
 
 ---
 
-# 201. Node w Dockerze — dobry model mentalny
+# 201. Node w Dockerze - dobry model mentalny
 
 ```text
 Docker image
@@ -5567,7 +5567,7 @@ curl -f http://127.0.0.1:3000/health
 
 ---
 
-# 223. Node.js kontra Go — szybkie porównanie mentalne
+# 223. Node.js kontra Go - szybkie porównanie mentalne
 
 Go:
 
@@ -5683,7 +5683,7 @@ Nie zaczynaj analizy od node_modules.
 
 ---
 
-# 226. Ściąga — analiza projektu w 5 minut
+# 226. Ściąga - analiza projektu w 5 minut
 
 ```bash
 tree -L 2
@@ -5725,7 +5725,7 @@ Po tych poleceniach zwykle wiesz już bardzo dużo.
 
 ---
 
-# 227. Ściąga — czytanie składni
+# 227. Ściąga - czytanie składni
 
 ```js
 const x = 1;
@@ -5801,7 +5801,7 @@ eksport.
 
 ---
 
-# 228. Ściąga — deployment
+# 228. Ściąga - deployment
 
 ```text
 git pull

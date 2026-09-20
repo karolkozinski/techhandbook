@@ -1,6 +1,6 @@
 ---
 id: "doc-022"
-title: "Node.js — Practical Handbook"
+title: "Node.js - Practical Handbook"
 slug: "node-js-practical-handbook"
 description: "Node.js is a JavaScript runtime built on V8 that lets JavaScript run outside the browser, especially for servers, CLI tools and build tooling."
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "javascript"
 ---
 
-# Node.js — Practical Handbook
+# Node.js - Practical Handbook
 
 Node.js is a JavaScript runtime outside the browser. When reading a project, focus on `package.json`, the lockfile, modules, npm scripts, environment configuration and how the process is started in development and production.
 
@@ -23,7 +23,7 @@ Related topics: [JavaScript](techhandbook:doc-021), [APIs and System Integration
 
 # 1. What Node.js actually is
 Node.js is a JavaScript runtime built on V8 that lets JavaScript run outside the browser, especially for servers, CLI tools and build tooling.
-# 2. Node.js, npm and npx — what is what?
+# 2. Node.js, npm and npx - what is what?
 ## Node.js
 The runtime that executes JavaScript.
 ## npm
@@ -32,7 +32,7 @@ Package manager and script runner distributed with Node.
 Runs package-provided binaries, usually without requiring a permanent global install.
 # 3. Installing Node.js
 Use a supported Node release through your distro, NodeSource, nvm/fnm or another approved version manager.
-# 4. Node.js project — most important files
+# 4. Node.js project - most important files
 ## package.json
 Project metadata, scripts, dependencies and module settings.
 # 5. The `scripts` section in package.json
@@ -158,7 +158,7 @@ module.exports = { helper };
 import fs from 'node:fs';
 export function helper() {}
 ```
-# 33. `import` — how to read it
+# 33. `import` - how to read it
 Identify whether the import comes from Node core (`node:`), an npm package, or a local relative path.
 # 34. Built-in Node.js modules
 Recognize `node:fs`, `node:path`, `node:http`, `node:url`, `node:events`, `node:stream`, `node:crypto`, `node:child_process`.
@@ -167,7 +167,7 @@ Recognize `node:fs`, `node:path`, `node:http`, `node:url`, `node:events`, `node:
 import {readFile} from 'node:fs/promises';
 const text = await readFile('file.txt', 'utf8');
 ```
-# 36. Asynchrony — key to Node.js
+# 36. Asynchrony - key to Node.js
 Most I/O is asynchronous so one process can handle many waiting operations without blocking a thread per request.
 # 37. Promise
 Represents a future fulfilled or rejected result.
@@ -190,7 +190,7 @@ try {
 ```js
 throw new Error('invalid state');
 ```
-# 41. Event loop — enough for now
+# 41. Event loop - enough for now
 JavaScript runs on a call stack while libuv coordinates timers and asynchronous I/O callbacks/promises.
 # 42. process
 Global object exposing arguments, environment, exit code, signals and process metadata.
@@ -398,7 +398,7 @@ Check `type: module`, file extensions, import syntax and package exports.
 Check whether the project actually loads it, filename/path, process environment and working directory.
 # 102. Deployment debugging
 Service status → logs → env → process → port → local curl → reverse proxy → firewall/DNS.
-# 103. curl — very important for backends
+# 103. curl - very important for backends
 ```bash
 curl -v http://127.0.0.1:3000/health
 ```
@@ -413,7 +413,7 @@ Hooks such as preinstall/postinstall/prepare can run during package operations.
 npm ci --ignore-scripts
 ```
 Useful for auditing, but some legitimate packages need build scripts.
-# 108. package.json — quick audit
+# 108. package.json - quick audit
 Check scripts, dependencies, engines, type, exports, package manager and suspicious lifecycle commands.
 # 109. What else may exist in a project
 Lockfiles, tsconfig, eslint/prettier config, Dockerfile, compose.yaml, framework config, migrations, env examples.
@@ -451,7 +451,7 @@ Use editor Go to Definition or search imports/exports.
 ```bash
 rg 'functionName' .
 ```
-# 124. rg — basics
+# 124. rg - basics
 ```bash
 rg 'pattern' src
 ```
@@ -643,9 +643,9 @@ Keep previous artifact/image/release and a documented database-compatible rollba
 ```bash
 npm ci --omit=dev
 ```
-# 200. Build and deploy — good separation
+# 200. Build and deploy - good separation
 Build in CI or controlled build stage; deploy immutable output rather than compiling unpredictably on production when possible.
-# 201. Node in Docker — good mental model
+# 201. Node in Docker - good mental model
 Container = Node runtime + app + production dependencies; config/secrets/state arrive from outside.
 # 202. Docker volumes
 Use for persistent runtime data only when the application genuinely needs local persistence.
@@ -704,13 +704,13 @@ What starts it? Which Node version? Which scripts? Which env vars? Which port? W
 package.json says Fastify + Prisma + TypeScript; scripts reveal dev/build/start; Prisma schema reveals DB; src/server.ts is entry point; Dockerfile/systemd reveals deployment.
 # 222. Example deployment of that project
 npm ci → tests → npm run build → migrations → restart service → health check → inspect logs.
-# 223. Node.js vs Go — quick mental comparison
+# 223. Node.js vs Go - quick mental comparison
 Node is dynamic JS with event-loop I/O and huge web ecosystem; Go is statically typed, compiled to a simple binary with built-in concurrency.
 # 224. Node.js vs JavaScript
 JavaScript is the language; Node.js is one runtime environment for that language.
 # 225. What you really need to remember
 package.json/scripts, lockfile, npm ci, modules, async/await, env vars, logs, process supervision, reverse proxy and reproducible deployment.
-# 226. Cheat sheet — analyze a project in 5 minutes
+# 226. Cheat sheet - analyze a project in 5 minutes
 ```text
 cat package.json
 node --version
@@ -720,7 +720,7 @@ npm run build
 rg 'process.env|listen\(' src
 tree -L 2
 ```
-# 227. Cheat sheet — reading syntax
+# 227. Cheat sheet - reading syntax
 ```text
 const/let
 {} object
@@ -732,7 +732,7 @@ await Promise
 ... spread/rest
 import/export
 ```
-# 228. Cheat sheet — deployment
+# 228. Cheat sheet - deployment
 ```text
 npm ci
 npm run build

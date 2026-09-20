@@ -1,6 +1,6 @@
 ---
 id: "doc-014"
-title: "GitHub — Practical Handbook"
+title: "GitHub - Practical Handbook"
 slug: "github-practical-handbook"
 description: "Git is a distributed version-control system that tracks file history locally."
 lang: "en"
@@ -14,7 +14,7 @@ tags:
   - "repository"
 ---
 
-# GitHub — Practical Handbook
+# GitHub - Practical Handbook
 
 GitHub is a collaboration layer around Git repositories. The important daily concepts are Pull Requests, Issues, Actions, permissions, Releases and diff review rather than memorizing the website interface.
 
@@ -254,7 +254,7 @@ Static-site hosting from a repository.
 Planning boards and project tracking around issues/PRs.
 # 50. GitHub Discussions
 Longer-form community discussion separate from Issues.
-# 51. GitHub CLI — `gh`
+# 51. GitHub CLI - `gh`
 ```bash
 gh --version
 ```
@@ -401,7 +401,7 @@ git add -p
 git commit
 git push -u origin feature/x
 ```
-# 81. Typical solo workflow — simpler version
+# 81. Typical solo workflow - simpler version
 For low-risk personal projects, small direct commits to main can be acceptable if you keep history clean and tests/checks.
 # work
 ```bash
@@ -419,7 +419,7 @@ git rebase upstream/main
 ```
 # fix files
 Resolve conflicts, continue rebase, rerun tests, then push with force-with-lease if history changed.
-# 84. GitHub Web UI — useful areas
+# 84. GitHub Web UI - useful areas
 ## Code
 files/branches/releases.
 ## Issues
@@ -461,12 +461,12 @@ Keep the section concise and actionable.
 Keep the section concise and actionable.
 # 91. Issue Templates
 Standardize bug reports/feature requests and required diagnostic information.
-# 92. GitHub Actions — minimal idea
+# 92. GitHub Actions - minimal idea
 Events trigger workflows, workflows contain jobs, jobs contain steps that run on runners.
 # 93. CI/CD
-## CI — Continuous Integration
+## CI - Continuous Integration
 Automated build/test/lint on changes.
-## CD — Continuous Delivery / Deployment
+## CD - Continuous Delivery / Deployment
 Automated packaging and/or deployment after successful validation.
 # 94. GitHub Packages
 Package/container registry integrated with GitHub.
@@ -488,7 +488,7 @@ add = stage, commit = record locally, push = send commits to remote.
 PR is a collaboration/review object; `git pull` is a local Git command.
 # 100. Fork is not a ZIP copy
 A fork is a Git repository with history and GitHub relationship metadata.
-# 101. Working with an existing project — safe procedure
+# 101. Working with an existing project - safe procedure
 Clone → read README/contributing → install deps → run tests → create branch → change → test → diff → commit.
 # 102. How to read an unfamiliar repository
 Start with README, directory tree, package/build files, CI workflows and recent commits.
@@ -532,7 +532,7 @@ feature/search
 fix/login-timeout
 docs/readme
 ```
-# 110. Conventional Commits — optional
+# 110. Conventional Commits - optional
 ```bash
 text
 feat: add search
@@ -568,7 +568,7 @@ git switch main
 git rebase upstream/main
 git push origin main
 ```
-# 114. Useful commands — cheat sheet
+# 114. Useful commands - cheat sheet
 ## Project state
 ```bash
 git status; git diff
@@ -613,7 +613,7 @@ gh pr; gh issue; gh repo; gh run
 status, diff, add -p, commit, log, switch, fetch, pull --rebase, push, restore, stash.
 # 116. Mental model Git + GitHub
 Git manages history locally; GitHub hosts remotes and collaboration objects around that history.
-# 117. Branch / Fork / PR — mental model
+# 117. Branch / Fork / PR - mental model
 Branch = line of work; fork = separate repo; PR = proposal to merge changes.
 # 118. What to learn later
 Interactive rebase, bisect, submodules/subtrees, signed commits, hooks, advanced Actions and release automation.

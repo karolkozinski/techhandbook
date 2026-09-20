@@ -1,6 +1,6 @@
 ---
 id: "doc-056"
-title: "Documenting Technical Solutions — Handbook"
+title: "Documenting Technical Solutions - Handbook"
 slug: "documenting-technical-solutions-handbook"
 description: "Technical documentation reduces repeated explanation and makes systems easier to operate, maintain and hand over."
 lang: "en"
@@ -16,7 +16,7 @@ tags:
   - "openapi"
 ---
 
-# Documenting Technical Solutions — Handbook
+# Documenting Technical Solutions - Handbook
 
 Good technical documentation reduces the time needed to understand a system again and limits knowledge that exists only in one person's head. In practice, separate tutorials, task-oriented how-to guides, reference and explanation instead of forcing every purpose into one document.
 
@@ -180,7 +180,7 @@ Payment provider
 Email service
 ```
 
-## 12. C4 — idea
+## 12. C4 - idea
 
 C4 models architecture at several levels:
 

@@ -1,6 +1,6 @@
 ---
 id: "doc-020"
-title: "Go — czytanie kodu"
+title: "Go - czytanie kodu"
 slug: "go-czytanie-kodu"
 description: "Cel tego materiału: po przeczytaniu nie musisz umieć samodzielnie projektować dużych aplikacji w Go. Masz natomiast rozumieć, co robi kod, jak jest…"
 lang: "pl"
@@ -12,7 +12,7 @@ tags:
   - "golang"
 ---
 
-# Go — czytanie kodu
+# Go - czytanie kodu
 
 Go jest małym językiem o silnych konwencjach i rozbudowanym toolchainie. Najwygodniej czytać projekt od `go.mod` i `main()`, a potem śledzić przepływ danych przez struktury, interfejsy, funkcje i błędy.
 
@@ -31,19 +31,19 @@ Powiązane tematy: [API i integracje systemów](techhandbook:doc-008), [SQL i Po
 1. [Jak myśleć o Go](#1-jak-myśleć-o-go)
 2. [Instalacja i narzędzia](#2-instalacja-i-narzędzia)
 3. [Pierwszy program i anatomia pliku](#3-pierwszy-program-i-anatomia-pliku)
-4. [Składnia — najważniejsze reguły](#4-składnia--najważniejsze-reguły)
+4. [Składnia - najważniejsze reguły](#4-składnia--najważniejsze-reguły)
 5. [Zmienne, stałe i zero values](#5-zmienne-stałe-i-zero-values)
 6. [Podstawowe typy danych](#6-podstawowe-typy-danych)
 7. [String, byte i rune](#7-string-byte-i-rune)
 8. [Tablice, slice i mapy](#8-tablice-slice-i-mapy)
-9. [Struct — podstawowy budulec danych](#9-struct--podstawowy-budulec-danych)
+9. [Struct - podstawowy budulec danych](#9-struct--podstawowy-budulec-danych)
 10. [Wskaźniki](#10-wskaźniki)
 11. [Instrukcje sterujące](#11-instrukcje-sterujące)
 12. [Funkcje](#12-funkcje)
 13. [Metody i receivery](#13-metody-i-receivery)
 14. [Interfejsy](#14-interfejsy)
 15. [Generics](#15-generics)
-16. [Błędy — `error`](#16-błędy--error)
+16. [Błędy - `error`](#16-błędy--error)
 17. [`defer`, `panic`, `recover`](#17-defer-panic-recover)
 18. [Pakiety, moduły i importy](#18-pakiety-moduły-i-importy)
 19. [Widoczność nazw](#19-widoczność-nazw)
@@ -64,7 +64,7 @@ Powiązane tematy: [API i integracje systemów](techhandbook:doc-008), [SQL i Po
 34. [Mutex, WaitGroup i atomiki](#34-mutex-waitgroup-i-atomiki)
 35. [HTTP w standardowej bibliotece](#35-http-w-standardowej-bibliotece)
 36. [HTML templates i pliki statyczne](#36-html-templates-i-pliki-statyczne)
-37. [Embed — pakowanie plików do binarki](#37-embed--pakowanie-plików-do-binarki)
+37. [Embed - pakowanie plików do binarki](#37-embed--pakowanie-plików-do-binarki)
 38. [Backend: routery i frameworki](#38-backend-routery-i-frameworki)
 39. [Bazy danych](#39-bazy-danych)
 40. [ORM, sqlc i migracje](#40-orm-sqlc-i-migracje)
@@ -72,14 +72,14 @@ Powiązane tematy: [API i integracje systemów](techhandbook:doc-008), [SQL i Po
 42. [Konfiguracja aplikacji](#42-konfiguracja-aplikacji)
 43. [CLI i narzędzia](#43-cli-i-narzędzia)
 44. [Gry w Go](#44-gry-w-go)
-45. [Ebitengine — najpraktyczniejszy start z grami 2D](#45-ebitengine--najpraktyczniejszy-start-z-grami-2d)
+45. [Ebitengine - najpraktyczniejszy start z grami 2D](#45-ebitengine--najpraktyczniejszy-start-z-grami-2d)
 46. [Raylib-go i inne biblioteki growe](#46-raylib-go-i-inne-biblioteki-growe)
-47. [CGO — kiedy Go korzysta z C](#47-cgo--kiedy-go-korzysta-z-c)
+47. [CGO - kiedy Go korzysta z C](#47-cgo--kiedy-go-korzysta-z-c)
 48. [Najczęstsze idiomy Go](#48-najczęstsze-idiomy-go)
 49. [Rzeczy, które wyglądają dziwnie, ale są normalne](#49-rzeczy-które-wyglądają-dziwnie-ale-są-normalne)
 50. [Jak czytać obcy projekt Go](#50-jak-czytać-obcy-projekt-go)
-51. [Miniaturowy backend — przykład całości](#51-miniaturowy-backend--przykład-całości)
-52. [Miniaturowa gra — przykład struktury](#52-miniaturowa-gra--przykład-struktury)
+51. [Miniaturowy backend - przykład całości](#51-miniaturowy-backend--przykład-całości)
+52. [Miniaturowa gra - przykład struktury](#52-miniaturowa-gra--przykład-struktury)
 53. [Ściąga poleceń](#53-ściąga-poleceń)
 54. [Ściąga składni](#54-ściąga-składni)
 55. [Co warto znać, a czego na razie nie trzeba](#55-co-warto-znać-a-czego-na-razie-nie-trzeba)
@@ -121,14 +121,14 @@ Go ma kilka cech, które warto od razu zapamiętać:
 
 1. Nie ma klas w stylu Javy czy C++.
 2. Są `struct`, metody i interfejsy.
-3. Interfejsy implementuje się **automatycznie** — bez `implements`.
+3. Interfejsy implementuje się **automatycznie** - bez `implements`.
 4. Funkcje mogą zwracać kilka wartości.
 5. `error` jest zwykłą wartością.
 6. `goroutine` to bardzo lekka jednostka współbieżnego wykonania.
 7. `channel` służy do komunikacji między goroutines.
 8. Kompilator i narzędzia Go narzucają dużo porządku.
 9. `gofmt` praktycznie eliminuje dyskusje o stylu formatowania.
-10. Duża część backendu może być napisana bez frameworka — samym `net/http`.
+10. Duża część backendu może być napisana bez frameworka - samym `net/http`.
 
 ---
 
@@ -292,7 +292,7 @@ Po `go build` otrzymujesz binarkę.
 
 ---
 
-# 4. Składnia — najważniejsze reguły
+# 4. Składnia - najważniejsze reguły
 
 ## Bloki kodu
 
@@ -501,7 +501,7 @@ uint16
 uint32
 ```
 
-`int` ma rozmiar zależny od architektury — w praktyce na współczesnych systemach 64-bitowych najczęściej 64 bity.
+`int` ma rozmiar zależny od architektury - w praktyce na współczesnych systemach 64-bitowych najczęściej 64 bity.
 
 ## Liczby zmiennoprzecinkowe
 
@@ -770,7 +770,7 @@ Można z niej czytać, ale zapis spowoduje panic.
 
 ---
 
-# 9. Struct — podstawowy budulec danych
+# 9. Struct - podstawowy budulec danych
 
 Go nie ma klas w klasycznym znaczeniu.
 
@@ -1379,7 +1379,7 @@ Kwadratowe nawiasy przy nazwie funkcji/metody oznaczają parametry typów.
 
 ---
 
-# 16. Błędy — `error`
+# 16. Błędy - `error`
 
 To absolutnie centralny element Go.
 
@@ -2924,7 +2924,7 @@ Dla strony generowanej po stronie serwera Go + `html/template` może całkowicie
 
 ---
 
-# 37. Embed — pakowanie plików do binarki
+# 37. Embed - pakowanie plików do binarki
 
 Pakiet:
 
@@ -3093,7 +3093,7 @@ chi
    ↓
 Gin / Echo
    ↓
-Fiber — osobniejszy ekosystem oparty o fasthttp
+Fiber - osobniejszy ekosystem oparty o fasthttp
 ```
 
 Nie oznacza to, że „niżej = gorzej” albo „wyżej = lepiej”. To po prostu inna ilość abstrakcji.
@@ -3440,16 +3440,16 @@ Go nie jest pierwszym językiem kojarzonym z AAA, ale świetnie nadaje się do:
 
 Najbardziej praktyczne biblioteki do poznania:
 
-1. **Ebitengine** — czysty Go, bardzo dobry do 2D.
-2. **raylib-go** — binding Go do raylib, prosty i przyjemny API.
-3. **SDL bindings** — niższy poziom, więcej kontroli, więcej konfiguracji.
-4. **Pixel** — historycznie popularna biblioteka 2D; warto rozpoznawać w starszym kodzie, ale do nowego projektu lepiej najpierw sprawdzić aktywniej rozwijane opcje.
+1. **Ebitengine** - czysty Go, bardzo dobry do 2D.
+2. **raylib-go** - binding Go do raylib, prosty i przyjemny API.
+3. **SDL bindings** - niższy poziom, więcej kontroli, więcej konfiguracji.
+4. **Pixel** - historycznie popularna biblioteka 2D; warto rozpoznawać w starszym kodzie, ale do nowego projektu lepiej najpierw sprawdzić aktywniej rozwijane opcje.
 
 Jeśli celem jest „chcę zrobić małą grę i zrozumieć kod”, Ebitengine jest bardzo dobrym punktem startowym.
 
 ---
 
-# 45. Ebitengine — najpraktyczniejszy start z grami 2D
+# 45. Ebitengine - najpraktyczniejszy start z grami 2D
 
 Pakiet:
 
@@ -3621,7 +3621,7 @@ Biblioteka jest ciekawa historycznie i ma czytelne API 2D, ale aktywność proje
 
 ---
 
-# 47. CGO — kiedy Go korzysta z C
+# 47. CGO - kiedy Go korzysta z C
 
 Go może korzystać z kodu C przez mechanizm:
 
@@ -3924,7 +3924,7 @@ Częsty przy luźnym JSON.
 
 To najważniejsza część całego kompendium, jeśli Twoim celem jest **rozumienie kodu**.
 
-## Krok 1 — znajdź `go.mod`
+## Krok 1 - znajdź `go.mod`
 
 ```bash
 cat go.mod
@@ -3955,7 +3955,7 @@ To od razu mówi dużo o projekcie.
 
 ---
 
-## Krok 2 — znajdź `package main`
+## Krok 2 - znajdź `package main`
 
 ```bash
 rg 'package main'
@@ -3977,7 +3977,7 @@ To punkt startowy programu.
 
 ---
 
-## Krok 3 — zobacz, co `main()` tworzy
+## Krok 3 - zobacz, co `main()` tworzy
 
 Na przykład:
 
@@ -4008,7 +4008,7 @@ HTTP server
 
 ---
 
-## Krok 4 — rozpoznaj warstwy
+## Krok 4 - rozpoznaj warstwy
 
 Typowy backend:
 
@@ -4048,7 +4048,7 @@ func (r *Repository) GetUser(ctx context.Context, id int64)
 
 ---
 
-## Krok 5 — czytaj struktury
+## Krok 5 - czytaj struktury
 
 Jeśli widzisz:
 
@@ -4066,7 +4066,7 @@ Struct jest często najlepszą mapą architektury.
 
 ---
 
-## Krok 6 — czytaj interfejsy
+## Krok 6 - czytaj interfejsy
 
 ```go
 type UserStore interface {
@@ -4079,7 +4079,7 @@ Interfejs pokazuje kontrakt między warstwami.
 
 ---
 
-## Krok 7 — znajdź trasy HTTP
+## Krok 7 - znajdź trasy HTTP
 
 Szukaj:
 
@@ -4098,7 +4098,7 @@ Dostajesz listę wejść do aplikacji.
 
 ---
 
-## Krok 8 — znajdź goroutines
+## Krok 8 - znajdź goroutines
 
 ```bash
 rg '\bgo\s+'
@@ -4113,7 +4113,7 @@ Sprawdź:
 
 ---
 
-## Krok 9 — znajdź I/O
+## Krok 9 - znajdź I/O
 
 Szukaj:
 
@@ -4132,7 +4132,7 @@ To pokaże, gdzie program komunikuje się ze światem.
 
 ---
 
-## Krok 10 — uruchom testy
+## Krok 10 - uruchom testy
 
 ```bash
 go test ./...
@@ -4148,7 +4148,7 @@ go vet ./...
 
 ---
 
-# 51. Miniaturowy backend — przykład całości
+# 51. Miniaturowy backend - przykład całości
 
 Poniższy przykład pokazuje wszystkie najważniejsze klocki naraz.
 
@@ -4251,7 +4251,7 @@ To jest już prawdziwy, działający backend HTTP.
 
 ---
 
-# 52. Miniaturowa gra — przykład struktury
+# 52. Miniaturowa gra - przykład struktury
 
 Przykładowa koncepcja Ebitengine:
 

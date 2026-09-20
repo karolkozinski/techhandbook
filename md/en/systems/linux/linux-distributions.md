@@ -88,7 +88,7 @@ New technologies, strong developer workstation.
 Shorter release lifecycle than LTS systems.
 ## For whom?
 Developers and users wanting current Linux tech.
-# 9. Red Hat Enterprise Linux — RHEL
+# 9. Red Hat Enterprise Linux - RHEL
 ## Features
 Enterprise support, long lifecycle, certifications.
 ## Packages
@@ -229,7 +229,7 @@ Debian repositories, wiki, handbook/man pages.
 Ubuntu repositories, documentation and Launchpad ecosystem.
 ## Arch
 Official repos, AUR and Arch Wiki.
-# 44. Distribution families — shortcut
+# 44. Distribution families - shortcut
 ## Debian
 Debian, Ubuntu, Mint, Pop!_OS, Proxmox.
 ## Red Hat

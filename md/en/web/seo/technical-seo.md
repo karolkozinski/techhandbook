@@ -1,6 +1,6 @@
 ---
 id: "doc-047"
-title: "Technical SEO — Practical Handbook"
+title: "Technical SEO - Practical Handbook"
 slug: "technical-seo-practical-handbook"
 description: "Technical SEO covers technical factors that affect whether a crawler can discover a page, index content, understand structure, select the correct URL and…"
 lang: "en"
@@ -16,7 +16,7 @@ tags:
   - "cwv"
 ---
 
-# Technical SEO — Practical Handbook
+# Technical SEO - Practical Handbook
 
 Technical SEO is mainly about whether a crawler can discover, fetch, understand and correctly index a page. Canonical, hreflang, sitemaps and robots.txt provide signals or instructions, but they do not replace useful content and good internal linking.
 

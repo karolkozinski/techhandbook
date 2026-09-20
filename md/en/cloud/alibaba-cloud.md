@@ -1,6 +1,6 @@
 ---
 id: "doc-003"
-title: "Alibaba Cloud — Practical Handbook"
+title: "Alibaba Cloud - Practical Handbook"
 slug: "alibaba-cloud-practical-handbook"
 description: "Alibaba Cloud is a large public cloud platform offering compute, storage, networking, databases, containers, serverless, CDN, observability and AI services."
 lang: "en"
@@ -12,7 +12,7 @@ tags:
   - "alibaba"
 ---
 
-# Alibaba Cloud — Practical Handbook
+# Alibaba Cloud - Practical Handbook
 
 Alibaba Cloud uses the same core patterns as other large cloud platforms: regions, private networking, compute, object storage, managed databases, Kubernetes, serverless and IAM. The main differences for someone coming from AWS/Azure/GCP are service names and the additional China-market context.
 
@@ -41,7 +41,7 @@ isolated infrastructure location inside a region.
 
 Choose region based on users, compliance, latency and service availability.
 
-## 4. Core services — map
+## 4. Core services - map
 
 ```text
 ECS          virtual machines
@@ -230,7 +230,7 @@ HTTP/event
 → OSS/database/message service
 ```
 
-## 27. Chinese market — important differences
+## 27. Chinese market - important differences
 
 Operating services for users in mainland China can involve additional regulatory, domain and ICP-related requirements.
 

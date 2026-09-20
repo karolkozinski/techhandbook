@@ -1,6 +1,6 @@
 ---
 id: "doc-007"
-title: "Oracle Cloud Infrastructure (OCI) — Practical Handbook"
+title: "Oracle Cloud Infrastructure (OCI) - Practical Handbook"
 slug: "oracle-cloud-infrastructure-oci-practical-handbook"
 description: "Oracle Cloud Infrastructure is Oracle's public cloud platform, offering compute, networking, storage, databases, containers, serverless, observability and…"
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "oracle"
 ---
 
-# Oracle Cloud Infrastructure (OCI) — Practical Handbook
+# Oracle Cloud Infrastructure (OCI) - Practical Handbook
 
 OCI uses its own names for familiar cloud patterns: tenancy, compartments, VCN, Compute, Object Storage, managed databases, OKE, Functions and IAM. Compartments are especially important because they organize both resources and access policies.
 
@@ -48,7 +48,7 @@ isolated datacenter group inside a region.
 Fault Domain:
 smaller failure-isolation domain inside an Availability Domain.
 
-## 4. Core services — map
+## 4. Core services - map
 
 ```text
 Compute                 virtual machines

@@ -1,6 +1,6 @@
 ---
 id: "doc-010"
-title: "SQL and PostgreSQL for Developers — Handbook"
+title: "SQL and PostgreSQL for Developers - Handbook"
 slug: "sql-and-postgresql-for-developers-handbook"
 description: "A relational database stores data in tables."
 lang: "en"
@@ -14,7 +14,7 @@ tags:
   - "database"
 ---
 
-# SQL and PostgreSQL for Developers — Handbook
+# SQL and PostgreSQL for Developers - Handbook
 
 A relational database is more than a place to store rows. Data modeling, constraints, transactions, indexes and query execution are central to reliable systems. This handbook focuses on SQL and PostgreSQL from a developer's perspective.
 
@@ -262,7 +262,7 @@ Rollback:
 ROLLBACK;
 ```
 
-## 18. ACID — short version
+## 18. ACID - short version
 
 Atomicity:
 all or nothing.

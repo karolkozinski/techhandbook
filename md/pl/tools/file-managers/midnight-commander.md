@@ -192,7 +192,7 @@ To jeden z najczęściej używanych klawiszy w MC.
 
 ---
 
-# 6. Klawisze funkcyjne F1–F10
+# 6. Klawisze funkcyjne F1-F10
 
 Podstawowa belka MC wygląda zwykle tak:
 
@@ -211,7 +211,7 @@ F10 Quit
 
 ---
 
-# 7. F1 — pomoc
+# 7. F1 - pomoc
 
 ```text
 F1
@@ -223,7 +223,7 @@ Przydaje się szczególnie wtedy, gdy nie pamiętasz mniej używanego skrótu.
 
 ---
 
-# 8. F2 — menu użytkownika
+# 8. F2 - menu użytkownika
 
 ```text
 F2
@@ -255,7 +255,7 @@ lub w starszych instalacjach:
 
 ---
 
-# 9. F3 — podgląd pliku
+# 9. F3 - podgląd pliku
 
 ```text
 F3
@@ -285,7 +285,7 @@ Esc
 
 ---
 
-# 10. F4 — edycja pliku
+# 10. F4 - edycja pliku
 
 ```text
 F4
@@ -309,7 +309,7 @@ nano
 
 ---
 
-# 11. F5 — kopiowanie
+# 11. F5 - kopiowanie
 
 ```text
 F5
@@ -357,7 +357,7 @@ Copy "index.html" to "/var/www/projekt"
 
 ---
 
-# 12. F6 — przenoszenie / zmiana nazwy
+# 12. F6 - przenoszenie / zmiana nazwy
 
 ```text
 F6
@@ -385,7 +385,7 @@ Jeżeli podasz inną ścieżkę, plik zostanie przeniesiony.
 
 ---
 
-# 13. F7 — tworzenie katalogu
+# 13. F7 - tworzenie katalogu
 
 ```text
 F7
@@ -409,7 +409,7 @@ Efekt:
 
 ---
 
-# 14. F8 — usuwanie
+# 14. F8 - usuwanie
 
 ```text
 F8
@@ -437,7 +437,7 @@ lub odpowiednik.
 
 ---
 
-# 15. F9 — główne menu
+# 15. F9 - główne menu
 
 ```text
 F9
@@ -459,7 +459,7 @@ Menu pozwala dostać się do praktycznie każdej funkcji MC.
 
 ---
 
-# 16. F10 — wyjście
+# 16. F10 - wyjście
 
 ```text
 F10
@@ -853,7 +853,7 @@ grep -R
 
 ---
 
-# 30. mcedit — wbudowany edytor
+# 30. mcedit - wbudowany edytor
 
 Uruchomienie z MC:
 
@@ -1697,7 +1697,7 @@ Jeżeli połączenie SSH zostanie zerwane, sesja tmux może pozostać aktywna.
 
 ---
 
-# 62. Przydatne skróty — ściąga
+# 62. Przydatne skróty - ściąga
 
 | Skrót | Funkcja |
 |---|---|
@@ -1723,7 +1723,7 @@ Jeżeli połączenie SSH zostanie zerwane, sesja tmux może pozostać aktywna.
 
 ---
 
-# 63. Terminal i problemy z klawiszami F1–F10
+# 63. Terminal i problemy z klawiszami F1-F10
 
 Niektóre terminale lub środowiska graficzne przechwytują:
 
@@ -1963,7 +1963,7 @@ Najlepszy workflow to połączenie obu.
 
 ---
 
-# 71. Przykład 1 — edycja nginx
+# 71. Przykład 1 - edycja nginx
 
 Uruchamiasz:
 
@@ -2021,7 +2021,7 @@ Ctrl+O
 
 ---
 
-# 72. Przykład 2 — deployment aplikacji Go
+# 72. Przykład 2 - deployment aplikacji Go
 
 Lewy panel:
 
@@ -2061,7 +2061,7 @@ sudo systemctl restart project
 
 ---
 
-# 73. Przykład 3 — backup konfiguracji
+# 73. Przykład 3 - backup konfiguracji
 
 Lewy panel:
 
@@ -2089,7 +2089,7 @@ F5
 
 ---
 
-# 74. Przykład 4 — kopiowanie plików z VPS
+# 74. Przykład 4 - kopiowanie plików z VPS
 
 Lewy panel:
 
@@ -2113,7 +2113,7 @@ Możesz kopiować pliki lokalne na serwer i odwrotnie.
 
 ---
 
-# 75. Przykład 5 — znalezienie dużych plików
+# 75. Przykład 5 - znalezienie dużych plików
 
 MC może sortować według rozmiaru:
 
@@ -2138,7 +2138,7 @@ du -ah . | sort -h | tail
 
 ---
 
-# 76. Przykład 6 — szukanie konfiguracji
+# 76. Przykład 6 - szukanie konfiguracji
 
 W MC:
 
@@ -2164,7 +2164,7 @@ MC pokaże pliki zawierające daną frazę.
 
 ---
 
-# 77. Przykład 7 — praca z logami
+# 77. Przykład 7 - praca z logami
 
 Przejdź do:
 
@@ -2204,7 +2204,7 @@ journalctl -f
 
 ---
 
-# 78. Przykład 8 — Git + MC
+# 78. Przykład 8 - Git + MC
 
 Otwierasz projekt:
 
@@ -2239,7 +2239,7 @@ Ctrl+O
 
 ---
 
-# 79. Przykład 9 — szybkie porównanie produkcji i developmentu
+# 79. Przykład 9 - szybkie porównanie produkcji i developmentu
 
 Lewy:
 
@@ -2264,7 +2264,7 @@ MC zaznaczy różnice.
 
 ---
 
-# 80. Przykład 10 — FreeBSD
+# 80. Przykład 10 - FreeBSD
 
 Uruchom:
 
@@ -2387,7 +2387,7 @@ I jedną zasadę:
 
 ---
 
-# 83. Ściąga — Debian
+# 83. Ściąga - Debian
 
 Instalacja:
 
@@ -2415,7 +2415,7 @@ Konfiguracja:
 
 ---
 
-# 84. Ściąga — FreeBSD
+# 84. Ściąga - FreeBSD
 
 Instalacja:
 

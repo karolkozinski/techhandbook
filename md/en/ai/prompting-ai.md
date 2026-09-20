@@ -1,6 +1,6 @@
 ---
 id: "doc-002"
-title: "AI Prompting — Practical Handbook"
+title: "AI Prompting - Practical Handbook"
 slug: "ai-prompting-practical-handbook"
 description: "A prompt is the instruction and context given to an AI model."
 lang: "en"
@@ -14,7 +14,7 @@ tags:
   - "llm"
 ---
 
-# AI Prompting — Practical Handbook
+# AI Prompting - Practical Handbook
 
 Good prompting starts with a clear goal, relevant context, constraints and the expected result. As models and agents gain the ability to take actions, success criteria, stop rules and verification become increasingly important.
 

@@ -153,13 +153,13 @@ Pasek ikon zwykle po lewej stronie.
 
 Najważniejsze pozycje:
 
-- Explorer — pliki,
-- Search — wyszukiwanie,
-- Source Control — Git,
-- Run and Debug — uruchamianie i debugowanie,
-- Extensions — rozszerzenia,
-- Testing — testy,
-- Copilot / Chat — funkcje AI.
+- Explorer - pliki,
+- Search - wyszukiwanie,
+- Source Control - Git,
+- Run and Debug - uruchamianie i debugowanie,
+- Extensions - rozszerzenia,
+- Testing - testy,
+- Copilot / Chat - funkcje AI.
 
 ## Side Bar
 
@@ -213,7 +213,7 @@ Pokazuje między innymi:
 
 ---
 
-# 4. Command Palette — centrum sterowania
+# 4. Command Palette - centrum sterowania
 
 Jedną z najważniejszych funkcji VS Code jest **Command Palette**.
 
@@ -1079,7 +1079,7 @@ Bardziej złożony debugger konfiguruje się w:
 
 Przykład zależy od języka.
 
-Nie zawsze trzeba pisać go ręcznie — rozszerzenia potrafią wygenerować konfigurację.
+Nie zawsze trzeba pisać go ręcznie - rozszerzenia potrafią wygenerować konfigurację.
 
 ---
 
@@ -1477,7 +1477,7 @@ Dobre instrukcje znacznie poprawiają pracę agentów.
 
 ---
 
-# 53. AI w VS Code — trzy różne poziomy
+# 53. AI w VS Code - trzy różne poziomy
 
 Warto rozróżnić trzy sposoby używania AI.
 
@@ -2181,7 +2181,7 @@ a nie:
 
 # 77. MCP
 
-Nowoczesne agenty mogą korzystać z **MCP — Model Context Protocol**.
+Nowoczesne agenty mogą korzystać z **MCP - Model Context Protocol**.
 
 W uproszczeniu MCP pozwala agentowi używać dodatkowych narzędzi lub źródeł danych.
 
@@ -2751,7 +2751,7 @@ npm run dev
 
 Po zapisaniu pliku strona może automatycznie się odświeżyć.
 
-VS Code sam nie realizuje hot reload — robi to narzędzie/framework uruchomiony w terminalu.
+VS Code sam nie realizuje hot reload - robi to narzędzie/framework uruchomiony w terminalu.
 
 ---
 
@@ -2902,7 +2902,7 @@ Dzięki temu środowisko developerskie i produkcyjne są bardziej przewidywalne.
 
 ---
 
-# 108. Source Control + AI — dobry duet
+# 108. Source Control + AI - dobry duet
 
 Przy pracy z agentami panel Git powinien być praktycznie cały czas używany.
 
@@ -3125,7 +3125,7 @@ AI nie musi być używane do wszystkiego.
 Samodzielna praca jest często lepsza, gdy:
 
 - uczysz się nowego mechanizmu,
-- zmiana ma 2–3 linie,
+- zmiana ma 2-3 linie,
 - znasz dokładnie miejsce poprawki,
 - decyzja architektoniczna wymaga kontekstu biznesowego,
 - kod dotyczy szczególnie wrażliwego bezpieczeństwa.
@@ -3134,7 +3134,7 @@ AI ma zwiększać produktywność, a nie odbierać zrozumienie projektu.
 
 ---
 
-# 120. Minimalny zestaw rozszerzeń — przykład
+# 120. Minimalny zestaw rozszerzeń - przykład
 
 Dla Go + web + Docker:
 
@@ -3158,7 +3158,7 @@ Nie ma potrzeby instalowania kilkudziesięciu rozszerzeń.
 
 ---
 
-# 121. Minimalne ustawienia — przykład
+# 121. Minimalne ustawienia - przykład
 
 ```json
 {
@@ -3248,7 +3248,7 @@ człowiek jako reviewer
 
 ---
 
-# 125. Ściąga — VS Code w 60 sekund
+# 125. Ściąga - VS Code w 60 sekund
 
 Otwórz projekt:
 
@@ -3324,7 +3324,7 @@ Ctrl+Shift+V
 
 ---
 
-# 126. Ściąga — AI w 60 sekund
+# 126. Ściąga - AI w 60 sekund
 
 Chcesz coś zrozumieć:
 

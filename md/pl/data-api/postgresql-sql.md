@@ -251,7 +251,7 @@ Błąd:
 ROLLBACK;
 ```
 
-## 18. ACID — skrót
+## 18. ACID - skrót
 
 - Atomicity,
 - Consistency,
@@ -297,7 +297,7 @@ Restore:
 pg_restore -d appdb appdb.dump
 ```
 
-## 22. psql — podstawy
+## 22. psql - podstawy
 
 ```text
 \l       list databases

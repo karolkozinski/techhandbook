@@ -2,7 +2,7 @@
 id: "doc-011"
 title: "CI/CD and GitHub Actions"
 slug: "ci-cd-and-github-actions"
-description: "CI/CD and GitHub Actions — a practical TechHandbook reference."
+description: "CI/CD and GitHub Actions - a practical TechHandbook reference."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"

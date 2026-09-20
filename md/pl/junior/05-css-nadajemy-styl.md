@@ -1,6 +1,6 @@
 ---
 id: "junior-005"
-title: "05. CSS — nadajemy styl"
+title: "05. CSS - nadajemy styl"
 slug: "05-css-nadajemy-styl"
 description: "HTML mówi, co jest na stronie. CSS mówi, jak to wygląda."
 lang: "pl"
@@ -14,7 +14,7 @@ tags:
   - "styl"
 ---
 
-# 05. CSS — nadajemy styl
+# 05. CSS - nadajemy styl
 
 HTML mówi, **co jest na stronie**. CSS mówi, **jak to wygląda**.
 

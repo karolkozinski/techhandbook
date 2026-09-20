@@ -1,6 +1,6 @@
 ---
 id: "doc-037"
-title: "Windows Server in the Enterprise — Administrator Fundamentals"
+title: "Windows Server in the Enterprise - Administrator Fundamentals"
 slug: "windows-server-in-the-enterprise-administrator-fundamentals"
 description: "This handbook focuses on the practical core of Windows Server administration in a corporate environment: Active Directory, permissions, Group Policy,…"
 lang: "en"
@@ -14,7 +14,7 @@ tags:
   - "administration"
 ---
 
-# Windows Server in the Enterprise — Administrator Fundamentals
+# Windows Server in the Enterprise - Administrator Fundamentals
 
 This handbook covers the administration mechanisms commonly used in Windows domain environments: Active Directory Domain Services, Group Policy, permissions, DNS, DHCP, PowerShell, workstation deployment and security basics. It focuses on concepts shared by current Windows Server releases rather than one specific version.
 
@@ -34,7 +34,7 @@ Windows Server commonly provides identity, authentication, centralized policy, D
 
 A domain is a centrally managed identity and security boundary. Users, computers and policies can be managed consistently across the organization.
 
-## Domain Controller — DC
+## Domain Controller - DC
 
 A Domain Controller hosts Active Directory Domain Services and participates in domain authentication and directory replication.
 
@@ -42,11 +42,11 @@ A Domain Controller hosts Active Directory Domain Services and participates in d
 
 Active Directory stores directory objects such as users, groups, computers and service identities.
 
-## OU — Organizational Unit
+## OU - Organizational Unit
 
 An OU organizes directory objects and can be used for delegated administration and Group Policy scope.
 
-## GPO — Group Policy Object
+## GPO - Group Policy Object
 
 A GPO contains centralized settings applied to users or computers.
 
@@ -133,7 +133,7 @@ A mapped drive presents a UNC share such as `\\fileserver\sales` as a drive lett
 
 Group Policy Preferences can map drives based on group membership, OU or other targeting conditions.
 
-# 7. Group Policy — GPO
+# 7. Group Policy - GPO
 
 Group Policy centralizes workstation and user settings.
 
@@ -496,31 +496,31 @@ Remove-ADGroupMember "GG-Sales" jsmith
 
 # 22. Typical administrator tasks
 
-## Case 1 — new employee
+## Case 1 - new employee
 
 Create the identity, assign groups, provision mailbox/licenses where required, configure MFA, map resources, prepare the workstation and test login.
 
-# Case 2 — user changes department
+# Case 2 - user changes department
 
 Remove old role groups and add new ones. Do not simply clone another employee's permissions.
 
-# Case 3 — user has no network drive
+# Case 3 - user has no network drive
 
 Check network, authentication, GPO application, group membership and share availability.
 
-# Case 4 — computer cannot see the domain
+# Case 4 - computer cannot see the domain
 
 Check DNS first, then IP configuration, time synchronization, domain-controller reachability and firewall.
 
-# Case 5 — account is locked
+# Case 5 - account is locked
 
 Find the source of repeated bad credentials: old phone profile, mapped drive, service, scheduled task or cached session.
 
-# Case 6 — user cannot access a folder
+# Case 6 - user cannot access a folder
 
 Check effective NTFS permissions, share permissions, inheritance and group membership.
 
-# Case 7 — new application for the whole company
+# Case 7 - new application for the whole company
 
 Package and test silent deployment, pilot it, collect logs, define rollback and then expand rollout.
 

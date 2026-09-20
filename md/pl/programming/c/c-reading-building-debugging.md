@@ -1,6 +1,6 @@
 ---
 id: "doc-019"
-title: "C — czytanie, kompilacja i debugowanie"
+title: "C - czytanie, kompilacja i debugowanie"
 slug: "c-czytanie-kompilacja-i-debugowanie"
 description: "Cel: nie nauczyć Cię „programować w C od zera”, tylko dać Ci taki poziom orientacji, żebyś po sklonowaniu projektu potrafił:"
 lang: "pl"
@@ -14,7 +14,7 @@ tags:
   - "gdb"
 ---
 
-# C — czytanie, kompilacja i debugowanie
+# C - czytanie, kompilacja i debugowanie
 
 C nadal pojawia się w systemach operacyjnych, bibliotekach, sterownikach, narzędziach CLI i projektach embedded. Ten materiał służy przede wszystkim do czytania istniejącego kodu, budowania projektu i rozumienia błędów kompilatora, linkera oraz pamięci.
 
@@ -1102,7 +1102,7 @@ teksty są identyczne.
 
 ---
 
-# 30. Wskaźniki — rzecz, której trzeba się nauczyć czytać
+# 30. Wskaźniki - rzecz, której trzeba się nauczyć czytać
 
 Wskaźnik przechowuje adres pamięci.
 
@@ -3707,7 +3707,7 @@ brak sanitizerów
 
 ---
 
-# 136. Instalowanie zależności — Debian
+# 136. Instalowanie zależności - Debian
 
 Podstawowy toolchain:
 
@@ -3741,7 +3741,7 @@ sudo apt install \
 
 ---
 
-# 137. Instalowanie zależności — FreeBSD
+# 137. Instalowanie zależności - FreeBSD
 
 Podstawowy kompilator Clang znajduje się zwykle w systemie bazowym.
 
@@ -4843,7 +4843,7 @@ Uruchom program.
 
 ## Krok 9
 
-Jeżeli się wywraca — debugger.
+Jeżeli się wywraca - debugger.
 
 ---
 
@@ -4925,7 +4925,7 @@ Uruchom:
 
 ---
 
-# 189. Debugowanie crasha — gotowy schemat
+# 189. Debugowanie crasha - gotowy schemat
 
 Program:
 
@@ -4965,7 +4965,7 @@ To powinien być Twój pierwszy odruch.
 
 ---
 
-# 190. Debugowanie memory buga — gotowy schemat
+# 190. Debugowanie memory buga - gotowy schemat
 
 Build:
 
@@ -5148,7 +5148,7 @@ To może wyjaśnić:
 
 ---
 
-# 197. Czego nie musisz znać, żeby czytać 80–90% projektów
+# 197. Czego nie musisz znać, żeby czytać 80-90% projektów
 
 Na początku nie musisz znać:
 

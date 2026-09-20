@@ -1,6 +1,6 @@
 ---
 id: "doc-008"
-title: "APIs and System Integrations — Practical Handbook"
+title: "APIs and System Integrations - Practical Handbook"
 slug: "apis-and-system-integrations-practical-handbook"
 description: "An API is an interface that lets one system communicate with another in a structured way."
 lang: "en"
@@ -15,7 +15,7 @@ tags:
   - "oauth"
 ---
 
-# APIs and System Integrations — Practical Handbook
+# APIs and System Integrations - Practical Handbook
 
 Treat an API as a contract between systems: request format, response format, errors, authentication and retry behavior all matter. A reliable integration is not only a valid request, but also timeouts, retries, idempotency and handling partial failures.
 
@@ -114,7 +114,7 @@ Authorization: Bearer TOKEN
 
 Tokens should be treated as secrets.
 
-## 7. OAuth 2.0 — practical view
+## 7. OAuth 2.0 - practical view
 
 OAuth 2.0 is used when a client needs delegated access without handling a user's password directly.
 

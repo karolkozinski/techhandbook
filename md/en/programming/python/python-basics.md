@@ -1,6 +1,6 @@
 ---
 id: "doc-023"
-title: "Python — Practical Handbook"
+title: "Python - Practical Handbook"
 slug: "python-practical-handbook"
 description: "Python is a high-level interpreted language focused on readability and a large ecosystem."
 lang: "en"
@@ -11,7 +11,7 @@ tags:
   - "python"
 ---
 
-# Python — Practical Handbook
+# Python - Practical Handbook
 
 Python is a strong fit for automation, CLI tools, backends, testing and data work. In practice, virtual environments, explicit dependencies and project documentation matter more than memorizing a particular interpreter version.
 
@@ -143,7 +143,7 @@ items.append(4)
 ```python
 point = (10, 20)
 ```
-# 23. Dictionary — dict
+# 23. Dictionary - dict
 ```python
 user = {'name': 'Ada', 'age': 30}
 user['name']
@@ -212,7 +212,7 @@ def f(*args):
 def f(**kwargs):
     print(kwargs)
 ```
-# 38. Optional typing — type hints
+# 38. Optional typing - type hints
 ```python
 def add(a: int, b: int) -> int:
     return a + b
@@ -244,7 +244,7 @@ python3 -m pip install requests
 ```
 # 45. Why not install everything globally
 Global installs create dependency conflicts and make projects harder to reproduce.
-# 46. venv — virtual environment
+# 46. venv - virtual environment
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -512,7 +512,7 @@ dir(object)
 Use docstrings and `help()`.
 # 105. dir + type + help
 A useful REPL trio for exploring unfamiliar objects.
-# 106. Installing CLI tools — pipx
+# 106. Installing CLI tools - pipx
 ```bash
 pipx install TOOL
 ```
@@ -571,7 +571,7 @@ data = r.json()
 ```python
 r.raise_for_status()
 ```
-# 115. Reading Python code — order
+# 115. Reading Python code - order
 Start with pyproject/requirements, entry point, package structure, key classes/functions and tests.
 # 116. How to recognize the entry point
 Look for `if __name__ == '__main__'`, console scripts in pyproject, framework commands or executable modules.

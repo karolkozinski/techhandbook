@@ -27,10 +27,10 @@ Chmura nie jest „cudzym komputerem”, tylko zestawem zasobów zarządzanych p
 
 Najważniejsze modele:
 
-- **IaaS** — dostajesz VM, sieć, dyski; sam zarządzasz systemem. Przykład: EC2.
-- **PaaS** — dostajesz platformę uruchomieniową, mniej administracji. Przykład: App Runner, RDS.
-- **Serverless** — nie zarządzasz serwerem; płacisz głównie za wykonanie. Przykład: Lambda.
-- **Managed service** — AWS administruje większą częścią stosu. Przykład: RDS, ElastiCache, OpenSearch.
+- **IaaS** - dostajesz VM, sieć, dyski; sam zarządzasz systemem. Przykład: EC2.
+- **PaaS** - dostajesz platformę uruchomieniową, mniej administracji. Przykład: App Runner, RDS.
+- **Serverless** - nie zarządzasz serwerem; płacisz głównie za wykonanie. Przykład: Lambda.
+- **Managed service** - AWS administruje większą częścią stosu. Przykład: RDS, ElastiCache, OpenSearch.
 
 ## 2. Jak myśleć o strukturze AWS
 
@@ -53,7 +53,7 @@ AWS Organizations
 
 Konto AWS jest silną granicą izolacji. W większych organizacjach lepiej mieć osobne konta np. `prod`, `dev`, `security`, `shared-services`, zamiast wrzucać wszystko do jednego worka.
 
-## 3. Najważniejsze usługi — mapa
+## 3. Najważniejsze usługi - mapa
 
 | Potrzeba | AWS |
 |---|---|
@@ -88,7 +88,7 @@ Konto AWS jest silną granicą izolacji. W większych organizacjach lepiej mieć
 | IaC AWS | CloudFormation / CDK |
 | AI/LLM | Bedrock / SageMaker |
 
-## 4. EC2 — klasyczny serwer
+## 4. EC2 - klasyczny serwer
 
 EC2 to wirtualne maszyny. Wybierasz:
 
@@ -103,12 +103,12 @@ EC2 to wirtualne maszyny. Wybierasz:
 
 Rodziny instancji mają różne zastosowania:
 
-- `t*` — tanie, burstable, dobre do małych usług,
-- `m*` — ogólnego przeznaczenia,
-- `c*` — CPU,
-- `r*` — dużo RAM,
-- `g*`, `p*` — GPU,
-- Graviton (`*g`) — ARM, często atrakcyjny cenowo.
+- `t*` - tanie, burstable, dobre do małych usług,
+- `m*` - ogólnego przeznaczenia,
+- `c*` - CPU,
+- `r*` - dużo RAM,
+- `g*`, `p*` - GPU,
+- Graviton (`*g`) - ARM, często atrakcyjny cenowo.
 
 ### Przykładowe polecenia CLI
 
@@ -120,21 +120,21 @@ aws ec2 describe-security-groups
 
 EC2 traktuj jak normalny serwer: aktualizacje systemu, SSH, firewall hosta, usługi systemd, backup i monitoring nadal są twoim problemem.
 
-## 5. VPC — sieć
+## 5. VPC - sieć
 
 VPC to twoja logicznie odizolowana sieć.
 
 Najważniejsze elementy:
 
-- **CIDR** — zakres adresów, np. `10.20.0.0/16`,
-- **subnet** — podsieć przypisana do jednej AZ,
-- **route table** — routing,
-- **Internet Gateway** — dostęp z/do Internetu,
-- **NAT Gateway** — wyjście do Internetu dla prywatnych subnetów,
-- **Security Group** — stanowy firewall przypięty do zasobu,
-- **Network ACL** — firewall na poziomie subnetu,
-- **VPC Endpoint / PrivateLink** — dostęp do usług AWS bez wychodzenia przez publiczny Internet,
-- **Transit Gateway** — łączenie wielu VPC i sieci on-prem.
+- **CIDR** - zakres adresów, np. `10.20.0.0/16`,
+- **subnet** - podsieć przypisana do jednej AZ,
+- **route table** - routing,
+- **Internet Gateway** - dostęp z/do Internetu,
+- **NAT Gateway** - wyjście do Internetu dla prywatnych subnetów,
+- **Security Group** - stanowy firewall przypięty do zasobu,
+- **Network ACL** - firewall na poziomie subnetu,
+- **VPC Endpoint / PrivateLink** - dostęp do usług AWS bez wychodzenia przez publiczny Internet,
+- **Transit Gateway** - łączenie wielu VPC i sieci on-prem.
 
 Typowy układ webowy:
 
@@ -171,7 +171,7 @@ DB:
 
 To jest lepsze niż otwieranie portów na całe zakresy IP.
 
-## 7. S3 — storage obiektowy
+## 7. S3 - storage obiektowy
 
 S3 przechowuje obiekty w bucketach. Świetnie nadaje się na:
 
@@ -285,11 +285,11 @@ Nie jest idealna do każdego backendu. Długie procesy, duży lokalny stan lub w
 
 ## 13. Route 53, CloudFront, ALB i API Gateway
 
-**Route 53** — DNS i health checks.  
-**CloudFront** — CDN na edge.  
-**ALB** — HTTP/HTTPS load balancer warstwy 7.  
-**NLB** — wydajny load balancer TCP/UDP.  
-**API Gateway** — zarządzana brama API, często przed Lambda.
+**Route 53** - DNS i health checks.  
+**CloudFront** - CDN na edge.  
+**ALB** - HTTP/HTTPS load balancer warstwy 7.  
+**NLB** - wydajny load balancer TCP/UDP.  
+**API Gateway** - zarządzana brama API, często przed Lambda.
 
 Typowa strona:
 
@@ -299,7 +299,7 @@ DNS Route 53
  -> ALB lub S3
 ```
 
-## 14. IAM — najważniejsza usługa bezpieczeństwa
+## 14. IAM - najważniejsza usługa bezpieczeństwa
 
 IAM odpowiada na pytania:
 
@@ -325,9 +325,9 @@ Dla pracowników organizacji warto używać IAM Identity Center zamiast tworzyć
 
 ## 15. Secrets Manager, Parameter Store, KMS
 
-- **Secrets Manager** — hasła, tokeny, credentials, rotacja sekretów.
-- **SSM Parameter Store** — konfiguracja i prostsze sekrety.
-- **KMS** — zarządzanie kluczami szyfrującymi.
+- **Secrets Manager** - hasła, tokeny, credentials, rotacja sekretów.
+- **SSM Parameter Store** - konfiguracja i prostsze sekrety.
+- **KMS** - zarządzanie kluczami szyfrującymi.
 
 Nie wkładaj sekretów do obrazu Dockera, repo Git ani pliku `.env` publikowanego razem z aplikacją.
 
@@ -459,7 +459,7 @@ EC2 + EBS + Elastic IP + Security Group
 
 Możliwe, ale AWS robi się wtedy drogim odpowiednikiem VPS-a i nie wykorzystujesz większości jego zalet.
 
-## 22. Koszty — gdzie ludzie wpadają
+## 22. Koszty - gdzie ludzie wpadają
 
 Koszt może pochodzić z:
 
@@ -485,9 +485,9 @@ Szczególnie pilnuj zasobów „zapomnianych”: EBS, Elastic IP, NAT Gateway, s
 
 ## 23. Reserved, Savings Plans i Spot
 
-- **On-Demand** — bez zobowiązań.
-- **Savings Plans / Reserved** — taniej w zamian za zobowiązanie.
-- **Spot** — bardzo tanio, ale instancja może zostać odebrana.
+- **On-Demand** - bez zobowiązań.
+- **Savings Plans / Reserved** - taniej w zamian za zobowiązanie.
+- **Spot** - bardzo tanio, ale instancja może zostać odebrana.
 
 Spot świetnie pasuje do batchy, workerów i zadań odpornych na przerwanie. Nie wrzucaj jedynej bazy produkcyjnej na mechanizm, który może zniknąć.
 
@@ -506,7 +506,7 @@ Rozważ:
 
 Backup, którego nigdy nie odtworzyłeś testowo, jest tylko nadzieją.
 
-## 25. Bezpieczeństwo — minimum
+## 25. Bezpieczeństwo - minimum
 
 - MFA/SSO dla ludzi.
 - Root account tylko do wyjątkowych operacji.
@@ -520,7 +520,7 @@ Backup, którego nigdy nie odtworzyłeś testowo, jest tylko nadzieją.
 - CloudTrail.
 - WAF tam, gdzie aplikacja publiczna tego wymaga.
 - Regularne łatki na EC2.
-- Budżety i alerty kosztowe — przejęte konto AWS może kosztować realne pieniądze.
+- Budżety i alerty kosztowe - przejęte konto AWS może kosztować realne pieniądze.
 
 ## 26. Co wybrać dla małego projektu
 
@@ -593,23 +593,23 @@ aws logs describe-log-groups
 
 ## 29. Słownik nazw AWS
 
-- **EC2** — VM.
-- **AMI** — obraz maszyny.
-- **EBS** — dysk blokowy.
-- **S3** — object storage.
-- **VPC** — sieć prywatna.
-- **SG** — Security Group.
-- **ALB/NLB** — load balancer.
-- **ECS** — orkiestracja kontenerów AWS.
-- **EKS** — Kubernetes.
-- **ECR** — registry obrazów.
-- **RDS** — zarządzane SQL.
-- **Lambda** — funkcje serverless.
-- **IAM** — identity/access.
-- **KMS** — klucze szyfrujące.
-- **CloudWatch** — obserwowalność.
-- **CloudTrail** — audyt API.
-- **Route 53** — DNS.
+- **EC2** - VM.
+- **AMI** - obraz maszyny.
+- **EBS** - dysk blokowy.
+- **S3** - object storage.
+- **VPC** - sieć prywatna.
+- **SG** - Security Group.
+- **ALB/NLB** - load balancer.
+- **ECS** - orkiestracja kontenerów AWS.
+- **EKS** - Kubernetes.
+- **ECR** - registry obrazów.
+- **RDS** - zarządzane SQL.
+- **Lambda** - funkcje serverless.
+- **IAM** - identity/access.
+- **KMS** - klucze szyfrujące.
+- **CloudWatch** - obserwowalność.
+- **CloudTrail** - audyt API.
+- **Route 53** - DNS.
 
 ## 30. Źródła i dalsza nauka
 

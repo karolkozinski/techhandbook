@@ -1,6 +1,6 @@
 ---
 id: "doc-050"
-title: "Regular Expressions (Regex) — Practical Handbook"
+title: "Regular Expressions (Regex) - Practical Handbook"
 slug: "regular-expressions-regex-practical-handbook"
 description: "A regular expression is a pattern used to search, validate and transform text."
 lang: "en"
@@ -16,7 +16,7 @@ tags:
   - "python"
 ---
 
-# Regular Expressions (Regex) — Practical Handbook
+# Regular Expressions (Regex) - Practical Handbook
 
 Regex is a family of pattern languages, not one identical standard in every tool. grep/POSIX, JavaScript, Python and PCRE are similar but differ in details, so advanced expressions should be written with the target engine in mind.
 

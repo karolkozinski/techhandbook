@@ -210,9 +210,9 @@ Loopback:
 /24 means 24 network bits. A typical /24 contains 256 addresses.
 
 ```text
-/32 — one IPv4 address
-/24 — 256 addresses
-/16 — 65536 addresses
+/32 - one IPv4 address
+/24 - 256 addresses
+/16 - 65536 addresses
 ```
 
 ## 10. Routing

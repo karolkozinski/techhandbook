@@ -1,6 +1,6 @@
 ---
 id: "doc-053"
-title: "Web Analytics and Tagging — Practical Handbook"
+title: "Web Analytics and Tagging - Practical Handbook"
 slug: "web-analytics-and-tagging-practical-handbook"
 description: "Web analytics should answer concrete business and product questions."
 lang: "en"
@@ -16,7 +16,7 @@ tags:
   - "utm"
 ---
 
-# Web Analytics and Tagging — Practical Handbook
+# Web Analytics and Tagging - Practical Handbook
 
 Analytics should answer concrete questions and support decisions. A tracking plan should define the event, trigger, parameters, business purpose and validation method. Without this, tagging quickly becomes a collection of unrelated events.
 
@@ -150,7 +150,7 @@ Typical concepts:
 
 Keep governance strict. A tag manager can execute code in the browser.
 
-## 8. GA4 — event model
+## 8. GA4 - event model
 
 Google Analytics 4 uses an event-oriented data model.
 

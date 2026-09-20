@@ -1,4 +1,4 @@
-# TechHandbook — model treści
+# TechHandbook - model treści
 
 Ten dokument definiuje docelowy model metadanych artykułów TechHandbooka.
 
@@ -17,7 +17,7 @@ Każdy artykuł STANDARD i JUNIOR ma blok YAML na samym początku pliku:
 ```yaml
 ---
 id: "doc-023"
-title: "Python — podstawy"
+title: "Python - podstawy"
 slug: "podstawy-pythona"
 description: "Praktyczne kompendium podstaw języka Python, składni i uruchamiania programów."
 lang: "pl"
@@ -99,7 +99,7 @@ Będzie wykorzystywany m.in. w:
 - kartach i podglądach,
 - danych strukturalnych.
 
-Zalecana długość redakcyjna: około 80–160 znaków. Walidator wymaga obecności pola, ale nie powinien wymuszać sztucznego dopisywania tekstu tylko dla długości.
+Zalecana długość redakcyjna: około 80-160 znaków. Walidator wymaga obecności pola, ale nie powinien wymuszać sztucznego dopisywania tekstu tylko dla długości.
 
 ### `lang`
 
@@ -107,7 +107,7 @@ Język artykułu, np. `pl` lub `en`.
 
 Pole musi zgadzać się z katalogiem językowym pliku.
 
-Model nie jest ograniczony wyłącznie do PL/EN — nowe języki mogą zostać dodane bez zmiany formatu front matter.
+Model nie jest ograniczony wyłącznie do PL/EN - nowe języki mogą zostać dodane bez zmiany formatu front matter.
 
 ### `audience`
 
@@ -270,7 +270,7 @@ Przykładowy wygenerowany wpis:
 {
   "id": "doc-023",
   "name": "python-basics.md",
-  "title": "Python — podstawy",
+  "title": "Python - podstawy",
   "slug": "podstawy-pythona",
   "route": "/pl/programming/python/podstawy-pythona",
   "path": "md/pl/programming/python/python-basics.md",
@@ -301,7 +301,7 @@ Docelowy walidator powinien przerwać build, gdy:
 - relacja wskazuje samą siebie,
 - relacja zawiera duplikaty.
 
-Dla STANDARD zachowujemy obecną regułę 4–6 redakcyjnych relacji na artykuł.
+Dla STANDARD zachowujemy obecną regułę 4-6 redakcyjnych relacji na artykuł.
 
 ## Zasada migracji
 

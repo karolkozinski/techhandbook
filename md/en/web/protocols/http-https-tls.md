@@ -165,7 +165,7 @@ sudo certbot --nginx -d example.com -d www.example.com
 sudo certbot renew --dry-run
 ```
 
-## 12. TLS handshake — simplified
+## 12. TLS handshake - simplified
 
 1. client connects,
 2. server presents the certificate,

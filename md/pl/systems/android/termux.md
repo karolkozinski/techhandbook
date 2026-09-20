@@ -44,8 +44,8 @@ Powiązane tematy: [SSH i zdalna administracja](techhandbook:doc-018), [Programo
 17. [Node.js i JavaScript](#17-nodejs-i-javascript)
 18. [Serwery WWW](#18-serwery-www)
 19. [Usługi i procesy działające w tle](#19-usługi-i-procesy-działające-w-tle)
-20. [Termux:API — sterowanie Androidem z shella](#20-termuxapi--sterowanie-androidem-z-shella)
-21. [proot-distro — Debian i inne dystrybucje](#21-proot-distro--debian-i-inne-dystrybucje)
+20. [Termux:API - sterowanie Androidem z shella](#20-termuxapi--sterowanie-androidem-z-shella)
+21. [proot-distro - Debian i inne dystrybucje](#21-proot-distro--debian-i-inne-dystrybucje)
 22. [Co daje root](#22-co-daje-root)
 23. [Czego Termux nie potrafi bez roota](#23-czego-termux-nie-potrafi-bez-roota)
 24. [Docker i kontenery](#24-docker-i-kontenery)
@@ -1506,11 +1506,11 @@ Zwolnienie:
 termux-wake-unlock
 ```
 
-Nie jest to gwarancja wiecznego działania procesu — Android nadal posiada własne mechanizmy zarządzania aplikacjami.
+Nie jest to gwarancja wiecznego działania procesu - Android nadal posiada własne mechanizmy zarządzania aplikacjami.
 
 ---
 
-# 20. Termux:API — sterowanie Androidem z shella
+# 20. Termux:API - sterowanie Androidem z shella
 
 Termux:API jest dodatkiem wystawiającym wybrane funkcje Androida do linii poleceń.
 
@@ -1605,7 +1605,7 @@ To jest jedna z najciekawszych cech Termuxa.
 
 ---
 
-# 21. proot-distro — Debian i inne dystrybucje
+# 21. proot-distro - Debian i inne dystrybucje
 
 Termux może uruchomić dodatkowy userspace dystrybucji Linux.
 

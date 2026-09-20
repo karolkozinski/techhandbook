@@ -2,7 +2,7 @@
 id: "doc-051"
 title: "OAuth 2.0, OpenID Connect, JWT and Sessions"
 slug: "oauth-2-0-openid-connect-jwt-and-sessions"
-description: "OAuth 2.0, OpenID Connect, JWT and Sessions — a practical TechHandbook reference."
+description: "OAuth 2.0, OpenID Connect, JWT and Sessions - a practical TechHandbook reference."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"

@@ -1,6 +1,6 @@
 ---
 id: "doc-029"
-title: "FreeBSD — Practical Shell Handbook"
+title: "FreeBSD - Practical Shell Handbook"
 slug: "freebsd-practical-shell-handbook"
 description: "FreeBSD is a complete Unix-like operating system. The base system, kernel and core userland are developed together, while third-party applications are…"
 lang: "en"
@@ -14,11 +14,11 @@ tags:
   - "tcsh"
 ---
 
-# FreeBSD — Practical Shell Handbook
+# FreeBSD - Practical Shell Handbook
 
 This handbook covers day-to-day FreeBSD administration from the terminal. For shell selection and configuration see [Shells in FreeBSD](techhandbook:doc-030), for broader administration see [FreeBSD as a Server](techhandbook:doc-034), and for automation see [Shell Scripting](techhandbook:doc-031).
 
-# FreeBSD — Administration, System and Directories
+# FreeBSD - Administration, System and Directories
 
 FreeBSD is a complete Unix-like operating system. The base system, kernel and core userland are developed together, while third-party applications are usually installed under /usr/local.
 
@@ -54,11 +54,11 @@ Use freebsd-version for the installed base-system version and uname for kernel/p
 /usr/local/sbin third-party admin commands
 ```
 
-# 1. Shell, terminal and commands — what are you actually doing?
+# 1. Shell, terminal and commands - what are you actually doing?
 
 The terminal is the interface. The shell interprets your commands. FreeBSD commonly uses sh for root/system scripts and tcsh for some interactive accounts, but other shells can be installed.
 
-# 2. `pwd` — where am I?
+# 2. `pwd` - where am I?
 
 ```sh
 pwd
@@ -66,7 +66,7 @@ pwd
 
 Prints the current working directory.
 
-# 3. `ls` — what is in the directory?
+# 3. `ls` - what is in the directory?
 
 ```sh
 ls
@@ -120,7 +120,7 @@ ls -lS
 ls -lah
 ```
 
-# 4. `cd` — change directory
+# 4. `cd` - change directory
 
 ```sh
 cd /usr/local/etc
@@ -159,13 +159,13 @@ Means the current directory.
 
 Means the parent directory.
 
-# 6. `touch` — create an empty file or update timestamp
+# 6. `touch` - create an empty file or update timestamp
 
 ```sh
 touch test.txt
 ```
 
-# 7. `mkdir` — create directories
+# 7. `mkdir` - create directories
 
 ```sh
 mkdir logs
@@ -179,7 +179,7 @@ Create parent directories as needed:
 mkdir -p /tmp/demo/a/b
 ```
 
-# 8. `cp` — copy
+# 8. `cp` - copy
 
 ```sh
 cp source.conf copy.conf
@@ -217,7 +217,7 @@ Back up a config before editing:
 cp /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.bak
 ```
 
-# 9. `mv` — move and rename
+# 9. `mv` - move and rename
 
 ```sh
 mv old.txt new.txt
@@ -232,7 +232,7 @@ Prompt before overwrite.
 
 Show performed operations.
 
-# 10. `rm` — delete
+# 10. `rm` - delete
 
 ```sh
 rm file.txt
@@ -254,7 +254,7 @@ Force removal without prompting for missing files.
 
 Recursive forced removal. Treat it as dangerous because path mistakes can destroy large directory trees.
 
-# 11. `cat` — quickly print a file
+# 11. `cat` - quickly print a file
 
 ```sh
 cat /etc/hosts
@@ -262,7 +262,7 @@ cat /etc/hosts
 
 Good for small files. Use less for long files.
 
-# 12. `less` — read large files comfortably
+# 12. `less` - read large files comfortably
 
 ```sh
 less /var/log/messages
@@ -270,7 +270,7 @@ less /var/log/messages
 
 Useful keys: `/` search, `n` next match, `G` end, `g` start, `q` quit.
 
-# 13. `head` — start of a file
+# 13. `head` - start of a file
 
 ```sh
 head file.txt
@@ -282,7 +282,7 @@ head file.txt
 head -n 20 file.txt
 ```
 
-# 14. `tail` — end of a file
+# 14. `tail` - end of a file
 
 ```sh
 tail file.txt
@@ -302,7 +302,7 @@ Follow a growing log:
 tail -f /var/log/messages
 ```
 
-# 15. `grep` — search text
+# 15. `grep` - search text
 
 ```sh
 grep error /var/log/messages
@@ -334,7 +334,7 @@ Use extended regular expressions.
 grep -RniE 'error|warning' /usr/local/etc
 ```
 
-# 16. `find` — find files
+# 16. `find` - find files
 
 ## `-name`
 
@@ -369,7 +369,7 @@ Example:
 find /var -type f -size +100M
 ```
 
-# 17. `which`, `command -v`, `whereis` — where is a program?
+# 17. `which`, `command -v`, `whereis` - where is a program?
 
 ```sh
 which nginx
@@ -379,14 +379,14 @@ whereis nginx
 
 command -v is portable shell logic; whereis also searches known source/manual locations.
 
-# 18. `file` — what kind of file is this?
+# 18. `file` - what kind of file is this?
 
 ```sh
 file /bin/sh
 file archive.tar.gz
 ```
 
-# 19. `stat` — detailed file information
+# 19. `stat` - detailed file information
 
 ```sh
 stat file.txt
@@ -394,7 +394,7 @@ stat file.txt
 
 Shows size, ownership, permissions and timestamps.
 
-# 20. `man` — command documentation
+# 20. `man` - command documentation
 
 ```sh
 man service
@@ -404,7 +404,7 @@ man 5 rc.conf
 
 FreeBSD manual pages are first-class documentation.
 
-# 21. `echo` — print text and variables
+# 21. `echo` - print text and variables
 
 ```sh
 echo hello
@@ -471,7 +471,7 @@ w
 
 Show logged-in users; `w` also shows activity/load information.
 
-# 28. `uname` — kernel and platform
+# 28. `uname` - kernel and platform
 
 ## `-a`
 
@@ -499,7 +499,7 @@ uptime
 
 Shows uptime and load averages.
 
-# 32. `top` — processes and load
+# 32. `top` - processes and load
 
 ```sh
 top
@@ -507,13 +507,13 @@ top
 
 Use it for a quick view of CPU, memory and busy processes.
 
-# 33. `ps` — process list
+# 33. `ps` - process list
 
 ```sh
 ps aux
 ```
 
-# 34. `pgrep` — find PID by name
+# 34. `pgrep` - find PID by name
 
 ```sh
 pgrep nginx
@@ -536,13 +536,13 @@ pkill processname
 
 Try normal termination before stronger signals.
 
-# 36. `df` — free filesystem space
+# 36. `df` - free filesystem space
 
 ```sh
 df -h
 ```
 
-# 37. `du` — directory size
+# 37. `du` - directory size
 
 ## `-s`
 
@@ -556,7 +556,7 @@ Human-readable sizes:
 du -sh /var/*
 ```
 
-# 38. `mount` — what is mounted?
+# 38. `mount` - what is mounted?
 
 ```sh
 mount
@@ -564,7 +564,7 @@ mount
 
 On ZFS systems, also inspect `zfs list` and `zpool status`.
 
-# 40. FreeBSD — disks
+# 40. FreeBSD - disks
 
 Useful commands:
 
@@ -585,7 +585,7 @@ zfs list
 zfs list -t snapshot
 ```
 
-# 43. FreeBSD — `ifconfig`
+# 43. FreeBSD - `ifconfig`
 
 ```sh
 ifconfig
@@ -617,14 +617,14 @@ curl -I https://example.com
 curl -v https://example.com
 ```
 
-# 47. DNS — `host` and `dig`
+# 47. DNS - `host` and `dig`
 
 ```sh
 host example.com
 dig example.com
 ```
 
-# 49. FreeBSD — `sockstat`
+# 49. FreeBSD - `sockstat`
 
 Show listening sockets:
 
@@ -690,7 +690,7 @@ chmod 755 script.sh
 chown user:group file
 ```
 
-# 57. FreeBSD — `pkg`
+# 57. FreeBSD - `pkg`
 
 ## Update catalogue
 
@@ -746,7 +746,7 @@ pkg autoremove
 pkg which /usr/local/sbin/nginx
 ```
 
-# 60. FreeBSD — services with `service`
+# 60. FreeBSD - services with `service`
 
 ```sh
 service nginx status
@@ -757,7 +757,7 @@ service nginx restart
 
 Use `onestart` for a one-off start when the service is not enabled.
 
-# 61. FreeBSD — `sysrc`
+# 61. FreeBSD - `sysrc`
 
 Read and modify rc.conf-style variables safely:
 
@@ -767,7 +767,7 @@ sysrc nginx_enable=YES
 sysrc nginx_enable=NO
 ```
 
-# 62. FreeBSD — logs
+# 62. FreeBSD - logs
 
 Common location:
 
@@ -781,11 +781,11 @@ Typical system log:
 tail -f /var/log/messages
 ```
 
-# 63. FreeBSD — base system and packages
+# 63. FreeBSD - base system and packages
 
 Remember the separation: `/etc` and base tools belong to the operating system; `/usr/local` is where third-party packages normally live.
 
-# 64. FreeBSD — base-system updates
+# 64. FreeBSD - base-system updates
 
 Update method depends on FreeBSD release and deployment model. Follow the procedure documented for your supported release and read release notes before upgrades.
 
@@ -798,7 +798,7 @@ dmesg | tail -n 50
 
 Useful for boot, hardware, disk and driver messages.
 
-# 68. FreeBSD — `sysctl`
+# 68. FreeBSD - `sysctl`
 
 Read kernel/system parameters:
 
@@ -909,7 +909,7 @@ ps aux
 tail -n 50 /var/log/messages
 ```
 
-# Real-life examples — FreeBSD
+# Real-life examples - FreeBSD
 
 ## 1. Website stopped responding
 
@@ -1031,7 +1031,7 @@ tar -czf /tmp/etc-backup.tar.gz /etc /usr/local/etc
 
 For real backups, copy data off the machine and include application state/databases separately.
 
-# FreeBSD — minimal set to remember
+# FreeBSD - minimal set to remember
 
 ```text
 pwd / ls / cd

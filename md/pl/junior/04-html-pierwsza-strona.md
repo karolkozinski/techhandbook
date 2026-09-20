@@ -1,6 +1,6 @@
 ---
 id: "junior-004"
-title: "04. HTML — pierwsza strona"
+title: "04. HTML - pierwsza strona"
 slug: "04-html-pierwsza-strona"
 description: "HTML opisuje co znajduje się na stronie internetowej: nagłówki, tekst, obrazki, linki i inne elementy."
 lang: "pl"
@@ -14,7 +14,7 @@ tags:
   - "strona"
 ---
 
-# 04. HTML — pierwsza strona
+# 04. HTML - pierwsza strona
 
 HTML opisuje **co znajduje się na stronie internetowej**: nagłówki, tekst, obrazki, linki i inne elementy.
 

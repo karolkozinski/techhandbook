@@ -28,10 +28,10 @@ Ten materiał skupia się na skryptach uruchamianych w terminalu na **Debianie**
 
 Najważniejsze rozróżnienie:
 
-- `sh` — podstawowy, przenośny shell zgodny mniej więcej ze standardem POSIX,
-- `bash` — rozbudowany shell popularny w Linuksie,
-- `zsh` — rozbudowany shell używany często interaktywnie,
-- `csh` / `tcsh` — spotykany szczególnie w świecie BSD, ale obecnie raczej nie jest najlepszym wyborem do nowych skryptów.
+- `sh` - podstawowy, przenośny shell zgodny mniej więcej ze standardem POSIX,
+- `bash` - rozbudowany shell popularny w Linuksie,
+- `zsh` - rozbudowany shell używany często interaktywnie,
+- `csh` / `tcsh` - spotykany szczególnie w świecie BSD, ale obecnie raczej nie jest najlepszym wyborem do nowych skryptów.
 
 Dla prostych skryptów administracyjnych najlepszym punktem startowym jest:
 
@@ -118,7 +118,7 @@ Ponieważ bieżący katalog zwykle nie znajduje się w zmiennej `PATH`.
 
 ---
 
-# 3. `echo` i `printf` — wypisywanie informacji
+# 3. `echo` i `printf` - wypisywanie informacji
 
 Najprostsze:
 
@@ -490,7 +490,7 @@ fi
 
 ---
 
-# 12. `case` — idealne do menu
+# 12. `case` - idealne do menu
 
 Jeśli użytkownik ma wybrać jedną z kilku opcji, `case` jest często wygodniejsze niż wiele `if`.
 
@@ -806,7 +806,7 @@ fi
 
 ---
 
-# 21. `exit` — kończenie skryptu
+# 21. `exit` - kończenie skryptu
 
 Poprawne zakończenie:
 
@@ -1280,7 +1280,7 @@ exit 0
 
 ---
 
-# 35. `stderr` — komunikaty błędów
+# 35. `stderr` - komunikaty błędów
 
 Normalny komunikat:
 
@@ -1588,7 +1588,7 @@ Zamiast tworzyć ogromny alias, lepiej napisać program w shellu.
 
 ---
 
-# 45. Prosty przykład praktyczny — sprawdzanie serwera
+# 45. Prosty przykład praktyczny - sprawdzanie serwera
 
 ```sh
 #!/bin/sh
@@ -1620,7 +1620,7 @@ checkhost 192.168.1.1
 
 ---
 
-# 46. Przykład praktyczny — menu administracyjne
+# 46. Przykład praktyczny - menu administracyjne
 
 ```sh
 #!/bin/sh
@@ -1669,7 +1669,7 @@ Ten przykład działa sensownie zarówno w Linuksie, jak i BSD dzięki sprawdzen
 
 ---
 
-# 47. Przykład praktyczny — pytanie przed wykonaniem operacji
+# 47. Przykład praktyczny - pytanie przed wykonaniem operacji
 
 ```sh
 #!/bin/sh
@@ -1691,7 +1691,7 @@ esac
 
 ---
 
-# 48. Przykład praktyczny — skrypt aktualizujący system
+# 48. Przykład praktyczny - skrypt aktualizujący system
 
 ```sh
 #!/bin/sh
@@ -1744,7 +1744,7 @@ esac
 
 ---
 
-# 49. Przykład praktyczny — wykonywanie serii poleceń ze statusami
+# 49. Przykład praktyczny - wykonywanie serii poleceń ze statusami
 
 ```sh
 #!/bin/sh
@@ -1783,7 +1783,7 @@ success "Diagnostyka zakończona."
 
 ---
 
-# 50. Przykład praktyczny — narzędzie przyjmujące polecenia
+# 50. Przykład praktyczny - narzędzie przyjmujące polecenia
 
 ```sh
 #!/bin/sh
@@ -2023,7 +2023,7 @@ Opcja:
 -q
 ```
 
-oznacza quiet — bez wypisywania wyniku.
+oznacza quiet - bez wypisywania wyniku.
 
 ---
 
@@ -2371,7 +2371,7 @@ To dobrze współgra z konwencjami XDG stosowanymi w nowoczesnych systemach unik
 
 ---
 
-# 65. Kolory — opcjonalnie
+# 65. Kolory - opcjonalnie
 
 Można użyć kodów ANSI.
 
@@ -2562,7 +2562,7 @@ Jeżeli opanujesz materiał z tego dokumentu, kolejne przydatne tematy to:
 
 ---
 
-# 70. `getopts` — pierwszy krok do porządnego CLI
+# 70. `getopts` - pierwszy krok do porządnego CLI
 
 Z czasem zamiast:
 

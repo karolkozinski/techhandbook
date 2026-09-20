@@ -2,7 +2,7 @@
 id: "doc-025"
 title: "Linux Permissions and Server Security"
 slug: "linux-permissions-and-server-security"
-description: "Linux Permissions and Server Security — a practical TechHandbook reference."
+description: "Linux Permissions and Server Security - a practical TechHandbook reference."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"

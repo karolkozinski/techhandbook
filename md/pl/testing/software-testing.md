@@ -1,6 +1,6 @@
 ---
 id: "doc-049"
-title: "Testowanie oprogramowania — kompendium"
+title: "Testowanie oprogramowania - kompendium"
 slug: "testowanie-oprogramowania-kompendium"
 description: "Testy mają zmniejszać ryzyko regresji i dostarczać informacji o jakości systemu."
 lang: "pl"
@@ -16,7 +16,7 @@ tags:
   - "go test"
 ---
 
-# Testowanie oprogramowania — kompendium
+# Testowanie oprogramowania - kompendium
 
 Testy mają dostarczać informacji o ryzyku, a nie tylko zwiększać licznik coverage. Dobry zestaw testów łączy szybkie testy małych fragmentów logiki z testami integracyjnymi i kilkoma ważnymi scenariuszami end-to-end.
 
@@ -115,9 +115,9 @@ Nie jest to sztywne prawo.
 Typowy układ:
 
 ```text
-Arrange — przygotuj dane
-Act     — wykonaj operację
-Assert  — sprawdź wynik
+Arrange - przygotuj dane
+Act     - wykonaj operację
+Assert  - sprawdź wynik
 ```
 
 ## 10. Mock

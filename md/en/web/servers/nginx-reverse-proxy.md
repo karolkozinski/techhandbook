@@ -216,7 +216,7 @@ curl -I https://app.example.com
 
 If the backend works locally but public access returns 502, investigate nginx/proxy configuration.
 
-## 17. Security headers — basics
+## 17. Security headers - basics
 
 ```nginx
 add_header X-Content-Type-Options nosniff always;

@@ -1,6 +1,6 @@
 ---
 id: "doc-023"
-title: "Python — podstawy"
+title: "Python - podstawy"
 slug: "python-podstawy"
 description: "Python to język programowania wysokiego poziomu, zaprojektowany tak, aby kod był możliwie czytelny."
 lang: "pl"
@@ -11,7 +11,7 @@ tags:
   - "python"
 ---
 
-# Python — podstawy
+# Python - podstawy
 
 Python jest dobrym językiem do automatyzacji, narzędzi CLI, backendu, testów i pracy z danymi. W praktyce ważniejsze od zapamiętywania wersji jest poprawne używanie środowisk wirtualnych, jawnych zależności i dokumentacji projektu.
 
@@ -837,7 +837,7 @@ Tuple często reprezentują:
 
 ---
 
-# 23. Słownik — dict
+# 23. Słownik - dict
 
 Bardzo ważny typ.
 
@@ -1182,7 +1182,7 @@ otrzymasz słownik:
 
 ---
 
-# 38. Typowanie opcjonalne — type hints
+# 38. Typowanie opcjonalne - type hints
 
 Python pozwala opisać typy:
 
@@ -1410,7 +1410,7 @@ Dlatego projekty powinny mieć własne środowiska.
 
 ---
 
-# 46. venv — środowisko wirtualne
+# 46. venv - środowisko wirtualne
 
 Tworzenie:
 
@@ -1813,7 +1813,7 @@ Najczęściej spotkasz ją jako argument:
 users.sort(key=lambda user: user["name"])
 ```
 
-Nie należy przesadzać z lambda — zwykła funkcja jest często czytelniejsza.
+Nie należy przesadzać z lambda - zwykła funkcja jest często czytelniejsza.
 
 ---
 
@@ -2764,7 +2764,7 @@ import threading
 W CPython istnieje mechanizm:
 
 ```text
-GIL — Global Interpreter Lock
+GIL - Global Interpreter Lock
 ```
 
 który wpływa na wykonywanie kodu CPU-bound w wielu wątkach.
@@ -3096,7 +3096,7 @@ Pozwalają szybko zrozumieć nieznany obiekt.
 
 ---
 
-# 106. Instalacja narzędzi CLI — pipx
+# 106. Instalacja narzędzi CLI - pipx
 
 Niektórych narzędzi nie warto instalować do projektu.
 
@@ -3352,7 +3352,7 @@ To często lepsze niż zakładanie, że każde zapytanie się udało.
 
 ---
 
-# 115. Czytanie kodu Pythona — kolejność
+# 115. Czytanie kodu Pythona - kolejność
 
 Gdy otwierasz nieznany projekt:
 

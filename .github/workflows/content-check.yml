@@ -19,6 +19,7 @@ on:
       - "sitemap.xml"
       - "llms.txt"
       - "scripts/seo_artifacts.py"
+      - "scripts/style_audit.py"
       - ".github/workflows/content-check.yml"
   pull_request:
     paths:
@@ -36,6 +37,7 @@ on:
       - "sitemap.xml"
       - "llms.txt"
       - "scripts/seo_artifacts.py"
+      - "scripts/style_audit.py"
       - ".github/workflows/content-check.yml"
   workflow_dispatch:
 
@@ -72,3 +74,6 @@ jobs:
 
       - name: Check SEO and LLM artifacts
         run: python scripts/seo_artifacts.py --check
+
+      - name: Check typography and public work traces
+        run: python scripts/style_audit.py

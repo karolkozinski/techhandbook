@@ -447,10 +447,10 @@ foot
 
 Gdzie:
 
-- **Waybar** – panel,
-- **wofi** – launcher,
-- **mako** – powiadomienia,
-- **foot** – terminal.
+- **Waybar** - panel,
+- **wofi** - launcher,
+- **mako** - powiadomienia,
+- **foot** - terminal.
 
 ---
 
@@ -1104,7 +1104,7 @@ Dobrze pasuje do lekkich desktopów.
 
 ---
 
-# 24. Najważniejsze WM-y — porównanie
+# 24. Najważniejsze WM-y - porównanie
 
 | WM | Typ | System | Konfiguracja | Trudność |
 |---|---|---|---|---|
@@ -1727,7 +1727,7 @@ Orientacyjnie lekkie WM zużywają bardzo mało pamięci.
 Sam WM może zużywać:
 
 ```text
-kilkanaście–kilkadziesiąt MB RAM
+kilkanaście-kilkadziesiąt MB RAM
 ```
 
 Ale cały desktop zależy od:

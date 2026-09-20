@@ -1,6 +1,6 @@
 ---
 id: "doc-049"
-title: "Software Testing — Handbook"
+title: "Software Testing - Handbook"
 slug: "software-testing-handbook"
 description: "Tests reduce the chance of shipping regressions and make refactoring safer."
 lang: "en"
@@ -16,7 +16,7 @@ tags:
   - "go test"
 ---
 
-# Software Testing — Handbook
+# Software Testing - Handbook
 
 Tests should provide information about risk, not merely increase a coverage number. A useful test suite combines fast tests of small units with integration tests and a smaller number of important end-to-end scenarios.
 

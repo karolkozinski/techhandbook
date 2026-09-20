@@ -40,14 +40,14 @@ Microsoft Entra tenant
             └── Database
 ```
 
-**Tenant** — obszar tożsamości Entra.  
-**Subscription** — granica rozliczeniowa i administracyjna.  
-**Resource Group** — logiczny kontener na zasoby projektu/systemu.  
-**Resource** — konkretna usługa, np. VM, Key Vault, App Service.
+**Tenant** - obszar tożsamości Entra.  
+**Subscription** - granica rozliczeniowa i administracyjna.  
+**Resource Group** - logiczny kontener na zasoby projektu/systemu.  
+**Resource** - konkretna usługa, np. VM, Key Vault, App Service.
 
 Tagi typu `project`, `environment`, `owner`, `cost-center` bardzo ułatwiają późniejsze zarządzanie.
 
-## 3. Najważniejsze usługi — mapa
+## 3. Najważniejsze usługi - mapa
 
 | Potrzeba | Azure |
 |---|---|
@@ -107,7 +107,7 @@ rg-kompas-prod
   monitor
 ```
 
-Usunięcie Resource Group usuwa zawarte w niej zasoby, więc to wygodny mechanizm dla środowisk testowych — i potencjalnie bardzo niebezpieczny w produkcji.
+Usunięcie Resource Group usuwa zawarte w niej zasoby, więc to wygodny mechanizm dla środowisk testowych - i potencjalnie bardzo niebezpieczny w produkcji.
 
 ## 6. Virtual Machines
 
@@ -179,11 +179,11 @@ W Azure wiele usług storage znajduje się pod wspólnym zasobem **Storage Accou
 
 Najważniejsze typy danych:
 
-- **Blob Storage** — obiekty/pliki,
-- **Azure Files** — SMB/NFS,
-- **Queues** — proste kolejki,
-- **Tables** — prosty NoSQL,
-- **Managed Disks** — dyski VM są osobną kategorią zarządzanego storage.
+- **Blob Storage** - obiekty/pliki,
+- **Azure Files** - SMB/NFS,
+- **Queues** - proste kolejki,
+- **Tables** - prosty NoSQL,
+- **Managed Disks** - dyski VM są osobną kategorią zarządzanego storage.
 
 Blob Storage jest odpowiednikiem S3/GCS/OSS.
 
@@ -258,7 +258,7 @@ Przy bazie produkcyjnej zwracaj uwagę na:
 - connection limits,
 - sizing compute/storage.
 
-Nie przechowuj connection stringów w repo — używaj Key Vault i managed identities.
+Nie przechowuj connection stringów w repo - używaj Key Vault i managed identities.
 
 ## 15. Cosmos DB
 
@@ -268,9 +268,9 @@ Jest potężna, ale jej model kosztowy i sposób projektowania partycji trzeba z
 
 ## 16. Service Bus, Event Grid i Event Hubs
 
-- **Service Bus** — kolejki i messaging enterprise.
-- **Event Grid** — routing eventów.
-- **Event Hubs** — duży strumień eventów/telemetrii.
+- **Service Bus** - kolejki i messaging enterprise.
+- **Event Grid** - routing eventów.
+- **Event Hubs** - duży strumień eventów/telemetrii.
 
 W uproszczeniu:
 
@@ -428,9 +428,9 @@ Do GitHub Actions warto używać federacji OIDC zamiast statycznego secretu serv
 
 ## 25. Front Door, Application Gateway i Load Balancer
 
-- **Front Door** — globalny edge, routing HTTP, CDN/WAF.
-- **Application Gateway** — regionalny L7 load balancer i WAF.
-- **Load Balancer** — L4 TCP/UDP.
+- **Front Door** - globalny edge, routing HTTP, CDN/WAF.
+- **Application Gateway** - regionalny L7 load balancer i WAF.
+- **Load Balancer** - L4 TCP/UDP.
 
 Dla publicznej aplikacji globalnej Front Door często jest warstwą wejściową.
 
@@ -516,7 +516,7 @@ W większej organizacji Azure Policy pilnuje reguł, np.:
 
 Management Groups + Policy + RBAC to fundament governance przy wielu subskrypcjach.
 
-## 31. Bezpieczeństwo — minimum
+## 31. Bezpieczeństwo - minimum
 
 - MFA i Conditional Access.
 - Entra groups zamiast uprawnień „na człowieka”, gdzie to możliwe.

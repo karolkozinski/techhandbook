@@ -21,7 +21,7 @@ SSH (Secure Shell) is the standard tool for secure remote login and command exec
 
 **When this handbook is useful:** while administering a VPS or LAN server, automating connections, securely transferring files, reaching services through tunnels, or diagnosing authentication failures.
 
-For system context, see [Debian 13 — Desktop + Server Handbook](techhandbook:doc-033), [FreeBSD as a Server](techhandbook:doc-034), and [Linux Permissions and Server Security](techhandbook:doc-025).
+For system context, see [Debian 13 - Desktop + Server Handbook](techhandbook:doc-033), [FreeBSD as a Server](techhandbook:doc-034), and [Linux Permissions and Server Security](techhandbook:doc-025).
 
 ## 1. SSH
 

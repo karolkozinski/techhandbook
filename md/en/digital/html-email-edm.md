@@ -1,6 +1,6 @@
 ---
 id: "doc-055"
-title: "HTML Email / EDM — Practical Handbook"
+title: "HTML Email / EDM - Practical Handbook"
 slug: "html-email-edm-practical-handbook"
 description: "Email clients do not behave like modern browsers."
 lang: "en"
@@ -15,7 +15,7 @@ tags:
   - "newsletter"
 ---
 
-# HTML Email / EDM — Practical Handbook
+# HTML Email / EDM - Practical Handbook
 
 HTML email must be designed for a set of different mail clients rather than one browser. Simple presentation tables, inline CSS, explicit dimensions and testing in real clients remain the safest baseline.
 
@@ -58,7 +58,7 @@ Example:
 A common desktop email width is around:
 
 ```text
-600–700 px
+600-700 px
 ```
 
 Use fluid width for smaller screens.

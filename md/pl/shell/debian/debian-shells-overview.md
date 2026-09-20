@@ -1,6 +1,6 @@
 ---
 id: "doc-028"
-title: "Shelle w Debianie — przegląd"
+title: "Shelle w Debianie - przegląd"
 slug: "shelle-w-debianie-przeglad"
 description: "Shell, czyli powłoka, to program pośredniczący między użytkownikiem a systemem operacyjnym."
 lang: "pl"
@@ -14,7 +14,7 @@ tags:
   - "zsh"
 ---
 
-# Shelle w Debianie — przegląd
+# Shelle w Debianie - przegląd
 
 Ten artykuł porządkuje role Basha, Dasha, Zsh, Fish i innych powłok w Debianie. Najważniejsze jest rozróżnienie powłoki interaktywnej, login shella oraz interpretera wskazanego w shebangu skryptu.
 

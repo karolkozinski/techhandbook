@@ -1,6 +1,6 @@
 ---
 id: "doc-053"
-title: "Web analytics i tagging — kompendium praktyczne"
+title: "Web analytics i tagging - kompendium praktyczne"
 slug: "web-analytics-i-tagging-kompendium-praktyczne"
 description: "Analityka powinna odpowiadać na konkretne pytania."
 lang: "pl"
@@ -16,7 +16,7 @@ tags:
   - "utm"
 ---
 
-# Web analytics i tagging — kompendium praktyczne
+# Web analytics i tagging - kompendium praktyczne
 
 Analityka ma odpowiadać na konkretne pytania i wspierać decyzje. Tracking plan powinien definiować zdarzenie, moment wysłania, parametry, cel biznesowy i sposób testowania. Bez tego tagowanie szybko zamienia się w zbiór przypadkowych eventów.
 
@@ -123,7 +123,7 @@ Tag manager pozwala konfigurować:
 
 Nie powinien zastępować porządnej architektury danych.
 
-## 8. GA4 — model eventowy
+## 8. GA4 - model eventowy
 
 GA4 opiera się na eventach.
 

@@ -1,6 +1,6 @@
 ---
 id: "doc-038"
-title: "vi / Vim / gVim / Neovim — Practical Text Editing Handbook"
+title: "vi / Vim / gVim / Neovim - Practical Text Editing Handbook"
 slug: "vi-vim-gvim-neovim-practical-text-editing-handbook"
 description: "vi may be vim.tiny or another implementation; vim is full terminal Vim; gvim is graphical Vim; nvim is Neovim."
 lang: "en"
@@ -15,7 +15,7 @@ tags:
   - "editor"
 ---
 
-# vi / Vim / gVim / Neovim — Practical Text Editing Handbook
+# vi / Vim / gVim / Neovim - Practical Text Editing Handbook
 
 vi, Vim, gVim and Neovim share the same modal-editing family but differ in features and configuration. On minimal systems, `vi` may point to different implementations, so check `vi --version`, `vim --version` or `nvim --version` before assuming a particular feature set.
 

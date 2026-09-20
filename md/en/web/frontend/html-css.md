@@ -175,7 +175,7 @@ Viewport:
 Title:
 
 ```html
-<title>Example Site — stories</title>
+<title>Example Site - stories</title>
 ```
 
 Description:
@@ -2651,13 +2651,13 @@ The most important skill is not memorising syntax. It is recognising the type of
 
 Examples:
 
-> This is a two-dimensional layout — use Grid.
+> This is a two-dimensional layout - use Grid.
 
-> This is a single row or column — use Flexbox.
+> This is a single row or column - use Flexbox.
 
-> The component should react to its own width — use a container query.
+> The component should react to its own width - use a container query.
 
-> Text size should scale smoothly with the screen — use `clamp()`.
+> Text size should scale smoothly with the screen - use `clamp()`.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: "doc-027"
-title: "Debian — shell"
+title: "Debian - shell"
 slug: "debian-shell"
 description: "Samodzielne kompendium do codziennej pracy w Debianie z terminala lub przez SSH."
 lang: "pl"
@@ -13,7 +13,7 @@ tags:
   - "bash"
 ---
 
-# Debian — shell
+# Debian - shell
 
 To kompendium dotyczy codziennej pracy administracyjnej w Debianie z powłoki. Dla przeglądu samych powłok zobacz [Shelle w Debianie - przegląd](techhandbook:doc-028), a dla automatyzacji [Programowanie w shellu](techhandbook:doc-031). Zdalną pracę opisuje [SSH i zdalna administracja](techhandbook:doc-018).
 
@@ -23,7 +23,7 @@ Cel: sprawnie poruszać się po systemie, pracować z plikami, procesami i sieci
 
 ---
 
-# Debian — administrator, system i katalogi
+# Debian - administrator, system i katalogi
 
 ## `sudo`
 
@@ -82,7 +82,7 @@ VERSION_ID="13"
 
 ---
 
-# 1. Shell, terminal i polecenia — co właściwie robisz?
+# 1. Shell, terminal i polecenia - co właściwie robisz?
 
 Terminal to okno, w którym wpisujesz polecenia.
 
@@ -121,7 +121,7 @@ bash
 
 ---
 
-# 2. `pwd` — gdzie jestem?
+# 2. `pwd` - gdzie jestem?
 
 Polecenie:
 
@@ -155,7 +155,7 @@ Przydaje się szczególnie wtedy, gdy:
 
 ---
 
-# 3. `ls` — co jest w katalogu?
+# 3. `ls` - co jest w katalogu?
 
 Podstawowa forma:
 
@@ -271,7 +271,7 @@ Dostajesz:
 
 ---
 
-# 4. `cd` — zmiana katalogu
+# 4. `cd` - zmiana katalogu
 
 Polecenie:
 
@@ -405,7 +405,7 @@ Katalog nadrzędny:
 
 ---
 
-# 6. `touch` — tworzenie pustego pliku i zmiana czasu modyfikacji
+# 6. `touch` - tworzenie pustego pliku i zmiana czasu modyfikacji
 
 ```sh
 touch test.txt
@@ -431,7 +431,7 @@ ls -l README.md
 
 ---
 
-# 7. `mkdir` — tworzenie katalogów
+# 7. `mkdir` - tworzenie katalogów
 
 Podstawowo:
 
@@ -453,7 +453,7 @@ Bez `-p` polecenie zakończyłoby się błędem, jeśli `app` lub `config` nie i
 
 ---
 
-# 8. `cp` — kopiowanie
+# 8. `cp` - kopiowanie
 
 Podstawowo:
 
@@ -505,7 +505,7 @@ To prosty i bardzo dobry nawyk.
 
 ---
 
-# 9. `mv` — przenoszenie i zmiana nazwy
+# 9. `mv` - przenoszenie i zmiana nazwy
 
 Zmiana nazwy:
 
@@ -537,7 +537,7 @@ mv -v old.txt new.txt
 
 ---
 
-# 10. `rm` — usuwanie
+# 10. `rm` - usuwanie
 
 Usuwanie pliku:
 
@@ -590,7 +590,7 @@ i dopiero potem wykonać usuwanie.
 
 ---
 
-# 11. `cat` — szybkie wyświetlenie pliku
+# 11. `cat` - szybkie wyświetlenie pliku
 
 ```sh
 cat config.txt
@@ -612,7 +612,7 @@ cat README.md
 
 ---
 
-# 12. `less` — wygodne czytanie dużych plików
+# 12. `less` - wygodne czytanie dużych plików
 
 ```sh
 less /var/log/syslog
@@ -649,7 +649,7 @@ na Debianie.
 
 ---
 
-# 13. `head` — początek pliku
+# 13. `head` - początek pliku
 
 Domyślnie:
 
@@ -671,7 +671,7 @@ Przydatne np. do szybkiego obejrzenia CSV, logu albo konfiguracji.
 
 ---
 
-# 14. `tail` — koniec pliku
+# 14. `tail` - koniec pliku
 
 Domyślnie:
 
@@ -707,7 +707,7 @@ Ctrl+C
 
 ---
 
-# 15. `grep` — wyszukiwanie tekstu
+# 15. `grep` - wyszukiwanie tekstu
 
 Najprościej:
 
@@ -777,7 +777,7 @@ grep -Ev '^\s*($|#)' config.conf
 
 ---
 
-# 16. `find` — znajdowanie plików
+# 16. `find` - znajdowanie plików
 
 Podstawowo:
 
@@ -843,7 +843,7 @@ Znajdzie pliki większe niż 100 MB.
 
 ---
 
-# 17. `which`, `command -v`, `whereis` — gdzie jest program?
+# 17. `which`, `command -v`, `whereis` - gdzie jest program?
 
 Najbardziej przenośne:
 
@@ -879,7 +879,7 @@ nginx: /usr/sbin/nginx /usr/share/man/man8/nginx.8.gz
 
 ---
 
-# 18. `file` — czym jest plik?
+# 18. `file` - czym jest plik?
 
 ```sh
 file program
@@ -907,7 +907,7 @@ Przydaje się, gdy rozszerzenie pliku nic nie mówi.
 
 ---
 
-# 19. `stat` — szczegółowe informacje o pliku
+# 19. `stat` - szczegółowe informacje o pliku
 
 ```sh
 stat README.md
@@ -924,7 +924,7 @@ Pokazuje m.in.:
 
 ---
 
-# 20. `man` — dokumentacja poleceń
+# 20. `man` - dokumentacja poleceń
 
 ```sh
 man grep
@@ -960,7 +960,7 @@ Na FreeBSD to szczególnie użyteczne.
 
 ---
 
-# 21. `echo` — wypisywanie tekstu i zmiennych
+# 21. `echo` - wypisywanie tekstu i zmiennych
 
 ```sh
 echo "Hello"
@@ -1156,7 +1156,7 @@ Pokazuje:
 
 ---
 
-# 28. `uname` — kernel i platforma
+# 28. `uname` - kernel i platforma
 
 ```sh
 uname
@@ -1241,7 +1241,7 @@ Odczytasz:
 
 ---
 
-# 32. `top` — procesy i obciążenie
+# 32. `top` - procesy i obciążenie
 
 ```sh
 top
@@ -1270,7 +1270,7 @@ Przydaje się, gdy system:
 
 ---
 
-# 33. `ps` — lista procesów
+# 33. `ps` - lista procesów
 
 Najczęściej:
 
@@ -1282,8 +1282,8 @@ Pokazuje wszystkie procesy.
 
 Najważniejsze kolumny:
 
-- `USER` — właściciel,
-- `PID` — numer procesu,
+- `USER` - właściciel,
+- `PID` - numer procesu,
 - `%CPU`,
 - `%MEM`,
 - `COMMAND`.
@@ -1296,7 +1296,7 @@ ps aux | grep nginx
 
 ---
 
-# 34. `pgrep` — znajdź PID po nazwie
+# 34. `pgrep` - znajdź PID po nazwie
 
 ```sh
 pgrep nginx
@@ -1359,7 +1359,7 @@ pkill nginx
 
 ---
 
-# 36. `df` — wolne miejsce na systemach plików
+# 36. `df` - wolne miejsce na systemach plików
 
 ```sh
 df -h
@@ -1374,17 +1374,17 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 Najważniejsze:
 
-- `Size` — rozmiar,
-- `Used` — zajęte,
-- `Avail` — wolne,
-- `Use%` — procent,
-- `Mounted on` — punkt montowania.
+- `Size` - rozmiar,
+- `Used` - zajęte,
+- `Avail` - wolne,
+- `Use%` - procent,
+- `Mounted on` - punkt montowania.
 
 To jedno z pierwszych poleceń przy dziwnym zachowaniu serwera.
 
 ---
 
-# 37. `du` — ile miejsca zajmuje katalog?
+# 37. `du` - ile miejsca zajmuje katalog?
 
 ```sh
 du -sh /var/log
@@ -1418,7 +1418,7 @@ du -sh * | sort -h
 
 ---
 
-# 38. `mount` — co jest zamontowane?
+# 38. `mount` - co jest zamontowane?
 
 ```sh
 mount
@@ -1436,7 +1436,7 @@ Przydaje się przy:
 
 ---
 
-# 39. `lsblk` — dyski w Debianie
+# 39. `lsblk` - dyski w Debianie
 
 ```sh
 lsblk
@@ -1457,7 +1457,7 @@ FreeBSD nie ma standardowo `lsblk`.
 
 ---
 
-# 42. Debian — `ip`
+# 42. Debian - `ip`
 
 Adresy:
 
@@ -1571,7 +1571,7 @@ curl -LO https://example.com/file.tar.gz
 
 ---
 
-# 47. DNS — `host` i `dig`
+# 47. DNS - `host` i `dig`
 
 ```sh
 host example.com
@@ -1611,7 +1611,7 @@ pkg install bind-tools
 
 ---
 
-# 48. Debian — `ss`
+# 48. Debian - `ss`
 
 ```sh
 ss -tulpn
@@ -1621,11 +1621,11 @@ Pokazuje porty i procesy.
 
 Przełączniki:
 
-- `-t` — TCP,
-- `-u` — UDP,
-- `-l` — nasłuchujące,
-- `-p` — proces,
-- `-n` — bez zamiany numerów na nazwy.
+- `-t` - TCP,
+- `-u` - UDP,
+- `-l` - nasłuchujące,
+- `-p` - proces,
+- `-n` - bez zamiany numerów na nazwy.
 
 Przykład:
 
@@ -1820,7 +1820,7 @@ Przydaje się przy:
 
 ---
 
-# 55. Debian — `apt`
+# 55. Debian - `apt`
 
 ## `apt update`
 
@@ -1919,7 +1919,7 @@ apt show nginx
 
 ---
 
-# 56. Debian — `dpkg`
+# 56. Debian - `dpkg`
 
 Czy pakiet jest zainstalowany:
 
@@ -1941,7 +1941,7 @@ dpkg -L nginx
 
 ---
 
-# 58. Debian — systemd i `systemctl`
+# 58. Debian - systemd i `systemctl`
 
 Status:
 
@@ -2009,7 +2009,7 @@ systemctl --failed
 
 ---
 
-# 59. Debian — `journalctl`
+# 59. Debian - `journalctl`
 
 Cały journal:
 
@@ -2073,7 +2073,7 @@ sudo journalctl -xe
 
 ---
 
-# 65. Debian — NetworkManager
+# 65. Debian - NetworkManager
 
 Sprawdzenie:
 
@@ -2131,7 +2131,7 @@ dmesg | tail -n 50
 
 ---
 
-# 67. `lscpu`, `lspci`, `lsusb` — Debian
+# 67. `lscpu`, `lspci`, `lsusb` - Debian
 
 CPU:
 
@@ -2372,9 +2372,9 @@ tar -czf backup.tar.gz project/
 
 Znaczenie:
 
-- `-c` — create,
-- `-z` — gzip,
-- `-f` — plik wynikowy.
+- `-c` - create,
+- `-z` - gzip,
+- `-f` - plik wynikowy.
 
 Rozpakowanie:
 
@@ -2382,7 +2382,7 @@ Rozpakowanie:
 tar -xzf backup.tar.gz
 ```
 
-- `-x` — extract.
+- `-x` - extract.
 
 Podejrzenie zawartości:
 
@@ -2462,17 +2462,17 @@ journalctl -b -p err
 
 Co z tego uzyskasz:
 
-- `uptime` — obciążenie i czas pracy,
-- `df -h` — czy dysk nie jest pełny,
-- `free -h` — RAM,
-- `ip a` — adresy sieciowe,
-- `ip route` — brama,
-- `systemctl --failed` — uszkodzone usługi,
-- `journalctl -b -p err` — błędy od bootu.
+- `uptime` - obciążenie i czas pracy,
+- `df -h` - czy dysk nie jest pełny,
+- `free -h` - RAM,
+- `ip a` - adresy sieciowe,
+- `ip route` - brama,
+- `systemctl --failed` - uszkodzone usługi,
+- `journalctl -b -p err` - błędy od bootu.
 
 ---
 
-# Przykłady z prawdziwego życia — Debian
+# Przykłady z prawdziwego życia - Debian
 
 ## 1. Strona WWW przestała odpowiadać
 
@@ -2712,7 +2712,7 @@ tar -tzf /tmp/etc-backup-$(date +%F).tar.gz | less
 
 ---
 
-# Debian — minimalny zestaw do pamięci
+# Debian - minimalny zestaw do pamięci
 
 ```sh
 pwd

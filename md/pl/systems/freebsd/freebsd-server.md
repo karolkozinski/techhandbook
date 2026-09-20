@@ -21,7 +21,7 @@ FreeBSD to kompletny system operacyjny z rodziny BSD, a nie dystrybucja Linuksa.
 
 **Punkt odniesienia:** FreeBSD **15.1-RELEASE**, aktualne wydanie Production w chwili audytu. Wiele opisanych mechanizmów administracyjnych pozostaje również wspólnych dla wspieranych wydań gałęzi 14.
 
-Dalsze tematy: [FreeBSD — shell](techhandbook:doc-029) oraz [SSH i zdalna administracja](techhandbook:doc-018). Dla porównania z kontenerami linuksowymi przydatne jest także kompendium [Docker](techhandbook:doc-012).
+Dalsze tematy: [FreeBSD - shell](techhandbook:doc-029) oraz [SSH i zdalna administracja](techhandbook:doc-018). Dla porównania z kontenerami linuksowymi przydatne jest także kompendium [Docker](techhandbook:doc-012).
 
 ## Mapa kompendium
 
@@ -53,7 +53,7 @@ FreeBSD nie jest dystrybucją Linuksa. To kompletny system operacyjny rozwijany 
 
 To, co w Linuksie często pochodzi z wielu osobnych projektów, we FreeBSD w dużej części należy do jednego **base system**.
 
-Oprogramowanie dodatkowe — nginx, PostgreSQL, Git, Vim, Samba itd. — pochodzi natomiast z systemu **Packages/Ports**.
+Oprogramowanie dodatkowe - nginx, PostgreSQL, Git, Vim, Samba itd. - pochodzi natomiast z systemu **Packages/Ports**.
 
 To rozróżnienie jest fundamentalne:
 
@@ -423,7 +423,7 @@ pw useradd webapp -m -s /bin/sh
 
 ---
 
-# 7. Pakiety — `pkg`
+# 7. Pakiety - `pkg`
 
 `pkg` jest podstawowym narzędziem do instalacji oprogramowania.
 
@@ -552,8 +552,8 @@ pkg info -l nginx
 
 FreeBSD posiada dwa sposoby instalowania oprogramowania:
 
-1. **Packages** — gotowe binaria,
-2. **Ports** — kompilacja ze źródeł.
+1. **Packages** - gotowe binaria,
+2. **Ports** - kompilacja ze źródeł.
 
 Na zwykłym serwerze najczęściej używaj:
 
@@ -719,7 +719,7 @@ nginx_enable="YES"
 
 ---
 
-# 14. `rc.conf` — centrum konfiguracji systemu
+# 14. `rc.conf` - centrum konfiguracji systemu
 
 Najważniejszy plik:
 
@@ -752,7 +752,7 @@ Własne ustawienia umieszczaj w:
 
 ---
 
-# 15. `sysrc` — najlepszy sposób zmiany `rc.conf`
+# 15. `sysrc` - najlepszy sposób zmiany `rc.conf`
 
 Zamiast ręcznie dopisywać:
 
@@ -941,7 +941,7 @@ Nie jest to coś, co należy robić bezmyślnie na produkcji.
 
 ---
 
-# 20. Autostart usług — zasada
+# 20. Autostart usług - zasada
 
 Jeśli usługa ma wystartować po reboot:
 
@@ -1209,7 +1209,7 @@ uname -r
 
 # 28. Uwaga: pkgbase
 
-FreeBSD 15 rozwija również mechanizm zarządzania systemem bazowym przez pakiety — **pkgbase**.
+FreeBSD 15 rozwija również mechanizm zarządzania systemem bazowym przez pakiety - **pkgbase**.
 
 Nie mieszaj metod aktualizacji bez zrozumienia, w jaki sposób system został zainstalowany.
 
@@ -1226,7 +1226,7 @@ Jeśli administrujesz istniejącym serwerem, najpierw ustal sposób instalacji i
 
 ---
 
-# 29. Boot Environments — jedna z najlepszych rzeczy przy ZFS
+# 29. Boot Environments - jedna z najlepszych rzeczy przy ZFS
 
 Jeśli root znajduje się na ZFS, możesz korzystać z boot environments.
 
@@ -1264,7 +1264,7 @@ To bardzo dobry nawyk przed:
 
 ---
 
-# 30. Sieć — najważniejsze narzędzia
+# 30. Sieć - najważniejsze narzędzia
 
 Lista interfejsów:
 
@@ -1415,7 +1415,7 @@ Konfiguracja:
 
 ---
 
-# 35. SSH — klucze
+# 35. SSH - klucze
 
 Na komputerze klienta:
 
@@ -1438,7 +1438,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 ---
 
-# 36. SSH — podstawowe utwardzenie
+# 36. SSH - podstawowe utwardzenie
 
 Rozważ:
 
@@ -1482,7 +1482,7 @@ W tym kompendium używamy PF.
 
 ---
 
-# 38. PF — włączenie
+# 38. PF - włączenie
 
 Konfiguracja:
 
@@ -1540,7 +1540,7 @@ pass in on $ext_if proto tcp to ($ext_if) port { 80 443 } keep state
 
 ---
 
-# 40. PF — test przed przeładowaniem
+# 40. PF - test przed przeładowaniem
 
 Zawsze:
 
@@ -1663,7 +1663,7 @@ df -h
 
 ---
 
-# 43. ZFS — dlaczego warto
+# 43. ZFS - dlaczego warto
 
 ZFS jest bardzo dobrym wyborem dla FreeBSD jako serwera.
 
@@ -1720,7 +1720,7 @@ zfs
 
 ---
 
-# 45. ZFS — najważniejsze polecenia
+# 45. ZFS - najważniejsze polecenia
 
 Lista pul:
 
@@ -2212,7 +2212,7 @@ kldstat -v
 
 ---
 
-# 64. Jails — podstawowa idea
+# 64. Jails - podstawowa idea
 
 Jail to natywna izolacja FreeBSD.
 
@@ -2490,7 +2490,7 @@ zfs send tank/data@2026-09-19 | ssh backup zfs receive backups/server/data
 
 ---
 
-# 77. Aktualizacje — rozsądna procedura
+# 77. Aktualizacje - rozsądna procedura
 
 Dla domowego lub małego serwera:
 
@@ -2687,7 +2687,7 @@ To często lepsze niż bezpośrednie wystawianie aplikacji.
 
 ---
 
-# 84. Nginx — szybki przykład
+# 84. Nginx - szybki przykład
 
 Instalacja:
 
@@ -2812,7 +2812,7 @@ Routing jest równie ważny jak sama konfiguracja tunelu.
 
 ---
 
-# 88. System DNS, routing i firewall — diagnostyka warstwami
+# 88. System DNS, routing i firewall - diagnostyka warstwami
 
 Jeżeli „sieć nie działa”, nie zgaduj.
 
@@ -2868,7 +2868,7 @@ Takie podejście jest znacznie skuteczniejsze niż losowe restartowanie usług.
 
 ---
 
-# 89. Diagnostyka usługi — uniwersalny schemat
+# 89. Diagnostyka usługi - uniwersalny schemat
 
 Załóżmy, że nginx nie działa.
 
@@ -2983,10 +2983,10 @@ Własny skrypt może zawierać:
 
 Znaczenie:
 
-- `PROVIDE` — co skrypt zapewnia,
-- `REQUIRE` — czego wymaga wcześniej,
-- `BEFORE` — przed czym ma wystartować,
-- `KEYWORD` — dodatkowe właściwości.
+- `PROVIDE` - co skrypt zapewnia,
+- `REQUIRE` - czego wymaga wcześniej,
+- `BEFORE` - przed czym ma wystartować,
+- `KEYWORD` - dodatkowe właściwości.
 
 Kolejność można zobaczyć:
 
@@ -3073,7 +3073,7 @@ To szybki sanity check.
 
 ---
 
-# 95. Bezpieczeństwo — minimum dla serwera
+# 95. Bezpieczeństwo - minimum dla serwera
 
 Przynajmniej:
 
@@ -3217,7 +3217,7 @@ pkg install
 
 ---
 
-# 100. Serwer aplikacji — przykładowa architektura
+# 100. Serwer aplikacji - przykładowa architektura
 
 Prosty i czytelny układ:
 
@@ -3321,12 +3321,12 @@ Liczba oznacza sekcję manuala.
 Typowo:
 
 ```text
-1 — polecenia użytkownika
-2 — syscall
-3 — biblioteki
-4 — sterowniki/kernel
-5 — formaty plików konfiguracyjnych
-8 — administracja systemem
+1 - polecenia użytkownika
+2 - syscall
+3 - biblioteki
+4 - sterowniki/kernel
+5 - formaty plików konfiguracyjnych
+8 - administracja systemem
 ```
 
 Przykład:
@@ -3871,7 +3871,7 @@ to aplikacja celowo słucha tylko lokalnie.
 
 Jeżeli powinna być dostępna bezpośrednio w LAN, zmień bind address.
 
-Jeżeli ma być za nginx, nie zmieniaj — skonfiguruj reverse proxy.
+Jeżeli ma być za nginx, nie zmieniaj - skonfiguruj reverse proxy.
 
 ---
 

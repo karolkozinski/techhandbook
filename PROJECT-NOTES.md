@@ -1,4 +1,4 @@
-# Tech Handbook — statyczny frontend
+# Tech Handbook - statyczny frontend
 
 Ten pakiet jest przeznaczony do rozpakowania bezpośrednio w katalogu `techhandbook/`.
 
@@ -138,3 +138,22 @@ Frontend ustawia dla artykułu dynamicznie:
 - JSON-LD `TechArticle`.
 
 Canonical i sitemap wskazują docelową domenę z `site-config.json`. Na GitHub Pages publiczne indeksowanie pozostaje wyłączone do momentu produkcyjnego deploymentu.
+
+
+## Style audit
+
+Public text uses a regular hyphen (`-`) instead of typographic em/en dashes.
+
+Check:
+
+```bash
+python3 scripts/style_audit.py
+```
+
+Automatic dash normalization:
+
+```bash
+python3 scripts/style_audit.py --write
+```
+
+The CI check also guards against a small set of conversation-specific or work-only strings that must not be published.

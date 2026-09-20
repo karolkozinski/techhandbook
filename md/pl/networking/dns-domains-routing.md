@@ -245,9 +245,9 @@ Typowa sieć `/24` ma 256 adresów.
 Przykłady:
 
 ```text
-/32 — pojedynczy adres IPv4
-/24 — 256 adresów
-/16 — 65536 adresów
+/32 - pojedynczy adres IPv4
+/24 - 256 adresów
+/16 - 65536 adresów
 ```
 
 ## 10. Routing

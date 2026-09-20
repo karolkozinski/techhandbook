@@ -1,6 +1,6 @@
 ---
 id: "doc-021"
-title: "JavaScript — From Basics to Modern Front-End"
+title: "JavaScript - From Basics to Modern Front-End"
 slug: "javascript-from-basics-to-modern-front-end"
 description: "JavaScript adds behavior to web pages, manipulates the DOM, communicates with APIs and can also run outside the browser in environments such as Node.js."
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "frontend"
 ---
 
-# JavaScript — From Basics to Modern Front-End
+# JavaScript - From Basics to Modern Front-End
 
 JavaScript is both the browser language and the foundation of much of modern web tooling. Learn the language, DOM, events, fetch and modules first, then treat frameworks as another layer.
 
@@ -367,13 +367,13 @@ items.toSorted((a,b)=>a-b)
 ```
 # 59. Mutation and immutability
 Know which methods mutate (`push`, `sort`) and which return new values (`map`, `filter`, `toSorted`).
-# 60. Event loop — basics
+# 60. Event loop - basics
 JavaScript runs one call stack while browser/Node APIs schedule callbacks and promise jobs.
 # 61. Promise vs timer
 Promise microtasks run before timer macrotasks after the current stack finishes.
 # 62. Node.js
 Server/runtime environment for JavaScript outside the browser.
-# 63. Environment — state in 2026
+# 63. Environment - state in 2026
 Modern JavaScript uses ES modules, async/await, native fetch in major runtimes, and build tools only when they add value.
 # 64. npm
 ```bash
@@ -423,7 +423,7 @@ src/api.js
 src/ui.js
 src/style.css
 ```
-# 77. Complete Vanilla JS example — todo list
+# 77. Complete Vanilla JS example - todo list
 ## HTML
 Form, input and list container.
 ## JavaScript
@@ -432,7 +432,7 @@ State array + render() + submit handler + delete handler + optional localStorage
 Small sites, widgets, forms, internal tools and pages with limited state.
 # 79. Why use a framework
 Component composition, state management patterns and large UI organization.
-# 80. React — what it is
+# 80. React - what it is
 Component library centered on declarative rendering and state.
 # 81. Creating React + Vite project
 ```bash
@@ -446,7 +446,7 @@ function Hello({name}) { return <h1>Hello {name}</h1>; }
 ```
 # 84. Props
 Read-only inputs passed from parent to component.
-# 85. State — `useState`
+# 85. State - `useState`
 ```jsx
 const [count, setCount] = useState(0);
 ```
@@ -462,9 +462,9 @@ items.map(item => <Row key={item.id} item={item}/>)
 Use controlled inputs or form APIs/libraries as complexity grows.
 # 89. `useEffect`
 Synchronizes component with external systems; avoid using it for calculations that can happen during render.
-# 90. React — when
+# 90. React - when
 Useful for component-heavy apps with meaningful client-side state.
-# 91. Vue — what it is
+# 91. Vue - what it is
 Progressive component framework with templates, reactivity and Composition API.
 # 92. Creating Vue
 ```bash
@@ -498,9 +498,9 @@ const total = computed(() => price.value * qty.value);
 ```html
 <input v-model="name">
 ```
-# 100. Vue — when
+# 100. Vue - when
 Good for approachable component apps and incremental adoption.
-# 101. Angular — what it is
+# 101. Angular - what it is
 Full framework with strong architecture, TypeScript and batteries-included tooling.
 # 102. Creating Angular
 ```bash
@@ -516,7 +516,7 @@ Uses interpolation, bindings, directives/control flow and event syntax.
 ```bash
 ng generate component feature
 ```
-# 107. Angular — when
+# 107. Angular - when
 Large structured applications and teams benefiting from strong conventions.
 # 108. React vs Vue vs Angular
 ## Vanilla JS
@@ -565,7 +565,7 @@ npx eslint .
 ```bash
 npx prettier . --write
 ```
-# 124. Security — key rules
+# 124. Security - key rules
 Treat browser code and client input as untrusted.
 ## Do not trust input
 Validate on the server; client validation is UX, not authority.
@@ -597,15 +597,15 @@ Server-rendered/multi-page sites can be simpler, faster and easier to operate.
 # 135. JavaScript with a Go backend
 Go serves HTML/API/static assets; frontend JS handles interaction and fetch calls.
 # 136. My practical technology split
-## Level 1 — normal interactive page
+## Level 1 - normal interactive page
 Vanilla JS.
-## Level 2 — modern environment
+## Level 2 - modern environment
 Vite + modules.
-## Level 3 — component application
+## Level 3 - component application
 React/Vue/Angular.
-## Level 4 — typing
+## Level 4 - typing
 TypeScript.
-## Level 5 — special graphics
+## Level 5 - special graphics
 PixiJS/canvas.
 # 137. What I would choose for typical small projects
 ## Simple widget / form / internal tool
@@ -637,31 +637,31 @@ split code by responsibility.
 use package tooling/build.
 ## After framework
 build one complete app.
-# 139. Suggested path — stage 1
+# 139. Suggested path - stage 1
 Syntax, functions, arrays, objects and errors.
-# 140. Stage 2 — browser
+# 140. Stage 2 - browser
 DOM, events, forms, storage.
-# 141. Stage 3 — asynchrony
+# 141. Stage 3 - asynchrony
 Promises, fetch, async/await, error/loading states.
-# 142. Stage 4 — code organization
+# 142. Stage 4 - code organization
 Modules, separation of concerns and small architecture.
-# 143. Stage 5 — tooling
+# 143. Stage 5 - tooling
 npm, Vite, ESLint, Prettier, tests.
-# 144. Stage 6 — framework
+# 144. Stage 6 - framework
 Choose one framework and build real components/state/data flow.
-# 145. Practice project 1 — FAQ
+# 145. Practice project 1 - FAQ
 Toggle questions using event listeners/classes.
-# 146. Project 2 — price calculator
+# 146. Project 2 - price calculator
 Form inputs + validation + calculation + formatted output.
-# 147. Project 3 — Todo
+# 147. Project 3 - Todo
 CRUD state + localStorage.
-# 148. Project 4 — product search
+# 148. Project 4 - product search
 Fetch data + filters + debounce + loading/error.
-# 149. Project 5 — dashboard
+# 149. Project 5 - dashboard
 Multiple widgets/components + API data + state.
-# 150. Project 6 — PixiJS
+# 150. Project 6 - PixiJS
 Interactive animated 2D scene.
-# 151. Project 7 — frontend for Go backend
+# 151. Project 7 - frontend for Go backend
 Go API + JS frontend + auth/forms/errors.
 # 152. Useful browser APIs
 URL, Clipboard, IntersectionObserver, WebSocket, CustomEvent, Intl, crypto and more.
@@ -691,7 +691,7 @@ Use Date carefully with time zones; prefer Intl for display and ISO formats for 
 ```js
 const id = crypto.randomUUID();
 ```
-# 161. Modular application — example
+# 161. Modular application - example
 main.js wires api.js, state.js, ui.js and feature modules.
 # 162. Framework does not replace JavaScript
 You still need closures, promises, arrays, objects, events and browser APIs.

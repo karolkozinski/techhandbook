@@ -20,7 +20,7 @@ HTTP opisuje semantykę komunikacji aplikacyjnej, a TLS chroni ją kryptograficz
 
 Powiązane tematy: [DNS, domeny i routing](techhandbook:doc-017), [API i integracje systemów](techhandbook:doc-008), [nginx i reverse proxy](techhandbook:doc-045) oraz [Bezpieczeństwo aplikacji webowych](techhandbook:doc-026).
 
-## 1. Model klient–serwer
+## 1. Model klient-serwer
 
 Przeglądarka lub aplikacja wysyła request:
 
@@ -211,7 +211,7 @@ Test odnowienia:
 sudo certbot renew --dry-run
 ```
 
-## 12. TLS handshake — uproszczenie
+## 12. TLS handshake - uproszczenie
 
 1. klient łączy się z serwerem,
 2. serwer przedstawia certyfikat,

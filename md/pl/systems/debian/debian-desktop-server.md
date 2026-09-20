@@ -1,6 +1,6 @@
 ---
 id: "doc-033"
-title: "Debian — desktop i serwer"
+title: "Debian - desktop i serwer"
 slug: "debian-desktop-i-serwer"
 description: "Debian to stabilna, uniwersalna dystrybucja GNU/Linux używana zarówno na komputerach osobistych, jak i na serwerach. To kompendium zbiera najważniejsze…"
 lang: "pl"
@@ -15,7 +15,7 @@ tags:
   - "server"
 ---
 
-# Debian — desktop i serwer
+# Debian - desktop i serwer
 
 Debian to stabilna, uniwersalna dystrybucja GNU/Linux używana zarówno na komputerach osobistych, jak i na serwerach. To kompendium zbiera najważniejsze mechanizmy potrzebne do codziennej pracy: pakiety, usługi, logi, sieć, uprawnienia, storage, środowiska GNOME/KDE oraz podstawy administracji serwerem.
 
@@ -114,7 +114,7 @@ Gałąź rozwojowa.
 
 Nie oznacza, że system cały czas się psuje. „Unstable” oznacza przede wszystkim, że interfejs pakietów i ich wersje stale się zmieniają.
 
-Na serwer produkcyjny — zwykle nie.
+Na serwer produkcyjny - zwykle nie.
 
 ---
 
@@ -144,14 +144,14 @@ programy użytkownika
 
 Najważniejszy podział mentalny:
 
-- **kernel** — obsługa sprzętu, pamięci, procesów, sieci;
-- **systemd** — uruchamianie systemu i usług;
-- **APT/dpkg** — instalacja i aktualizacja oprogramowania;
-- **NetworkManager / systemd-networkd** — sieć;
-- **GNOME/KDE** — interfejs desktopowy;
-- **OpenSSH** — zdalne logowanie;
-- **journald** — logi;
-- **nftables** — firewall.
+- **kernel** - obsługa sprzętu, pamięci, procesów, sieci;
+- **systemd** - uruchamianie systemu i usług;
+- **APT/dpkg** - instalacja i aktualizacja oprogramowania;
+- **NetworkManager / systemd-networkd** - sieć;
+- **GNOME/KDE** - interfejs desktopowy;
+- **OpenSSH** - zdalne logowanie;
+- **journald** - logi;
+- **nftables** - firewall.
 
 ---
 
@@ -419,10 +419,10 @@ chmod 644 plik
 Typowe wartości:
 
 ```text
-644 — zwykły plik
-755 — katalog lub skrypt wykonywalny
-600 — plik prywatny
-700 — prywatny katalog
+644 - zwykły plik
+755 - katalog lub skrypt wykonywalny
+600 - plik prywatny
+700 - prywatny katalog
 ```
 
 Przykład:
@@ -449,7 +449,7 @@ groups
 
 ---
 
-# 8. Zarządzanie pakietami — APT
+# 8. Zarządzanie pakietami - APT
 
 To jeden z fundamentów Debiana.
 
@@ -821,7 +821,7 @@ Jednak instalowanie wielu pełnych środowisk powoduje:
 - kilka narzędzi ustawień,
 - czasem bałagan z domyślnymi aplikacjami.
 
-Do testów — OK.
+Do testów - OK.
 
 Na głównym systemie wygodniej zwykle wybrać jedno.
 
@@ -1076,7 +1076,7 @@ wget https://example.com/file.zip
 
 ---
 
-# 31. Audio — PipeWire
+# 31. Audio - PipeWire
 
 Współczesny Debian korzysta przede wszystkim z PipeWire.
 
@@ -1188,7 +1188,7 @@ Zwykle nic nie trzeba instalować ręcznie.
 
 ---
 
-# 36. Laptop — bateria i energia
+# 36. Laptop - bateria i energia
 
 Stan baterii:
 
@@ -1252,7 +1252,7 @@ sudo apt install cups
 
 ---
 
-# 39. Systemd — serce uruchamiania usług
+# 39. Systemd - serce uruchamiania usług
 
 Debian używa systemd.
 
@@ -1385,7 +1385,7 @@ Własne jednostki użytkownika można umieszczać w:
 
 ---
 
-# 45. Logi — journalctl
+# 45. Logi - journalctl
 
 Jedno z najważniejszych narzędzi administratora.
 
@@ -2055,7 +2055,7 @@ Może być dostępna z sieci, jeśli firewall tego nie blokuje.
 
 ---
 
-# 76. nftables — firewall
+# 76. nftables - firewall
 
 Debian używa nowoczesnego nftables.
 
@@ -2096,7 +2096,7 @@ Dla publicznego VPS najczęściej chcesz:
 - otworzyć HTTPS,
 - resztę ruchu przychodzącego blokować.
 
-Nie kopiuj bezmyślnie reguł firewalla na zdalny serwer — błędna reguła może odciąć SSH.
+Nie kopiuj bezmyślnie reguł firewalla na zdalny serwer - błędna reguła może odciąć SSH.
 
 ---
 
@@ -2850,7 +2850,7 @@ Edytor działa jako zwykły użytkownik, a zapis do chronionego pliku obsługuje
 
 ---
 
-# 112. Diagnostyka — metoda krok po kroku
+# 112. Diagnostyka - metoda krok po kroku
 
 Zamiast losowo wpisywać komendy, stosuj schemat.
 
@@ -3073,7 +3073,7 @@ Sprawdź:
 
 ---
 
-# 119. Desktop — gdzie szukać konfiguracji użytkownika
+# 119. Desktop - gdzie szukać konfiguracji użytkownika
 
 Najczęściej:
 
@@ -3105,7 +3105,7 @@ To dlatego coraz mniej aplikacji tworzy setki pojedynczych `.plików` bezpośred
 
 ---
 
-# 121. GNOME — ustawienia zaawansowane
+# 121. GNOME - ustawienia zaawansowane
 
 Przydatny pakiet:
 
@@ -3129,7 +3129,7 @@ Nie ma potrzeby korzystać z tego przy zwykłej pracy, ale dobrze wiedzieć, że
 
 ---
 
-# 122. KDE — konfiguracja
+# 122. KDE - konfiguracja
 
 KDE zapisuje sporą część ustawień w:
 
@@ -3145,7 +3145,7 @@ kwinrc
 plasmarc
 ```
 
-Nie warto ręcznie ich edytować bez potrzeby — panel System Settings potrafi większość rzeczy skonfigurować wygodniej.
+Nie warto ręcznie ich edytować bez potrzeby - panel System Settings potrafi większość rzeczy skonfigurować wygodniej.
 
 ---
 
@@ -3496,7 +3496,7 @@ Bardzo dobry do:
 
 ---
 
-# 138. Bezpieczeństwo serwera — sensowna baza
+# 138. Bezpieczeństwo serwera - sensowna baza
 
 Na publicznym VPS:
 
@@ -3565,7 +3565,7 @@ Preferowana kolejność:
 
 1. repozytorium Debiana,
 2. oficjalne repo producenta,
-3. Flatpak — dla desktopu,
+3. Flatpak - dla desktopu,
 4. lokalny `.deb`,
 5. ręczna instalacja,
 6. kompilacja ze źródeł.
@@ -3974,9 +3974,9 @@ man ssh
 Sekcje:
 
 ```text
-1 — polecenia użytkownika
-5 — formaty plików
-8 — polecenia administratora
+1 - polecenia użytkownika
+5 - formaty plików
+8 - polecenia administratora
 ```
 
 Przykłady:
@@ -4279,7 +4279,7 @@ i skierować ruch do usługi działającej na serwerze.
 
 ---
 
-# 176. PostgreSQL — podstawy administracyjne
+# 176. PostgreSQL - podstawy administracyjne
 
 Instalacja:
 
@@ -4826,7 +4826,7 @@ curl https://example.com
 
 ---
 
-# 196. Najważniejsze polecenia — ściąga
+# 196. Najważniejsze polecenia - ściąga
 
 ## system
 
@@ -5047,7 +5047,7 @@ Jeżeli to potrafisz, Debian przestaje być „systemem, na którym wpisuje się
 
 ---
 
-# 201. GNOME/KDE a serwer — najważniejsza różnica mentalna
+# 201. GNOME/KDE a serwer - najważniejsza różnica mentalna
 
 Na desktopie wiele rzeczy wykonujesz przez GUI:
 

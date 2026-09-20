@@ -30,7 +30,7 @@ Praktyczne kompendium referencyjne dla osoby, która chce samodzielnie tworzyć 
 
 ## Spis treści
 
-1. [HTML — podstawy](#1-html--podstawy)
+1. [HTML - podstawy](#1-html--podstawy)
 2. [Struktura dokumentu](#2-struktura-dokumentu)
 3. [Semantyka HTML](#3-semantyka-html)
 4. [Tekst, listy i linki](#4-tekst-listy-i-linki)
@@ -38,7 +38,7 @@ Praktyczne kompendium referencyjne dla osoby, która chce samodzielnie tworzyć 
 6. [Tabele](#6-tabele)
 7. [Formularze](#7-formularze)
 8. [Dostępność](#8-dostępność)
-9. [CSS — podstawy](#9-css--podstawy)
+9. [CSS - podstawy](#9-css--podstawy)
 10. [Selektory](#10-selektory)
 11. [Kaskada, dziedziczenie i specificity](#11-kaskada-dziedziczenie-i-specificity)
 12. [Box model](#12-box-model)
@@ -64,7 +64,7 @@ Praktyczne kompendium referencyjne dla osoby, która chce samodzielnie tworzyć 
 
 ---
 
-# 1. HTML — podstawy
+# 1. HTML - podstawy
 
 HTML nie służy do rysowania strony. Jego zadaniem jest opisanie, **czym są poszczególne elementy treści**.
 
@@ -195,7 +195,7 @@ Viewport:
 Tytuł:
 
 ```html
-<title>Example Site — opowiadania</title>
+<title>Example Site - opowiadania</title>
 ```
 
 Opis:
@@ -982,7 +982,7 @@ Ogólna zasada:
 
 ---
 
-# 9. CSS — podstawy
+# 9. CSS - podstawy
 
 Podłączanie:
 
@@ -3453,13 +3453,13 @@ Najważniejsza umiejętność to nie pamiętanie całej składni, lecz rozpoznaw
 
 Przykładowo:
 
-> To układ dwuwymiarowy — użyję Grid.
+> To układ dwuwymiarowy - użyję Grid.
 
-> To układ w jednym rzędzie — użyję Flexbox.
+> To układ w jednym rzędzie - użyję Flexbox.
 
-> Komponent powinien reagować na własną szerokość — użyję container query.
+> Komponent powinien reagować na własną szerokość - użyję container query.
 
-> Rozmiar tekstu ma płynnie skalować się z ekranem — użyję `clamp()`.
+> Rozmiar tekstu ma płynnie skalować się z ekranem - użyję `clamp()`.
 
 ---
 

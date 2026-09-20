@@ -1,6 +1,6 @@
 ---
 id: "doc-031"
-title: "Shell Scripting — Debian and FreeBSD"
+title: "Shell Scripting - Debian and FreeBSD"
 slug: "shell-scripting-debian-and-freebsd"
 description: "For portable system scripts use POSIX sh. Use Bash only when you intentionally need Bash-specific syntax. FreeBSD /bin/sh and Debian /bin/sh are not Bash."
 lang: "en"
@@ -14,7 +14,7 @@ tags:
   - "script"
 ---
 
-# Shell Scripting — Debian and FreeBSD
+# Shell Scripting - Debian and FreeBSD
 
 Related topics: [Debian Practical Shell Handbook](techhandbook:doc-027), [FreeBSD Practical Shell Handbook](techhandbook:doc-029), [Shells in Debian](techhandbook:doc-028) and [Shells in FreeBSD](techhandbook:doc-030).
 
@@ -27,7 +27,7 @@ For portable system scripts use POSIX `sh`. Use Bash only when you intentionally
 echo "Hello"
 ```
 Make it executable with `chmod +x script.sh` and run `./script.sh`.
-# 3. `echo` and `printf` — printing information
+# 3. `echo` and `printf` - printing information
 ```sh
 echo "Starting..."
 printf 'Status: %s\n' "$status"
@@ -109,7 +109,7 @@ Spaces inside `[ ... ]` are mandatory because `[` is a command.
 [ "$a" -lt "$b" ]
 [ "$a" -gt "$b" ]
 ```
-# 12. `case` — ideal for menus
+# 12. `case` - ideal for menus
 ```sh
 case "$choice" in
   1) do_one ;;
@@ -173,7 +173,7 @@ if [ "$#" -lt 1 ]; then
   exit 2
 fi
 ```
-# 21. `exit` — ending a script
+# 21. `exit` - ending a script
 Use `exit 0` for success and non-zero values for failure. Pick consistent exit codes for meaningful error classes.
 # 22. Negation `!`
 ```sh
@@ -260,7 +260,7 @@ Check required commands, arguments, files and privileges before changing anythin
 Keep the actual execution flow short and readable.
 # ...
 For larger scripts, split logic into separate files or move to a more suitable language.
-# 35. `stderr` — error messages
+# 35. `stderr` - error messages
 ```sh
 echo "error" >&2
 ```
@@ -299,7 +299,7 @@ System-wide custom commands commonly belong in `/usr/local/bin`; install them as
 Use simple lowercase names without spaces; a `.sh` suffix is optional for installed command-like tools.
 # 44. Aliases vs scripts
 Aliases are interactive shortcuts; scripts are reusable programs that work from any shell/session with predictable behavior.
-# 45. Practical example — checking a server
+# 45. Practical example - checking a server
 ```sh
 #!/bin/sh
 set -u
@@ -310,19 +310,19 @@ if command -v systemctl >/dev/null 2>&1; then
   systemctl --failed
 fi
 ```
-# 46. Practical example — administration menu
+# 46. Practical example - administration menu
 Use a `while` loop plus `case` to offer status, logs, restart and quit actions.
-# 47. Practical example — confirmation before operation
+# 47. Practical example - confirmation before operation
 ```sh
 printf 'Delete %s? [y/N] ' "$target"
 read -r answer
 case "$answer" in y|Y) rm -- "$target" ;; *) exit 0 ;; esac
 ```
-# 48. Practical example — system update script
+# 48. Practical example - system update script
 Detect OS, then run Debian `apt update/upgrade` or FreeBSD `pkg update/upgrade`, logging failures and exit status.
-# 49. Practical example — series of commands with statuses
+# 49. Practical example - series of commands with statuses
 Wrap each operation in a function that prints `[OK]` or `[FAIL]` and returns a meaningful status.
-# 50. Practical example — tool accepting commands
+# 50. Practical example - tool accepting commands
 Use `case "$1"` to implement subcommands such as `status`, `start`, `stop`, `logs`.
 # 51. More elaborate example
 A useful admin tool can combine config variables, validation, OS detection, logging functions, subcommands and cleanup traps.
@@ -384,7 +384,7 @@ Keep non-secret defaults in a config file or environment variables; do not hard-
 ```text
 ~/.config/mytool/config
 ```
-# 65. Colors — optional
+# 65. Colors - optional
 Use colors only for interactive terminals and provide plain output for logs/pipes. Check `[ -t 1 ]` before ANSI styling.
 # 66. Basic template for your own tool
 ```sh
@@ -410,7 +410,7 @@ command -v mytool
 Use `/usr/local/bin` for the executable, `/usr/local/etc` or `/etc` for system config, documentation/man page if appropriate, and package it if many hosts/users need managed upgrades.
 # 69. What to learn next
 Quoting/word splitting, `getopts`, traps, robust temp files, text processing (`awk`, `sed`), and when to switch from shell to Python/Go.
-# 70. `getopts` — first step toward a proper CLI
+# 70. `getopts` - first step toward a proper CLI
 ```sh
 while getopts 'vf:' opt; do
   case "$opt" in

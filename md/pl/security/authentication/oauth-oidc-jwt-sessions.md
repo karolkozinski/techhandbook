@@ -2,7 +2,7 @@
 id: "doc-051"
 title: "OAuth 2.0, OpenID Connect, JWT i sesje"
 slug: "oauth-2-0-openid-connect-jwt-i-sesje"
-description: "OAuth 2.0, OpenID Connect, JWT i sesje — praktyczne kompendium TechHandbook."
+description: "OAuth 2.0, OpenID Connect, JWT i sesje - praktyczne kompendium TechHandbook."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
@@ -167,7 +167,7 @@ Jest bardziej wrażliwy, bo zwykle żyje dłużej.
 
 Powinien być dobrze chroniony.
 
-## 13. OAuth 2.0 — role
+## 13. OAuth 2.0 - role
 
 Najczęściej:
 

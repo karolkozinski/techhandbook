@@ -1,6 +1,6 @@
 ---
 id: "doc-055"
-title: "HTML email / EDM — kompendium praktyczne"
+title: "HTML email / EDM - kompendium praktyczne"
 slug: "html-email-edm-kompendium-praktyczne"
 description: "Email HTML nie działa jak nowoczesna strona WWW."
 lang: "pl"
@@ -15,7 +15,7 @@ tags:
   - "newsletter"
 ---
 
-# HTML email / EDM — kompendium praktyczne
+# HTML email / EDM - kompendium praktyczne
 
 HTML email trzeba projektować dla zbioru różnych klientów pocztowych, a nie dla jednej przeglądarki. Najbezpieczniejsze pozostają proste tabele prezentacyjne, inline CSS, jawne wymiary i testy w realnych klientach.
 
@@ -62,7 +62,7 @@ Wciąż najbezpieczniejszy wzorzec:
 Klasyczny content width:
 
 ```text
-600–640 px
+600-640 px
 ```
 
 Na mobile kontener powinien się skalować.

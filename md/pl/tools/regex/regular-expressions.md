@@ -1,6 +1,6 @@
 ---
 id: "doc-050"
-title: "Wyrażenia regularne (Regex) — kompendium praktyczne"
+title: "Wyrażenia regularne (Regex) - kompendium praktyczne"
 slug: "wyrazenia-regularne-regex-kompendium-praktyczne"
 description: "Wyrażenie regularne opisuje wzorzec tekstu."
 lang: "pl"
@@ -16,7 +16,7 @@ tags:
   - "python"
 ---
 
-# Wyrażenia regularne (Regex) — kompendium praktyczne
+# Wyrażenia regularne (Regex) - kompendium praktyczne
 
 Regex to rodzina języków wzorców, a nie jeden identyczny standard we wszystkich programach. Składnia grep/POSIX, JavaScript, Python i PCRE jest podobna, ale różni się szczegółami, dlatego przed użyciem zaawansowanych konstrukcji warto wiedzieć, jakiego engine używa dane narzędzie.
 
@@ -409,7 +409,7 @@ Nie uruchamiaj skomplikowanych wzorców na dowolnie długich danych użytkownika
 
 ## 29. Przykłady
 
-IPv4 — prosty wzorzec składniowy:
+IPv4 - prosty wzorzec składniowy:
 
 ```text
 ^(\d{1,3}\.){3}\d{1,3}$

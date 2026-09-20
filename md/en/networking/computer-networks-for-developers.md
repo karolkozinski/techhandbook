@@ -36,7 +36,7 @@ This is not CCNA preparation. The goal is to understand the networking concepts 
 - firewalls,
 - basic troubleshooting.
 
-## 2. Layers — practical view
+## 2. Layers - practical view
 
 A simplified model:
 
@@ -76,7 +76,7 @@ It is used by services such as DNS, DHCP, QUIC/HTTP/3 and VoIP.
 Range:
 
 ```text
-0–65535
+0-65535
 ```
 
 Common ports:
@@ -147,10 +147,10 @@ A VLAN logically separates one Layer 2 infrastructure.
 
 Example:
 
-- VLAN 10 — home,
-- VLAN 20 — IoT,
-- VLAN 30 — guests,
-- VLAN 40 — servers.
+- VLAN 10 - home,
+- VLAN 20 - IoT,
+- VLAN 30 - guests,
+- VLAN 40 - servers.
 
 Communication between VLANs requires routing.
 

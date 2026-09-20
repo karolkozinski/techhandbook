@@ -1,6 +1,6 @@
 ---
 id: "doc-046"
-title: "Browser DevTools — Practical Handbook"
+title: "Browser DevTools - Practical Handbook"
 slug: "browser-devtools-practical-handbook"
 description: "Browser developer tools are among the most important tools for working with web applications. They let you diagnose problems instead of guessing."
 lang: "en"
@@ -15,7 +15,7 @@ tags:
   - "debug"
 ---
 
-# Browser DevTools — Practical Handbook
+# Browser DevTools - Practical Handbook
 
 DevTools replace guessing with observation: inspect the DOM, computed styles, network requests, storage, JavaScript execution and performance traces. Panel names differ between browsers, but the diagnostic workflow is similar.
 
@@ -201,11 +201,11 @@ DevTools can capture viewport, full-page and selected-element screenshots.
 
 When “the page does not work”:
 
-1. Console — JavaScript errors.
-2. Network — 4xx/5xx requests.
-3. Elements — DOM and CSS.
-4. Storage — session and cookies.
-5. Performance — if the issue is speed.
+1. Console - JavaScript errors.
+2. Network - 4xx/5xx requests.
+3. Elements - DOM and CSS.
+4. Storage - session and cookies.
+5. Performance - if the issue is speed.
 
 ## 25. What you should know
 

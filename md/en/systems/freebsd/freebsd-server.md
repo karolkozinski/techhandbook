@@ -1,6 +1,6 @@
 ---
 id: "doc-034"
-title: "FreeBSD as a Server — Administrator Handbook"
+title: "FreeBSD as a Server - Administrator Handbook"
 slug: "freebsd-as-a-server-administrator-handbook"
 description: "FreeBSD is a complete BSD operating system, not a Linux distribution. Its kernel, base system, administration tools and documentation are developed as a…"
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "unix"
 ---
 
-# FreeBSD as a Server — Administrator Handbook
+# FreeBSD as a Server - Administrator Handbook
 
 FreeBSD is a complete BSD operating system, not a Linux distribution. Its kernel, base system, administration tools and documentation are developed as a coherent platform, while third-party applications normally live under `/usr/local` and are installed through Packages or Ports.
 
@@ -21,7 +21,7 @@ FreeBSD is a complete BSD operating system, not a Linux distribution. Its kernel
 
 **Reference release:** FreeBSD **15.1-RELEASE**, the Production release at the time of this audit. Most administration concepts described here also apply to supported releases from the 14 branch.
 
-Related handbooks: [FreeBSD — Practical Shell Handbook](techhandbook:doc-029) and [SSH and Remote Administration](techhandbook:doc-018). For comparison with Linux containers, see [Docker — Practical Handbook](techhandbook:doc-012).
+Related handbooks: [FreeBSD - Practical Shell Handbook](techhandbook:doc-029) and [SSH and Remote Administration](techhandbook:doc-018). For comparison with Linux containers, see [Docker - Practical Handbook](techhandbook:doc-012).
 
 ## Handbook map
 
@@ -101,7 +101,7 @@ pw useradd USER -m
 pw userdel USER -r
 pw groupshow GROUP
 ```
-# 7. Packages — `pkg`
+# 7. Packages - `pkg`
 ## Update package catalogue
 ```sh
 pkg update
@@ -161,9 +161,9 @@ service nginx restart
 ```
 # 13. Why `service nginx start` sometimes does not work
 A normal start expects the service to be enabled in rc.conf. Use onestart for one-off execution when appropriate.
-# 14. `rc.conf` — system configuration center
+# 14. `rc.conf` - system configuration center
 Persistent service/network/system settings are commonly stored in /etc/rc.conf.
-# 15. `sysrc` — best way to change `rc.conf`
+# 15. `sysrc` - best way to change `rc.conf`
 ## Read value
 ```sh
 sysrc nginx_enable
@@ -229,7 +229,7 @@ force* actions bypass parts of the normal rc checks. Use only when you understan
 ```sh
 service -r
 ```
-# 20. Service autostart — rule
+# 20. Service autostart - rule
 Persistent startup belongs in rc.conf/sysrc, not in ad-hoc shell history.
 # 21. Service configuration
 ### system service
@@ -259,9 +259,9 @@ pkg upgrade
 Use the supported update mechanism for your FreeBSD release and read release notes before major upgrades.
 # 28. Note: pkgbase
 pkgbase changes how base-system components may be delivered/updated on newer FreeBSD generations. Follow documentation for your exact release.
-# 29. Boot Environments — one of the best ZFS features
+# 29. Boot Environments - one of the best ZFS features
 Boot environments provide fast rollback around risky upgrades on ZFS-root systems.
-# 30. Networking — key tools
+# 30. Networking - key tools
 ```sh
 ifconfig
 netstat -rn
@@ -283,20 +283,20 @@ sysrc sshd_enable=YES
 service sshd start
 ssh user@server
 ```
-# 35. SSH — keys
+# 35. SSH - keys
 ```sh
 ssh-keygen -t ed25519
 ssh-copy-id user@server
 ```
-# 36. SSH — basic hardening
+# 36. SSH - basic hardening
 Prefer keys, restrict root login, limit exposure and test new access before disabling old access.
 # 37. Firewall
 FreeBSD commonly uses PF, IPFW or IPFilter. This handbook focuses on PF.
-# 38. PF — enabling
+# 38. PF - enabling
 Set pf_enable=YES and pf_rules=/etc/pf.conf in rc.conf, ideally via sysrc.
 # 39. Minimal PF for a server
 Allow loopback, established traffic, trusted SSH and only required service ports.
-# 40. PF — test before reload
+# 40. PF - test before reload
 ```sh
 pfctl -nf /etc/pf.conf
 ```
@@ -325,14 +325,14 @@ geom disk list
 gpart show
 camcontrol devlist
 ```
-# 43. ZFS — why it matters
+# 43. ZFS - why it matters
 ZFS combines filesystem and volume-management features with checksums, snapshots and replication.
 # 44. Basic ZFS concepts
 ## Pool
 A storage pool built from one or more vdevs.
 ## Dataset
 A filesystem-like ZFS object with independent properties.
-# 45. ZFS — important commands
+# 45. ZFS - important commands
 ## Datasets
 ```sh
 zfs list
@@ -409,7 +409,7 @@ Use for loader-time settings and modules that must be configured before the kern
 kldstat
 kldload MODULE
 ```
-# 64. Jails — basic idea
+# 64. Jails - basic idea
 Jails provide OS-level isolation native to FreeBSD.
 # 65. What to use jails for
 Isolate services, separate dependency sets and reduce blast radius.
@@ -440,7 +440,7 @@ Back up configuration, application data and databases; keep at least one indepen
 Use database-native logical/physical backup methods in addition to filesystem-level protection.
 # 76. ZFS as a backup mechanism
 ZFS snapshots/send-receive are excellent building blocks, but destination independence still matters.
-# 77. Updates — sensible procedure
+# 77. Updates - sensible procedure
 Checkpoint/boot environment → update → read messages → restart affected services → test → reboot if required.
 # 78. Basic monitoring
 Monitor uptime, load, ZFS pool health, SMART, disk space, service state, ports, logs and backup success.
@@ -460,7 +460,7 @@ sockstat -4 -6 -l
 A service bound to 127.0.0.1 works locally but is invisible to LAN/Internet clients.
 # 83. Reverse proxy
 Keep applications on localhost/private addresses and publish them through nginx or another proxy.
-# 84. Nginx — quick example
+# 84. Nginx - quick example
 ```sh
 pkg install nginx
 sysrc nginx_enable=YES
@@ -473,7 +473,7 @@ Use proxy_pass to a local backend and forward Host/client headers as required.
 Install → initialize → enable → configure → start → verify port/logs → establish backup.
 # 87. WireGuard
 Use WireGuard for secure host/site connectivity where appropriate; routing and firewall policy still matter.
-# 88. System DNS, routing and firewall — layered diagnostics
+# 88. System DNS, routing and firewall - layered diagnostics
 ## 1. Interface
 ```sh
 ifconfig
@@ -506,7 +506,7 @@ pfctl -sr
 ```sh
 sockstat -4 -6 -l
 ```
-# 89. Service diagnostics — universal pattern
+# 89. Service diagnostics - universal pattern
 ## 1. Does the service exist?
 ```sh
 service -l | grep NAME
@@ -564,7 +564,7 @@ reboot
 ```
 # 94. Verify startup after reboot
 Check network, pools, mounts, critical services and listeners.
-# 95. Security — server minimum
+# 95. Security - server minimum
 Updates, keys, least privilege, PF, minimal services, backups and logs.
 # 96. Most important service-security rule
 Expose only what must be reachable and run each service with the minimum privileges it needs.
@@ -585,7 +585,7 @@ Complete and verify this layer before moving to the next.
 Complete and verify this layer before moving to the next.
 ## 6. Services
 Complete and verify this layer before moving to the next.
-# 100. Application server — example architecture
+# 100. Application server - example architecture
 Internet → PF → nginx → application on localhost/jail → database/storage.
 # 101. What to install on a new server
 Only required tools: editor, tmux, curl, git, rsync, smartmontools, monitoring and actual application dependencies.

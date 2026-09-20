@@ -432,7 +432,7 @@
     {
       "id": "doc-054",
       "name": "ab-testing-experiments.md",
-      "title": "A/B testing i eksperymenty — kompendium praktyczne",
+      "title": "A/B testing i eksperymenty - kompendium praktyczne",
       "slug": "a-b-testing-i-eksperymenty-kompendium-praktyczne",
       "route": "/pl/digital/a-b-testing-i-eksperymenty-kompendium-praktyczne",
       "index": true,
@@ -458,7 +458,7 @@
     {
       "id": "doc-055",
       "name": "html-email-edm.md",
-      "title": "HTML email / EDM — kompendium praktyczne",
+      "title": "HTML email / EDM - kompendium praktyczne",
       "slug": "html-email-edm-kompendium-praktyczne",
       "route": "/pl/digital/html-email-edm-kompendium-praktyczne",
       "index": true,
@@ -484,7 +484,7 @@
     {
       "id": "doc-053",
       "name": "web-analytics-tagging.md",
-      "title": "Web analytics i tagging — kompendium praktyczne",
+      "title": "Web analytics i tagging - kompendium praktyczne",
       "slug": "web-analytics-i-tagging-kompendium-praktyczne",
       "route": "/pl/digital/web-analytics-i-tagging-kompendium-praktyczne",
       "index": true,
@@ -588,7 +588,7 @@
     {
       "id": "doc-019",
       "name": "c-reading-building-debugging.md",
-      "title": "C — czytanie, kompilacja i debugowanie",
+      "title": "C - czytanie, kompilacja i debugowanie",
       "slug": "c-czytanie-kompilacja-i-debugowanie",
       "route": "/pl/programming/c/c-czytanie-kompilacja-i-debugowanie",
       "index": true,
@@ -613,7 +613,7 @@
     {
       "id": "doc-020",
       "name": "go-reading-code.md",
-      "title": "Go — czytanie kodu",
+      "title": "Go - czytanie kodu",
       "slug": "go-czytanie-kodu",
       "route": "/pl/programming/go/go-czytanie-kodu",
       "index": true,
@@ -637,7 +637,7 @@
     {
       "id": "doc-021",
       "name": "javascript-guide.md",
-      "title": "JavaScript — kompendium",
+      "title": "JavaScript - kompendium",
       "slug": "javascript-kompendium",
       "route": "/pl/programming/javascript/javascript-kompendium",
       "index": true,
@@ -687,7 +687,7 @@
     {
       "id": "doc-023",
       "name": "python-basics.md",
-      "title": "Python — podstawy",
+      "title": "Python - podstawy",
       "slug": "python-podstawy",
       "route": "/pl/programming/python/python-podstawy",
       "index": true,
@@ -738,7 +738,7 @@
     {
       "id": "doc-024",
       "name": "cybersecurity-basics-pentesting.md",
-      "title": "Cybersecurity i pentesting — podstawy",
+      "title": "Cybersecurity i pentesting - podstawy",
       "slug": "cybersecurity-i-pentesting-podstawy",
       "route": "/pl/security/cybersecurity-i-pentesting-podstawy",
       "index": true,
@@ -822,7 +822,7 @@
     {
       "id": "doc-027",
       "name": "debian-shell.md",
-      "title": "Debian — shell",
+      "title": "Debian - shell",
       "slug": "debian-shell",
       "route": "/pl/shell/debian/debian-shell",
       "index": true,
@@ -846,7 +846,7 @@
     {
       "id": "doc-028",
       "name": "debian-shells-overview.md",
-      "title": "Shelle w Debianie — przegląd",
+      "title": "Shelle w Debianie - przegląd",
       "slug": "shelle-w-debianie-przeglad",
       "route": "/pl/shell/debian/shelle-w-debianie-przeglad",
       "index": true,
@@ -870,7 +870,7 @@
     {
       "id": "doc-029",
       "name": "freebsd-shell.md",
-      "title": "FreeBSD — shell",
+      "title": "FreeBSD - shell",
       "slug": "freebsd-shell",
       "route": "/pl/shell/freebsd/freebsd-shell",
       "index": true,
@@ -895,7 +895,7 @@
     {
       "id": "doc-030",
       "name": "freebsd-shells-overview.md",
-      "title": "Shelle w FreeBSD — przegląd",
+      "title": "Shelle w FreeBSD - przegląd",
       "slug": "shelle-w-freebsd-przeglad",
       "route": "/pl/shell/freebsd/shelle-w-freebsd-przeglad",
       "index": true,
@@ -968,7 +968,7 @@
     {
       "id": "doc-033",
       "name": "debian-desktop-server.md",
-      "title": "Debian — desktop i serwer",
+      "title": "Debian - desktop i serwer",
       "slug": "debian-desktop-i-serwer",
       "route": "/pl/systems/debian/debian-desktop-i-serwer",
       "index": true,
@@ -1064,7 +1064,7 @@
     {
       "id": "doc-037",
       "name": "windows-server-administration.md",
-      "title": "Windows Server — administracja korporacyjna",
+      "title": "Windows Server - administracja korporacyjna",
       "slug": "windows-server-administracja-korporacyjna",
       "route": "/pl/systems/windows/windows-server-administracja-korporacyjna",
       "index": true,
@@ -1088,7 +1088,7 @@
     {
       "id": "doc-049",
       "name": "software-testing.md",
-      "title": "Testowanie oprogramowania — kompendium",
+      "title": "Testowanie oprogramowania - kompendium",
       "slug": "testowanie-oprogramowania-kompendium",
       "route": "/pl/testing/testowanie-oprogramowania-kompendium",
       "index": true,
@@ -1191,7 +1191,7 @@
     {
       "id": "doc-050",
       "name": "regular-expressions.md",
-      "title": "Wyrażenia regularne (Regex) — kompendium praktyczne",
+      "title": "Wyrażenia regularne (Regex) - kompendium praktyczne",
       "slug": "wyrazenia-regularne-regex-kompendium-praktyczne",
       "route": "/pl/tools/regex/wyrazenia-regularne-regex-kompendium-praktyczne",
       "index": true,
@@ -1273,7 +1273,7 @@
     {
       "id": "doc-046",
       "name": "browser-devtools.md",
-      "title": "Browser DevTools — kompendium praktyczne",
+      "title": "Browser DevTools - kompendium praktyczne",
       "slug": "browser-devtools-kompendium-praktyczne",
       "route": "/pl/web/frontend/browser-devtools-kompendium-praktyczne",
       "index": true,
@@ -1351,7 +1351,7 @@
     {
       "id": "doc-048",
       "name": "web-performance.md",
-      "title": "Web Performance — kompendium",
+      "title": "Web Performance - kompendium",
       "slug": "web-performance-kompendium",
       "route": "/pl/web/performance/web-performance-kompendium",
       "index": true,
@@ -1404,7 +1404,7 @@
     {
       "id": "doc-047",
       "name": "technical-seo.md",
-      "title": "Technical SEO — kompendium praktyczne",
+      "title": "Technical SEO - kompendium praktyczne",
       "slug": "technical-seo-kompendium-praktyczne",
       "route": "/pl/web/seo/technical-seo-kompendium-praktyczne",
       "index": true,
@@ -1514,7 +1514,7 @@
     {
       "id": "junior-004",
       "name": "04-html-pierwsza-strona.md",
-      "title": "04. HTML — pierwsza strona",
+      "title": "04. HTML - pierwsza strona",
       "slug": "04-html-pierwsza-strona",
       "route": "/pl/junior/04-html-pierwsza-strona",
       "index": true,
@@ -1532,7 +1532,7 @@
     {
       "id": "junior-005",
       "name": "05-css-nadajemy-styl.md",
-      "title": "05. CSS — nadajemy styl",
+      "title": "05. CSS - nadajemy styl",
       "slug": "05-css-nadajemy-styl",
       "route": "/pl/junior/05-css-nadajemy-styl",
       "index": true,
@@ -1550,7 +1550,7 @@
     {
       "id": "doc-001",
       "name": "hermes-agent.md",
-      "title": "Hermes Agent — User Handbook",
+      "title": "Hermes Agent - User Handbook",
       "slug": "hermes-agent-user-handbook",
       "route": "/en/ai/hermes-agent-user-handbook",
       "index": true,
@@ -1574,7 +1574,7 @@
     {
       "id": "doc-002",
       "name": "prompting-ai.md",
-      "title": "AI Prompting — Practical Handbook",
+      "title": "AI Prompting - Practical Handbook",
       "slug": "ai-prompting-practical-handbook",
       "route": "/en/ai/ai-prompting-practical-handbook",
       "index": true,
@@ -1599,7 +1599,7 @@
     {
       "id": "doc-056",
       "name": "technical-documentation.md",
-      "title": "Documenting Technical Solutions — Handbook",
+      "title": "Documenting Technical Solutions - Handbook",
       "slug": "documenting-technical-solutions-handbook",
       "route": "/en/architecture/documenting-technical-solutions-handbook",
       "index": true,
@@ -1627,7 +1627,7 @@
     {
       "id": "doc-003",
       "name": "alibaba-cloud.md",
-      "title": "Alibaba Cloud — Practical Handbook",
+      "title": "Alibaba Cloud - Practical Handbook",
       "slug": "alibaba-cloud-practical-handbook",
       "route": "/en/cloud/alibaba-cloud-practical-handbook",
       "index": true,
@@ -1650,7 +1650,7 @@
     {
       "id": "doc-004",
       "name": "aws.md",
-      "title": "Amazon Web Services (AWS) — Practical Handbook",
+      "title": "Amazon Web Services (AWS) - Practical Handbook",
       "slug": "amazon-web-services-aws-practical-handbook",
       "route": "/en/cloud/amazon-web-services-aws-practical-handbook",
       "index": true,
@@ -1674,7 +1674,7 @@
     {
       "id": "doc-005",
       "name": "azure.md",
-      "title": "Microsoft Azure — Practical Handbook",
+      "title": "Microsoft Azure - Practical Handbook",
       "slug": "microsoft-azure-practical-handbook",
       "route": "/en/cloud/microsoft-azure-practical-handbook",
       "index": true,
@@ -1698,7 +1698,7 @@
     {
       "id": "doc-006",
       "name": "gcp.md",
-      "title": "Google Cloud Platform (GCP) — Practical Handbook",
+      "title": "Google Cloud Platform (GCP) - Practical Handbook",
       "slug": "google-cloud-platform-gcp-practical-handbook",
       "route": "/en/cloud/google-cloud-platform-gcp-practical-handbook",
       "index": true,
@@ -1722,7 +1722,7 @@
     {
       "id": "doc-007",
       "name": "oci.md",
-      "title": "Oracle Cloud Infrastructure (OCI) — Practical Handbook",
+      "title": "Oracle Cloud Infrastructure (OCI) - Practical Handbook",
       "slug": "oracle-cloud-infrastructure-oci-practical-handbook",
       "route": "/en/cloud/oracle-cloud-infrastructure-oci-practical-handbook",
       "index": true,
@@ -1746,7 +1746,7 @@
     {
       "id": "doc-008",
       "name": "api-integrations.md",
-      "title": "APIs and System Integrations — Practical Handbook",
+      "title": "APIs and System Integrations - Practical Handbook",
       "slug": "apis-and-system-integrations-practical-handbook",
       "route": "/en/data-api/apis-and-system-integrations-practical-handbook",
       "index": true,
@@ -1773,7 +1773,7 @@
     {
       "id": "doc-009",
       "name": "data-formats-json-yaml-toml-xml.md",
-      "title": "JSON, YAML, TOML and XML — Data and Configuration Handbook",
+      "title": "JSON, YAML, TOML and XML - Data and Configuration Handbook",
       "slug": "json-yaml-toml-and-xml-data-and-configuration-handbook",
       "route": "/en/data-api/json-yaml-toml-and-xml-data-and-configuration-handbook",
       "index": true,
@@ -1798,7 +1798,7 @@
     {
       "id": "doc-010",
       "name": "postgresql-sql.md",
-      "title": "SQL and PostgreSQL for Developers — Handbook",
+      "title": "SQL and PostgreSQL for Developers - Handbook",
       "slug": "sql-and-postgresql-for-developers-handbook",
       "route": "/en/data-api/sql-and-postgresql-for-developers-handbook",
       "index": true,
@@ -1850,7 +1850,7 @@
     {
       "id": "doc-012",
       "name": "docker.md",
-      "title": "Docker — Practical Handbook",
+      "title": "Docker - Practical Handbook",
       "slug": "docker-practical-handbook",
       "route": "/en/devops/docker-practical-handbook",
       "index": true,
@@ -1900,7 +1900,7 @@
     {
       "id": "doc-014",
       "name": "github.md",
-      "title": "GitHub — Practical Handbook",
+      "title": "GitHub - Practical Handbook",
       "slug": "github-practical-handbook",
       "route": "/en/devops/github-practical-handbook",
       "index": true,
@@ -1976,7 +1976,7 @@
     {
       "id": "doc-054",
       "name": "ab-testing-experiments.md",
-      "title": "A/B Testing and Experiments — Practical Handbook",
+      "title": "A/B Testing and Experiments - Practical Handbook",
       "slug": "a-b-testing-and-experiments-practical-handbook",
       "route": "/en/digital/a-b-testing-and-experiments-practical-handbook",
       "index": true,
@@ -2002,7 +2002,7 @@
     {
       "id": "doc-055",
       "name": "html-email-edm.md",
-      "title": "HTML Email / EDM — Practical Handbook",
+      "title": "HTML Email / EDM - Practical Handbook",
       "slug": "html-email-edm-practical-handbook",
       "route": "/en/digital/html-email-edm-practical-handbook",
       "index": true,
@@ -2028,7 +2028,7 @@
     {
       "id": "doc-053",
       "name": "web-analytics-tagging.md",
-      "title": "Web Analytics and Tagging — Practical Handbook",
+      "title": "Web Analytics and Tagging - Practical Handbook",
       "slug": "web-analytics-and-tagging-practical-handbook",
       "route": "/en/digital/web-analytics-and-tagging-practical-handbook",
       "index": true,
@@ -2132,7 +2132,7 @@
     {
       "id": "doc-019",
       "name": "c-reading-building-debugging.md",
-      "title": "C — Reading, Building and Debugging Projects",
+      "title": "C - Reading, Building and Debugging Projects",
       "slug": "c-reading-building-and-debugging-projects",
       "route": "/en/programming/c/c-reading-building-and-debugging-projects",
       "index": true,
@@ -2157,7 +2157,7 @@
     {
       "id": "doc-020",
       "name": "go-reading-code.md",
-      "title": "Go — Reading Code",
+      "title": "Go - Reading Code",
       "slug": "go-reading-code",
       "route": "/en/programming/go/go-reading-code",
       "index": true,
@@ -2181,7 +2181,7 @@
     {
       "id": "doc-021",
       "name": "javascript-guide.md",
-      "title": "JavaScript — From Basics to Modern Front-End",
+      "title": "JavaScript - From Basics to Modern Front-End",
       "slug": "javascript-from-basics-to-modern-front-end",
       "route": "/en/programming/javascript/javascript-from-basics-to-modern-front-end",
       "index": true,
@@ -2206,7 +2206,7 @@
     {
       "id": "doc-022",
       "name": "nodejs.md",
-      "title": "Node.js — Practical Handbook",
+      "title": "Node.js - Practical Handbook",
       "slug": "node-js-practical-handbook",
       "route": "/en/programming/javascript/node-js-practical-handbook",
       "index": true,
@@ -2231,7 +2231,7 @@
     {
       "id": "doc-023",
       "name": "python-basics.md",
-      "title": "Python — Practical Handbook",
+      "title": "Python - Practical Handbook",
       "slug": "python-practical-handbook",
       "route": "/en/programming/python/python-practical-handbook",
       "index": true,
@@ -2282,7 +2282,7 @@
     {
       "id": "doc-024",
       "name": "cybersecurity-basics-pentesting.md",
-      "title": "Cybersecurity and Pentesting — Fundamentals",
+      "title": "Cybersecurity and Pentesting - Fundamentals",
       "slug": "cybersecurity-and-pentesting-fundamentals",
       "route": "/en/security/cybersecurity-and-pentesting-fundamentals",
       "index": true,
@@ -2366,7 +2366,7 @@
     {
       "id": "doc-027",
       "name": "debian-shell.md",
-      "title": "Debian — Practical Shell Handbook",
+      "title": "Debian - Practical Shell Handbook",
       "slug": "debian-practical-shell-handbook",
       "route": "/en/shell/debian/debian-practical-shell-handbook",
       "index": true,
@@ -2414,7 +2414,7 @@
     {
       "id": "doc-029",
       "name": "freebsd-shell.md",
-      "title": "FreeBSD — Practical Shell Handbook",
+      "title": "FreeBSD - Practical Shell Handbook",
       "slug": "freebsd-practical-shell-handbook",
       "route": "/en/shell/freebsd/freebsd-practical-shell-handbook",
       "index": true,
@@ -2463,7 +2463,7 @@
     {
       "id": "doc-031",
       "name": "shell-scripting.md",
-      "title": "Shell Scripting — Debian and FreeBSD",
+      "title": "Shell Scripting - Debian and FreeBSD",
       "slug": "shell-scripting-debian-and-freebsd",
       "route": "/en/shell/scripting/shell-scripting-debian-and-freebsd",
       "index": true,
@@ -2488,7 +2488,7 @@
     {
       "id": "doc-032",
       "name": "termux.md",
-      "title": "Termux — Knowledge Handbook",
+      "title": "Termux - Knowledge Handbook",
       "slug": "termux-knowledge-handbook",
       "route": "/en/systems/android/termux-knowledge-handbook",
       "index": true,
@@ -2512,7 +2512,7 @@
     {
       "id": "doc-033",
       "name": "debian-desktop-server.md",
-      "title": "Debian 13 — Desktop + Server Handbook",
+      "title": "Debian 13 - Desktop + Server Handbook",
       "slug": "debian-13-desktop-server-handbook",
       "route": "/en/systems/debian/debian-13-desktop-server-handbook",
       "index": true,
@@ -2538,7 +2538,7 @@
     {
       "id": "doc-034",
       "name": "freebsd-server.md",
-      "title": "FreeBSD as a Server — Administrator Handbook",
+      "title": "FreeBSD as a Server - Administrator Handbook",
       "slug": "freebsd-as-a-server-administrator-handbook",
       "route": "/en/systems/freebsd/freebsd-as-a-server-administrator-handbook",
       "index": true,
@@ -2608,7 +2608,7 @@
     {
       "id": "doc-037",
       "name": "windows-server-administration.md",
-      "title": "Windows Server in the Enterprise — Administrator Fundamentals",
+      "title": "Windows Server in the Enterprise - Administrator Fundamentals",
       "slug": "windows-server-in-the-enterprise-administrator-fundamentals",
       "route": "/en/systems/windows/windows-server-in-the-enterprise-administrator-fundamentals",
       "index": true,
@@ -2632,7 +2632,7 @@
     {
       "id": "doc-049",
       "name": "software-testing.md",
-      "title": "Software Testing — Handbook",
+      "title": "Software Testing - Handbook",
       "slug": "software-testing-handbook",
       "route": "/en/testing/software-testing-handbook",
       "index": true,
@@ -2660,7 +2660,7 @@
     {
       "id": "doc-038",
       "name": "vi-vim-neovim.md",
-      "title": "vi / Vim / gVim / Neovim — Practical Text Editing Handbook",
+      "title": "vi / Vim / gVim / Neovim - Practical Text Editing Handbook",
       "slug": "vi-vim-gvim-neovim-practical-text-editing-handbook",
       "route": "/en/tools/editors/vi-vim-gvim-neovim-practical-text-editing-handbook",
       "index": true,
@@ -2686,7 +2686,7 @@
     {
       "id": "doc-039",
       "name": "vscode.md",
-      "title": "Visual Studio Code — Knowledge Handbook",
+      "title": "Visual Studio Code - Knowledge Handbook",
       "slug": "visual-studio-code-knowledge-handbook",
       "route": "/en/tools/editors/visual-studio-code-knowledge-handbook",
       "index": true,
@@ -2712,7 +2712,7 @@
     {
       "id": "doc-040",
       "name": "midnight-commander.md",
-      "title": "Midnight Commander — Knowledge Handbook",
+      "title": "Midnight Commander - Knowledge Handbook",
       "slug": "midnight-commander-knowledge-handbook",
       "route": "/en/tools/file-managers/midnight-commander-knowledge-handbook",
       "index": true,
@@ -2735,7 +2735,7 @@
     {
       "id": "doc-050",
       "name": "regular-expressions.md",
-      "title": "Regular Expressions (Regex) — Practical Handbook",
+      "title": "Regular Expressions (Regex) - Practical Handbook",
       "slug": "regular-expressions-regex-practical-handbook",
       "route": "/en/tools/regex/regular-expressions-regex-practical-handbook",
       "index": true,
@@ -2762,7 +2762,7 @@
     {
       "id": "doc-057",
       "name": "web-app-end-to-end-playbook.md",
-      "title": "End-to-End Web Application Troubleshooting — Playbook",
+      "title": "End-to-End Web Application Troubleshooting - Playbook",
       "slug": "end-to-end-web-application-troubleshooting-playbook",
       "route": "/en/troubleshooting/end-to-end-web-application-troubleshooting-playbook",
       "index": true,
@@ -2817,7 +2817,7 @@
     {
       "id": "doc-046",
       "name": "browser-devtools.md",
-      "title": "Browser DevTools — Practical Handbook",
+      "title": "Browser DevTools - Practical Handbook",
       "slug": "browser-devtools-practical-handbook",
       "route": "/en/web/frontend/browser-devtools-practical-handbook",
       "index": true,
@@ -2948,7 +2948,7 @@
     {
       "id": "doc-047",
       "name": "technical-seo.md",
-      "title": "Technical SEO — Practical Handbook",
+      "title": "Technical SEO - Practical Handbook",
       "slug": "technical-seo-practical-handbook",
       "route": "/en/web/seo/technical-seo-practical-handbook",
       "index": true,

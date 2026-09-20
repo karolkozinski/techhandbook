@@ -1,6 +1,6 @@
 ---
 id: "doc-001"
-title: "Hermes Agent — User Handbook"
+title: "Hermes Agent - User Handbook"
 slug: "hermes-agent-user-handbook"
 description: "Hermes is an AI-agent environment that can combine model access, shell tools, files, memory, profiles, gateways and messaging integrations."
 lang: "en"
@@ -13,7 +13,7 @@ tags:
   - "agent"
 ---
 
-# Hermes Agent — User Handbook
+# Hermes Agent - User Handbook
 
 Hermes Agent combines an AI model with shell tools, files, skills, memory, cron and messaging channels. The safest rollout is to get ordinary CLI/chat working first, then add the gateway, Signal, cron, browser automation and broader permissions.
 
@@ -75,7 +75,7 @@ Use fast/cheap models for routine tasks and stronger models for complex coding/r
 Fallback improves resilience but should be logged so behavior/cost changes are visible.
 # 18. Mixture of Agents
 Use multiple agents/models only when parallel work or independent review justifies extra cost and complexity.
-# 19. Terminal — the agent's most important capability
+# 19. Terminal - the agent's most important capability
 Shell access lets Hermes inspect files, run tests, build software and administer systems.
 # 20. Be careful with permissions
 Do not run permanently as root. Grant the minimum rights needed for the intended workflows.
@@ -83,7 +83,7 @@ Do not run permanently as root. Grant the minimum rights needed for the intended
 Local shell changes the real host; sandboxed execution reduces blast radius.
 # 22. Docker
 Useful on Debian for isolated dev/test environments; not a substitute for strict privilege boundaries.
-# 23. SSH — main way to work with FreeBSD
+# 23. SSH - main way to work with FreeBSD
 Use dedicated SSH keys/users from the Debian Hermes host to FreeBSD targets.
 # 24. `~/.ssh/config`
 ```text
@@ -142,7 +142,7 @@ Reusable procedures/tool instructions for recurring tasks.
 They turn repeated prompting into consistent documented workflows.
 # 37. Skills and secrets
 Reference secret locations, never embed secret values inside reusable skill files.
-# 38. Cron — automation
+# 38. Cron - automation
 Use schedules for recurring deterministic or agent-assisted work. Make jobs idempotent and observable.
 # 39. Tasks without an AI model
 If a task is deterministic, prefer a normal shell/Python/Go script.
@@ -150,16 +150,16 @@ If a task is deterministic, prefer a normal shell/Python/Go script.
 Wrap frequent safe workflows in short documented commands.
 # 41. Signal
 Can serve as a remote conversational/control interface.
-# 42. Signal — requirements
+# 42. Signal - requirements
 Working Signal account/number plus the gateway/integration required by your Hermes version.
-# 43. Signal — Hermes configuration
+# 43. Signal - Hermes configuration
 Keep account identifiers and gateway settings outside public repositories.
-# 44. Signal — example variables
+# 44. Signal - example variables
 ```env
 SIGNAL_ACCOUNT=...
 SIGNAL_ALLOWED_SENDER=...
 ```
-# 45. Signal — security
+# 45. Signal - security
 Treat incoming messages as remote commands. Restrict authorized senders and dangerous actions.
 # 46. Running the gateway
 Run under a dedicated user and collect logs.
@@ -254,11 +254,11 @@ Then make the smallest safe change.
 Run tests/checks and report results.
 ```
 # 77. Autonomy modes
-## Level 1 — analysis only
+## Level 1 - analysis only
 Read/inspect, no modifications.
-## Level 2 — limited action
+## Level 2 - limited action
 Narrow, explicit write/command permissions.
-## Level 3 — autonomous execution
+## Level 3 - autonomous execution
 Only for well-defined, low-risk, observable and reversible workflows.
 # 78. WebUI
 Optional. CLI/Signal are enough for a first deployment.
@@ -279,13 +279,13 @@ Create a normal Unix account specifically for Hermes.
 Allow only explicit required commands, not unrestricted NOPASSWD root.
 # 84. Firewall
 Expose only required gateway/UI ports, preferably behind VPN/reverse proxy as appropriate.
-# 85. SSH from Hermes to FreeBSD — security
+# 85. SSH from Hermes to FreeBSD - security
 Dedicated key, dedicated account, limited sudo/doas and network restrictions.
-# 86. FreeBSD — user for the agent
+# 86. FreeBSD - user for the agent
 Grant only groups/filesystem permissions required for its tasks.
-# 87. FreeBSD — sudo/doas
+# 87. FreeBSD - sudo/doas
 Use tightly scoped privilege rules.
-# 88. Native Hermes on FreeBSD — experimental
+# 88. Native Hermes on FreeBSD - experimental
 Treat as experimental unless upstream explicitly supports your FreeBSD version.
 # 89. Debian VM on FreeBSD
 A Debian VM is a clean compatibility boundary when Linux-only dependencies are required.
@@ -307,15 +307,15 @@ Use runbooks; avoid improvisational root access.
 Exact commands vary by version; commonly model/session/profile/memory controls.
 # 98. Most important administrative CLI commands
 Keep a local cheat sheet aligned with your installed Hermes version.
-# 99. Diagnostics — first set
+# 99. Diagnostics - first set
 ```bash
 command -v hermes
 hermes --help
 env | grep -E 'HERMES|OPENAI|OPENROUTER'
 ```
-# 100. Signal does not work — checklist
+# 100. Signal does not work - checklist
 Gateway process, account/session, allowed sender, network, config and logs.
-# 101. SSH to FreeBSD does not work — checklist
+# 101. SSH to FreeBSD does not work - checklist
 DNS/IP, route, port 22, sshd, key permissions, remote user and firewall.
 # 102. Hermes uses the wrong system command
 Detect OS explicitly and document Debian/FreeBSD command differences in runbooks.
@@ -355,7 +355,7 @@ runbooks → docs/repo
 host access → ~/.ssh
 logs → journald/files
 ```
-# 113. Commands — cheat sheet
+# 113. Commands - cheat sheet
 ## Installation
 follow current upstream install command.
 ## Diagnostics
@@ -374,7 +374,7 @@ create/select profile.
 inspect/update memory policy.
 ## Message
 hermes send where supported.
-# 114. FreeBSD — cheat sheet for Hermes
+# 114. FreeBSD - cheat sheet for Hermes
 ## System
 ```sh
 freebsd-version
@@ -409,7 +409,7 @@ gpart show
 zpool status
 zfs list
 ```
-# 115. Debian — cheat sheet for Hermes
+# 115. Debian - cheat sheet for Hermes
 ## System
 ```bash
 cat /etc/os-release
@@ -450,7 +450,7 @@ Debian VPS: Hermes + gateway + Signal + model access
         ↓ SSH
 FreeBSD: storage/services managed by limited account
 ```
-# 119. First day — concrete checklist
+# 119. First day - concrete checklist
 Install Hermes, configure one provider/model, create dedicated user, verify CLI, configure SSH, set up one communication channel, create backup, test one harmless workflow.
 # 120. Second stage
 Add systemd gateway, profiles, memory policy, notifications and repository workflows.

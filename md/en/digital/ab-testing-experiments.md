@@ -1,6 +1,6 @@
 ---
 id: "doc-054"
-title: "A/B Testing and Experiments — Practical Handbook"
+title: "A/B Testing and Experiments - Practical Handbook"
 slug: "a-b-testing-and-experiments-practical-handbook"
 description: "An A/B test compares two or more variants under controlled conditions."
 lang: "en"
@@ -15,7 +15,7 @@ tags:
   - "metrics"
 ---
 
-# A/B Testing and Experiments — Practical Handbook
+# A/B Testing and Experiments - Practical Handbook
 
 A good experiment starts before results are visible: hypothesis, primary metric, guardrails, population and stopping rule should be defined in advance. This reduces the temptation to adapt the interpretation to the observed result.
 

@@ -212,7 +212,7 @@ Go:
 govulncheck ./...
 ```
 
-Nie aktualizuj produkcji w ciemno — testuj.
+Nie aktualizuj produkcji w ciemno - testuj.
 
 ## 17. Least privilege
 

@@ -569,7 +569,7 @@ MoA oznacza **Mixture of Agents**.
 
 Pozwala używać kilku agentów/modeli do rozwiązania jednego zadania.
 
-Nie warto uruchamiać tego do wszystkiego — zwiększa:
+Nie warto uruchamiać tego do wszystkiego - zwiększa:
 
 - koszt,
 - liczbę tokenów,
@@ -579,7 +579,7 @@ Przydaje się przy bardziej złożonych analizach.
 
 ---
 
-# 19. Terminal — najważniejsza funkcja agenta
+# 19. Terminal - najważniejsza funkcja agenta
 
 Hermes może wykonywać polecenia systemowe.
 
@@ -675,7 +675,7 @@ Na FreeBSD nie należy zakładać natywnego Dockera jako podstawowej warstwy.
 
 ---
 
-# 23. SSH — najważniejszy sposób pracy z FreeBSD
+# 23. SSH - najważniejszy sposób pracy z FreeBSD
 
 Najbardziej praktyczny układ:
 
@@ -1137,7 +1137,7 @@ To znacznie bezpieczniejsze niż wpisanie tokena do pliku instrukcji.
 
 ---
 
-# 38. Cron — automatyzacja
+# 38. Cron - automatyzacja
 
 Hermes może uruchamiać zadania cyklicznie.
 
@@ -1235,7 +1235,7 @@ Signal jest bardzo wygodny do zdalnego sterowania agentem działającym na VPS.
 
 ---
 
-# 42. Signal — wymagania
+# 42. Signal - wymagania
 
 Potrzebujesz:
 
@@ -1249,7 +1249,7 @@ Najpierw uruchom i skonfiguruj samo `signal-cli`.
 
 ---
 
-# 43. Signal — konfiguracja Hermesa
+# 43. Signal - konfiguracja Hermesa
 
 Uruchom:
 
@@ -1273,7 +1273,7 @@ http://127.0.0.1:8080
 
 ---
 
-# 44. Signal — przykładowe zmienne
+# 44. Signal - przykładowe zmienne
 
 W:
 
@@ -1298,7 +1298,7 @@ Numery zapisuj w formacie E.164:
 
 ---
 
-# 45. Signal — bezpieczeństwo
+# 45. Signal - bezpieczeństwo
 
 To szczególnie ważne.
 
@@ -1971,21 +1971,21 @@ Agent działa lepiej, gdy dokładnie wie:
 
 Możesz mentalnie podzielić zadania na trzy poziomy.
 
-## Poziom 1 — tylko analiza
+## Poziom 1 - tylko analiza
 
 ```text
 Sprawdź i powiedz, co jest nie tak.
 Nic nie zmieniaj.
 ```
 
-## Poziom 2 — ograniczone działanie
+## Poziom 2 - ograniczone działanie
 
 ```text
 Możesz poprawić konfigurację aplikacji,
 ale nie restartuj usług.
 ```
 
-## Poziom 3 — autonomiczne wykonanie
+## Poziom 3 - autonomiczne wykonanie
 
 ```text
 Napraw problem, uruchom testy,
@@ -2106,7 +2106,7 @@ sudo visudo
 
 można dopuścić tylko konkretne polecenia.
 
-Nie twórz jednak skomplikowanych reguł sudo bez zrozumienia ich konsekwencji — obejścia są czasem możliwe przez pozornie niewinne programy.
+Nie twórz jednak skomplikowanych reguł sudo bez zrozumienia ich konsekwencji - obejścia są czasem możliwe przez pozornie niewinne programy.
 
 ---
 
@@ -2144,7 +2144,7 @@ chyba że dokładnie wiesz, dlaczego tego potrzebujesz.
 
 ---
 
-# 85. SSH z Hermesa do FreeBSD — bezpieczeństwo
+# 85. SSH z Hermesa do FreeBSD - bezpieczeństwo
 
 Dobrze utworzyć osobny klucz:
 
@@ -2171,7 +2171,7 @@ Możesz wtedy ograniczyć konto `hermes` na FreeBSD.
 
 ---
 
-# 86. FreeBSD — użytkownik dla agenta
+# 86. FreeBSD - użytkownik dla agenta
 
 Na FreeBSD:
 
@@ -2196,7 +2196,7 @@ Daj mu tylko prawa potrzebne do:
 
 ---
 
-# 87. FreeBSD — sudo/doas
+# 87. FreeBSD - sudo/doas
 
 Możesz użyć:
 
@@ -2216,7 +2216,7 @@ Na początek zwykły użytkownik SSH często w zupełności wystarczy.
 
 ---
 
-# 88. Native Hermes na FreeBSD — eksperymentalnie
+# 88. Native Hermes na FreeBSD - eksperymentalnie
 
 Jeżeli mimo wszystko chcesz próbować:
 
@@ -2472,7 +2472,7 @@ hermes COMMAND --help
 
 ---
 
-# 99. Diagnostyka — pierwszy zestaw
+# 99. Diagnostyka - pierwszy zestaw
 
 Jeżeli Hermes przestaje działać:
 
@@ -2495,7 +2495,7 @@ tail -n 200 ~/.hermes/logs/gateway.log
 
 ---
 
-# 100. Signal nie działa — checklista
+# 100. Signal nie działa - checklista
 
 Sprawdź:
 
@@ -2528,7 +2528,7 @@ i logi gateway.
 
 ---
 
-# 101. SSH do FreeBSD nie działa — checklista
+# 101. SSH do FreeBSD nie działa - checklista
 
 Na Debianie:
 
@@ -2780,7 +2780,7 @@ repozytorium
 
 ---
 
-# 113. Komendy — ściąga
+# 113. Komendy - ściąga
 
 ## Instalacja
 
@@ -2844,7 +2844,7 @@ hermes send --to signal "test"
 
 ---
 
-# 114. FreeBSD — ściąga dla Hermesa
+# 114. FreeBSD - ściąga dla Hermesa
 
 ## System
 
@@ -2902,7 +2902,7 @@ zfs list
 
 ---
 
-# 115. Debian — ściąga dla Hermesa
+# 115. Debian - ściąga dla Hermesa
 
 ## System
 
@@ -3046,7 +3046,7 @@ To daje Ci:
 
 ---
 
-# 119. Pierwszy dzień — konkretna checklista
+# 119. Pierwszy dzień - konkretna checklista
 
 ```text
 [ ] Zainstaluj Debiana

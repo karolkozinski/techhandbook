@@ -49,15 +49,15 @@ W większej organizacji foldery porządkują projekty według zespołów, środo
 
 GCP rozróżnia:
 
-- **region** — obszar geograficzny,
-- **zone** — strefę wewnątrz regionu,
+- **region** - obszar geograficzny,
+- **zone** - strefę wewnątrz regionu,
 - zasoby regionalne,
 - zasoby zonalne,
 - zasoby globalne.
 
 Ciekawostka istotna operacyjnie: sieci VPC w GCP są zasobami globalnymi, a subnety regionalnymi.
 
-## 4. Najważniejsze usługi — mapa
+## 4. Najważniejsze usługi - mapa
 
 | Potrzeba | Google Cloud |
 |---|---|
@@ -194,12 +194,12 @@ Funkcje:
 
 ## 10. Persistent Disk i Filestore
 
-**Persistent Disk/Hyperdisk** — storage blokowy dla VM.  
-**Filestore** — zarządzany filesystem NFS.
+**Persistent Disk/Hyperdisk** - storage blokowy dla VM.  
+**Filestore** - zarządzany filesystem NFS.
 
 Nie używaj dysku VM jako jedynego miejsca na krytyczne dane bez snapshotów i planu odtwarzania.
 
-## 11. Cloud Run — jedna z najważniejszych usług GCP
+## 11. Cloud Run - jedna z najważniejszych usług GCP
 
 Cloud Run uruchamia kontener i automatycznie skaluje go, nawet do zera.
 
@@ -339,17 +339,17 @@ To jeden z najważniejszych wzorców bezpieczeństwa w GCP.
 
 ## 22. Secret Manager i KMS
 
-**Secret Manager** — sekrety aplikacji.  
-**Cloud KMS** — klucze kryptograficzne.
+**Secret Manager** - sekrety aplikacji.  
+**Cloud KMS** - klucze kryptograficzne.
 
 Aplikacja powinna pobierać sekret dzięki swojej tożsamości IAM, nie przez hardcoded password.
 
 ## 23. Cloud Logging i Monitoring
 
-**Cloud Logging** — centralne logi.  
-**Cloud Monitoring** — metryki, alerty, dashboardy.  
-**Cloud Trace / Profiler** — dodatkowa obserwowalność.  
-**Audit Logs** — historia istotnych operacji administracyjnych.
+**Cloud Logging** - centralne logi.  
+**Cloud Monitoring** - metryki, alerty, dashboardy.  
+**Cloud Trace / Profiler** - dodatkowa obserwowalność.  
+**Audit Logs** - historia istotnych operacji administracyjnych.
 
 Ustawiaj alerty na objawy ważne biznesowo, a nie tylko na CPU.
 
@@ -421,10 +421,10 @@ Infrastructure as Code jest szczególnie ważne, gdy projekty dev/stage/prod maj
 
 ## 26. Load Balancing, CDN i DNS
 
-- **Cloud Load Balancing** — globalny/regionalny load balancing zależnie od typu.
-- **Cloud CDN** — cache na edge.
-- **Cloud DNS** — zarządzany DNS.
-- **Cloud Armor** — polityki bezpieczeństwa/WAF/DDoS na warstwie aplikacyjnej.
+- **Cloud Load Balancing** - globalny/regionalny load balancing zależnie od typu.
+- **Cloud CDN** - cache na edge.
+- **Cloud DNS** - zarządzany DNS.
+- **Cloud Armor** - polityki bezpieczeństwa/WAF/DDoS na warstwie aplikacyjnej.
 
 ## 27. Vertex AI
 
@@ -511,7 +511,7 @@ Organization
 
 Separate projects są wygodnym mechanizmem izolacji uprawnień, quota i billing.
 
-## 31. Bezpieczeństwo — minimum
+## 31. Bezpieczeństwo - minimum
 
 - MFA/federacja dla ludzi.
 - IAM least privilege.

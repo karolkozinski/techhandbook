@@ -1,6 +1,6 @@
 ---
 id: "doc-029"
-title: "FreeBSD — shell"
+title: "FreeBSD - shell"
 slug: "freebsd-shell"
 description: "Samodzielne kompendium do codziennej pracy we FreeBSD z terminala lub przez SSH."
 lang: "pl"
@@ -14,7 +14,7 @@ tags:
   - "tcsh"
 ---
 
-# FreeBSD — shell
+# FreeBSD - shell
 
 To kompendium dotyczy codziennej administracji FreeBSD z terminala. Dla wyboru i konfiguracji powłoki zobacz [Shelle w FreeBSD - przegląd](techhandbook:doc-030), a dla szerszej administracji [FreeBSD jako serwer](techhandbook:doc-034). Automatyzację opisuje [Programowanie w shellu](techhandbook:doc-031).
 
@@ -24,7 +24,7 @@ Cel: sprawnie poruszać się po systemie, pracować z plikami, procesami i sieci
 
 ---
 
-# FreeBSD — administrator, system i katalogi
+# FreeBSD - administrator, system i katalogi
 
 ## `su`
 
@@ -88,7 +88,7 @@ Bardzo ważna praktyczna zasada: konfiguracji programu zainstalowanego przez `pk
 
 ---
 
-# 1. Shell, terminal i polecenia — co właściwie robisz?
+# 1. Shell, terminal i polecenia - co właściwie robisz?
 
 Terminal to okno, w którym wpisujesz polecenia.
 
@@ -127,7 +127,7 @@ bash
 
 ---
 
-# 2. `pwd` — gdzie jestem?
+# 2. `pwd` - gdzie jestem?
 
 Polecenie:
 
@@ -161,7 +161,7 @@ Przydaje się szczególnie wtedy, gdy:
 
 ---
 
-# 3. `ls` — co jest w katalogu?
+# 3. `ls` - co jest w katalogu?
 
 Podstawowa forma:
 
@@ -277,7 +277,7 @@ Dostajesz:
 
 ---
 
-# 4. `cd` — zmiana katalogu
+# 4. `cd` - zmiana katalogu
 
 Polecenie:
 
@@ -411,7 +411,7 @@ Katalog nadrzędny:
 
 ---
 
-# 6. `touch` — tworzenie pustego pliku i zmiana czasu modyfikacji
+# 6. `touch` - tworzenie pustego pliku i zmiana czasu modyfikacji
 
 ```sh
 touch test.txt
@@ -437,7 +437,7 @@ ls -l README.md
 
 ---
 
-# 7. `mkdir` — tworzenie katalogów
+# 7. `mkdir` - tworzenie katalogów
 
 Podstawowo:
 
@@ -459,7 +459,7 @@ Bez `-p` polecenie zakończyłoby się błędem, jeśli `app` lub `config` nie i
 
 ---
 
-# 8. `cp` — kopiowanie
+# 8. `cp` - kopiowanie
 
 Podstawowo:
 
@@ -511,7 +511,7 @@ To prosty i bardzo dobry nawyk.
 
 ---
 
-# 9. `mv` — przenoszenie i zmiana nazwy
+# 9. `mv` - przenoszenie i zmiana nazwy
 
 Zmiana nazwy:
 
@@ -543,7 +543,7 @@ mv -v old.txt new.txt
 
 ---
 
-# 10. `rm` — usuwanie
+# 10. `rm` - usuwanie
 
 Usuwanie pliku:
 
@@ -596,7 +596,7 @@ i dopiero potem wykonać usuwanie.
 
 ---
 
-# 11. `cat` — szybkie wyświetlenie pliku
+# 11. `cat` - szybkie wyświetlenie pliku
 
 ```sh
 cat config.txt
@@ -618,7 +618,7 @@ cat README.md
 
 ---
 
-# 12. `less` — wygodne czytanie dużych plików
+# 12. `less` - wygodne czytanie dużych plików
 
 ```sh
 less /var/log/syslog
@@ -655,7 +655,7 @@ na Debianie.
 
 ---
 
-# 13. `head` — początek pliku
+# 13. `head` - początek pliku
 
 Domyślnie:
 
@@ -677,7 +677,7 @@ Przydatne np. do szybkiego obejrzenia CSV, logu albo konfiguracji.
 
 ---
 
-# 14. `tail` — koniec pliku
+# 14. `tail` - koniec pliku
 
 Domyślnie:
 
@@ -713,7 +713,7 @@ Ctrl+C
 
 ---
 
-# 15. `grep` — wyszukiwanie tekstu
+# 15. `grep` - wyszukiwanie tekstu
 
 Najprościej:
 
@@ -783,7 +783,7 @@ grep -Ev '^\s*($|#)' config.conf
 
 ---
 
-# 16. `find` — znajdowanie plików
+# 16. `find` - znajdowanie plików
 
 Podstawowo:
 
@@ -849,7 +849,7 @@ Znajdzie pliki większe niż 100 MB.
 
 ---
 
-# 17. `which`, `command -v`, `whereis` — gdzie jest program?
+# 17. `which`, `command -v`, `whereis` - gdzie jest program?
 
 Najbardziej przenośne:
 
@@ -885,7 +885,7 @@ nginx: /usr/sbin/nginx /usr/share/man/man8/nginx.8.gz
 
 ---
 
-# 18. `file` — czym jest plik?
+# 18. `file` - czym jest plik?
 
 ```sh
 file program
@@ -913,7 +913,7 @@ Przydaje się, gdy rozszerzenie pliku nic nie mówi.
 
 ---
 
-# 19. `stat` — szczegółowe informacje o pliku
+# 19. `stat` - szczegółowe informacje o pliku
 
 ```sh
 stat README.md
@@ -930,7 +930,7 @@ Pokazuje m.in.:
 
 ---
 
-# 20. `man` — dokumentacja poleceń
+# 20. `man` - dokumentacja poleceń
 
 ```sh
 man grep
@@ -966,7 +966,7 @@ Na FreeBSD to szczególnie użyteczne.
 
 ---
 
-# 21. `echo` — wypisywanie tekstu i zmiennych
+# 21. `echo` - wypisywanie tekstu i zmiennych
 
 ```sh
 echo "Hello"
@@ -1162,7 +1162,7 @@ Pokazuje:
 
 ---
 
-# 28. `uname` — kernel i platforma
+# 28. `uname` - kernel i platforma
 
 ```sh
 uname
@@ -1247,7 +1247,7 @@ Odczytasz:
 
 ---
 
-# 32. `top` — procesy i obciążenie
+# 32. `top` - procesy i obciążenie
 
 ```sh
 top
@@ -1276,7 +1276,7 @@ Przydaje się, gdy system:
 
 ---
 
-# 33. `ps` — lista procesów
+# 33. `ps` - lista procesów
 
 Najczęściej:
 
@@ -1288,8 +1288,8 @@ Pokazuje wszystkie procesy.
 
 Najważniejsze kolumny:
 
-- `USER` — właściciel,
-- `PID` — numer procesu,
+- `USER` - właściciel,
+- `PID` - numer procesu,
 - `%CPU`,
 - `%MEM`,
 - `COMMAND`.
@@ -1302,7 +1302,7 @@ ps aux | grep nginx
 
 ---
 
-# 34. `pgrep` — znajdź PID po nazwie
+# 34. `pgrep` - znajdź PID po nazwie
 
 ```sh
 pgrep nginx
@@ -1365,7 +1365,7 @@ pkill nginx
 
 ---
 
-# 36. `df` — wolne miejsce na systemach plików
+# 36. `df` - wolne miejsce na systemach plików
 
 ```sh
 df -h
@@ -1380,17 +1380,17 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 Najważniejsze:
 
-- `Size` — rozmiar,
-- `Used` — zajęte,
-- `Avail` — wolne,
-- `Use%` — procent,
-- `Mounted on` — punkt montowania.
+- `Size` - rozmiar,
+- `Used` - zajęte,
+- `Avail` - wolne,
+- `Use%` - procent,
+- `Mounted on` - punkt montowania.
 
 To jedno z pierwszych poleceń przy dziwnym zachowaniu serwera.
 
 ---
 
-# 37. `du` — ile miejsca zajmuje katalog?
+# 37. `du` - ile miejsca zajmuje katalog?
 
 ```sh
 du -sh /var/log
@@ -1424,7 +1424,7 @@ du -sh * | sort -h
 
 ---
 
-# 38. `mount` — co jest zamontowane?
+# 38. `mount` - co jest zamontowane?
 
 ```sh
 mount
@@ -1442,7 +1442,7 @@ Przydaje się przy:
 
 ---
 
-# 40. FreeBSD — dyski
+# 40. FreeBSD - dyski
 
 ```sh
 geom disk list
@@ -1491,7 +1491,7 @@ Pokazuje datasety i ich wykorzystanie.
 
 ---
 
-# 43. FreeBSD — `ifconfig`
+# 43. FreeBSD - `ifconfig`
 
 ```sh
 ifconfig
@@ -1605,7 +1605,7 @@ curl -LO https://example.com/file.tar.gz
 
 ---
 
-# 47. DNS — `host` i `dig`
+# 47. DNS - `host` i `dig`
 
 ```sh
 host example.com
@@ -1645,7 +1645,7 @@ pkg install bind-tools
 
 ---
 
-# 49. FreeBSD — `sockstat`
+# 49. FreeBSD - `sockstat`
 
 ```sh
 sockstat -4 -6 -l
@@ -1835,7 +1835,7 @@ Przydaje się przy:
 
 ---
 
-# 57. FreeBSD — `pkg`
+# 57. FreeBSD - `pkg`
 
 ## Aktualizacja katalogu
 
@@ -1901,7 +1901,7 @@ pkg which /usr/local/bin/curl
 
 ---
 
-# 60. FreeBSD — usługi `service`
+# 60. FreeBSD - usługi `service`
 
 Status:
 
@@ -1935,7 +1935,7 @@ service -e
 
 ---
 
-# 61. FreeBSD — `sysrc`
+# 61. FreeBSD - `sysrc`
 
 FreeBSD zapisuje wiele ustawień startowych w:
 
@@ -1975,7 +1975,7 @@ sysrc -x nginx_enable
 
 ---
 
-# 62. FreeBSD — logi
+# 62. FreeBSD - logi
 
 Typowy katalog:
 
@@ -2011,7 +2011,7 @@ tail -f /var/log/messages
 
 ---
 
-# 63. FreeBSD — system bazowy i pakiety
+# 63. FreeBSD - system bazowy i pakiety
 
 FreeBSD rozdziela:
 
@@ -2041,7 +2041,7 @@ To ważna różnica względem Debiana.
 
 ---
 
-# 64. FreeBSD — aktualizacja systemu bazowego
+# 64. FreeBSD - aktualizacja systemu bazowego
 
 W zależności od sposobu instalacji system może używać klasycznego mechanizmu albo pkgbase.
 
@@ -2096,7 +2096,7 @@ dmesg | tail -n 50
 
 ---
 
-# 68. FreeBSD — `sysctl`
+# 68. FreeBSD - `sysctl`
 
 CPU:
 
@@ -2337,9 +2337,9 @@ tar -czf backup.tar.gz project/
 
 Znaczenie:
 
-- `-c` — create,
-- `-z` — gzip,
-- `-f` — plik wynikowy.
+- `-c` - create,
+- `-z` - gzip,
+- `-f` - plik wynikowy.
 
 Rozpakowanie:
 
@@ -2347,7 +2347,7 @@ Rozpakowanie:
 tar -xzf backup.tar.gz
 ```
 
-- `-x` — extract.
+- `-x` - extract.
 
 Podejrzenie zawartości:
 
@@ -2437,7 +2437,7 @@ Co uzyskasz:
 
 ---
 
-# Przykłady z prawdziwego życia — FreeBSD
+# Przykłady z prawdziwego życia - FreeBSD
 
 ## 1. Strona WWW przestała odpowiadać
 
@@ -2702,7 +2702,7 @@ Dzięki temu zapisujesz konfigurację systemu bazowego i większości programów
 
 ---
 
-# FreeBSD — minimalny zestaw do pamięci
+# FreeBSD - minimalny zestaw do pamięci
 
 ```sh
 pwd
