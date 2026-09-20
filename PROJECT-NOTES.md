@@ -62,6 +62,21 @@ Pierwsze polecenie skryptu waliduje treść bez zapisu. `--check` dodatkowo spra
 
 Stabilne `id` są używane przez linki wewnętrzne i relacje. Nie wolno ich zmieniać przy przenoszeniu ani zmianie tytułu artykułu.
 
+## Automatyczna walidacja
+
+Workflow `.github/workflows/content-check.yml` uruchamia walidację treści przy zmianach artykułów, indeksu, relacji lub samego walidatora.
+
+Sprawdza:
+
+- poprawność front matter,
+- zgodność H1 z tytułem,
+- stabilne ID i unikalne slugi,
+- kompletność tłumaczeń STANDARD,
+- relacje i linki wewnętrzne,
+- zgodność wygenerowanego `content-index.json` ze źródłami.
+
+Ten workflow nie publikuje strony. GitHub Pages pozostaje osobnym mechanizmem deploymentu.
+
 ## Wyszukiwanie
 
 Wyszukiwarka wykorzystuje m.in.:
