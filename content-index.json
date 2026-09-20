@@ -274,7 +274,10 @@
         "go",
         "golang"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-049"
+      ]
     },
     {
       "id": "doc-021",
@@ -684,7 +687,10 @@
         "playwright",
         "go test"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-020"
+      ]
     },
     {
       "id": "doc-050",
@@ -1147,7 +1153,10 @@
         "go",
         "golang"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-049"
+      ]
     },
     {
       "id": "doc-021",
@@ -1542,7 +1551,10 @@
         "playwright",
         "go test"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-020"
+      ]
     },
     {
       "id": "doc-053",

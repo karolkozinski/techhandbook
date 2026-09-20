@@ -39,6 +39,7 @@
       backToBrowse: "Wróć do katalogów",
       toTop: "Do góry",
       close: "Zamknij",
+      relatedArticles: "Powiązane artykuły",
       juniorWelcomeTitle: "Technologia bez strachu.",
       juniorWelcomeText: "Krótko, prosto i praktycznie. Wybierz temat i od razu spróbuj czegoś sam."
     },
@@ -79,6 +80,7 @@
       backToBrowse: "Back to folders",
       toTop: "To top",
       close: "Close",
+      relatedArticles: "Related articles",
       juniorWelcomeTitle: "Technology without the scary bits.",
       juniorWelcomeText: "Short, clear and practical. Pick a topic and try something yourself."
     }
@@ -443,6 +445,64 @@
   function setNavigationContext(context) {
     state.navigationContext = { ...state.navigationContext, ...context };
   }
+
+  function currentHistoryState() {
+    const query = els.search.value.trim();
+    const base = {
+      language: state.language,
+      mode: state.mode,
+      scrollY: window.scrollY
+    };
+
+    if (state.currentDoc) {
+      return {
+        ...base,
+        view: "article",
+        docId: state.currentDoc.id,
+        directory: state.currentDir,
+        context: { ...state.navigationContext }
+      };
+    }
+
+    if (query && !els.results.hidden) {
+      return {
+        ...base,
+        view: "search",
+        query,
+        directory: state.currentDir
+      };
+    }
+
+    return {
+      ...base,
+      view: "dir",
+      path: state.currentDir
+    };
+  }
+
+  function saveCurrentHistoryState() {
+    history.replaceState(currentHistoryState(), "", location.href);
+  }
+
+  function writeHistory(viewState, url, mode = "replace") {
+    if (mode === "none") return;
+    if (mode === "push") {
+      saveCurrentHistoryState();
+      history.pushState(viewState, "", url);
+      return;
+    }
+    if (mode === "pushPrepared") {
+      history.pushState(viewState, "", url);
+      return;
+    }
+    history.replaceState(viewState, "", url);
+  }
+
+  function restoreScroll(scrollY = 0) {
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: Number(scrollY) || 0, behavior: "auto" });
+    });
+  }
   function clearReader() {
     state.currentDoc = null;
     els.reader.hidden = true;
@@ -571,7 +631,7 @@
           onClick: () => openDocument(
             entry.file,
             { type: "dir", path: state.currentDir, query: "" },
-            { focusReader: true }
+            { focusReader: true, historyMode: "push" }
           )
         }));
       }
@@ -627,14 +687,20 @@
     }
   }
 
-  function navigateDir(path) {
+  function navigateDir(path, { historyMode = "replace" } = {}) {
     els.search.value = "";
     setNavigationContext({ type: "dir", path, query: "" });
-    history.replaceState(null, "", "#/" + encodeURI(path));
     renderDirectory(path);
+    writeHistory(
+      { ...currentHistoryState(), view: "dir", path, scrollY: window.scrollY },
+      "#/" + encodeURI(path),
+      historyMode
+    );
   }
 
-  async function openDocument(file, context = null, { focusReader = false, fragment = "" } = {}) {
+  async function openDocument(file, context = null, { focusReader = false, fragment = "", historyMode = "replace", targetDir = null } = {}) {
+    if (historyMode === "push") saveCurrentHistoryState();
+    if (targetDir !== null) renderDirectory(targetDir, { clearContent: false });
     if (context) setNavigationContext(context);
     state.currentDoc = file;
     els.welcome.hidden = true;
@@ -647,9 +713,20 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const text = await res.text();
       const titledText = normalizeArticleTitle(text, file.title || file.name.replace(/\.md$/i, ""));
-      els.reader.innerHTML = renderMarkdown(titledText);
+      els.reader.innerHTML = renderMarkdown(titledText) + renderRelatedArticles(file);
       document.title = `${file.title || file.name} — Tech Handbook`;
-      history.replaceState(null, "", "#/doc/" + encodeURIComponent(file.id));
+      writeHistory(
+        {
+          ...currentHistoryState(),
+          view: "article",
+          docId: file.id,
+          directory: state.currentDir,
+          context: { ...state.navigationContext },
+          scrollY: focusReader ? 0 : window.scrollY
+        },
+        "#/doc/" + encodeURIComponent(file.id),
+        historyMode === "push" ? "pushPrepared" : historyMode
+      );
       if (els.readerTop) {
         els.readerTop.hidden = false;
         els.readerTopLabel.textContent = t("toTop");
@@ -671,7 +748,7 @@
     }
   }
 
-  async function openReadme({ focusReader = true } = {}) {
+  async function openReadme({ focusReader = true, historyMode = "push" } = {}) {
     const file = {
       id: "__readme__",
       title: t("about"),
@@ -681,8 +758,11 @@
 
     els.search.value = "";
     setNavigationContext({ type: "dir", path: "", query: "" });
-    renderDirectory("");
-    await openDocument(file, { type: "dir", path: "", query: "" }, { focusReader });
+    await openDocument(
+      file,
+      { type: "dir", path: "", query: "" },
+      { focusReader, historyMode, targetDir: "" }
+    );
   }
   function compileWildcard(query) {
     const escaped = query
@@ -710,12 +790,12 @@
     return terms.every(term => normalized.includes(term));
   }
 
-  function runSearch(query) {
+  function runSearch(query, { historyMode = "replace" } = {}) {
     clearReader();
     const q = query.trim();
 
     if (!q) {
-      renderDirectory(state.currentDir);
+      navigateDir(state.currentDir, { historyMode });
       return;
     }
 
@@ -764,6 +844,11 @@
         "beforeend",
         `<div class="no-results">${escapeHtml(t("noResults"))} „${escapeHtml(q)}”.</div>`
       );
+      writeHistory(
+        { ...currentHistoryState(), view: "search", query: q, directory: state.currentDir, scrollY: window.scrollY },
+        "#/search/" + encodeURIComponent(q),
+        historyMode
+      );
       return;
     }
 
@@ -783,12 +868,45 @@
         onClick: () => openDocument(
           file,
           { type: "search", query: q, path: state.currentDir },
-          { focusReader: true }
+          { focusReader: true, historyMode: "push" }
         )
       }));
     }
 
     els.results.appendChild(container);
+
+    writeHistory(
+      {
+        ...currentHistoryState(),
+        view: "search",
+        query: q,
+        directory: state.currentDir,
+        scrollY: window.scrollY
+      },
+      "#/search/" + encodeURIComponent(q),
+      historyMode
+    );
+  }
+
+
+  function renderRelatedArticles(file) {
+    const relatedIds = Array.isArray(file.related) ? file.related : [];
+    const related = relatedIds
+      .map(id => state.files.find(item => item.id === id))
+      .filter(Boolean);
+
+    if (!related.length) return "";
+
+    return `
+      <section class="related-articles" aria-label="${escapeHtml(t("relatedArticles"))}">
+        <h2>${escapeHtml(t("relatedArticles"))}</h2>
+        <ul>
+          ${related.map(item =>
+            `<li><a href="#/doc/${encodeURIComponent(item.id)}" data-doc-id="${escapeHtml(item.id)}">${escapeHtml(item.title || item.name)}</a></li>`
+          ).join("")}
+        </ul>
+      </section>
+    `;
   }
 
   function applyLanguage(language, { preserveHash = false } = {}) {
@@ -851,7 +969,7 @@
 
     if (preserveHash && currentDocId) {
       if (currentDocId === "__readme__") {
-        openReadme();
+        openReadme({ focusReader: false, historyMode: "replace" });
         return;
       }
 
@@ -860,7 +978,7 @@
         const rel = counterpart.path.replace(new RegExp(`^${state.contentRoot}/`), "");
         const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
         renderDirectory(dir);
-        openDocument(counterpart);
+        openDocument(counterpart, null, { historyMode: "replace" });
         return;
       }
     }
@@ -909,29 +1027,82 @@
     );
   }
 
+  async function restoreHistoryState(historyState) {
+    if (!historyState) {
+      handleHash();
+      return;
+    }
+
+    if (historyState.view === "search") {
+      state.currentDir = historyState.directory || "";
+      els.search.value = historyState.query || "";
+      runSearch(historyState.query || "", { historyMode: "none" });
+      restoreScroll(historyState.scrollY);
+      return;
+    }
+
+    if (historyState.view === "article") {
+      const id = historyState.docId;
+      if (id === "__readme__") {
+        await openReadme({ focusReader: false, historyMode: "none" });
+        restoreScroll(historyState.scrollY);
+        return;
+      }
+
+      const file = state.files.find(item => item.id === id);
+      if (file) {
+        const dir = historyState.directory || "";
+        const context = historyState.context || { type: "dir", path: dir, query: "" };
+
+        if (context.type === "search" && context.query) {
+          state.currentDir = context.path || dir;
+          els.search.value = context.query;
+          runSearch(context.query, { historyMode: "none" });
+        } else {
+          renderDirectory(dir, { clearContent: false });
+        }
+
+        setNavigationContext(context);
+        await openDocument(file, null, { focusReader: false, historyMode: "none" });
+        restoreScroll(historyState.scrollY);
+        return;
+      }
+    }
+
+    navigateDir(historyState.path || "", { historyMode: "none" });
+    restoreScroll(historyState.scrollY);
+  }
+
   function handleHash() {
     const hash = location.hash || "#/";
+
+    if (hash.startsWith("#/search/")) {
+      const query = decodeURIComponent(hash.slice(9));
+      els.search.value = query;
+      runSearch(query, { historyMode: "replace" });
+      return;
+    }
 
     if (hash.startsWith("#/doc/")) {
       const id = decodeURIComponent(hash.slice(6));
       if (id === "__readme__") {
-        openReadme({ focusReader: false });
+        openReadme({ focusReader: false, historyMode: "replace" });
         return;
       }
       const file = state.files.find(item => item.id === id);
       if (file) {
         const rel = file.path.replace(new RegExp(`^${state.contentRoot}/`), "");
         const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
-        renderDirectory(dir);
+        renderDirectory(dir, { clearContent: false });
         setNavigationContext({ type: "dir", path: dir, query: "" });
-        openDocument(file);
+        openDocument(file, null, { historyMode: "replace" });
         return;
       }
     }
 
     if (hash.startsWith("#/")) {
       const path = decodeURI(hash.slice(2));
-      renderDirectory(path);
+      navigateDir(path, { historyMode: "replace" });
     }
   }
 
@@ -943,6 +1114,9 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       state.index = await res.json();
       initLanguage();
+      requestAnimationFrame(() => {
+        if (!history.state) history.replaceState(currentHistoryState(), "", location.href);
+      });
     } catch (err) {
       els.browser.innerHTML =
         `<div class="no-results">${escapeHtml(t("indexError"))}: ${escapeHtml(err.message)}</div>`;
@@ -959,11 +1133,15 @@
 
       const rel = file.path.replace(new RegExp(`^${state.contentRoot}/`), "");
       const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
-      renderDirectory(dir);
       openDocument(
         file,
         { type: "dir", path: dir, query: "" },
-        { focusReader: true, fragment: docLink.dataset.docFragment || "" }
+        {
+          focusReader: true,
+          fragment: docLink.dataset.docFragment || "",
+          historyMode: "push",
+          targetDir: dir
+        }
       );
       return;
     }
@@ -991,7 +1169,7 @@
   });
 
   els.about.addEventListener("click", () => {
-    openReadme({ focusReader: true });
+    openReadme({ focusReader: true, historyMode: "push" });
   });
 
   if (els.readerTop) {
@@ -1015,8 +1193,25 @@
     applyTheme(current === "dark" ? "light" : "dark");
   });
 
-  window.addEventListener("hashchange", () => {
-    if (state.index) handleHash();
+  history.scrollRestoration = "manual";
+
+  let scrollSaveQueued = false;
+  window.addEventListener("scroll", () => {
+    if (scrollSaveQueued || !history.state) return;
+    scrollSaveQueued = true;
+    requestAnimationFrame(() => {
+      scrollSaveQueued = false;
+      if (!history.state) return;
+      history.replaceState(
+        { ...history.state, scrollY: window.scrollY },
+        "",
+        location.href
+      );
+    });
+  }, { passive: true });
+
+  window.addEventListener("popstate", event => {
+    if (state.index) restoreHistoryState(event.state);
   });
 
   init();

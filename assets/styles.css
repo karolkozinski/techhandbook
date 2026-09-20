@@ -670,3 +670,18 @@ a { color: inherit; }
   font-weight: 650;
 }
 
+
+.related-articles {
+  margin-top: 2.5em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--line);
+}
+
+.related-articles h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.related-articles ul {
+  margin-bottom: 0;
+}
