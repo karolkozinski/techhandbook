@@ -40,7 +40,14 @@
         "cloud",
         "alibaba"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-004",
+        "doc-005",
+        "doc-006",
+        "doc-007",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-004",
@@ -53,7 +60,14 @@
         "aws",
         "amazon"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-003",
+        "doc-005",
+        "doc-006",
+        "doc-007",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-005",
@@ -66,7 +80,14 @@
         "azure",
         "microsoft"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-003",
+        "doc-004",
+        "doc-006",
+        "doc-007",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-006",
@@ -79,7 +100,14 @@
         "gcp",
         "google"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-003",
+        "doc-004",
+        "doc-005",
+        "doc-007",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-007",
@@ -92,7 +120,14 @@
         "oci",
         "oracle"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-003",
+        "doc-004",
+        "doc-005",
+        "doc-006",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-008",
@@ -219,7 +254,14 @@
         "ip",
         "vlan"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-017",
+        "doc-018",
+        "doc-025",
+        "doc-033",
+        "doc-034"
+      ]
     },
     {
       "id": "doc-017",
@@ -233,7 +275,14 @@
         "domains",
         "routing"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-016",
+        "doc-044",
+        "doc-045",
+        "doc-047",
+        "doc-057"
+      ]
     },
     {
       "id": "doc-018",
@@ -248,7 +297,14 @@
         "rsync",
         "tunnel"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-016",
+        "doc-025",
+        "doc-033",
+        "doc-034",
+        "doc-052"
+      ]
     },
     {
       "id": "doc-019",
@@ -375,7 +431,14 @@
         "shell",
         "bash"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-028",
+        "doc-031",
+        "doc-033",
+        "doc-038",
+        "doc-040"
+      ]
     },
     {
       "id": "doc-028",
@@ -389,7 +452,13 @@
         "bash",
         "zsh"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-027",
+        "doc-031",
+        "doc-033",
+        "doc-038"
+      ]
     },
     {
       "id": "doc-029",
@@ -403,7 +472,14 @@
         "sh",
         "tcsh"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-030",
+        "doc-031",
+        "doc-034",
+        "doc-038",
+        "doc-040"
+      ]
     },
     {
       "id": "doc-030",
@@ -417,7 +493,13 @@
         "sh",
         "tcsh"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-029",
+        "doc-031",
+        "doc-034",
+        "doc-038"
+      ]
     },
     {
       "id": "doc-031",
@@ -431,7 +513,14 @@
         "scripting",
         "script"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-027",
+        "doc-029",
+        "doc-052",
+        "doc-050",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-032",
@@ -444,7 +533,14 @@
         "termux",
         "linux"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-023",
+        "doc-027",
+        "doc-031",
+        "doc-035",
+        "doc-038"
+      ]
     },
     {
       "id": "doc-033",
@@ -459,7 +555,14 @@
         "kde",
         "server"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-027",
+        "doc-018",
+        "doc-025",
+        "doc-012",
+        "doc-052"
+      ]
     },
     {
       "id": "doc-034",
@@ -472,7 +575,14 @@
         "server",
         "unix"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-029",
+        "doc-018",
+        "doc-016",
+        "doc-025",
+        "doc-052"
+      ]
     },
     {
       "id": "doc-035",
@@ -485,7 +595,13 @@
         "distributions",
         "distros"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-033",
+        "doc-025",
+        "doc-036",
+        "doc-027"
+      ]
     },
     {
       "id": "doc-036",
@@ -498,7 +614,13 @@
         "window manager",
         "wm"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-035",
+        "doc-033",
+        "doc-038",
+        "doc-039"
+      ]
     },
     {
       "id": "doc-037",
@@ -512,7 +634,13 @@
         "active directory",
         "administration"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-016",
+        "doc-018",
+        "doc-025",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-038",
@@ -738,7 +866,14 @@
         "scheduler",
         "service"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-031",
+        "doc-033",
+        "doc-015",
+        "doc-011",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-053",
@@ -832,7 +967,14 @@
         "ip",
         "vlan"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-017",
+        "doc-018",
+        "doc-025",
+        "doc-033",
+        "doc-034"
+      ]
     },
     {
       "id": "doc-017",
@@ -846,7 +988,14 @@
         "domains",
         "routing"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-016",
+        "doc-044",
+        "doc-045",
+        "doc-047",
+        "doc-057"
+      ]
     },
     {
       "id": "doc-018",
@@ -861,7 +1010,14 @@
         "rsync",
         "tunnel"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-016",
+        "doc-025",
+        "doc-033",
+        "doc-034",
+        "doc-052"
+      ]
     },
     {
       "id": "doc-041",
@@ -1127,7 +1283,14 @@
         "scheduler",
         "service"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-031",
+        "doc-033",
+        "doc-015",
+        "doc-011",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-019",
@@ -1206,7 +1369,14 @@
         "shell",
         "bash"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-028",
+        "doc-031",
+        "doc-033",
+        "doc-038",
+        "doc-040"
+      ]
     },
     {
       "id": "doc-028",
@@ -1220,7 +1390,13 @@
         "bash",
         "zsh"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-027",
+        "doc-031",
+        "doc-033",
+        "doc-038"
+      ]
     },
     {
       "id": "doc-029",
@@ -1234,7 +1410,14 @@
         "sh",
         "tcsh"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-030",
+        "doc-031",
+        "doc-034",
+        "doc-038",
+        "doc-040"
+      ]
     },
     {
       "id": "doc-030",
@@ -1248,7 +1431,13 @@
         "sh",
         "tcsh"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-029",
+        "doc-031",
+        "doc-034",
+        "doc-038"
+      ]
     },
     {
       "id": "doc-031",
@@ -1262,7 +1451,14 @@
         "scripting",
         "script"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-027",
+        "doc-029",
+        "doc-052",
+        "doc-050",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-032",
@@ -1275,7 +1471,14 @@
         "termux",
         "linux"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-023",
+        "doc-027",
+        "doc-031",
+        "doc-035",
+        "doc-038"
+      ]
     },
     {
       "id": "doc-033",
@@ -1290,7 +1493,14 @@
         "kde",
         "server"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-027",
+        "doc-018",
+        "doc-025",
+        "doc-012",
+        "doc-052"
+      ]
     },
     {
       "id": "doc-034",
@@ -1303,7 +1513,14 @@
         "server",
         "unix"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-029",
+        "doc-018",
+        "doc-016",
+        "doc-025",
+        "doc-052"
+      ]
     },
     {
       "id": "doc-035",
@@ -1316,7 +1533,13 @@
         "distributions",
         "distros"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-033",
+        "doc-025",
+        "doc-036",
+        "doc-027"
+      ]
     },
     {
       "id": "doc-036",
@@ -1329,7 +1552,13 @@
         "window manager",
         "wm"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-035",
+        "doc-033",
+        "doc-038",
+        "doc-039"
+      ]
     },
     {
       "id": "doc-037",
@@ -1343,7 +1572,13 @@
         "active directory",
         "administration"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-016",
+        "doc-018",
+        "doc-025",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-038",
@@ -1413,7 +1648,14 @@
         "cloud",
         "alibaba"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-004",
+        "doc-005",
+        "doc-006",
+        "doc-007",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-004",
@@ -1426,7 +1668,14 @@
         "aws",
         "amazon"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-003",
+        "doc-005",
+        "doc-006",
+        "doc-007",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-005",
@@ -1439,7 +1688,14 @@
         "azure",
         "microsoft"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-003",
+        "doc-004",
+        "doc-006",
+        "doc-007",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-006",
@@ -1452,7 +1708,14 @@
         "gcp",
         "google"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-003",
+        "doc-004",
+        "doc-005",
+        "doc-007",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-007",
@@ -1465,7 +1728,14 @@
         "oci",
         "oracle"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-003",
+        "doc-004",
+        "doc-005",
+        "doc-006",
+        "doc-016"
+      ]
     },
     {
       "id": "doc-008",
