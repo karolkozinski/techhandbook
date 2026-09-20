@@ -6,7 +6,7 @@ description: "A browser or application sends a request:"
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "http"
   - "https"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # HTTP, HTTPS and TLS
+
+HTTP defines application communication semantics, while TLS protects that communication cryptographically. In practice, understand requests and responses, status codes, headers, cookies, caching, certificates and the differences between HTTP/1.1, HTTP/2 and HTTP/3.
+
+Related topics: [DNS, Domains and Internet Routing](techhandbook:doc-017), [APIs and System Integrations](techhandbook:doc-008), [nginx and Reverse Proxy](techhandbook:doc-045) and [Web Application Security](techhandbook:doc-026).
 
 ## 1. Client-server model
 
@@ -261,7 +265,7 @@ curl -v https://example.com
 POST JSON:
 
 ```bash
-curl -X POST   -H 'Content-Type: application/json'   -d '{"name":"Karol"}'   https://example.com/api/users
+curl -X POST   -H 'Content-Type: application/json'   -d '{"name":"Anna"}'   https://example.com/api/users
 ```
 
 Bearer token:
@@ -295,3 +299,11 @@ The certificate does not cover the requested domain.
 ## 21. What you should know
 
 You should be able to read requests and responses, recognise status-code classes, test endpoints with curl, understand cookies/cache/CORS, understand TLS and certificates, and distinguish application failures from proxy failures.
+
+## Official references
+
+- HTTP Semantics - RFC 9110: https://www.rfc-editor.org/rfc/rfc9110
+- HTTP/2 - RFC 9113: https://www.rfc-editor.org/rfc/rfc9113
+- HTTP/3 - RFC 9114: https://www.rfc-editor.org/rfc/rfc9114
+- TLS 1.3 - RFC 8446: https://www.rfc-editor.org/rfc/rfc8446
+- TLS recommendations - RFC 9325: https://www.rfc-editor.org/rfc/rfc9325

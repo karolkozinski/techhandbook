@@ -6,7 +6,7 @@ description: "nginx i reverse proxy — praktyczne kompendium TechHandbook."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "nginx"
   - "reverse proxy"
@@ -14,6 +14,10 @@ tags:
 ---
 
 # nginx i reverse proxy
+
+nginx często stoi na granicy między internetem a aplikacją. Może serwować pliki statyczne, kończyć TLS, przekazywać ruch do backendów i rozdzielać kilka usług działających na jednym adresie IP.
+
+Powiązane tematy: [HTTP, HTTPS i TLS](techhandbook:doc-044), [DNS, domeny i routing](techhandbook:doc-017), [Docker](techhandbook:doc-012), [Debian - desktop i serwer](techhandbook:doc-033) oraz [Bezpieczeństwo aplikacji webowych](techhandbook:doc-026).
 
 ## 1. Do czego służy nginx
 
@@ -313,3 +317,9 @@ tail -f /var/log/nginx/error.log
 - dodać HTTPS,
 - znaleźć przyczynę 502/504,
 - czytać access/error logs.
+
+## Oficjalne źródła
+
+- nginx documentation: https://nginx.org/en/docs/
+- nginx Beginner's Guide: https://nginx.org/en/docs/beginners_guide.html
+- ngx_http_proxy_module: https://nginx.org/en/docs/http/ngx_http_proxy_module.html

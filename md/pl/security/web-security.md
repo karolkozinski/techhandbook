@@ -6,7 +6,7 @@ description: "Nie chodzi o pentesting. Chodzi o to, żeby nie wprowadzać typowy
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "web"
   - "security"
@@ -17,6 +17,10 @@ tags:
 ---
 
 # Bezpieczeństwo aplikacji webowych
+
+Bezpieczeństwo aplikacji webowej nie sprowadza się do jednego skanera. Najważniejsze są poprawne granice zaufania, kontrola dostępu, bezpieczne przetwarzanie danych wejściowych, zarządzanie sesją i sekretami oraz aktualne zależności.
+
+Powiązane tematy: [Cybersecurity i pentesting - podstawy](techhandbook:doc-024), [OAuth 2.0, OpenID Connect, JWT i sesje](techhandbook:doc-051), [HTTP, HTTPS i TLS](techhandbook:doc-044), [API i integracje systemów](techhandbook:doc-008) oraz [SQL i PostgreSQL](techhandbook:doc-010).
 
 ## 1. Cel
 
@@ -257,7 +261,7 @@ Szczegóły trafiają do logu.
 
 ## 22. OWASP Top 10
 
-Warto znać nazwę i sens kategorii OWASP Top 10, ale ważniejsze jest wdrażanie dobrych praktyk niż uczenie się listy na pamięć.
+Aktualnym punktem odniesienia jest OWASP Top 10:2025. Ważniejsze od zapamiętania nazw kategorii jest wdrażanie kontroli, które ograniczają odpowiadające im ryzyka.
 
 ## 23. Checklist przed publikacją
 
@@ -280,3 +284,9 @@ Warto znać nazwę i sens kategorii OWASP Top 10, ale ważniejsze jest wdrażani
 - bezpiecznie przechowywać sekrety,
 - zabezpieczać cookies i uploady,
 - stosować zasadę najmniejszych uprawnień.
+
+## Oficjalne źródła
+
+- OWASP Top 10:2025: https://top10.owasp.org/2025/
+- OWASP Cheat Sheet Series: https://cheatsheetseries.owasp.org/
+- OWASP ASVS: https://owasp.org/www-project-application-security-verification-standard/

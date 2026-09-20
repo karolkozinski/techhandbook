@@ -6,7 +6,7 @@ description: "This is not a pentesting course. The goal is to avoid introducing 
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "web"
   - "security"
@@ -17,6 +17,10 @@ tags:
 ---
 
 # Web Application Security for Developers
+
+Web application security is not one scanner or one checklist. Trust boundaries, access control, safe input handling, session and secret management, and current dependencies matter most.
+
+Related topics: [Cybersecurity and Pentesting Fundamentals](techhandbook:doc-024), [OAuth 2.0, OpenID Connect, JWT and Sessions](techhandbook:doc-051), [HTTP, HTTPS and TLS](techhandbook:doc-044), [APIs and System Integrations](techhandbook:doc-008) and [SQL and PostgreSQL](techhandbook:doc-010).
 
 ## 1. Goal
 
@@ -195,7 +199,7 @@ Detailed information belongs in logs.
 
 ## 22. OWASP Top 10
 
-Know the meaning of the major OWASP categories, but implementing good practices matters more than memorising the list.
+The current reference is OWASP Top 10:2025. Implementing controls that reduce the underlying risks matters more than memorising category names.
 
 ## 23. Pre-release checklist
 
@@ -214,3 +218,9 @@ Know the meaning of the major OWASP categories, but implementing good practices 
 ## 24. What you should know
 
 You should recognise XSS, SQL injection, CSRF and SSRF, understand authentication vs authorization, store secrets safely, protect cookies and uploads, and apply least privilege.
+
+## Official references
+
+- OWASP Top 10:2025: https://top10.owasp.org/2025/
+- OWASP Cheat Sheet Series: https://cheatsheetseries.owasp.org/
+- OWASP ASVS: https://owasp.org/www-project-application-security-verification-standard/

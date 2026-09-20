@@ -6,7 +6,7 @@ description: "OAuth 2.0, OpenID Connect, JWT and Sessions — a practical TechHa
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "oauth"
   - "oidc"
@@ -18,6 +18,12 @@ tags:
 ---
 
 # OAuth 2.0, OpenID Connect, JWT and Sessions
+
+OAuth, OpenID Connect, JWT and sessions solve different problems. The important distinction is authentication versus authorization, together with a deliberate choice of where login state lives and how tokens are protected.
+
+Current OAuth practice centers on Authorization Code Flow with PKCE. For new implementations, use RFC 9700 and the browser-application guidance in RFC 10017 rather than copying older OAuth examples.
+
+Related topics: [Web Application Security](techhandbook:doc-026), [APIs and System Integrations](techhandbook:doc-008) and [HTTP, HTTPS and TLS](techhandbook:doc-044).
 
 ## 1. Concepts first
 
@@ -280,3 +286,12 @@ Do not choose JWT just because it sounds modern.
 ## 32. What you should know
 
 You should distinguish authentication from authorization, understand cookie sessions and JWT, know Authorization Code + PKCE, distinguish ID Tokens and Access Tokens, understand scopes and reason safely about storage and expiration.
+
+## Official references
+
+- OAuth 2.0 - RFC 6749: https://www.rfc-editor.org/rfc/rfc6749
+- OAuth 2.0 Security BCP - RFC 9700: https://www.rfc-editor.org/rfc/rfc9700
+- OAuth 2.0 for Browser-Based Applications - RFC 10017: https://www.rfc-editor.org/rfc/rfc10017
+- PKCE - RFC 7636: https://www.rfc-editor.org/rfc/rfc7636
+- JWT - RFC 7519: https://www.rfc-editor.org/rfc/rfc7519
+- OpenID Connect Core: https://openid.net/specs/openid-connect-core-1_0.html

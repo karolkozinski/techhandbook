@@ -6,7 +6,7 @@ description: "Przeglądarka lub aplikacja wysyła request:"
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "http"
   - "https"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # HTTP, HTTPS i TLS
+
+HTTP opisuje semantykę komunikacji aplikacyjnej, a TLS chroni ją kryptograficznie. W praktyce trzeba rozumieć request/response, statusy, nagłówki, cookies, cache, certyfikaty i różnice między HTTP/1.1, HTTP/2 oraz HTTP/3.
+
+Powiązane tematy: [DNS, domeny i routing](techhandbook:doc-017), [API i integracje systemów](techhandbook:doc-008), [nginx i reverse proxy](techhandbook:doc-045) oraz [Bezpieczeństwo aplikacji webowych](techhandbook:doc-026).
 
 ## 1. Model klient–serwer
 
@@ -323,7 +327,7 @@ POST JSON:
 ```bash
 curl -X POST \
   -H 'Content-Type: application/json' \
-  -d '{"name":"Karol"}' \
+  -d '{"name":"Anna"}' \
   https://example.com/api/users
 ```
 
@@ -364,3 +368,11 @@ Certyfikat nie obejmuje danej domeny.
 - rozumieć cookies, cache i CORS,
 - rozumieć rolę TLS i certyfikatów,
 - rozpoznać różnicę między błędem aplikacji a proxy.
+
+## Oficjalne źródła
+
+- HTTP Semantics - RFC 9110: https://www.rfc-editor.org/rfc/rfc9110
+- HTTP/2 - RFC 9113: https://www.rfc-editor.org/rfc/rfc9113
+- HTTP/3 - RFC 9114: https://www.rfc-editor.org/rfc/rfc9114
+- TLS 1.3 - RFC 8446: https://www.rfc-editor.org/rfc/rfc8446
+- TLS recommendations - RFC 9325: https://www.rfc-editor.org/rfc/rfc9325

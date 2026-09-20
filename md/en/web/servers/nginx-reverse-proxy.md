@@ -6,7 +6,7 @@ description: "nginx can act as a static file server, reverse proxy, TLS terminat
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "nginx"
   - "reverse proxy"
@@ -14,6 +14,10 @@ tags:
 ---
 
 # nginx and Reverse Proxy
+
+nginx often sits at the boundary between the internet and an application. It can serve static files, terminate TLS, proxy requests to backends and route multiple services sharing one public IP address.
+
+Related topics: [HTTP, HTTPS and TLS](techhandbook:doc-044), [DNS, Domains and Internet Routing](techhandbook:doc-017), [Docker](techhandbook:doc-012), [Debian Desktop and Server](techhandbook:doc-033) and [Web Application Security](techhandbook:doc-026).
 
 ## 1. What nginx is used for
 
@@ -280,3 +284,9 @@ tail -f /var/log/nginx/error.log
 ## 23. What you should know
 
 You should be able to serve a static site, configure a reverse proxy, host several domains on one VPS, add HTTPS, diagnose 502/504 errors and read access/error logs.
+
+## Official references
+
+- nginx documentation: https://nginx.org/en/docs/
+- nginx Beginner's Guide: https://nginx.org/en/docs/beginners_guide.html
+- ngx_http_proxy_module: https://nginx.org/en/docs/http/ngx_http_proxy_module.html
