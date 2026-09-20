@@ -6,7 +6,7 @@ description: "This handbook explains what Termux is, how it differs from a norma
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "android"
   - "termux"
@@ -14,6 +14,8 @@ tags:
 ---
 
 # Termux — Knowledge Handbook
+
+Related topics: [SSH and Remote Administration](techhandbook:doc-018), [Shell Scripting](techhandbook:doc-031), [GitHub](techhandbook:doc-014) and [Python](techhandbook:doc-023).
 
 ## Table of Contents
 
@@ -59,7 +61,7 @@ Separate operating system with its own kernel, base system, pkg/Ports and jails.
 
 ## 4.1. Recommended sources
 
-Use a current supported source such as F-Droid or the project's official release channel. Avoid obsolete Play Store builds.
+For the mainstream Termux app, F-Droid and the project's GitHub releases remain the primary sources. A separate Google Play branch exists for Android 11+, but it has different constraints and behavior.
 
 ## 4.2. Do not mix sources
 
@@ -235,7 +237,7 @@ Example:
 ```text
 Host vps
     HostName 203.0.113.10
-    User karol
+    User example
     IdentityFile ~/.ssh/id_ed25519
 ```
 
@@ -905,7 +907,15 @@ Use only when you explicitly need system-level control and accept the security/u
 
 # 32. Sources
 
-Use the official Termux documentation/repository, Android platform documentation and package-specific docs. Because Termux changes with Android versions, verify current behavior before relying on an old tutorial.
+Official project sources:
+
+- Termux App: https://github.com/termux/termux-app
+- Termux Packages: https://github.com/termux/termux-packages
+- Termux:API: https://github.com/termux/termux-api
+- proot-distro: https://github.com/termux/proot-distro
+- Google Play branch status: https://github.com/termux-play-store
+
+Termux behavior changes with Android versions, so verify current project documentation before relying on an old tutorial.
 
 # Summary
 

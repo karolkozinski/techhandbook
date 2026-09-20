@@ -6,7 +6,7 @@ description: "Praktyczne kompendium Termuxa na Androidzie: czym jest, jak dział
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "android"
   - "termux"
@@ -14,6 +14,8 @@ tags:
 ---
 
 # Termux
+
+Powiązane tematy: [SSH i zdalna administracja](techhandbook:doc-018), [Programowanie w shellu](techhandbook:doc-031), [GitHub](techhandbook:doc-014) oraz [Python - podstawy](techhandbook:doc-023).
 
 > Praktyczne kompendium Termuxa na Androidzie: czym jest, jak działa, jak go używać jako środowiska uniksowego i developerskiego, gdzie kończy się Termux, a zaczyna Android, oraz co zmienia root.
 >
@@ -965,7 +967,7 @@ pkg install git
 Konfiguracja:
 
 ```bash
-git config --global user.name "Karol"
+git config --global user.name "Example User"
 git config --global user.email "twoj@email"
 ```
 

@@ -6,7 +6,7 @@ description: "A window manager (WM) controls application windows: placement, siz
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "linux"
   - "window manager"
@@ -14,6 +14,10 @@ tags:
 ---
 
 # Linux Window Managers
+
+A window manager is only one layer of a graphical session. X11 and Wayland organize this layer differently, so comparisons between i3, Sway, Hyprland or KWin should distinguish a classic window manager from a compositor.
+
+Related topics: [Popular Linux Distributions](techhandbook:doc-035) and [Debian Desktop and Server](techhandbook:doc-033).
 
 ## 1. What is a window manager?
 
@@ -1061,3 +1065,11 @@ Move to Sway when you want the same mental model on Wayland.
 Try Hyprland only after you understand which pieces of the desktop you actually need.
 
 That way you learn Linux desktop architecture instead of merely copying someone else's dotfiles.
+
+## Official references
+
+- X.Org documentation: https://www.x.org/wiki/Documentation/
+- Wayland: https://wayland.freedesktop.org/
+- i3 User's Guide: https://i3wm.org/docs/userguide.html
+- Sway: https://github.com/swaywm/sway
+- Hyprland Wiki: https://wiki.hypr.land/

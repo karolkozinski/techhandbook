@@ -6,7 +6,7 @@ description: "Windows Server w środowisku korporacyjnym pełni najczęściej ki
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "windows"
   - "server"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Windows Server — administracja korporacyjna
+
+To kompendium opisuje mechanizmy administracji spotykane w środowisku domenowym Windows: Active Directory Domain Services, Group Policy, uprawnienia, DNS, DHCP, PowerShell, wdrażanie stacji i podstawy bezpieczeństwa. Skupia się na mechanizmach wspólnych dla współczesnych wydań Windows Server, zamiast na jednej konkretnej wersji.
+
+Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016) oraz [DNS, domeny i routing internetowy](techhandbook:doc-017).
 
 ## Spis treści
 
@@ -104,7 +108,7 @@ Komputery mogą być członkami domeny.
 Przykład:
 
 ```text
-PC-KAROL01.corp.example.local
+PC-USER01.corp.example.local
 ```
 
 ---
@@ -2029,3 +2033,10 @@ Nie używaj Domain Admin, jeśli wystarczy konto z niższymi uprawnieniami.
 Nie zakładaj, że backup działa, dopóki nie przetestujesz odtwarzania.
 
 Dobrze zaprojektowane środowisko Windows powinno pozwalać administratorowi zarządzać tysiącem komputerów niemal tak samo łatwo jak dziesięcioma.
+
+## Oficjalne źródła
+
+- Windows Server documentation: https://learn.microsoft.com/windows-server/
+- Active Directory Domain Services: https://learn.microsoft.com/windows-server/identity/ad-ds/
+- Group Policy: https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview
+- PowerShell documentation: https://learn.microsoft.com/powershell/

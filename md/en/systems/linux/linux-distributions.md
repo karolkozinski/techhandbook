@@ -6,7 +6,7 @@ description: "They package the Linux kernel and user-space differently, choose r
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "linux"
   - "distributions"
@@ -14,6 +14,11 @@ tags:
 ---
 
 # Popular Linux Distributions
+
+This handbook organizes the main distribution families, release models and package managers. Version numbers change quickly, so understanding stable, LTS and rolling-release models matters more than memorizing a release number.
+
+Related topics: [Debian Desktop and Server](techhandbook:doc-033), [Debian Practical Shell Handbook](techhandbook:doc-027) and [Linux Window Managers](techhandbook:doc-036).
+
 ## 1. Why are there different distributions?
 They package the Linux kernel and user-space differently, choose release cadence, package manager, defaults, support model and target audience.
 # 2. Key concepts
@@ -250,3 +255,11 @@ SUSE tooling plus Leap/Tumbleweed models.
 apt/dpkg, dnf/rpm, pacman, zypper, apk.
 # 48. Most important thing to remember
 Pick the distro family whose tooling and lifecycle fit your workload; desktop appearance is secondary.
+
+## Official references
+
+- Debian Releases: https://www.debian.org/releases/
+- Ubuntu release cycle: https://ubuntu.com/about/release-cycle
+- Fedora Workstation: https://fedoraproject.org/workstation/
+- Arch Linux - About: https://archlinux.org/about/
+- openSUSE: https://www.opensuse.org/

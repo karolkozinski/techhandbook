@@ -6,7 +6,7 @@ description: "Window Manager (WM), czyli menedżer okien, odpowiada przede wszys
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "linux"
   - "window manager"
@@ -14,6 +14,10 @@ tags:
 ---
 
 # Menedżery okien w Linuxie
+
+Menedżer okien jest tylko jedną warstwą środowiska graficznego. W X11 i Waylandzie ta warstwa działa inaczej, dlatego przy porównywaniu i3, Sway, Hyprland czy KWin trzeba odróżniać klasyczny window manager od compositora.
+
+Powiązane tematy: [Dystrybucje Linuxa](techhandbook:doc-035) oraz [Debian - desktop i serwer](techhandbook:doc-033).
 
 ## 1. Czym jest menedżer okien?
 
@@ -2103,3 +2107,11 @@ gotowy desktop
 ```
 
 Po takim przejściu architektura graficznego Linuxa staje się znacznie bardziej zrozumiała.
+
+## Oficjalne źródła
+
+- X.Org documentation: https://www.x.org/wiki/Documentation/
+- Wayland: https://wayland.freedesktop.org/
+- i3 User's Guide: https://i3wm.org/docs/userguide.html
+- Sway: https://github.com/swaywm/sway
+- Hyprland Wiki: https://wiki.hypr.land/

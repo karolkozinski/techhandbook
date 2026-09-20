@@ -6,7 +6,7 @@ description: "This handbook focuses on the practical core of Windows Server admi
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "windows"
   - "server"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Windows Server in the Enterprise — Administrator Fundamentals
+
+This handbook covers the administration mechanisms commonly used in Windows domain environments: Active Directory Domain Services, Group Policy, permissions, DNS, DHCP, PowerShell, workstation deployment and security basics. It focuses on concepts shared by current Windows Server releases rather than one specific version.
+
+Related topics: [Computer Networks for Developers](techhandbook:doc-016) and [DNS, Domains and Internet Routing](techhandbook:doc-017).
 
 ## Table of Contents
 
@@ -660,3 +664,10 @@ When something fails, identify which layer is wrong before granting more rights.
 # Most important enterprise administration rule
 
 Use groups and policy, automate repeatable work, keep privileged access minimal, document changes and make every critical change recoverable.
+
+## Official references
+
+- Windows Server documentation: https://learn.microsoft.com/windows-server/
+- Active Directory Domain Services: https://learn.microsoft.com/windows-server/identity/ad-ds/
+- Group Policy: https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview
+- PowerShell documentation: https://learn.microsoft.com/powershell/

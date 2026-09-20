@@ -6,7 +6,7 @@ description: "Linux nie jest jednym kompletnym systemem operacyjnym w takim sens
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "linux"
   - "distributions"
@@ -14,6 +14,10 @@ tags:
 ---
 
 # Dystrybucje Linuxa
+
+To kompendium porządkuje najważniejsze rodziny dystrybucji, modele wydań i menedżery pakietów. Numery wersji zmieniają się szybko, dlatego ważniejsze od zapamiętywania numeru wydania jest rozumienie modelu stable, LTS i rolling release.
+
+Powiązane tematy: [Debian - desktop i serwer](techhandbook:doc-033), [Debian - shell](techhandbook:doc-027) oraz [Menedżery okien w Linuxie](techhandbook:doc-036).
 
 ## 1. Po co w ogóle są różne dystrybucje?
 
@@ -87,12 +91,12 @@ Często posiada własne repozytoria, instalator, narzędzia i politykę aktualiz
 
 System wydawany w konkretnych wersjach.
 
-Przykład:
+Przykłady aktualne na wrzesień 2026:
 
 ```text
 Debian 13
-Ubuntu 24.04
-Fedora 42
+Ubuntu 26.04 LTS
+Fedora 44
 ```
 
 Pakiety są testowane jako całość.
@@ -1766,3 +1770,11 @@ konfiguracji systemu,
 modelu aktualizacji,
 repozytoriów.
 ```
+
+## Oficjalne źródła
+
+- Debian Releases: https://www.debian.org/releases/
+- Ubuntu release cycle: https://ubuntu.com/about/release-cycle
+- Fedora Workstation: https://fedoraproject.org/workstation/
+- Arch Linux - About: https://archlinux.org/about/
+- openSUSE: https://www.opensuse.org/
