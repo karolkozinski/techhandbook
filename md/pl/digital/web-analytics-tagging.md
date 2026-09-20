@@ -6,7 +6,7 @@ description: "Analityka powinna odpowiadać na konkretne pytania."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "analytics"
   - "tagging"
@@ -17,6 +17,12 @@ tags:
 ---
 
 # Web analytics i tagging — kompendium praktyczne
+
+Analityka ma odpowiadać na konkretne pytania i wspierać decyzje. Tracking plan powinien definiować zdarzenie, moment wysłania, parametry, cel biznesowy i sposób testowania. Bez tego tagowanie szybko zamienia się w zbiór przypadkowych eventów.
+
+GA4 używa modelu eventowego, ale sama implementacja nie zwalnia z pilnowania zgód, jakości danych i spójnego nazewnictwa.
+
+Powiązane tematy: [A/B testing i eksperymenty](techhandbook:doc-054), [Technical SEO](techhandbook:doc-047), [Browser DevTools](techhandbook:doc-046) oraz [JavaScript](techhandbook:doc-021).
 
 ## 1. Cel analityki
 
@@ -341,3 +347,9 @@ cel
 - debugować tracking,
 - wykrywać duplikaty,
 - myśleć o consent i minimalizacji danych.
+
+## Oficjalne źródła
+
+- Google Analytics events: https://support.google.com/analytics/answer/9322688
+- Google Tag Manager: https://developers.google.com/tag-platform/tag-manager
+- Consent Mode: https://developers.google.com/tag-platform/security/guides/consent

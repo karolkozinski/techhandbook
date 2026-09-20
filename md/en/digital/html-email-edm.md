@@ -6,7 +6,7 @@ description: "Email clients do not behave like modern browsers."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "email"
   - "html email"
@@ -16,6 +16,12 @@ tags:
 ---
 
 # HTML Email / EDM — Practical Handbook
+
+HTML email must be designed for a set of different mail clients rather than one browser. Simple presentation tables, inline CSS, explicit dimensions and testing in real clients remain the safest baseline.
+
+In 2026, Classic Outlook for Windows and New Outlook still need to be treated separately. Classic Outlook has a much more limited HTML/CSS renderer, so a message that works in webmail or New Outlook can render differently in Classic Outlook.
+
+Related topics: [Modern HTML and CSS](techhandbook:doc-042), [Web Performance](techhandbook:doc-048) and [Documenting Technical Solutions](techhandbook:doc-056).
 
 ## 1. Why HTML email is different
 
@@ -312,3 +318,10 @@ You should understand:
 - multi-client testing.
 
 The key rule: an HTML email is successful only when it renders reliably in real email clients, not when it looks perfect in a browser.
+
+## Reference sources
+
+- Can I email - client support tables: https://www.caniemail.com/
+- SPF - RFC 7208: https://www.rfc-editor.org/rfc/rfc7208
+- DKIM - RFC 6376: https://www.rfc-editor.org/rfc/rfc6376
+- DMARC - RFC 7489: https://www.rfc-editor.org/rfc/rfc7489

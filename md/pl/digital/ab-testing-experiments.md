@@ -6,7 +6,7 @@ description: "A/B test porównuje dwie lub więcej wersji rozwiązania na losowo
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "ab testing"
   - "experiments"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # A/B testing i eksperymenty — kompendium praktyczne
+
+Dobry eksperyment zaczyna się przed zobaczeniem wyników: hipoteza, primary metric, guardraile, populacja i warunek zakończenia powinny być ustalone wcześniej. Dzięki temu test ogranicza ryzyko dopasowania interpretacji do wyniku.
+
+Powiązane tematy: [Web analytics i tagging](techhandbook:doc-053), [Testowanie oprogramowania](techhandbook:doc-049) oraz [Web Performance](techhandbook:doc-048).
 
 ## 1. Czym jest A/B test
 
@@ -291,3 +295,8 @@ Nie warto, gdy:
 - sprawdzać SRM,
 - rozumieć guardrails,
 - odróżniać eksperyment od rollout.
+
+## Źródła i dalsza lektura
+
+- Microsoft Experimentation Platform: https://www.microsoft.com/en-us/research/group/experimentation-platform-exp/
+- NIST Engineering Statistics Handbook: https://www.itl.nist.gov/div898/handbook/

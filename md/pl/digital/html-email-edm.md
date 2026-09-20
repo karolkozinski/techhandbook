@@ -6,7 +6,7 @@ description: "Email HTML nie działa jak nowoczesna strona WWW."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "email"
   - "html email"
@@ -16,6 +16,12 @@ tags:
 ---
 
 # HTML email / EDM — kompendium praktyczne
+
+HTML email trzeba projektować dla zbioru różnych klientów pocztowych, a nie dla jednej przeglądarki. Najbezpieczniejsze pozostają proste tabele prezentacyjne, inline CSS, jawne wymiary i testy w realnych klientach.
+
+W 2026 nadal trzeba rozróżniać Classic Outlook for Windows od New Outlook. Classic Outlook ma znacznie bardziej ograniczony renderer HTML/CSS, dlatego mailing działający w webmailu albo New Outlook może wyglądać inaczej w Classic Outlook.
+
+Powiązane tematy: [Nowoczesny HTML i CSS](techhandbook:doc-042), [Web Performance](techhandbook:doc-048) oraz [Dokumentowanie rozwiązań technicznych](techhandbook:doc-056).
 
 ## 1. Dlaczego email HTML jest inny
 
@@ -330,3 +336,10 @@ Nie ufaj tylko jednemu preview.
 - poprawnie osadzać obrazy,
 - testować linki i tracking,
 - sprawdzać accessibility.
+
+## Źródła referencyjne
+
+- Can I email - client support tables: https://www.caniemail.com/
+- SPF - RFC 7208: https://www.rfc-editor.org/rfc/rfc7208
+- DKIM - RFC 6376: https://www.rfc-editor.org/rfc/rfc6376
+- DMARC - RFC 7489: https://www.rfc-editor.org/rfc/rfc7489

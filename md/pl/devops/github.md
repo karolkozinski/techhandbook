@@ -6,7 +6,7 @@ description: "Kompendium do codziennej pracy z GitHubem i Gitem: repozytoria, co
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "github"
   - "git"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # GitHub
+
+GitHub jest warstwą współpracy zbudowaną wokół repozytoriów Git. Najważniejsze elementy codziennej pracy to Pull Request, Issues, Actions, permissions, Releases i przegląd diffów - a nie samo klikanie po interfejsie.
+
+Powiązane tematy: [Git w praktyce zespołowej](techhandbook:doc-013), [CI/CD i GitHub Actions](techhandbook:doc-011), [Visual Studio Code](techhandbook:doc-039) oraz [Dokumentowanie rozwiązań technicznych](techhandbook:doc-056).
 
 > Kompendium do codziennej pracy z GitHubem i Gitem: repozytoria, commity, branche, synchronizacja, forki, Pull Requesty, Issues, Releases, GitHub CLI, SSH, konflikty i typowe workflow.
 
@@ -263,7 +267,7 @@ winget install Git.Git
 Ustaw nazwę autora:
 
 ```bash
-git config --global user.name "Karol"
+git config --global user.name "Anna"
 ```
 
 Ustaw e-mail:
@@ -1026,7 +1030,7 @@ Jest osobnym repozytorium.
 ```text
 oryginał
    |
-   └── fork Karola
+   └── fork użytkownikaa
 ```
 
 Jeżeli masz write access do projektu, zwykle wygodniej użyć brancha.
@@ -1120,7 +1124,7 @@ feature/login -> main
 albo:
 
 ```text
-fork Karola -> upstream/main
+fork użytkownikaa -> upstream/main
 ```
 
 Pull Request umożliwia:
@@ -2496,7 +2500,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: go test ./...
 ```
 

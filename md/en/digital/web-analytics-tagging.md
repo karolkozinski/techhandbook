@@ -6,7 +6,7 @@ description: "Web analytics should answer concrete business and product question
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "analytics"
   - "tagging"
@@ -17,6 +17,12 @@ tags:
 ---
 
 # Web Analytics and Tagging — Practical Handbook
+
+Analytics should answer concrete questions and support decisions. A tracking plan should define the event, trigger, parameters, business purpose and validation method. Without this, tagging quickly becomes a collection of unrelated events.
+
+GA4 uses an event-oriented model, but implementation still requires consent handling, data-quality checks and consistent naming.
+
+Related topics: [A/B Testing and Experiments](techhandbook:doc-054), [Technical SEO](techhandbook:doc-047), [Browser DevTools](techhandbook:doc-046) and [JavaScript](techhandbook:doc-021).
 
 ## 1. Purpose of analytics
 
@@ -389,3 +395,9 @@ You should understand:
 - data-quality monitoring.
 
 The key rule: analytics is only useful when event definitions are stable, documented and trusted.
+
+## Official references
+
+- Google Analytics events: https://support.google.com/analytics/answer/9322688
+- Google Tag Manager: https://developers.google.com/tag-platform/tag-manager
+- Consent Mode: https://developers.google.com/tag-platform/security/guides/consent

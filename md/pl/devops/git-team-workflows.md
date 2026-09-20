@@ -6,7 +6,7 @@ description: "Git to system kontroli wersji."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "git"
   - "branch"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Git w praktyce zespołowej
+
+Zespołowy workflow Git powinien przede wszystkim utrzymywać czytelną historię zmian, małe reviewowalne commity i przewidywalne scalanie. Branching model jest mniej ważny niż jasne zasady pracy z diffem, review i konfliktem.
+
+Powiązane tematy: [GitHub](techhandbook:doc-014), [CI/CD i GitHub Actions](techhandbook:doc-011), [Visual Studio Code](techhandbook:doc-039) oraz [Dokumentowanie rozwiązań technicznych](techhandbook:doc-056).
 
 ## 1. Git a GitHub
 
@@ -357,3 +361,8 @@ Potem PR i merge.
 - czytać historię,
 - pracować z remote,
 - sensownie organizować commity.
+
+## Oficjalne źródła
+
+- Git documentation: https://git-scm.com/doc
+- Pro Git book: https://git-scm.com/book/en/v2

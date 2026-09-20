@@ -6,7 +6,7 @@ description: "Nie zgaduj. Zbieraj fakty."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "logs"
   - "monitoring"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Logi, monitoring i troubleshooting
+
+Troubleshooting zaczyna się od obserwacji, nie od zmian konfiguracji. Logi mówią, co wydarzyło się w systemie, monitoring pokazuje stan i trendy, a alerty powinny wskazywać sytuacje wymagające reakcji.
+
+Powiązane tematy: [Troubleshooting aplikacji webowej end-to-end](techhandbook:doc-057), [systemd, cron i schedulery](techhandbook:doc-052), [HTTP, HTTPS i TLS](techhandbook:doc-044) oraz [Docker](techhandbook:doc-012).
 
 ## 1. Zasada
 
@@ -316,3 +320,8 @@ Linux często używa `logrotate` lub journald retention.
 - diagnozować 502,
 - odróżnić problem aplikacji od proxy/sieci,
 - tworzyć prosty healthcheck.
+
+## Oficjalne źródła
+
+- systemd journalctl: https://www.freedesktop.org/software/systemd/man/latest/journalctl.html
+- OpenTelemetry documentation: https://opentelemetry.io/docs/

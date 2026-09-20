@@ -6,7 +6,7 @@ description: "Git is a version control system."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "git"
   - "branch"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Git in Team Workflows
+
+A team Git workflow should primarily keep history understandable, commits reviewable and merges predictable. The exact branching model matters less than clear rules for diffs, review and conflict resolution.
+
+Related topics: [GitHub](techhandbook:doc-014), [CI/CD and GitHub Actions](techhandbook:doc-011), [Visual Studio Code](techhandbook:doc-039) and [Documenting Technical Solutions](techhandbook:doc-056).
 
 ## 1. Git and GitHub
 
@@ -276,3 +280,8 @@ Then open a PR and merge it.
 ## 26. What you should know
 
 You should be able to branch, merge, resolve conflicts, use stash, understand revert vs reset, read history, work with remotes and organise commits sensibly.
+
+## Official references
+
+- Git documentation: https://git-scm.com/doc
+- Pro Git book: https://git-scm.com/book/en/v2

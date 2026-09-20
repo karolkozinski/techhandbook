@@ -6,7 +6,7 @@ description: "An A/B test compares two or more variants under controlled conditi
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "ab testing"
   - "experiments"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # A/B Testing and Experiments — Practical Handbook
+
+A good experiment starts before results are visible: hypothesis, primary metric, guardrails, population and stopping rule should be defined in advance. This reduces the temptation to adapt the interpretation to the observed result.
+
+Related topics: [Web Analytics and Tagging](techhandbook:doc-053), [Software Testing](techhandbook:doc-049) and [Web Performance](techhandbook:doc-048).
 
 ## 1. What an A/B test is
 
@@ -321,3 +325,8 @@ You should understand:
 - rollout vs experiment.
 
 The key rule: define the experiment before looking at the result.
+
+## Sources and further reading
+
+- Microsoft Experimentation Platform: https://www.microsoft.com/en-us/research/group/experimentation-platform-exp/
+- NIST Engineering Statistics Handbook: https://www.itl.nist.gov/div898/handbook/

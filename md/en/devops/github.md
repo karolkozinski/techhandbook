@@ -6,7 +6,7 @@ description: "Git is a distributed version-control system that tracks file histo
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "github"
   - "git"
@@ -15,6 +15,11 @@ tags:
 ---
 
 # GitHub — Practical Handbook
+
+GitHub is a collaboration layer around Git repositories. The important daily concepts are Pull Requests, Issues, Actions, permissions, Releases and diff review rather than memorizing the website interface.
+
+Related topics: [Git in Team Workflows](techhandbook:doc-013), [CI/CD and GitHub Actions](techhandbook:doc-011), [Visual Studio Code](techhandbook:doc-039) and [Documenting Technical Solutions](techhandbook:doc-056).
+
 ## 1. Git and GitHub are not the same thing
 ### Git
 Git is a distributed version-control system that tracks file history locally.
@@ -52,7 +57,7 @@ pkg install git
 Install Git for Windows and use Git Bash, PowerShell or VS Code terminal.
 # 4. First Git configuration
 ```bash
-git config --global user.name "Karol"
+git config --global user.name "Anna"
 git config --global user.email "you@example.com"
 ```
 ## Default branch main

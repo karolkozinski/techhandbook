@@ -6,7 +6,7 @@ description: "CI/CD and GitHub Actions — a practical TechHandbook reference."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "ci"
   - "cd"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # CI/CD and GitHub Actions
+
+CI automates validation of a change, while CD automates delivery. A good pipeline should be repeatable, easy to diagnose and built from the same commands that can be run locally.
+
+Related topics: [Git in Team Workflows](techhandbook:doc-013), [GitHub](techhandbook:doc-014), [Software Testing](techhandbook:doc-049), [Docker](techhandbook:doc-012) and [Logging, Monitoring and Troubleshooting](techhandbook:doc-015).
 
 ## 1. CI and CD
 
@@ -54,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Test
         run: echo "Run tests here"
@@ -260,3 +264,8 @@ Do not begin with an unnecessarily complex pipeline.
 ## 21. What you should know
 
 You should be able to write a basic workflow, run tests and builds, use secrets, build a container, connect CI with deployment and understand job dependencies.
+
+## Official references
+
+- GitHub Actions documentation: https://docs.github.com/actions
+- Workflow syntax: https://docs.github.com/actions/writing-workflows/workflow-syntax-for-github-actions

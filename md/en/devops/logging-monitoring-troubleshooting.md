@@ -6,7 +6,7 @@ description: "Do not guess. Gather facts."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "logs"
   - "monitoring"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Logging, Monitoring and Troubleshooting
+
+Troubleshooting starts with observation rather than configuration changes. Logs explain what happened, monitoring shows state and trends, and alerts should identify situations that require action.
+
+Related topics: [End-to-End Web Application Troubleshooting](techhandbook:doc-057), [systemd, cron and Schedulers](techhandbook:doc-052), [HTTP, HTTPS and TLS](techhandbook:doc-044) and [Docker](techhandbook:doc-012).
 
 ## 1. Rule
 
@@ -234,3 +238,8 @@ Logs need rotation. Linux commonly uses logrotate or journald retention.
 ## 27. What you should know
 
 You should be able to read journalctl, locate processes and ports, assess CPU/RAM/disk, diagnose 502 errors, separate application problems from proxy/network problems and create a basic health check.
+
+## Official references
+
+- systemd journalctl: https://www.freedesktop.org/software/systemd/man/latest/journalctl.html
+- OpenTelemetry documentation: https://opentelemetry.io/docs/
