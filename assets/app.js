@@ -160,6 +160,19 @@
     return s;
   }
 
+  function normalizeArticleTitle(markdown, title) {
+    if (!title) return markdown;
+    const safeTitle = title.replace(/\r?\n/g, " ").trim();
+    const lines = markdown.replace(/\r\n?/g, "\n").split("\n");
+    const firstH1 = lines.findIndex(line => /^#\s+/.test(line));
+    if (firstH1 >= 0) {
+      lines[firstH1] = "# " + safeTitle;
+    } else {
+      lines.unshift("# " + safeTitle, "");
+    }
+    return lines.join("\n");
+  }
+
   function renderMarkdown(markdown) {
     const lines = markdown.replace(/\r\n?/g, "\n").split("\n");
     const out = [];
@@ -545,7 +558,8 @@
       const res = await fetch(file.path, { cache: "no-cache" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const text = await res.text();
-      els.reader.innerHTML = renderMarkdown(text);
+      const titledText = normalizeArticleTitle(text, file.title || file.name.replace(/\.md$/i, ""));
+      els.reader.innerHTML = renderMarkdown(titledText);
       document.title = `${file.title || file.name} — Tech Handbook`;
       history.replaceState(null, "", "#/doc/" + encodeURIComponent(file.id));
       if (els.readerTop) {
