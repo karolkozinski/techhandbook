@@ -84,6 +84,6 @@ git*
 
 ## Publikacja
 
-Projekt działa na hostingu statycznym.
+Projekt działa na hostingu statycznym. Plik `.nojekyll` w katalogu głównym wyłącza przetwarzanie przez Jekyll na GitHub Pages, dzięki czemu pliki Markdown są publikowane jako surowe `.md` i mogą być pobierane przez frontend.
 
 Uwaga: otwieranie `index.html` bezpośrednio z `file://` może blokować `fetch()` do JSON i Markdownów z powodu polityki bezpieczeństwa przeglądarki.
