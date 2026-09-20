@@ -6,7 +6,7 @@ description: "Technical documentation reduces repeated explanation and makes sys
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "documentation"
   - "readme"
@@ -17,6 +17,10 @@ tags:
 ---
 
 # Documenting Technical Solutions — Handbook
+
+Good technical documentation reduces the time needed to understand a system again and limits knowledge that exists only in one person's head. In practice, separate tutorials, task-oriented how-to guides, reference and explanation instead of forcing every purpose into one document.
+
+Related topics: [GitHub](techhandbook:doc-014), [Software Testing](techhandbook:doc-049), [End-to-End Web Application Troubleshooting](techhandbook:doc-057) and [AI Prompting](techhandbook:doc-002).
 
 ## 1. Why document
 
@@ -369,3 +373,9 @@ You should understand:
 - documentation-as-code.
 
 The key rule: document the information that future you or another operator will need when the system is failing at 2 a.m.
+
+## Sources and further reading
+
+- Diátaxis: https://diataxis.fr/
+- Write the Docs: https://www.writethedocs.org/guide/
+- OpenAPI Specification: https://spec.openapis.org/oas/latest.html

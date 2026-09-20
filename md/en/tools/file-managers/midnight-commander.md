@@ -6,7 +6,7 @@ description: "Midnight Commander (MC) is a two-panel terminal file manager inspi
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "mc"
   - "midnight commander"
@@ -14,6 +14,11 @@ tags:
 ---
 
 # Midnight Commander — Knowledge Handbook
+
+Midnight Commander is a convenient visual layer over ordinary file operations and the shell. It works especially well on servers over SSH when you want to compare directories, copy files, inspect logs or drop into a normal command without leaving the program.
+
+Related topics: [Debian Practical Shell Handbook](techhandbook:doc-027), [FreeBSD Practical Shell Handbook](techhandbook:doc-029), [vi / Vim / gVim / Neovim](techhandbook:doc-038) and [SSH and Remote Administration](techhandbook:doc-018).
+
 ## 1. What Midnight Commander is
 Midnight Commander (MC) is a two-panel terminal file manager inspired by Norton Commander. It combines file operations, a shell command line, viewer, editor and virtual filesystem features.
 # 2. Installation
@@ -216,7 +221,7 @@ Browse/edit files in MC, then use `git status`, `git diff`, `git add` and `git c
 Open corresponding directories in both panels and use Compare Directories, then manually verify meaningful differences.
 # 80. Example 10 — FreeBSD
 Left `/usr/local/etc`, right `/var/log`; use shell line for `service`, `sysrc`, `sockstat` and `pkg` commands.
-# 81. Proposed Karol workflow
+# 81. Example workflow
 Use MC as the visual layer on servers: two panels for files, shell at the bottom, Vim/Neovim or mcedit for edits, tmux for persistence, Git/rsync for repeatable operations.
 # 82. Minimum worth remembering
 Tab, F3, F4, F5, F6, F7, F8, Ctrl+O, Insert, Quick cd, Find File and the command line.
@@ -242,3 +247,8 @@ Remote SSH sessions, unfamiliar directory trees, interactive copies/moves, confi
 Use rsync for synchronization, find/grep/ripgrep for large searches, Git for versioning, scripts for automation and dedicated backup tools for backups.
 # Summary
 Midnight Commander is most valuable as a fast two-panel terminal workspace that complements, rather than replaces, the Unix shell.
+
+## Official references
+
+- Midnight Commander: https://midnight-commander.org/
+- MC manual: https://midnight-commander.org/wiki/doc/common/index

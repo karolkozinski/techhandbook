@@ -6,7 +6,7 @@ description: "Hermes is an AI-agent environment that can combine model access, s
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "ai"
   - "hermes"
@@ -14,6 +14,13 @@ tags:
 ---
 
 # Hermes Agent — User Handbook
+
+Hermes Agent combines an AI model with shell tools, files, skills, memory, cron and messaging channels. The safest rollout is to get ordinary CLI/chat working first, then add the gateway, Signal, cron, browser automation and broader permissions.
+
+The official installation path covers Linux, macOS, WSL2 and Android/Termux. FreeBSD is not listed as a primary host, so this handbook treats it mainly as a system managed over SSH.
+
+Related topics: [AI Prompting](techhandbook:doc-002), [SSH and Remote Administration](techhandbook:doc-018), [Debian Desktop and Server](techhandbook:doc-033), [FreeBSD as a Server](techhandbook:doc-034) and [Documenting Technical Solutions](techhandbook:doc-056).
+
 ## Debian as host, FreeBSD as host/managed machine
 # 1. What Hermes Agent is
 Hermes is an AI-agent environment that can combine model access, shell tools, files, memory, profiles, gateways and messaging integrations.

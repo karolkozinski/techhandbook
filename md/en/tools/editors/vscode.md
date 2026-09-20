@@ -6,7 +6,7 @@ description: "VS Code is a cross-platform code editor with project navigation, G
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "vscode"
   - "editor"
@@ -15,6 +15,13 @@ tags:
 ---
 
 # Visual Studio Code — Knowledge Handbook
+
+VS Code is a workspace for the whole project: files, search, terminal, Git, debugging, language services, tasks and AI tooling share one context. Agents can now plan work, edit multiple files and run commands, but the result should still go through diff review, tests and normal code review.
+
+Current VS Code distinguishes lighter AI assistance from agentic workflows; depending on configuration, sessions can use targets such as Copilot or Codex.
+
+Related topics: [GitHub](techhandbook:doc-014), [Git in Team Workflows](techhandbook:doc-013), [Software Testing](techhandbook:doc-049), [AI Prompting](techhandbook:doc-002) and [vi / Vim / gVim / Neovim](techhandbook:doc-038).
+
 ## 1. What Visual Studio Code is
 VS Code is a cross-platform code editor with project navigation, Git integration, terminal, debugger, language servers, extensions and AI tooling. It sits between a simple editor and a full IDE.
 # 2. Installation
@@ -206,7 +213,7 @@ Remote SSH opens a remote server filesystem/workspace while the UI remains local
 ```text
 Host vps
     HostName 203.0.113.10
-    User karol
+    User example
     IdentityFile ~/.ssh/id_ed25519
 ```
 # 45. Why Remote SSH is excellent

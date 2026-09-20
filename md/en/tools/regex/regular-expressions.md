@@ -6,7 +6,7 @@ description: "A regular expression is a pattern used to search, validate and tra
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "regex"
   - "regexp"
@@ -17,6 +17,10 @@ tags:
 ---
 
 # Regular Expressions (Regex) — Practical Handbook
+
+Regex is a family of pattern languages, not one identical standard in every tool. grep/POSIX, JavaScript, Python and PCRE are similar but differ in details, so advanced expressions should be written with the target engine in mind.
+
+Related topics: [Shell Scripting](techhandbook:doc-031), [Visual Studio Code](techhandbook:doc-039), [vi / Vim / gVim / Neovim](techhandbook:doc-038) and [Python](techhandbook:doc-023).
 
 ## 1. What regex is
 
@@ -343,3 +347,9 @@ You should understand:
 - basic use in JavaScript, Python, grep and editors.
 
 The main rule: use the simplest regex that solves the problem.
+
+## Reference sources
+
+- POSIX regular expressions: https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap09.html
+- MDN regular expressions: https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_expressions
+- Python re: https://docs.python.org/3/library/re.html

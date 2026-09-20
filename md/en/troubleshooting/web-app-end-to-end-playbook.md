@@ -6,7 +6,7 @@ description: "Troubleshoot a web application systematically from user-visible sy
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "troubleshooting"
   - "dns"
@@ -18,6 +18,10 @@ tags:
 ---
 
 # End-to-End Web Application Troubleshooting — Playbook
+
+Web application troubleshooting should move layer by layer from the observable symptom toward the root cause. Start with reproduction and evidence, then inspect DNS/network/TLS, reverse proxy, backend, database and external APIs before making random configuration changes.
+
+Related topics: [DNS, Domains and Internet Routing](techhandbook:doc-017), [HTTP, HTTPS and TLS](techhandbook:doc-044), [nginx and Reverse Proxy](techhandbook:doc-045), [SQL and PostgreSQL](techhandbook:doc-010), [Browser DevTools](techhandbook:doc-046) and [Logging, Monitoring and Troubleshooting](techhandbook:doc-015).
 
 ## 1. Goal
 
@@ -482,3 +486,9 @@ You should be able to debug:
 - incident timelines.
 
 The key rule: troubleshoot one layer at a time and prove where the request stops working.
+
+## Sources and reference tools
+
+- Chrome DevTools: https://developer.chrome.com/docs/devtools/
+- nginx documentation: https://nginx.org/en/docs/
+- PostgreSQL documentation: https://www.postgresql.org/docs/current/

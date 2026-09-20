@@ -6,7 +6,7 @@ description: "Wyrażenie regularne opisuje wzorzec tekstu."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "regex"
   - "regexp"
@@ -17,6 +17,10 @@ tags:
 ---
 
 # Wyrażenia regularne (Regex) — kompendium praktyczne
+
+Regex to rodzina języków wzorców, a nie jeden identyczny standard we wszystkich programach. Składnia grep/POSIX, JavaScript, Python i PCRE jest podobna, ale różni się szczegółami, dlatego przed użyciem zaawansowanych konstrukcji warto wiedzieć, jakiego engine używa dane narzędzie.
+
+Powiązane tematy: [Programowanie w shellu](techhandbook:doc-031), [Visual Studio Code](techhandbook:doc-039), [Vi, Vim, gVim i Neovim](techhandbook:doc-038) oraz [Python](techhandbook:doc-023).
 
 ## 1. Czym jest regex
 
@@ -435,3 +439,9 @@ Prosty identyfikator:
 - rozumieć greedy/lazy,
 - korzystać z regex w grep, JS i Pythonie,
 - wiedzieć, kiedy regex nie jest dobrym narzędziem.
+
+## Źródła referencyjne
+
+- POSIX regular expressions: https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap09.html
+- MDN regular expressions: https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_expressions
+- Python re: https://docs.python.org/3/library/re.html

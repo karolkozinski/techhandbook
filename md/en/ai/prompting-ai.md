@@ -6,7 +6,7 @@ description: "A prompt is the instruction and context given to an AI model."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "ai"
   - "prompt"
@@ -15,6 +15,12 @@ tags:
 ---
 
 # AI Prompting — Practical Handbook
+
+Good prompting starts with a clear goal, relevant context, constraints and the expected result. As models and agents gain the ability to take actions, success criteria, stop rules and verification become increasingly important.
+
+Modern models often respond better to shorter outcome-oriented instructions than to elaborate prompting rituals. Iterate from observed results instead of copying a rigid "magic" template.
+
+Related topics: [Hermes Agent](techhandbook:doc-001), [Documenting Technical Solutions](techhandbook:doc-056), [Visual Studio Code](techhandbook:doc-039) and [Software Testing](techhandbook:doc-049).
 
 ## 1. What a prompt is
 
@@ -452,3 +458,9 @@ You should be able to:
 - verify results.
 
 The strongest prompt is usually not the longest one. It is the one that makes the task, constraints and success criteria unambiguous.
+
+## Sources and further reading
+
+- OpenAI model guidance: https://developers.openai.com/api/docs/guides/latest-model
+- OpenAI API documentation: https://developers.openai.com/api/docs/
+- Hermes Agent documentation: https://hermes-agent.nousresearch.com/docs/

@@ -6,13 +6,21 @@ description: "Stan dokumentacji: 19 września 2026 Projekt: NousResearch Hermes 
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "ai"
   - "hermes"
   - "agent"
 ---
+
 # Hermes Agent
+
+Hermes Agent jest środowiskiem agentowym łączącym model AI z shellem, plikami, skills, pamięcią, cronem i kanałami komunikacji. Najbezpieczniejsza ścieżka wdrożenia to uruchomić najpierw zwykły chat/CLI, a dopiero potem dokładać gateway, Signal, cron, browser automation i szersze uprawnienia.
+
+Oficjalna ścieżka instalacyjna obejmuje Linux, macOS, WSL2 i Android/Termux. FreeBSD nie jest wymieniony jako podstawowy host, dlatego w tym handbooku traktujemy go przede wszystkim jako maszynę zarządzaną przez SSH.
+
+Powiązane tematy: [Promptowanie AI](techhandbook:doc-002), [SSH i zdalna administracja](techhandbook:doc-018), [Debian - desktop i serwer](techhandbook:doc-033), [FreeBSD jako serwer](techhandbook:doc-034) oraz [Dokumentowanie rozwiązań technicznych](techhandbook:doc-056).
+
 ## Debian jako host, FreeBSD jako host/maszyna zarządzana
 
 > Stan dokumentacji: 19 września 2026  

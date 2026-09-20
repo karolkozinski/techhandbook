@@ -6,7 +6,7 @@ description: "Praktyczny przewodnik po VS Code jako codziennym środowisku pracy
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "vscode"
   - "editor"
@@ -15,6 +15,12 @@ tags:
 ---
 
 # Visual Studio Code
+
+VS Code jest środowiskiem pracy nad całym projektem: pliki, wyszukiwanie, terminal, Git, debugger, language servers, zadania i narzędzia AI działają w jednym kontekście. Agenci potrafią dziś planować, edytować wiele plików i uruchamiać komendy, ale wynik nadal powinien przejść przez diff, testy i normalny review.
+
+Aktualny VS Code rozróżnia lżejsze formy pomocy od pracy agentowej; w zależności od konfiguracji sesja może korzystać m.in. z Copilota lub Codexa.
+
+Powiązane tematy: [GitHub](techhandbook:doc-014), [Git w praktyce zespołowej](techhandbook:doc-013), [Testowanie oprogramowania](techhandbook:doc-049), [Promptowanie AI](techhandbook:doc-002) oraz [Vi, Vim, gVim i Neovim](techhandbook:doc-038).
 
 > Praktyczny przewodnik po VS Code jako codziennym środowisku pracy z kodem, Gitem, terminalem, debugowaniem oraz agentami AI: GitHub Copilot i OpenAI Codex.
 >

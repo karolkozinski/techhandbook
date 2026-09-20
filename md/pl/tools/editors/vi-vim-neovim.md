@@ -6,7 +6,7 @@ description: "Vi, Vim, gVim i Neovim — praktyczne kompendium TechHandbook."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "vi"
   - "vim"
@@ -17,18 +17,24 @@ tags:
 
 # Vi, Vim, gVim i Neovim
 
-## 1. Co masz zainstalowane
+Vi, Vim, gVim i Neovim należą do tej samej rodziny modalnych edytorów, ale różnią się zakresem funkcji i konfiguracji. Na minimalnym serwerze `vi` może wskazywać na różne implementacje, dlatego przed założeniem konkretnego zestawu funkcji warto sprawdzić `vi --version`, `vim --version` albo `nvim --version`.
 
-Na tym Debianie:
+Powiązane tematy: [Debian - shell](techhandbook:doc-027), [FreeBSD - shell](techhandbook:doc-029), [SSH i zdalna administracja](techhandbook:doc-018) oraz [Visual Studio Code](techhandbook:doc-039).
 
-```text
-vi   -> /usr/bin/vim.tiny
-vim  -> /usr/bin/vim.gtk3
-gvim -> /usr/bin/gvim
-nvim -> Neovim 0.12.4
+## 1. Jak sprawdzić, z czym pracujesz
+
+Na różnych systemach polecenie `vi` może uruchamiać klasyczne vi, Vim w wariancie minimalnym albo inną zgodną implementację.
+
+Sprawdzenie:
+
+```bash
+command -v vi vim gvim nvim
+vi --version
+vim --version
+nvim --version
 ```
 
-To daje cztery warianty tej samej rodziny edytorów.
+Nie zakładaj, że `vi` na każdym serwerze ma ten sam zestaw funkcji.
 
 ---
 
@@ -41,8 +47,6 @@ Uruchomienie:
 ```bash
 vi plik.conf
 ```
-
-U Ciebie `vi` wskazuje na `vim.tiny`, czyli małą, ograniczoną wersję Vima.
 
 Używaj go przede wszystkim jako:
 
@@ -1365,3 +1369,8 @@ Esc
 :q!
 Enter
 ```
+
+## Oficjalne źródła
+
+- Vim documentation: https://www.vim.org/docs.php
+- Neovim documentation: https://neovim.io/doc/

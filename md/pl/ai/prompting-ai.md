@@ -6,14 +6,21 @@ description: "Prompt to instrukcja przekazana modelowi AI."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "ai"
   - "prompt"
   - "prompting"
   - "llm"
 ---
+
 # Promptowanie AI
+
+Dobre promptowanie polega przede wszystkim na jasnym opisaniu celu, kontekstu, ograniczeń i oczekiwanego wyniku. Im bardziej model lub agent potrafi wykonywać działania, tym ważniejsze stają się kryteria sukcesu, zasady zatrzymania i sposób weryfikacji efektu.
+
+Współczesne modele zwykle lepiej reagują na krótsze, wynikowo zorientowane instrukcje niż na rozbudowane rytuały promptowe. W praktyce warto iterować na podstawie rezultatów zamiast kopiować sztywny "magiczny" szablon.
+
+Powiązane tematy: [Hermes Agent](techhandbook:doc-001), [Dokumentowanie rozwiązań technicznych](techhandbook:doc-056), [Visual Studio Code](techhandbook:doc-039) oraz [Testowanie oprogramowania](techhandbook:doc-049).
 
 ## 1. Czym jest prompt
 
@@ -653,3 +660,9 @@ Po opanowaniu tego kompendium powinieneś:
 - świadomie używać agentów,
 - uważać na halucynacje i prompt injection,
 - chronić dane poufne.
+
+## Źródła i dalsza lektura
+
+- OpenAI model guidance: https://developers.openai.com/api/docs/guides/latest-model
+- OpenAI API documentation: https://developers.openai.com/api/docs/
+- Hermes Agent documentation: https://hermes-agent.nousresearch.com/docs/

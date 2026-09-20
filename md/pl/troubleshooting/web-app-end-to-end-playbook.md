@@ -6,7 +6,7 @@ description: "Troubleshooting aplikacji webowej end-to-end — praktyczne kompen
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "troubleshooting"
   - "dns"
@@ -18,6 +18,10 @@ tags:
 ---
 
 # Troubleshooting aplikacji webowej end-to-end
+
+Troubleshooting aplikacji webowej powinien iść warstwami od obserwowalnego objawu do przyczyny. Najpierw reprodukcja i dane, potem DNS/sieć/TLS, reverse proxy, backend, baza, zewnętrzne API i dopiero na końcu przypadkowe zmiany konfiguracji.
+
+Powiązane tematy: [DNS, domeny i routing](techhandbook:doc-017), [HTTP, HTTPS i TLS](techhandbook:doc-044), [nginx i reverse proxy](techhandbook:doc-045), [SQL i PostgreSQL](techhandbook:doc-010), [Browser DevTools](techhandbook:doc-046) oraz [Logi, monitoring i troubleshooting](techhandbook:doc-015).
 
 ## 1. Cel
 
@@ -426,3 +430,9 @@ Warto zapisać:
 - sprawdzać zasoby,
 - analizować browser Network,
 - myśleć o rollbacku i timeline.
+
+## Źródła i narzędzia referencyjne
+
+- Chrome DevTools: https://developer.chrome.com/docs/devtools/
+- nginx documentation: https://nginx.org/en/docs/
+- PostgreSQL documentation: https://www.postgresql.org/docs/current/

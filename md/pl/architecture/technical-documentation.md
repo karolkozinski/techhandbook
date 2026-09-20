@@ -6,7 +6,7 @@ description: "Dokumentacja ma zmniejszyć koszt ponownego zrozumienia systemu."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "documentation"
   - "readme"
@@ -17,6 +17,10 @@ tags:
 ---
 
 # Dokumentowanie rozwiązań technicznych
+
+Dobra dokumentacja techniczna skraca czas potrzebny na ponowne zrozumienie systemu i ogranicza wiedzę zamkniętą w głowie jednej osoby. W praktyce warto rozdzielać tutoriale, instrukcje wykonania zadania, reference i wyjaśnienia, zamiast mieszać wszystkie role w jednym dokumencie.
+
+Powiązane tematy: [GitHub](techhandbook:doc-014), [Testowanie oprogramowania](techhandbook:doc-049), [Troubleshooting aplikacji webowej end-to-end](techhandbook:doc-057) oraz [Promptowanie AI](techhandbook:doc-002).
 
 ## 1. Po co dokumentować
 
@@ -350,3 +354,9 @@ ADR tylko dla ważnych decyzji.
 - przygotować runbook,
 - opisać API,
 - utrzymywać dokumentację razem z kodem.
+
+## Źródła i dalsza lektura
+
+- Diátaxis: https://diataxis.fr/
+- Write the Docs: https://www.writethedocs.org/guide/
+- OpenAPI Specification: https://spec.openapis.org/oas/latest.html

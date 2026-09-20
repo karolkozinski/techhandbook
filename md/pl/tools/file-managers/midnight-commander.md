@@ -6,7 +6,7 @@ description: "Midnight Commander (MC) to tekstowy, dwupanelowy menedżer plików
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "mc"
   - "midnight commander"
@@ -14,6 +14,10 @@ tags:
 ---
 
 # Midnight Commander
+
+Midnight Commander jest wygodną warstwą wizualną nad typowymi operacjami plikowymi i shellem. Dobrze sprawdza się na serwerach przez SSH, szczególnie gdy chcesz szybko porównać katalogi, skopiować pliki, zajrzeć do logów albo przejść do zwykłej komendy bez opuszczania programu.
+
+Powiązane tematy: [Debian - shell](techhandbook:doc-027), [FreeBSD - shell](techhandbook:doc-029), [Vi, Vim, gVim i Neovim](techhandbook:doc-038) oraz [SSH i zdalna administracja](techhandbook:doc-018).
 
 ## 1. Czym jest Midnight Commander?
 
@@ -2302,7 +2306,7 @@ service nginx restart
 
 ---
 
-# 81. Proponowany workflow Karola
+# 81. Przykładowy workflow
 
 Przy pracy na Debianie i FreeBSD bardzo wygodny zestaw to:
 
@@ -2527,3 +2531,8 @@ Dobrze opanowany MC pozwala bardzo szybko:
 - używać shella bez opuszczania programu.
 
 Dla Debiana i FreeBSD jest to jedno z tych narzędzi, które warto mieć praktycznie na każdej maszynie.
+
+## Oficjalne źródła
+
+- Midnight Commander: https://midnight-commander.org/
+- MC manual: https://midnight-commander.org/wiki/doc/common/index

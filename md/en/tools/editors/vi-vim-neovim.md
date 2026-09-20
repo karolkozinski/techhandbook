@@ -6,7 +6,7 @@ description: "vi may be vim.tiny or another implementation; vim is full terminal
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "vi"
   - "vim"
@@ -16,6 +16,11 @@ tags:
 ---
 
 # vi / Vim / gVim / Neovim — Practical Text Editing Handbook
+
+vi, Vim, gVim and Neovim share the same modal-editing family but differ in features and configuration. On minimal systems, `vi` may point to different implementations, so check `vi --version`, `vim --version` or `nvim --version` before assuming a particular feature set.
+
+Related topics: [Debian Practical Shell Handbook](techhandbook:doc-027), [FreeBSD Practical Shell Handbook](techhandbook:doc-029), [SSH and Remote Administration](techhandbook:doc-018) and [Visual Studio Code](techhandbook:doc-039).
+
 ## 1. What you have installed
 `vi` may be vim.tiny or another implementation; `vim` is full terminal Vim; `gvim` is graphical Vim; `nvim` is Neovim.
 ## 2. What to use and when
@@ -241,3 +246,8 @@ paste: p
 undo: u
 replace all: :%s/a/b/g
 ```
+
+## Official references
+
+- Vim documentation: https://www.vim.org/docs.php
+- Neovim documentation: https://neovim.io/doc/
