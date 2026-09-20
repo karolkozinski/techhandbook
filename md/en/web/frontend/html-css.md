@@ -6,7 +6,7 @@ description: "A practical reference for building modern, semantic, responsive an
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "html"
   - "css"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Modern HTML and CSS
+
+HTML should first describe the meaning and structure of content, while CSS controls its presentation. Solid semantic HTML, normal flow, Flexbox, Grid and responsive design are enough for most ordinary websites without immediately adding a framework.
+
+Related topics: [JavaScript](techhandbook:doc-021), [UX and Accessibility](techhandbook:doc-043), [Browser DevTools](techhandbook:doc-046) and [Web Performance](techhandbook:doc-048).
 
 A practical reference for building modern, semantic, responsive and accessible websites.
 
@@ -2695,3 +2699,10 @@ HTML should still make sense with CSS disabled.
 CSS should present a well-designed HTML structure rather than compensate for a poor one.
 
 This is a strong foundation for building modern websites without Bootstrap, Tailwind or JavaScript frameworks.
+
+## Official references
+
+- HTML Living Standard: https://html.spec.whatwg.org/
+- CSS specifications: https://www.w3.org/Style/CSS/specs.en.html
+- MDN HTML: https://developer.mozilla.org/docs/Web/HTML
+- MDN CSS: https://developer.mozilla.org/docs/Web/CSS

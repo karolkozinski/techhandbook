@@ -6,7 +6,7 @@ description: "A small project does not need microservices, Kubernetes and five d
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "architecture"
   - "web"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Architecture of Small Web Applications
+
+For small applications, predictability matters more than the number of technologies. A simple monolith with one database and a clear deployment path usually has fewer failure points and is easier to debug than premature microservices.
+
+Related topics: [nginx and Reverse Proxy](techhandbook:doc-045), [SQL and PostgreSQL](techhandbook:doc-010), [Docker](techhandbook:doc-012), [APIs and System Integrations](techhandbook:doc-008) and [Software Testing](techhandbook:doc-049).
 
 ## 1. Goal
 
@@ -228,3 +232,9 @@ A good MVP can be one application, one database, simple deployment, monitoring a
 ## 23. What you should know
 
 You should be able to sketch request flow, choose a simple architecture, separate configuration from code, understand nginx/backend/database roles, avoid overengineering and plan deployment and backups.
+
+## Sources and further documentation
+
+- The Twelve-Factor App: https://12factor.net/
+- PostgreSQL documentation: https://www.postgresql.org/docs/current/
+- nginx documentation: https://nginx.org/en/docs/

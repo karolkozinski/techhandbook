@@ -6,7 +6,7 @@ description: "Browser developer tools are among the most important tools for wor
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "devtools"
   - "browser"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # Browser DevTools — Practical Handbook
+
+DevTools replace guessing with observation: inspect the DOM, computed styles, network requests, storage, JavaScript execution and performance traces. Panel names differ between browsers, but the diagnostic workflow is similar.
+
+Related topics: [Modern HTML and CSS](techhandbook:doc-042), [JavaScript](techhandbook:doc-021), [HTTP, HTTPS and TLS](techhandbook:doc-044), [Web Performance](techhandbook:doc-048) and [UX and Accessibility](techhandbook:doc-043).
 
 ## 1. Why DevTools matter
 
@@ -206,3 +210,8 @@ When “the page does not work”:
 ## 25. What you should know
 
 You should be able to inspect CSS and DOM, find Console errors, analyse requests, replay a request with cURL, use breakpoints, inspect cookies/storage, use throttling and run a basic Lighthouse audit.
+
+## Official references
+
+- Chrome DevTools: https://developer.chrome.com/docs/devtools/
+- Firefox Developer Tools: https://firefox-source-docs.mozilla.org/devtools-user/

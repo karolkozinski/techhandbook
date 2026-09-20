@@ -6,7 +6,7 @@ description: "Mały projekt nie potrzebuje mikroserwisów, Kubernetesa i pięciu
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "architecture"
   - "web"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Architektura małych aplikacji webowych
+
+Dla małych aplikacji najważniejsza jest przewidywalność, nie liczba technologii. Prosty monolit z jedną bazą i jasnym deploymentem zwykle daje mniej punktów awarii i łatwiejszą diagnostykę niż przedwczesne mikroserwisy.
+
+Powiązane tematy: [nginx i reverse proxy](techhandbook:doc-045), [SQL i PostgreSQL](techhandbook:doc-010), [Docker](techhandbook:doc-012), [API i integracje systemów](techhandbook:doc-008) oraz [Testowanie oprogramowania](techhandbook:doc-049).
 
 ## 1. Cel
 
@@ -287,3 +291,9 @@ Dobre MVP:
 - rozumieć rolę nginx/backend/db,
 - unikać overengineeringu,
 - zaplanować deployment i backup.
+
+## Źródła i dalsza dokumentacja
+
+- The Twelve-Factor App: https://12factor.net/
+- PostgreSQL documentation: https://www.postgresql.org/docs/current/
+- nginx documentation: https://nginx.org/en/docs/

@@ -6,7 +6,7 @@ description: "Technical SEO covers technical factors that affect whether a crawl
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "seo"
   - "technical seo"
@@ -17,6 +17,12 @@ tags:
 ---
 
 # Technical SEO — Practical Handbook
+
+Technical SEO is mainly about whether a crawler can discover, fetch, understand and correctly index a page. Canonical, hreflang, sitemaps and robots.txt provide signals or instructions, but they do not replace useful content and good internal linking.
+
+For Google, a canonical declaration is a hint rather than an absolute command, so Google may select a different representative URL.
+
+Related topics: [Web Performance](techhandbook:doc-048), [HTTP, HTTPS and TLS](techhandbook:doc-044), [Modern HTML and CSS](techhandbook:doc-042) and [Browser DevTools](techhandbook:doc-046).
 
 ## 1. What Technical SEO is
 
@@ -287,3 +293,11 @@ curl -IL https://example.com/old-url
 ## 25. What you should know
 
 You should understand crawling and indexing, diagnose status codes and redirects, use canonical URLs, prepare robots.txt and sitemaps, check structured data basics and understand the impact of performance and mobile experience.
+
+## Official references
+
+- Google Search Essentials: https://developers.google.com/search/docs/essentials
+- Canonicalization: https://developers.google.com/search/docs/crawling-indexing/canonicalization
+- Localized versions and hreflang: https://developers.google.com/search/docs/specialty/international/localized-versions
+- Structured data: https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
+- Bing Webmaster Guidelines: https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a

@@ -6,7 +6,7 @@ description: "Page speed affects UX, conversion, accessibility, battery/data use
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "performance"
   - "cwv"
@@ -18,6 +18,12 @@ tags:
 ---
 
 # Web Performance
+
+Web performance should be measurement-driven, not intuition-driven. First determine whether the bottleneck is the network, backend, resources, JavaScript or rendering, then change the smallest relevant part.
+
+Core Web Vitals currently consist of LCP, INP and CLS. The "good" thresholds are LCP at or below 2.5 s, INP at or below 200 ms and CLS at or below 0.1, evaluated at the 75th percentile of visits.
+
+Related topics: [Browser DevTools](techhandbook:doc-046), [Modern HTML and CSS](techhandbook:doc-042), [JavaScript](techhandbook:doc-021), [HTTP, HTTPS and TLS](techhandbook:doc-044) and [Technical SEO](techhandbook:doc-047).
 
 ## 1. Goal
 
@@ -206,8 +212,9 @@ Example:
 
 ```text
 JS < 250 KB compressed
-LCP < 2.5 s
-CLS < 0.1
+LCP <= 2.5 s
+INP <= 200 ms
+CLS <= 0.1
 ```
 
 A budget helps prevent gradual performance regression.
@@ -223,3 +230,9 @@ A budget helps prevent gradual performance regression.
 ## 25. What you should know
 
 You should understand waterfalls, diagnose LCP/INP/CLS, optimise images, use caching and compression, reduce JavaScript, interpret Lighthouse and compare before/after measurements.
+
+## Official references
+
+- Web Vitals: https://web.dev/articles/vitals
+- Core Web Vitals thresholds: https://web.dev/articles/defining-core-web-vitals-thresholds
+- Chrome DevTools Performance: https://developer.chrome.com/docs/devtools/performance/

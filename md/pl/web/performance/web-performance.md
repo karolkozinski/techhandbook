@@ -6,7 +6,7 @@ description: "Szybkość strony wpływa na:"
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "performance"
   - "cwv"
@@ -18,6 +18,12 @@ tags:
 ---
 
 # Web Performance — kompendium
+
+Web performance warto optymalizować na podstawie pomiarów, a nie intuicji. Najpierw ustal, czy problem leży w sieci, backendzie, zasobach, JavaScriptcie czy renderowaniu, a dopiero potem zmieniaj kod.
+
+Core Web Vitals obejmują obecnie LCP, INP i CLS. Progi "good" to LCP do 2,5 s, INP do 200 ms i CLS do 0,1, oceniane na 75. percentylu wizyt.
+
+Powiązane tematy: [Browser DevTools](techhandbook:doc-046), [Nowoczesny HTML i CSS](techhandbook:doc-042), [JavaScript](techhandbook:doc-021), [HTTP, HTTPS i TLS](techhandbook:doc-044) oraz [Technical SEO](techhandbook:doc-047).
 
 ## 1. Cel
 
@@ -284,8 +290,9 @@ Przykład:
 
 ```text
 JS < 250 KB compressed
-LCP < 2.5 s
-CLS < 0.1
+LCP <= 2.5 s
+INP <= 200 ms
+CLS <= 0.1
 ```
 
 Budżet pomaga zapobiec stopniowemu pogarszaniu strony.
@@ -307,3 +314,9 @@ Budżet pomaga zapobiec stopniowemu pogarszaniu strony.
 - ograniczać JS,
 - interpretować Lighthouse,
 - mierzyć przed i po zmianie.
+
+## Oficjalne źródła
+
+- Web Vitals: https://web.dev/articles/vitals
+- Core Web Vitals thresholds: https://web.dev/articles/defining-core-web-vitals-thresholds
+- Chrome DevTools Performance: https://developer.chrome.com/docs/devtools/performance/

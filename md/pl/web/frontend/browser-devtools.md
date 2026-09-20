@@ -6,7 +6,7 @@ description: "Narzędzia deweloperskie przeglądarki są jednym z najważniejszy
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "devtools"
   - "browser"
@@ -16,6 +16,10 @@ tags:
 ---
 
 # Browser DevTools — kompendium praktyczne
+
+DevTools pozwalają przejść od zgadywania do obserwacji: zobaczyć DOM, końcowe style, requesty, storage, wykonanie JavaScriptu i ślad wydajności. Nazwy paneli różnią się między przeglądarkami, ale sposób diagnozy pozostaje podobny.
+
+Powiązane tematy: [Nowoczesny HTML i CSS](techhandbook:doc-042), [JavaScript](techhandbook:doc-021), [HTTP, HTTPS i TLS](techhandbook:doc-044), [Web Performance](techhandbook:doc-048) oraz [UX i dostępność](techhandbook:doc-043).
 
 ## 1. Po co znać DevTools
 
@@ -382,3 +386,8 @@ Gdy „strona nie działa”:
 - sprawdzić cookies i storage,
 - użyć throttlingu,
 - wykonać podstawowy audyt Lighthouse.
+
+## Oficjalne źródła
+
+- Chrome DevTools: https://developer.chrome.com/docs/devtools/
+- Firefox Developer Tools: https://firefox-source-docs.mozilla.org/devtools-user/

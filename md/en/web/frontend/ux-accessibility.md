@@ -6,7 +6,7 @@ description: "UX is not only appearance."
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "ux"
   - "accessibility"
@@ -15,6 +15,12 @@ tags:
 ---
 
 # UX and Accessibility for Developers
+
+Accessibility is part of interface quality, not a final add-on. Semantic HTML, keyboard support, visible focus, correct forms and understandable messages help assistive technology users and improve usability in general.
+
+W3C currently recommends WCAG 2.2 as the reference target.
+
+Related topics: [Modern HTML and CSS](techhandbook:doc-042), [Browser DevTools](techhandbook:doc-046) and [Web Performance](techhandbook:doc-048).
 
 ## 1. UX for developers
 
@@ -159,7 +165,7 @@ For an icon-only button:
 
 Check heading order, button names, form labels and error announcements.
 
-## 20. WCAG — practical view
+## 20. WCAG 2.2 - practical view
 
 A developer does not need to memorise the entire standard. Focus on semantics, keyboard access, focus, contrast, labels, alt text, error messages and responsive behaviour.
 
@@ -199,3 +205,9 @@ Do not show thirty options at once. Keep common actions visible and advanced opt
 ## 25. What you should know
 
 You should be able to review a form, identify accessibility issues, create semantic HTML, design loading/error/empty states and understand the practical basics of WCAG.
+
+## Official references
+
+- WCAG 2.2: https://www.w3.org/TR/WCAG22/
+- WAI Accessibility Fundamentals: https://www.w3.org/WAI/fundamentals/
+- WAI ARIA Authoring Practices: https://www.w3.org/WAI/ARIA/apg/

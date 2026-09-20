@@ -6,7 +6,7 @@ description: "UX i dostępność dla developera — praktyczne kompendium TechHa
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "ux"
   - "accessibility"
@@ -15,6 +15,12 @@ tags:
 ---
 
 # UX i dostępność dla developera
+
+Dostępność jest częścią jakości interfejsu, nie dodatkiem po zakończeniu projektu. Semantyczny HTML, obsługa klawiatury, widoczny focus, poprawne formularze i zrozumiałe komunikaty pomagają zarówno technologiom asystującym, jak i zwykłym użytkownikom.
+
+Aktualnym zalecanym punktem odniesienia W3C jest WCAG 2.2.
+
+Powiązane tematy: [Nowoczesny HTML i CSS](techhandbook:doc-042), [Browser DevTools](techhandbook:doc-046) oraz [Web Performance](techhandbook:doc-048).
 
 ## 1. UX dla developera
 
@@ -221,7 +227,7 @@ Sprawdź:
 - label formularzy,
 - komunikaty błędów.
 
-## 20. WCAG — praktycznie
+## 20. WCAG 2.2 - praktycznie
 
 Nie musisz znać całego standardu na pamięć.
 
@@ -282,3 +288,9 @@ Najczęstsze funkcje:
 - tworzyć semantyczny HTML,
 - projektować stany loading/error/empty,
 - rozumieć podstawowe wymagania WCAG.
+
+## Oficjalne źródła
+
+- WCAG 2.2: https://www.w3.org/TR/WCAG22/
+- WAI Accessibility Fundamentals: https://www.w3.org/WAI/fundamentals/
+- WAI ARIA Authoring Practices: https://www.w3.org/WAI/ARIA/apg/

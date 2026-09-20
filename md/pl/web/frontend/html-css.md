@@ -6,7 +6,7 @@ description: "Praktyczne kompendium referencyjne dla osoby, która chce samodzie
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "html"
   - "css"
@@ -15,6 +15,10 @@ tags:
 ---
 
 # Nowoczesny HTML i CSS
+
+HTML powinien najpierw opisywać znaczenie i strukturę treści, a CSS jej prezentację. Dobre podstawy semantycznego HTML, normal flow, Flexbox, Grid i responsywności pozwalają zbudować większość zwykłych stron bez dokładania frameworka.
+
+Powiązane tematy: [JavaScript - kompendium](techhandbook:doc-021), [UX i dostępność](techhandbook:doc-043), [Browser DevTools](techhandbook:doc-046) oraz [Web Performance](techhandbook:doc-048).
 
 Praktyczne kompendium referencyjne dla osoby, która chce samodzielnie tworzyć współczesne, semantyczne, responsywne i dostępne strony internetowe.
 
@@ -3497,3 +3501,10 @@ HTML powinien nadal mieć sens po wyłączeniu CSS.
 CSS powinien prezentować dobrze zaprojektowaną strukturę HTML, a nie naprawiać jej błędy.
 
 To jest bardzo dobra baza do tworzenia nowoczesnych stron bez Bootstrapa, Tailwinda czy frameworków JavaScriptowych.
+
+## Oficjalne źródła
+
+- HTML Living Standard: https://html.spec.whatwg.org/
+- CSS specifications: https://www.w3.org/Style/CSS/specs.en.html
+- MDN HTML: https://developer.mozilla.org/docs/Web/HTML
+- MDN CSS: https://developer.mozilla.org/docs/Web/CSS
