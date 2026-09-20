@@ -28,7 +28,9 @@ techhandbook/
 - wyszukiwarka przeszukuje dane z indeksu,
 - dokument Markdown jest pobierany dopiero po kliknięciu,
 - użytkownik nie dostaje w interfejsie bezpośredniego linku do pliku `.md`,
-- routing interfejsu używa fragmentów `#/...`, więc działa na zwykłym hostingu statycznym.
+- artykuły używają stabilnych ścieżek URL z językiem, kategorią i slugiem, np. `/pl/programming/python/python-podstawy`,
+- katalogi używają `/pl/browse/...`, wyszukiwanie `/pl/search?q=...`, a JUNIOR prefiksu `/pl/junior/...`,
+- stare linki `#/...` pozostają obsługiwane i są zamieniane na nowe adresy.
 
 ## Model treści
 
@@ -100,5 +102,7 @@ git*
 ## Publikacja
 
 Projekt działa na hostingu statycznym. Plik `.nojekyll` w katalogu głównym wyłącza przetwarzanie przez Jekyll na GitHub Pages, dzięki czemu pliki Markdown są publikowane jako surowe `.md` i mogą być pobierane przez frontend.
+
+Na GitHub Pages plik `404.html` przekazuje bezpośrednie wejścia na głębokie adresy do aplikacji. Docelowy nginx na VPS powinien zamiast tego wykonywać normalny fallback wszystkich tras aplikacji do `index.html`.
 
 Uwaga: otwieranie `index.html` bezpośrednio z `file://` może blokować `fetch()` do JSON i Markdownów z powodu polityki bezpieczeństwa przeglądarki.

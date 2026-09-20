@@ -11,6 +11,9 @@ on:
       - "article.schema.json"
       - "scripts/content_index.py"
       - "requirements-dev.txt"
+      - "assets/app.js"
+      - "index.html"
+      - "404.html"
       - ".github/workflows/content-check.yml"
   pull_request:
     paths:
@@ -20,6 +23,9 @@ on:
       - "article.schema.json"
       - "scripts/content_index.py"
       - "requirements-dev.txt"
+      - "assets/app.js"
+      - "index.html"
+      - "404.html"
       - ".github/workflows/content-check.yml"
   workflow_dispatch:
 
@@ -50,3 +56,6 @@ jobs:
 
       - name: Check generated content index
         run: python scripts/content_index.py --check
+
+      - name: Check frontend JavaScript syntax
+        run: node --check assets/app.js

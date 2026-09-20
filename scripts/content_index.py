@@ -206,22 +206,38 @@ def validate_global(articles: list[dict], relations: dict) -> None:
                 )
 
 
+def article_route(meta: dict, category: str) -> str:
+    parts = [meta["lang"]]
+    if category:
+        parts.extend(part for part in category.split("/") if part)
+    parts.append(meta["slug"])
+    return "/" + "/".join(parts)
+
+
 def build_index(articles: list[dict], relations: dict) -> dict:
     relation_map = relations["related"]
     entries = []
+    routes = set()
 
     for article in articles:
         path = article["path"]
         meta = article["meta"]
         rel_path = path.relative_to(ROOT).as_posix()
 
+        category = category_for(path, meta["lang"], meta["audience"])
+        route = article_route(meta, category)
+        if route in routes:
+            raise ContentError(f"{path}: duplicate generated route {route}")
+        routes.add(route)
+
         item = {
             "id": meta["id"],
             "name": path.name,
             "title": meta["title"],
             "slug": meta["slug"],
+            "route": route,
             "path": rel_path,
-            "category": category_for(path, meta["lang"], meta["audience"]),
+            "category": category,
             "tags": meta.get("tags", []),
             "language": meta["lang"],
             "audience": meta["audience"],
@@ -246,7 +262,7 @@ def build_index(articles: list[dict], relations: dict) -> dict:
     )
 
     return {
-        "version": 15,
+        "version": 16,
         "updated": updated,
         "root": "md/pl",
         "files": entries,

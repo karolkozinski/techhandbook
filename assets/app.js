@@ -103,6 +103,70 @@
     navigationContext: { type: "dir", path: "", query: "" }
   };
 
+  const appScript = document.currentScript || document.querySelector('script[src*="assets/app.js"]');
+  const appScriptUrl = new URL(appScript?.src || "assets/app.js", location.href);
+  const APP_BASE = appScriptUrl.pathname.replace(/assets\/app\.js$/, "");
+
+  function appUrl(path = "") {
+    return APP_BASE + String(path).replace(/^\/+/, "");
+  }
+
+  function relativeLocationPath() {
+    const baseNoSlash = APP_BASE.replace(/\/$/, "");
+    let pathname = location.pathname;
+
+    if (pathname === baseNoSlash) return "";
+    if (pathname.startsWith(APP_BASE)) pathname = pathname.slice(APP_BASE.length);
+    else pathname = pathname.replace(/^\/+/, "");
+
+    try {
+      pathname = decodeURI(pathname);
+    } catch {
+      // Keep the raw path if it contains malformed escapes.
+    }
+
+    return pathname.replace(/^\/+|\/+$/g, "");
+  }
+
+  function routePathForFile(file) {
+    if (file?.route) return file.route;
+
+    const parts = [file?.language || state.language || "pl"];
+    if (file?.category) parts.push(...String(file.category).split("/").filter(Boolean));
+    if (file?.slug) parts.push(file.slug);
+    return "/" + parts.join("/");
+  }
+
+  function articleUrl(file, fragment = "") {
+    let url = appUrl(routePathForFile(file));
+    if (fragment) url += "#" + encodeURIComponent(fragment);
+    return url;
+  }
+
+  function routePrefix(language = state.language, mode = state.mode) {
+    return language + "/" + (mode === "junior" ? "junior/" : "");
+  }
+
+  function directoryUrl(path = "", language = state.language, mode = state.mode) {
+    const prefix = routePrefix(language, mode);
+    return appUrl(prefix + (path ? "browse/" + encodeURI(path) : ""));
+  }
+
+  function searchUrl(query, language = state.language, mode = state.mode) {
+    return appUrl(routePrefix(language, mode) + "search?q=" + encodeURIComponent(query));
+  }
+
+  function aboutUrl(language = state.language, mode = state.mode) {
+    return appUrl(routePrefix(language, mode) + "about");
+  }
+
+  function restoreRecoveredRoute() {
+    const params = new URLSearchParams(location.search);
+    const recovered = params.get("__route");
+    if (!recovered) return;
+    history.replaceState(null, "", appUrl(recovered));
+  }
+
   const els = {
     browser: document.getElementById("fileBrowser"),
     breadcrumbs: document.getElementById("breadcrumbs"),
@@ -228,7 +292,7 @@
 
     const internal = resolveDocumentLink(safeTarget);
     if (internal) {
-      return `<a href="#/doc/${encodeURIComponent(internal.file.id)}" data-doc-id="${escapeHtml(internal.file.id)}" data-doc-fragment="${escapeHtml(internal.fragment || "")}">${safeLabel}</a>`;
+      return `<a href="${escapeHtml(articleUrl(internal.file, internal.fragment || ""))}" data-doc-id="${escapeHtml(internal.file.id)}" data-doc-fragment="${escapeHtml(internal.fragment || "")}">${safeLabel}</a>`;
     }
 
     const external = /^(?:https?:\/\/|mailto:)/i.test(safeTarget);
@@ -785,7 +849,7 @@
     renderDirectory(path);
     writeHistory(
       { ...currentHistoryState(), view: "dir", path, scrollY: window.scrollY },
-      "#/" + encodeURI(path),
+      directoryUrl(path),
       historyMode
     );
   }
@@ -801,7 +865,7 @@
     els.reader.innerHTML = `<p>${escapeHtml(t("loading"))}</p>`;
 
     try {
-      const res = await fetch(file.path, { cache: "no-cache" });
+      const res = await fetch(appUrl(file.path), { cache: "no-cache" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const text = stripFrontMatter(await res.text());
       const titledText = normalizeArticleTitle(text, file.title || file.name.replace(/\.md$/i, ""));
@@ -816,7 +880,7 @@
           context: { ...state.navigationContext },
           scrollY: focusReader ? 0 : window.scrollY
         },
-        "#/doc/" + encodeURIComponent(file.id),
+        file.id === "__readme__" ? aboutUrl() : articleUrl(file, fragment),
         historyMode === "push" ? "pushPrepared" : historyMode
       );
       if (els.readerTop) {
@@ -943,7 +1007,7 @@
       );
       writeHistory(
         { ...currentHistoryState(), view: "search", query: q, directory: state.currentDir, scrollY: window.scrollY },
-        "#/search/" + encodeURIComponent(q),
+        searchUrl(q),
         historyMode
       );
       return;
@@ -980,7 +1044,7 @@
         directory: state.currentDir,
         scrollY: window.scrollY
       },
-      "#/search/" + encodeURIComponent(q),
+      searchUrl(q),
       historyMode
     );
   }
@@ -999,18 +1063,14 @@
         <h2>${escapeHtml(t("relatedArticles"))}</h2>
         <ul>
           ${related.map(item =>
-            `<li><a href="#/doc/${encodeURIComponent(item.id)}" data-doc-id="${escapeHtml(item.id)}">${escapeHtml(item.title || item.name)}</a></li>`
+            `<li><a href="${escapeHtml(articleUrl(item))}" data-doc-id="${escapeHtml(item.id)}">${escapeHtml(item.title || item.name)}</a></li>`
           ).join("")}
         </ul>
       </section>
     `;
   }
 
-  function applyLanguage(language, { preserveHash = false } = {}) {
-    const currentHash = location.hash || "#/";
-    const currentDocId = state.currentDoc?.id ||
-      (currentHash.startsWith("#/doc/") ? decodeURIComponent(currentHash.slice(6)) : null);
-
+  function applyLanguage(language, { renderRoot = true, historyMode = "replace" } = {}) {
     const supported = state.index?.languages || ["pl"];
     state.language = supported.includes(language) ? language : (state.index?.defaultLanguage || "pl");
     state.contentRoot = state.mode === "junior"
@@ -1021,10 +1081,12 @@
       (file.audience || "standard") === state.mode
     );
     state.tree = buildTree(state.files);
+    state.currentDir = "";
 
     document.documentElement.lang = state.language;
     document.documentElement.dataset.mode = state.mode;
     localStorage.setItem("techhandbook-language", state.language);
+    localStorage.setItem("techhandbook-mode", state.mode);
 
     if (els.language) els.language.value = state.language;
     if (els.mode) els.mode.value = state.mode;
@@ -1039,6 +1101,7 @@
     els.welcomeText.textContent = state.mode === "junior" ? t("juniorWelcomeText") : t("welcomeText");
     els.errorTitle.textContent = t("errorTitle");
     els.brand.setAttribute("aria-label", t("homeLabel"));
+    els.brand.setAttribute("href", directoryUrl(""));
     els.indexInfo.textContent = `${state.files.length} ${t("docs")} • ${t("index")} ${state.index?.updated || ""}`;
 
     els.search.value = "";
@@ -1049,43 +1112,65 @@
     state.currentDoc = null;
 
     if (!state.files.length) {
-      state.currentDir = "";
       els.browser.hidden = true;
       els.breadcrumbs.innerHTML = "";
       els.location.textContent = state.contentRoot + "/";
       els.count.textContent = "0 " + t("items");
       renderWelcome({ pending: true });
-      if (!preserveHash) history.replaceState(null, "", "#/");
-      return;
+      if (renderRoot) {
+        writeHistory({ ...currentHistoryState(), view: "dir", path: "" }, directoryUrl(""), historyMode);
+      }
+      return false;
     }
 
     els.browser.hidden = false;
     renderWelcome();
 
-    if (preserveHash && currentDocId) {
-      if (currentDocId === "__readme__") {
-        openReadme({ focusReader: false, historyMode: "replace" });
-        return;
-      }
+    if (renderRoot) navigateDir("", { historyMode });
+    return true;
+  }
 
-      const counterpart = state.files.find(item => item.id === currentDocId);
-      if (counterpart) {
-        const rel = counterpart.path.replace(new RegExp(`^${state.contentRoot}/`), "");
-        const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
-        renderDirectory(dir);
-        openDocument(counterpart, null, { historyMode: "replace" });
-        return;
-      }
-    }
+  async function switchLanguage(language) {
+    const previous = currentHistoryState();
+    const fragment = location.hash && !location.hash.startsWith("#/") ? location.hash.slice(1) : "";
 
-    if (preserveHash && currentHash.startsWith("#/") && !currentHash.startsWith("#/doc/")) {
-      const path = decodeURI(currentHash.slice(2));
-      renderDirectory(path);
+    applyLanguage(language, { renderRoot: false });
+
+    if (!state.files.length) {
+      writeHistory({ ...currentHistoryState(), view: "dir", path: "" }, directoryUrl(""), "replace");
       return;
     }
 
-    history.replaceState(null, "", "#/");
-    renderDirectory("");
+    if (previous.view === "article") {
+      if (previous.docId === "__readme__") {
+        await openReadme({ focusReader: false, historyMode: "replace" });
+        return;
+      }
+
+      const counterpart = state.files.find(item => item.id === previous.docId);
+      if (counterpart) {
+        const rel = counterpart.path.replace(new RegExp(`^${state.contentRoot}/`), "");
+        const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
+        renderDirectory(dir, { clearContent: false });
+        setNavigationContext({ type: "dir", path: dir, query: "" });
+        await openDocument(counterpart, null, {
+          focusReader: false,
+          fragment,
+          historyMode: "replace",
+          targetDir: dir
+        });
+        return;
+      }
+    }
+
+    if (previous.view === "search" && previous.query) {
+      state.currentDir = previous.directory || "";
+      els.search.value = previous.query;
+      runSearch(previous.query, { historyMode: "replace" });
+      return;
+    }
+
+    navigateDir(previous.path || previous.directory || "", { historyMode: "replace" });
   }
 
   function applyMode(mode) {
@@ -1093,17 +1178,21 @@
     state.mode = supported.includes(mode) ? mode : "standard";
     localStorage.setItem("techhandbook-mode", state.mode);
     if (els.mode) els.mode.value = state.mode;
-    applyLanguage(state.language, { preserveHash: false });
+    applyLanguage(state.language, { renderRoot: true, historyMode: "replace" });
   }
 
-  function initLanguage() {
+  function initLanguage(initialRoute = null) {
     const saved = localStorage.getItem("techhandbook-language");
     const savedMode = localStorage.getItem("techhandbook-mode");
     const fallback = state.index?.defaultLanguage || "pl";
-    state.mode = (state.index?.modes || ["standard", "junior"]).includes(savedMode)
-      ? savedMode
-      : "standard";
-    applyLanguage(saved || fallback, { preserveHash: true });
+    const supportedModes = state.index?.modes || ["standard", "junior"];
+
+    state.mode = supportedModes.includes(initialRoute?.mode)
+      ? initialRoute.mode
+      : (supportedModes.includes(savedMode) ? savedMode : "standard");
+
+    const language = initialRoute?.language || saved || fallback;
+    applyLanguage(language, { renderRoot: false });
   }
 
   function applyTheme(theme) {
@@ -1124,8 +1213,16 @@
 
   async function restoreHistoryState(historyState) {
     if (!historyState) {
-      handleHash();
+      await renderLocationRoute(parseLocationRoute());
       return;
+    }
+
+    if (
+      (historyState.language && historyState.language !== state.language) ||
+      (historyState.mode && historyState.mode !== state.mode)
+    ) {
+      state.mode = historyState.mode || "standard";
+      applyLanguage(historyState.language || state.language, { renderRoot: false });
     }
 
     if (historyState.view === "search") {
@@ -1168,49 +1265,154 @@
     restoreScroll(historyState.scrollY);
   }
 
-  function handleHash() {
-    const hash = location.hash || "#/";
+  function parseLocationRoute() {
+    const savedLanguage = localStorage.getItem("techhandbook-language") || state.index?.defaultLanguage || "pl";
+    const savedMode = localStorage.getItem("techhandbook-mode") || "standard";
+    const legacyHash = location.hash || "";
 
-    if (hash.startsWith("#/search/")) {
-      const query = decodeURIComponent(hash.slice(9));
-      els.search.value = query;
-      runSearch(query, { historyMode: "replace" });
+    if (legacyHash.startsWith("#/search/")) {
+      return {
+        type: "search",
+        language: savedLanguage,
+        mode: savedMode,
+        query: decodeURIComponent(legacyHash.slice(9)),
+        legacy: true
+      };
+    }
+
+    if (legacyHash.startsWith("#/doc/")) {
+      const id = decodeURIComponent(legacyHash.slice(6));
+      return {
+        type: id === "__readme__" ? "about" : "article",
+        language: savedLanguage,
+        mode: savedMode,
+        docId: id,
+        legacy: true
+      };
+    }
+
+    if (legacyHash.startsWith("#/")) {
+      return {
+        type: "dir",
+        language: savedLanguage,
+        mode: savedMode,
+        path: decodeURI(legacyHash.slice(2)),
+        legacy: true
+      };
+    }
+
+    const relative = relativeLocationPath();
+    const fullRoute = "/" + relative;
+    const indexedFile = (state.index?.files || []).find(file => routePathForFile(file) === fullRoute);
+
+    if (indexedFile) {
+      return {
+        type: "article",
+        language: indexedFile.language || "pl",
+        mode: indexedFile.audience || "standard",
+        docId: indexedFile.id,
+        fragment: location.hash ? location.hash.slice(1) : ""
+      };
+    }
+
+    const parts = relative.split("/").filter(Boolean);
+    const supportedLanguages = state.index?.languages || ["pl"];
+    const language = supportedLanguages.includes(parts[0]) ? parts.shift() : savedLanguage;
+
+    let mode = "standard";
+    if (parts[0] === "junior") {
+      mode = "junior";
+      parts.shift();
+    } else if (!supportedLanguages.includes(relative.split("/")[0])) {
+      mode = savedMode;
+    }
+
+    if (!parts.length) return { type: "dir", language, mode, path: "" };
+
+    if (parts[0] === "about" && parts.length === 1) {
+      return { type: "about", language, mode };
+    }
+
+    if (parts[0] === "search" && parts.length === 1) {
+      return {
+        type: "search",
+        language,
+        mode,
+        query: new URL(location.href).searchParams.get("q") || ""
+      };
+    }
+
+    if (parts[0] === "browse") {
+      return {
+        type: "dir",
+        language,
+        mode,
+        path: parts.slice(1).join("/")
+      };
+    }
+
+    return { type: "dir", language, mode, path: "", invalid: true };
+  }
+
+  async function renderLocationRoute(route) {
+    if (!route) route = parseLocationRoute();
+
+    if (route.language !== state.language || route.mode !== state.mode) {
+      state.mode = route.mode || "standard";
+      applyLanguage(route.language || state.language, { renderRoot: false });
+    }
+
+    if (!state.files.length) {
+      writeHistory({ ...currentHistoryState(), view: "dir", path: "" }, directoryUrl(""), "replace");
       return;
     }
 
-    if (hash.startsWith("#/doc/")) {
-      const id = decodeURIComponent(hash.slice(6));
-      if (id === "__readme__") {
-        openReadme({ focusReader: false, historyMode: "replace" });
-        return;
-      }
-      const file = state.files.find(item => item.id === id);
+    if (route.type === "search") {
+      els.search.value = route.query || "";
+      runSearch(route.query || "", { historyMode: "replace" });
+      return;
+    }
+
+    if (route.type === "about") {
+      await openReadme({ focusReader: false, historyMode: "replace" });
+      return;
+    }
+
+    if (route.type === "article") {
+      const file = state.files.find(item => item.id === route.docId);
       if (file) {
         const rel = file.path.replace(new RegExp(`^${state.contentRoot}/`), "");
         const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
         renderDirectory(dir, { clearContent: false });
         setNavigationContext({ type: "dir", path: dir, query: "" });
-        openDocument(file, null, { historyMode: "replace" });
+        await openDocument(file, null, {
+          focusReader: false,
+          fragment: route.fragment || "",
+          historyMode: "replace",
+          targetDir: dir
+        });
         return;
       }
     }
 
-    if (hash.startsWith("#/")) {
-      const path = decodeURI(hash.slice(2));
-      navigateDir(path, { historyMode: "replace" });
-    }
+    navigateDir(route.path || "", { historyMode: "replace" });
   }
 
   async function init() {
     initTheme();
+    restoreRecoveredRoute();
 
     try {
-      const res = await fetch("content-index.json", { cache: "no-cache" });
+      const res = await fetch(appUrl("content-index.json"), { cache: "no-cache" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       state.index = await res.json();
-      initLanguage();
+
+      const initialRoute = parseLocationRoute();
+      initLanguage(initialRoute);
+      await renderLocationRoute(initialRoute);
+
       requestAnimationFrame(() => {
-        if (!history.state) history.replaceState(currentHistoryState(), "", location.href);
+        history.replaceState(currentHistoryState(), "", location.href);
       });
     } catch (err) {
       els.browser.innerHTML =
@@ -1271,6 +1473,11 @@
     openReadme({ focusReader: true, historyMode: "push" });
   });
 
+  els.brand.addEventListener("click", e => {
+    e.preventDefault();
+    navigateDir("", { historyMode: "replace" });
+  });
+
   if (els.readerTop) {
     els.readerTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1278,7 +1485,7 @@
   }
 
   els.language.addEventListener("change", e => {
-    applyLanguage(e.target.value, { preserveHash: true });
+    switchLanguage(e.target.value);
   });
 
   if (els.mode) {

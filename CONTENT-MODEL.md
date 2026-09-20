@@ -260,6 +260,8 @@ Po migracji wpis runtime jest składany z trzech źródeł:
 2. położenie pliku,
 3. mapa relacji.
 
+`route` jest generowany z języka, kategorii i slugu. Po publikacji zmiana kategorii lub slugu wymaga zachowania przekierowania ze starego URL-a.
+
 Runtime index pozostaje celowo lekki. Walidator sprawdza także `description`, daty, `ai` i `seo`, ale pola niepotrzebne obecnemu frontendowi nie są jeszcze kopiowane do JSON. SEO będzie korzystać z front matter bez tworzenia drugiego źródła prawdy.
 
 Przykładowy wygenerowany wpis:
@@ -270,6 +272,7 @@ Przykładowy wygenerowany wpis:
   "name": "python-basics.md",
   "title": "Python — podstawy",
   "slug": "podstawy-pythona",
+  "route": "/pl/programming/python/podstawy-pythona",
   "path": "md/pl/programming/python/python-basics.md",
   "category": "programming/python",
   "tags": ["python", "programowanie"],
