@@ -2,24 +2,26 @@
 id: "doc-004"
 title: "Amazon Web Services (AWS)"
 slug: "amazon-web-services-aws"
-description: "Aktualizacja: 2026-09-19 Cel: rozumieć AWS na tyle, aby świadomie uruchamiać aplikacje, serwery i usługi, czytać istniejącą architekturę, diagnozować…"
+description: "Amazon Web Services - praktyczne kompendium EC2, VPC, S3, RDS, kontenerów, serverless, IAM, monitoringu i kosztów."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "aws"
   - "amazon"
 ---
+
 # Amazon Web Services (AWS)
 
-> Aktualizacja: 2026-09-19  
-> Cel: rozumieć AWS na tyle, aby świadomie uruchamiać aplikacje, serwery i usługi, czytać istniejącą architekturę, diagnozować problemy i nie zrobić sobie przypadkiem bardzo drogiego rachunku.
+AWS najlepiej poznawać przez kilka podstawowych klocków zamiast próbować zapamiętać cały katalog usług: konto i IAM, region/AZ, VPC, compute, storage, baza danych, obserwowalność i koszt. Konsola, CLI, SDK i IaC są różnymi klientami tego samego modelu API.
+
+Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL i PostgreSQL](techhandbook:doc-010), [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025) oraz [CI/CD i GitHub Actions](techhandbook:doc-011).
 
 ## 1. Czym jest AWS
 
-Amazon Web Services to największa globalna platforma chmurowa typu IaaS/PaaS. AWS udostępnia setki usług, ale w praktyce większość typowych systemów opiera się na kilkunastu klockach: sieci VPC, maszynach EC2, storage S3/EBS/EFS, bazach RDS/DynamoDB, IAM, load balancerach, DNS Route 53, monitoringu CloudWatch oraz usługach kontenerowych i serverless.
+Amazon Web Services to duża publiczna platforma chmurowa typu IaaS/PaaS. AWS udostępnia setki usług, ale w praktyce większość typowych systemów opiera się na kilkunastu klockach: sieci VPC, maszynach EC2, storage S3/EBS/EFS, bazach RDS/DynamoDB, IAM, load balancerach, DNS Route 53, monitoringu CloudWatch oraz usługach kontenerowych i serverless.
 
 Chmura nie jest „cudzym komputerem”, tylko zestawem zasobów zarządzanych przez API. Konsola WWW, CLI, Terraform i SDK robią ostatecznie to samo: wywołują API AWS.
 

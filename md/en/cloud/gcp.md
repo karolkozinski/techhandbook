@@ -6,7 +6,7 @@ description: "Google Cloud is a public cloud platform offering compute, storage,
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "gcp"
@@ -14,6 +14,12 @@ tags:
 ---
 
 # Google Cloud Platform (GCP) — Practical Handbook
+
+Google Cloud is easiest to learn from projects, IAM/service accounts and VPC, then choose the runtime layer that matches the workload: Compute Engine, Cloud Run or GKE. For a simple container, Cloud Run is usually a much easier starting point than Kubernetes.
+
+Google now refers to its serverless function product as Cloud Run functions; the Cloud Functions name still appears in older APIs and migration material.
+
+Related topics: [Computer Networks for Developers](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL and PostgreSQL](techhandbook:doc-010), [Web Analytics and Tagging](techhandbook:doc-053) and [CI/CD and GitHub Actions](techhandbook:doc-011).
 
 ## 1. What Google Cloud is
 
@@ -49,7 +55,7 @@ Persistent Disk     block storage
 Filestore           managed file storage
 Cloud Run           managed serverless containers
 GKE                 Kubernetes
-Cloud Functions     functions
+Cloud Run functions
 Artifact Registry   images/packages
 Cloud SQL           relational databases
 Spanner             distributed relational database
@@ -133,7 +139,7 @@ Google Kubernetes Engine is managed Kubernetes.
 
 Use it only when Kubernetes capabilities justify its operational complexity.
 
-## 13. Cloud Functions / Cloud Run functions
+## 13. Cloud Run functions
 
 Event-driven function execution.
 

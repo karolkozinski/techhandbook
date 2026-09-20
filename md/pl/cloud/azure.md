@@ -2,20 +2,22 @@
 id: "doc-005"
 title: "Microsoft Azure"
 slug: "microsoft-azure"
-description: "Aktualizacja: 2026-09-19 Cel: rozumieć Azure jako administrator/developer — od Entra ID, subskrypcji i Resource Groups po VM, kontenery, bazy, storage,…"
+description: "Microsoft Azure - praktyczne kompendium Entra ID, subskrypcji, VNet, compute, storage, baz, kontenerów, serverless i monitoringu."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "azure"
   - "microsoft"
 ---
+
 # Microsoft Azure
 
-> Aktualizacja: 2026-09-19  
-> Cel: rozumieć Azure jako administrator/developer — od Entra ID, subskrypcji i Resource Groups po VM, kontenery, bazy, storage, monitoring i automatyzację.
+Azure najlepiej rozumieć przez hierarchię tożsamości i zasobów: Entra tenant, subscription, resource group, region, sieć i konkretne usługi. Dla małych aplikacji App Service lub Container Apps często są prostszym punktem wejścia niż pełny klaster AKS.
+
+Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL i PostgreSQL](techhandbook:doc-010), [Windows Server - administracja korporacyjna](techhandbook:doc-037) oraz [CI/CD i GitHub Actions](techhandbook:doc-011).
 
 ## 1. Czym jest Azure
 

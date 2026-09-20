@@ -6,7 +6,7 @@ description: "Oracle Cloud Infrastructure is Oracle's public cloud platform, off
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "oci"
@@ -14,6 +14,10 @@ tags:
 ---
 
 # Oracle Cloud Infrastructure (OCI) — Practical Handbook
+
+OCI uses its own names for familiar cloud patterns: tenancy, compartments, VCN, Compute, Object Storage, managed databases, OKE, Functions and IAM. Compartments are especially important because they organize both resources and access policies.
+
+Related topics: [Computer Networks for Developers](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL and PostgreSQL](techhandbook:doc-010), [Linux Permissions and Server Security](techhandbook:doc-025) and [CI/CD and GitHub Actions](techhandbook:doc-011).
 
 ## 1. What OCI is
 

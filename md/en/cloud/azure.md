@@ -6,7 +6,7 @@ description: "Microsoft Azure is a public cloud platform covering compute, netwo
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "azure"
@@ -14,6 +14,10 @@ tags:
 ---
 
 # Microsoft Azure — Practical Handbook
+
+Azure is easiest to understand through its identity and resource hierarchy: Entra tenant, subscription, resource group, region, network and individual services. For small applications, App Service or Container Apps are often a simpler entry point than a full AKS cluster.
+
+Related topics: [Computer Networks for Developers](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL and PostgreSQL](techhandbook:doc-010), [Windows Server Administration](techhandbook:doc-037) and [CI/CD and GitHub Actions](techhandbook:doc-011).
 
 ## 1. What Azure is
 

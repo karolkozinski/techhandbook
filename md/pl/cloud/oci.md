@@ -2,11 +2,11 @@
 id: "doc-007"
 title: "Oracle Cloud Infrastructure (OCI)"
 slug: "oracle-cloud-infrastructure-oci"
-description: "Aktualizacja: 2026-09-19 Cel: poznać OCI od podstaw — tenancy, compartments, VCN, Compute, storage, bazy Oracle/PostgreSQL/MySQL, kontenery, IAM, CLI i…"
+description: "Oracle Cloud Infrastructure - kompendium tenancy, compartments, VCN, Compute, storage, baz danych, kontenerów, IAM i automatyzacji."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "oci"
@@ -15,8 +15,9 @@ tags:
 
 # Oracle Cloud Infrastructure (OCI)
 
-> Aktualizacja: 2026-09-19  
-> Cel: poznać OCI od podstaw — tenancy, compartments, VCN, Compute, storage, bazy Oracle/PostgreSQL/MySQL, kontenery, IAM, CLI i automatyzację.
+OCI używa własnych nazw dla znanych wzorców chmurowych: tenancy, compartments, VCN, Compute, Object Storage, zarządzane bazy, OKE, Functions i IAM. Najważniejsze jest zrozumienie compartmentów, bo porządkują zarówno zasoby, jak i polityki dostępu.
+
+Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL i PostgreSQL](techhandbook:doc-010), [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025) oraz [CI/CD i GitHub Actions](techhandbook:doc-011).
 
 ## 1. Czym jest OCI
 

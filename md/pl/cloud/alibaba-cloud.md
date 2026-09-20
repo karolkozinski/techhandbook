@@ -2,23 +2,25 @@
 id: "doc-003"
 title: "Alibaba Cloud"
 slug: "alibaba-cloud"
-description: "Aktualizacja: 2026-09-19 Cel: zrozumieć Alibaba Cloud jako dużą platformę IaaS/PaaS, szczególnie istotną w Chinach i Azji, oraz nauczyć się mapować jej…"
+description: "Alibaba Cloud - kompendium usług compute, sieci, storage, baz danych, kontenerów, serverless, IAM i specyfiki rynku chińskiego."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "alibaba"
 ---
+
 # Alibaba Cloud
 
-> Aktualizacja: 2026-09-19  
-> Cel: zrozumieć Alibaba Cloud jako dużą platformę IaaS/PaaS, szczególnie istotną w Chinach i Azji, oraz nauczyć się mapować jej usługi na znane pojęcia AWS/Azure/GCP.
+Alibaba Cloud używa tych samych podstawowych wzorców co inne duże chmury: regiony, prywatne sieci, compute, object storage, zarządzane bazy, Kubernetes, serverless i IAM. Największa różnica dla osoby znającej AWS/Azure/GCP to nazewnictwo usług oraz dodatkowy kontekst rynku chińskiego.
+
+Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL i PostgreSQL](techhandbook:doc-010), [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025) oraz [CI/CD i GitHub Actions](techhandbook:doc-011).
 
 ## 1. Czym jest Alibaba Cloud
 
-Alibaba Cloud (Aliyun) to jeden z największych globalnych dostawców chmury i największych graczy rynku chińskiego. Oferuje klasyczne VM, sieci, storage, bazy, Kubernetes, serverless, CDN, security, analitykę i AI.
+Alibaba Cloud (Aliyun) to duża publiczna platforma chmurowa i ważny dostawca na rynku chińskim. Oferuje klasyczne VM, sieci, storage, bazy, Kubernetes, serverless, CDN, security, analitykę i AI.
 
 Jeżeli znasz AWS, wiele nazw ma bezpośrednie odpowiedniki:
 

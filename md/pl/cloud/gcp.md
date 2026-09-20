@@ -2,24 +2,28 @@
 id: "doc-006"
 title: "Google Cloud Platform (GCP)"
 slug: "google-cloud-platform-gcp"
-description: "Aktualizacja: 2026-09-19 Cel: zrozumieć Google Cloud jako platformę do VM, kontenerów, serverless, danych, AI i aplikacji webowych."
+description: "Google Cloud - praktyczne kompendium projektów, VPC, Compute Engine, Cloud Run, GKE, storage, baz danych, BigQuery i IAM."
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "gcp"
   - "google"
 ---
+
 # Google Cloud Platform (GCP)
 
-> Aktualizacja: 2026-09-19  
-> Cel: zrozumieć Google Cloud jako platformę do VM, kontenerów, serverless, danych, AI i aplikacji webowych.
+Google Cloud najlepiej poznawać od project, IAM/service accounts i VPC, a potem dobierać warstwę uruchomieniową do potrzeb: Compute Engine, Cloud Run albo GKE. Do prostego kontenera Cloud Run jest zwykle znacznie łatwiejszym punktem startu niż Kubernetes.
+
+Google określa obecnie funkcje serverless jako Cloud Run functions; nazwa Cloud Functions nadal pojawia się w starszych API i materiałach migracyjnych.
+
+Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL i PostgreSQL](techhandbook:doc-010), [Web analytics i tagging](techhandbook:doc-053) oraz [CI/CD i GitHub Actions](techhandbook:doc-011).
 
 ## 1. Czym jest Google Cloud
 
-Google Cloud to jedna z trzech największych globalnych platform chmurowych. Szczególnie silne obszary to kontenery/Kubernetes, data analytics, BigQuery, sieć globalna, serverless Cloud Run oraz AI/Vertex AI.
+Google Cloud to duża globalna platforma chmurowa. Szczególnie silne obszary to kontenery/Kubernetes, data analytics, BigQuery, sieć globalna, serverless Cloud Run oraz AI/Vertex AI.
 
 Podobnie jak w innych chmurach, konsola jest tylko klientem API. Prawdziwym modelem operacyjnym są zasoby, IAM, projekty, API i automatyzacja.
 
@@ -225,7 +229,7 @@ Google Kubernetes Engine to zarządzany Kubernetes. Google ma wyjątkowo mocne d
 
 Tryby i konfiguracje zależą od potrzeb, ale ogólna zasada pozostaje: Kubernetes warto brać, gdy jego możliwości są potrzebne. Do jednej aplikacji Cloud Run jest często znacznie prostszy.
 
-## 13. Cloud Functions / Cloud Run functions
+## 13. Cloud Run functions
 
 Funkcje serverless nadają się do:
 

@@ -6,13 +6,17 @@ description: "Alibaba Cloud is a large public cloud platform offering compute, s
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "alibaba"
 ---
 
 # Alibaba Cloud — Practical Handbook
+
+Alibaba Cloud uses the same core patterns as other large cloud platforms: regions, private networking, compute, object storage, managed databases, Kubernetes, serverless and IAM. The main differences for someone coming from AWS/Azure/GCP are service names and the additional China-market context.
+
+Related topics: [Computer Networks for Developers](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL and PostgreSQL](techhandbook:doc-010), [Linux Permissions and Server Security](techhandbook:doc-025) and [CI/CD and GitHub Actions](techhandbook:doc-011).
 
 ## 1. What Alibaba Cloud is
 

@@ -6,7 +6,7 @@ description: "AWS is a large public-cloud platform offering compute, storage, da
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-20"
 tags:
   - "cloud"
   - "aws"
@@ -14,6 +14,11 @@ tags:
 ---
 
 # Amazon Web Services (AWS) — Practical Handbook
+
+AWS is easier to learn through a small set of building blocks than by memorizing the entire service catalog: account and IAM, region/AZ, VPC, compute, storage, databases, observability and cost. Console, CLI, SDKs and IaC are different clients of the same API-driven model.
+
+Related topics: [Computer Networks for Developers](techhandbook:doc-016), [Docker](techhandbook:doc-012), [SQL and PostgreSQL](techhandbook:doc-010), [Linux Permissions and Server Security](techhandbook:doc-025) and [CI/CD and GitHub Actions](techhandbook:doc-011).
+
 ## 1. What AWS is
 AWS is a large public-cloud platform offering compute, storage, databases, networking, identity, observability, AI and managed application services.
 ## 2. How to think about AWS structure
