@@ -14,7 +14,14 @@
         "hermes",
         "agent"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-002",
+        "doc-008",
+        "doc-020",
+        "doc-023",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-002",
@@ -28,7 +35,14 @@
         "prompting",
         "llm"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-001",
+        "doc-008",
+        "doc-020",
+        "doc-023",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-003",
@@ -775,7 +789,14 @@
         "neovim",
         "editor"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-027",
+        "doc-029",
+        "doc-031",
+        "doc-039",
+        "doc-040"
+      ]
     },
     {
       "id": "doc-039",
@@ -789,7 +810,15 @@
         "copilot",
         "codex"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-020",
+        "doc-021",
+        "doc-023",
+        "doc-038",
+        "doc-014",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-040",
@@ -802,7 +831,13 @@
         "midnight commander",
         "file manager"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-027",
+        "doc-029",
+        "doc-038",
+        "doc-018"
+      ]
     },
     {
       "id": "doc-041",
@@ -1019,7 +1054,14 @@
         "javascript",
         "python"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-019",
+        "doc-023",
+        "doc-031",
+        "doc-046",
+        "doc-057"
+      ]
     },
     {
       "id": "doc-051",
@@ -1081,7 +1123,14 @@
         "datalayer",
         "utm"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-047",
+        "doc-048",
+        "doc-054",
+        "doc-055",
+        "doc-046"
+      ]
     },
     {
       "id": "doc-054",
@@ -1096,7 +1145,14 @@
         "mde",
         "metrics"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-053",
+        "doc-043",
+        "doc-048",
+        "doc-049",
+        "doc-055"
+      ]
     },
     {
       "id": "doc-055",
@@ -1111,7 +1167,14 @@
         "outlook",
         "newsletter"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-042",
+        "doc-043",
+        "doc-053",
+        "doc-054",
+        "doc-046"
+      ]
     },
     {
       "id": "doc-056",
@@ -1127,7 +1190,15 @@
         "runbook",
         "openapi"
       ],
-      "language": "pl"
+      "language": "pl",
+      "related": [
+        "doc-013",
+        "doc-014",
+        "doc-011",
+        "doc-041",
+        "doc-049",
+        "doc-057"
+      ]
     },
     {
       "id": "doc-057",
@@ -1957,7 +2028,14 @@
         "neovim",
         "editor"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-027",
+        "doc-029",
+        "doc-031",
+        "doc-039",
+        "doc-040"
+      ]
     },
     {
       "id": "doc-039",
@@ -1971,7 +2049,15 @@
         "copilot",
         "codex"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-020",
+        "doc-021",
+        "doc-023",
+        "doc-038",
+        "doc-014",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-040",
@@ -1984,7 +2070,13 @@
         "midnight commander",
         "file manager"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-027",
+        "doc-029",
+        "doc-038",
+        "doc-018"
+      ]
     },
     {
       "id": "doc-050",
@@ -2000,7 +2092,14 @@
         "javascript",
         "python"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-019",
+        "doc-023",
+        "doc-031",
+        "doc-046",
+        "doc-057"
+      ]
     },
     {
       "id": "doc-003",
@@ -2178,7 +2277,14 @@
         "hermes",
         "agent"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-002",
+        "doc-008",
+        "doc-020",
+        "doc-023",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-002",
@@ -2192,7 +2298,14 @@
         "prompting",
         "llm"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-001",
+        "doc-008",
+        "doc-020",
+        "doc-023",
+        "doc-056"
+      ]
     },
     {
       "id": "doc-049",
@@ -2232,7 +2345,14 @@
         "datalayer",
         "utm"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-047",
+        "doc-048",
+        "doc-054",
+        "doc-055",
+        "doc-046"
+      ]
     },
     {
       "id": "doc-054",
@@ -2247,7 +2367,14 @@
         "mde",
         "metrics"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-053",
+        "doc-043",
+        "doc-048",
+        "doc-049",
+        "doc-055"
+      ]
     },
     {
       "id": "doc-055",
@@ -2262,7 +2389,14 @@
         "outlook",
         "newsletter"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-042",
+        "doc-043",
+        "doc-053",
+        "doc-054",
+        "doc-046"
+      ]
     },
     {
       "id": "doc-056",
@@ -2278,7 +2412,15 @@
         "runbook",
         "openapi"
       ],
-      "language": "en"
+      "language": "en",
+      "related": [
+        "doc-013",
+        "doc-014",
+        "doc-011",
+        "doc-041",
+        "doc-049",
+        "doc-057"
+      ]
     },
     {
       "id": "doc-057",
