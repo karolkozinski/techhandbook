@@ -94,6 +94,7 @@
 
   const state = {
     index: null,
+    siteConfig: null,
     currentDir: "",
     currentDoc: null,
     language: "pl",
@@ -344,14 +345,157 @@
     return s;
   }
 
-  function stripFrontMatter(markdown) {
+  function parseFrontMatter(markdown) {
     const normalized = markdown.replace(/\r\n?/g, "\n");
-    if (!normalized.startsWith("---\n")) return normalized;
+    if (!normalized.startsWith("---\n")) return { meta: {}, body: normalized };
 
     const end = normalized.indexOf("\n---\n", 4);
-    if (end === -1) return normalized;
+    if (end === -1) return { meta: {}, body: normalized };
 
-    return normalized.slice(end + 5).replace(/^\n+/, "");
+    const raw = normalized.slice(4, end);
+    const meta = {};
+
+    for (const key of ["id", "title", "description", "lang", "audience", "published", "updated"]) {
+      const match = raw.match(new RegExp("^" + key + ":\\s*(.+)$", "m"));
+      if (!match) continue;
+      const value = match[1].trim();
+      if (value.startsWith('"') && value.endsWith('"')) {
+        try { meta[key] = JSON.parse(value); }
+        catch { meta[key] = value.slice(1, -1); }
+      } else if (value.startsWith("'") && value.endsWith("'")) {
+        meta[key] = value.slice(1, -1);
+      } else {
+        meta[key] = value;
+      }
+    }
+
+    return {
+      meta,
+      body: normalized.slice(end + 5).replace(/^\n+/, "")
+    };
+  }
+
+  function productionBaseUrl() {
+    return String(
+      state.siteConfig?.productionBaseUrl ||
+      (location.origin + APP_BASE.replace(/\/$/, ""))
+    ).replace(/\/$/, "");
+  }
+
+  function productionUrl(path = "") {
+    const clean = "/" + String(path).replace(/^\/+/, "");
+    return productionBaseUrl() + (clean === "/" ? "/" : clean);
+  }
+
+  function ensureMeta(name) {
+    let el = document.head.querySelector(`meta[name="${name}"]`);
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute("name", name);
+      document.head.appendChild(el);
+    }
+    return el;
+  }
+
+  function ensureLink(rel, id) {
+    let el = document.getElementById(id);
+    if (!el) {
+      el = document.createElement("link");
+      el.id = id;
+      el.rel = rel;
+      document.head.appendChild(el);
+    }
+    return el;
+  }
+
+  function clearHreflang() {
+    document.head.querySelectorAll('link[data-techhandbook-hreflang]').forEach(el => el.remove());
+  }
+
+  function setJsonLd(data) {
+    let script = document.getElementById("techhandbook-jsonld");
+    if (!data) {
+      if (script) script.remove();
+      return;
+    }
+    if (!script) {
+      script = document.createElement("script");
+      script.id = "techhandbook-jsonld";
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(data);
+  }
+
+  function setRobots(indexable) {
+    const productionEnabled = state.siteConfig?.indexingEnabled === true;
+    ensureMeta("robots").content =
+      productionEnabled && indexable
+        ? "index,follow,max-image-preview:large"
+        : "noindex,follow";
+  }
+
+  function setGenericMetadata({ title = "Null Yard Tech Handbook", description = "", indexable = false, canonicalPath = "/" } = {}) {
+    document.title = title;
+    ensureMeta("description").content =
+      description || state.siteConfig?.description || "Null Yard Tech Handbook";
+    ensureLink("canonical", "techhandbook-canonical").href = productionUrl(canonicalPath);
+    clearHreflang();
+    setJsonLd(null);
+    setRobots(indexable);
+  }
+
+  function setArticleMetadata(file, meta = {}) {
+    const title = file.title || meta.title || file.name;
+    const description = meta.description || state.siteConfig?.description || "";
+    const canonical = productionUrl(routePathForFile(file));
+
+    document.title = `${title} - Tech Handbook`;
+    ensureMeta("description").content = description;
+    ensureLink("canonical", "techhandbook-canonical").href = canonical;
+    setRobots(file.index !== false);
+
+    clearHreflang();
+    const counterparts = (state.index?.files || []).filter(item =>
+      item.id === file.id &&
+      (item.audience || "standard") === (file.audience || "standard")
+    );
+
+    for (const item of counterparts) {
+      const link = document.createElement("link");
+      link.rel = "alternate";
+      link.hreflang = item.language || "pl";
+      link.href = productionUrl(routePathForFile(item));
+      link.dataset.techhandbookHreflang = "1";
+      document.head.appendChild(link);
+    }
+
+    const defaultLanguage = state.siteConfig?.defaultLanguage || state.index?.defaultLanguage || "pl";
+    const defaultItem = counterparts.find(item => (item.language || "pl") === defaultLanguage);
+    if (defaultItem) {
+      const link = document.createElement("link");
+      link.rel = "alternate";
+      link.hreflang = "x-default";
+      link.href = productionUrl(routePathForFile(defaultItem));
+      link.dataset.techhandbookHreflang = "1";
+      document.head.appendChild(link);
+    }
+
+    setJsonLd({
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      headline: title,
+      description,
+      inLanguage: file.language || meta.lang || state.language,
+      datePublished: meta.published || undefined,
+      dateModified: meta.updated || undefined,
+      mainEntityOfPage: canonical,
+      isPartOf: {
+        "@type": "WebSite",
+        name: state.siteConfig?.siteName || "Null Yard Tech Handbook",
+        url: productionBaseUrl() + "/"
+      }
+    });
   }
 
   function normalizeArticleTitle(markdown, title) {
@@ -667,7 +811,12 @@
     els.errorText.textContent = "";
     if (els.readerTop) els.readerTop.hidden = true;
     renderWelcome();
-    document.title = "Null Yard Tech Handbook";
+    setGenericMetadata({
+      title: state.siteConfig?.siteName || "Null Yard Tech Handbook",
+      description: state.siteConfig?.description || "",
+      indexable: false,
+      canonicalPath: "/"
+    });
   }
 
   function countArticles(node) {
@@ -867,10 +1016,20 @@
     try {
       const res = await fetch(appUrl(file.path), { cache: "no-cache" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const text = stripFrontMatter(await res.text());
-      const titledText = normalizeArticleTitle(text, file.title || file.name.replace(/\.md$/i, ""));
+      const parsed = parseFrontMatter(await res.text());
+      const titledText = normalizeArticleTitle(parsed.body, file.title || file.name.replace(/\.md$/i, ""));
       els.reader.innerHTML = renderMarkdown(titledText) + renderRelatedArticles(file);
-      document.title = `${file.title || file.name} — Tech Handbook`;
+
+      if (file.id === "__readme__") {
+        setGenericMetadata({
+          title: `${t("about")} - Tech Handbook`,
+          description: state.siteConfig?.description || "",
+          indexable: false,
+          canonicalPath: routePrefix() + "about"
+        });
+      } else {
+        setArticleMetadata(file, parsed.meta);
+      }
       writeHistory(
         {
           ...currentHistoryState(),
@@ -1403,9 +1562,14 @@
     restoreRecoveredRoute();
 
     try {
-      const res = await fetch(appUrl("content-index.json"), { cache: "no-cache" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      state.index = await res.json();
+      const [indexRes, configRes] = await Promise.all([
+        fetch(appUrl("content-index.json"), { cache: "no-cache" }),
+        fetch(appUrl("site-config.json"), { cache: "no-cache" })
+      ]);
+      if (!indexRes.ok) throw new Error(`content-index HTTP ${indexRes.status}`);
+      if (!configRes.ok) throw new Error(`site-config HTTP ${configRes.status}`);
+      state.index = await indexRes.json();
+      state.siteConfig = await configRes.json();
 
       const initialRoute = parseLocationRoute();
       initLanguage(initialRoute);

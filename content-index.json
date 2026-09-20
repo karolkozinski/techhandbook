@@ -1,5 +1,5 @@
 {
-  "version": 16,
+  "version": 17,
   "updated": "2026-09-20",
   "root": "md/pl",
   "files": [
@@ -9,6 +9,7 @@
       "title": "Hermes Agent",
       "slug": "hermes-agent",
       "route": "/pl/ai/hermes-agent",
+      "index": true,
       "path": "md/pl/ai/hermes-agent.md",
       "category": "ai",
       "tags": [
@@ -32,6 +33,7 @@
       "title": "Promptowanie AI",
       "slug": "promptowanie-ai",
       "route": "/pl/ai/promptowanie-ai",
+      "index": true,
       "path": "md/pl/ai/prompting-ai.md",
       "category": "ai",
       "tags": [
@@ -56,6 +58,7 @@
       "title": "Dokumentowanie rozwiązań technicznych",
       "slug": "dokumentowanie-rozwiazan-technicznych",
       "route": "/pl/architecture/dokumentowanie-rozwiazan-technicznych",
+      "index": true,
       "path": "md/pl/architecture/technical-documentation.md",
       "category": "architecture",
       "tags": [
@@ -83,6 +86,7 @@
       "title": "Alibaba Cloud",
       "slug": "alibaba-cloud",
       "route": "/pl/cloud/alibaba-cloud",
+      "index": true,
       "path": "md/pl/cloud/alibaba-cloud.md",
       "category": "cloud",
       "tags": [
@@ -105,6 +109,7 @@
       "title": "Amazon Web Services (AWS)",
       "slug": "amazon-web-services-aws",
       "route": "/pl/cloud/amazon-web-services-aws",
+      "index": true,
       "path": "md/pl/cloud/aws.md",
       "category": "cloud",
       "tags": [
@@ -128,6 +133,7 @@
       "title": "Microsoft Azure",
       "slug": "microsoft-azure",
       "route": "/pl/cloud/microsoft-azure",
+      "index": true,
       "path": "md/pl/cloud/azure.md",
       "category": "cloud",
       "tags": [
@@ -151,6 +157,7 @@
       "title": "Google Cloud Platform (GCP)",
       "slug": "google-cloud-platform-gcp",
       "route": "/pl/cloud/google-cloud-platform-gcp",
+      "index": true,
       "path": "md/pl/cloud/gcp.md",
       "category": "cloud",
       "tags": [
@@ -174,6 +181,7 @@
       "title": "Oracle Cloud Infrastructure (OCI)",
       "slug": "oracle-cloud-infrastructure-oci",
       "route": "/pl/cloud/oracle-cloud-infrastructure-oci",
+      "index": true,
       "path": "md/pl/cloud/oci.md",
       "category": "cloud",
       "tags": [
@@ -197,6 +205,7 @@
       "title": "API i integracje systemów",
       "slug": "api-i-integracje-systemow",
       "route": "/pl/data-api/api-i-integracje-systemow",
+      "index": true,
       "path": "md/pl/data-api/api-integrations.md",
       "category": "data-api",
       "tags": [
@@ -223,6 +232,7 @@
       "title": "JSON, YAML, TOML i XML",
       "slug": "json-yaml-toml-i-xml",
       "route": "/pl/data-api/json-yaml-toml-i-xml",
+      "index": true,
       "path": "md/pl/data-api/data-formats-json-yaml-toml-xml.md",
       "category": "data-api",
       "tags": [
@@ -247,6 +257,7 @@
       "title": "SQL i PostgreSQL dla developera",
       "slug": "sql-i-postgresql-dla-developera",
       "route": "/pl/data-api/sql-i-postgresql-dla-developera",
+      "index": true,
       "path": "md/pl/data-api/postgresql-sql.md",
       "category": "data-api",
       "tags": [
@@ -272,6 +283,7 @@
       "title": "CI/CD i GitHub Actions",
       "slug": "ci-cd-i-github-actions",
       "route": "/pl/devops/ci-cd-i-github-actions",
+      "index": true,
       "path": "md/pl/devops/ci-cd-github-actions.md",
       "category": "devops",
       "tags": [
@@ -297,6 +309,7 @@
       "title": "Docker",
       "slug": "docker",
       "route": "/pl/devops/docker",
+      "index": true,
       "path": "md/pl/devops/docker.md",
       "category": "devops",
       "tags": [
@@ -321,6 +334,7 @@
       "title": "Git w praktyce zespołowej",
       "slug": "git-w-praktyce-zespolowej",
       "route": "/pl/devops/git-w-praktyce-zespolowej",
+      "index": true,
       "path": "md/pl/devops/git-team-workflows.md",
       "category": "devops",
       "tags": [
@@ -345,6 +359,7 @@
       "title": "GitHub",
       "slug": "github",
       "route": "/pl/devops/github",
+      "index": true,
       "path": "md/pl/devops/github.md",
       "category": "devops",
       "tags": [
@@ -368,6 +383,7 @@
       "title": "Logi, monitoring i troubleshooting",
       "slug": "logi-monitoring-i-troubleshooting",
       "route": "/pl/devops/logi-monitoring-i-troubleshooting",
+      "index": true,
       "path": "md/pl/devops/logging-monitoring-troubleshooting.md",
       "category": "devops",
       "tags": [
@@ -393,6 +409,7 @@
       "title": "systemd, cron i schedulery",
       "slug": "systemd-cron-i-schedulery",
       "route": "/pl/devops/systemd-cron-i-schedulery",
+      "index": true,
       "path": "md/pl/devops/systemd-cron-schedulers.md",
       "category": "devops",
       "tags": [
@@ -418,6 +435,7 @@
       "title": "A/B testing i eksperymenty — kompendium praktyczne",
       "slug": "a-b-testing-i-eksperymenty-kompendium-praktyczne",
       "route": "/pl/digital/a-b-testing-i-eksperymenty-kompendium-praktyczne",
+      "index": true,
       "path": "md/pl/digital/ab-testing-experiments.md",
       "category": "digital",
       "tags": [
@@ -443,6 +461,7 @@
       "title": "HTML email / EDM — kompendium praktyczne",
       "slug": "html-email-edm-kompendium-praktyczne",
       "route": "/pl/digital/html-email-edm-kompendium-praktyczne",
+      "index": true,
       "path": "md/pl/digital/html-email-edm.md",
       "category": "digital",
       "tags": [
@@ -468,6 +487,7 @@
       "title": "Web analytics i tagging — kompendium praktyczne",
       "slug": "web-analytics-i-tagging-kompendium-praktyczne",
       "route": "/pl/digital/web-analytics-i-tagging-kompendium-praktyczne",
+      "index": true,
       "path": "md/pl/digital/web-analytics-tagging.md",
       "category": "digital",
       "tags": [
@@ -494,6 +514,7 @@
       "title": "Sieci komputerowe dla developera",
       "slug": "sieci-komputerowe-dla-developera",
       "route": "/pl/networking/sieci-komputerowe-dla-developera",
+      "index": true,
       "path": "md/pl/networking/computer-networks-for-developers.md",
       "category": "networking",
       "tags": [
@@ -519,6 +540,7 @@
       "title": "DNS, domeny i routing internetowy",
       "slug": "dns-domeny-i-routing-internetowy",
       "route": "/pl/networking/dns-domeny-i-routing-internetowy",
+      "index": true,
       "path": "md/pl/networking/dns-domains-routing.md",
       "category": "networking",
       "tags": [
@@ -543,6 +565,7 @@
       "title": "SSH i zdalna administracja",
       "slug": "ssh-i-zdalna-administracja",
       "route": "/pl/networking/ssh-i-zdalna-administracja",
+      "index": true,
       "path": "md/pl/networking/ssh-remote-administration.md",
       "category": "networking",
       "tags": [
@@ -568,6 +591,7 @@
       "title": "C — czytanie, kompilacja i debugowanie",
       "slug": "c-czytanie-kompilacja-i-debugowanie",
       "route": "/pl/programming/c/c-czytanie-kompilacja-i-debugowanie",
+      "index": true,
       "path": "md/pl/programming/c/c-reading-building-debugging.md",
       "category": "programming/c",
       "tags": [
@@ -592,6 +616,7 @@
       "title": "Go — czytanie kodu",
       "slug": "go-czytanie-kodu",
       "route": "/pl/programming/go/go-czytanie-kodu",
+      "index": true,
       "path": "md/pl/programming/go/go-reading-code.md",
       "category": "programming/go",
       "tags": [
@@ -615,6 +640,7 @@
       "title": "JavaScript — kompendium",
       "slug": "javascript-kompendium",
       "route": "/pl/programming/javascript/javascript-kompendium",
+      "index": true,
       "path": "md/pl/programming/javascript/javascript-guide.md",
       "category": "programming/javascript",
       "tags": [
@@ -639,6 +665,7 @@
       "title": "Node.js",
       "slug": "node-js",
       "route": "/pl/programming/javascript/node-js",
+      "index": true,
       "path": "md/pl/programming/javascript/nodejs.md",
       "category": "programming/javascript",
       "tags": [
@@ -663,6 +690,7 @@
       "title": "Python — podstawy",
       "slug": "python-podstawy",
       "route": "/pl/programming/python/python-podstawy",
+      "index": true,
       "path": "md/pl/programming/python/python-basics.md",
       "category": "programming/python",
       "tags": [
@@ -685,6 +713,7 @@
       "title": "OAuth 2.0, OpenID Connect, JWT i sesje",
       "slug": "oauth-2-0-openid-connect-jwt-i-sesje",
       "route": "/pl/security/authentication/oauth-2-0-openid-connect-jwt-i-sesje",
+      "index": true,
       "path": "md/pl/security/authentication/oauth-oidc-jwt-sessions.md",
       "category": "security/authentication",
       "tags": [
@@ -712,6 +741,7 @@
       "title": "Cybersecurity i pentesting — podstawy",
       "slug": "cybersecurity-i-pentesting-podstawy",
       "route": "/pl/security/cybersecurity-i-pentesting-podstawy",
+      "index": true,
       "path": "md/pl/security/cybersecurity-basics-pentesting.md",
       "category": "security",
       "tags": [
@@ -740,6 +770,7 @@
       "title": "Linux permissions i bezpieczeństwo serwera",
       "slug": "linux-permissions-i-bezpieczenstwo-serwera",
       "route": "/pl/security/linux-permissions-i-bezpieczenstwo-serwera",
+      "index": true,
       "path": "md/pl/security/linux-server-security.md",
       "category": "security",
       "tags": [
@@ -766,6 +797,7 @@
       "title": "Bezpieczeństwo aplikacji webowych",
       "slug": "bezpieczenstwo-aplikacji-webowych",
       "route": "/pl/security/bezpieczenstwo-aplikacji-webowych",
+      "index": true,
       "path": "md/pl/security/web-security.md",
       "category": "security",
       "tags": [
@@ -793,6 +825,7 @@
       "title": "Debian — shell",
       "slug": "debian-shell",
       "route": "/pl/shell/debian/debian-shell",
+      "index": true,
       "path": "md/pl/shell/debian/debian-shell.md",
       "category": "shell/debian",
       "tags": [
@@ -816,6 +849,7 @@
       "title": "Shelle w Debianie — przegląd",
       "slug": "shelle-w-debianie-przeglad",
       "route": "/pl/shell/debian/shelle-w-debianie-przeglad",
+      "index": true,
       "path": "md/pl/shell/debian/debian-shells-overview.md",
       "category": "shell/debian",
       "tags": [
@@ -839,6 +873,7 @@
       "title": "FreeBSD — shell",
       "slug": "freebsd-shell",
       "route": "/pl/shell/freebsd/freebsd-shell",
+      "index": true,
       "path": "md/pl/shell/freebsd/freebsd-shell.md",
       "category": "shell/freebsd",
       "tags": [
@@ -863,6 +898,7 @@
       "title": "Shelle w FreeBSD — przegląd",
       "slug": "shelle-w-freebsd-przeglad",
       "route": "/pl/shell/freebsd/shelle-w-freebsd-przeglad",
+      "index": true,
       "path": "md/pl/shell/freebsd/freebsd-shells-overview.md",
       "category": "shell/freebsd",
       "tags": [
@@ -886,6 +922,7 @@
       "title": "Programowanie w shellu",
       "slug": "programowanie-w-shellu",
       "route": "/pl/shell/scripting/programowanie-w-shellu",
+      "index": true,
       "path": "md/pl/shell/scripting/shell-scripting.md",
       "category": "shell/scripting",
       "tags": [
@@ -910,6 +947,7 @@
       "title": "Termux",
       "slug": "termux",
       "route": "/pl/systems/android/termux",
+      "index": true,
       "path": "md/pl/systems/android/termux.md",
       "category": "systems/android",
       "tags": [
@@ -933,6 +971,7 @@
       "title": "Debian — desktop i serwer",
       "slug": "debian-desktop-i-serwer",
       "route": "/pl/systems/debian/debian-desktop-i-serwer",
+      "index": true,
       "path": "md/pl/systems/debian/debian-desktop-server.md",
       "category": "systems/debian",
       "tags": [
@@ -958,6 +997,7 @@
       "title": "FreeBSD jako serwer",
       "slug": "freebsd-jako-serwer",
       "route": "/pl/systems/freebsd/freebsd-jako-serwer",
+      "index": true,
       "path": "md/pl/systems/freebsd/freebsd-server.md",
       "category": "systems/freebsd",
       "tags": [
@@ -981,6 +1021,7 @@
       "title": "Dystrybucje Linuxa",
       "slug": "dystrybucje-linuxa",
       "route": "/pl/systems/linux/dystrybucje-linuxa",
+      "index": true,
       "path": "md/pl/systems/linux/linux-distributions.md",
       "category": "systems/linux",
       "tags": [
@@ -1003,6 +1044,7 @@
       "title": "Menedżery okien w Linuxie",
       "slug": "menedzery-okien-w-linuxie",
       "route": "/pl/systems/linux/menedzery-okien-w-linuxie",
+      "index": true,
       "path": "md/pl/systems/linux/window-managers.md",
       "category": "systems/linux",
       "tags": [
@@ -1025,6 +1067,7 @@
       "title": "Windows Server — administracja korporacyjna",
       "slug": "windows-server-administracja-korporacyjna",
       "route": "/pl/systems/windows/windows-server-administracja-korporacyjna",
+      "index": true,
       "path": "md/pl/systems/windows/windows-server-administration.md",
       "category": "systems/windows",
       "tags": [
@@ -1048,6 +1091,7 @@
       "title": "Testowanie oprogramowania — kompendium",
       "slug": "testowanie-oprogramowania-kompendium",
       "route": "/pl/testing/testowanie-oprogramowania-kompendium",
+      "index": true,
       "path": "md/pl/testing/software-testing.md",
       "category": "testing",
       "tags": [
@@ -1075,6 +1119,7 @@
       "title": "Vi, Vim, gVim i Neovim",
       "slug": "vi-vim-gvim-i-neovim",
       "route": "/pl/tools/editors/vi-vim-gvim-i-neovim",
+      "index": true,
       "path": "md/pl/tools/editors/vi-vim-neovim.md",
       "category": "tools/editors",
       "tags": [
@@ -1100,6 +1145,7 @@
       "title": "Visual Studio Code",
       "slug": "visual-studio-code",
       "route": "/pl/tools/editors/visual-studio-code",
+      "index": true,
       "path": "md/pl/tools/editors/vscode.md",
       "category": "tools/editors",
       "tags": [
@@ -1125,6 +1171,7 @@
       "title": "Midnight Commander",
       "slug": "midnight-commander",
       "route": "/pl/tools/file-managers/midnight-commander",
+      "index": true,
       "path": "md/pl/tools/file-managers/midnight-commander.md",
       "category": "tools/file-managers",
       "tags": [
@@ -1147,6 +1194,7 @@
       "title": "Wyrażenia regularne (Regex) — kompendium praktyczne",
       "slug": "wyrazenia-regularne-regex-kompendium-praktyczne",
       "route": "/pl/tools/regex/wyrazenia-regularne-regex-kompendium-praktyczne",
+      "index": true,
       "path": "md/pl/tools/regex/regular-expressions.md",
       "category": "tools/regex",
       "tags": [
@@ -1173,6 +1221,7 @@
       "title": "Troubleshooting aplikacji webowej end-to-end",
       "slug": "troubleshooting-aplikacji-webowej-end-to-end",
       "route": "/pl/troubleshooting/troubleshooting-aplikacji-webowej-end-to-end",
+      "index": true,
       "path": "md/pl/troubleshooting/web-app-end-to-end-playbook.md",
       "category": "troubleshooting",
       "tags": [
@@ -1201,6 +1250,7 @@
       "title": "Architektura małych aplikacji webowych",
       "slug": "architektura-malych-aplikacji-webowych",
       "route": "/pl/web/architecture/architektura-malych-aplikacji-webowych",
+      "index": true,
       "path": "md/pl/web/architecture/small-web-apps.md",
       "category": "web/architecture",
       "tags": [
@@ -1226,6 +1276,7 @@
       "title": "Browser DevTools — kompendium praktyczne",
       "slug": "browser-devtools-kompendium-praktyczne",
       "route": "/pl/web/frontend/browser-devtools-kompendium-praktyczne",
+      "index": true,
       "path": "md/pl/web/frontend/browser-devtools.md",
       "category": "web/frontend",
       "tags": [
@@ -1252,6 +1303,7 @@
       "title": "Nowoczesny HTML i CSS",
       "slug": "nowoczesny-html-i-css",
       "route": "/pl/web/frontend/nowoczesny-html-i-css",
+      "index": true,
       "path": "md/pl/web/frontend/html-css.md",
       "category": "web/frontend",
       "tags": [
@@ -1277,6 +1329,7 @@
       "title": "UX i dostępność dla developera",
       "slug": "ux-i-dostepnosc-dla-developera",
       "route": "/pl/web/frontend/ux-i-dostepnosc-dla-developera",
+      "index": true,
       "path": "md/pl/web/frontend/ux-accessibility.md",
       "category": "web/frontend",
       "tags": [
@@ -1301,6 +1354,7 @@
       "title": "Web Performance — kompendium",
       "slug": "web-performance-kompendium",
       "route": "/pl/web/performance/web-performance-kompendium",
+      "index": true,
       "path": "md/pl/web/performance/web-performance.md",
       "category": "web/performance",
       "tags": [
@@ -1328,6 +1382,7 @@
       "title": "HTTP, HTTPS i TLS",
       "slug": "http-https-i-tls",
       "route": "/pl/web/protocols/http-https-i-tls",
+      "index": true,
       "path": "md/pl/web/protocols/http-https-tls.md",
       "category": "web/protocols",
       "tags": [
@@ -1352,6 +1407,7 @@
       "title": "Technical SEO — kompendium praktyczne",
       "slug": "technical-seo-kompendium-praktyczne",
       "route": "/pl/web/seo/technical-seo-kompendium-praktyczne",
+      "index": true,
       "path": "md/pl/web/seo/technical-seo.md",
       "category": "web/seo",
       "tags": [
@@ -1378,6 +1434,7 @@
       "title": "nginx i reverse proxy",
       "slug": "nginx-i-reverse-proxy",
       "route": "/pl/web/servers/nginx-i-reverse-proxy",
+      "index": true,
       "path": "md/pl/web/servers/nginx-reverse-proxy.md",
       "category": "web/servers",
       "tags": [
@@ -1402,6 +1459,7 @@
       "title": "01. Jak działa komputer?",
       "slug": "01-jak-dziala-komputer",
       "route": "/pl/junior/01-jak-dziala-komputer",
+      "index": true,
       "path": "md/pl/junior/01-jak-dziala-komputer.md",
       "category": "junior",
       "tags": [
@@ -1421,6 +1479,7 @@
       "title": "02. Pliki i katalogi",
       "slug": "02-pliki-i-katalogi",
       "route": "/pl/junior/02-pliki-i-katalogi",
+      "index": true,
       "path": "md/pl/junior/02-pliki-i-katalogi.md",
       "category": "junior",
       "tags": [
@@ -1439,6 +1498,7 @@
       "title": "03. Terminal bez strachu",
       "slug": "03-terminal-bez-strachu",
       "route": "/pl/junior/03-terminal-bez-strachu",
+      "index": true,
       "path": "md/pl/junior/03-terminal-bez-strachu.md",
       "category": "junior",
       "tags": [
@@ -1457,6 +1517,7 @@
       "title": "04. HTML — pierwsza strona",
       "slug": "04-html-pierwsza-strona",
       "route": "/pl/junior/04-html-pierwsza-strona",
+      "index": true,
       "path": "md/pl/junior/04-html-pierwsza-strona.md",
       "category": "junior",
       "tags": [
@@ -1474,6 +1535,7 @@
       "title": "05. CSS — nadajemy styl",
       "slug": "05-css-nadajemy-styl",
       "route": "/pl/junior/05-css-nadajemy-styl",
+      "index": true,
       "path": "md/pl/junior/05-css-nadajemy-styl.md",
       "category": "junior",
       "tags": [
@@ -1491,6 +1553,7 @@
       "title": "Hermes Agent — User Handbook",
       "slug": "hermes-agent-user-handbook",
       "route": "/en/ai/hermes-agent-user-handbook",
+      "index": true,
       "path": "md/en/ai/hermes-agent.md",
       "category": "ai",
       "tags": [
@@ -1514,6 +1577,7 @@
       "title": "AI Prompting — Practical Handbook",
       "slug": "ai-prompting-practical-handbook",
       "route": "/en/ai/ai-prompting-practical-handbook",
+      "index": true,
       "path": "md/en/ai/prompting-ai.md",
       "category": "ai",
       "tags": [
@@ -1538,6 +1602,7 @@
       "title": "Documenting Technical Solutions — Handbook",
       "slug": "documenting-technical-solutions-handbook",
       "route": "/en/architecture/documenting-technical-solutions-handbook",
+      "index": true,
       "path": "md/en/architecture/technical-documentation.md",
       "category": "architecture",
       "tags": [
@@ -1565,6 +1630,7 @@
       "title": "Alibaba Cloud — Practical Handbook",
       "slug": "alibaba-cloud-practical-handbook",
       "route": "/en/cloud/alibaba-cloud-practical-handbook",
+      "index": true,
       "path": "md/en/cloud/alibaba-cloud.md",
       "category": "cloud",
       "tags": [
@@ -1587,6 +1653,7 @@
       "title": "Amazon Web Services (AWS) — Practical Handbook",
       "slug": "amazon-web-services-aws-practical-handbook",
       "route": "/en/cloud/amazon-web-services-aws-practical-handbook",
+      "index": true,
       "path": "md/en/cloud/aws.md",
       "category": "cloud",
       "tags": [
@@ -1610,6 +1677,7 @@
       "title": "Microsoft Azure — Practical Handbook",
       "slug": "microsoft-azure-practical-handbook",
       "route": "/en/cloud/microsoft-azure-practical-handbook",
+      "index": true,
       "path": "md/en/cloud/azure.md",
       "category": "cloud",
       "tags": [
@@ -1633,6 +1701,7 @@
       "title": "Google Cloud Platform (GCP) — Practical Handbook",
       "slug": "google-cloud-platform-gcp-practical-handbook",
       "route": "/en/cloud/google-cloud-platform-gcp-practical-handbook",
+      "index": true,
       "path": "md/en/cloud/gcp.md",
       "category": "cloud",
       "tags": [
@@ -1656,6 +1725,7 @@
       "title": "Oracle Cloud Infrastructure (OCI) — Practical Handbook",
       "slug": "oracle-cloud-infrastructure-oci-practical-handbook",
       "route": "/en/cloud/oracle-cloud-infrastructure-oci-practical-handbook",
+      "index": true,
       "path": "md/en/cloud/oci.md",
       "category": "cloud",
       "tags": [
@@ -1679,6 +1749,7 @@
       "title": "APIs and System Integrations — Practical Handbook",
       "slug": "apis-and-system-integrations-practical-handbook",
       "route": "/en/data-api/apis-and-system-integrations-practical-handbook",
+      "index": true,
       "path": "md/en/data-api/api-integrations.md",
       "category": "data-api",
       "tags": [
@@ -1705,6 +1776,7 @@
       "title": "JSON, YAML, TOML and XML — Data and Configuration Handbook",
       "slug": "json-yaml-toml-and-xml-data-and-configuration-handbook",
       "route": "/en/data-api/json-yaml-toml-and-xml-data-and-configuration-handbook",
+      "index": true,
       "path": "md/en/data-api/data-formats-json-yaml-toml-xml.md",
       "category": "data-api",
       "tags": [
@@ -1729,6 +1801,7 @@
       "title": "SQL and PostgreSQL for Developers — Handbook",
       "slug": "sql-and-postgresql-for-developers-handbook",
       "route": "/en/data-api/sql-and-postgresql-for-developers-handbook",
+      "index": true,
       "path": "md/en/data-api/postgresql-sql.md",
       "category": "data-api",
       "tags": [
@@ -1754,6 +1827,7 @@
       "title": "CI/CD and GitHub Actions",
       "slug": "ci-cd-and-github-actions",
       "route": "/en/devops/ci-cd-and-github-actions",
+      "index": true,
       "path": "md/en/devops/ci-cd-github-actions.md",
       "category": "devops",
       "tags": [
@@ -1779,6 +1853,7 @@
       "title": "Docker — Practical Handbook",
       "slug": "docker-practical-handbook",
       "route": "/en/devops/docker-practical-handbook",
+      "index": true,
       "path": "md/en/devops/docker.md",
       "category": "devops",
       "tags": [
@@ -1803,6 +1878,7 @@
       "title": "Git in Team Workflows",
       "slug": "git-in-team-workflows",
       "route": "/en/devops/git-in-team-workflows",
+      "index": true,
       "path": "md/en/devops/git-team-workflows.md",
       "category": "devops",
       "tags": [
@@ -1827,6 +1903,7 @@
       "title": "GitHub — Practical Handbook",
       "slug": "github-practical-handbook",
       "route": "/en/devops/github-practical-handbook",
+      "index": true,
       "path": "md/en/devops/github.md",
       "category": "devops",
       "tags": [
@@ -1850,6 +1927,7 @@
       "title": "Logging, Monitoring and Troubleshooting",
       "slug": "logging-monitoring-and-troubleshooting",
       "route": "/en/devops/logging-monitoring-and-troubleshooting",
+      "index": true,
       "path": "md/en/devops/logging-monitoring-troubleshooting.md",
       "category": "devops",
       "tags": [
@@ -1875,6 +1953,7 @@
       "title": "systemd, cron and Schedulers",
       "slug": "systemd-cron-and-schedulers",
       "route": "/en/devops/systemd-cron-and-schedulers",
+      "index": true,
       "path": "md/en/devops/systemd-cron-schedulers.md",
       "category": "devops",
       "tags": [
@@ -1900,6 +1979,7 @@
       "title": "A/B Testing and Experiments — Practical Handbook",
       "slug": "a-b-testing-and-experiments-practical-handbook",
       "route": "/en/digital/a-b-testing-and-experiments-practical-handbook",
+      "index": true,
       "path": "md/en/digital/ab-testing-experiments.md",
       "category": "digital",
       "tags": [
@@ -1925,6 +2005,7 @@
       "title": "HTML Email / EDM — Practical Handbook",
       "slug": "html-email-edm-practical-handbook",
       "route": "/en/digital/html-email-edm-practical-handbook",
+      "index": true,
       "path": "md/en/digital/html-email-edm.md",
       "category": "digital",
       "tags": [
@@ -1950,6 +2031,7 @@
       "title": "Web Analytics and Tagging — Practical Handbook",
       "slug": "web-analytics-and-tagging-practical-handbook",
       "route": "/en/digital/web-analytics-and-tagging-practical-handbook",
+      "index": true,
       "path": "md/en/digital/web-analytics-tagging.md",
       "category": "digital",
       "tags": [
@@ -1976,6 +2058,7 @@
       "title": "Computer Networks for Developers",
       "slug": "computer-networks-for-developers",
       "route": "/en/networking/computer-networks-for-developers",
+      "index": true,
       "path": "md/en/networking/computer-networks-for-developers.md",
       "category": "networking",
       "tags": [
@@ -2001,6 +2084,7 @@
       "title": "DNS, Domains and Internet Routing",
       "slug": "dns-domains-and-internet-routing",
       "route": "/en/networking/dns-domains-and-internet-routing",
+      "index": true,
       "path": "md/en/networking/dns-domains-routing.md",
       "category": "networking",
       "tags": [
@@ -2025,6 +2109,7 @@
       "title": "SSH and Remote Administration",
       "slug": "ssh-and-remote-administration",
       "route": "/en/networking/ssh-and-remote-administration",
+      "index": true,
       "path": "md/en/networking/ssh-remote-administration.md",
       "category": "networking",
       "tags": [
@@ -2050,6 +2135,7 @@
       "title": "C — Reading, Building and Debugging Projects",
       "slug": "c-reading-building-and-debugging-projects",
       "route": "/en/programming/c/c-reading-building-and-debugging-projects",
+      "index": true,
       "path": "md/en/programming/c/c-reading-building-debugging.md",
       "category": "programming/c",
       "tags": [
@@ -2074,6 +2160,7 @@
       "title": "Go — Reading Code",
       "slug": "go-reading-code",
       "route": "/en/programming/go/go-reading-code",
+      "index": true,
       "path": "md/en/programming/go/go-reading-code.md",
       "category": "programming/go",
       "tags": [
@@ -2097,6 +2184,7 @@
       "title": "JavaScript — From Basics to Modern Front-End",
       "slug": "javascript-from-basics-to-modern-front-end",
       "route": "/en/programming/javascript/javascript-from-basics-to-modern-front-end",
+      "index": true,
       "path": "md/en/programming/javascript/javascript-guide.md",
       "category": "programming/javascript",
       "tags": [
@@ -2121,6 +2209,7 @@
       "title": "Node.js — Practical Handbook",
       "slug": "node-js-practical-handbook",
       "route": "/en/programming/javascript/node-js-practical-handbook",
+      "index": true,
       "path": "md/en/programming/javascript/nodejs.md",
       "category": "programming/javascript",
       "tags": [
@@ -2145,6 +2234,7 @@
       "title": "Python — Practical Handbook",
       "slug": "python-practical-handbook",
       "route": "/en/programming/python/python-practical-handbook",
+      "index": true,
       "path": "md/en/programming/python/python-basics.md",
       "category": "programming/python",
       "tags": [
@@ -2167,6 +2257,7 @@
       "title": "OAuth 2.0, OpenID Connect, JWT and Sessions",
       "slug": "oauth-2-0-openid-connect-jwt-and-sessions",
       "route": "/en/security/authentication/oauth-2-0-openid-connect-jwt-and-sessions",
+      "index": true,
       "path": "md/en/security/authentication/oauth-oidc-jwt-sessions.md",
       "category": "security/authentication",
       "tags": [
@@ -2194,6 +2285,7 @@
       "title": "Cybersecurity and Pentesting — Fundamentals",
       "slug": "cybersecurity-and-pentesting-fundamentals",
       "route": "/en/security/cybersecurity-and-pentesting-fundamentals",
+      "index": true,
       "path": "md/en/security/cybersecurity-basics-pentesting.md",
       "category": "security",
       "tags": [
@@ -2222,6 +2314,7 @@
       "title": "Linux Permissions and Server Security",
       "slug": "linux-permissions-and-server-security",
       "route": "/en/security/linux-permissions-and-server-security",
+      "index": true,
       "path": "md/en/security/linux-server-security.md",
       "category": "security",
       "tags": [
@@ -2248,6 +2341,7 @@
       "title": "Web Application Security for Developers",
       "slug": "web-application-security-for-developers",
       "route": "/en/security/web-application-security-for-developers",
+      "index": true,
       "path": "md/en/security/web-security.md",
       "category": "security",
       "tags": [
@@ -2275,6 +2369,7 @@
       "title": "Debian — Practical Shell Handbook",
       "slug": "debian-practical-shell-handbook",
       "route": "/en/shell/debian/debian-practical-shell-handbook",
+      "index": true,
       "path": "md/en/shell/debian/debian-shell.md",
       "category": "shell/debian",
       "tags": [
@@ -2298,6 +2393,7 @@
       "title": "Shells in Debian",
       "slug": "shells-in-debian",
       "route": "/en/shell/debian/shells-in-debian",
+      "index": true,
       "path": "md/en/shell/debian/debian-shells-overview.md",
       "category": "shell/debian",
       "tags": [
@@ -2321,6 +2417,7 @@
       "title": "FreeBSD — Practical Shell Handbook",
       "slug": "freebsd-practical-shell-handbook",
       "route": "/en/shell/freebsd/freebsd-practical-shell-handbook",
+      "index": true,
       "path": "md/en/shell/freebsd/freebsd-shell.md",
       "category": "shell/freebsd",
       "tags": [
@@ -2345,6 +2442,7 @@
       "title": "Shells in FreeBSD",
       "slug": "shells-in-freebsd",
       "route": "/en/shell/freebsd/shells-in-freebsd",
+      "index": true,
       "path": "md/en/shell/freebsd/freebsd-shells-overview.md",
       "category": "shell/freebsd",
       "tags": [
@@ -2368,6 +2466,7 @@
       "title": "Shell Scripting — Debian and FreeBSD",
       "slug": "shell-scripting-debian-and-freebsd",
       "route": "/en/shell/scripting/shell-scripting-debian-and-freebsd",
+      "index": true,
       "path": "md/en/shell/scripting/shell-scripting.md",
       "category": "shell/scripting",
       "tags": [
@@ -2392,6 +2491,7 @@
       "title": "Termux — Knowledge Handbook",
       "slug": "termux-knowledge-handbook",
       "route": "/en/systems/android/termux-knowledge-handbook",
+      "index": true,
       "path": "md/en/systems/android/termux.md",
       "category": "systems/android",
       "tags": [
@@ -2415,6 +2515,7 @@
       "title": "Debian 13 — Desktop + Server Handbook",
       "slug": "debian-13-desktop-server-handbook",
       "route": "/en/systems/debian/debian-13-desktop-server-handbook",
+      "index": true,
       "path": "md/en/systems/debian/debian-desktop-server.md",
       "category": "systems/debian",
       "tags": [
@@ -2440,6 +2541,7 @@
       "title": "FreeBSD as a Server — Administrator Handbook",
       "slug": "freebsd-as-a-server-administrator-handbook",
       "route": "/en/systems/freebsd/freebsd-as-a-server-administrator-handbook",
+      "index": true,
       "path": "md/en/systems/freebsd/freebsd-server.md",
       "category": "systems/freebsd",
       "tags": [
@@ -2463,6 +2565,7 @@
       "title": "Popular Linux Distributions",
       "slug": "popular-linux-distributions",
       "route": "/en/systems/linux/popular-linux-distributions",
+      "index": true,
       "path": "md/en/systems/linux/linux-distributions.md",
       "category": "systems/linux",
       "tags": [
@@ -2485,6 +2588,7 @@
       "title": "Linux Window Managers",
       "slug": "linux-window-managers",
       "route": "/en/systems/linux/linux-window-managers",
+      "index": true,
       "path": "md/en/systems/linux/window-managers.md",
       "category": "systems/linux",
       "tags": [
@@ -2507,6 +2611,7 @@
       "title": "Windows Server in the Enterprise — Administrator Fundamentals",
       "slug": "windows-server-in-the-enterprise-administrator-fundamentals",
       "route": "/en/systems/windows/windows-server-in-the-enterprise-administrator-fundamentals",
+      "index": true,
       "path": "md/en/systems/windows/windows-server-administration.md",
       "category": "systems/windows",
       "tags": [
@@ -2530,6 +2635,7 @@
       "title": "Software Testing — Handbook",
       "slug": "software-testing-handbook",
       "route": "/en/testing/software-testing-handbook",
+      "index": true,
       "path": "md/en/testing/software-testing.md",
       "category": "testing",
       "tags": [
@@ -2557,6 +2663,7 @@
       "title": "vi / Vim / gVim / Neovim — Practical Text Editing Handbook",
       "slug": "vi-vim-gvim-neovim-practical-text-editing-handbook",
       "route": "/en/tools/editors/vi-vim-gvim-neovim-practical-text-editing-handbook",
+      "index": true,
       "path": "md/en/tools/editors/vi-vim-neovim.md",
       "category": "tools/editors",
       "tags": [
@@ -2582,6 +2689,7 @@
       "title": "Visual Studio Code — Knowledge Handbook",
       "slug": "visual-studio-code-knowledge-handbook",
       "route": "/en/tools/editors/visual-studio-code-knowledge-handbook",
+      "index": true,
       "path": "md/en/tools/editors/vscode.md",
       "category": "tools/editors",
       "tags": [
@@ -2607,6 +2715,7 @@
       "title": "Midnight Commander — Knowledge Handbook",
       "slug": "midnight-commander-knowledge-handbook",
       "route": "/en/tools/file-managers/midnight-commander-knowledge-handbook",
+      "index": true,
       "path": "md/en/tools/file-managers/midnight-commander.md",
       "category": "tools/file-managers",
       "tags": [
@@ -2629,6 +2738,7 @@
       "title": "Regular Expressions (Regex) — Practical Handbook",
       "slug": "regular-expressions-regex-practical-handbook",
       "route": "/en/tools/regex/regular-expressions-regex-practical-handbook",
+      "index": true,
       "path": "md/en/tools/regex/regular-expressions.md",
       "category": "tools/regex",
       "tags": [
@@ -2655,6 +2765,7 @@
       "title": "End-to-End Web Application Troubleshooting — Playbook",
       "slug": "end-to-end-web-application-troubleshooting-playbook",
       "route": "/en/troubleshooting/end-to-end-web-application-troubleshooting-playbook",
+      "index": true,
       "path": "md/en/troubleshooting/web-app-end-to-end-playbook.md",
       "category": "troubleshooting",
       "tags": [
@@ -2683,6 +2794,7 @@
       "title": "Architecture of Small Web Applications",
       "slug": "architecture-of-small-web-applications",
       "route": "/en/web/architecture/architecture-of-small-web-applications",
+      "index": true,
       "path": "md/en/web/architecture/small-web-apps.md",
       "category": "web/architecture",
       "tags": [
@@ -2708,6 +2820,7 @@
       "title": "Browser DevTools — Practical Handbook",
       "slug": "browser-devtools-practical-handbook",
       "route": "/en/web/frontend/browser-devtools-practical-handbook",
+      "index": true,
       "path": "md/en/web/frontend/browser-devtools.md",
       "category": "web/frontend",
       "tags": [
@@ -2734,6 +2847,7 @@
       "title": "Modern HTML and CSS",
       "slug": "modern-html-and-css",
       "route": "/en/web/frontend/modern-html-and-css",
+      "index": true,
       "path": "md/en/web/frontend/html-css.md",
       "category": "web/frontend",
       "tags": [
@@ -2759,6 +2873,7 @@
       "title": "UX and Accessibility for Developers",
       "slug": "ux-and-accessibility-for-developers",
       "route": "/en/web/frontend/ux-and-accessibility-for-developers",
+      "index": true,
       "path": "md/en/web/frontend/ux-accessibility.md",
       "category": "web/frontend",
       "tags": [
@@ -2783,6 +2898,7 @@
       "title": "Web Performance",
       "slug": "web-performance",
       "route": "/en/web/performance/web-performance",
+      "index": true,
       "path": "md/en/web/performance/web-performance.md",
       "category": "web/performance",
       "tags": [
@@ -2810,6 +2926,7 @@
       "title": "HTTP, HTTPS and TLS",
       "slug": "http-https-and-tls",
       "route": "/en/web/protocols/http-https-and-tls",
+      "index": true,
       "path": "md/en/web/protocols/http-https-tls.md",
       "category": "web/protocols",
       "tags": [
@@ -2834,6 +2951,7 @@
       "title": "Technical SEO — Practical Handbook",
       "slug": "technical-seo-practical-handbook",
       "route": "/en/web/seo/technical-seo-practical-handbook",
+      "index": true,
       "path": "md/en/web/seo/technical-seo.md",
       "category": "web/seo",
       "tags": [
@@ -2860,6 +2978,7 @@
       "title": "nginx and Reverse Proxy",
       "slug": "nginx-and-reverse-proxy",
       "route": "/en/web/servers/nginx-and-reverse-proxy",
+      "index": true,
       "path": "md/en/web/servers/nginx-reverse-proxy.md",
       "category": "web/servers",
       "tags": [

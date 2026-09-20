@@ -106,3 +106,35 @@ Projekt działa na hostingu statycznym. Plik `.nojekyll` w katalogu głównym wy
 Na GitHub Pages plik `404.html` przekazuje bezpośrednie wejścia na głębokie adresy do aplikacji. Docelowy nginx na VPS powinien zamiast tego wykonywać normalny fallback wszystkich tras aplikacji do `index.html`.
 
 Uwaga: otwieranie `index.html` bezpośrednio z `file://` może blokować `fetch()` do JSON i Markdownów z powodu polityki bezpieczeństwa przeglądarki.
+
+
+## SEO i LLM discovery
+
+SEO działa w dwóch stanach:
+
+- preproduction: `site-config.json -> indexingEnabled: false`,
+- production: po wdrożeniu na docelową domenę ustawiamy `indexingEnabled: true` i regenerujemy artefakty.
+
+Generator:
+
+```bash
+python3 scripts/seo_artifacts.py --check
+python3 scripts/seo_artifacts.py --write
+```
+
+Generuje:
+
+- `robots.txt`,
+- `sitemap.xml`,
+- `llms.txt`.
+
+Frontend ustawia dla artykułu dynamicznie:
+
+- title,
+- meta description,
+- canonical,
+- robots,
+- hreflang,
+- JSON-LD `TechArticle`.
+
+Canonical i sitemap wskazują docelową domenę z `site-config.json`. Na GitHub Pages publiczne indeksowanie pozostaje wyłączone do momentu produkcyjnego deploymentu.

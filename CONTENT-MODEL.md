@@ -320,3 +320,10 @@ Kolejność:
 9. porównać nowy indeks ze starym pod kątem liczby artykułów, ID i relacji.
 
 Dopiero po udanej migracji `content-index.json` przestaje być ręcznie utrzymywanym źródłem danych.
+
+
+## SEO metadata at runtime
+
+Front matter remains the source of article title, description and publication/update dates. The frontend reads those values when an article is opened and creates canonical, hreflang and `TechArticle` JSON-LD metadata.
+
+The generated runtime index contains an `index` boolean derived from `seo.index`. This lets sitemap generation and the frontend respect explicit noindex overrides without making `content-index.json` a second source of truth.

@@ -236,6 +236,7 @@ def build_index(articles: list[dict], relations: dict) -> dict:
             "title": meta["title"],
             "slug": meta["slug"],
             "route": route,
+            "index": meta.get("seo", {}).get("index", True),
             "path": rel_path,
             "category": category,
             "tags": meta.get("tags", []),
@@ -262,7 +263,7 @@ def build_index(articles: list[dict], relations: dict) -> dict:
     )
 
     return {
-        "version": 16,
+        "version": 17,
         "updated": updated,
         "root": "md/pl",
         "files": entries,

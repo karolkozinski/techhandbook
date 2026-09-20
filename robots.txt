@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Preproduction: public indexing is intentionally disabled.
