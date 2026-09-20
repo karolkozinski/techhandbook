@@ -10,11 +10,11 @@ Tematy rozwijane osobno: [SSH i zdalna administracja](techhandbook:doc-018), [Do
 
 ## Mapa kompendium
 
-- [Czym jest Debian](#1-czym-wlasciwie-jest-debian)
+- [Czym jest Debian](#1-czym-wasciwie-jest-debian)
 - [Pakiety i APT](#8-zarzadzanie-pakietami-apt)
 - [Debian jako desktop](#18-debian-jako-desktop)
 - [Sieć i NetworkManager](#25-networkmanager)
-- [Usługi i logi](#39-systemd-serce-uruchamiania-uslug)
+- [Usługi i logi](#39-systemd-serce-uruchamiania-usug)
 - [Dyski i systemy plików](#53-dyski)
 - [Debian jako serwer](#60-debian-jako-serwer)
 - [Diagnostyka](#112-diagnostyka-metoda-krok-po-kroku)

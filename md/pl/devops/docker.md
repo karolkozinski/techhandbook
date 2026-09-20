@@ -16,7 +16,7 @@ Powiązane tematy: [Debian — desktop i serwer](techhandbook:doc-033), [systemd
 - [Volumes i trwałe dane](#27-volumes)
 - [Dockerfile i build](#37-dockerfile)
 - [Docker Compose](#45-docker-compose)
-- [Deployment i aktualizacje](#69-typowy-deployment-przez-registry)
+- [Deployment i aktualizacje](#69-typowy-deploy-przez-registry)
 - [Backup i sprzątanie](#76-backup-volume)
 - [Diagnostyka](#91-debugowanie-krok-po-kroku)
 - [Bezpieczeństwo](#93-bezpieczenstwo)

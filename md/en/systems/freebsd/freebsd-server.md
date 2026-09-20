@@ -12,7 +12,7 @@ Related handbooks: [FreeBSD — Practical Shell Handbook](techhandbook:doc-029) 
 
 - [How to think about FreeBSD](#1-how-to-think-about-freebsd)
 - [Packages and Ports](#7-packages-pkg)
-- [Services, rc.conf and sysrc](#9-the-most-important-thing-freebsd-service-system)
+- [Services, rc.conf and sysrc](#9-the-key-idea-freebsd-service-system)
 - [System updates](#25-system-updates)
 - [Networking](#30-networking-key-tools)
 - [SSH and firewall](#34-ssh)

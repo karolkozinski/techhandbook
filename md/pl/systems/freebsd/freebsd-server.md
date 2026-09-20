@@ -12,15 +12,15 @@ Dalsze tematy: [FreeBSD — shell](techhandbook:doc-029) oraz [SSH i zdalna admi
 
 - [Model systemu FreeBSD](#1-jak-myslec-o-freebsd)
 - [Pakiety i Ports](#7-pakiety-pkg)
-- [Usługi, rc.conf i sysrc](#9-najwazniejsza-rzecz-system-uslug-freebsd)
+- [Usługi, rc.conf i sysrc](#9-najwazniejsza-rzecz-system-usug-freebsd)
 - [Aktualizacje systemu](#25-aktualizacje-systemu)
 - [Sieć](#30-siec-najwazniejsze-narzedzia)
 - [SSH i firewall](#34-ssh)
 - [ZFS](#43-zfs-dlaczego-warto)
 - [Cron](#56-cron)
 - [Jails](#64-jails-podstawowa-idea)
-- [Diagnostyka usług](#89-diagnostyka-uslugi-uniwersalny-schemat)
-- [Dokumentacja i źródła](#130-dokumentacja-i-zrodla)
+- [Diagnostyka usług](#89-diagnostyka-usugi-uniwersalny-schemat)
+- [Dokumentacja i źródła](#130-dokumentacja-i-zroda)
 
 ---
 
