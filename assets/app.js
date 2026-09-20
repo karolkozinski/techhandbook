@@ -10,7 +10,10 @@
       browserLabel: "Przeglądarka kompendiów",
       breadcrumbLabel: "Ścieżka",
       welcomeTitle: "Praktyczna baza wiedzy technicznej.",
-      welcomeText: "Wybierz katalog po lewej, a potem kompendium. Na telefonie przeglądarka plików pojawia się nad czytnikiem.",
+      welcomeText: "Praktyczna baza wiedzy technicznej — od systemów i sieci po programowanie, web i AI.",
+      startHere: "Zacznij tutaj",
+      homeHandbooks: "kompendiów",
+      homeTopics: "tematów",
       errorTitle: "Nie udało się otworzyć dokumentu",
       loading: "Wczytywanie…",
       parentDir: "katalog nadrzędny",
@@ -51,7 +54,10 @@
       browserLabel: "Handbook browser",
       breadcrumbLabel: "Path",
       welcomeTitle: "A practical technical knowledge base.",
-      welcomeText: "Choose a directory on the left, then select a handbook. On mobile, the file browser appears above the reader.",
+      welcomeText: "A practical technical knowledge base — from systems and networking to programming, web and AI.",
+      startHere: "Start here",
+      homeHandbooks: "handbooks",
+      homeTopics: "topics",
       errorTitle: "Could not open the document",
       loading: "Loading…",
       parentDir: "parent directory",
@@ -121,6 +127,12 @@
     browserToolbar: document.querySelector(".browser-toolbar"),
     welcomeTitle: document.getElementById("welcomeTitle"),
     welcomeText: document.getElementById("welcomeText"),
+    welcomeStart: document.getElementById("welcomeStart"),
+    welcomeStartLabel: document.getElementById("welcomeStartLabel"),
+    welcomeLinks: document.getElementById("welcomeLinks"),
+    welcomeMeta: document.getElementById("welcomeMeta"),
+    welcomeStats: document.getElementById("welcomeStats"),
+    welcomeAbout: document.getElementById("welcomeAbout"),
     errorTitle: document.getElementById("readerErrorTitle"),
     brand: document.querySelector(".brand")
   };
@@ -531,6 +543,58 @@
       window.scrollTo({ top: Number(scrollY) || 0, behavior: "auto" });
     });
   }
+  const HOME_STANDARD_IDS = ["doc-033", "doc-034", "doc-012", "doc-023", "doc-042", "doc-014"];
+  const HOME_JUNIOR_IDS = ["junior-001", "junior-003", "junior-004"];
+
+  function renderWelcome({ pending = false } = {}) {
+    els.welcome.hidden = false;
+    els.welcomeLinks.innerHTML = "";
+    els.welcomeAbout.textContent = t("about");
+
+    if (pending) {
+      els.welcomeTitle.textContent = t("contentPendingTitle");
+      els.welcomeText.textContent = t("contentPendingText");
+      els.welcomeStart.hidden = true;
+      els.welcomeStats.textContent = "";
+      els.welcomeMeta.hidden = false;
+      return;
+    }
+
+    const junior = state.mode === "junior";
+    els.welcomeTitle.textContent = junior ? t("juniorWelcomeTitle") : t("welcomeTitle");
+    els.welcomeText.textContent = junior ? t("juniorWelcomeText") : t("welcomeText");
+    els.welcomeStartLabel.textContent = t("startHere");
+    els.welcomeStart.hidden = false;
+    els.welcomeMeta.hidden = false;
+
+    const ids = junior ? HOME_JUNIOR_IDS : HOME_STANDARD_IDS;
+    const quickFiles = ids
+      .map(id => state.files.find(file => file.id === id))
+      .filter(Boolean);
+
+    for (const file of quickFiles) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "welcome-link";
+      button.textContent = file.title || file.name.replace(/\.md$/i, "");
+      button.addEventListener("click", () => {
+        const rel = file.path.replace(new RegExp(`^${state.contentRoot}/`), "");
+        const dir = rel.includes("/") ? rel.split("/").slice(0, -1).join("/") : "";
+        openDocument(
+          file,
+          { type: "dir", path: dir, query: "" },
+          { focusReader: true, historyMode: "push", targetDir: dir }
+        );
+      });
+      els.welcomeLinks.appendChild(button);
+    }
+
+    const modeLabel = junior ? "JUNIOR" : "STANDARD / JUNIOR";
+    const languageLabel = junior ? state.language.toUpperCase() : "PL / ENG";
+    els.welcomeStats.textContent =
+      `${state.files.length} ${junior ? t("homeTopics") : t("homeHandbooks")} • ${languageLabel} • ${modeLabel}`;
+  }
+
   function clearReader() {
     state.currentDoc = null;
     els.reader.hidden = true;
@@ -538,7 +602,7 @@
     els.error.hidden = true;
     els.errorText.textContent = "";
     if (els.readerTop) els.readerTop.hidden = true;
-    els.welcome.hidden = true;
+    renderWelcome();
     document.title = "Null Yard Tech Handbook";
   }
 
@@ -990,15 +1054,13 @@
       els.breadcrumbs.innerHTML = "";
       els.location.textContent = state.contentRoot + "/";
       els.count.textContent = "0 " + t("items");
-      els.welcome.hidden = false;
-      els.welcomeTitle.textContent = t("contentPendingTitle");
-      els.welcomeText.textContent = t("contentPendingText");
+      renderWelcome({ pending: true });
       if (!preserveHash) history.replaceState(null, "", "#/");
       return;
     }
 
     els.browser.hidden = false;
-    els.welcome.hidden = true;
+    renderWelcome();
 
     if (preserveHash && currentDocId) {
       if (currentDocId === "__readme__") {
@@ -1202,6 +1264,10 @@
   });
 
   els.about.addEventListener("click", () => {
+    openReadme({ focusReader: true, historyMode: "push" });
+  });
+
+  els.welcomeAbout.addEventListener("click", () => {
     openReadme({ focusReader: true, historyMode: "push" });
   });
 
