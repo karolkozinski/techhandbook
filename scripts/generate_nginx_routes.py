@@ -22,4 +22,6 @@ for route in routes:
         "}",
     ])
 
-Path("deploy/generated-routes.conf").write_text("\n".join(lines) + "\n", encoding="utf-8")
+output = Path("deploy/generated-routes.conf")
+output.parent.mkdir(parents=True, exist_ok=True)
+output.write_text("\n".join(lines) + "\n", encoding="utf-8")
