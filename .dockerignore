@@ -11,6 +11,7 @@ content-relations.json
 requirements-dev.txt
 scripts/*
 !scripts/generate_nginx_routes.py
+!scripts/prerender.py
 DEPLOYMENT.md
 deploy/host-nginx.conf.example
 404.html

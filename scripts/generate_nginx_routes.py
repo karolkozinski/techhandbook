@@ -18,7 +18,7 @@ for route in routes:
     escaped = route.replace("\\", "\\\\").replace('"', '\\"')
     lines.extend([
         f'location = "{escaped}" {{',
-        "    try_files /index.html =404;",
+        "    try_files $uri/index.html =404;",
         "}",
     ])
 

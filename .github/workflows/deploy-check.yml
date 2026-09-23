@@ -10,6 +10,12 @@ on:
       - ".dockerignore"
       - "deploy/**"
       - "scripts/generate_nginx_routes.py"
+      - "scripts/prerender.py"
+      - "requirements-prerender.txt"
+      - "index.html"
+      - "content-index.json"
+      - "site-config.json"
+      - "md/**"
       - ".github/workflows/deploy-check.yml"
   pull_request:
     paths:
@@ -17,6 +23,13 @@ on:
       - "compose.yaml"
       - ".dockerignore"
       - "deploy/**"
+      - "scripts/generate_nginx_routes.py"
+      - "scripts/prerender.py"
+      - "requirements-prerender.txt"
+      - "index.html"
+      - "content-index.json"
+      - "site-config.json"
+      - "md/**"
       - ".github/workflows/deploy-check.yml"
   workflow_dispatch:
 
@@ -52,8 +65,10 @@ jobs:
 
           curl -fsS http://127.0.0.1:18080/healthz | grep -qx "ok"
           curl -fsS http://127.0.0.1:18080/ >/dev/null
-          curl -fsS http://127.0.0.1:18080/pl/programming/python/python-podstawy >/dev/null
-          curl -fsS http://127.0.0.1:18080/en/programming/python/python-practical-handbook >/dev/null
+          curl -fsS http://127.0.0.1:18080/pl/programming/python/python-podstawy | grep -Fq '<title>Python - praktyczne podstawy - Tech Handbook</title>'
+          curl -fsS http://127.0.0.1:18080/pl/programming/python/python-podstawy | grep -Fq 'rel="canonical" href="https://techhandbook.nullyard.com/pl/programming/python/python-podstawy"'
+          curl -fsS http://127.0.0.1:18080/pl/programming/python/python-podstawy | grep -Fq 'name="robots" content="index,follow,max-image-preview:large"'
+          curl -fsS http://127.0.0.1:18080/en/programming/python/python-practical-handbook | grep -Fq '<article id="reader" class="markdown-body">'
           test "$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:18080/definitely-not-existing-404-test)" = "404"
           curl -fsSI http://127.0.0.1:18080/md/pl/programming/python/python-basics.md | grep -qi '^content-type: text/markdown'
 
