@@ -9,6 +9,7 @@ on:
       - "compose.yaml"
       - ".dockerignore"
       - "deploy/**"
+      - "scripts/generate_nginx_routes.py"
       - ".github/workflows/deploy-check.yml"
   pull_request:
     paths:
