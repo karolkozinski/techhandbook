@@ -1,6 +1,6 @@
 # Tech Handbook - deployment na VPS
 
-Docelowy układ jest celowo prosty:
+Docelowy układ produkcyjny:
 
     Internet
        |
@@ -8,79 +8,79 @@ Docelowy układ jest celowo prosty:
        |
     host nginx :80/:443
        |
-    127.0.0.1:8080
+    127.0.0.1:8092
        |
-    Docker: Tech Handbook + nginx
+    Docker: Tech Handbook + unprivileged nginx :8080
 
-Hostowy nginx obsługuje domenę i TLS. Kontener nginx zajmuje się wyłącznie statycznym Tech Handbookiem.
+Hostowy nginx obsługuje domenę i TLS. Kontener obsługuje wyłącznie statyczny Tech Handbook i nie jest wystawiony bezpośrednio do Internetu.
 
-## 1. Wymagania
+## 1. Stan docelowy
 
-Na serwerze potrzebne są:
+- canonical URL: `https://techhandbook.nullyard.com`
+- katalog: `/srv/apps/techhandbook`
+- runtime: Docker Compose
+- host loopback: `127.0.0.1:8092`
+- port w kontenerze: `8080`
+- kontener: NGINX unprivileged
+- publiczny entry point: hostowy nginx
+- indeksowanie przed smoke testem: wyłączone
 
-- Debian 13 lub inny współczesny Linux,
-- Git,
-- Docker Engine,
-- Docker Compose plugin,
-- nginx na hoście,
-- Certbot z integracją nginx.
-
-Dla Dockera użyj aktualnej instrukcji instalacji dla Debiana:
-
-https://docs.docker.com/engine/install/debian/
-
-Po instalacji sprawdź:
-
-    docker version
-    docker compose version
-    nginx -v
+Port 8092 został wybrany po sprawdzeniu rzeczywistego VPS. Porty 8080 i 8091 są już używane przez inne usługi Null Yard.
 
 ## 2. DNS
 
 W DNS utwórz rekord:
 
-    techhandbook.nullyard.com  A  <PUBLICZNE_IP_VPS>
+    techhandbook.nullyard.com  A  145.239.89.57
 
-Rekord AAAA dodawaj tylko wtedy, gdy IPv6 na VPS jest faktycznie skonfigurowane i dostępne z Internetu.
+Nie dodawaj rekordu AAAA, dopóki IPv6 nie zostanie świadomie skonfigurowane dla tej usługi.
 
-Przed uruchomieniem Certbota sprawdź:
+Przed TLS sprawdź:
 
     getent ahosts techhandbook.nullyard.com
 
-## 3. Pobranie projektu
+## 3. Przygotowanie katalogu i repozytorium
 
-    sudo mkdir -p /srv/techhandbook
-    sudo chown "$USER":"$USER" /srv/techhandbook
-    git clone https://github.com/karolkozinski/techhandbook.git /srv/techhandbook
-    cd /srv/techhandbook
+Katalog produkcyjny:
+
+    /srv/apps/techhandbook
+
+Przykładowe przygotowanie:
+
+    sudo mkdir -p /srv/apps/techhandbook
+    sudo chown nullyard:nullyard /srv/apps/techhandbook
+    sudo -u nullyard git clone https://github.com/karolkozinski/techhandbook.git /srv/apps/techhandbook
 
 ## 4. Start kontenera
 
-    docker compose build --pull
-    docker compose up -d
+    cd /srv/apps/techhandbook
+    sudo docker compose build --pull
+    sudo docker compose up -d
 
-Kontener nie jest wystawiony publicznie. Domyślnie nasłuchuje tylko przez 127.0.0.1:8080.
+Sprawdzenie lokalne:
 
-Sprawdzenie:
+    curl -fsS http://127.0.0.1:8092/healthz
+    curl -fsS http://127.0.0.1:8092/ >/dev/null
+    curl -fsS http://127.0.0.1:8092/pl/programming/python/python-podstawy >/dev/null
 
-    curl -fsS http://127.0.0.1:8080/healthz
-    curl -fsS http://127.0.0.1:8080/ >/dev/null
-    curl -fsS http://127.0.0.1:8080/pl/programming/python/python-podstawy >/dev/null
+Pierwsze polecenie powinno zwrócić:
 
-Pierwsze polecenie powinno zwrócić: ok
+    ok
 
 ## 5. Hostowy nginx
 
-Repo zawiera przykład deploy/host-nginx.conf.example.
+Repo zawiera przykład:
 
-Instalacja konfiguracji:
+    deploy/host-nginx.conf.example
+
+Instalacja:
 
     sudo cp deploy/host-nginx.conf.example /etc/nginx/sites-available/techhandbook.nullyard.com
     sudo ln -s /etc/nginx/sites-available/techhandbook.nullyard.com /etc/nginx/sites-enabled/techhandbook.nullyard.com
     sudo nginx -t
     sudo systemctl reload nginx
 
-Jeśli link w sites-enabled już istnieje, nie twórz go ponownie.
+Jeżeli link w `sites-enabled` już istnieje, nie twórz go ponownie.
 
 Po tym strona powinna odpowiadać po HTTP:
 
@@ -88,7 +88,7 @@ Po tym strona powinna odpowiadać po HTTP:
 
 ## 6. TLS
 
-Gdy DNS wskazuje już na VPS i porty 80/443 są dostępne:
+Gdy DNS wskazuje już na VPS:
 
     sudo certbot --nginx -d techhandbook.nullyard.com
 
@@ -97,52 +97,80 @@ Następnie:
     curl -fsS https://techhandbook.nullyard.com/healthz
     curl -fsS https://techhandbook.nullyard.com/pl/programming/python/python-podstawy >/dev/null
 
-## 7. Aktualizacja
+## 7. Production smoke test
 
-    cd /srv/techhandbook
-    git pull --ff-only
-    docker compose build --pull
-    docker compose up -d --remove-orphans
+Sprawdź co najmniej:
+
+- HTTP -> HTTPS,
+- stronę główną,
+- bezpośredni clean URL PL,
+- bezpośredni clean URL EN,
+- STANDARD / JUNIOR,
+- zmianę języka,
+- wyszukiwarkę,
+- assety CSS/JS,
+- pliki Markdown,
+- `robots.txt`,
+- `sitemap.xml`,
+- poprawne 404,
+- mobile,
+- brak publicznego portu 8092.
+
+Na tym etapie indeksowanie pozostaje wyłączone.
+
+## 8. Aktualizacja
+
+    cd /srv/apps/techhandbook
+    sudo -u nullyard git pull --ff-only
+    sudo docker compose build --pull
+    sudo docker compose up -d --remove-orphans
 
 Po aktualizacji:
 
-    docker compose ps
-    curl -fsS http://127.0.0.1:8080/healthz
+    sudo docker compose ps
+    curl -fsS http://127.0.0.1:8092/healthz
 
-## 8. Rollback
+## 9. Rollback
 
-    git log --oneline -10
-    git checkout <SHA>
-    docker compose build
-    docker compose up -d
+    cd /srv/apps/techhandbook
+    sudo -u nullyard git log --oneline -10
+    sudo -u nullyard git checkout <SHA>
+    sudo docker compose build
+    sudo docker compose up -d
 
 Po rozwiązaniu problemu:
 
-    git switch main
-    git pull --ff-only
+    sudo -u nullyard git switch main
+    sudo -u nullyard git pull --ff-only
 
-## 9. Indeksowanie
+## 10. Indeksowanie
 
-Na tym etapie site-config.json celowo ma indexingEnabled ustawione na false.
+`site-config.json` celowo ma:
+
+    "indexingEnabled": false
 
 Nie zmieniaj tego przed potwierdzeniem, że:
 
 - domena działa po HTTPS,
-- czyste URL-e otwierają się bezpośrednio,
-- robots.txt i sitemap.xml są dostępne z produkcyjnej domeny,
-- nie ma błędów 404 dla plików Markdown i assetów.
+- clean URL-e otwierają się bezpośrednio,
+- PL i EN działają,
+- `robots.txt` i `sitemap.xml` są dostępne z produkcyjnej domeny,
+- nie ma błędów assetów ani Markdown,
+- analityka bazowa Umami została zweryfikowana.
 
 Dopiero wtedy włącz indeksowanie i wygeneruj artefakty ponownie:
 
     python3 scripts/seo_artifacts.py --write
     python3 scripts/seo_artifacts.py --check
 
-Zmianę indexingEnabled i wygenerowane pliki należy commitować razem.
+Zmianę `indexingEnabled` i wygenerowane pliki commituj razem.
 
-## 10. Port kontenera
+## 11. Port
 
-Domyślny port hosta to 8080. Można go zmienić bez edycji Compose:
+Domyślny hostowy port Tech Handbooka to 8092.
 
-    TECHHANDBOOK_PORT=18080 docker compose up -d
+Można go tymczasowo zmienić bez edycji Compose:
 
-Wtedy trzeba odpowiednio zmienić proxy_pass w konfiguracji hostowego nginx.
+    TECHHANDBOOK_PORT=18092 sudo docker compose up -d
+
+W takim przypadku trzeba odpowiednio zmienić `proxy_pass` hostowego nginx.
