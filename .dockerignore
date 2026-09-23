@@ -9,7 +9,8 @@ CONTENT-MODEL.md
 article.schema.json
 content-relations.json
 requirements-dev.txt
-scripts/
+scripts/*
+!scripts/generate_nginx_routes.py
 DEPLOYMENT.md
 deploy/host-nginx.conf.example
 404.html
