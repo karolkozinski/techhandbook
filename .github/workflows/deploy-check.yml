@@ -52,6 +52,8 @@ jobs:
           curl -fsS http://127.0.0.1:18080/healthz | grep -qx "ok"
           curl -fsS http://127.0.0.1:18080/ >/dev/null
           curl -fsS http://127.0.0.1:18080/pl/programming/python/python-podstawy >/dev/null
+          curl -fsS http://127.0.0.1:18080/en/programming/python/python-practical-handbook >/dev/null
+          test "$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:18080/definitely-not-existing-404-test)" = "404"
           curl -fsSI http://127.0.0.1:18080/md/pl/programming/python/python-basics.md | grep -qi '^content-type: text/markdown'
 
       - name: Stop test container
