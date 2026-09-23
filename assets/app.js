@@ -204,6 +204,19 @@
 
   const t = (key) => I18N[state.language]?.[key] || I18N.pl[key] || key;
 
+  function trackEvent(name, data = {}) {
+    if (window.umami?.track) {
+      window.umami.track(name, data);
+    }
+
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: name,
+        ...data
+      });
+    }
+  }
+
   const escapeHtml = (value = "") =>
     value.replace(/[&<>"']/g, ch => ({
       "&": "&amp;",
@@ -1615,7 +1628,23 @@
     }
   });
 
-  els.search.addEventListener("input", e => runSearch(e.target.value));
+  let searchAnalyticsTimer = null;
+  els.search.addEventListener("input", e => {
+    runSearch(e.target.value);
+
+    clearTimeout(searchAnalyticsTimer);
+    const query = e.target.value.trim();
+    if (!query) return;
+
+    searchAnalyticsTimer = setTimeout(() => {
+      trackEvent("site_search", {
+        query,
+        results: state.files.filter(file => matches(file, query)).length,
+        language: state.language,
+        mode: state.mode
+      });
+    }, 800);
+  });
 
   document.addEventListener("keydown", e => {
     if (e.key === "/" && document.activeElement !== els.search) {
@@ -1648,8 +1677,11 @@
     });
   }
 
-  els.language.addEventListener("change", e => {
-    switchLanguage(e.target.value);
+  els.language.addEventListener("change", async e => {
+    const from = state.language;
+    const to = e.target.value;
+    await switchLanguage(to);
+    trackEvent("language_change", { from, to });
   });
 
   if (els.mode) {
@@ -1661,6 +1693,18 @@
   els.theme.addEventListener("click", () => {
     const current = document.documentElement.dataset.theme;
     applyTheme(current === "dark" ? "light" : "dark");
+  });
+
+  document.addEventListener("click", event => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+
+    const url = new URL(link.href, window.location.href);
+    if (url.hostname === window.location.hostname) return;
+
+    trackEvent("outbound_click", {
+      href: link.href
+    });
   });
 
   history.scrollRestoration = "manual";
