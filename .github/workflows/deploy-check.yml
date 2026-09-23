@@ -38,7 +38,7 @@ jobs:
         run: docker build --pull -t techhandbook-ci .
 
       - name: Start test container
-        run: docker run --rm -d --name techhandbook-ci -p 127.0.0.1:18080:80 techhandbook-ci
+        run: docker run --rm -d --name techhandbook-ci -p 127.0.0.1:18080:8080 techhandbook-ci
 
       - name: Smoke test
         run: |
