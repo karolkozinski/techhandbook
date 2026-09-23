@@ -65,7 +65,7 @@ jobs:
 
           curl -fsS http://127.0.0.1:18080/healthz | grep -qx "ok"
           curl -fsS http://127.0.0.1:18080/ >/dev/null
-          curl -fsS http://127.0.0.1:18080/pl/programming/python/python-podstawy | grep -Fq '<title>Python - praktyczne podstawy - Tech Handbook</title>'
+          curl -fsS http://127.0.0.1:18080/pl/programming/python/python-podstawy | grep -Fq '<title>Python - podstawy - Tech Handbook</title>'
           curl -fsS http://127.0.0.1:18080/pl/programming/python/python-podstawy | grep -Fq 'rel="canonical" href="https://techhandbook.nullyard.com/pl/programming/python/python-podstawy"'
           curl -fsS http://127.0.0.1:18080/pl/programming/python/python-podstawy | grep -Fq 'name="robots" content="index,follow,max-image-preview:large"'
           curl -fsS http://127.0.0.1:18080/en/programming/python/python-practical-handbook | grep -Fq '<article id="reader" class="markdown-body">'
