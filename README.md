@@ -10,9 +10,9 @@ Celem projektu nie jest zastępowanie oficjalnej dokumentacji ani tworzenie akad
 
 Tech Handbook jest dostępny również jako lekka statyczna strona:
 
-**https://karolkozinski.github.io/techhandbook/**
+**https://techhandbook.nullyard.com/**
 
-Wersja webowa oferuje przeglądanie katalogów, wyszukiwanie materiałów oraz czytnik plików Markdown. Źródłem treści pozostają pliki znajdujące się w tym repozytorium.
+Wersja webowa oferuje przeglądanie katalogów, wyszukiwanie materiałów oraz czytnik plików Markdown. Źródłem treści pozostają pliki znajdujące się w tym repozytorium. GitHub Pages pozostaje dodatkowym podglądem repozytorium, a domeną kanoniczną jest `techhandbook.nullyard.com`.
 
 ## Założenia
 
