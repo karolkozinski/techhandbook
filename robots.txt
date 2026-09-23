@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-# Preproduction: public indexing is intentionally disabled.
+Sitemap: https://techhandbook.nullyard.com/sitemap.xml
