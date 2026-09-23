@@ -1,6 +1,13 @@
+FROM python:3.13-alpine AS routegen
+WORKDIR /work
+COPY content-index.json content-index.json
+COPY scripts/generate_nginx_routes.py scripts/generate_nginx_routes.py
+RUN python3 scripts/generate_nginx_routes.py
+
 FROM nginxinc/nginx-unprivileged:stable-alpine3.24
 
 COPY deploy/container-nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=routegen /work/deploy/generated-routes.conf /etc/nginx/generated-routes.conf
 
 COPY index.html /usr/share/nginx/html/index.html
 COPY favicon.ico /usr/share/nginx/html/favicon.ico
