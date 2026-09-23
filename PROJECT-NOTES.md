@@ -101,7 +101,7 @@ git*
 
 ## Publikacja
 
-GitHub Pages pozostaje wygodnym środowiskiem publicznym i testowym. Plik .nojekyll wyłącza przetwarzanie przez Jekyll, a 404.html obsługuje bezpośrednie wejścia na czyste trasy.
+Produkcja działa pod `https://techhandbook.nullyard.com`. GitHub Pages pozostaje dodatkowym środowiskiem podglądowym. Plik `.nojekyll` wyłącza przetwarzanie przez Jekyll.
 
 Docelowy deployment VPS jest zdefiniowany w:
 
@@ -111,7 +111,7 @@ Docelowy deployment VPS jest zdefiniowany w:
 - deploy/host-nginx.conf.example,
 - DEPLOYMENT.md.
 
-Kontener jest dostępny tylko pod 127.0.0.1:8080. Hostowy nginx obsługuje domenę, TLS i reverse proxy. Kontenerowy nginx serwuje pliki statyczne, Markdown oraz fallback czystych tras aplikacji do index.html.
+Kontener jest dostępny tylko pod `127.0.0.1:8092`. Hostowy nginx obsługuje domenę, TLS i reverse proxy. Kontenerowy nginx serwuje pliki statyczne i Markdown oraz wpuszcza do aplikacji wyłącznie znane clean URL-e wygenerowane z `content-index.json`; nieznane ścieżki zwracają prawdziwe HTTP 404.
 
 Workflow .github/workflows/deploy-check.yml buduje obraz i wykonuje smoke test deploymentu.
 
@@ -146,7 +146,7 @@ Frontend ustawia dla artykułu dynamicznie:
 - hreflang,
 - JSON-LD `TechArticle`.
 
-Canonical i sitemap wskazują docelową domenę z `site-config.json`. Na GitHub Pages publiczne indeksowanie pozostaje wyłączone do momentu produkcyjnego deploymentu.
+Canonical i sitemap wskazują produkcyjną domenę z `site-config.json`. Produkcyjne indeksowanie jest włączone. `robots.txt` pozwala na indeksowanie i wskazuje `https://techhandbook.nullyard.com/sitemap.xml`.
 
 
 ## Style audit
@@ -166,3 +166,17 @@ python3 scripts/style_audit.py --write
 ```
 
 The CI check also guards against a small set of conversation-specific or work-only strings that must not be published.
+
+
+## Produkcja - stan 2026-09-23
+
+- canonical URL: `https://techhandbook.nullyard.com`,
+- HTTPS: aktywne, Let's Encrypt,
+- host nginx -> `127.0.0.1:8092`,
+- runtime: Docker Compose + unprivileged nginx,
+- poprawne HTTP 404 dla nieznanych tras,
+- Umami: osobny Website entry dla Tech Handbooka,
+- tracker: `https://stats.nullyard.com/script.js`,
+- bazowe eventy: `site_search`, `language_change`, `outbound_click`,
+- indeksowanie: włączone,
+- sitemap: opublikowana.
