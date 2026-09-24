@@ -4,6 +4,49 @@ Ta roadmapa zaczyna się od aktualnego, uporządkowanego stanu projektu.
 
 Nie obejmuje ponownego wykonywania zakończonych prac: migracji front matter, CI, pełnego audytu istniejącej biblioteki, stabilnych URL-i ani przygotowania SEO / LLM.
 
+
+## Status na 2026-09-24
+
+Etapy infrastrukturalne i discovery zostały zakończone.
+
+### Zakończone
+
+- [x] audyt i uruchomienie deploymentu,
+- [x] VPS, Docker Compose, host nginx i TLS,
+- [x] stabilne clean URL-e i prawdziwe 404,
+- [x] production switch i włączenie indeksowania,
+- [x] canonical, hreflang, JSON-LD, sitemap, robots i `llms.txt`,
+- [x] prerender artykułów dla crawlerów,
+- [x] Google Search Console,
+- [x] Bing Webmaster Tools,
+- [x] IndexNow,
+- [x] Umami,
+- [x] Google Tag Manager,
+- [x] GA4,
+- [x] CMP dla EU i US,
+- [x] Google Consent Mode,
+- [x] `ads.txt`,
+- [x] loader AdSense wyłącznie w Tech Handbook.
+
+### W toku po stronie zewnętrznej
+
+- AdSense: review witryny / status `Getting ready`.
+
+### Odłożone jako rozwój, nie blocker v1.0
+
+- rozbudowane eventy analityczne,
+- kampania edukacyjna Google Ads,
+- fizyczne sloty reklamowe i testy placementu,
+- narzędzia interaktywne,
+- rozbudowany monitoring i optymalizacja,
+- dalsze kompendia i rozszerzanie biblioteki.
+
+### Kryterium zamknięcia v1.0
+
+Tech Handbook można uznać za technicznie gotowy do pracy produkcyjnej. Dalsze zadania są utrzymaniem, obserwacją danych i rozwojem treści, a nie częścią uruchomienia platformy.
+
+---
+
 ## Kolejność dalszych prac
 
 ```text
@@ -287,7 +330,8 @@ Wspólny web core ma sens dopiero wtedy, gdy drugi lub trzeci projekt Null Yard 
 
 ## Następny krok
 
-W nowej rozmowie zacząć od:
-
-> Przeczytaj MILESTONE-2026-09-20.md i ROADMAP.md. Sprawdź aktualny stan repo. Niczego jeszcze nie zmieniaj. Powiedz mi, czy przygotowany deployment jest spójny i co dokładnie zrobimy jako następne.
-
+1. Obserwować indeksację w Google Search Console i Bing Webmaster Tools.
+2. Poczekać na zakończenie review AdSense.
+3. Nie dokładać nowych warstw infrastruktury bez konkretnej potrzeby.
+4. Rozwijać treści i narzędzia iteracyjnie na podstawie realnego użycia.
+5. Przy najbliższym porządkowaniu repo oznaczyć stan projektu jako v1.0.
