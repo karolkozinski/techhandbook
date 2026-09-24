@@ -784,3 +784,53 @@ a { color: inherit; }
 .related-articles ul {
   margin-bottom: 0;
 }
+
+
+/* Ad placement preview - visible only when ?adpreview=1 is enabled for the session. */
+.ad-preview {
+  width: 100%;
+  min-height: 92px;
+  margin: 2rem 0;
+  padding: 18px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 6px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--panel-2) 72%, transparent);
+  color: var(--muted);
+  text-align: center;
+}
+
+.ad-preview-home {
+  margin: 30px 0 0;
+  min-height: 108px;
+}
+
+.ad-preview-label {
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.ad-preview-note {
+  font-size: .78rem;
+  opacity: .8;
+}
+
+@media (max-width: 520px) {
+  .ad-preview {
+    min-height: 78px;
+    margin: 1.5rem 0;
+    padding: 14px;
+  }
+
+  .ad-preview-home {
+    margin-top: 24px;
+  }
+}
+
+@media print {
+  .ad-preview { display: none !important; }
+}
