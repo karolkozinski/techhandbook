@@ -204,6 +204,59 @@
 
   const t = (key) => I18N[state.language]?.[key] || I18N.pl[key] || key;
 
+  function adPreviewEnabled() {
+    const params = new URLSearchParams(location.search);
+    const requested = params.get("adpreview");
+    if (requested === "1") sessionStorage.setItem("techhandbook-ad-preview", "1");
+    if (requested === "0") sessionStorage.removeItem("techhandbook-ad-preview");
+    return sessionStorage.getItem("techhandbook-ad-preview") === "1";
+  }
+
+  function createAdPreview(kind = "article") {
+    const box = document.createElement("aside");
+    box.className = "ad-preview ad-preview-" + kind;
+    box.setAttribute("aria-label", state.language === "en" ? "Advertising preview" : "Podgląd reklamy");
+    box.innerHTML =
+      '<span class="ad-preview-label">' + (state.language === "en" ? "AD - PREVIEW" : "REKLAMA - PODGLĄD") + '</span>' +
+      '<span class="ad-preview-note">' + (state.language === "en" ? "Reserved ad placement" : "Planowane miejsce reklamowe") + '</span>';
+    return box;
+  }
+
+  function renderHomeAdPreview() {
+    els.welcome.querySelectorAll(".ad-preview").forEach(el => el.remove());
+    if (!adPreviewEnabled() || state.mode === "junior" || els.welcome.hidden) return;
+    const ad = createAdPreview("home");
+    els.welcomeMeta.parentNode.insertBefore(ad, els.welcomeMeta);
+  }
+
+  function injectArticleAdPreviews(file) {
+    els.reader.querySelectorAll(".ad-preview").forEach(el => el.remove());
+    if (!adPreviewEnabled() || state.mode === "junior" || file?.id === "__readme__") return;
+
+    const children = [...els.reader.children].filter(el =>
+      !el.classList.contains("related-articles") && el.tagName !== "H1"
+    );
+    if (children.length < 4) return;
+
+    const totalWords = children.reduce((sum, el) =>
+      sum + (el.textContent.trim().match(/\S+/g)?.length || 0), 0
+    );
+    if (!totalWords) return;
+
+    const targets = totalWords >= 1200 ? [0.33, 0.70] : [0.40];
+    let cumulative = 0;
+    let targetIndex = 0;
+
+    for (const el of children) {
+      cumulative += el.textContent.trim().match(/\S+/g)?.length || 0;
+      if (targetIndex >= targets.length) break;
+      if (cumulative / totalWords >= targets[targetIndex]) {
+        el.insertAdjacentElement("afterend", createAdPreview("article"));
+        targetIndex++;
+      }
+    }
+  }
+
   function trackEvent(name, data = {}) {
     if (window.umami?.track) {
       window.umami.track(name, data);
@@ -814,6 +867,7 @@
     const languageLabel = junior ? state.language.toUpperCase() : "PL / ENG";
     els.welcomeStats.textContent =
       `${state.files.length} ${junior ? t("homeTopics") : t("homeHandbooks")} • ${languageLabel} • ${modeLabel}`;
+    renderHomeAdPreview();
   }
 
   function clearReader() {
@@ -1032,6 +1086,7 @@
       const parsed = parseFrontMatter(await res.text());
       const titledText = normalizeArticleTitle(parsed.body, file.title || file.name.replace(/\.md$/i, ""));
       els.reader.innerHTML = renderMarkdown(titledText) + renderRelatedArticles(file);
+      injectArticleAdPreviews(file);
 
       if (file.id === "__readme__") {
         setGenericMetadata({
