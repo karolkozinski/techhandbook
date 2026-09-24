@@ -171,6 +171,33 @@ Docelowy wariant produkcyjny wykorzystuje kontener nginx wystawiony wyłącznie 
 
 Instrukcja znajduje się w DEPLOYMENT.md.
 
+
+## Stan produkcyjny
+
+Stan na 2026-09-24:
+
+- produkcja: `https://techhandbook.nullyard.com/`,
+- deployment: Docker Compose + unprivileged nginx za hostowym nginx,
+- HTTPS: aktywne,
+- indeksowanie: włączone,
+- Google Search Console: skonfigurowane,
+- Bing Webmaster Tools: skonfigurowane,
+- sitemap: opublikowana i zgłoszona,
+- IndexNow: klucz wdrożony i URL-e zgłoszone,
+- `robots.txt`: pozwala na crawl i wskazuje sitemapę,
+- `llms.txt`: opublikowany z listą stabilnych URL-i PL/EN,
+- prerender: aktywny dla artykułów, aby crawlery otrzymywały gotowy HTML,
+- Umami: aktywne jako niezależna analityka,
+- Google Tag Manager: aktywny,
+- GA4: aktywne i zweryfikowane w Realtime,
+- Google CMP: skonfigurowane dla EU i US,
+- Google Consent Mode: skonfigurowany,
+- `ads.txt`: opublikowany na `nullyard.com`,
+- AdSense loader: aktywny wyłącznie w Tech Handbook,
+- AdSense: witryna oczekuje na zakończenie review po stronie Google.
+
+Główna strona `nullyard.com` nie zawiera kodu reklamowego Tech Handbooka. Plik `ads.txt` na domenie głównej służy wyłącznie autoryzacji wydawcy.
+
 ## Aktualność informacji
 
 Technologie zmieniają się.
