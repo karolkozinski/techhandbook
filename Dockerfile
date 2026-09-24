@@ -20,6 +20,8 @@ COPY deploy/container-nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=buildgen /work/deploy/generated-routes.conf /etc/nginx/generated-routes.conf
 
 COPY index.html /usr/share/nginx/html/index.html
+COPY README.md /usr/share/nginx/html/README.md
+COPY README.en.md /usr/share/nginx/html/README.en.md
 COPY favicon.ico /usr/share/nginx/html/favicon.ico
 COPY content-index.json /usr/share/nginx/html/content-index.json
 COPY site-config.json /usr/share/nginx/html/site-config.json
