@@ -2,8 +2,6 @@
 .github
 .gitignore
 .nojekyll
-README.md
-README.en.md
 PROJECT-NOTES.md
 CONTENT-MODEL.md
 article.schema.json
