@@ -165,6 +165,39 @@ Walidacja i regeneracja indeksu:
 
 GitHub Actions sprawdza spójność indeksu przy zmianach treści.
 
+
+## Dodawanie nowego artykułu
+
+Repozytorium zawiera interaktywny generator:
+
+```bash
+python3 scripts/new_article.py
+```
+
+Dla treści STANDARD generator:
+
+- wybiera następne wolne stabilne `doc-XXX`,
+- tworzy od razu parę PL + EN z tym samym ID,
+- pyta o kategorię, tytuły, slugi, opisy i tagi,
+- wymaga 4-6 powiązanych artykułów,
+- aktualizuje `content-relations.json`,
+- regeneruje `content-index.json`, `sitemap.xml`, `robots.txt` i `llms.txt`,
+- uruchamia walidację i style audit.
+
+Dla treści JUNIOR generator tworzy pojedynczy artykuł w wybranym języku.
+
+Generator tworzy szkielet z sekcją `TODO`. Przed commitem należy zastąpić ją właściwą treścią, ustawić `ai.human_reviewed: true` po przeglądzie i ponownie uruchomić:
+
+```bash
+python3 scripts/content_index.py --write
+python3 scripts/seo_artifacts.py --write
+python3 scripts/content_index.py --check
+python3 scripts/seo_artifacts.py --check
+python3 scripts/style_audit.py
+```
+
+Po commicie i pushu produkcja jest aktualizowana standardowym deploymentem opisanym w `DEPLOYMENT.md`.
+
 ## Deployment
 
 Docelowy wariant produkcyjny wykorzystuje kontener nginx wystawiony wyłącznie na loopback VPS-a oraz hostowy nginx odpowiedzialny za domenę i TLS.
