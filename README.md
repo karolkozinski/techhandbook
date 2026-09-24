@@ -196,7 +196,35 @@ python3 scripts/seo_artifacts.py --check
 python3 scripts/style_audit.py
 ```
 
-Po commicie i pushu produkcja jest aktualizowana standardowym deploymentem opisanym w `DEPLOYMENT.md`.
+Po przygotowaniu i sprawdzeniu nowego artykułu:
+
+```bash
+git status
+git add md content-index.json content-relations.json sitemap.xml robots.txt llms.txt
+git commit -m "content: add <nazwa-artykulu>"
+git push
+```
+
+Następnie na VPS:
+
+```bash
+cd /srv/apps/techhandbook
+sudo -u nullyard git pull --ff-only
+sudo docker compose build --pull
+sudo docker compose up -d --remove-orphans
+sudo docker compose ps
+curl -fsS http://127.0.0.1:8092/healthz
+```
+
+Health check powinien zwrócić:
+
+```text
+ok
+```
+
+Po wdrożeniu warto otworzyć bezpośredni URL nowego artykułu oraz sprawdzić, czy pojawił się w `sitemap.xml` i `llms.txt`.
+
+Pełna instrukcja produkcyjnego deploymentu i rollbacku znajduje się w `DEPLOYMENT.md`.
 
 ## Deployment
 
