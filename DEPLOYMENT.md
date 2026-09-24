@@ -120,6 +120,8 @@ Na tym etapie indeksowanie pozostaje wyłączone.
 
 ## 8. Aktualizacja
 
+Standardowy deployment zmian z repozytorium:
+
     cd /srv/apps/techhandbook
     sudo -u nullyard git pull --ff-only
     sudo docker compose build --pull
@@ -129,6 +131,37 @@ Po aktualizacji:
 
     sudo docker compose ps
     curl -fsS http://127.0.0.1:8092/healthz
+
+Health check powinien zwrócić:
+
+    ok
+
+### Deployment nowego artykułu
+
+Przed push:
+
+    python3 scripts/content_index.py --write
+    python3 scripts/seo_artifacts.py --write
+    python3 scripts/content_index.py --check
+    python3 scripts/seo_artifacts.py --check
+    python3 scripts/style_audit.py
+
+Następnie:
+
+    git status
+    git add md content-index.json content-relations.json sitemap.xml robots.txt llms.txt
+    git commit -m "content: add <nazwa-artykulu>"
+    git push
+
+Na VPS wykonaj standardowy deployment z początku tej sekcji.
+
+Po wdrożeniu sprawdź:
+
+    curl -fsS https://techhandbook.nullyard.com/healthz
+    curl -fsS https://techhandbook.nullyard.com/sitemap.xml >/dev/null
+    curl -fsS https://techhandbook.nullyard.com/llms.txt >/dev/null
+
+Na koniec otwórz bezpośredni clean URL nowego artykułu w przeglądarce.
 
 ## 9. Rollback
 
