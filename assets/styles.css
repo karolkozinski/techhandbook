@@ -943,7 +943,8 @@ a { color: inherit; }
 
 
 :root[data-review="on"] .review-target,
-:root[data-review="on"] .review-table-target {
+:root[data-review="on"] .review-table-target,
+:root[data-review="on"] .review-code-target {
   position: relative;
 }
 
@@ -1034,20 +1035,19 @@ a { color: inherit; }
   outline: none;
 }
 
-.review-table-target {
+.review-table-target,
+.review-code-target {
   margin: 1.3em 0;
 }
 
-.review-table-target > table {
+.review-table-target > table,
+.review-code-target > pre {
   margin: 0;
 }
 
-.markdown-body pre.review-target > .review-flag {
+.review-code-target > .review-flag {
   top: 8px;
-  right: 8px;
-  color: var(--code-text);
-  background: color-mix(in srgb, var(--code-bg) 86%, white 14%);
-  border-color: color-mix(in srgb, var(--code-text) 20%, transparent);
+  right: -36px;
 }
 
 @media (max-width: 700px) {
