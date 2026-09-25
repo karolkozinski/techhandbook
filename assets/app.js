@@ -300,6 +300,24 @@
       .trim();
   }
 
+  function headingDisplayText(value) {
+    const codeTokens = [];
+    let text = value.replace(/\`([^\`]+)\`/g, (_, code) => {
+      const token = "\u0000CODE" + codeTokens.length + "\u0000";
+      codeTokens.push(code);
+      return token;
+    });
+
+    text = text
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .replace(/[*_~]/g, "")
+      .replace(/<[^>]+>/g, "");
+
+    return text
+      .replace(/\u0000CODE(\d+)\u0000/g, (_, index) => codeTokens[Number(index)])
+      .trim();
+  }
+
   function buildHeadingIndex(markdown) {
     const lines = markdown.replace(/\r\n?/g, "\n").split("\n");
     const ids = new Map();
@@ -341,7 +359,7 @@
           <summary>${escapeHtml(t("tableOfContents"))}</summary>
           <ul class="article-toc-list">
             ${items.map(item =>
-              `<li class="article-toc-level-${item.level}"><a href="#${escapeHtml(item.id)}" data-heading-id="${escapeHtml(item.id)}">${escapeHtml(headingPlainText(item.text))}</a></li>`
+              `<li class="article-toc-level-${item.level}"><a href="#${escapeHtml(item.id)}" data-heading-id="${escapeHtml(item.id)}">${escapeHtml(headingDisplayText(item.text))}</a></li>`
             ).join("")}
           </ul>
         </details>

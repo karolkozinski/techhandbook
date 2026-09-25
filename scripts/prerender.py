@@ -44,6 +44,25 @@ def heading_plain_text(value: str) -> str:
     return value.strip()
 
 
+def heading_display_text(value: str) -> str:
+    code_tokens = []
+
+    def protect_code(match):
+        token = f"\\x00CODE{len(code_tokens)}\\x00"
+        code_tokens.append(match.group(1))
+        return token
+
+    value = re.sub(r"`([^`]+)`", protect_code, value)
+    value = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", value)
+    value = re.sub(r"[*_~]", "", value)
+    value = re.sub(r"<[^>]+>", "", value)
+
+    def restore_code(match):
+        return code_tokens[int(match.group(1))]
+
+    return re.sub(r"\\x00CODE(\d+)\\x00", restore_code, value).strip()
+
+
 def heading_slug(value: str) -> str:
     normalized = unicodedata.normalize("NFKD", heading_plain_text(value).lower())
     normalized = "".join(ch for ch in normalized if not unicodedata.combining(ch))
@@ -90,7 +109,7 @@ def render_article_toc(headings: list, language: str) -> str:
         f'<li class="article-toc-level-{item["level"]}">'
         f'<a href="#{html.escape(item["id"], quote=True)}" '
         f'data-heading-id="{html.escape(item["id"], quote=True)}">'
-        f'{html.escape(heading_plain_text(item["text"]))}</a></li>'
+        f'{html.escape(heading_display_text(item["text"]))}</a></li>'
         for item in items
     )
     return (
