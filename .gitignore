@@ -14,6 +14,17 @@ Thumbs.db
 *.bak
 *.log
 
+# Sekrety / lokalne środowisko
+.env
+.env.*
+!.env.example
+
+# Lokalne bazy i dane runtime
+*.sqlite
+*.sqlite3
+*.db
+/data/
+
 # Python cache dla ewentualnych skryptów pomocniczych
 __pycache__/
 *.pyc
