@@ -7,7 +7,9 @@ import argparse
 import json
 import re
 import sys
+import posixpath
 from pathlib import Path
+from urllib.parse import unquote
 
 import yaml
 
@@ -24,6 +26,7 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 LINK_RE = re.compile(r"techhandbook:([a-z][a-z0-9-]*-[0-9]{3,})")
 H1_RE = re.compile(r"^#\s+(.+?)\s*$", re.MULTILINE)
 MANUAL_TOC_RE = re.compile(r"^##\s+(?:Spis treści|Mapa kompendium|Table of contents|Handbook map)\s*$", re.MULTILINE | re.IGNORECASE)
+MARKDOWN_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 
 
 class ContentError(Exception):
@@ -133,6 +136,62 @@ def validate_meta(path: Path, meta: dict, body: str) -> None:
         )
 
 
+def heading_plain_text(value: str) -> str:
+    value = re.sub(r"`([^`]+)`", r"\\1", value)
+    value = re.sub(r"\\[([^\\]]+)\\]\\([^)]+\\)", r"\\1", value)
+    value = re.sub(r"[*_~]", "", value)
+    value = re.sub(r"<[^>]+>", "", value)
+    return value.strip()
+
+
+def heading_slug(value: str) -> str:
+    import unicodedata
+
+    normalized = unicodedata.normalize("NFKD", heading_plain_text(value).lower())
+    normalized = "".join(ch for ch in normalized if not unicodedata.combining(ch))
+    normalized = re.sub(r"[^a-z0-9\\s-]", "", normalized).strip()
+    normalized = re.sub(r"\\s+", "-", normalized)
+    return re.sub(r"-+", "-", normalized).strip("-") or "section"
+
+
+def heading_anchors(body: str) -> set[str]:
+    anchors = set()
+    used = {}
+    in_fence = False
+
+    for line in body.replace("\\r\\n", "\\n").replace("\\r", "\\n").split("\\n"):
+        if re.match(r"^(?:```|~~~)", line):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+
+        match = re.match(r"^(#{1,6})\\s+(.+)$", line)
+        if not match:
+            continue
+
+        text = re.sub(r"\\s+#+\\s*$", "", match.group(2))
+        base = heading_slug(text)
+        used[base] = used.get(base, 0) + 1
+        anchor = base if used[base] == 1 else f"{base}-{used[base]}"
+        anchors.add(anchor)
+
+    return anchors
+
+
+def markdown_links(body: str):
+    in_fence = False
+    for line_number, line in enumerate(body.replace("\\r\\n", "\\n").replace("\\r", "\\n").split("\\n"), 1):
+        if re.match(r"^(?:```|~~~)", line):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+
+        for match in MARKDOWN_LINK_RE.finditer(line):
+            yield line_number, match.group(2).strip()
+
+
 def load_relations() -> dict:
     data = json.loads(RELATIONS_PATH.read_text(encoding="utf-8"))
     if not isinstance(data, dict) or not isinstance(data.get("related"), dict):
@@ -198,6 +257,19 @@ def validate_global(articles: list[dict], relations: dict) -> None:
             if target not in ids:
                 raise ContentError(f"relations: {article_id} points to missing {target}")
 
+    article_by_key = {
+        (article["meta"]["id"], article["meta"]["lang"], article["meta"]["audience"]): article
+        for article in articles
+    }
+    article_by_path = {
+        article["path"].relative_to(ROOT).as_posix(): article
+        for article in articles
+    }
+    anchors_by_key = {
+        key: heading_anchors(article["body"])
+        for key, article in article_by_key.items()
+    }
+
     for article in articles:
         meta = article["meta"]
         if meta["audience"] == "standard" and meta["id"] not in relation_map:
@@ -209,6 +281,47 @@ def validate_global(articles: list[dict], relations: dict) -> None:
                 raise ContentError(
                     f"{article['path']}: internal reference {target} has no target "
                     f"for lang={meta['lang']} audience={meta['audience']}"
+                )
+
+        source_rel = article["path"].relative_to(ROOT).as_posix()
+        for line_number, target in markdown_links(article["body"]):
+            fragment = None
+            target_article = None
+
+            if target.startswith("#"):
+                fragment = target[1:]
+                target_article = article
+            elif target.startswith("techhandbook:"):
+                raw = target[len("techhandbook:"):]
+                target_id, separator, raw_fragment = raw.partition("#")
+                if separator:
+                    fragment = raw_fragment
+                    target_article = article_by_key.get(
+                        (target_id, meta["lang"], meta["audience"])
+                    )
+            else:
+                raw_path, separator, raw_fragment = target.partition("#")
+                if separator and raw_path.lower().endswith(".md"):
+                    source_dir = posixpath.dirname(source_rel)
+                    target_path = raw_path if raw_path.startswith("md/") else posixpath.join(source_dir, raw_path)
+                    target_path = posixpath.normpath(target_path)
+                    fragment = raw_fragment
+                    target_article = article_by_path.get(target_path)
+
+            if fragment is None or target_article is None:
+                continue
+
+            decoded = unquote(fragment)
+            target_key = (
+                target_article["meta"]["id"],
+                target_article["meta"]["lang"],
+                target_article["meta"]["audience"],
+            )
+            anchors = anchors_by_key[target_key]
+            if decoded not in anchors and heading_slug(decoded) not in anchors:
+                raise ContentError(
+                    f"{article['path']}:{line_number}: broken fragment #{fragment} "
+                    f"in link target {target}"
                 )
 
 
