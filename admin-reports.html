@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <title>Tech Handbook — Reports</title>
+  <style>
+    :root{font-family:Inter,system-ui,sans-serif;color-scheme:dark}
+    body{margin:0;background:#111316;color:#eef1f4}
+    main{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:20px}
+    h1{font-size:1.4rem;margin:0}
+    button,select{font:inherit}
+    button{cursor:pointer}
+    .controls{display:flex;gap:8px;align-items:center}
+    select,.btn{background:#1d2127;color:#eef1f4;border:1px solid #303640;border-radius:8px;padding:8px 10px}
+    .status{color:#a5acb5;font-size:.85rem;margin:10px 0 18px}
+    .report{border:1px solid #303640;background:#171a1f;border-radius:12px;padding:16px;margin:12px 0}
+    .meta{display:flex;flex-wrap:wrap;gap:8px 14px;color:#a5acb5;font-size:.8rem}
+    .snapshot{white-space:pre-wrap;background:#0b0d10;border:1px solid #303640;border-radius:8px;padding:12px;margin:12px 0}
+    .analysis{background:#1d2127;border-radius:8px;padding:12px;margin-top:10px}
+    .actions{display:flex;gap:8px;margin-top:12px}
+    .danger{border-color:#6f3b3b}
+    .ok{border-color:#3c6848}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Tech Handbook — zgłoszenia</h1>
+    <div class="controls">
+      <select id="status"><option value="open">open</option><option value="resolved">resolved</option><option value="dismissed">dismissed</option><option value="all">all</option></select>
+      <button id="refresh" class="btn">Odśwież</button>
+    </div>
+  </header>
+  <div id="state" class="status">Autoryzacja…</div>
+  <div id="reports"></div>
+</main>
+<script>
+(() => {
+  let token = "";
+  const state = document.getElementById("state");
+  const reports = document.getElementById("reports");
+  const status = document.getElementById("status");
+
+  function captureToken() {
+    const m = location.hash.match(/^#admin=(.+)$/);
+    if (!m) return false;
+    try { token = decodeURIComponent(m[1]); } catch { token = m[1]; }
+    history.replaceState(null, "", location.pathname + location.search);
+    return true;
+  }
+
+  function esc(v="") {
+    return String(v).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  }
+
+  async function api(path, options={}) {
+    const headers = {...(options.headers || {}), Authorization: "Bearer " + token};
+    const r = await fetch(path, {...options, headers, cache:"no-store"});
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(data.error || ("HTTP " + r.status));
+    return data;
+  }
+
+  function analysisHtml(r) {
+    if (!r.analysis_status) return "";
+    let body = "";
+    if (r.analysis_result) {
+      try {
+        const a = JSON.parse(r.analysis_result);
+        body = "<strong>" + esc(a.verdict || "") + "</strong> · confidence " + esc(a.confidence ?? "") +
+          "<br>" + esc(a.summary || "") +
+          (a.suggested_fix ? "<br><br><b>Sugestia:</b> " + esc(a.suggested_fix) : "") +
+          (a.needs_external_verification ? "<br><br><b>Wymaga zewnętrznej weryfikacji.</b>" : "");
+      } catch { body = esc(r.analysis_result); }
+    } else if (r.analysis_error) {
+      body = "Błąd analizy: " + esc(r.analysis_error);
+    } else {
+      body = esc(r.analysis_status);
+    }
+    return '<div class="analysis"><b>Luma / analiza:</b><br>' + body + "</div>";
+  }
+
+  async function setStatus(id, next) {
+    await api("/api/admin/report-status", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({id, status:next})
+    });
+    await load();
+  }
+
+  async function load() {
+    state.textContent = "Ładowanie…";
+    reports.innerHTML = "";
+    try {
+      const data = await api("/api/admin/reports?status=" + encodeURIComponent(status.value));
+      state.textContent = data.reports.length + " zgłoszeń";
+      for (const r of data.reports) {
+        const el = document.createElement("section");
+        el.className = "report";
+        el.innerHTML =
+          '<div class="meta"><span><code>'+esc(r.id)+'</code></span><span>'+esc(r.status)+'</span><span>'+esc(r.article_id)+'</span><span>'+esc(r.language)+'</span><span>'+esc(r.reason)+'</span></div>' +
+          '<div class="meta"><span>'+esc(r.route)+'#'+esc(r.section_id)+'</span><span>'+esc(r.target_type)+'['+esc(r.block_index)+']</span><span>'+esc(r.created_at)+'</span></div>' +
+          '<div class="snapshot">'+esc(r.text_snapshot)+'</div>' +
+          analysisHtml(r) +
+          (r.status === "open" ? '<div class="actions"><button class="btn ok" data-action="resolved">Resolved</button><button class="btn danger" data-action="dismissed">Dismissed</button></div>' : '');
+        el.querySelectorAll("[data-action]").forEach(b => b.addEventListener("click", () => setStatus(r.id, b.dataset.action)));
+        reports.appendChild(el);
+      }
+    } catch (e) {
+      state.textContent = "Brak dostępu: " + e.message;
+    }
+  }
+
+  if (!captureToken()) {
+    state.textContent = "Brak tokena admina.";
+    return;
+  }
+  document.getElementById("refresh").addEventListener("click", load);
+  status.addEventListener("change", load);
+  load();
+})();
+</script>
+</body>
+</html>
