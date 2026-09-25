@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import hashlib
+import hmac
 import json
 import os
 import re
@@ -14,6 +15,7 @@ HOST = os.environ.get("REVIEW_API_HOST", "0.0.0.0")
 PORT = int(os.environ.get("REVIEW_API_PORT", "8081"))
 ENABLED = os.environ.get("REVIEW_API_ENABLED", "false").strip().lower() in {"1", "true", "yes", "on"}
 STAMP_SECRET = os.environ.get("REVIEW_STAMP_SECRET", "")
+ACCESS_TOKEN = os.environ.get("REVIEW_ACCESS_TOKEN", "")
 MAX_BODY_BYTES = 16 * 1024
 RATE_LIMIT_PER_HOUR = int(os.environ.get("REVIEW_RATE_LIMIT_PER_HOUR", "30"))
 
@@ -84,6 +86,14 @@ def normalize_user_agent(value):
 def reporter_stamp(client_ip, user_agent):
     source = "\0".join((STAMP_SECRET, client_ip, normalize_user_agent(user_agent)))
     return hashlib.sha256(source.encode("utf-8")).hexdigest()
+
+
+def authorized(headers):
+    auth = headers.get("Authorization", "")
+    if not auth.startswith("Bearer "):
+        return False
+    supplied = auth[7:]
+    return bool(ACCESS_TOKEN) and hmac.compare_digest(supplied, ACCESS_TOKEN)
 
 
 def validate(payload):
@@ -220,9 +230,21 @@ class Handler(BaseHTTPRequestHandler):
                     "status": "ok",
                     "enabled": ENABLED,
                     "stamp_secret_configured": bool(STAMP_SECRET),
+                    "access_token_configured": bool(ACCESS_TOKEN),
                 },
             )
             return
+
+        if self.path == "/review-mode":
+            if not ENABLED:
+                self.send_json(503, {"error": "Review API is disabled"})
+                return
+            if not authorized(self.headers):
+                self.send_json(401, {"error": "Unauthorized"})
+                return
+            self.send_json(200, {"review_mode": True})
+            return
+
         self.send_json(404, {"error": "Not found"})
 
     def do_POST(self):
@@ -236,6 +258,10 @@ class Handler(BaseHTTPRequestHandler):
 
         if not STAMP_SECRET:
             self.send_json(503, {"error": "Review API stamp secret is not configured"})
+            return
+
+        if not authorized(self.headers):
+            self.send_json(401, {"error": "Unauthorized"})
             return
 
         content_type = self.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
