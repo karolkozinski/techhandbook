@@ -1,0 +1,20 @@
+FROM python:3.13-alpine
+
+WORKDIR /app
+COPY scripts/review_api.py /app/review_api.py
+
+RUN addgroup -S review && adduser -S -G review review \
+    && mkdir -p /data \
+    && chown -R review:review /data /app
+
+USER review
+EXPOSE 8081
+
+ENV REVIEW_DB_PATH=/data/reviews.sqlite3
+ENV REVIEW_API_HOST=0.0.0.0
+ENV REVIEW_API_PORT=8081
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8081/healthz', timeout=2).read()" || exit 1
+
+CMD ["python3", "/app/review_api.py"]
