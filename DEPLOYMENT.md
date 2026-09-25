@@ -203,9 +203,16 @@ Zmianę `indexingEnabled` i wygenerowane pliki commituj razem.
 Review API pozostaje domyślnie wyłączone. Przed jego świadomym włączeniem trzeba ustawić lokalny sekret na VPS, poza repozytorium:
 
     REVIEW_STAMP_SECRET=<losowy-sekret>
+    REVIEW_ACCESS_TOKEN=<losowy-token-review>
     REVIEW_API_ENABLED=true
 
-Sekret służy wyłącznie do pseudonimizacji źródła zgłoszenia. Backend wylicza:
+REVIEW_ACCESS_TOKEN służy do wejścia w zaufany tryb review. Nie tworzymy kont ani logowania. Reviewer otwiera stronę jednorazowo z fragmentem URL:
+
+    https://techhandbook.nullyard.com/#review=<token>
+
+Fragment po znaku # nie jest wysyłany do serwera. Frontend odczytuje token, usuwa fragment z paska adresu i trzyma token wyłącznie w pamięci bieżącej karty. Nie używa do tego cookies, localStorage ani sessionStorage. Po odświeżeniu strony review mode trzeba włączyć ponownie.
+
+Sekret REVIEW_STAMP_SECRET służy wyłącznie do pseudonimizacji źródła zgłoszenia. Backend wylicza:
 
     SHA256(secret + IP + normalized User-Agent)
 
