@@ -237,7 +237,17 @@ Anonimizacja stampów w zgłoszeniach zamkniętych ponad 90 dni temu:
 
 Polecenie nie usuwa zgłoszeń, treści, analizy ani decyzji administratora. Czyści wyłącznie `reporter_stamp` w starych rekordach `resolved` i `dismissed`.
 
-Można uruchamiać je np. raz w tygodniu z crona.
+Na VPS z systemd repo zawiera gotowy timer:
+
+    sudo cp deploy/systemd/techhandbook-review-retention.service /etc/systemd/system/
+    sudo cp deploy/systemd/techhandbook-review-retention.timer /etc/systemd/system/
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now techhandbook-review-retention.timer
+
+Sprawdzenie:
+
+    systemctl list-timers techhandbook-review-retention.timer
+
 
 ## Review API - konfiguracja prywatnego stampa
 
