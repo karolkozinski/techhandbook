@@ -198,6 +198,25 @@ Dopiero wtedy włącz indeksowanie i wygeneruj artefakty ponownie:
 
 Zmianę `indexingEnabled` i wygenerowane pliki commituj razem.
 
+## Review API - konfiguracja prywatnego stampa
+
+Review API pozostaje domyślnie wyłączone. Przed jego świadomym włączeniem trzeba ustawić lokalny sekret na VPS, poza repozytorium:
+
+    REVIEW_STAMP_SECRET=<losowy-sekret>
+    REVIEW_API_ENABLED=true
+
+Sekret służy wyłącznie do pseudonimizacji źródła zgłoszenia. Backend wylicza:
+
+    SHA256(secret + IP + normalized User-Agent)
+
+Surowe IP nie jest zapisywane w bazie. Klient nie przesyła ani nie kontroluje `reporter_stamp`.
+
+Domyślny limit wynosi 30 nowych zgłoszeń na godzinę dla jednego stampa i może zostać zmieniony przez:
+
+    REVIEW_RATE_LIMIT_PER_HOUR=30
+
+Zmienne należy przekazać Docker Compose z lokalnego środowiska lub pliku `.env`, którego nie commitujemy.
+
 ## 11. Port
 
 Domyślny hostowy port Tech Handbooka to 8092.
