@@ -288,5 +288,3 @@ To znacznie bardziej realistyczny punkt startowy niż plan budowania "pasywnego 
 - Google AdSense - ads.txt: https://support.google.com/adsense/answer/12171612
 - Google AdSense - wymagania CMP: https://support.google.com/adsense/answer/13554116
 - Google AdSense - invalid traffic: https://support.google.com/adsense/answer/2660562
-
-[executed on device: nullyard-vps (3c95dfd9-78df-4bb7-af52-4555352c3e8e)]
