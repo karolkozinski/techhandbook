@@ -431,7 +431,8 @@
   }
 
   function openReviewMenu(element, button) {
-    const existing = element.querySelector(":scope > .review-menu");
+    const container = element.closest(".review-table-target") || element;
+    const existing = container.querySelector(":scope > .review-menu");
     if (existing) {
       existing.remove();
       return;
@@ -462,11 +463,16 @@
       menu.appendChild(option);
     }
 
-    element.appendChild(menu);
+    container.appendChild(menu);
   }
 
   function injectReviewControls(file) {
     els.reader.querySelectorAll(".review-flag, .review-menu").forEach(el => el.remove());
+    els.reader.querySelectorAll(".review-table-target").forEach(wrapper => {
+      const table = wrapper.querySelector(":scope > table");
+      if (table) wrapper.replaceWith(table);
+      else wrapper.remove();
+    });
     els.reader.querySelectorAll(".review-target").forEach(el => el.classList.remove("review-target", "review-reported"));
 
     if (!state.reviewEnabled || !file || file.id === "__readme__") return;
@@ -486,6 +492,15 @@
       element.classList.add("review-target");
       element.dataset.reviewText = text;
 
+      let controlHost = element;
+      if (element.tagName === "TABLE") {
+        const wrapper = document.createElement("div");
+        wrapper.className = "review-table-target";
+        element.parentNode.insertBefore(wrapper, element);
+        wrapper.appendChild(element);
+        controlHost = wrapper;
+      }
+
       const button = document.createElement("button");
       button.type = "button";
       button.className = "review-flag";
@@ -497,7 +512,7 @@
         event.stopPropagation();
         openReviewMenu(element, button);
       });
-      element.appendChild(button);
+      controlHost.appendChild(button);
     }
   }
 
