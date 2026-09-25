@@ -2,6 +2,7 @@ FROM python:3.13-alpine
 
 WORKDIR /app
 COPY scripts/review_api.py /app/review_api.py
+COPY scripts/review_reports.py /app/review_reports.py
 
 RUN addgroup -S review && adduser -S -G review review \
     && mkdir -p /data \
