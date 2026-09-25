@@ -6,11 +6,18 @@ on:
       - main
     paths:
       - "Dockerfile"
+      - "Dockerfile.review-api"
       - "compose.yaml"
       - ".dockerignore"
+      - ".env.example"
+      - "admin-reports.html"
       - "deploy/**"
       - "scripts/generate_nginx_routes.py"
       - "scripts/prerender.py"
+      - "scripts/review_api.py"
+      - "scripts/review_reports.py"
+      - "scripts/review_analyze.py"
+      - "review-report.schema.json"
       - "requirements-prerender.txt"
       - "index.html"
       - "content-index.json"
@@ -20,11 +27,18 @@ on:
   pull_request:
     paths:
       - "Dockerfile"
+      - "Dockerfile.review-api"
       - "compose.yaml"
       - ".dockerignore"
+      - ".env.example"
+      - "admin-reports.html"
       - "deploy/**"
       - "scripts/generate_nginx_routes.py"
       - "scripts/prerender.py"
+      - "scripts/review_api.py"
+      - "scripts/review_reports.py"
+      - "scripts/review_analyze.py"
+      - "review-report.schema.json"
       - "requirements-prerender.txt"
       - "index.html"
       - "content-index.json"
@@ -40,23 +54,36 @@ jobs:
   validate-deployment:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      REVIEW_API_ENABLED: "true"
+      REVIEW_STAMP_SECRET: "ci-stamp-secret-not-for-production"
+      REVIEW_ACCESS_TOKEN: "ci-review-token-not-for-production"
+      ADMIN_ACCESS_TOKEN: "ci-admin-token-not-for-production"
+      REVIEW_RATE_LIMIT_PER_HOUR: "30"
+      TECHHANDBOOK_PORT: "18080"
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
 
+      - name: Check review Python syntax
+        run: |
+          python3 -m py_compile scripts/review_api.py
+          python3 -m py_compile scripts/review_reports.py
+          python3 -m py_compile scripts/review_analyze.py
+
       - name: Validate Compose configuration
         run: docker compose config
 
-      - name: Build production image
-        run: docker build --pull -t techhandbook-ci .
+      - name: Build full Compose stack
+        run: docker compose build --pull
 
-      - name: Start test container
-        run: docker run --rm -d --name techhandbook-ci -p 127.0.0.1:18080:8080 techhandbook-ci
+      - name: Start full test stack
+        run: docker compose up -d
 
-      - name: Smoke test
+      - name: Smoke test site and authorization boundaries
         run: |
-          for attempt in {1..20}; do
+          for attempt in {1..30}; do
             if curl -fsS http://127.0.0.1:18080/healthz >/dev/null; then
               break
             fi
@@ -72,6 +99,26 @@ jobs:
           test "$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:18080/definitely-not-existing-404-test)" = "404"
           curl -fsSI http://127.0.0.1:18080/md/pl/programming/python/python-basics.md | grep -qi '^content-type: text/markdown'
 
-      - name: Stop test container
+          # Admin API must reject anonymous and review credentials.
+          test "$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:18080/api/admin/reports)" = "401"
+          test "$(curl -sS -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $REVIEW_ACCESS_TOKEN" http://127.0.0.1:18080/api/admin/reports)" = "401"
+          test "$(curl -sS -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $ADMIN_ACCESS_TOKEN" http://127.0.0.1:18080/api/admin/reports)" = "200"
+
+          # Review API must reject anonymous and admin credentials.
+          test "$(curl -sS -o /dev/null -w "%{http_code}" -X POST -H "Content-Type: application/json" -d '{}' http://127.0.0.1:18080/api/report)" = "401"
+          test "$(curl -sS -o /dev/null -w "%{http_code}" -X POST -H "Authorization: Bearer $ADMIN_ACCESS_TOKEN" -H "Content-Type: application/json" -d '{}' http://127.0.0.1:18080/api/report)" = "401"
+          test "$(curl -sS -o /dev/null -w "%{http_code}" -X POST -H "Authorization: Bearer $REVIEW_ACCESS_TOKEN" -H "Content-Type: application/json" -d '{}' http://127.0.0.1:18080/api/report)" = "422"
+
+          # Admin page is public HTML but must not expose data without the bearer token.
+          curl -fsS http://127.0.0.1:18080/admin/reports | grep -Fq 'id="reports"'
+          curl -fsSI http://127.0.0.1:18080/admin/reports | grep -qi '^cache-control: no-store'
+          curl -fsSI http://127.0.0.1:18080/admin/reports | grep -qi '^x-robots-tag: noindex, nofollow, noarchive, nosnippet'
+          curl -fsSI http://127.0.0.1:18080/admin/reports | grep -qi '^content-security-policy:'
+
+      - name: Show service logs on failure
+        if: failure()
+        run: docker compose logs --no-color
+
+      - name: Stop test stack
         if: always()
-        run: docker rm -f techhandbook-ci >/dev/null 2>&1 || true
+        run: docker compose down -v
