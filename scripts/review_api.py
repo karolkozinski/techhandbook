@@ -21,6 +21,7 @@ MAX_BODY_BYTES = 16 * 1024
 RATE_LIMIT_PER_HOUR = int(os.environ.get("REVIEW_RATE_LIMIT_PER_HOUR", "30"))
 
 ARTICLE_ID_RE = re.compile(r"^doc-[0-9]+$")
+REPORT_ID_RE = re.compile(r"^rpt-[a-f0-9]{32}$")
 LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Z]{2})?$")
 
 TARGET_TYPES = {"heading", "paragraph", "list-item", "code-block", "table"}
@@ -248,6 +249,36 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def read_json_object(self):
+        content_type = self.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
+        if content_type != "application/json":
+            self.send_json(415, {"error": "Content-Type must be application/json"})
+            return None
+
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError:
+            self.send_json(400, {"error": "Invalid Content-Length"})
+            return None
+
+        if length <= 0:
+            self.send_json(400, {"error": "Empty request body"})
+            return None
+        if length > MAX_BODY_BYTES:
+            self.send_json(413, {"error": "Request body too large"})
+            return None
+
+        try:
+            payload = json.loads(self.rfile.read(length))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            self.send_json(400, {"error": "Invalid JSON"})
+            return None
+
+        if not isinstance(payload, dict):
+            self.send_json(422, {"error": "JSON body must be an object"})
+            return None
+        return payload
+
     def do_GET(self):
         if self.path == "/healthz":
             self.send_json(
@@ -301,18 +332,19 @@ class Handler(BaseHTTPRequestHandler):
             if not admin_authorized(self.headers):
                 self.send_json(401, {"error": "Unauthorized"})
                 return
-            try:
-                length = int(self.headers.get("Content-Length", "0"))
-                if length <= 0 or length > MAX_BODY_BYTES:
-                    raise ValueError("bad length")
-                payload = json.loads(self.rfile.read(length))
-            except Exception:
-                self.send_json(400, {"error": "Invalid JSON"})
+            payload = self.read_json_object()
+            if payload is None:
+                return
+            if set(payload) != {"id", "suggestion_status"}:
+                self.send_json(422, {"error": "Expected fields: id, suggestion_status"})
                 return
             report_id = payload.get("id")
             suggestion_status = payload.get("suggestion_status")
-            if not isinstance(report_id, str) or suggestion_status not in {"pending", "approved", "manual", "rejected"}:
-                self.send_json(422, {"error": "Invalid id or suggestion_status"})
+            if not isinstance(report_id, str) or not REPORT_ID_RE.fullmatch(report_id):
+                self.send_json(422, {"error": "Invalid id"})
+                return
+            if suggestion_status not in {"pending", "approved", "manual", "rejected"}:
+                self.send_json(422, {"error": "Invalid suggestion_status"})
                 return
             decided_at = None if suggestion_status == "pending" else datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
             try:
@@ -337,16 +369,19 @@ class Handler(BaseHTTPRequestHandler):
             if not admin_authorized(self.headers):
                 self.send_json(401, {"error": "Unauthorized"})
                 return
-            try:
-                length = int(self.headers.get("Content-Length", "0"))
-                payload = json.loads(self.rfile.read(length))
-            except Exception:
-                self.send_json(400, {"error": "Invalid JSON"})
+            payload = self.read_json_object()
+            if payload is None:
+                return
+            if set(payload) != {"id", "status"}:
+                self.send_json(422, {"error": "Expected fields: id, status"})
                 return
             report_id = payload.get("id")
             status = payload.get("status")
-            if not isinstance(report_id, str) or status not in {"resolved", "dismissed"}:
-                self.send_json(422, {"error": "Invalid id or status"})
+            if not isinstance(report_id, str) or not REPORT_ID_RE.fullmatch(report_id):
+                self.send_json(422, {"error": "Invalid id"})
+                return
+            if status not in {"resolved", "dismissed"}:
+                self.send_json(422, {"error": "Invalid status"})
                 return
             resolved_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
             try:
