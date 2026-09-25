@@ -28,6 +28,94 @@ Praktyczne kompendium referencyjne dla osoby, która chce samodzielnie tworzyć 
 
 ---
 
+# 1. HTML - podstawy
+
+HTML nie służy do rysowania strony. Jego zadaniem jest opisanie, **czym są poszczególne elementy treści**.
+
+Przykład:
+
+```html
+<article class="product">
+    <h2>Example Laptop</h2>
+    <p>Lekki notebook biznesowy.</p>
+    <a href="/prestige-13">Zobacz produkt</a>
+</article>
+```
+
+HTML mówi:
+
+- to jest samodzielny fragment treści,
+- ma nagłówek,
+- ma opis,
+- zawiera link.
+
+CSS dopiero określa wygląd:
+
+```css
+.product {
+    padding: 2rem;
+    border-radius: 1rem;
+    background: white;
+}
+
+.product h2 {
+    font-size: 1.5rem;
+}
+```
+
+Nie warto używać nazw klas opisujących wyłącznie wygląd:
+
+```html
+<div class="big-red-text">
+    Example notebook
+</div>
+```
+
+Jeśli coś jest nagłówkiem, lepiej napisać:
+
+```html
+<h2 class="product-title">
+    Example notebook
+</h2>
+```
+
+---
+
+# 2. Struktura dokumentu
+
+Minimalny współczesny dokument HTML:
+
+```html
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Moja strona</title>
+
+    <meta
+        name="description"
+        content="Krótki opis strony."
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <h1>Moja strona</h1>
+
+</body>
+
+</html>
+```
+
 ## `<!doctype html>`
 
 Informuje przeglądarkę, że dokument używa współczesnego HTML.

@@ -23,6 +23,204 @@ Kompendium używa współczesnego polecenia `docker compose` dostarczanego jako 
 
 Powiązane tematy: [Debian - desktop i serwer](techhandbook:doc-033), [systemd, cron i schedulery](techhandbook:doc-052), [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025) oraz [nginx i reverse proxy](techhandbook:doc-045).
 
+# 1. Czym jest Docker
+
+Docker uruchamia aplikacje w **kontenerach**.
+
+Kontener to odizolowane środowisko procesu, które korzysta z kernela hosta, ale może mieć własne:
+
+- system plików,
+- biblioteki,
+- konfigurację,
+- zmienne środowiskowe,
+- porty,
+- sieć,
+- limity zasobów.
+
+To nie jest pełna maszyna wirtualna.
+
+Schemat:
+
+```text
+Linux host
+│
+├── Docker Engine
+│
+├── kontener aplikacji A
+│   ├── program
+│   ├── biblioteki
+│   └── filesystem
+│
+├── kontener aplikacji B
+│
+└── kontener bazy danych
+```
+
+Najważniejsze pojęcia:
+
+| Pojęcie | Znaczenie |
+|---|---|
+| image | gotowy szablon aplikacji |
+| container | uruchomiona instancja obrazu |
+| Dockerfile | instrukcja budowania obrazu |
+| volume | trwałe dane poza kontenerem |
+| network | sieć łącząca kontenery |
+| registry | magazyn obrazów, np. Docker Hub |
+| Compose | opis wielu kontenerów w jednym pliku |
+
+---
+
+# 2. Docker a maszyna wirtualna
+
+Maszyna wirtualna:
+
+```text
+Host
+└── Hypervisor
+    └── VM
+        ├── Kernel
+        ├── OS
+        └── aplikacja
+```
+
+Docker:
+
+```text
+Host Linux
+└── Docker
+    ├── aplikacja
+    ├── aplikacja
+    └── aplikacja
+```
+
+Kontenery:
+
+- uruchamiają się szybciej,
+- zajmują mniej miejsca,
+- łatwo je usuwać i odtwarzać,
+- łatwo je przenosić,
+- dobrze nadają się do backendów, usług i aplikacji webowych.
+
+---
+
+# 3. Ważna uwaga o systemach
+
+Docker działa natywnie przede wszystkim na **Linuxie**.
+
+Na:
+
+- Debianie,
+- Ubuntu,
+- Fedora,
+- Arch Linux,
+- Rocky Linux,
+- AlmaLinux
+
+działa bezpośrednio.
+
+Na Windows i macOS Docker Desktop uruchamia pod spodem środowisko linuksowe.
+
+Na FreeBSD Docker nie jest natywną technologią systemową. FreeBSD ma własne rozwiązanie kontenerowe: **jails**.
+
+---
+
+# 4. Sprawdzenie instalacji
+
+```bash
+docker --version
+```
+
+Przykładowy wynik:
+
+```text
+Docker version 28.x.x
+```
+
+Więcej informacji:
+
+```bash
+docker info
+```
+
+Pokazuje m.in.:
+
+- wersję serwera,
+- liczbę kontenerów,
+- liczbę obrazów,
+- sterownik storage,
+- dostępne sieci,
+- konfigurację runtime.
+
+---
+
+# 5. Uruchamianie i zatrzymywanie Dockera
+
+Na Debianie z systemd:
+
+```bash
+sudo systemctl start docker
+```
+
+Zatrzymanie:
+
+```bash
+sudo systemctl stop docker
+```
+
+Restart:
+
+```bash
+sudo systemctl restart docker
+```
+
+Status:
+
+```bash
+sudo systemctl status docker
+```
+
+Automatyczny start przy bootowaniu:
+
+```bash
+sudo systemctl enable docker
+```
+
+Start od razu + włączenie autostartu:
+
+```bash
+sudo systemctl enable --now docker
+```
+
+---
+
+# 6. Docker bez sudo
+
+Domyślnie Docker często wymaga:
+
+```bash
+sudo docker ...
+```
+
+Można dodać użytkownika do grupy `docker`:
+
+```bash
+sudo usermod -aG docker "$USER"
+```
+
+Następnie:
+
+```bash
+newgrp docker
+```
+
+albo wylogować się i zalogować ponownie.
+
+Test:
+
+```bash
+docker ps
+```
+
 ## Uwaga bezpieczeństwa
 
 Użytkownik należący do grupy `docker` ma praktycznie uprawnienia równoważne rootowi.

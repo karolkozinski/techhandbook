@@ -25,6 +25,42 @@ Debian to stabilna, uniwersalna dystrybucja GNU/Linux używana zarówno na kompu
 
 Tematy rozwijane osobno: [SSH i zdalna administracja](techhandbook:doc-018), [Docker](techhandbook:doc-012), [systemd, cron i schedulery](techhandbook:doc-052) oraz [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025).
 
+# 1. Czym właściwie jest Debian
+
+Debian to dystrybucja GNU/Linux, która stawia przede wszystkim na:
+
+- stabilność,
+- przewidywalność,
+- bezpieczeństwo,
+- ogromne repozytoria pakietów,
+- prostą administrację,
+- długie wsparcie,
+- brak przywiązania do jednego środowiska graficznego,
+- bardzo dobrą dokumentację.
+
+Debian dobrze sprawdza się jednocześnie jako:
+
+- desktop,
+- laptop,
+- workstation,
+- serwer WWW,
+- serwer plików,
+- host Dockera,
+- host maszyn wirtualnych,
+- router,
+- domowy NAS,
+- serwer VPN,
+- serwer aplikacji Go / Node.js / Python,
+- baza pod homelab.
+
+Debian nie próbuje być „najbardziej nowoczesny za wszelką cenę”. Stabilna gałąź otrzymuje przede wszystkim poprawki błędów i bezpieczeństwa, a nie ciągłe przeskoki do nowych głównych wersji oprogramowania.
+
+---
+
+# 2. Gałęzie Debiana
+
+Debian rozwija trzy główne gałęzie.
+
 ## stable
 
 Wersja produkcyjna.

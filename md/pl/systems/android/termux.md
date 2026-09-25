@@ -23,6 +23,52 @@ Powiązane tematy: [SSH i zdalna administracja](techhandbook:doc-018), [Programo
 
 ---
 
+# 1. Czym jest Termux
+
+Termux jest aplikacją terminalową dla Androida połączoną z własnym środowiskiem uniksowym i systemem pakietów.
+
+Najważniejsze jest to, czym Termux **nie jest**:
+
+- nie jest maszyną wirtualną,
+- nie jest emulatorem procesora,
+- nie uruchamia osobnego kernela Linux,
+- nie jest Dockerem,
+- nie jest pełną dystrybucją Debian/Ubuntu,
+- nie wymaga roota do normalnego działania.
+
+Domyślnie programy Termuxa działają **natywnie na procesorze telefonu** i korzystają z **tego samego jądra Linux**, którego używa Android.
+
+Schemat:
+
+```text
+Android
+│
+├── aplikacje Androida
+│
+├── framework Androida
+│
+├── Termux
+│   ├── bash / zsh
+│   ├── ssh
+│   ├── git
+│   ├── vim / neovim
+│   ├── Python
+│   ├── Go
+│   ├── clang
+│   ├── Node.js
+│   └── inne pakiety
+│
+└── kernel Linux Androida
+```
+
+Termux jest więc czymś w rodzaju:
+
+> „uniksowego userspace działającego jako zwykła aplikacja Androida”.
+
+---
+
+# 2. Jak Termux działa od strony systemu
+
 ## 2.1. Kernel
 
 Termux **nie posiada własnego kernela**.

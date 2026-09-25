@@ -26,6 +26,165 @@ Powiązane tematy: [API i integracje systemów](techhandbook:doc-008), [SQL i Po
 
 ---
 
+# 1. Jak myśleć o Go
+
+Go jest językiem:
+
+- kompilowanym,
+- statycznie typowanym,
+- garbage-collected,
+- zaprojektowanym z myślą o prostocie,
+- bardzo mocno związanym z programowaniem sieciowym, serwerowym i współbieżnym,
+- wyposażonym w bardzo dużą standardową bibliotekę.
+
+Kod Go jest zwykle mniej „magiczny” niż kod JavaScriptu, C++ czy rozbudowanych frameworków Javy. W Go często świadomie rezygnuje się z abstrakcji, jeśli zwykła funkcja i kilka struktur wystarczają.
+
+Typowy sposób myślenia w Go:
+
+```text
+dane -> funkcja/metoda -> wynik + error
+```
+
+Bardzo często zobaczysz więc kod:
+
+```go
+user, err := loadUser(id)
+if err != nil {
+    return err
+}
+```
+
+To nie jest przypadek. Obsługa błędów w Go jest jawna.
+
+Go ma kilka cech, które warto od razu zapamiętać:
+
+1. Nie ma klas w stylu Javy czy C++.
+2. Są `struct`, metody i interfejsy.
+3. Interfejsy implementuje się **automatycznie** - bez `implements`.
+4. Funkcje mogą zwracać kilka wartości.
+5. `error` jest zwykłą wartością.
+6. `goroutine` to bardzo lekka jednostka współbieżnego wykonania.
+7. `channel` służy do komunikacji między goroutines.
+8. Kompilator i narzędzia Go narzucają dużo porządku.
+9. `gofmt` praktycznie eliminuje dyskusje o stylu formatowania.
+10. Duża część backendu może być napisana bez frameworka - samym `net/http`.
+
+---
+
+# 2. Instalacja i narzędzia
+
+Sprawdzenie wersji:
+
+```bash
+go version
+```
+
+Przykład:
+
+```text
+go version go1.27.1 linux/amd64
+```
+
+Najważniejsze polecenie diagnostyczne:
+
+```bash
+go env
+```
+
+Pokazuje m.in.:
+
+- system docelowy,
+- architekturę,
+- ścieżki cache,
+- `GOPATH`,
+- `GOROOT`,
+- ustawienia modułów,
+- proxy modułów,
+- ustawienia CGO.
+
+Wybrane wartości:
+
+```bash
+go env GOOS GOARCH GOPATH GOROOT GOPROXY CGO_ENABLED
+```
+
+Typowe `GOOS`:
+
+```text
+linux
+windows
+darwin
+freebsd
+```
+
+Typowe `GOARCH`:
+
+```text
+amd64
+arm64
+386
+arm
+```
+
+### Debian
+
+Jeśli zależy Ci na aktualnym Go, pakiet Debiana może być starszy niż oficjalne wydanie. W projekcie warto świadomie ustalić wersję toolchainu.
+
+Po instalacji:
+
+```bash
+go version
+go env
+```
+
+### FreeBSD
+
+Najczęściej:
+
+```bash
+pkg install go
+```
+
+Potem:
+
+```bash
+go version
+```
+
+### Edytor
+
+Do samego Go wystarczy dowolny edytor, ale bardzo pomaga language server:
+
+```bash
+go install golang.org/x/tools/gopls@latest
+```
+
+`gopls` odpowiada za:
+
+- podpowiadanie kodu,
+- przechodzenie do definicji,
+- wykrywanie błędów,
+- refaktoryzację,
+- informacje o typach.
+
+---
+
+# 3. Pierwszy program i anatomia pliku
+
+Minimalny program:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, world!")
+}
+```
+
+Rozbijmy go.
+
 ## `package main`
 
 Każdy plik `.go` należy do jakiegoś pakietu.

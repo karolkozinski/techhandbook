@@ -28,6 +28,85 @@ A practical reference for building modern, semantic, responsive and accessible w
 
 ---
 
+# 1. HTML basics
+
+HTML is not for drawing a page. Its job is to describe **what each piece of content is**.
+
+```html
+<article class="product">
+    <h2>Example Laptop</h2>
+    <p>Lightweight business notebook.</p>
+    <a href="/prestige-13">View product</a>
+</article>
+```
+
+This tells the browser and assistive technology that the block is a self-contained piece of content with a heading, description and link.
+
+CSS defines the presentation:
+
+```css
+.product {
+    padding: 2rem;
+    border-radius: 1rem;
+    background: white;
+}
+
+.product h2 {
+    font-size: 1.5rem;
+}
+```
+
+Prefer class names that describe purpose rather than appearance.
+
+Better:
+
+```html
+<h2 class="product-title">Example notebook</h2>
+```
+
+instead of:
+
+```html
+<div class="big-red-text">Example notebook</div>
+```
+
+---
+
+# 2. Document structure
+
+A minimal modern HTML document:
+
+```html
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>My website</title>
+
+    <meta
+        name="description"
+        content="Short description of the page."
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <h1>My website</h1>
+
+</body>
+
+</html>
+```
+
 ## `<!doctype html>`
 
 Tells the browser to use modern HTML rendering. It should be the first line of the file.

@@ -23,6 +23,14 @@ FreeBSD is a complete BSD operating system, not a Linux distribution. Its kernel
 
 Related handbooks: [FreeBSD - Practical Shell Handbook](techhandbook:doc-029) and [SSH and Remote Administration](techhandbook:doc-018). For comparison with Linux containers, see [Docker - Practical Handbook](techhandbook:doc-012).
 
+# 1. How to think about FreeBSD
+FreeBSD is a complete operating system: kernel, base userland, documentation and release engineering are developed together. Third-party software is added separately through packages or Ports.
+# 2. System version
+```sh
+freebsd-version
+uname -a
+```
+# 3. Important directories
 ## `/etc`
 base-system configuration.
 ## `/usr/local`

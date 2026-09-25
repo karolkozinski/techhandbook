@@ -20,6 +20,42 @@ To kompendium opisuje mechanizmy administracji spotykane w środowisku domenowym
 
 Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016) oraz [DNS, domeny i routing internetowy](techhandbook:doc-017).
 
+# 1. Rola Windows Server w firmie
+
+Windows Server w środowisku korporacyjnym pełni najczęściej kilka podstawowych funkcji:
+
+- zarządzanie kontami użytkowników,
+- centralne uwierzytelnianie,
+- zarządzanie komputerami firmowymi,
+- przydzielanie zasobów,
+- kontrolowanie uprawnień,
+- przechowywanie plików,
+- udostępnianie drukarek,
+- automatyczna konfiguracja stacji roboczych,
+- centralne wdrażanie oprogramowania,
+- zarządzanie politykami bezpieczeństwa,
+- obsługa DNS i DHCP,
+- uruchamianie aplikacji biznesowych,
+- hosting usług,
+- wirtualizacja.
+
+W klasycznym środowisku Microsoft podstawowym elementem infrastruktury jest:
+
+**Active Directory Domain Services - AD DS**
+
+czyli usługa katalogowa przechowująca informacje o:
+
+- użytkownikach,
+- komputerach,
+- grupach,
+- serwerach,
+- uprawnieniach,
+- zasadach konfiguracji.
+
+---
+
+# 2. Najważniejsze pojęcia
+
 ## Domena
 
 Domena to logiczna struktura zarządzania komputerami i użytkownikami.

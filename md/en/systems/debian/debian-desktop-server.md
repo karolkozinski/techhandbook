@@ -25,6 +25,9 @@ Debian is a stable, general-purpose GNU/Linux distribution used on desktops, wor
 
 Related handbooks: [SSH and Remote Administration](techhandbook:doc-018), [Docker](techhandbook:doc-012), [systemd, cron and Schedulers](techhandbook:doc-052), and [Linux Permissions and Server Security](techhandbook:doc-025).
 
+# 1. What Debian actually is
+Debian is a community-developed GNU/Linux distribution known for stability, broad architecture support, large repositories and a strong server ecosystem.
+# 2. Debian branches
 ## stable
 Stable is the production-oriented branch with conservative updates.
 ## testing
