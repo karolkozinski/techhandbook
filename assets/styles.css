@@ -918,3 +918,25 @@ a { color: inherit; }
 @media print {
   .ad-preview { display: none !important; }
 }
+
+
+.review-mode-badge {
+  position: fixed;
+  left: 14px;
+  bottom: 14px;
+  z-index: 60;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  box-shadow: var(--shadow);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  pointer-events: none;
+}
+
+@media print {
+  .review-mode-badge { display: none !important; }
+}
