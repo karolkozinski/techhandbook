@@ -24,7 +24,7 @@ ARTICLE_ID_RE = re.compile(r"^doc-[0-9]+$")
 LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Z]{2})?$")
 
 TARGET_TYPES = {"heading", "paragraph", "list-item", "code-block", "table"}
-REASONS = {"outdated", "incorrect", "unclear", "incomplete", "broken", "typo-format"}
+REASONS = {"outdated", "incorrect", "unclear", "incomplete", "broken", "translation", "typo-format"}
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS reports (
