@@ -96,7 +96,7 @@ def render_article_toc(headings: list, language: str) -> str:
     return (
         f'<nav class="article-toc" aria-label="{html.escape(label, quote=True)}">'
         f'<details><summary>{html.escape(label)}</summary>'
-        f'<ol class="article-toc-list">{links}</ol></details></nav>'
+        f'<ul class="article-toc-list">{links}</ul></details></nav>'
     )
 
 

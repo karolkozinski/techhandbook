@@ -339,11 +339,11 @@
       <nav class="article-toc" aria-label="${escapeHtml(t("tableOfContents"))}">
         <details>
           <summary>${escapeHtml(t("tableOfContents"))}</summary>
-          <ol class="article-toc-list">
+          <ul class="article-toc-list">
             ${items.map(item =>
               `<li class="article-toc-level-${item.level}"><a href="#${escapeHtml(item.id)}" data-heading-id="${escapeHtml(item.id)}">${escapeHtml(headingPlainText(item.text))}</a></li>`
             ).join("")}
-          </ol>
+          </ul>
         </details>
       </nav>
     `;
