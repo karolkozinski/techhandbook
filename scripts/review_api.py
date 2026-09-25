@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import hashlib
 import json
 import os
 import re
@@ -12,6 +11,7 @@ from pathlib import Path
 DB_PATH = Path(os.environ.get("REVIEW_DB_PATH", "/data/reviews.sqlite3"))
 HOST = os.environ.get("REVIEW_API_HOST", "0.0.0.0")
 PORT = int(os.environ.get("REVIEW_API_PORT", "8081"))
+ENABLED = os.environ.get("REVIEW_API_ENABLED", "false").strip().lower() in {"1", "true", "yes", "on"}
 MAX_BODY_BYTES = 16 * 1024
 
 ARTICLE_ID_RE = re.compile(r"^doc-[0-9]+$")
@@ -162,13 +162,17 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == "/healthz":
-            self.send_json(200, {"status": "ok"})
+            self.send_json(200, {"status": "ok", "enabled": ENABLED})
             return
         self.send_json(404, {"error": "Not found"})
 
     def do_POST(self):
         if self.path != "/report":
             self.send_json(404, {"error": "Not found"})
+            return
+
+        if not ENABLED:
+            self.send_json(503, {"error": "Review API is disabled"})
             return
 
         content_type = self.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
@@ -244,7 +248,10 @@ class Handler(BaseHTTPRequestHandler):
 def main():
     init_db()
     server = ThreadingHTTPServer((HOST, PORT), Handler)
-    print(f"Review API listening on {HOST}:{PORT}; database={DB_PATH}", flush=True)
+    print(
+        f"Review API listening on {HOST}:{PORT}; database={DB_PATH}; enabled={ENABLED}",
+        flush=True,
+    )
     server.serve_forever()
 
 
