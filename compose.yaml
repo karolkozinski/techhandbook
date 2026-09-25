@@ -22,10 +22,17 @@ services:
       REVIEW_STAMP_SECRET: "${REVIEW_STAMP_SECRET:-}"
       REVIEW_ACCESS_TOKEN: "${REVIEW_ACCESS_TOKEN:-}"
       REVIEW_RATE_LIMIT_PER_HOUR: "${REVIEW_RATE_LIMIT_PER_HOUR:-30}"
+      REVIEW_LLM_URL: "${REVIEW_LLM_URL:-}"
+      REVIEW_LLM_API_KEY: "${REVIEW_LLM_API_KEY:-}"
+      REVIEW_LLM_MODEL: "${REVIEW_LLM_MODEL:-}"
+      REVIEW_CONTENT_ROOT: "/content"
     expose:
       - "8081"
     volumes:
       - review-data:/data
+      - ./scripts/review_analyze.py:/app/review_analyze.py:ro
+      - ./content-index.json:/content/content-index.json:ro
+      - ./md:/content/md:ro
 
 volumes:
   review-data:
