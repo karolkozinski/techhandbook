@@ -262,3 +262,48 @@ Można go tymczasowo zmienić bez edycji Compose:
     TECHHANDBOOK_PORT=18092 sudo docker compose up -d
 
 W takim przypadku trzeba odpowiednio zmienić `proxy_pass` hostowego nginx.
+
+
+## Automatyczna analiza zgłoszeń review
+
+Analyzer działa wewnątrz kontenera `review-api` i analizuje wyłącznie zgłoszenia ze statusem `open`.
+
+Wymagane zmienne środowiskowe:
+
+    REVIEW_LLM_URL=<endpoint zgodny z OpenAI chat completions>
+    REVIEW_LLM_API_KEY=<klucz API>
+    REVIEW_LLM_MODEL=<nazwa modelu>
+
+Analyzer nie zmienia artykułów. Dla każdego zgłoszenia zapisuje w SQLite:
+
+    analysis_status
+    analysis_result
+    analysis_model
+    analyzed_at
+    analysis_error
+
+Wynik `analysis_result` zawiera:
+
+    verdict: confirmed | likely | unclear | not_confirmed
+    summary
+    suggested_fix
+    needs_external_verification
+    confidence
+
+Ręczne uruchomienie wszystkich nowych/nieudanych analiz:
+
+    sudo docker compose exec review-api python3 /app/review_analyze.py
+
+Analiza jednego konkretnego zgłoszenia:
+
+    sudo docker compose exec review-api python3 /app/review_analyze.py --id <REPORT_ID>
+
+Ponowna analiza wszystkich otwartych zgłoszeń:
+
+    sudo docker compose exec review-api python3 /app/review_analyze.py --reanalyze
+
+Docelowy prosty cron raz dziennie, np. o 03:15:
+
+    15 3 * * * cd /srv/apps/techhandbook && /usr/bin/docker compose exec -T review-api python3 /app/review_analyze.py >> /var/log/techhandbook-review.log 2>&1
+
+Analyzer korzysta z aktualnego `content-index.json` i katalogu `md/` zamontowanych read-only do kontenera. Próbuje odnaleźć sekcję po tym samym anchorze, którego używa spis treści. Jeśli fakt wymaga aktualnego zewnętrznego potwierdzenia, model ma zaznaczyć `needs_external_verification=true` zamiast udawać pewność.
