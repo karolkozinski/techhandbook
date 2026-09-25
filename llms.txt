@@ -24,6 +24,7 @@ Technical reference handbooks in Polish and English. Stable article URLs are lis
 - [Logi, monitoring i troubleshooting](https://techhandbook.nullyard.com/pl/devops/logi-monitoring-i-troubleshooting)
 - [systemd, cron i schedulery](https://techhandbook.nullyard.com/pl/devops/systemd-cron-i-schedulery)
 - [A/B testing i eksperymenty - kompendium praktyczne](https://techhandbook.nullyard.com/pl/digital/a-b-testing-i-eksperymenty-kompendium-praktyczne)
+- [Google AdSense od zera: jak działa monetyzacja małej strony](https://techhandbook.nullyard.com/pl/digital/google-adsense-od-zera)
 - [HTML email / EDM - kompendium praktyczne](https://techhandbook.nullyard.com/pl/digital/html-email-edm-kompendium-praktyczne)
 - [Web analytics i tagging - kompendium praktyczne](https://techhandbook.nullyard.com/pl/digital/web-analytics-i-tagging-kompendium-praktyczne)
 - [Sieci komputerowe dla developera](https://techhandbook.nullyard.com/pl/networking/sieci-komputerowe-dla-developera)
@@ -93,6 +94,7 @@ Technical reference handbooks in Polish and English. Stable article URLs are lis
 - [Logging, Monitoring and Troubleshooting](https://techhandbook.nullyard.com/en/devops/logging-monitoring-and-troubleshooting)
 - [systemd, cron and Schedulers](https://techhandbook.nullyard.com/en/devops/systemd-cron-and-schedulers)
 - [A/B Testing and Experiments - Practical Handbook](https://techhandbook.nullyard.com/en/digital/a-b-testing-and-experiments-practical-handbook)
+- [Google AdSense from scratch: how small-site monetization works](https://techhandbook.nullyard.com/en/digital/google-adsense-from-scratch)
 - [HTML Email / EDM - Practical Handbook](https://techhandbook.nullyard.com/en/digital/html-email-edm-practical-handbook)
 - [Web Analytics and Tagging - Practical Handbook](https://techhandbook.nullyard.com/en/digital/web-analytics-and-tagging-practical-handbook)
 - [Computer Networks for Developers](https://techhandbook.nullyard.com/en/networking/computer-networks-for-developers)
@@ -136,3 +138,5 @@ Technical reference handbooks in Polish and English. Stable article URLs are lis
 - [HTTP, HTTPS and TLS](https://techhandbook.nullyard.com/en/web/protocols/http-https-and-tls)
 - [Technical SEO - Practical Handbook](https://techhandbook.nullyard.com/en/web/seo/technical-seo-practical-handbook)
 - [nginx and Reverse Proxy](https://techhandbook.nullyard.com/en/web/servers/nginx-and-reverse-proxy)
+
+[executed on device: nullyard-vps (3c95dfd9-78df-4bb7-af52-4555352c3e8e)]
