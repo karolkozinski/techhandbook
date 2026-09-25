@@ -1,36 +1,59 @@
-# Tech Handbook - statyczny frontend
+# Tech Handbook - architektura projektu
 
-Ten pakiet jest przeznaczony do rozpakowania bezpośrednio w katalogu `techhandbook/`.
+Tech Handbook jest przede wszystkim statycznym serwisem z dokumentacją Markdown.
 
-Zakładana struktura:
+Publiczne treści, nawigacja, wyszukiwanie i czytnik działają jako lekki frontend bez zależności od backendu podczas normalnego czytania.
+
+Projekt zawiera również mały, izolowany backend pomocniczy `review-api`, używany wyłącznie do obsługi zgłoszeń jakości treści, prywatnego panelu administracyjnego, przechowywania zgłoszeń, automatycznej analizy zgłoszeń oraz operacyjnej obsługi ich cyklu życia.
+
+Backend nie jest wymagany do wyświetlania publicznych treści Tech Handbooka.
+
+## Struktura
+
+Główne elementy projektu:
 
 ```text
 techhandbook/
 ├── README.md
-├── index.html
-├── content-index.json
-├── article.schema.json
+├── README.en.md
+├── PROJECT-NOTES.md
+├── ROADMAP.md
+├── DEPLOYMENT.md
 ├── CONTENT-MODEL.md
+├── index.html
+├── admin-reports.html
+├── content-index.json
+├── content-relations.json
+├── article.schema.json
+├── review-report.schema.json
+├── Dockerfile
+├── Dockerfile.review-api
+├── compose.yaml
+├── deploy/
+├── scripts/
 ├── assets/
-│   ├── app.js
-│   └── styles.css
 └── md/
     ├── pl/
     └── en/
 ```
 
+Dokumenty opisujące cały projekt pozostają w katalogu głównym repozytorium. Katalog `deploy/` zawiera konfigurację wdrożeniową, a `md/` wyłącznie treści publikowane.
+
 ## Jak działa
 
-- żadnego backendu,
-- żadnego Go,
-- żadnych frameworków,
-- katalogi i pliki są obecnie renderowane z `content-index.json`,
+- publiczny serwis pozostaje static-first,
+- zwykłe czytanie artykułów nie wymaga backendu,
+- frontend nie używa frameworka aplikacyjnego,
+- katalogi i pliki są renderowane z `content-index.json`,
 - wyszukiwarka przeszukuje dane z indeksu,
 - dokument Markdown jest pobierany dopiero po kliknięciu,
 - użytkownik nie dostaje w interfejsie bezpośredniego linku do pliku `.md`,
 - artykuły używają stabilnych ścieżek URL z językiem, kategorią i slugiem, np. `/pl/programming/python/python-podstawy`,
 - katalogi używają `/pl/browse/...`, wyszukiwanie `/pl/search?q=...`, a JUNIOR prefiksu `/pl/junior/...`,
-- stare linki `#/...` pozostają obsługiwane i są zamieniane na nowe adresy.
+- stare linki `#/...` pozostają obsługiwane i są zamieniane na nowe adresy,
+- pomocniczy `review-api` jest odseparowany od publicznego frontendu,
+- backend nie posiada bezpośrednio dostępnego publicznego portu,
+- nginx wystawia wyłącznie jawnie skonfigurowane ścieżki potrzebne przez review i administrację.
 
 ## Model treści
 
@@ -68,7 +91,7 @@ Stabilne `id` są używane przez linki wewnętrzne i relacje. Nie wolno ich zmie
 
 Workflow `.github/workflows/content-check.yml` uruchamia walidację treści przy zmianach artykułów, indeksu, relacji lub samego walidatora.
 
-Sprawdza:
+Sprawdza m.in.:
 
 - poprawność front matter,
 - zgodność H1 z tytułem,
@@ -77,7 +100,9 @@ Sprawdza:
 - relacje i linki wewnętrzne,
 - zgodność wygenerowanego `content-index.json` ze źródłami.
 
-Ten workflow nie publikuje strony. GitHub Pages pozostaje osobnym mechanizmem deploymentu.
+Workflow `.github/workflows/deploy-check.yml` sprawdza konfigurację deploymentu i wykonuje smoke test obrazu.
+
+CI obejmuje również skanowanie repozytorium pod kątem sekretów.
 
 ## Wyszukiwanie
 
@@ -99,30 +124,52 @@ free*
 git*
 ```
 
+## Review i administracja
+
+Tech Handbook posiada pomocniczy system zgłoszeń jakości treści.
+
+Warstwy mają rozdzielone uprawnienia:
+
+- zwykły użytkownik - dostęp do publicznej treści,
+- reviewer - operacje review przy użyciu `REVIEW_ACCESS_TOKEN`,
+- administrator - operacje administracyjne przy użyciu osobnego `ADMIN_ACCESS_TOKEN`.
+
+Token review nie daje dostępu administracyjnego.
+
+Sekrety istnieją wyłącznie jako konfiguracja runtime i nie są częścią repozytorium ani obrazu aplikacji.
+
+Panel administracyjny:
+
+- nie jest przeznaczony do indeksowania,
+- nie powinien być cache'owany,
+- jest wystawiany wyłącznie przez jawnie zdefiniowane trasy reverse proxy,
+- używa bardziej restrykcyjnych nagłówków niż publiczne treści.
+
+`reporter_stamp` jest pseudonimowym identyfikatorem używanym do rate limitingu i deduplikacji. Po zamknięciu zgłoszenia podlega retencji opisanej w `DEPLOYMENT.md`.
+
+Szczegóły konfiguracji, obsługi zgłoszeń, retencji i analyzera znajdują się w [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ## Publikacja
 
 Produkcja działa pod `https://techhandbook.nullyard.com`. GitHub Pages pozostaje dodatkowym środowiskiem podglądowym. Plik `.nojekyll` wyłącza przetwarzanie przez Jekyll.
 
 Docelowy deployment VPS jest zdefiniowany w:
 
-- Dockerfile,
-- compose.yaml,
-- deploy/container-nginx.conf,
-- deploy/host-nginx.conf.example,
-- DEPLOYMENT.md.
+- `Dockerfile`,
+- `Dockerfile.review-api`,
+- `compose.yaml`,
+- `deploy/container-nginx.conf`,
+- `deploy/host-nginx.conf.example`,
+- `deploy/systemd/`,
+- `DEPLOYMENT.md`.
 
-Kontener jest dostępny tylko pod `127.0.0.1:8092`. Hostowy nginx obsługuje domenę, TLS i reverse proxy. Kontenerowy nginx serwuje pliki statyczne i Markdown oraz wpuszcza do aplikacji wyłącznie znane clean URL-e wygenerowane z `content-index.json`; nieznane ścieżki zwracają prawdziwe HTTP 404.
+Publiczny frontend jest dostępny przez `127.0.0.1:8092` i hostowy nginx. `review-api` jest usługą wewnętrzną Compose i nie publikuje portu na hoście.
 
-Workflow .github/workflows/deploy-check.yml buduje obraz i wykonuje smoke test deploymentu.
+Kontenerowy nginx serwuje pliki statyczne i Markdown, obsługuje znane clean URL-e wygenerowane z `content-index.json` oraz jawnie przekazuje wymagane ścieżki review/admin do backendu. Nieznane ścieżki zwracają prawdziwe HTTP 404.
 
-Uwaga: otwieranie index.html bezpośrednio z file:// może blokować fetch() do JSON i Markdownów z powodu polityki bezpieczeństwa przeglądarki.
+Uwaga: otwieranie `index.html` bezpośrednio z `file://` może blokować `fetch()` do JSON i Markdownów z powodu polityki bezpieczeństwa przeglądarki.
 
 ## SEO i LLM discovery
-
-SEO działa w dwóch stanach:
-
-- preproduction: `site-config.json -> indexingEnabled: false`,
-- production: po wdrożeniu na docelową domenę ustawiamy `indexingEnabled: true` i regenerujemy artefakty.
 
 Generator:
 
@@ -146,8 +193,7 @@ Frontend ustawia dla artykułu dynamicznie:
 - hreflang,
 - JSON-LD `TechArticle`.
 
-Canonical i sitemap wskazują produkcyjną domenę z `site-config.json`. Produkcyjne indeksowanie jest włączone. `robots.txt` pozwala na indeksowanie i wskazuje `https://techhandbook.nullyard.com/sitemap.xml`.
-
+Canonical i sitemap wskazują produkcyjną domenę z `site-config.json`. Produkcyjne indeksowanie jest włączone.
 
 ## Style audit
 
@@ -167,16 +213,21 @@ python3 scripts/style_audit.py --write
 
 The CI check also guards against a small set of conversation-specific or work-only strings that must not be published.
 
-
-## Produkcja - stan 2026-09-23
+## Produkcja - stan 2026-09-25
 
 - canonical URL: `https://techhandbook.nullyard.com`,
-- HTTPS: aktywne, Let's Encrypt,
+- HTTPS: aktywne,
 - host nginx -> `127.0.0.1:8092`,
-- runtime: Docker Compose + unprivileged nginx,
+- runtime: Docker Compose,
+- publiczny frontend: unprivileged nginx,
+- review API: izolowana usługa pomocnicza bez publicznego portu hosta,
+- panel administracyjny: prywatny, jawnie routowany przez nginx,
+- tokeny review/admin: rozdzielone,
+- sekrety: wyłącznie konfiguracja runtime,
+- retencja `reporter_stamp`: 90 dni po zamknięciu zgłoszenia,
 - poprawne HTTP 404 dla nieznanych tras,
 - Umami: osobny Website entry dla Tech Handbooka,
-- tracker: `https://stats.nullyard.com/script.js`,
 - bazowe eventy: `site_search`, `language_change`, `outbound_click`,
 - indeksowanie: włączone,
-- sitemap: opublikowana.
+- sitemap: opublikowana,
+- secret scanning i security hardening publicznego repozytorium: wdrożone.
