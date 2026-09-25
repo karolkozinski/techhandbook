@@ -11,6 +11,10 @@ routes = sorted({
     if item.get("route")
 })
 redirects = config.get("redirects", {})
+base_url = str(config.get("productionBaseUrl", "")).rstrip("/")
+
+if redirects and not base_url.startswith("https://"):
+    raise ValueError("productionBaseUrl must use https:// when redirects are configured")
 
 lines = [
     "# Generated from content-index.json and site-config.json. Do not edit manually.",
@@ -23,7 +27,7 @@ for source, target in sorted(redirects.items()):
         raise ValueError(f"redirect source is still an active route: {source}")
     lines.extend([
         f"location = {source} {{",
-        f"    return 301 {target};",
+        f"    return 301 {base_url}{target};",
         "}",
     ])
 
