@@ -313,6 +313,194 @@
     }
   }
 
+
+  const REVIEW_REASONS = {
+    pl: [
+      ["outdated", "Nieaktualne"],
+      ["incorrect", "Błędne"],
+      ["unclear", "Niejasne"],
+      ["incomplete", "Brakuje informacji"],
+      ["broken", "Nie działa"],
+      ["typo-format", "Literówka / formatowanie"]
+    ],
+    en: [
+      ["outdated", "Outdated"],
+      ["incorrect", "Incorrect"],
+      ["unclear", "Unclear"],
+      ["incomplete", "Missing information"],
+      ["broken", "Does not work"],
+      ["typo-format", "Typo / formatting"]
+    ]
+  };
+
+  function reviewText(pl, en) {
+    return state.language === "en" ? en : pl;
+  }
+
+  function reviewTargetType(element) {
+    if (/^H[2-4]$/.test(element.tagName)) return "heading";
+    if (element.tagName === "P") return "paragraph";
+    if (element.tagName === "LI") return "list-item";
+    if (element.tagName === "PRE") return "code-block";
+    if (element.tagName === "TABLE") return "table";
+    return "";
+  }
+
+  function reviewSectionId(element) {
+    if (/^H[2-4]$/.test(element.tagName) && element.id) return element.id;
+
+    let previous = element.previousElementSibling;
+    while (previous) {
+      if (/^H[1-6]$/.test(previous.tagName) && previous.id) return previous.id;
+      previous = previous.previousElementSibling;
+    }
+
+    const parentList = element.closest("ul, ol");
+    if (parentList && parentList !== element) {
+      previous = parentList.previousElementSibling;
+      while (previous) {
+        if (/^H[1-6]$/.test(previous.tagName) && previous.id) return previous.id;
+        previous = previous.previousElementSibling;
+      }
+    }
+
+    return els.reader.querySelector("h1[id]")?.id || "article";
+  }
+
+  function reviewBlockIndex(element, sectionId, targetType) {
+    const candidates = [...els.reader.querySelectorAll("h2, h3, h4, p, li, pre, table")]
+      .filter(item =>
+        !item.closest(".article-toc") &&
+        !item.closest(".related-articles") &&
+        !item.closest(".ad-preview") &&
+        reviewTargetType(item) === targetType &&
+        reviewSectionId(item) === sectionId
+      );
+    return Math.max(0, candidates.indexOf(element));
+  }
+
+  function closeReviewMenus(except = null) {
+    els.reader.querySelectorAll(".review-menu").forEach(menu => {
+      if (menu !== except) menu.remove();
+    });
+  }
+
+  async function submitReviewReport(element, reason, button) {
+    if (!state.reviewEnabled || !state.reviewToken || !state.currentDoc || state.currentDoc.id === "__readme__") return;
+
+    const targetType = reviewTargetType(element);
+    const sectionId = reviewSectionId(element);
+    const payload = {
+      article_id: state.currentDoc.id,
+      language: state.language,
+      route: routePathForFile(state.currentDoc),
+      section_id: sectionId,
+      target_type: targetType,
+      block_index: reviewBlockIndex(element, sectionId, targetType),
+      text_snapshot: element.dataset.reviewText || element.textContent.trim().slice(0, 4000),
+      reason
+    };
+
+    button.disabled = true;
+
+    try {
+      const response = await fetch(appUrl("api/report"), {
+        method: "POST",
+        cache: "no-store",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + state.reviewToken
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || ("HTTP " + response.status));
+
+      element.classList.add("review-reported");
+      button.textContent = "✓";
+      button.title = result.duplicate
+        ? reviewText("To zgłoszenie już istnieje", "This report already exists")
+        : reviewText("Zgłoszono", "Reported");
+      closeReviewMenus();
+    } catch (err) {
+      button.disabled = false;
+      button.title = reviewText("Błąd zgłoszenia: ", "Report error: ") + err.message;
+      button.classList.add("review-flag-error");
+    }
+  }
+
+  function openReviewMenu(element, button) {
+    const existing = element.querySelector(":scope > .review-menu");
+    if (existing) {
+      existing.remove();
+      return;
+    }
+
+    closeReviewMenus();
+
+    const menu = document.createElement("div");
+    menu.className = "review-menu";
+    menu.setAttribute("role", "menu");
+
+    const title = document.createElement("div");
+    title.className = "review-menu-title";
+    title.textContent = reviewText("Co jest nie tak?", "What's wrong?");
+    menu.appendChild(title);
+
+    for (const [reason, label] of REVIEW_REASONS[state.language] || REVIEW_REASONS.pl) {
+      const option = document.createElement("button");
+      option.type = "button";
+      option.className = "review-reason";
+      option.dataset.reason = reason;
+      option.textContent = label;
+      option.setAttribute("role", "menuitem");
+      option.addEventListener("click", event => {
+        event.stopPropagation();
+        submitReviewReport(element, reason, button);
+      });
+      menu.appendChild(option);
+    }
+
+    element.appendChild(menu);
+  }
+
+  function injectReviewControls(file) {
+    els.reader.querySelectorAll(".review-flag, .review-menu").forEach(el => el.remove());
+    els.reader.querySelectorAll(".review-target").forEach(el => el.classList.remove("review-target", "review-reported"));
+
+    if (!state.reviewEnabled || !file || file.id === "__readme__") return;
+
+    const targets = [...els.reader.querySelectorAll("h2, h3, h4, p, li, pre, table")]
+      .filter(element =>
+        !element.closest(".article-toc") &&
+        !element.closest(".related-articles") &&
+        !element.closest(".ad-preview") &&
+        !(element.tagName === "P" && !element.textContent.trim())
+      );
+
+    for (const element of targets) {
+      const text = element.textContent.trim().replace(/\s+/g, " ").slice(0, 4000);
+      if (!text) continue;
+
+      element.classList.add("review-target");
+      element.dataset.reviewText = text;
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "review-flag";
+      button.textContent = "⚑";
+      button.title = reviewText("Zgłoś ten fragment", "Report this fragment");
+      button.setAttribute("aria-label", button.title);
+      button.addEventListener("click", event => {
+        event.preventDefault();
+        event.stopPropagation();
+        openReviewMenu(element, button);
+      });
+      element.appendChild(button);
+    }
+  }
+
   function trackEvent(name, data = {}) {
     if (window.umami?.track) {
       window.umami.track(name, data);
@@ -1254,6 +1442,7 @@
       const titledText = normalizeArticleTitle(parsed.body, file.title || file.name.replace(/\.md$/i, ""));
       els.reader.innerHTML = renderMarkdown(titledText) + renderRelatedArticles(file);
       injectArticleAdPreviews(file);
+      injectReviewControls(file);
 
       if (file.id === "__readme__") {
         setGenericMetadata({
@@ -1850,6 +2039,9 @@
 
 
   els.reader.addEventListener("click", e => {
+    if (!e.target.closest(".review-menu") && !e.target.closest(".review-flag")) {
+      closeReviewMenus();
+    }
     const docLink = e.target.closest("a[data-doc-id]");
     if (docLink) {
       e.preventDefault();
