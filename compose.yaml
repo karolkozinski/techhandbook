@@ -5,5 +5,22 @@ services:
       dockerfile: Dockerfile
     image: techhandbook:local
     restart: unless-stopped
+    depends_on:
+      review-api:
+        condition: service_healthy
     ports:
       - "127.0.0.1:${TECHHANDBOOK_PORT:-8092}:8080"
+
+  review-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.review-api
+    image: techhandbook-review-api:local
+    restart: unless-stopped
+    expose:
+      - "8081"
+    volumes:
+      - review-data:/data
+
+volumes:
+  review-data:
