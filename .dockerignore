@@ -10,6 +10,9 @@ requirements-dev.txt
 scripts/*
 !scripts/generate_nginx_routes.py
 !scripts/prerender.py
+!scripts/review_api.py
+!scripts/review_reports.py
+!scripts/review_analyze.py
 DEPLOYMENT.md
 deploy/host-nginx.conf.example
 404.html
