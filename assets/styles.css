@@ -940,3 +940,136 @@ a { color: inherit; }
 @media print {
   .review-mode-badge { display: none !important; }
 }
+
+
+:root[data-review="on"] .review-target,
+:root[data-review="on"] .review-table-target {
+  position: relative;
+}
+
+.review-flag {
+  position: absolute;
+  top: .2rem;
+  right: -.15rem;
+  z-index: 12;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--panel);
+  color: var(--muted);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+  opacity: .18;
+  transition: opacity .15s ease, background .15s ease, transform .15s ease;
+  font: inherit;
+  line-height: 1;
+}
+
+.review-target:hover > .review-flag,
+.review-target:focus-within > .review-flag,
+.review-table-target:hover > .review-flag,
+.review-table-target:focus-within > .review-flag,
+.review-flag:hover,
+.review-flag:focus-visible {
+  opacity: 1;
+  background: var(--hover);
+  outline: none;
+}
+
+.review-flag:hover,
+.review-flag:focus-visible {
+  transform: scale(1.04);
+}
+
+.review-flag-error {
+  opacity: 1;
+}
+
+.review-reported {
+  outline: 1px dashed color-mix(in srgb, var(--text) 28%, transparent);
+  outline-offset: 4px;
+}
+
+.review-menu {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  z-index: 30;
+  min-width: 220px;
+  max-width: min(280px, 80vw);
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.review-menu-title {
+  padding: 6px 8px 7px;
+  color: var(--muted);
+  font-size: .74rem;
+  font-weight: 750;
+}
+
+.review-reason {
+  width: 100%;
+  min-height: 34px;
+  display: block;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  font: inherit;
+  font-size: .82rem;
+}
+
+.review-reason:hover,
+.review-reason:focus-visible {
+  background: var(--hover);
+  outline: none;
+}
+
+.review-table-target {
+  margin: 1.3em 0;
+}
+
+.review-table-target > table {
+  margin: 0;
+}
+
+.markdown-body pre.review-target > .review-flag {
+  top: 8px;
+  right: 8px;
+  color: var(--code-text);
+  background: color-mix(in srgb, var(--code-bg) 86%, white 14%);
+  border-color: color-mix(in srgb, var(--code-text) 20%, transparent);
+}
+
+@media (max-width: 700px) {
+  .review-flag {
+    right: 0;
+    opacity: .55;
+  }
+
+  .review-menu {
+    right: 0;
+    max-width: min(260px, 86vw);
+  }
+}
+
+@media print {
+  .review-flag,
+  .review-menu,
+  .review-mode-badge {
+    display: none !important;
+  }
+
+  .review-reported {
+    outline: 0;
+  }
+}
