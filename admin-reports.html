@@ -41,8 +41,8 @@
 <script>
 (() => {
   const T = {
-    pl:{title:"Tech Handbook — zgłoszenia",refresh:"Odśwież",auth:"Autoryzacja…",loading:"Ładowanie…",noToken:"Brak tokena admina.",denied:"Brak dostępu",count:n=>n+" zgłoszeń",reason:"Powód",current:"Obecny fragment",analysis:"Analiza Lumy",suggestion:"Proponowana poprawka",confidence:"Pewność",external:"Wymaga zewnętrznej weryfikacji",approve:"Zatwierdź poprawkę",manual:"Przekaż do ręcznego rozwiązania",rejectSuggestion:"Odrzuć sugestię",dismiss:"Odrzuć zgłoszenie",resolved:"Oznacz jako rozwiązane",copy:"Kopiuj prompt do czatu",copied:"Skopiowano",analysisError:"Błąd analizy",noAnalysis:"Brak analizy",suggestionState:"Decyzja",status:"Status"},
-    en:{title:"Tech Handbook — reports",refresh:"Refresh",auth:"Authorizing…",loading:"Loading…",noToken:"Missing admin token.",denied:"Access denied",count:n=>n+" reports",reason:"Reason",current:"Current fragment",analysis:"Luma analysis",suggestion:"Suggested correction",confidence:"Confidence",external:"Requires external verification",approve:"Approve correction",manual:"Send to manual resolution",rejectSuggestion:"Reject suggestion",dismiss:"Dismiss report",resolved:"Mark resolved",copy:"Copy chat prompt",copied:"Copied",analysisError:"Analysis error",noAnalysis:"No analysis",suggestionState:"Decision",status:"Status"}
+    pl:{title:"Tech Handbook — zgłoszenia",refresh:"Odśwież",auth:"Autoryzacja…",loading:"Ładowanie…",noToken:"Brak tokena admina.",denied:"Brak dostępu",count:n=>n+" zgłoszeń",reason:"Powód",current:"Obecny fragment",analysis:"Analiza Lumy",suggestion:"Proponowana poprawka",confidence:"Pewność",external:"Wymaga zewnętrznej weryfikacji",approve:"Zatwierdź poprawkę",manual:"Przekaż do ręcznego rozwiązania",rejectSuggestion:"Odrzuć sugestię",dismiss:"Odrzuć zgłoszenie",resolved:"Oznacz jako rozwiązane",copy:"Kopiuj prompt do czatu",copied:"Skopiowano",analysisError:"Błąd analizy",noAnalysis:"Brak analizy",suggestionState:"Decyzja",status:"Status",reasons:{outdated:"Nieaktualne",incorrect:"Błędne",unclear:"Niejasne",incomplete:"Brakuje informacji",broken:"Nie działa",translation:"Tłumaczenie","typo-format":"Literówka / formatowanie"}},
+    en:{title:"Tech Handbook — reports",refresh:"Refresh",auth:"Authorizing…",loading:"Loading…",noToken:"Missing admin token.",denied:"Access denied",count:n=>n+" reports",reason:"Reason",current:"Current fragment",analysis:"Luma analysis",suggestion:"Suggested correction",confidence:"Confidence",external:"Requires external verification",approve:"Approve correction",manual:"Send to manual resolution",rejectSuggestion:"Reject suggestion",dismiss:"Dismiss report",resolved:"Mark resolved",copy:"Copy chat prompt",copied:"Copied",analysisError:"Analysis error",noAnalysis:"No analysis",suggestionState:"Decision",status:"Status",reasons:{outdated:"Outdated",incorrect:"Incorrect",unclear:"Unclear",incomplete:"Missing information",broken:"Does not work",translation:"Translation","typo-format":"Typo / formatting"}}
   };
   let token="", lang="pl";
   const $=id=>document.getElementById(id), state=$("state"), reports=$("reports"), status=$("status"), langSel=$("lang");
@@ -73,7 +73,7 @@
   function renderReport(r){
     const a=parseAnalysis(r), card=el("section",undefined,"report");
     const m1=add(card,el("div",undefined,"meta"));
-    [r.id,r.article_id,r.language,tr("status")+": "+r.status,tr("reason")+": "+r.reason,tr("suggestionState")+": "+(r.suggestion_status||"pending")].forEach(x=>add(m1,el("span",x)));
+    [r.id,r.article_id,r.language,tr("status")+": "+r.status,tr("reason")+": "+(tr("reasons")[r.reason]||r.reason),tr("suggestionState")+": "+(r.suggestion_status||"pending")].forEach(x=>add(m1,el("span",x)));
     const m2=add(card,el("div",undefined,"meta"));
     [r.route+"#"+r.section_id,r.target_type+"["+r.block_index+"]",r.created_at].forEach(x=>add(m2,el("span",x)));
 
