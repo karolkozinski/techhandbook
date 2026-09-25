@@ -3,5 +3,13 @@
   "description": "Praktyczna baza wiedzy technicznej - systemy, sieci, programowanie, web, AI i narzędzia.",
   "productionBaseUrl": "https://techhandbook.nullyard.com",
   "defaultLanguage": "pl",
-  "indexingEnabled": true
+  "indexingEnabled": true,
+  "redirects": {
+    "/pl/programming/languages/20-wspolczesnych-jezykow-programowania-ktore-warto-znac": "/pl/programming/jezyki/20-wspolczesnych-jezykow-programowania-ktore-warto-znac",
+    "/pl/programming/languages/stare-jezyki-programowania-ktore-uksztaltowaly-informatyke": "/pl/programming/jezyki/stare-jezyki-programowania-ktore-uksztaltowaly-informatyke",
+    "/pl/programming/languages/ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia": "/pl/programming/ada/ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia",
+    "/en/programming/languages/ada-the-language-where-mistakes-are-meant-to-be-harder-to-make": "/en/programming/ada/ada-the-language-where-mistakes-are-meant-to-be-harder-to-make",
+    "/pl/programming/languages/assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu": "/pl/programming/assembler/assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu",
+    "/en/programming/languages/assembly-from-scratch-from-registers-and-memory-to-a-real-program": "/en/programming/assembly/assembly-from-scratch-from-registers-and-memory-to-a-real-program"
+  }
 }

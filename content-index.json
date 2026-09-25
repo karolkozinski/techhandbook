@@ -586,6 +586,68 @@
       ]
     },
     {
+      "id": "doc-061",
+      "name": "ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia.md",
+      "title": "Ada - język, w którym błędy mają być trudniejsze do popełnienia",
+      "slug": "ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia",
+      "route": "/pl/programming/ada/ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia",
+      "index": true,
+      "path": "md/pl/programming/ada/ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia.md",
+      "category": "programming/ada",
+      "tags": [
+        "ada",
+        "spark",
+        "gnat",
+        "alire",
+        "formal-verification",
+        "safety-critical",
+        "programming",
+        "embedded"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-058",
+        "doc-059",
+        "doc-060",
+        "doc-019",
+        "doc-020",
+        "doc-023"
+      ]
+    },
+    {
+      "id": "doc-060",
+      "name": "assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu.md",
+      "title": "Assembler od podstaw - od rejestrów i pamięci do prawdziwego programu",
+      "slug": "assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu",
+      "route": "/pl/programming/assembler/assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu",
+      "index": true,
+      "path": "md/pl/programming/assembler/assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu.md",
+      "category": "programming/assembler",
+      "tags": [
+        "assembler",
+        "assembly",
+        "6502",
+        "6510",
+        "c64",
+        "nasm",
+        "x86-64",
+        "arm",
+        "risc-v",
+        "low-level"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-019",
+        "doc-027",
+        "doc-039",
+        "doc-014",
+        "doc-058",
+        "doc-059"
+      ]
+    },
+    {
       "id": "doc-019",
       "name": "c-reading-building-debugging.md",
       "title": "C - czytanie, kompilacja i debugowanie",
@@ -689,10 +751,10 @@
       "name": "20-wspolczesnych-jezykow-programowania-ktore-warto-znac.md",
       "title": "20 współczesnych języków programowania, które warto znać",
       "slug": "20-wspolczesnych-jezykow-programowania-ktore-warto-znac",
-      "route": "/pl/programming/languages/20-wspolczesnych-jezykow-programowania-ktore-warto-znac",
+      "route": "/pl/programming/jezyki/20-wspolczesnych-jezykow-programowania-ktore-warto-znac",
       "index": true,
-      "path": "md/pl/programming/languages/20-wspolczesnych-jezykow-programowania-ktore-warto-znac.md",
-      "category": "programming/languages",
+      "path": "md/pl/programming/jezyki/20-wspolczesnych-jezykow-programowania-ktore-warto-znac.md",
+      "category": "programming/jezyki",
       "tags": [
         "programming",
         "languages",
@@ -718,76 +780,14 @@
       ]
     },
     {
-      "id": "doc-061",
-      "name": "ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia.md",
-      "title": "Ada - język, w którym błędy mają być trudniejsze do popełnienia",
-      "slug": "ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia",
-      "route": "/pl/programming/languages/ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia",
-      "index": true,
-      "path": "md/pl/programming/languages/ada-jezyk-w-ktorym-bledy-maja-byc-trudniejsze-do-popelnienia.md",
-      "category": "programming/languages",
-      "tags": [
-        "ada",
-        "spark",
-        "gnat",
-        "alire",
-        "formal-verification",
-        "safety-critical",
-        "programming",
-        "embedded"
-      ],
-      "language": "pl",
-      "audience": "standard",
-      "related": [
-        "doc-058",
-        "doc-059",
-        "doc-060",
-        "doc-019",
-        "doc-020",
-        "doc-023"
-      ]
-    },
-    {
-      "id": "doc-060",
-      "name": "assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu.md",
-      "title": "Assembler od podstaw - od rejestrów i pamięci do prawdziwego programu",
-      "slug": "assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu",
-      "route": "/pl/programming/languages/assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu",
-      "index": true,
-      "path": "md/pl/programming/languages/assembler-od-podstaw-od-rejestrow-i-pamieci-do-prawdziwego-programu.md",
-      "category": "programming/languages",
-      "tags": [
-        "assembler",
-        "assembly",
-        "6502",
-        "6510",
-        "c64",
-        "nasm",
-        "x86-64",
-        "arm",
-        "risc-v",
-        "low-level"
-      ],
-      "language": "pl",
-      "audience": "standard",
-      "related": [
-        "doc-019",
-        "doc-027",
-        "doc-039",
-        "doc-014",
-        "doc-058",
-        "doc-059"
-      ]
-    },
-    {
       "id": "doc-059",
       "name": "stare-jezyki-programowania-ktore-uksztaltowaly-informatyke.md",
       "title": "Stare języki programowania, które ukształtowały informatykę",
       "slug": "stare-jezyki-programowania-ktore-uksztaltowaly-informatyke",
-      "route": "/pl/programming/languages/stare-jezyki-programowania-ktore-uksztaltowaly-informatyke",
+      "route": "/pl/programming/jezyki/stare-jezyki-programowania-ktore-uksztaltowaly-informatyke",
       "index": true,
-      "path": "md/pl/programming/languages/stare-jezyki-programowania-ktore-uksztaltowaly-informatyke.md",
-      "category": "programming/languages",
+      "path": "md/pl/programming/jezyki/stare-jezyki-programowania-ktore-uksztaltowaly-informatyke.md",
+      "category": "programming/jezyki",
       "tags": [
         "programming",
         "history",
@@ -2261,6 +2261,68 @@
       ]
     },
     {
+      "id": "doc-061",
+      "name": "ada-the-language-where-mistakes-are-meant-to-be-harder-to-make.md",
+      "title": "Ada - the language where mistakes are meant to be harder to make",
+      "slug": "ada-the-language-where-mistakes-are-meant-to-be-harder-to-make",
+      "route": "/en/programming/ada/ada-the-language-where-mistakes-are-meant-to-be-harder-to-make",
+      "index": true,
+      "path": "md/en/programming/ada/ada-the-language-where-mistakes-are-meant-to-be-harder-to-make.md",
+      "category": "programming/ada",
+      "tags": [
+        "ada",
+        "spark",
+        "gnat",
+        "alire",
+        "formal-verification",
+        "safety-critical",
+        "programming",
+        "embedded"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-058",
+        "doc-059",
+        "doc-060",
+        "doc-019",
+        "doc-020",
+        "doc-023"
+      ]
+    },
+    {
+      "id": "doc-060",
+      "name": "assembly-from-scratch-from-registers-and-memory-to-a-real-program.md",
+      "title": "Assembly from scratch - from registers and memory to a real program",
+      "slug": "assembly-from-scratch-from-registers-and-memory-to-a-real-program",
+      "route": "/en/programming/assembly/assembly-from-scratch-from-registers-and-memory-to-a-real-program",
+      "index": true,
+      "path": "md/en/programming/assembly/assembly-from-scratch-from-registers-and-memory-to-a-real-program.md",
+      "category": "programming/assembly",
+      "tags": [
+        "assembler",
+        "assembly",
+        "6502",
+        "6510",
+        "c64",
+        "nasm",
+        "x86-64",
+        "arm",
+        "risc-v",
+        "low-level"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-019",
+        "doc-027",
+        "doc-039",
+        "doc-014",
+        "doc-058",
+        "doc-059"
+      ]
+    },
+    {
       "id": "doc-019",
       "name": "c-reading-building-debugging.md",
       "title": "C - Reading, Building and Debugging Projects",
@@ -2389,68 +2451,6 @@
         "doc-021",
         "doc-022",
         "doc-023",
-        "doc-059"
-      ]
-    },
-    {
-      "id": "doc-061",
-      "name": "ada-the-language-where-mistakes-are-meant-to-be-harder-to-make.md",
-      "title": "Ada - the language where mistakes are meant to be harder to make",
-      "slug": "ada-the-language-where-mistakes-are-meant-to-be-harder-to-make",
-      "route": "/en/programming/languages/ada-the-language-where-mistakes-are-meant-to-be-harder-to-make",
-      "index": true,
-      "path": "md/en/programming/languages/ada-the-language-where-mistakes-are-meant-to-be-harder-to-make.md",
-      "category": "programming/languages",
-      "tags": [
-        "ada",
-        "spark",
-        "gnat",
-        "alire",
-        "formal-verification",
-        "safety-critical",
-        "programming",
-        "embedded"
-      ],
-      "language": "en",
-      "audience": "standard",
-      "related": [
-        "doc-058",
-        "doc-059",
-        "doc-060",
-        "doc-019",
-        "doc-020",
-        "doc-023"
-      ]
-    },
-    {
-      "id": "doc-060",
-      "name": "assembly-from-scratch-from-registers-and-memory-to-a-real-program.md",
-      "title": "Assembly from scratch - from registers and memory to a real program",
-      "slug": "assembly-from-scratch-from-registers-and-memory-to-a-real-program",
-      "route": "/en/programming/languages/assembly-from-scratch-from-registers-and-memory-to-a-real-program",
-      "index": true,
-      "path": "md/en/programming/languages/assembly-from-scratch-from-registers-and-memory-to-a-real-program.md",
-      "category": "programming/languages",
-      "tags": [
-        "assembler",
-        "assembly",
-        "6502",
-        "6510",
-        "c64",
-        "nasm",
-        "x86-64",
-        "arm",
-        "risc-v",
-        "low-level"
-      ],
-      "language": "en",
-      "audience": "standard",
-      "related": [
-        "doc-019",
-        "doc-027",
-        "doc-039",
-        "doc-014",
-        "doc-058",
         "doc-059"
       ]
     },
