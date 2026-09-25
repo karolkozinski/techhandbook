@@ -227,6 +227,18 @@ Odrzucenie zgłoszenia:
 
 Rekordy nie są kasowane. Status przechodzi z `open` do `resolved` albo `dismissed`, a CLI zapisuje czas zamknięcia.
 
+### Retencja pseudonimu zgłaszającego
+
+`reporter_stamp` służy do rate limitingu i deduplikacji otwartych zgłoszeń. Po zamknięciu zgłoszenia nie jest potrzebny bezterminowo.
+
+Anonimizacja stampów w zgłoszeniach zamkniętych ponad 90 dni temu:
+
+    sudo docker compose exec review-api python3 /app/review_reports.py prune-stamps --days 90
+
+Polecenie nie usuwa zgłoszeń, treści, analizy ani decyzji administratora. Czyści wyłącznie `reporter_stamp` w starych rekordach `resolved` i `dismissed`.
+
+Można uruchamiać je np. raz w tygodniu z crona.
+
 ## Review API - konfiguracja prywatnego stampa
 
 Review API pozostaje domyślnie wyłączone. Przed jego świadomym włączeniem trzeba ustawić lokalny sekret na VPS, poza repozytorium:
