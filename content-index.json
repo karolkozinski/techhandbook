@@ -456,6 +456,33 @@
       ]
     },
     {
+      "id": "doc-062",
+      "name": "google-adsense-od-zera.md",
+      "title": "Google AdSense od zera: jak działa monetyzacja małej strony",
+      "slug": "google-adsense-od-zera",
+      "route": "/pl/digital/google-adsense-od-zera",
+      "index": true,
+      "path": "md/pl/digital/google-adsense-od-zera.md",
+      "category": "digital",
+      "tags": [
+        "adsense",
+        "google ads",
+        "monetyzacja",
+        "reklamy",
+        "rpm",
+        "cmp"
+      ],
+      "language": "pl",
+      "audience": "standard",
+      "related": [
+        "doc-053",
+        "doc-054",
+        "doc-047",
+        "doc-048",
+        "doc-055"
+      ]
+    },
+    {
       "id": "doc-055",
       "name": "html-email-edm.md",
       "title": "HTML email / EDM - kompendium praktyczne",
@@ -2127,6 +2154,33 @@
         "doc-043",
         "doc-048",
         "doc-049",
+        "doc-055"
+      ]
+    },
+    {
+      "id": "doc-062",
+      "name": "google-adsense-from-scratch.md",
+      "title": "Google AdSense from scratch: how small-site monetization works",
+      "slug": "google-adsense-from-scratch",
+      "route": "/en/digital/google-adsense-from-scratch",
+      "index": true,
+      "path": "md/en/digital/google-adsense-from-scratch.md",
+      "category": "digital",
+      "tags": [
+        "adsense",
+        "google ads",
+        "monetization",
+        "advertising",
+        "rpm",
+        "cmp"
+      ],
+      "language": "en",
+      "audience": "standard",
+      "related": [
+        "doc-053",
+        "doc-054",
+        "doc-047",
+        "doc-048",
         "doc-055"
       ]
     },
