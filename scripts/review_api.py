@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
+import hashlib
 import json
 import os
 import re
 import sqlite3
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
@@ -12,11 +13,12 @@ DB_PATH = Path(os.environ.get("REVIEW_DB_PATH", "/data/reviews.sqlite3"))
 HOST = os.environ.get("REVIEW_API_HOST", "0.0.0.0")
 PORT = int(os.environ.get("REVIEW_API_PORT", "8081"))
 ENABLED = os.environ.get("REVIEW_API_ENABLED", "false").strip().lower() in {"1", "true", "yes", "on"}
+STAMP_SECRET = os.environ.get("REVIEW_STAMP_SECRET", "")
 MAX_BODY_BYTES = 16 * 1024
+RATE_LIMIT_PER_HOUR = int(os.environ.get("REVIEW_RATE_LIMIT_PER_HOUR", "30"))
 
 ARTICLE_ID_RE = re.compile(r"^doc-[0-9]+$")
 LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Z]{2})?$")
-STAMP_RE = re.compile(r"^[a-f0-9]{64}$")
 
 TARGET_TYPES = {"heading", "paragraph", "list-item", "code-block", "table"}
 REASONS = {"outdated", "incorrect", "unclear", "incomplete", "broken", "typo-format"}
@@ -47,11 +49,15 @@ CREATE INDEX IF NOT EXISTS idx_reports_article
 
 CREATE INDEX IF NOT EXISTS idx_reports_reporter_stamp
     ON reports(reporter_stamp);
+
+CREATE INDEX IF NOT EXISTS idx_reports_rate_limit
+    ON reports(reporter_stamp, created_at);
 """
 
 
 def connect():
     connection = sqlite3.connect(DB_PATH)
+    connection.row_factory = sqlite3.Row
     connection.execute("PRAGMA journal_mode=WAL")
     connection.execute("PRAGMA busy_timeout=5000")
     return connection
@@ -70,6 +76,16 @@ def error(message, field=None):
     return payload
 
 
+def normalize_user_agent(value):
+    value = re.sub(r"\s+", " ", (value or "").strip().lower())
+    return value[:512] or "unknown"
+
+
+def reporter_stamp(client_ip, user_agent):
+    source = "\0".join((STAMP_SECRET, client_ip, normalize_user_agent(user_agent)))
+    return hashlib.sha256(source.encode("utf-8")).hexdigest()
+
+
 def validate(payload):
     if not isinstance(payload, dict):
         return None, error("JSON body must be an object")
@@ -83,7 +99,6 @@ def validate(payload):
         "block_index",
         "text_snapshot",
         "reason",
-        "reporter_stamp",
     }
     unknown = sorted(set(payload) - allowed)
     if unknown:
@@ -128,10 +143,6 @@ def validate(payload):
     if reason not in REASONS:
         return None, error("Invalid reason", "reason")
 
-    reporter_stamp = payload["reporter_stamp"]
-    if not isinstance(reporter_stamp, str) or not STAMP_RE.fullmatch(reporter_stamp):
-        return None, error("Invalid reporter_stamp", "reporter_stamp")
-
     return {
         "article_id": article_id,
         "language": language,
@@ -141,8 +152,49 @@ def validate(payload):
         "block_index": block_index,
         "text_snapshot": text_snapshot,
         "reason": reason,
-        "reporter_stamp": reporter_stamp,
     }, None
+
+
+def find_duplicate(connection, data, stamp):
+    return connection.execute(
+        """
+        SELECT id, created_at, status
+        FROM reports
+        WHERE reporter_stamp = ?
+          AND article_id = ?
+          AND language = ?
+          AND section_id = ?
+          AND target_type = ?
+          AND block_index = ?
+          AND reason = ?
+          AND status = 'open'
+        ORDER BY created_at DESC
+        LIMIT 1
+        """,
+        (
+            stamp,
+            data["article_id"],
+            data["language"],
+            data["section_id"],
+            data["target_type"],
+            data["block_index"],
+            data["reason"],
+        ),
+    ).fetchone()
+
+
+def rate_limit_exceeded(connection, stamp, now):
+    cutoff = (now - timedelta(hours=1)).isoformat().replace("+00:00", "Z")
+    row = connection.execute(
+        """
+        SELECT COUNT(*) AS count
+        FROM reports
+        WHERE reporter_stamp = ?
+          AND created_at >= ?
+        """,
+        (stamp, cutoff),
+    ).fetchone()
+    return row["count"] >= RATE_LIMIT_PER_HOUR
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -162,7 +214,14 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == "/healthz":
-            self.send_json(200, {"status": "ok", "enabled": ENABLED})
+            self.send_json(
+                200,
+                {
+                    "status": "ok",
+                    "enabled": ENABLED,
+                    "stamp_secret_configured": bool(STAMP_SECRET),
+                },
+            )
             return
         self.send_json(404, {"error": "Not found"})
 
@@ -173,6 +232,10 @@ class Handler(BaseHTTPRequestHandler):
 
         if not ENABLED:
             self.send_json(503, {"error": "Review API is disabled"})
+            return
+
+        if not STAMP_SECRET:
+            self.send_json(503, {"error": "Review API stamp secret is not configured"})
             return
 
         content_type = self.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
@@ -204,11 +267,37 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(422, validation_error)
             return
 
-        report_id = "rpt-" + uuid.uuid4().hex
-        created_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        client_ip = (self.headers.get("X-Real-IP") or self.client_address[0]).strip()
+        stamp = reporter_stamp(client_ip, self.headers.get("User-Agent"))
+        now = datetime.now(timezone.utc)
+        created_at = now.isoformat().replace("+00:00", "Z")
 
         try:
             with connect() as connection:
+                duplicate = find_duplicate(connection, data, stamp)
+                if duplicate:
+                    self.send_json(
+                        200,
+                        {
+                            "id": duplicate["id"],
+                            "created_at": duplicate["created_at"],
+                            "status": duplicate["status"],
+                            "duplicate": True,
+                        },
+                    )
+                    return
+
+                if rate_limit_exceeded(connection, stamp, now):
+                    self.send_json(
+                        429,
+                        {
+                            "error": "Too many review reports",
+                            "retry_after_seconds": 3600,
+                        },
+                    )
+                    return
+
+                report_id = "rpt-" + uuid.uuid4().hex
                 connection.execute(
                     """
                     INSERT INTO reports (
@@ -227,7 +316,7 @@ class Handler(BaseHTTPRequestHandler):
                         data["block_index"],
                         data["text_snapshot"],
                         data["reason"],
-                        data["reporter_stamp"],
+                        stamp,
                         created_at,
                     ),
                 )
@@ -241,6 +330,7 @@ class Handler(BaseHTTPRequestHandler):
                 "id": report_id,
                 "created_at": created_at,
                 "status": "open",
+                "duplicate": False,
             },
         )
 
