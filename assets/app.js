@@ -103,7 +103,9 @@
     mode: "standard",
     contentRoot: "md/pl",
     files: [],
-    navigationContext: { type: "dir", path: "", query: "" }
+    navigationContext: { type: "dir", path: "", query: "" },
+    reviewToken: "",
+    reviewEnabled: false
   };
 
   const appScript = document.currentScript || document.querySelector('script[src*="assets/app.js"]');
@@ -168,6 +170,58 @@
     const recovered = params.get("__route");
     if (!recovered) return;
     history.replaceState(null, "", appUrl(recovered));
+  }
+
+  function captureReviewToken() {
+    const match = location.hash.match(/^#review=(.+)$/);
+    if (!match) return;
+
+    try {
+      state.reviewToken = decodeURIComponent(match[1]);
+    } catch {
+      state.reviewToken = match[1];
+    }
+
+    history.replaceState(history.state, "", location.pathname + location.search);
+  }
+
+  function renderReviewModeBadge() {
+    document.querySelectorAll(".review-mode-badge").forEach(el => el.remove());
+    if (!state.reviewEnabled) return;
+
+    const badge = document.createElement("div");
+    badge.className = "review-mode-badge";
+    badge.textContent = "REVIEW";
+    badge.setAttribute("role", "status");
+    badge.setAttribute("aria-label", "Tech Handbook review mode");
+    document.body.appendChild(badge);
+  }
+
+  async function validateReviewMode() {
+    if (!state.reviewToken) return false;
+
+    try {
+      const response = await fetch(appUrl("api/review-mode"), {
+        method: "GET",
+        cache: "no-store",
+        headers: {
+          Authorization: "Bearer " + state.reviewToken
+        }
+      });
+
+      if (!response.ok) {
+        state.reviewToken = "";
+        return false;
+      }
+
+      state.reviewEnabled = true;
+      document.documentElement.dataset.review = "on";
+      renderReviewModeBadge();
+      return true;
+    } catch {
+      state.reviewToken = "";
+      return false;
+    }
   }
 
   const els = {
@@ -1749,6 +1803,7 @@
   async function init() {
     initTheme();
     restoreRecoveredRoute();
+    captureReviewToken();
 
     try {
       const [indexRes, configRes] = await Promise.all([
@@ -1759,6 +1814,7 @@
       if (!configRes.ok) throw new Error(`site-config HTTP ${configRes.status}`);
       state.index = await indexRes.json();
       state.siteConfig = await configRes.json();
+      await validateReviewMode();
 
       const initialRoute = parseLocationRoute();
       const initialHistoryState = history.state;
