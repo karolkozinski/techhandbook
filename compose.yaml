@@ -17,6 +17,8 @@ services:
       dockerfile: Dockerfile.review-api
     image: techhandbook-review-api:local
     restart: unless-stopped
+    environment:
+      REVIEW_API_ENABLED: "${REVIEW_API_ENABLED:-false}"
     expose:
       - "8081"
     volumes:
