@@ -138,5 +138,3 @@ Technical reference handbooks in Polish and English. Stable article URLs are lis
 - [HTTP, HTTPS and TLS](https://techhandbook.nullyard.com/en/web/protocols/http-https-and-tls)
 - [Technical SEO - Practical Handbook](https://techhandbook.nullyard.com/en/web/seo/technical-seo-practical-handbook)
 - [nginx and Reverse Proxy](https://techhandbook.nullyard.com/en/web/servers/nginx-and-reverse-proxy)
-
-[executed on device: nullyard-vps (3c95dfd9-78df-4bb7-af52-4555352c3e8e)]
