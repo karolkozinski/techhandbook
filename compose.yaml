@@ -20,6 +20,7 @@ services:
     environment:
       REVIEW_API_ENABLED: "${REVIEW_API_ENABLED:-false}"
       REVIEW_STAMP_SECRET: "${REVIEW_STAMP_SECRET:-}"
+      REVIEW_ACCESS_TOKEN: "${REVIEW_ACCESS_TOKEN:-}"
       REVIEW_RATE_LIMIT_PER_HOUR: "${REVIEW_RATE_LIMIT_PER_HOUR:-30}"
     expose:
       - "8081"
