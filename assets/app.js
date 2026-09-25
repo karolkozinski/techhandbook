@@ -349,9 +349,8 @@
   function reviewSectionId(element) {
     if (/^H[2-4]$/.test(element.tagName) && element.id) return element.id;
 
-    const sectionOrigin = element.tagName === "TABLE" && element.closest(".review-table-target")
-      ? element.closest(".review-table-target")
-      : element;
+    const reviewWrapper = element.closest(".review-table-target, .review-code-target");
+    const sectionOrigin = reviewWrapper || element;
     let previous = sectionOrigin.previousElementSibling;
     while (previous) {
       if (/^H[1-6]$/.test(previous.tagName) && previous.id) return previous.id;
@@ -434,7 +433,7 @@
   }
 
   function openReviewMenu(element, button) {
-    const container = element.closest(".review-table-target") || element;
+    const container = element.closest(".review-table-target, .review-code-target") || element;
     const existing = container.querySelector(":scope > .review-menu");
     if (existing) {
       existing.remove();
@@ -471,9 +470,9 @@
 
   function injectReviewControls(file) {
     els.reader.querySelectorAll(".review-flag, .review-menu").forEach(el => el.remove());
-    els.reader.querySelectorAll(".review-table-target").forEach(wrapper => {
-      const table = wrapper.querySelector(":scope > table");
-      if (table) wrapper.replaceWith(table);
+    els.reader.querySelectorAll(".review-table-target, .review-code-target").forEach(wrapper => {
+      const target = wrapper.querySelector(":scope > table, :scope > pre");
+      if (target) wrapper.replaceWith(target);
       else wrapper.remove();
     });
     els.reader.querySelectorAll(".review-target").forEach(el => el.classList.remove("review-target", "review-reported"));
@@ -496,9 +495,9 @@
       element.dataset.reviewText = text;
 
       let controlHost = element;
-      if (element.tagName === "TABLE") {
+      if (element.tagName === "TABLE" || element.tagName === "PRE") {
         const wrapper = document.createElement("div");
-        wrapper.className = "review-table-target";
+        wrapper.className = element.tagName === "TABLE" ? "review-table-target" : "review-code-target";
         element.parentNode.insertBefore(wrapper, element);
         wrapper.appendChild(element);
         controlHost = wrapper;
