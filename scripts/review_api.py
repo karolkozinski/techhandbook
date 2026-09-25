@@ -46,7 +46,9 @@ CREATE TABLE IF NOT EXISTS reports (
     analysis_result TEXT,
     analysis_model TEXT,
     analyzed_at TEXT,
-    analysis_error TEXT
+    analysis_error TEXT,
+    suggestion_status TEXT NOT NULL DEFAULT 'pending',
+    suggestion_decided_at TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_reports_status_created
@@ -82,6 +84,8 @@ def init_db():
             "analysis_model": "ALTER TABLE reports ADD COLUMN analysis_model TEXT",
             "analyzed_at": "ALTER TABLE reports ADD COLUMN analyzed_at TEXT",
             "analysis_error": "ALTER TABLE reports ADD COLUMN analysis_error TEXT",
+            "suggestion_status": "ALTER TABLE reports ADD COLUMN suggestion_status TEXT NOT NULL DEFAULT 'pending'",
+            "suggestion_decided_at": "ALTER TABLE reports ADD COLUMN suggestion_decided_at TEXT",
         }
         for column, statement in migrations.items():
             if column not in columns:
@@ -293,6 +297,42 @@ class Handler(BaseHTTPRequestHandler):
         self.send_json(404, {"error": "Not found"})
 
     def do_POST(self):
+        if self.path == "/admin/suggestion-status":
+            if not admin_authorized(self.headers):
+                self.send_json(401, {"error": "Unauthorized"})
+                return
+            try:
+                length = int(self.headers.get("Content-Length", "0"))
+                if length <= 0 or length > MAX_BODY_BYTES:
+                    raise ValueError("bad length")
+                payload = json.loads(self.rfile.read(length))
+            except Exception:
+                self.send_json(400, {"error": "Invalid JSON"})
+                return
+            report_id = payload.get("id")
+            suggestion_status = payload.get("suggestion_status")
+            if not isinstance(report_id, str) or suggestion_status not in {"pending", "approved", "manual", "rejected"}:
+                self.send_json(422, {"error": "Invalid id or suggestion_status"})
+                return
+            decided_at = None if suggestion_status == "pending" else datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+            try:
+                with connect() as connection:
+                    cursor = connection.execute(
+                        "UPDATE reports SET suggestion_status = ?, suggestion_decided_at = ? WHERE id = ?",
+                        (suggestion_status, decided_at, report_id),
+                    )
+                    if cursor.rowcount != 1:
+                        self.send_json(404, {"error": "Report not found"})
+                        return
+                self.send_json(200, {
+                    "id": report_id,
+                    "suggestion_status": suggestion_status,
+                    "suggestion_decided_at": decided_at,
+                })
+            except sqlite3.Error:
+                self.send_json(500, {"error": "Could not update suggestion status"})
+            return
+
         if self.path == "/admin/report-status":
             if not admin_authorized(self.headers):
                 self.send_json(401, {"error": "Unauthorized"})
