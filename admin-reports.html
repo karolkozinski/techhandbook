@@ -9,120 +9,107 @@
     :root{font-family:Inter,system-ui,sans-serif;color-scheme:dark}
     body{margin:0;background:#111316;color:#eef1f4}
     main{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:20px}
-    h1{font-size:1.4rem;margin:0}
-    button,select{font:inherit}
-    button{cursor:pointer}
-    .controls{display:flex;gap:8px;align-items:center}
+    header{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap}
+    h1{font-size:1.4rem;margin:0} button,select{font:inherit} button{cursor:pointer}
+    .controls,.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
     select,.btn{background:#1d2127;color:#eef1f4;border:1px solid #303640;border-radius:8px;padding:8px 10px}
     .status{color:#a5acb5;font-size:.85rem;margin:10px 0 18px}
     .report{border:1px solid #303640;background:#171a1f;border-radius:12px;padding:16px;margin:12px 0}
-    .meta{display:flex;flex-wrap:wrap;gap:8px 14px;color:#a5acb5;font-size:.8rem}
-    .snapshot{white-space:pre-wrap;background:#0b0d10;border:1px solid #303640;border-radius:8px;padding:12px;margin:12px 0}
-    .analysis{background:#1d2127;border-radius:8px;padding:12px;margin-top:10px}
-    .actions{display:flex;gap:8px;margin-top:12px}
-    .danger{border-color:#6f3b3b}
-    .ok{border-color:#3c6848}
+    .meta{display:flex;flex-wrap:wrap;gap:8px 14px;color:#a5acb5;font-size:.8rem;margin-bottom:6px}
+    .label{color:#a5acb5;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:14px 0 6px}
+    .snapshot,.analysis-box,.manual-box{white-space:pre-wrap;background:#0b0d10;border:1px solid #303640;border-radius:8px;padding:12px}
+    .analysis-box{background:#1d2127}
+    .manual-box{margin-top:10px}
+    .danger{border-color:#6f3b3b}.ok{border-color:#3c6848}.manual{border-color:#6b5b2f}
     code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    @media(max-width:650px){main{padding:14px}.controls{width:100%}.controls select,.controls button{flex:1}}
   </style>
 </head>
 <body>
 <main>
   <header>
-    <h1>Tech Handbook — zgłoszenia</h1>
+    <h1 id="title"></h1>
     <div class="controls">
+      <select id="lang"><option value="pl">PL</option><option value="en">EN</option></select>
       <select id="status"><option value="open">open</option><option value="resolved">resolved</option><option value="dismissed">dismissed</option><option value="all">all</option></select>
-      <button id="refresh" class="btn">Odśwież</button>
+      <button id="refresh" class="btn"></button>
     </div>
   </header>
-  <div id="state" class="status">Autoryzacja…</div>
+  <div id="state" class="status"></div>
   <div id="reports"></div>
 </main>
 <script>
 (() => {
-  let token = "";
-  const state = document.getElementById("state");
-  const reports = document.getElementById("reports");
-  const status = document.getElementById("status");
+  const T = {
+    pl:{title:"Tech Handbook — zgłoszenia",refresh:"Odśwież",auth:"Autoryzacja…",loading:"Ładowanie…",noToken:"Brak tokena admina.",denied:"Brak dostępu",count:n=>n+" zgłoszeń",reason:"Powód",current:"Obecny fragment",analysis:"Analiza Lumy",suggestion:"Proponowana poprawka",confidence:"Pewność",external:"Wymaga zewnętrznej weryfikacji",approve:"Zatwierdź poprawkę",manual:"Przekaż do ręcznego rozwiązania",rejectSuggestion:"Odrzuć sugestię",dismiss:"Odrzuć zgłoszenie",resolved:"Oznacz jako rozwiązane",copy:"Kopiuj prompt do czatu",copied:"Skopiowano",analysisError:"Błąd analizy",noAnalysis:"Brak analizy",suggestionState:"Decyzja",status:"Status"},
+    en:{title:"Tech Handbook — reports",refresh:"Refresh",auth:"Authorizing…",loading:"Loading…",noToken:"Missing admin token.",denied:"Access denied",count:n=>n+" reports",reason:"Reason",current:"Current fragment",analysis:"Luma analysis",suggestion:"Suggested correction",confidence:"Confidence",external:"Requires external verification",approve:"Approve correction",manual:"Send to manual resolution",rejectSuggestion:"Reject suggestion",dismiss:"Dismiss report",resolved:"Mark resolved",copy:"Copy chat prompt",copied:"Copied",analysisError:"Analysis error",noAnalysis:"No analysis",suggestionState:"Decision",status:"Status"}
+  };
+  let token="", lang="pl";
+  const $=id=>document.getElementById(id), state=$("state"), reports=$("reports"), status=$("status"), langSel=$("lang");
+  const tr=k=>T[lang][k];
 
-  function captureToken() {
-    const m = location.hash.match(/^#admin=(.+)$/);
-    if (!m) return false;
-    try { token = decodeURIComponent(m[1]); } catch { token = m[1]; }
-    history.replaceState(null, "", location.pathname + location.search);
-    return true;
+  function captureToken(){const m=location.hash.match(/^#admin=(.+)$/);if(!m)return false;try{token=decodeURIComponent(m[1])}catch{token=m[1]}history.replaceState(null,"",location.pathname+location.search);return true}
+  async function api(path,options={}){const headers={...(options.headers||{}),Authorization:"Bearer "+token};const r=await fetch(path,{...options,headers,cache:"no-store"});const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||("HTTP "+r.status));return data}
+  function el(tag,text,className){const n=document.createElement(tag);if(className)n.className=className;if(text!==undefined)n.textContent=text;return n}
+  function add(parent,child){parent.appendChild(child);return child}
+  function label(parent,text){add(parent,el("div",text,"label"))}
+
+  function parseAnalysis(r){
+    if(!r.analysis_result)return null;
+    try{return JSON.parse(r.analysis_result)}catch{return null}
   }
 
-  function esc(v="") {
-    return String(v).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  function manualPrompt(r,a){
+    const intro=lang==="pl"
+      ? "Przejrzyj zgłoszenie TechHandbook "+r.id+". Luma nie daje mi poprawki, którą chcę zatwierdzić. Sprawdź aktualny artykuł i zaproponuj właściwe rozwiązanie."
+      : "Review TechHandbook report "+r.id+". I do not want to approve Luma's suggestion. Check the current article and propose the correct resolution.";
+    return [intro,"",r.route+"#"+r.section_id,"reason: "+r.reason,"target: "+r.target_type+"["+r.block_index+"]","",tr("current")+":",r.text_snapshot,"",tr("analysis")+":",a?.summary||r.analysis_error||tr("noAnalysis"),"",tr("suggestion")+":",a?.suggested_fix||"-"].join("\n");
   }
 
-  async function api(path, options={}) {
-    const headers = {...(options.headers || {}), Authorization: "Bearer " + token};
-    const r = await fetch(path, {...options, headers, cache:"no-store"});
-    const data = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(data.error || ("HTTP " + r.status));
-    return data;
-  }
+  async function setSuggestion(id,next){await api("/api/admin/suggestion-status",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,suggestion_status:next})});await load()}
+  async function setReport(id,next){await api("/api/admin/report-status",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,status:next})});await load()}
+  async function copyManual(r,a,button){await navigator.clipboard.writeText(manualPrompt(r,a));const old=button.textContent;button.textContent=tr("copied");setTimeout(()=>button.textContent=old,1200)}
 
-  function analysisHtml(r) {
-    if (!r.analysis_status) return "";
-    let body = "";
-    if (r.analysis_result) {
-      try {
-        const a = JSON.parse(r.analysis_result);
-        body = "<strong>" + esc(a.verdict || "") + "</strong> · confidence " + esc(a.confidence ?? "") +
-          "<br>" + esc(a.summary || "") +
-          (a.suggested_fix ? "<br><br><b>Sugestia:</b> " + esc(a.suggested_fix) : "") +
-          (a.needs_external_verification ? "<br><br><b>Wymaga zewnętrznej weryfikacji.</b>" : "");
-      } catch { body = esc(r.analysis_result); }
-    } else if (r.analysis_error) {
-      body = "Błąd analizy: " + esc(r.analysis_error);
-    } else {
-      body = esc(r.analysis_status);
-    }
-    return '<div class="analysis"><b>Luma / analiza:</b><br>' + body + "</div>";
-  }
+  function renderReport(r){
+    const a=parseAnalysis(r), card=el("section",undefined,"report");
+    const m1=add(card,el("div",undefined,"meta"));
+    [r.id,r.article_id,r.language,tr("status")+": "+r.status,tr("reason")+": "+r.reason,tr("suggestionState")+": "+(r.suggestion_status||"pending")].forEach(x=>add(m1,el("span",x)));
+    const m2=add(card,el("div",undefined,"meta"));
+    [r.route+"#"+r.section_id,r.target_type+"["+r.block_index+"]",r.created_at].forEach(x=>add(m2,el("span",x)));
 
-  async function setStatus(id, next) {
-    await api("/api/admin/report-status", {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({id, status:next})
-    });
-    await load();
-  }
+    label(card,tr("current")); add(card,el("div",r.text_snapshot,"snapshot"));
+    label(card,tr("analysis"));
+    const ab=add(card,el("div",undefined,"analysis-box"));
+    if(a){
+      add(ab,el("div",a.verdict||""));
+      add(ab,el("div",tr("confidence")+": "+(a.confidence??"-")));
+      add(ab,el("div",a.summary||""));
+      if(a.needs_external_verification)add(ab,el("div",tr("external")));
+      label(card,tr("suggestion"));
+      add(card,el("div",a.suggested_fix||"-","snapshot"));
+    }else if(r.analysis_error){
+      add(ab,el("div",tr("analysisError")+": "+r.analysis_error));
+    }else add(ab,el("div",tr("noAnalysis")));
 
-  async function load() {
-    state.textContent = "Ładowanie…";
-    reports.innerHTML = "";
-    try {
-      const data = await api("/api/admin/reports?status=" + encodeURIComponent(status.value));
-      state.textContent = data.reports.length + " zgłoszeń";
-      for (const r of data.reports) {
-        const el = document.createElement("section");
-        el.className = "report";
-        el.innerHTML =
-          '<div class="meta"><span><code>'+esc(r.id)+'</code></span><span>'+esc(r.status)+'</span><span>'+esc(r.article_id)+'</span><span>'+esc(r.language)+'</span><span>'+esc(r.reason)+'</span></div>' +
-          '<div class="meta"><span>'+esc(r.route)+'#'+esc(r.section_id)+'</span><span>'+esc(r.target_type)+'['+esc(r.block_index)+']</span><span>'+esc(r.created_at)+'</span></div>' +
-          '<div class="snapshot">'+esc(r.text_snapshot)+'</div>' +
-          analysisHtml(r) +
-          (r.status === "open" ? '<div class="actions"><button class="btn ok" data-action="resolved">Resolved</button><button class="btn danger" data-action="dismissed">Dismissed</button></div>' : '');
-        el.querySelectorAll("[data-action]").forEach(b => b.addEventListener("click", () => setStatus(r.id, b.dataset.action)));
-        reports.appendChild(el);
+    if(r.status==="open"){
+      const actions=add(card,el("div",undefined,"actions"));
+      if(a?.suggested_fix){
+        const b=add(actions,el("button",tr("approve"),"btn ok")); b.onclick=()=>setSuggestion(r.id,"approved");
+        const rej=add(actions,el("button",tr("rejectSuggestion"),"btn")); rej.onclick=()=>setSuggestion(r.id,"rejected");
       }
-    } catch (e) {
-      state.textContent = "Brak dostępu: " + e.message;
+      const man=add(actions,el("button",tr("manual"),"btn manual")); man.onclick=()=>setSuggestion(r.id,"manual");
+      const cp=add(actions,el("button",tr("copy"),"btn")); cp.onclick=()=>copyManual(r,a,cp);
+      const dis=add(actions,el("button",tr("dismiss"),"btn danger")); dis.onclick=()=>setReport(r.id,"dismissed");
+      const res=add(actions,el("button",tr("resolved"),"btn")); res.onclick=()=>setReport(r.id,"resolved");
     }
+    return card;
   }
 
-  if (!captureToken()) {
-    state.textContent = "Brak tokena admina.";
-    return;
-  }
-  document.getElementById("refresh").addEventListener("click", load);
-  status.addEventListener("change", load);
-  load();
+  function applyLanguage(){document.documentElement.lang=lang;$("title").textContent=tr("title");$("refresh").textContent=tr("refresh")}
+  async function load(){state.textContent=tr("loading");reports.replaceChildren();try{const data=await api("/api/admin/reports?status="+encodeURIComponent(status.value));state.textContent=tr("count")(data.reports.length);data.reports.forEach(r=>reports.appendChild(renderReport(r)))}catch(e){state.textContent=tr("denied")+": "+e.message}}
+  if(!captureToken()){applyLanguage();state.textContent=tr("noToken");return}
+  $("refresh").onclick=load; status.onchange=load; langSel.onchange=()=>{lang=langSel.value;applyLanguage();load()};
+  applyLanguage(); state.textContent=tr("auth"); load();
 })();
 </script>
 </body>
