@@ -813,8 +813,13 @@
   }
 
   function restoreScroll(scrollY = 0) {
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: Number(scrollY) || 0, behavior: "auto" });
+    return new Promise(resolve => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: Number(scrollY) || 0, behavior: "auto" });
+          resolve();
+        });
+      });
     });
   }
   const HOME_STANDARD_IDS = ["doc-033", "doc-034", "doc-012", "doc-023", "doc-042", "doc-014"];
@@ -1456,7 +1461,7 @@
       state.currentDir = historyState.directory || "";
       els.search.value = historyState.query || "";
       runSearch(historyState.query || "", { historyMode: "none" });
-      restoreScroll(historyState.scrollY);
+      await restoreScroll(historyState.scrollY);
       return;
     }
 
@@ -1464,7 +1469,7 @@
       const id = historyState.docId;
       if (id === "__readme__") {
         await openReadme({ focusReader: false, historyMode: "none" });
-        restoreScroll(historyState.scrollY);
+        await restoreScroll(historyState.scrollY);
         return;
       }
 
@@ -1483,13 +1488,13 @@
 
         setNavigationContext(context);
         await openDocument(file, null, { focusReader: false, historyMode: "none" });
-        restoreScroll(historyState.scrollY);
+        await restoreScroll(historyState.scrollY);
         return;
       }
     }
 
     navigateDir(historyState.path || "", { historyMode: "none" });
-    restoreScroll(historyState.scrollY);
+    await restoreScroll(historyState.scrollY);
   }
 
   function parseLocationRoute() {
@@ -1640,11 +1645,30 @@
       state.siteConfig = await configRes.json();
 
       const initialRoute = parseLocationRoute();
+      const initialHistoryState = history.state;
       initLanguage(initialRoute);
-      await renderLocationRoute(initialRoute);
+
+      if (initialHistoryState) {
+        restoringHistory = true;
+        try {
+          await restoreHistoryState(initialHistoryState);
+        } finally {
+          requestAnimationFrame(() => {
+            restoringHistory = false;
+          });
+        }
+      } else {
+        await renderLocationRoute(initialRoute);
+      }
 
       requestAnimationFrame(() => {
-        history.replaceState(currentHistoryState(), "", location.href);
+        const nextState = currentHistoryState();
+
+        if (initialHistoryState && Number.isFinite(Number(initialHistoryState.scrollY))) {
+          nextState.scrollY = Number(initialHistoryState.scrollY);
+        }
+
+        history.replaceState(nextState, "", location.href);
       });
     } catch (err) {
       els.browser.innerHTML =
@@ -1764,13 +1788,15 @@
 
   history.scrollRestoration = "manual";
 
+  let restoringHistory = false;
   let scrollSaveQueued = false;
+
   window.addEventListener("scroll", () => {
-    if (scrollSaveQueued || !history.state) return;
+    if (restoringHistory || scrollSaveQueued || !history.state) return;
     scrollSaveQueued = true;
     requestAnimationFrame(() => {
       scrollSaveQueued = false;
-      if (!history.state) return;
+      if (restoringHistory || !history.state) return;
       history.replaceState(
         { ...history.state, scrollY: window.scrollY },
         "",
@@ -1779,8 +1805,17 @@
     });
   }, { passive: true });
 
-  window.addEventListener("popstate", event => {
-    if (state.index) restoreHistoryState(event.state);
+  window.addEventListener("popstate", async event => {
+    if (!state.index) return;
+
+    restoringHistory = true;
+    try {
+      await restoreHistoryState(event.state);
+    } finally {
+      requestAnimationFrame(() => {
+        restoringHistory = false;
+      });
+    }
   });
 
   init();
