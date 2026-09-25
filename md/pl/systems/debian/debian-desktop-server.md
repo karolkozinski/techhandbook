@@ -25,7 +25,7 @@ Debian to stabilna, uniwersalna dystrybucja GNU/Linux używana zarówno na kompu
 
 Tematy rozwijane osobno: [SSH i zdalna administracja](techhandbook:doc-018), [Docker](techhandbook:doc-012), [systemd, cron i schedulery](techhandbook:doc-052) oraz [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025).
 
-# 1. Czym właściwie jest Debian
+## 1. Czym właściwie jest Debian
 
 Debian to dystrybucja GNU/Linux, która stawia przede wszystkim na:
 
@@ -57,11 +57,11 @@ Debian nie próbuje być „najbardziej nowoczesny za wszelką cenę”. Stabiln
 
 ---
 
-# 2. Gałęzie Debiana
+## 2. Gałęzie Debiana
 
 Debian rozwija trzy główne gałęzie.
 
-## stable
+### stable
 
 Wersja produkcyjna.
 
@@ -78,7 +78,7 @@ To najlepszy wybór dla:
 - laptopa do pracy,
 - środowiska, które ma po prostu działać.
 
-## testing
+### testing
 
 Pakiety, które mają trafić do następnego stable.
 
@@ -94,7 +94,7 @@ Wady:
 - czasem zależności są przez kilka dni niespójne,
 - gorszy wybór na serwer produkcyjny.
 
-## unstable / Sid
+### unstable / Sid
 
 Gałąź rozwojowa.
 
@@ -104,7 +104,7 @@ Na serwer produkcyjny - zwykle nie.
 
 ---
 
-# 3. Jak zbudowany jest system
+## 3. Jak zbudowany jest system
 
 W dużym uproszczeniu:
 
@@ -141,11 +141,11 @@ Najważniejszy podział mentalny:
 
 ---
 
-# 4. Najważniejsze katalogi
+## 4. Najważniejsze katalogi
 
 Hierarchia katalogów jest jedną z rzeczy, które trzeba rozumieć.
 
-## `/`
+### `/`
 
 Korzeń całego systemu.
 
@@ -155,7 +155,7 @@ Wszystkie dyski i systemy plików są montowane gdzieś pod `/`.
 
 ---
 
-## `/home`
+### `/home`
 
 Katalogi użytkowników.
 
@@ -186,7 +186,7 @@ Ukryte pliki zaczynają się od kropki:
 
 ---
 
-## `/root`
+### `/root`
 
 Katalog domowy użytkownika `root`.
 
@@ -194,7 +194,7 @@ To nie jest to samo co `/`.
 
 ---
 
-## `/etc`
+### `/etc`
 
 Konfiguracja systemu.
 
@@ -224,7 +224,7 @@ bardzo często odpowiedź brzmi:
 
 ---
 
-## `/var`
+### `/var`
 
 Dane zmienne.
 
@@ -247,7 +247,7 @@ Typowe zastosowania:
 
 ---
 
-## `/usr`
+### `/usr`
 
 Programy i biblioteki dostarczane przez system.
 
@@ -262,13 +262,13 @@ Przykłady:
 
 ---
 
-## `/bin`, `/sbin`, `/lib`
+### `/bin`, `/sbin`, `/lib`
 
 W nowoczesnym Debianie są zwykle powiązane z odpowiednimi katalogami w `/usr`.
 
 ---
 
-## `/tmp`
+### `/tmp`
 
 Pliki tymczasowe.
 
@@ -276,7 +276,7 @@ Ich zawartość może zniknąć przy restarcie.
 
 ---
 
-## `/run`
+### `/run`
 
 Dane bieżącego uruchomienia systemu.
 
@@ -290,7 +290,7 @@ Po restarcie zawartość jest odtwarzana.
 
 ---
 
-## `/mnt`
+### `/mnt`
 
 Tradycyjne miejsce do ręcznego montowania systemów plików.
 
@@ -302,19 +302,19 @@ sudo mount /dev/sdb1 /mnt
 
 ---
 
-## `/media`
+### `/media`
 
 Często wykorzystywany przez środowiska desktopowe do automatycznego montowania pendrive'ów i dysków USB.
 
 ---
 
-## `/opt`
+### `/opt`
 
 Dodatkowe oprogramowanie instalowane poza typowym systemem pakietów.
 
 ---
 
-# 5. Użytkownicy i uprawnienia
+## 5. Użytkownicy i uprawnienia
 
 Linux jest od początku systemem wieloużytkownikowym.
 
@@ -346,7 +346,7 @@ r--   pozostali
 
 ---
 
-# 6. root i sudo
+## 6. root i sudo
 
 `root` jest administratorem systemu.
 
@@ -380,9 +380,9 @@ exit
 
 ---
 
-# 7. chmod, chown i grupy
+## 7. chmod, chown i grupy
 
-## zmiana właściciela
+### zmiana właściciela
 
 ```bash
 sudo chown user:user plik
@@ -396,7 +396,7 @@ sudo chown -R user:user katalog
 
 ---
 
-## zmiana praw
+### zmiana praw
 
 ```bash
 chmod 644 plik
@@ -419,7 +419,7 @@ chmod 600 ~/.ssh/id_ed25519
 
 ---
 
-## dodanie użytkownika do grupy
+### dodanie użytkownika do grupy
 
 ```bash
 sudo usermod -aG docker user
@@ -435,7 +435,7 @@ groups
 
 ---
 
-# 8. Zarządzanie pakietami - APT
+## 8. Zarządzanie pakietami - APT
 
 To jeden z fundamentów Debiana.
 
@@ -449,7 +449,7 @@ APT zarządza:
 
 ---
 
-# 9. Aktualizacja systemu
+## 9. Aktualizacja systemu
 
 Najważniejszy duet:
 
@@ -482,7 +482,7 @@ sudo apt upgrade
 
 ---
 
-# 10. Instalowanie pakietów
+## 10. Instalowanie pakietów
 
 ```bash
 sudo apt install nazwa
@@ -502,7 +502,7 @@ sudo apt install vim git curl wget htop
 
 ---
 
-# 11. Usuwanie pakietów
+## 11. Usuwanie pakietów
 
 Usunięcie programu:
 
@@ -524,7 +524,7 @@ sudo apt autoremove
 
 ---
 
-# 12. Szukanie pakietów
+## 12. Szukanie pakietów
 
 ```bash
 apt search nginx
@@ -544,7 +544,7 @@ dpkg -l | grep nginx
 
 ---
 
-# 13. dpkg
+## 13. dpkg
 
 APT działa wyżej. `dpkg` jest narzędziem niższego poziomu.
 
@@ -564,7 +564,7 @@ APT potrafi wtedy automatycznie dociągnąć zależności.
 
 ---
 
-# 14. Repozytoria APT
+## 14. Repozytoria APT
 
 Konfiguracja znajduje się głównie w:
 
@@ -586,23 +586,23 @@ sudo apt update
 
 ---
 
-# 15. main, contrib, non-free, non-free-firmware
+## 15. main, contrib, non-free, non-free-firmware
 
 Repozytoria mogą zawierać różne sekcje.
 
-## main
+### main
 
 Wolne oprogramowanie spełniające zasady Debiana.
 
-## contrib
+### contrib
 
 Wolne oprogramowanie zależne od elementów spoza `main`.
 
-## non-free
+### non-free
 
 Pakiety niewolne.
 
-## non-free-firmware
+### non-free-firmware
 
 Firmware potrzebny np. do:
 
@@ -615,7 +615,7 @@ Na współczesnym desktopie sekcja firmware jest często niezbędna.
 
 ---
 
-# 16. Flatpak
+## 16. Flatpak
 
 Na desktopie warto znać Flatpaka.
 
@@ -659,11 +659,11 @@ Flatpak jest dobry dla aplikacji desktopowych, które chcemy mieć nowsze niż w
 
 ---
 
-# 17. Co instalować przez APT, a co przez Flatpak
+## 17. Co instalować przez APT, a co przez Flatpak
 
 Dobra reguła:
 
-## APT
+### APT
 
 Używaj dla:
 
@@ -687,7 +687,7 @@ curl
 gcc
 ```
 
-## Flatpak
+### Flatpak
 
 Dobrze pasuje do:
 
@@ -698,7 +698,7 @@ Dobrze pasuje do:
 
 ---
 
-# 18. Debian jako desktop
+## 18. Debian jako desktop
 
 Desktop Linux składa się z kilku warstw.
 
@@ -718,7 +718,7 @@ aplikacje
 
 ---
 
-# 19. GNOME
+## 19. GNOME
 
 GNOME stawia na:
 
@@ -744,7 +744,7 @@ gdm3
 
 ---
 
-# 20. KDE Plasma
+## 20. KDE Plasma
 
 KDE Plasma jest bardziej konfigurowalne.
 
@@ -773,7 +773,7 @@ sddm
 
 ---
 
-# 21. GNOME kontra KDE
+## 21. GNOME kontra KDE
 
 W uproszczeniu:
 
@@ -793,7 +793,7 @@ Nie istnieje techniczny powód, by Debian „musiał” używać jednego z nich.
 
 ---
 
-# 22. Można mieć GNOME i KDE jednocześnie
+## 22. Można mieć GNOME i KDE jednocześnie
 
 Tak.
 
@@ -813,7 +813,7 @@ Na głównym systemie wygodniej zwykle wybrać jedno.
 
 ---
 
-# 23. Wayland i X11
+## 23. Wayland i X11
 
 Współczesny Debian preferuje Wayland.
 
@@ -853,7 +853,7 @@ x11
 
 ---
 
-# 24. Display manager
+## 24. Display manager
 
 Display manager pokazuje ekran logowania.
 
@@ -891,7 +891,7 @@ UWAGA: zakończy to aktywną sesję graficzną.
 
 ---
 
-# 25. NetworkManager
+## 25. NetworkManager
 
 Na desktopie Debian zwykle korzysta z NetworkManagera.
 
@@ -938,7 +938,7 @@ nmcli device wifi connect "SSID" password "HASLO"
 
 ---
 
-# 26. Sprawdzanie adresów IP
+## 26. Sprawdzanie adresów IP
 
 Nowoczesne narzędzie:
 
@@ -968,7 +968,7 @@ oznacza bramę domyślną.
 
 ---
 
-# 27. Interfejsy sieciowe
+## 27. Interfejsy sieciowe
 
 Nazwy typu:
 
@@ -988,7 +988,7 @@ wl...  Wi-Fi
 
 ---
 
-# 28. DNS
+## 28. DNS
 
 Sprawdzenie resolvera:
 
@@ -1010,7 +1010,7 @@ W systemie desktopowym DNS-em zazwyczaj zarządza NetworkManager.
 
 ---
 
-# 29. Testowanie sieci
+## 29. Testowanie sieci
 
 Czy działa IP:
 
@@ -1040,7 +1040,7 @@ nie działa, problem najprawdopodobniej dotyczy DNS.
 
 ---
 
-# 30. curl i wget
+## 30. curl i wget
 
 Pobranie strony:
 
@@ -1062,7 +1062,7 @@ wget https://example.com/file.zip
 
 ---
 
-# 31. Audio - PipeWire
+## 31. Audio - PipeWire
 
 Współczesny Debian korzysta przede wszystkim z PipeWire.
 
@@ -1088,7 +1088,7 @@ systemctl --user status wireplumber
 
 ---
 
-# 32. Bluetooth
+## 32. Bluetooth
 
 Typowa usługa:
 
@@ -1110,7 +1110,7 @@ bluetoothctl
 
 ---
 
-# 33. Sterowniki i firmware
+## 33. Sterowniki i firmware
 
 Linux posiada ogromną część sterowników w jądrze.
 
@@ -1138,7 +1138,7 @@ dmesg
 
 ---
 
-# 34. NVIDIA
+## 34. NVIDIA
 
 NVIDIA jest szczególnym przypadkiem.
 
@@ -1163,7 +1163,7 @@ apt search nvidia-driver
 
 ---
 
-# 35. Intel i AMD
+## 35. Intel i AMD
 
 Dla większości współczesnych układów Intel i AMD sterownik graficzny znajduje się bezpośrednio w:
 
@@ -1174,7 +1174,7 @@ Zwykle nic nie trzeba instalować ręcznie.
 
 ---
 
-# 36. Laptop - bateria i energia
+## 36. Laptop - bateria i energia
 
 Stan baterii:
 
@@ -1192,7 +1192,7 @@ Nie każdy laptop nazywa baterię `BAT0`.
 
 ---
 
-# 37. Uśpienie
+## 37. Uśpienie
 
 Polecenie:
 
@@ -1214,7 +1214,7 @@ Dostępność hibernacji zależy m.in. od:
 
 ---
 
-# 38. Drukarki
+## 38. Drukarki
 
 Linux wykorzystuje CUPS.
 
@@ -1238,7 +1238,7 @@ sudo apt install cups
 
 ---
 
-# 39. Systemd - serce uruchamiania usług
+## 39. Systemd - serce uruchamiania usług
 
 Debian używa systemd.
 
@@ -1269,7 +1269,7 @@ Najczęściej spotkasz:
 
 ---
 
-# 40. systemctl
+## 40. systemctl
 
 Status usługi:
 
@@ -1303,7 +1303,7 @@ sudo systemctl reload nginx
 
 ---
 
-# 41. Włączanie przy starcie
+## 41. Włączanie przy starcie
 
 ```bash
 sudo systemctl enable nginx
@@ -1325,7 +1325,7 @@ To bardzo przydatna konstrukcja.
 
 ---
 
-# 42. Czy usługa działa
+## 42. Czy usługa działa
 
 ```bash
 systemctl is-active nginx
@@ -1339,7 +1339,7 @@ systemctl is-enabled nginx
 
 ---
 
-# 43. Lista działających usług
+## 43. Lista działających usług
 
 ```bash
 systemctl --type=service --state=running
@@ -1353,7 +1353,7 @@ systemctl --type=service
 
 ---
 
-# 44. Usługi użytkownika
+## 44. Usługi użytkownika
 
 Systemd działa także dla zwykłego użytkownika.
 
@@ -1371,7 +1371,7 @@ Własne jednostki użytkownika można umieszczać w:
 
 ---
 
-# 45. Logi - journalctl
+## 45. Logi - journalctl
 
 Jedno z najważniejszych narzędzi administratora.
 
@@ -1395,7 +1395,7 @@ journalctl -b -1
 
 ---
 
-# 46. Log konkretnej usługi
+## 46. Log konkretnej usługi
 
 ```bash
 journalctl -u nginx
@@ -1423,7 +1423,7 @@ dla journald.
 
 ---
 
-# 47. Logi kernela
+## 47. Logi kernela
 
 ```bash
 journalctl -k
@@ -1447,7 +1447,7 @@ warto zacząć właśnie tutaj.
 
 ---
 
-# 48. Procesy
+## 48. Procesy
 
 Klasyczne:
 
@@ -1475,7 +1475,7 @@ sudo apt install htop
 
 ---
 
-# 49. PID
+## 49. PID
 
 Każdy proces ma numer:
 
@@ -1505,7 +1505,7 @@ kill -9 PID
 
 ---
 
-# 50. pkill i killall
+## 50. pkill i killall
 
 Po nazwie:
 
@@ -1521,7 +1521,7 @@ killall firefox
 
 ---
 
-# 51. Pamięć RAM
+## 51. Pamięć RAM
 
 ```bash
 free -h
@@ -1540,7 +1540,7 @@ Duża wartość „used” nie oznacza automatycznie problemu.
 
 ---
 
-# 52. CPU i load average
+## 52. CPU i load average
 
 ```bash
 uptime
@@ -1562,7 +1562,7 @@ Na maszynie 4-rdzeniowej load `4.0` oznacza mniej więcej pełne wykorzystanie m
 
 ---
 
-# 53. Dyski
+## 53. Dyski
 
 Lista urządzeń:
 
@@ -1596,7 +1596,7 @@ du -h --max-depth=1 /var | sort -h
 
 ---
 
-# 54. Montowanie dysków
+## 54. Montowanie dysków
 
 Przykład:
 
@@ -1624,7 +1624,7 @@ umount
 
 ---
 
-# 55. `/etc/fstab`
+## 55. `/etc/fstab`
 
 Definiuje systemy plików montowane podczas startu.
 
@@ -1650,7 +1650,7 @@ Jeżeli polecenie nie zgłasza błędu, konfiguracja zwykle jest poprawna.
 
 ---
 
-# 56. ext4
+## 56. ext4
 
 Domyślny, konserwatywny wybór.
 
@@ -1663,7 +1663,7 @@ Zalety:
 
 ---
 
-# 57. Btrfs
+## 57. Btrfs
 
 Posiada m.in.:
 
@@ -1675,7 +1675,7 @@ Na desktopie może być ciekawy, ale wymaga trochę większej wiedzy.
 
 ---
 
-# 58. ZFS
+## 58. ZFS
 
 Nie jest częścią głównego kernela Linux.
 
@@ -1691,7 +1691,7 @@ Na zwykłym laptopie zwykle nie jest potrzebny.
 
 ---
 
-# 59. SMART
+## 59. SMART
 
 Stan dysku:
 
@@ -1713,7 +1713,7 @@ sudo smartctl -a /dev/nvme0
 
 ---
 
-# 60. Debian jako serwer
+## 60. Debian jako serwer
 
 Serwer Debiana może działać bez GUI.
 
@@ -1737,7 +1737,7 @@ Brak GNOME/KDE:
 
 ---
 
-# 61. Instalacja SSH
+## 61. Instalacja SSH
 
 ```bash
 sudo apt install openssh-server
@@ -1757,7 +1757,7 @@ sudo systemctl enable --now ssh
 
 ---
 
-# 62. Łączenie przez SSH
+## 62. Łączenie przez SSH
 
 ```bash
 ssh user@192.168.1.20
@@ -1771,7 +1771,7 @@ ssh -p 2222 user@server
 
 ---
 
-# 63. Klucze SSH
+## 63. Klucze SSH
 
 Generowanie:
 
@@ -1804,7 +1804,7 @@ można kopiować na serwery.
 
 ---
 
-# 64. ssh-copy-id
+## 64. ssh-copy-id
 
 Najprostsze kopiowanie klucza:
 
@@ -1822,7 +1822,7 @@ może działać bez hasła.
 
 ---
 
-# 65. authorized_keys
+## 65. authorized_keys
 
 Serwer przechowuje zaakceptowane klucze w:
 
@@ -1839,7 +1839,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 ---
 
-# 66. Konfiguracja klienta SSH
+## 66. Konfiguracja klienta SSH
 
 Plik:
 
@@ -1865,7 +1865,7 @@ ssh moj-vps
 
 ---
 
-# 67. Konfiguracja sshd
+## 67. Konfiguracja sshd
 
 Serwer:
 
@@ -1889,7 +1889,7 @@ Nigdy nie zamykaj aktywnej sesji SSH przed sprawdzeniem, czy nowe ustawienia rze
 
 ---
 
-# 68. Wyłączenie logowania root przez SSH
+## 68. Wyłączenie logowania root przez SSH
 
 Typowe bezpieczne ustawienie:
 
@@ -1901,7 +1901,7 @@ Administrację wykonujemy przez zwykłego użytkownika + `sudo`.
 
 ---
 
-# 69. Logowanie tylko kluczem
+## 69. Logowanie tylko kluczem
 
 Po upewnieniu się, że klucz działa:
 
@@ -1920,7 +1920,7 @@ Zawsze sprawdź nowe połączenie w drugim terminalu przed zamknięciem obecnej 
 
 ---
 
-# 70. SCP
+## 70. SCP
 
 Kopiowanie plików przez SSH.
 
@@ -1944,7 +1944,7 @@ scp -r katalog user@server:/home/user/
 
 ---
 
-# 71. rsync
+## 71. rsync
 
 Lepszy do synchronizacji.
 
@@ -1962,7 +1962,7 @@ Przy dużych transferach `rsync` jest niezwykle przydatny, ponieważ kopiuje tyl
 
 ---
 
-# 72. Porty
+## 72. Porty
 
 Usługi sieciowe słuchają na portach.
 
@@ -1980,7 +1980,7 @@ Typowe:
 
 ---
 
-# 73. Co słucha na serwerze
+## 73. Co słucha na serwerze
 
 ```bash
 ss -tulpn
@@ -1997,7 +1997,7 @@ Można zobaczyć:
 
 ---
 
-# 74. localhost
+## 74. localhost
 
 Adres:
 
@@ -2027,7 +2027,7 @@ To dobre rozwiązanie np. dla:
 
 ---
 
-# 75. 0.0.0.0
+## 75. 0.0.0.0
 
 Jeżeli aplikacja słucha na:
 
@@ -2041,7 +2041,7 @@ Może być dostępna z sieci, jeśli firewall tego nie blokuje.
 
 ---
 
-# 76. nftables - firewall
+## 76. nftables - firewall
 
 Debian używa nowoczesnego nftables.
 
@@ -2071,7 +2071,7 @@ sudo nft list ruleset
 
 ---
 
-# 77. Minimalna idea firewalla
+## 77. Minimalna idea firewalla
 
 Dla publicznego VPS najczęściej chcesz:
 
@@ -2086,7 +2086,7 @@ Nie kopiuj bezmyślnie reguł firewalla na zdalny serwer - błędna reguła moż
 
 ---
 
-# 78. UFW
+## 78. UFW
 
 Jeżeli chcesz prostszą warstwę nad firewallem:
 
@@ -2113,7 +2113,7 @@ UFW jest prostszy. nftables daje większą kontrolę.
 
 ---
 
-# 79. fail2ban
+## 79. fail2ban
 
 Może czasowo blokować adresy wykonujące wiele błędnych prób logowania.
 
@@ -2135,7 +2135,7 @@ Nie zastępuje:
 
 ---
 
-# 80. Nginx
+## 80. Nginx
 
 Popularny serwer WWW i reverse proxy.
 
@@ -2159,7 +2159,7 @@ curl http://localhost
 
 ---
 
-# 81. Konfiguracja Nginx
+## 81. Konfiguracja Nginx
 
 Główne miejsca:
 
@@ -2179,7 +2179,7 @@ sites-enabled
 
 ---
 
-# 82. Test konfiguracji Nginx
+## 82. Test konfiguracji Nginx
 
 Zawsze przed restartem:
 
@@ -2197,7 +2197,7 @@ To bardzo dobry nawyk administracyjny.
 
 ---
 
-# 83. Reverse proxy
+## 83. Reverse proxy
 
 Załóżmy, że aplikacja Go działa na:
 
@@ -2225,7 +2225,7 @@ Dzięki temu aplikacja:
 
 ---
 
-# 84. Certbot i HTTPS
+## 84. Certbot i HTTPS
 
 Let's Encrypt pozwala uzyskać darmowe certyfikaty TLS.
 
@@ -2245,7 +2245,7 @@ Certbot może też skonfigurować automatyczne odnawianie.
 
 ---
 
-# 85. Własna aplikacja jako usługa systemd
+## 85. Własna aplikacja jako usługa systemd
 
 Załóżmy:
 
@@ -2299,7 +2299,7 @@ To jest jeden z najważniejszych wzorców administracji serwerem.
 
 ---
 
-# 86. `/usr/local/bin`
+## 86. `/usr/local/bin`
 
 Dobre miejsce dla własnych skryptów i programów administratora.
 
@@ -2327,7 +2327,7 @@ z dowolnego katalogu.
 
 ---
 
-# 87. PATH
+## 87. PATH
 
 Sprawdzenie:
 
@@ -2345,7 +2345,7 @@ Shell szuka poleceń właśnie w tych katalogach.
 
 ---
 
-# 88. which i command -v
+## 88. which i command -v
 
 Sprawdzenie, jaki program zostanie uruchomiony:
 
@@ -2367,7 +2367,7 @@ command -v
 
 ---
 
-# 89. Cron
+## 89. Cron
 
 Klasyczny harmonogram.
 
@@ -2387,7 +2387,7 @@ Uruchamia codziennie o 07:30.
 
 ---
 
-# 90. Timery systemd
+## 90. Timery systemd
 
 Nowocześniejsza alternatywa dla crona.
 
@@ -2413,7 +2413,7 @@ systemctl list-timers
 
 ---
 
-# 91. Aktualizacje bezpieczeństwa
+## 91. Aktualizacje bezpieczeństwa
 
 Regularnie:
 
@@ -2442,7 +2442,7 @@ Na serwerze warto świadomie zdecydować, czy:
 
 ---
 
-# 92. Sprawdzanie wersji Debiana
+## 92. Sprawdzanie wersji Debiana
 
 ```bash
 cat /etc/debian_version
@@ -2468,7 +2468,7 @@ uname -m
 
 ---
 
-# 93. Hostname
+## 93. Hostname
 
 Sprawdzenie:
 
@@ -2490,7 +2490,7 @@ sudo hostnamectl set-hostname moj-serwer
 
 ---
 
-# 94. Czas i strefa czasowa
+## 94. Czas i strefa czasowa
 
 ```bash
 timedatectl
@@ -2510,7 +2510,7 @@ timedatectl list-timezones
 
 ---
 
-# 95. Synchronizacja czasu
+## 95. Synchronizacja czasu
 
 System zwykle synchronizuje czas automatycznie.
 
@@ -2531,7 +2531,7 @@ Prawidłowy czas jest bardzo ważny dla:
 
 ---
 
-# 96. `hostname`, `/etc/hosts` i DNS
+## 96. `hostname`, `/etc/hosts` i DNS
 
 Przykład `/etc/hosts`:
 
@@ -2544,7 +2544,7 @@ Przykład `/etc/hosts`:
 
 ---
 
-# 97. Archiwa
+## 97. Archiwa
 
 tar:
 
@@ -2572,7 +2572,7 @@ tar -xzvf archiwum.tar.gz
 
 ---
 
-# 98. zip
+## 98. zip
 
 ```bash
 zip -r archiwum.zip katalog/
@@ -2586,7 +2586,7 @@ unzip archiwum.zip
 
 ---
 
-# 99. `find`
+## 99. `find`
 
 Szukanie plików:
 
@@ -2608,7 +2608,7 @@ find / -type f -size +1G 2>/dev/null
 
 ---
 
-# 100. grep
+## 100. grep
 
 Szukanie tekstu:
 
@@ -2630,7 +2630,7 @@ grep -R "listen" /etc/nginx
 
 ---
 
-# 101. less
+## 101. less
 
 Czytanie dużych plików:
 
@@ -2650,7 +2650,7 @@ G       koniec
 
 ---
 
-# 102. tail
+## 102. tail
 
 Ostatnie linie:
 
@@ -2666,7 +2666,7 @@ tail -f /var/log/plik.log
 
 ---
 
-# 103. head
+## 103. head
 
 Pierwsze linie:
 
@@ -2682,7 +2682,7 @@ head -n 20 plik
 
 ---
 
-# 104. Potoki
+## 104. Potoki
 
 Jedna z najważniejszych cech shella.
 
@@ -2700,7 +2700,7 @@ Wynik pierwszego polecenia trafia do drugiego.
 
 ---
 
-# 105. Przekierowania
+## 105. Przekierowania
 
 Do pliku:
 
@@ -2728,7 +2728,7 @@ polecenie > wszystko.txt 2>&1
 
 ---
 
-# 106. `tee`
+## 106. `tee`
 
 Zapisuje wynik i jednocześnie pokazuje go na ekranie.
 
@@ -2750,7 +2750,7 @@ echo "tekst" | sudo tee /etc/jakis-plik
 
 ---
 
-# 107. Edytory
+## 107. Edytory
 
 Na serwerze warto znać przynajmniej jeden edytor terminalowy.
 
@@ -2769,7 +2769,7 @@ Dla sprawnego administratora Vim jest bardzo praktycznym wyborem.
 
 ---
 
-# 108. Konfiguracja użytkownika shella
+## 108. Konfiguracja użytkownika shella
 
 Najczęściej Bash.
 
@@ -2788,7 +2788,7 @@ source ~/.bashrc
 
 ---
 
-# 109. Aliasy
+## 109. Aliasy
 
 Przykład:
 
@@ -2806,7 +2806,7 @@ będzie dostępny w nowych sesjach.
 
 ---
 
-# 110. Zmienne środowiskowe
+## 110. Zmienne środowiskowe
 
 Przykład:
 
@@ -2824,7 +2824,7 @@ Nie zapisuj sekretów bezmyślnie w `.bashrc`.
 
 ---
 
-# 111. `sudoedit`
+## 111. `sudoedit`
 
 Bezpieczny sposób edytowania pliku root.
 
@@ -2836,11 +2836,11 @@ Edytor działa jako zwykły użytkownik, a zapis do chronionego pliku obsługuje
 
 ---
 
-# 112. Diagnostyka - metoda krok po kroku
+## 112. Diagnostyka - metoda krok po kroku
 
 Zamiast losowo wpisywać komendy, stosuj schemat.
 
-## 1. Co dokładnie nie działa?
+### 1. Co dokładnie nie działa?
 
 Np.:
 
@@ -2848,43 +2848,43 @@ Np.:
 strona nie odpowiada
 ```
 
-## 2. Czy proces działa?
+### 2. Czy proces działa?
 
 ```bash
 systemctl status nginx
 ```
 
-## 3. Co mówią logi?
+### 3. Co mówią logi?
 
 ```bash
 journalctl -u nginx -n 100
 ```
 
-## 4. Czy usługa słucha?
+### 4. Czy usługa słucha?
 
 ```bash
 ss -tulpn
 ```
 
-## 5. Czy działa lokalnie?
+### 5. Czy działa lokalnie?
 
 ```bash
 curl http://127.0.0.1
 ```
 
-## 6. Czy działa przez właściwy adres?
+### 6. Czy działa przez właściwy adres?
 
 ```bash
 curl http://IP_SERWERA
 ```
 
-## 7. Czy firewall pozwala?
+### 7. Czy firewall pozwala?
 
 ```bash
 sudo nft list ruleset
 ```
 
-## 8. Czy DNS wskazuje właściwy adres?
+### 8. Czy DNS wskazuje właściwy adres?
 
 ```bash
 dig example.com
@@ -2894,7 +2894,7 @@ To podejście jest dużo skuteczniejsze niż „restart wszystkiego”.
 
 ---
 
-# 113. Gdy system długo startuje
+## 113. Gdy system długo startuje
 
 ```bash
 systemd-analyze
@@ -2914,7 +2914,7 @@ systemd-analyze critical-chain
 
 ---
 
-# 114. Gdy system nie startuje poprawnie
+## 114. Gdy system nie startuje poprawnie
 
 Przydatne:
 
@@ -2936,7 +2936,7 @@ journalctl -k
 
 ---
 
-# 115. Gdy nagle zabrakło miejsca
+## 115. Gdy nagle zabrakło miejsca
 
 Najpierw:
 
@@ -2973,7 +2973,7 @@ sudo journalctl --vacuum-time=14d
 
 ---
 
-# 116. Gdy nie działa DNS
+## 116. Gdy nie działa DNS
 
 Sprawdź IP:
 
@@ -3001,7 +3001,7 @@ cat /etc/resolv.conf
 
 ---
 
-# 117. Gdy nie działa SSH
+## 117. Gdy nie działa SSH
 
 Na serwerze:
 
@@ -3035,7 +3035,7 @@ sudo nft list ruleset
 
 ---
 
-# 118. Gdy aplikacja nie startuje
+## 118. Gdy aplikacja nie startuje
 
 ```bash
 systemctl status aplikacja
@@ -3059,7 +3059,7 @@ Sprawdź:
 
 ---
 
-# 119. Desktop - gdzie szukać konfiguracji użytkownika
+## 119. Desktop - gdzie szukać konfiguracji użytkownika
 
 Najczęściej:
 
@@ -3075,7 +3075,7 @@ Nie usuwaj jednak losowo `~/.config`, bo znajduje się tam właściwa konfigurac
 
 ---
 
-# 120. XDG
+## 120. XDG
 
 Współczesne aplikacje starają się używać standardu XDG.
 
@@ -3091,7 +3091,7 @@ To dlatego coraz mniej aplikacji tworzy setki pojedynczych `.plików` bezpośred
 
 ---
 
-# 121. GNOME - ustawienia zaawansowane
+## 121. GNOME - ustawienia zaawansowane
 
 Przydatny pakiet:
 
@@ -3115,7 +3115,7 @@ Nie ma potrzeby korzystać z tego przy zwykłej pracy, ale dobrze wiedzieć, że
 
 ---
 
-# 122. KDE - konfiguracja
+## 122. KDE - konfiguracja
 
 KDE zapisuje sporą część ustawień w:
 
@@ -3135,7 +3135,7 @@ Nie warto ręcznie ich edytować bez potrzeby - panel System Settings potrafi wi
 
 ---
 
-# 123. Domyślne aplikacje
+## 123. Domyślne aplikacje
 
 Desktop wykorzystuje MIME types.
 
@@ -3159,7 +3159,7 @@ xdg-open https://debian.org
 
 ---
 
-# 124. Schowek i Wayland
+## 124. Schowek i Wayland
 
 Pod Waylandem klasyczne narzędzia X11 typu `xclip` nie zawsze są właściwym wyborem.
 
@@ -3183,7 +3183,7 @@ wl-paste
 
 ---
 
-# 125. Monitorowanie temperatur
+## 125. Monitorowanie temperatur
 
 ```bash
 sudo apt install lm-sensors
@@ -3203,7 +3203,7 @@ sensors
 
 ---
 
-# 126. Informacje o sprzęcie
+## 126. Informacje o sprzęcie
 
 CPU:
 
@@ -3243,7 +3243,7 @@ sudo lshw
 
 ---
 
-# 127. Pakiety development
+## 127. Pakiety development
 
 Częsty zestaw:
 
@@ -3255,7 +3255,7 @@ sudo apt install build-essential git curl wget pkg-config
 
 ---
 
-# 128. Git
+## 128. Git
 
 Instalacja:
 
@@ -3278,7 +3278,7 @@ git clone URL
 
 ---
 
-# 129. `apt install ./pakiet.deb`
+## 129. `apt install ./pakiet.deb`
 
 Jeżeli pobierzesz lokalny pakiet:
 
@@ -3296,7 +3296,7 @@ bo APT rozwiązuje zależności.
 
 ---
 
-# 130. AppImage
+## 130. AppImage
 
 Nie wymaga instalacji.
 
@@ -3316,7 +3316,7 @@ Wadą:
 
 ---
 
-# 131. Docker na Debianie
+## 131. Docker na Debianie
 
 Docker jest przydatny dla aplikacji serwerowych.
 
@@ -3336,16 +3336,16 @@ Korzysta z kernela hosta.
 
 ---
 
-# 132. Kontener kontra VM
+## 132. Kontener kontra VM
 
-## kontener
+### kontener
 
 - współdzieli kernel,
 - lekki,
 - szybki start,
 - świetny dla aplikacji.
 
-## maszyna wirtualna
+### maszyna wirtualna
 
 - własny kernel,
 - pełny OS,
@@ -3354,7 +3354,7 @@ Korzysta z kernela hosta.
 
 ---
 
-# 133. Docker Compose
+## 133. Docker Compose
 
 Pozwala opisać kilka usług.
 
@@ -3377,7 +3377,7 @@ Na małym VPS to bardzo wygodny model deploymentu.
 
 ---
 
-# 134. Kiedy nie używać Dockera
+## 134. Kiedy nie używać Dockera
 
 Nie każda usługa go potrzebuje.
 
@@ -3400,7 +3400,7 @@ Docker ma sens, gdy:
 
 ---
 
-# 135. Backupi
+## 135. Backupi
 
 Backup powinien spełniać przynajmniej zasadę 3-2-1:
 
@@ -3427,7 +3427,7 @@ Nie chroni przed:
 
 ---
 
-# 136. rsync jako prosty backup
+## 136. rsync jako prosty backup
 
 Przykład:
 
@@ -3443,7 +3443,7 @@ To może być dobre dla mirrora, ale nie daje historii zmian.
 
 ---
 
-# 137. Narzędzia backupowe
+## 137. Narzędzia backupowe
 
 Warto znać nazwy:
 
@@ -3454,7 +3454,7 @@ rsnapshot
 rclone
 ```
 
-## restic
+### restic
 
 Świetny do:
 
@@ -3462,7 +3462,7 @@ rclone
 - obiektowego storage,
 - snapshotów.
 
-## Borg
+### Borg
 
 Bardzo dobry do:
 
@@ -3470,7 +3470,7 @@ Bardzo dobry do:
 - lokalnych repozytoriów,
 - serwerów backupowych.
 
-## rclone
+### rclone
 
 Świetny do:
 
@@ -3482,7 +3482,7 @@ Bardzo dobry do:
 
 ---
 
-# 138. Bezpieczeństwo serwera - sensowna baza
+## 138. Bezpieczeństwo serwera - sensowna baza
 
 Na publicznym VPS:
 
@@ -3501,7 +3501,7 @@ To jest dużo ważniejsze niż instalowanie dziesięciu „security tools”.
 
 ---
 
-# 139. Zmiana portu SSH
+## 139. Zmiana portu SSH
 
 Może ograniczyć ilość automatycznego spamu w logach, ale nie jest realnym zabezpieczeniem kryptograficznym.
 
@@ -3511,7 +3511,7 @@ Zmiana portu to głównie redukcja szumu.
 
 ---
 
-# 140. `sudo` zamiast root
+## 140. `sudo` zamiast root
 
 Daje:
 
@@ -3523,7 +3523,7 @@ Długotrwałe działanie jako root jest zwykle złym nawykiem.
 
 ---
 
-# 141. Nie uruchamiaj losowych skryptów z Internetu
+## 141. Nie uruchamiaj losowych skryptów z Internetu
 
 Popularny wzorzec:
 
@@ -3545,7 +3545,7 @@ Przynajmniej widzisz, co uruchamiasz.
 
 ---
 
-# 142. `sudo apt install` kontra ręczne instalowanie
+## 142. `sudo apt install` kontra ręczne instalowanie
 
 Preferowana kolejność:
 
@@ -3560,7 +3560,7 @@ Im niżej, tym więcej administracji spada na Ciebie.
 
 ---
 
-# 143. Co po instalacji Debiana na desktopie
+## 143. Co po instalacji Debiana na desktopie
 
 Praktyczny zestaw:
 
@@ -3589,7 +3589,7 @@ sudo apt install flatpak
 
 ---
 
-# 144. Co po instalacji Debiana na serwerze
+## 144. Co po instalacji Debiana na serwerze
 
 Minimum:
 
@@ -3619,7 +3619,7 @@ Następnie:
 
 ---
 
-# 145. Przydatne pakiety CLI
+## 145. Przydatne pakiety CLI
 
 ```text
 htop
@@ -3642,7 +3642,7 @@ netcat-openbsd
 
 ---
 
-# 146. `ncdu`
+## 146. `ncdu`
 
 Świetne narzędzie do szukania, co zjadło dysk.
 
@@ -3658,7 +3658,7 @@ sudo ncdu /
 
 ---
 
-# 147. `lsof`
+## 147. `lsof`
 
 Pokazuje otwarte pliki i sockety.
 
@@ -3676,7 +3676,7 @@ lsof /ścieżka/do/pliku
 
 ---
 
-# 148. `strace`
+## 148. `strace`
 
 Pokazuje wywołania systemowe procesu.
 
@@ -3696,7 +3696,7 @@ To narzędzie bardziej zaawansowane, ale warto znać jego istnienie.
 
 ---
 
-# 149. tmux
+## 149. tmux
 
 Pozwala zachować sesję terminalową po zerwaniu SSH.
 
@@ -3735,7 +3735,7 @@ Na serwerze bardzo przydatne.
 
 ---
 
-# 150. sudo i `visudo`
+## 150. sudo i `visudo`
 
 Konfiguracja:
 
@@ -3759,7 +3759,7 @@ Dodatkowe reguły:
 
 ---
 
-# 151. Dodawanie użytkownika
+## 151. Dodawanie użytkownika
 
 ```bash
 sudo adduser user
@@ -3773,7 +3773,7 @@ sudo usermod -aG sudo user
 
 ---
 
-# 152. Blokowanie użytkownika
+## 152. Blokowanie użytkownika
 
 ```bash
 sudo passwd -l użytkownik
@@ -3787,7 +3787,7 @@ sudo passwd -u użytkownik
 
 ---
 
-# 153. Kto jest zalogowany
+## 153. Kto jest zalogowany
 
 ```bash
 who
@@ -3807,7 +3807,7 @@ last
 
 ---
 
-# 154. Ostatnie logowania SSH
+## 154. Ostatnie logowania SSH
 
 Można analizować:
 
@@ -3823,7 +3823,7 @@ last
 
 ---
 
-# 155. Podstawowy troubleshooting desktopu
+## 155. Podstawowy troubleshooting desktopu
 
 Jeżeli GNOME/KDE zaczyna zachowywać się dziwnie:
 
@@ -3844,7 +3844,7 @@ journalctl -k -p err
 
 ---
 
-# 156. Gdy aplikacja GUI nie startuje
+## 156. Gdy aplikacja GUI nie startuje
 
 Uruchom ją z terminala.
 
@@ -3860,7 +3860,7 @@ To jedna z najlepszych technik diagnostycznych na Linuxie.
 
 ---
 
-# 157. Gdy aktualizacja APT się nie udaje
+## 157. Gdy aktualizacja APT się nie udaje
 
 Najpierw:
 
@@ -3887,7 +3887,7 @@ ale nie należy używać tego mechanicznie bez przeczytania błędu.
 
 ---
 
-# 158. Sprawdzenie, skąd pochodzi pakiet
+## 158. Sprawdzenie, skąd pochodzi pakiet
 
 ```bash
 apt policy pakiet
@@ -3907,7 +3907,7 @@ Pokazuje:
 
 ---
 
-# 159. Co zainstalował dany pakiet
+## 159. Co zainstalował dany pakiet
 
 ```bash
 dpkg -L nginx
@@ -3919,7 +3919,7 @@ To świetna odpowiedź na pytanie:
 
 ---
 
-# 160. Do jakiego pakietu należy plik
+## 160. Do jakiego pakietu należy plik
 
 ```bash
 dpkg -S /usr/bin/vim
@@ -3927,7 +3927,7 @@ dpkg -S /usr/bin/vim
 
 ---
 
-# 161. Dokumentacja pakietów
+## 161. Dokumentacja pakietów
 
 Często:
 
@@ -3949,7 +3949,7 @@ Debian bardzo często umieszcza tam:
 
 ---
 
-# 162. man
+## 162. man
 
 Podstawowa dokumentacja systemu.
 
@@ -3976,7 +3976,7 @@ man systemd.service
 
 ---
 
-# 163. `--help`
+## 163. `--help`
 
 Szybka pomoc:
 
@@ -3994,7 +3994,7 @@ Często jest szybsza niż `man`.
 
 ---
 
-# 164. systemd targets
+## 164. systemd targets
 
 Zamiast dawnych runleveli systemd używa targetów.
 
@@ -4033,7 +4033,7 @@ sudo systemctl set-default multi-user.target
 
 ---
 
-# 165. Uruchomienie GUI ręcznie
+## 165. Uruchomienie GUI ręcznie
 
 Jeżeli domyślnie system startuje tekstowo:
 
@@ -4049,7 +4049,7 @@ sudo systemctl isolate multi-user.target
 
 ---
 
-# 166. Kernel
+## 166. Kernel
 
 Sprawdzenie:
 
@@ -4075,7 +4075,7 @@ Posiadanie jednego poprzedniego jest przydatne awaryjnie.
 
 ---
 
-# 167. GRUB
+## 167. GRUB
 
 Bootloader.
 
@@ -4101,7 +4101,7 @@ bo jest generowany automatycznie.
 
 ---
 
-# 168. Initramfs
+## 168. Initramfs
 
 Wczesne środowisko startowe systemu.
 
@@ -4119,7 +4119,7 @@ Potrzebne np. po zmianach dotyczących:
 
 ---
 
-# 169. LUKS
+## 169. LUKS
 
 Standard szyfrowania dysków w Linuxie.
 
@@ -4134,7 +4134,7 @@ Nie chroni systemu, gdy komputer jest już odblokowany i działa.
 
 ---
 
-# 170. Swap
+## 170. Swap
 
 Sprawdzenie:
 
@@ -4157,7 +4157,7 @@ Jest używany jako bufor pamięci i może być wymagany do hibernacji.
 
 ---
 
-# 171. OOM
+## 171. OOM
 
 Jeśli zabraknie RAM i swap, kernel może uruchomić OOM Killer.
 
@@ -4175,7 +4175,7 @@ dmesg | grep -i "out of memory"
 
 ---
 
-# 172. DNS tools
+## 172. DNS tools
 
 Pakiet:
 
@@ -4203,7 +4203,7 @@ dig MX example.com
 
 ---
 
-# 173. traceroute
+## 173. traceroute
 
 ```bash
 sudo apt install traceroute
@@ -4219,7 +4219,7 @@ Pokazuje kolejne routery na trasie.
 
 ---
 
-# 174. netcat
+## 174. netcat
 
 Instalacja:
 
@@ -4241,7 +4241,7 @@ nc -vz 192.168.1.10 22
 
 ---
 
-# 175. SSH tunneling
+## 175. SSH tunneling
 
 Lokalny tunel:
 
@@ -4265,7 +4265,7 @@ i skierować ruch do usługi działającej na serwerze.
 
 ---
 
-# 176. PostgreSQL - podstawy administracyjne
+## 176. PostgreSQL - podstawy administracyjne
 
 Instalacja:
 
@@ -4291,7 +4291,7 @@ Najbezpieczniej aplikacja i DB komunikują się lokalnie.
 
 ---
 
-# 177. Redis
+## 177. Redis
 
 Instalacja:
 
@@ -4305,7 +4305,7 @@ Nigdy nie wystawiaj bez potrzeby Redis do publicznego Internetu.
 
 ---
 
-# 178. Serwer plików Samba
+## 178. Serwer plików Samba
 
 Dla klientów Windows:
 
@@ -4321,7 +4321,7 @@ Konfiguracja:
 
 ---
 
-# 179. NFS
+## 179. NFS
 
 Dobrze pasuje do środowisk Linux/Unix.
 
@@ -4339,7 +4339,7 @@ Eksporty:
 
 ---
 
-# 180. Dziennik administratora
+## 180. Dziennik administratora
 
 Warto prowadzić np.:
 
@@ -4361,7 +4361,7 @@ Przy półrocznej przerwie taki plik potrafi uratować godzinę grzebania.
 
 ---
 
-# 181. Snapshot to nie backup
+## 181. Snapshot to nie backup
 
 Snapshot pozwala wrócić do wcześniejszego stanu.
 
@@ -4375,7 +4375,7 @@ snapshot ≠ backup
 
 ---
 
-# 182. Aktualizacja bez restartu?
+## 182. Aktualizacja bez restartu?
 
 Większość aktualizacji aplikacji nie wymaga restartu całego systemu.
 
@@ -4388,7 +4388,7 @@ Biblioteki systemowe mogą wymagać restartu konkretnych usług.
 
 ---
 
-# 183. Czy system wymaga restartu
+## 183. Czy system wymaga restartu
 
 Można użyć pakietu:
 
@@ -4400,7 +4400,7 @@ Po aktualizacjach informuje, które usługi korzystają ze starych bibliotek.
 
 ---
 
-# 184. Dobre praktyki desktop
+## 184. Dobre praktyki desktop
 
 1. trzymaj się `stable`,
 2. instaluj z APT, gdy to możliwe,
@@ -4414,7 +4414,7 @@ Po aktualizacjach informuje, które usługi korzystają ze starych bibliotek.
 
 ---
 
-# 185. Dobre praktyki serwerowe
+## 185. Dobre praktyki serwerowe
 
 1. minimalna instalacja,
 2. tylko potrzebne usługi,
@@ -4432,7 +4432,7 @@ Po aktualizacjach informuje, które usługi korzystają ze starych bibliotek.
 
 ---
 
-# 186. Praktyczny scenariusz: nowy VPS
+## 186. Praktyczny scenariusz: nowy VPS
 
 Po instalacji:
 
@@ -4492,7 +4492,7 @@ Dopiero potem zamknij starą sesję.
 
 ---
 
-# 187. Praktyczny scenariusz: postawienie strony
+## 187. Praktyczny scenariusz: postawienie strony
 
 Instalujemy Nginx:
 
@@ -4538,7 +4538,7 @@ sudo certbot --nginx -d example.com
 
 ---
 
-# 188. Praktyczny scenariusz: aplikacja Go
+## 188. Praktyczny scenariusz: aplikacja Go
 
 Budujemy:
 
@@ -4592,7 +4592,7 @@ Go
 
 ---
 
-# 189. Praktyczny scenariusz: coś zajmuje port
+## 189. Praktyczny scenariusz: coś zajmuje port
 
 Aplikacja mówi:
 
@@ -4622,7 +4622,7 @@ Potem decydujesz:
 
 ---
 
-# 190. Praktyczny scenariusz: strona odpowiada lokalnie, ale nie z Internetu
+## 190. Praktyczny scenariusz: strona odpowiada lokalnie, ale nie z Internetu
 
 Lokalnie:
 
@@ -4658,7 +4658,7 @@ Diagnostyka powinna iść warstwami.
 
 ---
 
-# 191. Praktyczny scenariusz: Wi-Fi nie działa
+## 191. Praktyczny scenariusz: Wi-Fi nie działa
 
 Najpierw:
 
@@ -4694,7 +4694,7 @@ To daje więcej informacji niż kilkukrotne klikanie ikonki Wi-Fi.
 
 ---
 
-# 192. Praktyczny scenariusz: laptop się wyłącza
+## 192. Praktyczny scenariusz: laptop się wyłącza
 
 Sprawdź poprzedni boot:
 
@@ -4729,7 +4729,7 @@ Logi zasilania mogą pomóc rozróżnić:
 
 ---
 
-# 193. Praktyczny scenariusz: brak miejsca przez Dockera
+## 193. Praktyczny scenariusz: brak miejsca przez Dockera
 
 Sprawdź:
 
@@ -4759,7 +4759,7 @@ UWAGA: przeczytaj, co zostanie usunięte.
 
 ---
 
-# 194. Praktyczny scenariusz: plik konfiguracyjny przed zmianą
+## 194. Praktyczny scenariusz: plik konfiguracyjny przed zmianą
 
 Zrób backup:
 
@@ -4785,7 +4785,7 @@ To jest dobry wzorzec dla prawie każdej usługi.
 
 ---
 
-# 195. Schemat administracji usługi
+## 195. Schemat administracji usługi
 
 Prawie zawsze:
 
@@ -4812,9 +4812,9 @@ curl https://example.com
 
 ---
 
-# 196. Najważniejsze polecenia - ściąga
+## 196. Najważniejsze polecenia - ściąga
 
-## system
+### system
 
 ```bash
 uname -a
@@ -4823,7 +4823,7 @@ timedatectl
 uptime
 ```
 
-## pakiety
+### pakiety
 
 ```bash
 sudo apt update
@@ -4835,7 +4835,7 @@ apt show PAKIET
 apt policy PAKIET
 ```
 
-## usługi
+### usługi
 
 ```bash
 systemctl status USŁUGA
@@ -4846,7 +4846,7 @@ sudo systemctl reload USŁUGA
 sudo systemctl enable --now USŁUGA
 ```
 
-## logi
+### logi
 
 ```bash
 journalctl -b
@@ -4855,7 +4855,7 @@ journalctl -u USŁUGA -f
 journalctl -k
 ```
 
-## sieć
+### sieć
 
 ```bash
 ip a
@@ -4867,7 +4867,7 @@ curl URL
 dig DOMENA
 ```
 
-## procesy
+### procesy
 
 ```bash
 ps aux
@@ -4876,7 +4876,7 @@ htop
 kill PID
 ```
 
-## dyski
+### dyski
 
 ```bash
 lsblk
@@ -4886,7 +4886,7 @@ du -sh KATALOG
 blkid
 ```
 
-## pliki
+### pliki
 
 ```bash
 cp
@@ -4900,7 +4900,7 @@ head
 tail
 ```
 
-## SSH
+### SSH
 
 ```bash
 ssh user@host
@@ -4912,7 +4912,7 @@ rsync
 
 ---
 
-# 197. Pięć poleceń, które warto odruchowo znać na serwerze
+## 197. Pięć poleceń, które warto odruchowo znać na serwerze
 
 Jeżeli coś nie działa:
 
@@ -4940,7 +4940,7 @@ Tymi pięcioma poleceniami da się rozpocząć diagnostykę ogromnej liczby prob
 
 ---
 
-# 198. Pięć poleceń, które warto znać na desktopie
+## 198. Pięć poleceń, które warto znać na desktopie
 
 ```bash
 sudo apt update
@@ -4964,7 +4964,7 @@ lsblk -f
 
 ---
 
-# 199. Jak myśleć o Debianie
+## 199. Jak myśleć o Debianie
 
 Nie ucz się Debiana jako listy poleceń.
 
@@ -5004,7 +5004,7 @@ Jeżeli rozumiesz te zależności, nawet nieznaną usługę da się zwykle rozgr
 
 ---
 
-# 200. Minimalny zestaw wiedzy administratora Debiana
+## 200. Minimalny zestaw wiedzy administratora Debiana
 
 Powinieneś umieć:
 
@@ -5033,7 +5033,7 @@ Jeżeli to potrafisz, Debian przestaje być „systemem, na którym wpisuje się
 
 ---
 
-# 201. GNOME/KDE a serwer - najważniejsza różnica mentalna
+## 201. GNOME/KDE a serwer - najważniejsza różnica mentalna
 
 Na desktopie wiele rzeczy wykonujesz przez GUI:
 
@@ -5062,7 +5062,7 @@ Dlatego znajomość shella bardzo pomaga również na desktopie.
 
 ---
 
-# 202. Przydatna filozofia pracy
+## 202. Przydatna filozofia pracy
 
 Najpierw:
 
@@ -5104,7 +5104,7 @@ Administrator, który najpierw zbiera informacje, psuje mniej rzeczy.
 
 ---
 
-# 203. Najważniejsze ścieżki do zapamiętania
+## 203. Najważniejsze ścieżki do zapamiętania
 
 ```text
 /home/$USER              dane użytkownika
@@ -5131,7 +5131,7 @@ Administrator, który najpierw zbiera informacje, psuje mniej rzeczy.
 
 ---
 
-# 204. Najważniejsze pliki do zapamiętania
+## 204. Najważniejsze pliki do zapamiętania
 
 ```text
 /etc/fstab
@@ -5148,7 +5148,7 @@ Administrator, który najpierw zbiera informacje, psuje mniej rzeczy.
 
 ---
 
-# 205. Najważniejsze narzędzia do zapamiętania
+## 205. Najważniejsze narzędzia do zapamiętania
 
 ```text
 apt
@@ -5176,7 +5176,7 @@ Jeżeli naprawdę dobrze poznasz te narzędzia, poradzisz sobie z ogromną czę�
 
 ---
 
-# 206. Gdzie szukać pomocy
+## 206. Gdzie szukać pomocy
 
 Najpierw lokalnie:
 
@@ -5218,16 +5218,16 @@ Oficjalna dokumentacja Debiana:
 
 ---
 
-# 207. Ostateczna ściąga: jak diagnozować prawie wszystko
+## 207. Ostateczna ściąga: jak diagnozować prawie wszystko
 
-## Problem z usługą
+### Problem z usługą
 
 ```bash
 systemctl status usługa
 journalctl -u usługa -n 100
 ```
 
-## Problem z siecią
+### Problem z siecią
 
 ```bash
 ip a
@@ -5237,14 +5237,14 @@ ping debian.org
 resolvectl status
 ```
 
-## Problem z portem
+### Problem z portem
 
 ```bash
 ss -tulpn
 sudo lsof -i :PORT
 ```
 
-## Problem z dyskiem
+### Problem z dyskiem
 
 ```bash
 df -h
@@ -5252,14 +5252,14 @@ lsblk -f
 sudo smartctl -a /dev/DYSK
 ```
 
-## Problem z RAM
+### Problem z RAM
 
 ```bash
 free -h
 htop
 ```
 
-## Problem z bootem
+### Problem z bootem
 
 ```bash
 journalctl -b
@@ -5267,26 +5267,26 @@ journalctl -b -1
 journalctl -k
 ```
 
-## Problem z pakietem
+### Problem z pakietem
 
 ```bash
 apt policy pakiet
 dpkg -L pakiet
 ```
 
-## Problem z konfiguracją
+### Problem z konfiguracją
 
 ```text
 /etc
 ```
 
-## Problem z aplikacją desktopową
+### Problem z aplikacją desktopową
 
 Uruchom ją z terminala i przeczytaj komunikat błędu.
 
 ---
 
-# 208. Najważniejsza zasada
+## 208. Najważniejsza zasada
 
 Debian jest bardzo przewidywalny.
 
@@ -5344,7 +5344,7 @@ To kilka prostych reguł, które pozwalają odnaleźć się w systemie nawet wte
 
 ---
 
-# 209. Podsumowanie
+## 209. Podsumowanie
 
 Debian może być jednocześnie:
 
@@ -5383,7 +5383,7 @@ Reszta to w dużej mierze rozwinięcie tych kilku fundamentów.
 
 ---
 
-## Stan dokumentu
+### Stan dokumentu
 
 Dokument przygotowany dla Debiana 13 „Trixie”.  
 W chwili przygotowania aktualne wydanie stabilne Debiana to **13.7**.

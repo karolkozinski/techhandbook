@@ -28,7 +28,7 @@ A practical reference for building modern, semantic, responsive and accessible w
 
 ---
 
-# 1. HTML basics
+## 1. HTML basics
 
 HTML is not for drawing a page. Its job is to describe **what each piece of content is**.
 
@@ -72,7 +72,7 @@ instead of:
 
 ---
 
-# 2. Document structure
+## 2. Document structure
 
 A minimal modern HTML document:
 
@@ -107,17 +107,17 @@ A minimal modern HTML document:
 </html>
 ```
 
-## `<!doctype html>`
+### `<!doctype html>`
 
 Tells the browser to use modern HTML rendering. It should be the first line of the file.
 
-## `<html lang="en">`
+### `<html lang="en">`
 
 The root element of the document.
 
 The `lang` attribute helps screen readers, search engines, automatic translation and spell checking.
 
-## `<head>`
+### `<head>`
 
 Contains document metadata.
 
@@ -165,7 +165,7 @@ Favicon:
 
 ---
 
-# 3. HTML semantics
+## 3. HTML semantics
 
 A modern page should not be built only from `div` elements.
 
@@ -193,7 +193,7 @@ Typical structure:
 </body>
 ```
 
-## `<header>`
+### `<header>`
 
 Header of a page or section.
 
@@ -206,11 +206,11 @@ Header of a page or section.
 
 A document may contain more than one header.
 
-## `<main>`
+### `<main>`
 
 The main content of the document. Usually there should be one primary `main`.
 
-## `<nav>`
+### `<nav>`
 
 Navigation:
 
@@ -223,7 +223,7 @@ Navigation:
 </nav>
 ```
 
-## `<section>`
+### `<section>`
 
 A thematic section:
 
@@ -235,7 +235,7 @@ A thematic section:
 
 Do not use `section` as an automatic replacement for `div`.
 
-## `<article>`
+### `<article>`
 
 Independent content that could stand on its own:
 
@@ -248,23 +248,23 @@ Independent content that could stand on its own:
 
 Typical uses include blog posts, articles, product cards, news items, comments and stories.
 
-## `<aside>`
+### `<aside>`
 
 Secondary or complementary content.
 
-## `<footer>`
+### `<footer>`
 
 Footer for a document or section.
 
-## `<div>`
+### `<div>`
 
 A neutral container. Use it when you need an element for layout or styling and no semantic element fits.
 
 ---
 
-# 4. Text, lists and links
+## 4. Text, lists and links
 
-## Headings
+### Headings
 
 HTML has six heading levels:
 
@@ -279,13 +279,13 @@ HTML has six heading levels:
 
 Headings describe content hierarchy, not visual size.
 
-## Paragraphs
+### Paragraphs
 
 ```html
 <p>This is a paragraph.</p>
 ```
 
-## Emphasis
+### Emphasis
 
 ```html
 <strong>very important</strong>
@@ -294,7 +294,7 @@ Headings describe content hierarchy, not visual size.
 
 `strong` expresses importance. `em` expresses emphasis.
 
-## Quotes
+### Quotes
 
 Inline:
 
@@ -310,7 +310,7 @@ Block quote:
 </blockquote>
 ```
 
-## Code
+### Code
 
 Inline:
 
@@ -325,7 +325,7 @@ Block:
 sudo apt upgrade</code></pre>
 ```
 
-## Lists
+### Lists
 
 Unordered:
 
@@ -359,7 +359,7 @@ Definition list:
 </dl>
 ```
 
-## Links
+### Links
 
 ```html
 <a href="/about">About us</a>
@@ -399,7 +399,7 @@ Anchor:
 </section>
 ```
 
-## Link vs button
+### Link vs button
 
 Links navigate:
 
@@ -417,7 +417,7 @@ Avoid clickable `div` elements when the element is really a button.
 
 ---
 
-# 5. Images and media
+## 5. Images and media
 
 Basic image:
 
@@ -459,7 +459,7 @@ img {
 }
 ```
 
-## `srcset`
+### `srcset`
 
 ```html
 <img
@@ -479,7 +479,7 @@ img {
 
 The browser chooses the most appropriate file.
 
-## `<picture>`
+### `<picture>`
 
 ```html
 <picture>
@@ -493,7 +493,7 @@ The browser chooses the most appropriate file.
 </picture>
 ```
 
-## Lazy loading
+### Lazy loading
 
 ```html
 <img
@@ -505,7 +505,7 @@ The browser chooses the most appropriate file.
 
 Do not automatically lazy-load the main above-the-fold/LCP image.
 
-## `figure`
+### `figure`
 
 ```html
 <figure>
@@ -522,7 +522,7 @@ Do not automatically lazy-load the main above-the-fold/LCP image.
 
 ---
 
-# 6. Tables
+## 6. Tables
 
 Tables are for tabular data.
 
@@ -558,7 +558,7 @@ Do not use tables for page layout.
 
 ---
 
-# 7. Forms
+## 7. Forms
 
 Basic form:
 
@@ -586,7 +586,7 @@ Basic form:
 
 `id` lets you associate the control with its `label`.
 
-## Input types
+### Input types
 
 ```html
 <input type="text">
@@ -601,7 +601,7 @@ Basic form:
 <input type="search">
 ```
 
-## Validation
+### Validation
 
 Required field:
 
@@ -633,7 +633,7 @@ Pattern:
 
 HTML validation does not replace backend validation.
 
-## `textarea`
+### `textarea`
 
 ```html
 <label for="message">Message</label>
@@ -645,7 +645,7 @@ HTML validation does not replace backend validation.
 ></textarea>
 ```
 
-## `select`
+### `select`
 
 ```html
 <label for="country">Country</label>
@@ -658,7 +658,7 @@ HTML validation does not replace backend validation.
 </select>
 ```
 
-## `fieldset`
+### `fieldset`
 
 ```html
 <fieldset>
@@ -684,7 +684,7 @@ HTML validation does not replace backend validation.
 </fieldset>
 ```
 
-## `autocomplete`
+### `autocomplete`
 
 ```html
 <input type="text" name="name" autocomplete="name">
@@ -692,7 +692,7 @@ HTML validation does not replace backend validation.
 <input type="password" autocomplete="current-password">
 ```
 
-## `details`
+### `details`
 
 Expandable content without JavaScript:
 
@@ -703,7 +703,7 @@ Expandable content without JavaScript:
 </details>
 ```
 
-## `data-*`
+### `data-*`
 
 ```html
 <article
@@ -716,7 +716,7 @@ JavaScript can read these values later.
 
 ---
 
-# 8. Accessibility
+## 8. Accessibility
 
 Accessibility starts with correct HTML.
 
@@ -739,7 +739,7 @@ Prefer a labelled field:
 <input id="email" type="email">
 ```
 
-## ARIA
+### ARIA
 
 ARIA is useful when native HTML is not enough.
 
@@ -762,7 +762,7 @@ General rule:
 
 ---
 
-# 9. CSS basics
+## 9. CSS basics
 
 Attach a stylesheet:
 
@@ -789,7 +789,7 @@ h1 {
 
 ---
 
-# 10. Selectors
+## 10. Selectors
 
 Element:
 
@@ -849,7 +849,7 @@ General sibling:
 h2 ~ p {}
 ```
 
-## Pseudo-classes
+### Pseudo-classes
 
 ```css
 a:hover {
@@ -865,7 +865,7 @@ li:last-child {}
 li:nth-child(even) {}
 ```
 
-## `:not()`
+### `:not()`
 
 ```css
 button:not(.primary) {
@@ -873,7 +873,7 @@ button:not(.primary) {
 }
 ```
 
-## `:is()`
+### `:is()`
 
 ```css
 article :is(h1, h2, h3) {
@@ -881,7 +881,7 @@ article :is(h1, h2, h3) {
 }
 ```
 
-## `:where()`
+### `:where()`
 
 ```css
 :where(article, section, aside) p {
@@ -891,7 +891,7 @@ article :is(h1, h2, h3) {
 
 `:where()` adds no selector specificity.
 
-## `:has()`
+### `:has()`
 
 ```css
 .card:has(img) {
@@ -907,7 +907,7 @@ body:has(dialog[open]) {
 }
 ```
 
-## Pseudo-elements
+### Pseudo-elements
 
 ```css
 .external-link::after {
@@ -924,7 +924,7 @@ Most common:
 
 ---
 
-# 11. Cascade, inheritance and specificity
+## 11. Cascade, inheritance and specificity
 
 CSS means **Cascading Style Sheets**.
 
@@ -983,7 +983,7 @@ Properties such as margin, padding and border normally do not.
 
 ---
 
-# 12. Box model
+## 12. Box model
 
 Every element is a box:
 
@@ -1034,9 +1034,9 @@ Related logical properties include `border-inline`, `border-block`, `inline-size
 
 ---
 
-# 13. Units
+## 13. Units
 
-## `px`
+### `px`
 
 Useful for things such as thin borders.
 
@@ -1044,7 +1044,7 @@ Useful for things such as thin borders.
 border: 1px solid;
 ```
 
-## `rem`
+### `rem`
 
 Useful for spacing, typography and component sizing.
 
@@ -1052,7 +1052,7 @@ Useful for spacing, typography and component sizing.
 padding: 2rem;
 ```
 
-## `em`
+### `em`
 
 Relative to the current font size.
 
@@ -1062,13 +1062,13 @@ button {
 }
 ```
 
-## Percentages
+### Percentages
 
 ```css
 width: 50%;
 ```
 
-## Viewport units
+### Viewport units
 
 ```css
 width: 100vw;
@@ -1091,19 +1091,19 @@ Example:
 }
 ```
 
-## `min()`
+### `min()`
 
 ```css
 width: min(100%, 1200px);
 ```
 
-## `max()`
+### `max()`
 
 ```css
 width: max(50%, 400px);
 ```
 
-## `clamp()`
+### `clamp()`
 
 Fluid typography:
 
@@ -1115,7 +1115,7 @@ h1 {
 
 This means minimum 2rem, preferred 5vw and maximum 5rem.
 
-## `calc()`
+### `calc()`
 
 ```css
 width: calc(100% - 2rem);
@@ -1124,7 +1124,7 @@ height: calc(100vh - 80px);
 
 ---
 
-# 14. Colours and CSS variables
+## 14. Colours and CSS variables
 
 Hex:
 
@@ -1145,7 +1145,7 @@ HSL:
 color: hsl(0 100% 50%);
 ```
 
-## `currentColor`
+### `currentColor`
 
 ```css
 .button {
@@ -1154,7 +1154,7 @@ color: hsl(0 100% 50%);
 }
 ```
 
-## `color-mix()`
+### `color-mix()`
 
 ```css
 background:
@@ -1165,7 +1165,7 @@ background:
     );
 ```
 
-## Custom properties
+### Custom properties
 
 ```css
 :root {
@@ -1198,7 +1198,7 @@ Variables can be overridden locally.
 
 ---
 
-# 15. Typography
+## 15. Typography
 
 Typical baseline:
 
@@ -1229,7 +1229,7 @@ The `ch` unit is useful for readable text widths.
 
 ---
 
-# 16. Normal flow
+## 16. Normal flow
 
 HTML already has a default document flow.
 
@@ -1239,7 +1239,7 @@ Before reaching for Grid, Flexbox or `position`, check whether normal flow alrea
 
 ---
 
-# 17. Flexbox
+## 17. Flexbox
 
 Flexbox is mainly for one-dimensional layout.
 
@@ -1323,7 +1323,7 @@ Sidebar layout:
 
 ---
 
-# 18. CSS Grid
+## 18. CSS Grid
 
 Grid is designed for two-dimensional layouts.
 
@@ -1335,7 +1335,7 @@ Grid is designed for two-dimensional layouts.
 }
 ```
 
-## `fr`
+### `fr`
 
 ```css
 grid-template-columns: 1fr 2fr;
@@ -1343,13 +1343,13 @@ grid-template-columns: 1fr 2fr;
 
 The second column receives twice as much available space.
 
-## `repeat()`
+### `repeat()`
 
 ```css
 grid-template-columns: repeat(3, 1fr);
 ```
 
-## `minmax()`
+### `minmax()`
 
 ```css
 grid-template-columns:
@@ -1359,7 +1359,7 @@ grid-template-columns:
     );
 ```
 
-## Responsive Grid
+### Responsive Grid
 
 A very useful pattern:
 
@@ -1379,7 +1379,7 @@ A very useful pattern:
 
 This can adapt column count without a media query.
 
-## Grid Areas
+### Grid Areas
 
 ```css
 .layout {
@@ -1401,7 +1401,7 @@ This can adapt column count without a media query.
 }
 ```
 
-## `subgrid`
+### `subgrid`
 
 ```css
 .cards {
@@ -1416,7 +1416,7 @@ This can adapt column count without a media query.
 }
 ```
 
-## Flexbox or Grid?
+### Flexbox or Grid?
 
 Flexbox:
 
@@ -1428,7 +1428,7 @@ Grid:
 
 ---
 
-# 19. Positioning
+## 19. Positioning
 
 Important values:
 
@@ -1520,7 +1520,7 @@ Typical page container:
 
 ---
 
-# 20. Responsive design
+## 20. Responsive design
 
 A practical approach is mobile first.
 
@@ -1568,7 +1568,7 @@ Ask:
 
 ---
 
-# 21. Container Queries
+## 21. Container Queries
 
 A media query reacts to the viewport.
 
@@ -1605,9 +1605,9 @@ Named container:
 
 ---
 
-# 22. Modern CSS
+## 22. Modern CSS
 
-## `@layer`
+### `@layer`
 
 Explicitly control cascade layer order:
 
@@ -1641,7 +1641,7 @@ Explicitly control cascade layer order:
 }
 ```
 
-## CSS nesting
+### CSS nesting
 
 Instead of:
 
@@ -1691,7 +1691,7 @@ Media query inside a rule:
 }
 ```
 
-## Simple class convention
+### Simple class convention
 
 ```css
 .card
@@ -1713,7 +1713,7 @@ Variant:
 .card.card-featured
 ```
 
-## Design tokens
+### Design tokens
 
 ```css
 :root {
@@ -1739,7 +1739,7 @@ Variant:
 
 ---
 
-# 23. Dark mode
+## 23. Dark mode
 
 ```css
 :root {
@@ -1768,9 +1768,9 @@ body {
 
 ---
 
-# 24. Animations
+## 24. Animations
 
-## Transition
+### Transition
 
 ```css
 .button {
@@ -1793,7 +1793,7 @@ Prefer specific properties over:
 transition: all 1s;
 ```
 
-## Transform
+### Transform
 
 ```css
 transform: translateX(10px);
@@ -1810,7 +1810,7 @@ transform:
     scale(1.02);
 ```
 
-## `@keyframes`
+### `@keyframes`
 
 ```css
 @keyframes pulse {
@@ -1832,7 +1832,7 @@ transform:
 }
 ```
 
-## Reduced motion
+### Reduced motion
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -1848,7 +1848,7 @@ transform:
 
 ---
 
-# 25. Styling forms
+## 25. Styling forms
 
 ```css
 .form {
@@ -1878,7 +1878,7 @@ select {
 }
 ```
 
-## Focus
+### Focus
 
 Never remove focus without a meaningful replacement.
 
@@ -1892,7 +1892,7 @@ a:focus-visible {
 }
 ```
 
-## Invalid state
+### Invalid state
 
 ```css
 input:invalid:not(:placeholder-shown) {
@@ -1902,7 +1902,7 @@ input:invalid:not(:placeholder-shown) {
 
 ---
 
-# 26. CSS reset / base
+## 26. CSS reset / base
 
 A sensible starting point:
 
@@ -1962,7 +1962,7 @@ h4 {
 
 ---
 
-# 27. Project organisation
+## 27. Project organisation
 
 Small project:
 
@@ -2001,9 +2001,9 @@ Do not split CSS into dozens of files without a real need.
 
 ---
 
-# 28. Complete page example
+## 28. Complete page example
 
-## HTML
+### HTML
 
 ```html
 <!doctype html>
@@ -2146,7 +2146,7 @@ Do not split CSS into dozens of files without a real need.
 </html>
 ```
 
-## CSS
+### CSS
 
 ```css
 @layer reset, base, layout, components;
@@ -2362,9 +2362,9 @@ Do not split CSS into dozens of files without a real need.
 
 ---
 
-# 29. Good practices
+## 29. Good practices
 
-## Use semantic HTML
+### Use semantic HTML
 
 Prefer:
 
@@ -2384,29 +2384,29 @@ instead of:
 <div class="button">
 ```
 
-## Do not encode layout in HTML
+### Do not encode layout in HTML
 
 Do not add repeated `<br>` elements just to create spacing. Use CSS margins or gaps.
 
-## Do not use tables for layout
+### Do not use tables for layout
 
 Tables are for data. Use Grid or Flexbox for layout.
 
-## Do not absolutely position everything
+### Do not absolutely position everything
 
 Layouts based on hard-coded top/left pixel positions break easily.
 
 Prefer normal flow, Flexbox and Grid.
 
-## Avoid unnecessary fixed heights
+### Avoid unnecessary fixed heights
 
 Do not force a card to a fixed height when content length can vary.
 
-## Do not design for one resolution
+### Do not design for one resolution
 
 A page may be used on a phone, tablet, laptop, large monitor, half-screen window or at 200% zoom.
 
-## Do not overuse breakpoints
+### Do not overuse breakpoints
 
 First consider:
 
@@ -2418,7 +2418,7 @@ flex-wrap
 container queries
 ```
 
-## Do not remove focus indication
+### Do not remove focus indication
 
 Avoid:
 
@@ -2428,7 +2428,7 @@ Avoid:
 }
 ```
 
-## Do not build everything with JavaScript
+### Do not build everything with JavaScript
 
 Modern HTML and CSS already provide a lot.
 
@@ -2456,9 +2456,9 @@ animations
 
 ---
 
-# 30. Cheat sheet
+## 30. Cheat sheet
 
-## HTML
+### HTML
 
 ```html
 <html>
@@ -2513,7 +2513,7 @@ animations
 <span>
 ```
 
-## CSS
+### CSS
 
 ```css
 color
@@ -2580,7 +2580,7 @@ clamp()
 
 ---
 
-# 31. What you should know
+## 31. What you should know
 
 To say “I know HTML and CSS”, you do not need to memorise every property.
 
@@ -2625,7 +2625,7 @@ Examples:
 
 ---
 
-# Mental model for building a page
+## Mental model for building a page
 
 ```text
 content
@@ -2664,7 +2664,7 @@ CSS should present a well-designed HTML structure rather than compensate for a p
 
 This is a strong foundation for building modern websites without Bootstrap, Tailwind or JavaScript frameworks.
 
-## Official references
+### Official references
 
 - HTML Living Standard: https://html.spec.whatwg.org/
 - CSS specifications: https://www.w3.org/Style/CSS/specs.en.html

@@ -26,7 +26,7 @@ Powiązane tematy: [API i integracje systemów](techhandbook:doc-008), [SQL i Po
 
 ---
 
-# 1. Jak myśleć o Go
+## 1. Jak myśleć o Go
 
 Go jest językiem:
 
@@ -71,7 +71,7 @@ Go ma kilka cech, które warto od razu zapamiętać:
 
 ---
 
-# 2. Instalacja i narzędzia
+## 2. Instalacja i narzędzia
 
 Sprawdzenie wersji:
 
@@ -126,7 +126,7 @@ arm64
 arm
 ```
 
-### Debian
+#### Debian
 
 Jeśli zależy Ci na aktualnym Go, pakiet Debiana może być starszy niż oficjalne wydanie. W projekcie warto świadomie ustalić wersję toolchainu.
 
@@ -137,7 +137,7 @@ go version
 go env
 ```
 
-### FreeBSD
+#### FreeBSD
 
 Najczęściej:
 
@@ -151,7 +151,7 @@ Potem:
 go version
 ```
 
-### Edytor
+#### Edytor
 
 Do samego Go wystarczy dowolny edytor, ale bardzo pomaga language server:
 
@@ -169,7 +169,7 @@ go install golang.org/x/tools/gopls@latest
 
 ---
 
-# 3. Pierwszy program i anatomia pliku
+## 3. Pierwszy program i anatomia pliku
 
 Minimalny program:
 
@@ -185,7 +185,7 @@ func main() {
 
 Rozbijmy go.
 
-## `package main`
+### `package main`
 
 Każdy plik `.go` należy do jakiegoś pakietu.
 
@@ -195,7 +195,7 @@ package main
 
 oznacza, że ten kod jest częścią programu wykonywalnego.
 
-## `import "fmt"`
+### `import "fmt"`
 
 Importujemy pakiet standardowej biblioteki:
 
@@ -205,7 +205,7 @@ import "fmt"
 
 `fmt` odpowiada za formatowanie i wypisywanie tekstu.
 
-## `func main()`
+### `func main()`
 
 Program wykonywalny zaczyna pracę od:
 
@@ -231,9 +231,9 @@ Po `go build` otrzymujesz binarkę.
 
 ---
 
-# 4. Składnia - najważniejsze reguły
+## 4. Składnia - najważniejsze reguły
 
-## Bloki kodu
+### Bloki kodu
 
 Go używa `{}`:
 
@@ -258,7 +258,7 @@ if x > 10
 }
 ```
 
-## Średniki
+### Średniki
 
 Teoretycznie język posiada średniki, ale praktycznie ich nie piszesz:
 
@@ -269,7 +269,7 @@ y := 20
 
 Lexer wstawia je automatycznie.
 
-## Komentarze
+### Komentarze
 
 Jedna linia:
 
@@ -293,7 +293,7 @@ Komentarz dokumentujący eksportowaną funkcję zwykle zaczyna się od jej nazwy
 func LoadUser() {}
 ```
 
-## Nazwy
+### Nazwy
 
 Typowo:
 
@@ -314,9 +314,9 @@ Go preferuje camelCase.
 
 ---
 
-# 5. Zmienne, stałe i zero values
+## 5. Zmienne, stałe i zero values
 
-## Pełna deklaracja
+### Pełna deklaracja
 
 ```go
 var age int
@@ -340,7 +340,7 @@ Kompilator potrafi wywnioskować typ:
 var age = 46
 ```
 
-## Krótka deklaracja `:=`
+### Krótka deklaracja `:=`
 
 Najczęściej spotykana forma wewnątrz funkcji:
 
@@ -359,13 +359,13 @@ Późniejsze przypisanie używa już zwykłego `=`:
 age = 47
 ```
 
-## Kilka wartości
+### Kilka wartości
 
 ```go
 name, age := "Anna", 30
 ```
 
-## Stałe
+### Stałe
 
 ```go
 const MaxUsers = 100
@@ -382,7 +382,7 @@ const (
 )
 ```
 
-## Zero values
+### Zero values
 
 To bardzo ważna cecha Go.
 
@@ -416,9 +416,9 @@ false
 
 ---
 
-# 6. Podstawowe typy danych
+## 6. Podstawowe typy danych
 
-## Liczby całkowite
+### Liczby całkowite
 
 Najczęściej:
 
@@ -442,7 +442,7 @@ uint32
 
 `int` ma rozmiar zależny od architektury - w praktyce na współczesnych systemach 64-bitowych najczęściej 64 bity.
 
-## Liczby zmiennoprzecinkowe
+### Liczby zmiennoprzecinkowe
 
 ```go
 float32
@@ -455,7 +455,7 @@ Najczęściej używa się:
 float64
 ```
 
-## Boolean
+### Boolean
 
 ```go
 bool
@@ -477,7 +477,7 @@ if 1 {
 }
 ```
 
-## Aliasy znakowe
+### Aliasy znakowe
 
 ```go
 byte
@@ -491,7 +491,7 @@ rune
 
 to alias `int32`, zwykle oznaczający kod Unicode.
 
-## Typy nazwane
+### Typy nazwane
 
 Można stworzyć własny typ:
 
@@ -505,7 +505,7 @@ To pozwala kompilatorowi wyłapywać pomyłki.
 
 ---
 
-# 7. String, byte i rune
+## 7. String, byte i rune
 
 String:
 
@@ -521,7 +521,7 @@ Nie możesz zrobić:
 name[0] = 'M'
 ```
 
-## UTF-8
+### UTF-8
 
 Go bardzo mocno opiera się na UTF-8.
 
@@ -564,9 +564,9 @@ To ważne przy:
 
 ---
 
-# 8. Tablice, slice i mapy
+## 8. Tablice, slice i mapy
 
-## Tablica
+### Tablica
 
 ```go
 var numbers [3]int
@@ -586,7 +586,7 @@ W praktyce częściej spotkasz slice.
 
 ---
 
-## Slice
+### Slice
 
 ```go
 numbers := []int{10, 20, 30}
@@ -637,7 +637,7 @@ Znaczy:
 - długość `0`,
 - miejsce zarezerwowane na około `100` elementów.
 
-### Ważne
+#### Ważne
 
 Slice może współdzielić pamięć z innym slice.
 
@@ -651,7 +651,7 @@ Po zmianie `b` zmieni się również `a`.
 
 ---
 
-## Map
+### Map
 
 Mapa to kolekcja klucz → wartość.
 
@@ -709,7 +709,7 @@ Można z niej czytać, ale zapis spowoduje panic.
 
 ---
 
-# 9. Struct - podstawowy budulec danych
+## 9. Struct - podstawowy budulec danych
 
 Go nie ma klas w klasycznym znaczeniu.
 
@@ -745,7 +745,7 @@ Zmiana:
 u.Name = "Anna K."
 ```
 
-## Zagnieżdżenie
+### Zagnieżdżenie
 
 ```go
 type Address struct {
@@ -758,7 +758,7 @@ type User struct {
 }
 ```
 
-## Embedding
+### Embedding
 
 Można osadzić typ bez nazwy pola:
 
@@ -790,7 +790,7 @@ Embedding jest jednym ze sposobów kompozycji w Go.
 
 ---
 
-# 10. Wskaźniki
+## 10. Wskaźniki
 
 Wskaźnik przechowuje adres wartości.
 
@@ -823,7 +823,7 @@ Teraz:
 x == 20
 ```
 
-## Po co wskaźniki?
+### Po co wskaźniki?
 
 Najczęściej:
 
@@ -851,7 +851,7 @@ a nie:
 (*u).Name
 ```
 
-## `nil`
+### `nil`
 
 ```go
 var u *User
@@ -869,9 +869,9 @@ spowoduje panic.
 
 ---
 
-# 11. Instrukcje sterujące
+## 11. Instrukcje sterujące
 
-## `if`
+### `if`
 
 ```go
 if age >= 18 {
@@ -893,7 +893,7 @@ if err := doSomething(); err != nil {
 
 ---
 
-## `else`
+### `else`
 
 ```go
 if x > 0 {
@@ -907,7 +907,7 @@ if x > 0 {
 
 ---
 
-## `switch`
+### `switch`
 
 ```go
 switch status {
@@ -928,7 +928,7 @@ Istnieje `fallthrough`, ale jest używany rzadko.
 
 ---
 
-## `for`
+### `for`
 
 Go ma tylko jedną konstrukcję pętli: `for`.
 
@@ -986,7 +986,7 @@ co iteruje po liczbach `0..9`.
 
 ---
 
-# 12. Funkcje
+## 12. Funkcje
 
 Prosta funkcja:
 
@@ -1004,7 +1004,7 @@ func add(a, b int) int {
 }
 ```
 
-## Kilka wartości zwracanych
+### Kilka wartości zwracanych
 
 Bardzo częste:
 
@@ -1020,7 +1020,7 @@ Wywołanie:
 user, err := loadUser(10)
 ```
 
-## Nazwane wartości zwracane
+### Nazwane wartości zwracane
 
 Możliwe:
 
@@ -1034,7 +1034,7 @@ func split() (left int, right int) {
 
 Nie należy ich nadużywać, ale w kodzie występują.
 
-## Funkcja jako wartość
+### Funkcja jako wartość
 
 ```go
 handler := func(name string) {
@@ -1044,7 +1044,7 @@ handler := func(name string) {
 handler("Anna")
 ```
 
-## Funkcja jako argument
+### Funkcja jako argument
 
 ```go
 func run(fn func()) {
@@ -1052,7 +1052,7 @@ func run(fn func()) {
 }
 ```
 
-## Funkcja jako wynik
+### Funkcja jako wynik
 
 ```go
 func makeGreeter(prefix string) func(string) string {
@@ -1062,7 +1062,7 @@ func makeGreeter(prefix string) func(string) string {
 }
 ```
 
-## Variadic
+### Variadic
 
 ```go
 func sum(values ...int) int {
@@ -1089,7 +1089,7 @@ sum(values...)
 
 ---
 
-# 13. Metody i receivery
+## 13. Metody i receivery
 
 Metoda to funkcja przypięta do typu.
 
@@ -1111,7 +1111,7 @@ Wywołanie:
 user.Greeting()
 ```
 
-## Value receiver
+### Value receiver
 
 ```go
 func (u User) NameUpper() string
@@ -1119,7 +1119,7 @@ func (u User) NameUpper() string
 
 Metoda dostaje kopię wartości.
 
-## Pointer receiver
+### Pointer receiver
 
 ```go
 func (u *User) Rename(name string) {
@@ -1148,7 +1148,7 @@ czytaj to jako:
 
 ---
 
-# 14. Interfejsy
+## 14. Interfejsy
 
 Interfejs opisuje zachowanie.
 
@@ -1174,7 +1174,7 @@ implements Writer
 
 To bardzo ważne dla czytania Go.
 
-## Przykład
+### Przykład
 
 ```go
 type Storage interface {
@@ -1198,7 +1198,7 @@ type Service struct {
 - pamięcią RAM,
 - mockiem testowym.
 
-## Pusty interfejs
+### Pusty interfejs
 
 Dawniej często:
 
@@ -1220,7 +1220,7 @@ var value any
 
 `any` może przechowywać wartość dowolnego typu.
 
-## Type assertion
+### Type assertion
 
 ```go
 s, ok := value.(string)
@@ -1228,7 +1228,7 @@ s, ok := value.(string)
 
 Sprawdza, czy `value` zawiera string.
 
-## Type switch
+### Type switch
 
 ```go
 switch v := value.(type) {
@@ -1243,7 +1243,7 @@ default:
 
 ---
 
-# 15. Generics
+## 15. Generics
 
 Generics pozwalają pisać kod działający z wieloma typami.
 
@@ -1266,7 +1266,7 @@ y := First([]string{"a", "b"})
 
 Kompilator zwykle sam wywnioskuje typ.
 
-## Constraints
+### Constraints
 
 ```go
 type Number interface {
@@ -1290,7 +1290,7 @@ type UserID int64
 
 pasuje do `~int64`.
 
-## Typ generyczny
+### Typ generyczny
 
 ```go
 type Box[T any] struct {
@@ -1304,7 +1304,7 @@ Użycie:
 b := Box[string]{Value: "hello"}
 ```
 
-## Generyczne metody
+### Generyczne metody
 
 W Go 1.27 możesz spotkać również metody deklarujące własne parametry typu.
 
@@ -1318,7 +1318,7 @@ Kwadratowe nawiasy przy nazwie funkcji/metody oznaczają parametry typów.
 
 ---
 
-# 16. Błędy - `error`
+## 16. Błędy - `error`
 
 To absolutnie centralny element Go.
 
@@ -1337,7 +1337,7 @@ if err != nil {
 }
 ```
 
-## Tworzenie błędu
+### Tworzenie błędu
 
 ```go
 errors.New("user not found")
@@ -1349,7 +1349,7 @@ lub:
 fmt.Errorf("cannot load user %d", id)
 ```
 
-## Opakowanie błędu
+### Opakowanie błędu
 
 Bardzo ważny idiom:
 
@@ -1373,7 +1373,7 @@ if errors.As(err, &pathErr) {
 }
 ```
 
-## Sentinel errors
+### Sentinel errors
 
 Możesz zobaczyć:
 
@@ -1388,7 +1388,7 @@ if errors.Is(err, ErrNotFound) {
 }
 ```
 
-## Dlaczego wszędzie jest `if err != nil`?
+### Dlaczego wszędzie jest `if err != nil`?
 
 Bo Go celowo nie opiera zwykłego sterowania błędami na wyjątkach.
 
@@ -1398,9 +1398,9 @@ Dzięki temu patrząc na funkcję od razu widzisz miejsca, w których coś może
 
 ---
 
-# 17. `defer`, `panic`, `recover`
+## 17. `defer`, `panic`, `recover`
 
-## `defer`
+### `defer`
 
 Odkłada wykonanie funkcji do momentu opuszczenia aktualnej funkcji.
 
@@ -1427,7 +1427,7 @@ mu.Lock()
 defer mu.Unlock()
 ```
 
-## `panic`
+### `panic`
 
 ```go
 panic("fatal problem")
@@ -1447,7 +1447,7 @@ if user == nil {
 
 jeśli brak usera jest przewidywalnym przypadkiem.
 
-## `recover`
+### `recover`
 
 Może przechwycić panic.
 
@@ -1463,11 +1463,11 @@ defer func() {
 
 ---
 
-# 18. Pakiety, moduły i importy
+## 18. Pakiety, moduły i importy
 
 To trzy pojęcia, których nie należy mieszać.
 
-## Plik
+### Plik
 
 ```text
 user.go
@@ -1475,7 +1475,7 @@ user.go
 
 jest po prostu plikiem źródłowym.
 
-## Package
+### Package
 
 Wszystkie pliki `.go` w jednym katalogu zazwyczaj należą do jednego pakietu:
 
@@ -1485,7 +1485,7 @@ package users
 
 Mogą odwoływać się do swoich funkcji i typów bez importowania siebie nawzajem.
 
-## Module
+### Module
 
 Moduł definiuje `go.mod`.
 
@@ -1499,7 +1499,7 @@ go 1.27
 
 Moduł może zawierać wiele pakietów.
 
-### Przykład
+#### Przykład
 
 ```text
 web-monitor/
@@ -1528,7 +1528,7 @@ github.com/user/web-monitor/internal/validator
 
 ---
 
-# 19. Widoczność nazw
+## 19. Widoczność nazw
 
 Go ma wyjątkowo prostą zasadę.
 
@@ -1573,7 +1573,7 @@ protected
 
 ---
 
-# 20. Typowa struktura projektu
+## 20. Typowa struktura projektu
 
 Go nie wymusza jednej struktury projektu, ale istnieją popularne wzorce.
 
@@ -1609,7 +1609,7 @@ myapp/
 └── go.sum
 ```
 
-## `cmd/`
+### `cmd/`
 
 Często zawiera programy wykonywalne.
 
@@ -1620,7 +1620,7 @@ cmd/worker/main.go
 
 Jeden moduł może budować kilka binarek.
 
-## `internal/`
+### `internal/`
 
 Specjalny mechanizm Go.
 
@@ -1628,7 +1628,7 @@ Pakiety wewnątrz `internal` mają ograniczoną możliwość importowania spoza 
 
 To prawdziwa ochrona na poziomie toolchainu, a nie tylko konwencja.
 
-## `pkg/`
+### `pkg/`
 
 Spotykany w wielu repozytoriach, ale **nie jest wymagany przez Go**.
 
@@ -1638,7 +1638,7 @@ Nie należy tworzyć `pkg/` automatycznie tylko dlatego, że ktoś tak robi.
 
 ---
 
-# 21. `go.mod`, `go.sum` i zależności
+## 21. `go.mod`, `go.sum` i zależności
 
 Nowy moduł:
 
@@ -1662,13 +1662,13 @@ go 1.27
 require github.com/go-chi/chi/v5 v5.x.x
 ```
 
-## Dodanie biblioteki
+### Dodanie biblioteki
 
 ```bash
 go get github.com/go-chi/chi/v5
 ```
 
-## Porządkowanie zależności
+### Porządkowanie zależności
 
 ```bash
 go mod tidy
@@ -1678,7 +1678,7 @@ To bardzo ważne polecenie.
 
 Usuwa niepotrzebne zależności i dopisuje brakujące.
 
-## `go.sum`
+### `go.sum`
 
 Zawiera sumy kryptograficzne modułów.
 
@@ -1691,19 +1691,19 @@ go.mod
 go.sum
 ```
 
-## Lista modułów
+### Lista modułów
 
 ```bash
 go list -m all
 ```
 
-## Dlaczego dana zależność istnieje?
+### Dlaczego dana zależność istnieje?
 
 ```bash
 go mod why github.com/jackc/pgx/v5
 ```
 
-## Graf zależności
+### Graf zależności
 
 ```bash
 go mod graph
@@ -1711,9 +1711,9 @@ go mod graph
 
 ---
 
-# 22. Uruchamianie i kompilowanie
+## 22. Uruchamianie i kompilowanie
 
-## Uruchomienie projektu
+### Uruchomienie projektu
 
 ```bash
 go run .
@@ -1721,7 +1721,7 @@ go run .
 
 Go kompiluje program tymczasowo i go uruchamia.
 
-## Konkretny plik
+### Konkretny plik
 
 ```bash
 go run main.go
@@ -1739,25 +1739,25 @@ lub:
 go run ./cmd/server
 ```
 
-## Kompilacja
+### Kompilacja
 
 ```bash
 go build
 ```
 
-## Nazwa binarki
+### Nazwa binarki
 
 ```bash
 go build -o web-monitor
 ```
 
-## Budowa konkretnego programu
+### Budowa konkretnego programu
 
 ```bash
 go build -o bin/web-monitor ./cmd/web-monitor
 ```
 
-## Wszystkie pakiety
+### Wszystkie pakiety
 
 ```bash
 go build ./...
@@ -1767,7 +1767,7 @@ go build ./...
 
 > ten pakiet i wszystkie podpakiety.
 
-## Instalacja programu
+### Instalacja programu
 
 ```bash
 go install ./cmd/web-monitor
@@ -1789,7 +1789,7 @@ Typowo:
 
 ---
 
-# 23. Cross-compilation
+## 23. Cross-compilation
 
 Jedna z mocnych stron Go.
 
@@ -1819,7 +1819,7 @@ Lista wspieranych kombinacji:
 go tool dist list
 ```
 
-## Ważne: CGO
+### Ważne: CGO
 
 Cross-compilation jest najprostsze dla czystego Go.
 
@@ -1827,9 +1827,9 @@ Jeżeli projekt korzysta z bibliotek C przez CGO, sytuacja staje się trudniejsz
 
 ---
 
-# 24. Formatowanie i analiza kodu
+## 24. Formatowanie i analiza kodu
 
-## `gofmt`
+### `gofmt`
 
 ```bash
 gofmt -w .
@@ -1843,7 +1843,7 @@ go fmt ./...
 
 Go ma jeden dominujący styl formatowania.
 
-## `go vet`
+### `go vet`
 
 ```bash
 go vet ./...
@@ -1851,7 +1851,7 @@ go vet ./...
 
 Wyszukuje podejrzane konstrukcje, których sam kompilator nie musi uznać za błąd.
 
-## `staticcheck`
+### `staticcheck`
 
 Popularne dodatkowe narzędzie:
 
@@ -1865,7 +1865,7 @@ Potem:
 staticcheck ./...
 ```
 
-## Praktyczny zestaw
+### Praktyczny zestaw
 
 Przed commitem:
 
@@ -1883,7 +1883,7 @@ staticcheck ./...
 
 ---
 
-# 25. Testy
+## 25. Testy
 
 Go ma testy w standardowej bibliotece.
 
@@ -1928,13 +1928,13 @@ Szczegółowo:
 go test -v ./...
 ```
 
-## Jeden test
+### Jeden test
 
 ```bash
 go test -run TestAdd
 ```
 
-## Table-driven tests
+### Table-driven tests
 
 Bardzo charakterystyczny styl Go:
 
@@ -1968,7 +1968,7 @@ Jeśli zobaczysz `tt`, to często oznacza po prostu:
 test table entry
 ```
 
-## Test HTTP
+### Test HTTP
 
 Standardowa biblioteka ma:
 
@@ -1991,9 +1991,9 @@ if w.Code != http.StatusOK {
 
 ---
 
-# 26. Benchmarki, fuzzing i race detector
+## 26. Benchmarki, fuzzing i race detector
 
-## Benchmark
+### Benchmark
 
 ```go
 func BenchmarkParser(b *testing.B) {
@@ -2016,7 +2016,7 @@ for i := 0; i < b.N; i++ {
 }
 ```
 
-## Coverage
+### Coverage
 
 ```bash
 go test -cover ./...
@@ -2034,7 +2034,7 @@ HTML:
 go tool cover -html=coverage.out
 ```
 
-## Race detector
+### Race detector
 
 Bardzo ważny przy goroutines:
 
@@ -2044,7 +2044,7 @@ go test -race ./...
 
 Wykrywa wyścigi dostępu do pamięci.
 
-## Fuzzing
+### Fuzzing
 
 Go ma fuzzing wbudowany w `testing`.
 
@@ -2068,7 +2068,7 @@ go test -fuzz=FuzzParse
 
 ---
 
-# 27. Debugowanie
+## 27. Debugowanie
 
 Najpopularniejszy debugger dla Go:
 
@@ -2096,7 +2096,7 @@ dlv test ./internal/service
 
 W VS Code debugger Go zwykle korzysta właśnie z Delve.
 
-## Najprostszy debug
+### Najprostszy debug
 
 Go bardzo często debugguje się również przez:
 
@@ -2114,7 +2114,7 @@ fmt.Printf("user=%#v\n", user)
 
 ---
 
-# 28. Pliki, katalogi i system operacyjny
+## 28. Pliki, katalogi i system operacyjny
 
 Najważniejsze pakiety:
 
@@ -2126,7 +2126,7 @@ path/filepath
 bufio
 ```
 
-## Odczyt całego pliku
+### Odczyt całego pliku
 
 ```go
 data, err := os.ReadFile("config.json")
@@ -2141,13 +2141,13 @@ if err != nil {
 []byte
 ```
 
-## Zapis
+### Zapis
 
 ```go
 err := os.WriteFile("output.txt", []byte("hello"), 0644)
 ```
 
-## Otwieranie pliku
+### Otwieranie pliku
 
 ```go
 f, err := os.Open("data.txt")
@@ -2157,13 +2157,13 @@ if err != nil {
 defer f.Close()
 ```
 
-## Tworzenie katalogu
+### Tworzenie katalogu
 
 ```go
 os.MkdirAll("data/cache", 0755)
 ```
 
-## Ścieżki
+### Ścieżki
 
 ```go
 path := filepath.Join("data", "cache", "file.json")
@@ -2177,7 +2177,7 @@ Lepiej niż ręczne:
 
 jeśli kod ma działać na wielu systemach.
 
-## Zmienne środowiskowe
+### Zmienne środowiskowe
 
 ```go
 value := os.Getenv("DATABASE_URL")
@@ -2191,7 +2191,7 @@ value, ok := os.LookupEnv("DATABASE_URL")
 
 ---
 
-# 29. JSON
+## 29. JSON
 
 Pakiet:
 
@@ -2218,7 +2218,7 @@ to **struct tags**.
 
 Mówią bibliotece JSON, jak ma nazywać pole.
 
-## Kodowanie
+### Kodowanie
 
 ```go
 u := User{ID: 1, Name: "Anna"}
@@ -2232,7 +2232,7 @@ Wynik:
 {"id":1,"name":"Anna"}
 ```
 
-## Dekodowanie
+### Dekodowanie
 
 ```go
 var u User
@@ -2247,7 +2247,7 @@ Zwróć uwagę na:
 
 Biblioteka musi dostać pointer, bo ma zmodyfikować strukturę.
 
-## HTTP
+### HTTP
 
 Często:
 
@@ -2261,7 +2261,7 @@ oraz:
 json.NewDecoder(r.Body).Decode(&input)
 ```
 
-## `omitempty`
+### `omitempty`
 
 ```go
 Email string `json:"email,omitempty"`
@@ -2269,7 +2269,7 @@ Email string `json:"email,omitempty"`
 
 Jeśli pole jest puste, może zostać pominięte w JSON.
 
-## Ignorowanie pola
+### Ignorowanie pola
 
 ```go
 Password string `json:"-"`
@@ -2277,7 +2277,7 @@ Password string `json:"-"`
 
 ---
 
-# 30. Czas i daty
+## 30. Czas i daty
 
 Pakiet:
 
@@ -2350,7 +2350,7 @@ To konstrukcja bardzo przydatna np. w Promoguardzie.
 
 ---
 
-# 31. Logowanie
+## 31. Logowanie
 
 Najprostsze:
 
@@ -2395,7 +2395,7 @@ Dla większości nowych projektów warto najpierw sprawdzić, czy `slog` nie wys
 
 ---
 
-# 32. `context.Context`
+## 32. `context.Context`
 
 To jedna z rzeczy, która na początku wygląda dziwnie, a jest wszędzie w backendzie.
 
@@ -2412,7 +2412,7 @@ func LoadUser(ctx context.Context, id int64) (User, error)
 - timeoutu,
 - niewielkich danych związanych z requestem.
 
-## Request HTTP
+### Request HTTP
 
 Każdy request ma context:
 
@@ -2424,7 +2424,7 @@ Jeśli klient zerwie połączenie, context może zostać anulowany.
 
 Baza danych może wtedy również przerwać zapytanie.
 
-## Timeout
+### Timeout
 
 ```go
 ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -2437,7 +2437,7 @@ Potem:
 result, err := service.Load(ctx)
 ```
 
-## Ważne zasady
+### Ważne zasady
 
 Context zazwyczaj:
 
@@ -2456,9 +2456,9 @@ to jest całkowicie typowy kod Go.
 
 ---
 
-# 33. Współbieżność: goroutines i channels
+## 33. Współbieżność: goroutines i channels
 
-## Goroutine
+### Goroutine
 
 Zwykłe wywołanie:
 
@@ -2483,7 +2483,7 @@ go sendReports()
 
 Program może mieć tysiące goroutines.
 
-## Funkcja anonimowa
+### Funkcja anonimowa
 
 Bardzo częste:
 
@@ -2495,7 +2495,7 @@ go func() {
 
 Końcowe `()` oznacza natychmiastowe wywołanie funkcji anonimowej.
 
-## Channel
+### Channel
 
 Tworzenie:
 
@@ -2515,7 +2515,7 @@ Odbiór:
 msg := <-ch
 ```
 
-## Buffered channel
+### Buffered channel
 
 ```go
 ch := make(chan string, 10)
@@ -2523,7 +2523,7 @@ ch := make(chan string, 10)
 
 Może tymczasowo przechować 10 wartości bez blokowania nadawcy.
 
-## Zamknięcie
+### Zamknięcie
 
 ```go
 close(ch)
@@ -2539,7 +2539,7 @@ for msg := range ch {
 
 Pętla skończy się po zamknięciu kanału i opróżnieniu bufora.
 
-## `select`
+### `select`
 
 Działa podobnie do `switch`, ale dla operacji kanałowych.
 
@@ -2554,7 +2554,7 @@ case <-ctx.Done():
 
 To jeden z najważniejszych wzorców współbieżności w Go.
 
-## Timeout kanałowy
+### Timeout kanałowy
 
 ```go
 select {
@@ -2567,11 +2567,11 @@ case <-time.After(2 * time.Second):
 
 ---
 
-# 34. Mutex, WaitGroup i atomiki
+## 34. Mutex, WaitGroup i atomiki
 
 Nie każdą współbieżność robi się kanałami.
 
-## Mutex
+### Mutex
 
 ```go
 var mu sync.Mutex
@@ -2588,7 +2588,7 @@ counter++
 
 Chroni współdzieloną pamięć przed jednoczesną modyfikacją.
 
-## RWMutex
+### RWMutex
 
 ```go
 sync.RWMutex
@@ -2611,7 +2611,7 @@ mu.Lock()
 mu.Unlock()
 ```
 
-## WaitGroup
+### WaitGroup
 
 Czeka na zakończenie grupy goroutines.
 
@@ -2634,7 +2634,7 @@ wg.Wait()
 
 W nowszym Go możesz też spotkać wygodniejsze API `WaitGroup.Go`, zależnie od wersji kodu/toolchainu.
 
-## Atomiki
+### Atomiki
 
 Pakiet:
 
@@ -2648,7 +2648,7 @@ Nie używaj atomików jako pierwszego wyboru, jeśli nie rozumiesz dobrze modelu
 
 ---
 
-# 35. HTTP w standardowej bibliotece
+## 35. HTTP w standardowej bibliotece
 
 Pakiet:
 
@@ -2688,7 +2688,7 @@ http.Server
 http.ServeMux
 ```
 
-## Handler
+### Handler
 
 Kluczowy interfejs:
 
@@ -2700,7 +2700,7 @@ type Handler interface {
 
 Jeśli coś ma metodę `ServeHTTP`, może być handlerem HTTP.
 
-## HandlerFunc
+### HandlerFunc
 
 Funkcja:
 
@@ -2711,7 +2711,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 
 może działać jako handler.
 
-## Współczesny ServeMux
+### Współczesny ServeMux
 
 Nowoczesne Go potrafi routować także po metodzie i parametrach ścieżki.
 
@@ -2732,7 +2732,7 @@ id := r.PathValue("id")
 
 Dla prostych aplikacji może to całkowicie wystarczyć bez zewnętrznego routera.
 
-## Status
+### Status
 
 ```go
 w.WriteHeader(http.StatusNotFound)
@@ -2758,13 +2758,13 @@ niż magicznych liczb:
 500
 ```
 
-## Header
+### Header
 
 ```go
 w.Header().Set("Content-Type", "application/json")
 ```
 
-## Odpowiedź JSON
+### Odpowiedź JSON
 
 ```go
 func health(w http.ResponseWriter, r *http.Request) {
@@ -2775,7 +2775,7 @@ func health(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-## Serwer z konfiguracją
+### Serwer z konfiguracją
 
 Zamiast:
 
@@ -2799,7 +2799,7 @@ To daje większą kontrolę.
 
 ---
 
-# 36. HTML templates i pliki statyczne
+## 36. HTML templates i pliki statyczne
 
 Pakiet:
 
@@ -2809,7 +2809,7 @@ html/template
 
 jest przeznaczony do generowania HTML i automatycznie stosuje odpowiednie escaping kontekstowy.
 
-## Szablon
+### Szablon
 
 ```html
 <h1>{{.Title}}</h1>
@@ -2839,7 +2839,7 @@ data := struct {
 err = tmpl.Execute(w, data)
 ```
 
-## Pliki statyczne
+### Pliki statyczne
 
 ```go
 fs := http.FileServer(http.Dir("./static"))
@@ -2863,7 +2863,7 @@ Dla strony generowanej po stronie serwera Go + `html/template` może całkowicie
 
 ---
 
-# 37. Embed - pakowanie plików do binarki
+## 37. Embed - pakowanie plików do binarki
 
 Pakiet:
 
@@ -2909,11 +2909,11 @@ var staticFS embed.FS
 
 ---
 
-# 38. Backend: routery i frameworki
+## 38. Backend: routery i frameworki
 
 W Go warto najpierw znać `net/http`. Dopiero później framework.
 
-## 1. Standardowe `net/http`
+### 1. Standardowe `net/http`
 
 Dobre dla:
 
@@ -2929,7 +2929,7 @@ Zalety:
 - bardzo stabilne API,
 - świetna kompatybilność z ekosystemem.
 
-## 2. Chi
+### 2. Chi
 
 Import:
 
@@ -2956,7 +2956,7 @@ Dobre, gdy:
 
 Dla wielu zwykłych backendów to bardzo rozsądny wybór.
 
-## 3. Gin
+### 3. Gin
 
 Import:
 
@@ -2979,7 +2979,7 @@ r.GET("/users/:id", func(c *gin.Context) {
 
 Daje dużo wygody i dużą społeczność.
 
-## 4. Echo
+### 4. Echo
 
 Import:
 
@@ -2999,7 +2999,7 @@ e.GET("/", func(c echo.Context) error {
 
 Echo oferuje router, middleware, binding danych i wygodne API do odpowiedzi.
 
-## 5. Fiber
+### 5. Fiber
 
 Aktualna główna linia to Fiber v3:
 
@@ -3021,7 +3021,7 @@ app.Get("/", func(c fiber.Ctx) error {
 
 To może być przyjemne dla osób przychodzących z JavaScript/Node, ale brak bezpośredniej zgodności ze standardowym `net/http` jest ważną różnicą architektoniczną.
 
-## Jak to ustawić mentalnie
+### Jak to ustawić mentalnie
 
 Od najmniejszej warstwy do największej:
 
@@ -3039,7 +3039,7 @@ Nie oznacza to, że „niżej = gorzej” albo „wyżej = lepiej”. To po pros
 
 ---
 
-# 39. Bazy danych
+## 39. Bazy danych
 
 Standardowa biblioteka ma:
 
@@ -3063,7 +3063,7 @@ czyli:
 github.com/jackc/pgx/v5
 ```
 
-## Natywne pgx
+### Natywne pgx
 
 Przykładowy styl:
 
@@ -3085,7 +3085,7 @@ err := conn.QueryRow(ctx,
 ).Scan(&name)
 ```
 
-## Pool
+### Pool
 
 W serwerze częściej spotkasz pulę połączeń:
 
@@ -3095,7 +3095,7 @@ pgxpool.Pool
 
 niż pojedynczy `pgx.Conn`.
 
-## `database/sql`
+### `database/sql`
 
 Typowy kod:
 
@@ -3120,7 +3120,7 @@ $2
 $3
 ```
 
-## Transakcja
+### Transakcja
 
 ```go
 tx, err := db.BeginTx(ctx, nil)
@@ -3138,9 +3138,9 @@ return tx.Commit()
 
 ---
 
-# 40. ORM, sqlc i migracje
+## 40. ORM, sqlc i migracje
 
-## GORM
+### GORM
 
 Popularny ORM:
 
@@ -3165,7 +3165,7 @@ Wada:
 - większa warstwa abstrakcji,
 - trudniej czasem zobaczyć faktyczny SQL.
 
-## sqlc
+### sqlc
 
 Inne podejście:
 
@@ -3191,7 +3191,7 @@ To bardzo ciekawy środek między:
 - ręcznym SQL,
 - pełnym ORM.
 
-## Migracje
+### Migracje
 
 Popularne narzędzia:
 
@@ -3208,7 +3208,7 @@ Pliki często wyglądają tak:
 
 ---
 
-# 41. Redis i cache
+## 41. Redis i cache
 
 Popularny klient:
 
@@ -3249,7 +3249,7 @@ Do małego projektu nie dodawaj Redis tylko dlatego, że „backend powinien mie
 
 ---
 
-# 42. Konfiguracja aplikacji
+## 42. Konfiguracja aplikacji
 
 Najprostszy sposób:
 
@@ -3275,7 +3275,7 @@ func LoadConfig() (Config, error) {
 }
 ```
 
-## `.env`
+### `.env`
 
 Biblioteka:
 
@@ -3293,7 +3293,7 @@ Na produkcji często lepiej używać normalnych zmiennych środowiskowych dostar
 - Kubernetes,
 - platformę hostingową.
 
-## Viper
+### Viper
 
 Popularna większa biblioteka konfiguracyjna:
 
@@ -3313,7 +3313,7 @@ Do małego projektu może być przesadą.
 
 ---
 
-# 43. CLI i narzędzia
+## 43. CLI i narzędzia
 
 Prosty CLI można napisać standardowym:
 
@@ -3334,7 +3334,7 @@ Uruchomienie:
 ./app -port 9000
 ```
 
-## Cobra
+### Cobra
 
 Duże i popularne narzędzie:
 
@@ -3364,7 +3364,7 @@ Do prostego narzędzia jedna komenda + kilka flag → `flag` może być całkowi
 
 ---
 
-# 44. Gry w Go
+## 44. Gry w Go
 
 Go nie jest pierwszym językiem kojarzonym z AAA, ale świetnie nadaje się do:
 
@@ -3388,7 +3388,7 @@ Jeśli celem jest „chcę zrobić małą grę i zrozumieć kod”, Ebitengine j
 
 ---
 
-# 45. Ebitengine - najpraktyczniejszy start z grami 2D
+## 45. Ebitengine - najpraktyczniejszy start z grami 2D
 
 Pakiet:
 
@@ -3407,7 +3407,7 @@ type Game struct {
 
 Następnie implementuje się metody wymagane przez engine.
 
-## `Update`
+### `Update`
 
 Logika gry:
 
@@ -3420,7 +3420,7 @@ func (g *Game) Update() error {
 }
 ```
 
-## `Draw`
+### `Draw`
 
 Renderowanie:
 
@@ -3430,7 +3430,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 }
 ```
 
-## `Layout`
+### `Layout`
 
 Rozmiar logicznego ekranu:
 
@@ -3440,7 +3440,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 }
 ```
 
-## Uruchomienie
+### Uruchomienie
 
 ```go
 func main() {
@@ -3471,7 +3471,7 @@ Draw
 ...
 ```
 
-## Co trzyma się w `Game`?
+### Co trzyma się w `Game`?
 
 Na przykład:
 
@@ -3508,9 +3508,9 @@ Ebitengine obsługuje m.in.:
 
 ---
 
-# 46. Raylib-go i inne biblioteki growe
+## 46. Raylib-go i inne biblioteki growe
 
-## raylib-go
+### raylib-go
 
 Raylib jest biblioteką C zaprojektowaną do prostego programowania gier. `raylib-go` daje binding dla Go.
 
@@ -3534,7 +3534,7 @@ To może być bardzo czytelne dla kogoś, kto chce zobaczyć „co komputer robi
 
 W porównaniu z Ebitengine raylib-go może wprowadzać zależność od natywnej biblioteki/C toolchainu, zależnie od sposobu budowy i platformy.
 
-## SDL
+### SDL
 
 SDL daje niższy poziom:
 
@@ -3548,7 +3548,7 @@ W Go korzysta się z bindingów.
 
 Dobre, jeśli chcesz więcej kontroli, ale do zwykłej zabawy 2D Ebitengine/raylib są wygodniejsze.
 
-## Pixel
+### Pixel
 
 W starszych tutorialach Go możesz trafić na:
 
@@ -3560,7 +3560,7 @@ Biblioteka jest ciekawa historycznie i ma czytelne API 2D, ale aktywność proje
 
 ---
 
-# 47. CGO - kiedy Go korzysta z C
+## 47. CGO - kiedy Go korzysta z C
 
 Go może korzystać z kodu C przez mechanizm:
 
@@ -3595,9 +3595,9 @@ Ebitengine we współczesnych wydaniach ma bardzo mocne wsparcie pure-Go na desk
 
 ---
 
-# 48. Najczęstsze idiomy Go
+## 48. Najczęstsze idiomy Go
 
-## `if err != nil`
+### `if err != nil`
 
 ```go
 value, err := load()
@@ -3612,7 +3612,7 @@ Czytaj:
 
 ---
 
-## Ignorowanie wartości
+### Ignorowanie wartości
 
 ```go
 value, _ := strconv.Atoi(input)
@@ -3624,7 +3624,7 @@ Uwaga: ignorowanie błędów często jest podejrzane.
 
 ---
 
-## Compile-time interface check
+### Compile-time interface check
 
 Możesz zobaczyć:
 
@@ -3640,7 +3640,7 @@ To sztuczka kompilacyjna:
 
 ---
 
-## Constructor-like function
+### Constructor-like function
 
 Go nie ma konstruktorów językowych.
 
@@ -3673,7 +3673,7 @@ są tylko konwencją.
 
 ---
 
-## Functional options
+### Functional options
 
 W większych bibliotekach zobaczysz:
 
@@ -3694,7 +3694,7 @@ To popularny sposób konfiguracji API bez konstruktora z piętnastoma argumentam
 
 ---
 
-## `Must...`
+### `Must...`
 
 Funkcja o nazwie:
 
@@ -3718,7 +3718,7 @@ Nadaje się zwykle tam, gdzie błąd jest błędem programisty lub start aplikac
 
 ---
 
-## `New...`
+### `New...`
 
 ```go
 http.NewServeMux()
@@ -3730,7 +3730,7 @@ zwykle tworzy i zwraca obiekt.
 
 ---
 
-## `With...`
+### `With...`
 
 ```go
 context.WithTimeout(...)
@@ -3741,9 +3741,9 @@ często oznacza utworzenie zmodyfikowanej wersji istniejącego obiektu/kontekstu
 
 ---
 
-# 49. Rzeczy, które wyglądają dziwnie, ale są normalne
+## 49. Rzeczy, które wyglądają dziwnie, ale są normalne
 
-## `:=`
+### `:=`
 
 ```go
 x := 10
@@ -3751,7 +3751,7 @@ x := 10
 
 Deklaracja + przypisanie.
 
-## `&User{}`
+### `&User{}`
 
 ```go
 u := &User{}
@@ -3759,7 +3759,7 @@ u := &User{}
 
 Utwórz `User` i zwróć pointer do niego.
 
-## `*User`
+### `*User`
 
 ```go
 func Save(u *User)
@@ -3767,15 +3767,15 @@ func Save(u *User)
 
 Pointer do `User`.
 
-## `[]User`
+### `[]User`
 
 Slice struktur `User`.
 
-## `[]*User`
+### `[]*User`
 
 Slice pointerów do `User`.
 
-## `map[string]User`
+### `map[string]User`
 
 Mapa:
 
@@ -3783,7 +3783,7 @@ Mapa:
 string → User
 ```
 
-## `map[string][]User`
+### `map[string][]User`
 
 Mapa:
 
@@ -3791,26 +3791,26 @@ Mapa:
 string → slice User
 ```
 
-## `chan Result`
+### `chan Result`
 
 Kanał przenoszący `Result`.
 
-## `<-chan Result`
+### `<-chan Result`
 
 Kanał tylko do odbierania.
 
-## `chan<- Result`
+### `chan<- Result`
 
 Kanał tylko do wysyłania.
 
-## `func() error`
+### `func() error`
 
 Typ funkcji, która:
 
 - nie przyjmuje argumentów,
 - zwraca `error`.
 
-## `func(context.Context, string) (*User, error)`
+### `func(context.Context, string) (*User, error)`
 
 Typ funkcji:
 
@@ -3819,7 +3819,7 @@ Typ funkcji:
 - zwraca `*User`,
 - zwraca `error`.
 
-## `...string`
+### `...string`
 
 Variadic:
 
@@ -3829,7 +3829,7 @@ func Log(tags ...string)
 
 przyjmuje dowolną liczbę stringów.
 
-## `struct{}`
+### `struct{}`
 
 Pusta struktura.
 
@@ -3847,7 +3847,7 @@ chan struct{}
 
 czyli kanał służący nie do przesyłania danych, tylko sygnału.
 
-## `map[string]any`
+### `map[string]any`
 
 Dynamiczny zestaw danych:
 
@@ -3859,11 +3859,11 @@ Częsty przy luźnym JSON.
 
 ---
 
-# 50. Jak czytać obcy projekt Go
+## 50. Jak czytać obcy projekt Go
 
 To najważniejsza część całego kompendium, jeśli Twoim celem jest **rozumienie kodu**.
 
-## Krok 1 - znajdź `go.mod`
+### Krok 1 - znajdź `go.mod`
 
 ```bash
 cat go.mod
@@ -3894,7 +3894,7 @@ To od razu mówi dużo o projekcie.
 
 ---
 
-## Krok 2 - znajdź `package main`
+### Krok 2 - znajdź `package main`
 
 ```bash
 rg 'package main'
@@ -3916,7 +3916,7 @@ To punkt startowy programu.
 
 ---
 
-## Krok 3 - zobacz, co `main()` tworzy
+### Krok 3 - zobacz, co `main()` tworzy
 
 Na przykład:
 
@@ -3947,7 +3947,7 @@ HTTP server
 
 ---
 
-## Krok 4 - rozpoznaj warstwy
+### Krok 4 - rozpoznaj warstwy
 
 Typowy backend:
 
@@ -3961,7 +3961,7 @@ repository
 database
 ```
 
-### Handler
+#### Handler
 
 Odpowiada za HTTP:
 
@@ -3969,7 +3969,7 @@ Odpowiada za HTTP:
 func (h *Handler) GetUser(w http.ResponseWriter, r *http.Request)
 ```
 
-### Service
+#### Service
 
 Logika aplikacji:
 
@@ -3977,7 +3977,7 @@ Logika aplikacji:
 func (s *Service) GetUser(ctx context.Context, id int64)
 ```
 
-### Repository
+#### Repository
 
 Dostęp do danych:
 
@@ -3987,7 +3987,7 @@ func (r *Repository) GetUser(ctx context.Context, id int64)
 
 ---
 
-## Krok 5 - czytaj struktury
+### Krok 5 - czytaj struktury
 
 Jeśli widzisz:
 
@@ -4005,7 +4005,7 @@ Struct jest często najlepszą mapą architektury.
 
 ---
 
-## Krok 6 - czytaj interfejsy
+### Krok 6 - czytaj interfejsy
 
 ```go
 type UserStore interface {
@@ -4018,7 +4018,7 @@ Interfejs pokazuje kontrakt między warstwami.
 
 ---
 
-## Krok 7 - znajdź trasy HTTP
+### Krok 7 - znajdź trasy HTTP
 
 Szukaj:
 
@@ -4037,7 +4037,7 @@ Dostajesz listę wejść do aplikacji.
 
 ---
 
-## Krok 8 - znajdź goroutines
+### Krok 8 - znajdź goroutines
 
 ```bash
 rg '\bgo\s+'
@@ -4052,7 +4052,7 @@ Sprawdź:
 
 ---
 
-## Krok 9 - znajdź I/O
+### Krok 9 - znajdź I/O
 
 Szukaj:
 
@@ -4071,7 +4071,7 @@ To pokaże, gdzie program komunikuje się ze światem.
 
 ---
 
-## Krok 10 - uruchom testy
+### Krok 10 - uruchom testy
 
 ```bash
 go test ./...
@@ -4087,7 +4087,7 @@ go vet ./...
 
 ---
 
-# 51. Miniaturowy backend - przykład całości
+## 51. Miniaturowy backend - przykład całości
 
 Poniższy przykład pokazuje wszystkie najważniejsze klocki naraz.
 
@@ -4190,7 +4190,7 @@ To jest już prawdziwy, działający backend HTTP.
 
 ---
 
-# 52. Miniaturowa gra - przykład struktury
+## 52. Miniaturowa gra - przykład struktury
 
 Przykładowa koncepcja Ebitengine:
 
@@ -4253,9 +4253,9 @@ Nie musisz jednak od razu dzielić wszystkiego na kilkanaście pakietów. W mał
 
 ---
 
-# 53. Ściąga poleceń
+## 53. Ściąga poleceń
 
-## Projekt
+### Projekt
 
 Nowy katalog:
 
@@ -4296,7 +4296,7 @@ go build ./...
 
 ---
 
-## Zależności
+### Zależności
 
 Dodaj:
 
@@ -4330,7 +4330,7 @@ go mod graph
 
 ---
 
-## Jakość
+### Jakość
 
 Format:
 
@@ -4376,7 +4376,7 @@ go test -bench=. ./...
 
 ---
 
-## Informacje
+### Informacje
 
 Wersja:
 
@@ -4410,36 +4410,36 @@ go list ./...
 
 ---
 
-# 54. Ściąga składni
+## 54. Ściąga składni
 
-## Zmienna
+### Zmienna
 
 ```go
 var x int
 x := 10
 ```
 
-## Stała
+### Stała
 
 ```go
 const Max = 100
 ```
 
-## Slice
+### Slice
 
 ```go
 items := []string{"a", "b"}
 items = append(items, "c")
 ```
 
-## Map
+### Map
 
 ```go
 m := map[string]int{}
 m["a"] = 1
 ```
 
-## Struct
+### Struct
 
 ```go
 type User struct {
@@ -4448,13 +4448,13 @@ type User struct {
 }
 ```
 
-## Pointer
+### Pointer
 
 ```go
 p := &user
 ```
 
-## Funkcja
+### Funkcja
 
 ```go
 func Add(a, b int) int {
@@ -4462,19 +4462,19 @@ func Add(a, b int) int {
 }
 ```
 
-## Funkcja z błędem
+### Funkcja z błędem
 
 ```go
 func Load() (Data, error)
 ```
 
-## Metoda
+### Metoda
 
 ```go
 func (u *User) Rename(name string)
 ```
 
-## Interfejs
+### Interfejs
 
 ```go
 type Store interface {
@@ -4482,14 +4482,14 @@ type Store interface {
 }
 ```
 
-## `if`
+### `if`
 
 ```go
 if x > 10 {
 }
 ```
 
-## `switch`
+### `switch`
 
 ```go
 switch x {
@@ -4499,21 +4499,21 @@ default:
 }
 ```
 
-## `for`
+### `for`
 
 ```go
 for i := 0; i < 10; i++ {
 }
 ```
 
-## `range`
+### `range`
 
 ```go
 for i, v := range values {
 }
 ```
 
-## Error handling
+### Error handling
 
 ```go
 value, err := load()
@@ -4522,13 +4522,13 @@ if err != nil {
 }
 ```
 
-## Goroutine
+### Goroutine
 
 ```go
 go work()
 ```
 
-## Channel
+### Channel
 
 ```go
 ch := make(chan Result)
@@ -4536,20 +4536,20 @@ ch <- result
 result := <-ch
 ```
 
-## Context
+### Context
 
 ```go
 ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 defer cancel()
 ```
 
-## JSON tag
+### JSON tag
 
 ```go
 Name string `json:"name"`
 ```
 
-## Import grupowy
+### Import grupowy
 
 ```go
 import (
@@ -4561,11 +4561,11 @@ import (
 
 ---
 
-# 55. Co warto znać, a czego na razie nie trzeba
+## 55. Co warto znać, a czego na razie nie trzeba
 
 Jeżeli Twoim celem jest głównie **rozumienie projektu, poprawianie go z pomocą AI, przeglądanie PR-ów i orientowanie się, co się dzieje**, skoncentruj się na tych rzeczach.
 
-## Musisz dobrze rozpoznawać
+### Musisz dobrze rozpoznawać
 
 ```text
 package
@@ -4593,7 +4593,7 @@ go test
 go build
 ```
 
-## Powinieneś rozumieć na poziomie ogólnym
+### Powinieneś rozumieć na poziomie ogólnym
 
 ```text
 generics
@@ -4608,7 +4608,7 @@ html/template
 embed
 ```
 
-## Możesz na razie traktować jako „wiem, że istnieje”
+### Możesz na razie traktować jako „wiem, że istnieje”
 
 ```text
 reflection
@@ -4623,7 +4623,7 @@ linker flags
 profilowanie runtime na głębokim poziomie
 ```
 
-## Dla backendu stron
+### Dla backendu stron
 
 Najbardziej praktyczna ścieżka rozumienia kodu:
 
@@ -4647,7 +4647,7 @@ chi lub inny router
 testy
 ```
 
-## Dla gier
+### Dla gier
 
 ```text
 Go syntax
@@ -4667,11 +4667,11 @@ Ebitengine lub raylib-go
 
 ---
 
-# 56. Dalsza dokumentacja
+## 56. Dalsza dokumentacja
 
 Najbardziej wartościowe źródła:
 
-## Oficjalne Go
+### Oficjalne Go
 
 - Dokumentacja: https://go.dev/doc/
 - A Tour of Go: https://go.dev/tour/
@@ -4681,7 +4681,7 @@ Najbardziej wartościowe źródła:
 - Organizacja modułu: https://go.dev/doc/modules/layout
 - Effective Go: https://go.dev/doc/effective_go
 
-## Backend
+### Backend
 
 - `net/http`: https://pkg.go.dev/net/http
 - `html/template`: https://pkg.go.dev/html/template
@@ -4693,7 +4693,7 @@ Najbardziej wartościowe źródła:
 - sqlc: https://sqlc.dev/
 - go-redis: https://github.com/redis/go-redis
 
-## Gry
+### Gry
 
 - Ebitengine: https://ebitengine.org/
 - raylib: https://www.raylib.com/
@@ -4701,7 +4701,7 @@ Najbardziej wartościowe źródła:
 
 ---
 
-# Podsumowanie mentalne
+## Podsumowanie mentalne
 
 Jeżeli otwierasz plik Go i widzisz:
 
@@ -4750,7 +4750,7 @@ I właśnie do tego poziomu rozumienia ten materiał ma Cię doprowadzić.
 
 ---
 
-# Jedna praktyczna rada na koniec
+## Jedna praktyczna rada na koniec
 
 Nie próbuj czytać dużego projektu Go od pierwszego pliku do ostatniego.
 
@@ -4776,7 +4776,7 @@ gdzie wraca error?
 
 Jeżeli umiesz przejść tę ścieżkę, potrafisz zrozumieć zaskakująco dużą część realnego projektu Go nawet wtedy, gdy sam jeszcze nie napisałbyś go od zera.
 
-## Oficjalne źródła
+### Oficjalne źródła
 
 - Go documentation: https://go.dev/doc/
 - Go 1.27 release notes: https://go.dev/doc/go1.27

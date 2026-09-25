@@ -23,7 +23,7 @@ Kompendium używa współczesnego polecenia `docker compose` dostarczanego jako 
 
 Powiązane tematy: [Debian - desktop i serwer](techhandbook:doc-033), [systemd, cron i schedulery](techhandbook:doc-052), [Linux permissions i bezpieczeństwo serwera](techhandbook:doc-025) oraz [nginx i reverse proxy](techhandbook:doc-045).
 
-# 1. Czym jest Docker
+## 1. Czym jest Docker
 
 Docker uruchamia aplikacje w **kontenerach**.
 
@@ -70,7 +70,7 @@ Najważniejsze pojęcia:
 
 ---
 
-# 2. Docker a maszyna wirtualna
+## 2. Docker a maszyna wirtualna
 
 Maszyna wirtualna:
 
@@ -103,7 +103,7 @@ Kontenery:
 
 ---
 
-# 3. Ważna uwaga o systemach
+## 3. Ważna uwaga o systemach
 
 Docker działa natywnie przede wszystkim na **Linuxie**.
 
@@ -124,7 +124,7 @@ Na FreeBSD Docker nie jest natywną technologią systemową. FreeBSD ma własne 
 
 ---
 
-# 4. Sprawdzenie instalacji
+## 4. Sprawdzenie instalacji
 
 ```bash
 docker --version
@@ -153,7 +153,7 @@ Pokazuje m.in.:
 
 ---
 
-# 5. Uruchamianie i zatrzymywanie Dockera
+## 5. Uruchamianie i zatrzymywanie Dockera
 
 Na Debianie z systemd:
 
@@ -193,7 +193,7 @@ sudo systemctl enable --now docker
 
 ---
 
-# 6. Docker bez sudo
+## 6. Docker bez sudo
 
 Domyślnie Docker często wymaga:
 
@@ -221,7 +221,7 @@ Test:
 docker ps
 ```
 
-## Uwaga bezpieczeństwa
+### Uwaga bezpieczeństwa
 
 Użytkownik należący do grupy `docker` ma praktycznie uprawnienia równoważne rootowi.
 
@@ -229,7 +229,7 @@ Na prywatnym serwerze jest to często akceptowalne, ale warto wiedzieć, co to o
 
 ---
 
-# 7. Pierwszy kontener
+## 7. Pierwszy kontener
 
 Najprostszy test:
 
@@ -247,7 +247,7 @@ Docker:
 
 ---
 
-# 8. Obrazy
+## 8. Obrazy
 
 Lista lokalnych obrazów:
 
@@ -270,7 +270,7 @@ nginx        latest    abcdef123456   2 weeks ago   190MB
 
 ---
 
-# 9. Pobieranie obrazu
+## 9. Pobieranie obrazu
 
 ```bash
 docker pull nginx
@@ -290,7 +290,7 @@ docker pull postgres:17
 
 ---
 
-# 10. Usuwanie obrazu
+## 10. Usuwanie obrazu
 
 ```bash
 docker rmi nginx
@@ -316,7 +316,7 @@ docker rmi -f nginx
 
 ---
 
-# 11. Uruchamianie kontenera
+## 11. Uruchamianie kontenera
 
 Podstawowa składnia:
 
@@ -342,7 +342,7 @@ docker run -d nginx
 
 ---
 
-# 12. Nadawanie nazwy kontenerowi
+## 12. Nadawanie nazwy kontenerowi
 
 Bez nazwy Docker wygeneruje losową.
 
@@ -364,7 +364,7 @@ zamiast używać ID.
 
 ---
 
-# 13. Lista kontenerów
+## 13. Lista kontenerów
 
 Tylko działające:
 
@@ -387,7 +387,7 @@ docker container ls -a
 
 ---
 
-# 14. Start, stop, restart
+## 14. Start, stop, restart
 
 ```bash
 docker start web
@@ -397,7 +397,7 @@ docker restart web
 
 ---
 
-# 15. Usuwanie kontenera
+## 15. Usuwanie kontenera
 
 ```bash
 docker rm web
@@ -413,7 +413,7 @@ docker rm -f web
 
 ---
 
-# 16. Porty
+## 16. Porty
 
 Kontener ma własną przestrzeń sieciową.
 
@@ -453,7 +453,7 @@ trafia do portu 80 w kontenerze.
 
 ---
 
-# 17. Port tylko na localhost
+## 17. Port tylko na localhost
 
 Jeżeli usługa ma być dostępna wyłącznie lokalnie:
 
@@ -467,7 +467,7 @@ To bardzo przydatne, gdy przed Dockerem stoi nginx jako reverse proxy.
 
 ---
 
-# 18. Sprawdzanie mapowania portów
+## 18. Sprawdzanie mapowania portów
 
 ```bash
 docker port web
@@ -481,7 +481,7 @@ docker ps
 
 ---
 
-# 19. Logi kontenera
+## 19. Logi kontenera
 
 ```bash
 docker logs web
@@ -507,7 +507,7 @@ docker logs --tail 100 -f web
 
 ---
 
-# 20. Wejście do kontenera
+## 20. Wejście do kontenera
 
 Jeśli obraz ma bash:
 
@@ -544,7 +544,7 @@ cat /etc/os-release
 
 ---
 
-# 21. Uruchomienie pojedynczego polecenia
+## 21. Uruchomienie pojedynczego polecenia
 
 Nie trzeba wchodzić do shella.
 
@@ -560,7 +560,7 @@ docker exec postgres pg_isready
 
 ---
 
-# 22. Zmienne środowiskowe
+## 22. Zmienne środowiskowe
 
 Można przekazywać wartości przez:
 
@@ -585,7 +585,7 @@ echo "$APP_ENV"
 
 ---
 
-# 23. Plik `.env`
+## 23. Plik `.env`
 
 Przykład:
 
@@ -612,7 +612,7 @@ Typowy `.gitignore`:
 
 ---
 
-# 24. System plików kontenera
+## 24. System plików kontenera
 
 Zmiany wykonane bezpośrednio w filesystemie kontenera są nietrwałe w sensie infrastruktury.
 
@@ -647,7 +647,7 @@ Dlatego trwałe dane przechowujemy w:
 
 ---
 
-# 25. Bind mount
+## 25. Bind mount
 
 Bind mount podłącza katalog hosta do kontenera.
 
@@ -671,7 +671,7 @@ Zmiana pliku na hoście jest natychmiast widoczna w kontenerze.
 
 ---
 
-# 26. Składnia `--mount`
+## 26. Składnia `--mount`
 
 Bardziej czytelna wersja:
 
@@ -683,7 +683,7 @@ docker run -d \
 
 ---
 
-# 27. Volumes
+## 27. Volumes
 
 Volume jest zarządzany przez Dockera.
 
@@ -710,7 +710,7 @@ docker run -d \
 
 ---
 
-# 28. Gdzie Docker trzyma volume
+## 28. Gdzie Docker trzyma volume
 
 Na Linuksie zazwyczaj:
 
@@ -728,7 +728,7 @@ docker volume ...
 
 ---
 
-# 29. Informacje o volume
+## 29. Informacje o volume
 
 ```bash
 docker volume inspect postgres-data
@@ -736,7 +736,7 @@ docker volume inspect postgres-data
 
 ---
 
-# 30. Usuwanie volume
+## 30. Usuwanie volume
 
 ```bash
 docker volume rm postgres-data
@@ -746,7 +746,7 @@ Usunięcie volume oznacza utratę zapisanych tam danych.
 
 ---
 
-# 31. Sieci Dockera
+## 31. Sieci Dockera
 
 Lista:
 
@@ -766,7 +766,7 @@ Najczęściej używana jest własna sieć bridge.
 
 ---
 
-# 32. Tworzenie sieci
+## 32. Tworzenie sieci
 
 ```bash
 docker network create app-network
@@ -774,7 +774,7 @@ docker network create app-network
 
 ---
 
-# 33. Uruchamianie kontenerów w jednej sieci
+## 33. Uruchamianie kontenerów w jednej sieci
 
 Baza:
 
@@ -810,7 +810,7 @@ Nie trzeba znać adresu IP kontenera.
 
 ---
 
-# 34. Inspect
+## 34. Inspect
 
 Jedno z najważniejszych poleceń diagnostycznych:
 
@@ -839,7 +839,7 @@ docker inspect -f '{{.State.Status}}' web
 
 ---
 
-# 35. Statystyki kontenerów
+## 35. Statystyki kontenerów
 
 ```bash
 docker stats
@@ -855,7 +855,7 @@ Pokazuje:
 
 ---
 
-# 36. Procesy w kontenerze
+## 36. Procesy w kontenerze
 
 ```bash
 docker top web
@@ -863,7 +863,7 @@ docker top web
 
 ---
 
-# 37. Dockerfile
+## 37. Dockerfile
 
 Dockerfile opisuje, jak zbudować obraz.
 
@@ -894,9 +894,9 @@ CMD ["/app/app"]
 
 ---
 
-# 38. Jak czytać Dockerfile
+## 38. Jak czytać Dockerfile
 
-## `FROM`
+### `FROM`
 
 ```dockerfile
 FROM golang:1.25
@@ -906,7 +906,7 @@ Obraz bazowy.
 
 ---
 
-## `WORKDIR`
+### `WORKDIR`
 
 ```dockerfile
 WORKDIR /app
@@ -916,7 +916,7 @@ Ustawia bieżący katalog.
 
 ---
 
-## `COPY`
+### `COPY`
 
 ```dockerfile
 COPY . .
@@ -926,7 +926,7 @@ Kopiuje pliki z hosta do obrazu.
 
 ---
 
-## `RUN`
+### `RUN`
 
 ```dockerfile
 RUN go build -o app
@@ -936,7 +936,7 @@ Uruchamia polecenie podczas budowania obrazu.
 
 ---
 
-## `ENV`
+### `ENV`
 
 ```dockerfile
 ENV PORT=8080
@@ -946,7 +946,7 @@ Definiuje zmienną środowiskową.
 
 ---
 
-## `EXPOSE`
+### `EXPOSE`
 
 ```dockerfile
 EXPOSE 8080
@@ -958,7 +958,7 @@ Nie publikuje portu automatycznie.
 
 ---
 
-## `CMD`
+### `CMD`
 
 ```dockerfile
 CMD ["./app"]
@@ -968,7 +968,7 @@ Domyślne polecenie uruchamiane po starcie kontenera.
 
 ---
 
-## `ENTRYPOINT`
+### `ENTRYPOINT`
 
 Przykład:
 
@@ -980,7 +980,7 @@ Definiuje główny program kontenera.
 
 ---
 
-# 39. Budowanie obrazu
+## 39. Budowanie obrazu
 
 Będąc w katalogu zawierającym Dockerfile:
 
@@ -1004,7 +1004,7 @@ oznacza bieżący katalog jako build context.
 
 ---
 
-# 40. Tagowanie obrazu
+## 40. Tagowanie obrazu
 
 ```bash
 docker tag myapp myapp:1.0
@@ -1020,7 +1020,7 @@ myapp:latest
 
 ---
 
-# 41. Uruchomienie własnego obrazu
+## 41. Uruchomienie własnego obrazu
 
 ```bash
 docker run -d \
@@ -1031,7 +1031,7 @@ docker run -d \
 
 ---
 
-# 42. `.dockerignore`
+## 42. `.dockerignore`
 
 Docker podczas builda wysyła build context.
 
@@ -1053,7 +1053,7 @@ Działa podobnie jak `.gitignore`.
 
 ---
 
-# 43. Multi-stage build
+## 43. Multi-stage build
 
 Bardzo ważna technika.
 
@@ -1087,7 +1087,7 @@ Końcowy obraz jest dużo mniejszy.
 
 ---
 
-# 44. Jeszcze mniejszy obraz Go
+## 44. Jeszcze mniejszy obraz Go
 
 Dla statycznie skompilowanego programu:
 
@@ -1119,7 +1119,7 @@ nie zadziała.
 
 ---
 
-# 45. Docker Compose
+## 45. Docker Compose
 
 Compose pozwala opisać cały zestaw usług w jednym pliku.
 
@@ -1157,7 +1157,7 @@ volumes:
 
 ---
 
-# 46. Start Compose
+## 46. Start Compose
 
 ```bash
 docker compose up
@@ -1171,7 +1171,7 @@ docker compose up -d
 
 ---
 
-# 47. Budowanie i uruchamianie
+## 47. Budowanie i uruchamianie
 
 ```bash
 docker compose up -d --build
@@ -1181,7 +1181,7 @@ To jedno z najczęściej używanych poleceń podczas developmentu i deployu.
 
 ---
 
-# 48. Status Compose
+## 48. Status Compose
 
 ```bash
 docker compose ps
@@ -1189,7 +1189,7 @@ docker compose ps
 
 ---
 
-# 49. Logi Compose
+## 49. Logi Compose
 
 Wszystkie:
 
@@ -1211,7 +1211,7 @@ docker compose logs -f app
 
 ---
 
-# 50. Zatrzymanie Compose
+## 50. Zatrzymanie Compose
 
 ```bash
 docker compose stop
@@ -1227,7 +1227,7 @@ docker compose start
 
 ---
 
-# 51. Usunięcie kontenerów Compose
+## 51. Usunięcie kontenerów Compose
 
 ```bash
 docker compose down
@@ -1242,7 +1242,7 @@ Domyślnie nie usuwa nazwanych volumes.
 
 ---
 
-# 52. Usunięcie Compose razem z volume
+## 52. Usunięcie Compose razem z volume
 
 ```bash
 docker compose down -v
@@ -1254,7 +1254,7 @@ To może usunąć bazę danych.
 
 ---
 
-# 53. Restart pojedynczej usługi
+## 53. Restart pojedynczej usługi
 
 ```bash
 docker compose restart app
@@ -1262,7 +1262,7 @@ docker compose restart app
 
 ---
 
-# 54. Shell w kontenerze Compose
+## 54. Shell w kontenerze Compose
 
 ```bash
 docker compose exec app sh
@@ -1276,7 +1276,7 @@ docker compose exec app bash
 
 ---
 
-# 55. Uruchomienie jednorazowego polecenia
+## 55. Uruchomienie jednorazowego polecenia
 
 ```bash
 docker compose exec app ./app migrate
@@ -1296,7 +1296,7 @@ docker compose exec app python manage.py migrate
 
 ---
 
-# 56. Sprawdzanie poprawności Compose
+## 56. Sprawdzanie poprawności Compose
 
 ```bash
 docker compose config
@@ -1312,7 +1312,7 @@ Pokazuje finalną konfigurację po:
 
 ---
 
-# 57. Nazwy projektów Compose
+## 57. Nazwy projektów Compose
 
 Compose tworzy nazwy np.:
 
@@ -1331,7 +1331,7 @@ docker compose -p example-site up -d
 
 ---
 
-# 58. Restart policy
+## 58. Restart policy
 
 Dla usług serwerowych warto ustawić:
 
@@ -1361,7 +1361,7 @@ Kontener uruchomi się ponownie po restarcie Dockera/serwera, chyba że został 
 
 ---
 
-# 59. Healthcheck
+## 59. Healthcheck
 
 Kontener może mieć test zdrowia.
 
@@ -1393,7 +1393,7 @@ unhealthy
 
 ---
 
-# 60. Limity pamięci
+## 60. Limity pamięci
 
 Przykład `docker run`:
 
@@ -1413,7 +1413,7 @@ docker run \
 
 ---
 
-# 61. Kopiowanie plików do i z kontenera
+## 61. Kopiowanie plików do i z kontenera
 
 Host → kontener:
 
@@ -1429,7 +1429,7 @@ docker cp web:/app/report.txt ./report.txt
 
 ---
 
-# 62. Eksport obrazu - `docker save`
+## 62. Eksport obrazu - `docker save`
 
 To właściwy sposób przenoszenia gotowego obrazu Dockera jako pliku.
 
@@ -1457,7 +1457,7 @@ docker images
 
 ---
 
-# 63. Kompresowanie obrazu
+## 63. Kompresowanie obrazu
 
 Można zrobić:
 
@@ -1479,11 +1479,11 @@ gzip -dc myapp.tar.gz | docker load
 
 ---
 
-# 64. `docker save` vs `docker export`
+## 64. `docker save` vs `docker export`
 
 To bardzo ważne.
 
-## `docker save`
+### `docker save`
 
 Eksportuje **image**.
 
@@ -1508,7 +1508,7 @@ docker load -i myapp.tar
 
 ---
 
-## `docker export`
+### `docker export`
 
 Eksportuje filesystem **kontenera**.
 
@@ -1528,7 +1528,7 @@ W praktyce dużo rzadziej potrzebujesz `docker export`.
 
 ---
 
-# 65. Zasada
+## 65. Zasada
 
 Do przenoszenia aplikacji:
 
@@ -1546,7 +1546,7 @@ docker import
 
 ---
 
-# 66. Registry
+## 66. Registry
 
 Zamiast kopiować pliki `.tar`, można przechowywać obraz w registry.
 
@@ -1573,7 +1573,7 @@ Przykłady:
 
 ---
 
-# 67. Logowanie do registry
+## 67. Logowanie do registry
 
 ```bash
 docker login
@@ -1587,7 +1587,7 @@ docker login ghcr.io
 
 ---
 
-# 68. Push obrazu
+## 68. Push obrazu
 
 Najpierw tag:
 
@@ -1609,7 +1609,7 @@ docker pull username/myapp:1.0
 
 ---
 
-# 69. Typowy deploy przez registry
+## 69. Typowy deploy przez registry
 
 Lokalnie:
 
@@ -1627,7 +1627,7 @@ docker compose up -d
 
 ---
 
-# 70. Typowy deploy bez registry
+## 70. Typowy deploy bez registry
 
 Lokalnie:
 
@@ -1656,7 +1656,7 @@ docker compose up -d
 
 ---
 
-# 71. Najlepszy model dla małych projektów
+## 71. Najlepszy model dla małych projektów
 
 Dla własnych małych aplikacji sensowny układ to:
 
@@ -1676,7 +1676,7 @@ VPS
 
 Możliwe są dwa workflow.
 
-## Wariant A - build na serwerze
+### Wariant A - build na serwerze
 
 ```bash
 git pull
@@ -1685,7 +1685,7 @@ docker compose up -d --build
 
 Najprostszy.
 
-## Wariant B - gotowe obrazy
+### Wariant B - gotowe obrazy
 
 CI albo komputer lokalny:
 
@@ -1703,7 +1703,7 @@ Lepsze przy większych projektach.
 
 ---
 
-# 72. Docker + nginx reverse proxy
+## 72. Docker + nginx reverse proxy
 
 Przykład aplikacji:
 
@@ -1750,7 +1750,7 @@ aplikacja
 
 ---
 
-# 73. Aktualizacja aplikacji
+## 73. Aktualizacja aplikacji
 
 Dla projektu budowanego lokalnie na VPS:
 
@@ -1764,7 +1764,7 @@ Compose przebuduje obraz i wymieni kontener.
 
 ---
 
-# 74. Aktualizacja obrazu z registry
+## 74. Aktualizacja obrazu z registry
 
 ```bash
 docker compose pull
@@ -1773,7 +1773,7 @@ docker compose up -d
 
 ---
 
-# 75. Sprawdzanie logów po deployu
+## 75. Sprawdzanie logów po deployu
 
 ```bash
 docker compose logs --tail 100 -f
@@ -1789,7 +1789,7 @@ nie zatrzymuje kontenera - tylko kończy śledzenie logów.
 
 ---
 
-# 76. Backup volume
+## 76. Backup volume
 
 Przykład volume:
 
@@ -1809,7 +1809,7 @@ docker run --rm \
 
 ---
 
-# 77. Restore volume
+## 77. Restore volume
 
 Najpierw utwórz volume:
 
@@ -1829,7 +1829,7 @@ docker run --rm \
 
 ---
 
-# 78. Backup bazy danych
+## 78. Backup bazy danych
 
 W przypadku bazy danych często lepiej robić backup logiczny niż kopiować jej filesystem.
 
@@ -1849,7 +1849,7 @@ cat backup.sql | docker exec -i db \
 
 ---
 
-# 79. Prune - sprzątanie
+## 79. Prune - sprzątanie
 
 Docker zostawia:
 
@@ -1868,7 +1868,7 @@ Pokazuje zajęte miejsce.
 
 ---
 
-# 80. Usuwanie nieużywanych rzeczy
+## 80. Usuwanie nieużywanych rzeczy
 
 ```bash
 docker system prune
@@ -1886,7 +1886,7 @@ Uwaga:
 
 ---
 
-# 81. Volume prune
+## 81. Volume prune
 
 ```bash
 docker volume prune
@@ -1898,7 +1898,7 @@ volumes mogą zawierać dane.
 
 ---
 
-# 82. Build cache
+## 82. Build cache
 
 Sprawdzenie:
 
@@ -1914,9 +1914,9 @@ docker builder prune
 
 ---
 
-# 83. Najczęstsze problemy
+## 83. Najczęstsze problemy
 
-## Port już zajęty
+### Port już zajęty
 
 Błąd podobny do:
 
@@ -1943,7 +1943,7 @@ Rozwiązanie:
 
 ---
 
-# 84. Kontener natychmiast się zatrzymuje
+## 84. Kontener natychmiast się zatrzymuje
 
 Sprawdź:
 
@@ -1961,7 +1961,7 @@ Kontener działa tylko tak długo, jak działa jego główny proces.
 
 ---
 
-# 85. Nie mogę wejść przez bash
+## 85. Nie mogę wejść przez bash
 
 Spróbuj:
 
@@ -1975,7 +1975,7 @@ Obrazy `scratch` mogą nie mieć nawet `sh`.
 
 ---
 
-# 86. Zmieniłem kod, ale aplikacja jest stara
+## 86. Zmieniłem kod, ale aplikacja jest stara
 
 Jeżeli kod został skopiowany do obrazu podczas `docker build`, trzeba przebudować obraz:
 
@@ -1985,7 +1985,7 @@ docker compose up -d --build
 
 ---
 
-# 87. Docker używa starego cache
+## 87. Docker używa starego cache
 
 Wymuszenie pełnego rebuilda:
 
@@ -2002,7 +2002,7 @@ docker compose up -d
 
 ---
 
-# 88. Nie działa komunikacja między kontenerami
+## 88. Nie działa komunikacja między kontenerami
 
 Nie używaj:
 
@@ -2036,7 +2036,7 @@ db:5432
 
 ---
 
-# 89. `localhost` - ważna zasada
+## 89. `localhost` - ważna zasada
 
 Host:
 
@@ -2058,7 +2058,7 @@ nazwa-usługi → inny kontener
 
 ---
 
-# 90. Kontener nie widzi usługi hosta
+## 90. Kontener nie widzi usługi hosta
 
 Na Linuksie sytuacja jest bardziej złożona niż w Docker Desktop.
 
@@ -2070,7 +2070,7 @@ Często lepiej:
 
 ---
 
-# 91. Debugowanie krok po kroku
+## 91. Debugowanie krok po kroku
 
 Jeżeli aplikacja nie działa:
 
@@ -2113,7 +2113,7 @@ docker network inspect NAZWA
 
 ---
 
-# 92. Debugowanie Compose
+## 92. Debugowanie Compose
 
 ```bash
 docker compose ps
@@ -2135,7 +2135,7 @@ To cztery najważniejsze komendy.
 
 ---
 
-# 93. Bezpieczeństwo
+## 93. Bezpieczeństwo
 
 Kilka praktycznych zasad.
 
@@ -2157,7 +2157,7 @@ albo system secrets.
 
 ---
 
-# 94. Nie używaj `latest` w krytycznych usługach
+## 94. Nie używaj `latest` w krytycznych usługach
 
 Zamiast:
 
@@ -2181,7 +2181,7 @@ Zapobiega niespodziewanym zmianom.
 
 ---
 
-# 95. Nie wystawiaj bez potrzeby baz danych do Internetu
+## 95. Nie wystawiaj bez potrzeby baz danych do Internetu
 
 Złe:
 
@@ -2198,7 +2198,7 @@ Kontenery mogą się komunikować przez wewnętrzną sieć.
 
 ---
 
-# 96. Uruchamianie jako non-root
+## 96. Uruchamianie jako non-root
 
 Dobrze przygotowany obraz powinien uruchamiać aplikację jako zwykły użytkownik.
 
@@ -2214,7 +2214,7 @@ CMD ["/app/app"]
 
 ---
 
-# 97. Read-only filesystem
+## 97. Read-only filesystem
 
 Dla niektórych usług można użyć:
 
@@ -2232,7 +2232,7 @@ Jeżeli aplikacja musi pisać np. do `/tmp`, można podłączyć tmpfs.
 
 ---
 
-# 98. `docker run --rm`
+## 98. `docker run --rm`
 
 Bardzo przydatne dla narzędzi jednorazowych:
 
@@ -2244,7 +2244,7 @@ Po zakończeniu kontener zostanie automatycznie usunięty.
 
 ---
 
-# 99. Tymczasowy shell Linuxa
+## 99. Tymczasowy shell Linuxa
 
 Docker może służyć jako szybkie środowisko testowe.
 
@@ -2264,7 +2264,7 @@ kontener znika.
 
 ---
 
-# 100. Testowanie różnych wersji oprogramowania
+## 100. Testowanie różnych wersji oprogramowania
 
 Node:
 
@@ -2292,9 +2292,9 @@ docker run --rm postgres:17
 
 ---
 
-# 101. Przegląd najważniejszych komend
+## 101. Przegląd najważniejszych komend
 
-## Kontenery
+### Kontenery
 
 ```bash
 docker ps
@@ -2311,7 +2311,7 @@ docker inspect NAME
 docker stats
 ```
 
-## Obrazy
+### Obrazy
 
 ```bash
 docker images
@@ -2323,7 +2323,7 @@ docker save IMAGE -o image.tar
 docker load -i image.tar
 ```
 
-## Volumes
+### Volumes
 
 ```bash
 docker volume ls
@@ -2333,7 +2333,7 @@ docker volume rm NAME
 docker volume prune
 ```
 
-## Sieci
+### Sieci
 
 ```bash
 docker network ls
@@ -2342,7 +2342,7 @@ docker network inspect NAME
 docker network rm NAME
 ```
 
-## Compose
+### Compose
 
 ```bash
 docker compose up
@@ -2361,7 +2361,7 @@ docker compose config
 
 ---
 
-# 102. Typowy projekt Go + Docker
+## 102. Typowy projekt Go + Docker
 
 Struktura:
 
@@ -2410,7 +2410,7 @@ CMD ["/app/myapp"]
 
 ---
 
-# 103. Compose dla aplikacji Go
+## 103. Compose dla aplikacji Go
 
 ```yaml
 services:
@@ -2431,7 +2431,7 @@ docker compose up -d --build
 
 ---
 
-# 104. Go + PostgreSQL
+## 104. Go + PostgreSQL
 
 ```yaml
 services:
@@ -2461,7 +2461,7 @@ volumes:
 
 ---
 
-# 105. Co powinno być w Git
+## 105. Co powinno być w Git
 
 Najczęściej:
 
@@ -2484,7 +2484,7 @@ obrazy .tar
 
 ---
 
-# 106. `.env.example`
+## 106. `.env.example`
 
 Można utrzymywać:
 
@@ -2504,7 +2504,7 @@ i wypełnia wartości.
 
 ---
 
-# 107. Typowy workflow lokalny
+## 107. Typowy workflow lokalny
 
 Kodujesz:
 
@@ -2538,7 +2538,7 @@ docker compose up -d --build
 
 ---
 
-# 108. Typowy workflow lokalnie → VPS
+## 108. Typowy workflow lokalnie → VPS
 
 Na komputerze:
 
@@ -2561,7 +2561,7 @@ To bardzo dobry model na początek.
 
 ---
 
-# 109. Typowy workflow z registry
+## 109. Typowy workflow z registry
 
 Lokalnie/CI:
 
@@ -2579,7 +2579,7 @@ docker compose up -d
 
 ---
 
-# 110. Jak aktualizować bez długiego downtime
+## 110. Jak aktualizować bez długiego downtime
 
 Compose zwykle:
 
@@ -2595,7 +2595,7 @@ Zero-downtime wymaga bardziej rozbudowanego deploymentu.
 
 ---
 
-# 111. Jak zobaczyć ile Docker zajmuje miejsca
+## 111. Jak zobaczyć ile Docker zajmuje miejsca
 
 ```bash
 docker system df
@@ -2609,7 +2609,7 @@ docker system df -v
 
 ---
 
-# 112. Gdzie Docker trzyma dane
+## 112. Gdzie Docker trzyma dane
 
 Typowy root:
 
@@ -2625,7 +2625,7 @@ docker info | grep "Docker Root Dir"
 
 ---
 
-# 113. Nie kopiuj ręcznie `/var/lib/docker`
+## 113. Nie kopiuj ręcznie `/var/lib/docker`
 
 To nie jest dobry sposób migracji.
 
@@ -2639,7 +2639,7 @@ Lepsze są:
 
 ---
 
-# 114. Migracja aplikacji między serwerami
+## 114. Migracja aplikacji między serwerami
 
 Najbezpieczniejszy model:
 
@@ -2664,7 +2664,7 @@ Potem przywrócić bazę.
 
 ---
 
-# 115. Co naprawdę warto eksportować
+## 115. Co naprawdę warto eksportować
 
 Dla aplikacji:
 
@@ -2684,7 +2684,7 @@ Kontener powinien być odtwarzalny.
 
 ---
 
-# 116. Najważniejsza filozofia Dockera
+## 116. Najważniejsza filozofia Dockera
 
 Kontener powinien być:
 
@@ -2712,7 +2712,7 @@ Jeżeli ważne dane giną po usunięciu kontenera, projekt jest źle skonfigurow
 
 ---
 
-# 117. Przykład kompletnego małego deploymentu
+## 117. Przykład kompletnego małego deploymentu
 
 Struktura:
 
@@ -2769,7 +2769,7 @@ docker compose logs --tail 100
 
 ---
 
-# 118. Przydatne aliasy
+## 118. Przydatne aliasy
 
 Można dodać do:
 
@@ -2797,7 +2797,7 @@ source ~/.bashrc
 
 ---
 
-# 119. Pomoc
+## 119. Pomoc
 
 Docker:
 
@@ -2825,7 +2825,7 @@ docker compose up --help
 
 ---
 
-# 120. Minimalny zestaw poleceń do zapamiętania
+## 120. Minimalny zestaw poleceń do zapamiętania
 
 Jeżeli chcesz pamiętać tylko kilkanaście:
 
@@ -2857,9 +2857,9 @@ docker system prune
 
 ---
 
-# 121. Minimalny workflow projektu
+## 121. Minimalny workflow projektu
 
-## Pierwsze uruchomienie
+### Pierwsze uruchomienie
 
 ```bash
 git clone REPO
@@ -2870,21 +2870,21 @@ vim .env
 docker compose up -d --build
 ```
 
-## Sprawdzenie
+### Sprawdzenie
 
 ```bash
 docker compose ps
 docker compose logs --tail 100
 ```
 
-## Aktualizacja
+### Aktualizacja
 
 ```bash
 git pull
 docker compose up -d --build
 ```
 
-## Debug
+### Debug
 
 ```bash
 docker compose logs -f app
@@ -2896,7 +2896,7 @@ lub:
 docker compose exec app sh
 ```
 
-## Zatrzymanie
+### Zatrzymanie
 
 ```bash
 docker compose down
@@ -2904,9 +2904,9 @@ docker compose down
 
 ---
 
-# 122. Przykłady z prawdziwego życia
+## 122. Przykłady z prawdziwego życia
 
-## Przykład 1 - szybki nginx
+### Przykład 1 - szybki nginx
 
 ```bash
 docker run -d \
@@ -2935,7 +2935,7 @@ docker rm -f nginx-test
 
 ---
 
-## Przykład 2 - tymczasowy Debian
+### Przykład 2 - tymczasowy Debian
 
 ```bash
 docker run --rm -it debian:13 bash
@@ -2959,7 +2959,7 @@ Kontener znika.
 
 ---
 
-## Przykład 3 - PostgreSQL
+### Przykład 3 - PostgreSQL
 
 ```bash
 docker volume create pgdata
@@ -2987,7 +2987,7 @@ docker exec -it postgres bash
 
 ---
 
-## Przykład 4 - eksport obrazu na drugi komputer
+### Przykład 4 - eksport obrazu na drugi komputer
 
 Komputer A:
 
@@ -3016,7 +3016,7 @@ docker images
 
 ---
 
-## Przykład 5 - aplikacja Go na VPS
+### Przykład 5 - aplikacja Go na VPS
 
 Repo:
 
@@ -3053,7 +3053,7 @@ docker compose up -d --build
 
 ---
 
-# 123. Docker - mapa mentalna
+## 123. Docker - mapa mentalna
 
 ```text
 Dockerfile
@@ -3088,7 +3088,7 @@ docker compose up
 
 ---
 
-# 124. Co powinieneś umieć po przeczytaniu tego kompendium
+## 124. Co powinieneś umieć po przeczytaniu tego kompendium
 
 Powinieneś rozumieć:
 
@@ -3112,7 +3112,7 @@ Powinieneś rozumieć:
 
 ---
 
-# 125. Ściąga - jednoekranowa
+## 125. Ściąga - jednoekranowa
 
 ```bash
 # status
@@ -3163,7 +3163,7 @@ docker system prune
 
 ---
 
-# 126. Najważniejsze rzeczy do zapamiętania
+## 126. Najważniejsze rzeczy do zapamiętania
 
 1. **Image to szablon, container to uruchomiona instancja.**
 2. Kontener powinien być odtwarzalny i możliwy do wyrzucenia.
@@ -3179,7 +3179,7 @@ docker system prune
 
 ---
 
-# 127. Dokumentacja i źródła
+## 127. Dokumentacja i źródła
 
 Oficjalna dokumentacja Dockera jest źródłem nadrzędnym dla składni i zachowania Engine, Build oraz Compose:
 
@@ -3196,7 +3196,7 @@ Oficjalna dokumentacja Dockera jest źródłem nadrzędnym dla składni i zachow
 - Linux post-installation i uprawnienia grupy `docker`  
   https://docs.docker.com/engine/install/linux-postinstall/
 
-# Koniec
+## Koniec
 
 Dla małych prywatnych projektów nie trzeba od razu wdrażać Kubernetes, Swarm ani rozbudowanego CI/CD.
 

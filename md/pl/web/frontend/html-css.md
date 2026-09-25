@@ -28,7 +28,7 @@ Praktyczne kompendium referencyjne dla osoby, która chce samodzielnie tworzyć 
 
 ---
 
-# 1. HTML - podstawy
+## 1. HTML - podstawy
 
 HTML nie służy do rysowania strony. Jego zadaniem jest opisanie, **czym są poszczególne elementy treści**.
 
@@ -81,7 +81,7 @@ Jeśli coś jest nagłówkiem, lepiej napisać:
 
 ---
 
-# 2. Struktura dokumentu
+## 2. Struktura dokumentu
 
 Minimalny współczesny dokument HTML:
 
@@ -116,13 +116,13 @@ Minimalny współczesny dokument HTML:
 </html>
 ```
 
-## `<!doctype html>`
+### `<!doctype html>`
 
 Informuje przeglądarkę, że dokument używa współczesnego HTML.
 
 Zawsze powinien być pierwszą linią pliku.
 
-## `<html lang="pl">`
+### `<html lang="pl">`
 
 Element główny dokumentu.
 
@@ -137,7 +137,7 @@ Atrybut `lang` określa język dokumentu i pomaga:
 - tłumaczom automatycznym,
 - sprawdzaniu pisowni.
 
-## `<head>`
+### `<head>`
 
 Zawiera metadane dokumentu.
 
@@ -185,7 +185,7 @@ Favicon:
 
 ---
 
-# 3. Semantyka HTML
+## 3. Semantyka HTML
 
 Nowoczesna strona nie powinna być zbudowana wyłącznie z `div`.
 
@@ -213,7 +213,7 @@ Typowa struktura:
 </body>
 ```
 
-## `<header>`
+### `<header>`
 
 Nagłówek strony albo sekcji.
 
@@ -235,7 +235,7 @@ Nagłówek strony albo sekcji.
 </article>
 ```
 
-## `<main>`
+### `<main>`
 
 Główna treść dokumentu:
 
@@ -247,7 +247,7 @@ Główna treść dokumentu:
 
 Zwykle powinien istnieć jeden główny `main`.
 
-## `<nav>`
+### `<nav>`
 
 Nawigacja:
 
@@ -260,7 +260,7 @@ Nawigacja:
 </nav>
 ```
 
-## `<section>`
+### `<section>`
 
 Tematyczna sekcja dokumentu:
 
@@ -272,7 +272,7 @@ Tematyczna sekcja dokumentu:
 
 Nie używaj `section` jako automatycznego zamiennika `div`.
 
-## `<article>`
+### `<article>`
 
 Samodzielna treść, która mogłaby istnieć niezależnie:
 
@@ -292,7 +292,7 @@ Typowe zastosowania:
 - komentarz,
 - opowiadanie.
 
-## `<aside>`
+### `<aside>`
 
 Treść poboczna:
 
@@ -302,7 +302,7 @@ Treść poboczna:
 </aside>
 ```
 
-## `<footer>`
+### `<footer>`
 
 Stopka dokumentu lub sekcji:
 
@@ -312,7 +312,7 @@ Stopka dokumentu lub sekcji:
 </footer>
 ```
 
-## `<div>`
+### `<div>`
 
 Neutralny kontener:
 
@@ -326,9 +326,9 @@ Neutralny kontener:
 
 ---
 
-# 4. Tekst, listy i linki
+## 4. Tekst, listy i linki
 
-## Nagłówki
+### Nagłówki
 
 HTML ma sześć poziomów nagłówków:
 
@@ -355,7 +355,7 @@ Przykład:
 
 Nagłówki określają hierarchię treści, nie jej wygląd.
 
-## Akapity
+### Akapity
 
 ```html
 <p>
@@ -363,7 +363,7 @@ Nagłówki określają hierarchię treści, nie jej wygląd.
 </p>
 ```
 
-## Wyróżnienia
+### Wyróżnienia
 
 ```html
 <strong>bardzo ważne</strong>
@@ -377,7 +377,7 @@ Nagłówki określają hierarchię treści, nie jej wygląd.
 
 `em` oznacza akcent.
 
-## Cytaty
+### Cytaty
 
 Krótki cytat:
 
@@ -395,7 +395,7 @@ Dłuższy cytat:
 </blockquote>
 ```
 
-## Kod
+### Kod
 
 Kod w tekście:
 
@@ -410,7 +410,7 @@ Blok kodu:
 sudo apt upgrade</code></pre>
 ```
 
-## Listy
+### Listy
 
 Nieuporządkowana:
 
@@ -444,7 +444,7 @@ Lista definicji:
 </dl>
 ```
 
-## Linki
+### Linki
 
 ```html
 <a href="/about">O nas</a>
@@ -496,7 +496,7 @@ Kotwica:
 </section>
 ```
 
-## Link a przycisk
+### Link a przycisk
 
 Link służy do nawigacji:
 
@@ -524,9 +524,9 @@ jeśli element faktycznie jest przyciskiem.
 
 ---
 
-# 5. Obrazy i multimedia
+## 5. Obrazy i multimedia
 
-## Obraz
+### Obraz
 
 ```html
 <img
@@ -546,7 +546,7 @@ Jeżeli obraz jest dekoracyjny:
 >
 ```
 
-## Rozmiary
+### Rozmiary
 
 Dobrze podawać rozmiary:
 
@@ -568,7 +568,7 @@ img {
 }
 ```
 
-## `srcset`
+### `srcset`
 
 ```html
 <img
@@ -588,7 +588,7 @@ img {
 
 Przeglądarka sama wybiera odpowiedni plik.
 
-## `<picture>`
+### `<picture>`
 
 ```html
 <picture>
@@ -611,7 +611,7 @@ Przeglądarka sama wybiera odpowiedni plik.
 </picture>
 ```
 
-## Lazy loading
+### Lazy loading
 
 ```html
 <img
@@ -623,7 +623,7 @@ Przeglądarka sama wybiera odpowiedni plik.
 
 Nie dodawaj `loading="lazy"` do najważniejszego obrazu od razu widocznego na ekranie.
 
-## `figure`
+### `figure`
 
 ```html
 <figure>
@@ -642,7 +642,7 @@ Nie dodawaj `loading="lazy"` do najważniejszego obrazu od razu widocznego na ek
 
 ---
 
-# 6. Tabele
+## 6. Tabele
 
 Tabele służą do danych tabelarycznych.
 
@@ -680,7 +680,7 @@ Nie używaj tabel do budowania layoutu strony.
 
 ---
 
-# 7. Formularze
+## 7. Formularze
 
 Podstawowy formularz:
 
@@ -708,7 +708,7 @@ Podstawowy formularz:
 
 `id` pozwala między innymi powiązać pole z `label`.
 
-## Typy inputów
+### Typy inputów
 
 ```html
 <input type="text">
@@ -723,7 +723,7 @@ Podstawowy formularz:
 <input type="search">
 ```
 
-## Walidacja
+### Walidacja
 
 Pole wymagane:
 
@@ -774,7 +774,7 @@ Wzorzec:
 
 Walidacja HTML nie zastępuje walidacji backendowej.
 
-## `textarea`
+### `textarea`
 
 ```html
 <label for="message">
@@ -788,7 +788,7 @@ Walidacja HTML nie zastępuje walidacji backendowej.
 ></textarea>
 ```
 
-## `select`
+### `select`
 
 ```html
 <label for="country">
@@ -805,7 +805,7 @@ Walidacja HTML nie zastępuje walidacji backendowej.
 </select>
 ```
 
-## `fieldset`
+### `fieldset`
 
 ```html
 <fieldset>
@@ -833,7 +833,7 @@ Walidacja HTML nie zastępuje walidacji backendowej.
 </fieldset>
 ```
 
-## `autocomplete`
+### `autocomplete`
 
 ```html
 <input
@@ -857,7 +857,7 @@ Walidacja HTML nie zastępuje walidacji backendowej.
 >
 ```
 
-## `details`
+### `details`
 
 Prosty element rozwijany bez JavaScriptu:
 
@@ -875,7 +875,7 @@ Prosty element rozwijany bez JavaScriptu:
 </details>
 ```
 
-## `data-*`
+### `data-*`
 
 ```html
 <article
@@ -888,7 +888,7 @@ JavaScript może później odczytać te dane.
 
 ---
 
-# 8. Dostępność
+## 8. Dostępność
 
 Dostępność zaczyna się od poprawnego HTML.
 
@@ -923,7 +923,7 @@ Lepiej:
 
 niż pole bez etykiety.
 
-## ARIA
+### ARIA
 
 ARIA jest przydatna wtedy, gdy natywny HTML nie wystarcza.
 
@@ -946,7 +946,7 @@ Ogólna zasada:
 
 ---
 
-# 9. CSS - podstawy
+## 9. CSS - podstawy
 
 Podłączanie:
 
@@ -973,7 +973,7 @@ h1 {
 
 ---
 
-# 10. Selektory
+## 10. Selektory
 
 Element:
 
@@ -1041,7 +1041,7 @@ h2 ~ p {
 }
 ```
 
-## Pseudoklasy
+### Pseudoklasy
 
 ```css
 a:hover {
@@ -1070,7 +1070,7 @@ li:nth-child(even) {
 }
 ```
 
-## `:not()`
+### `:not()`
 
 ```css
 button:not(.primary) {
@@ -1078,7 +1078,7 @@ button:not(.primary) {
 }
 ```
 
-## `:is()`
+### `:is()`
 
 ```css
 article :is(h1, h2, h3) {
@@ -1086,7 +1086,7 @@ article :is(h1, h2, h3) {
 }
 ```
 
-## `:where()`
+### `:where()`
 
 ```css
 :where(article, section, aside) p {
@@ -1096,7 +1096,7 @@ article :is(h1, h2, h3) {
 
 `where()` nie zwiększa specificity.
 
-## `:has()`
+### `:has()`
 
 ```css
 .card:has(img) {
@@ -1116,7 +1116,7 @@ body:has(dialog[open]) {
 }
 ```
 
-## Pseudoelementy
+### Pseudoelementy
 
 ```css
 .external-link::after {
@@ -1133,7 +1133,7 @@ Najczęstsze:
 
 ---
 
-# 11. Kaskada, dziedziczenie i specificity
+## 11. Kaskada, dziedziczenie i specificity
 
 CSS oznacza **Cascading Style Sheets**.
 
@@ -1199,7 +1199,7 @@ Lepiej:
 }
 ```
 
-## `!important`
+### `!important`
 
 ```css
 color: red !important;
@@ -1209,7 +1209,7 @@ Używaj wyjątkowo.
 
 Jeśli jest potrzebne wszędzie, architektura CSS prawdopodobnie wymaga poprawy.
 
-## Dziedziczenie
+### Dziedziczenie
 
 Właściwości typograficzne często są dziedziczone:
 
@@ -1232,7 +1232,7 @@ nie są normalnie dziedziczone.
 
 ---
 
-# 12. Box model
+## 12. Box model
 
 Każdy element jest pudełkiem:
 
@@ -1254,7 +1254,7 @@ Przykład:
 }
 ```
 
-## `box-sizing`
+### `box-sizing`
 
 Bardzo przydatna baza:
 
@@ -1268,7 +1268,7 @@ Bardzo przydatna baza:
 
 Wtedy `width` obejmuje również padding i border.
 
-## Margin
+### Margin
 
 ```css
 margin: 2rem;
@@ -1288,13 +1288,13 @@ Kolejność:
 góra prawa dół lewa
 ```
 
-## Padding
+### Padding
 
 ```css
 padding: 1rem;
 ```
 
-## Właściwości logiczne
+### Właściwości logiczne
 
 Zamiast:
 
@@ -1335,9 +1335,9 @@ block-size
 
 ---
 
-# 13. Jednostki
+## 13. Jednostki
 
-## `px`
+### `px`
 
 Dobre między innymi dla cienkich granic:
 
@@ -1345,7 +1345,7 @@ Dobre między innymi dla cienkich granic:
 border: 1px solid;
 ```
 
-## `rem`
+### `rem`
 
 ```css
 padding: 2rem;
@@ -1357,7 +1357,7 @@ Dobre do:
 - fontów,
 - komponentów.
 
-## `em`
+### `em`
 
 Zależne od aktualnego rozmiaru fontu:
 
@@ -1367,13 +1367,13 @@ button {
 }
 ```
 
-## `%`
+### `%`
 
 ```css
 width: 50%;
 ```
 
-## `vw` i `vh`
+### `vw` i `vh`
 
 ```css
 width: 100vw;
@@ -1396,19 +1396,19 @@ Na urządzeniach mobilnych często warto:
 }
 ```
 
-## `min()`
+### `min()`
 
 ```css
 width: min(100%, 1200px);
 ```
 
-## `max()`
+### `max()`
 
 ```css
 width: max(50%, 400px);
 ```
 
-## `clamp()`
+### `clamp()`
 
 Płynna typografia:
 
@@ -1428,7 +1428,7 @@ Czyli:
 - wartość preferowana: `5vw`,
 - maksimum: `5rem`.
 
-## `calc()`
+### `calc()`
 
 ```css
 width: calc(100% - 2rem);
@@ -1440,7 +1440,7 @@ height: calc(100vh - 80px);
 
 ---
 
-# 14. Kolory i zmienne CSS
+## 14. Kolory i zmienne CSS
 
 Hex:
 
@@ -1466,7 +1466,7 @@ HSL:
 color: hsl(0 100% 50%);
 ```
 
-## `currentColor`
+### `currentColor`
 
 ```css
 .button {
@@ -1475,7 +1475,7 @@ color: hsl(0 100% 50%);
 }
 ```
 
-## `color-mix()`
+### `color-mix()`
 
 ```css
 background:
@@ -1486,7 +1486,7 @@ background:
     );
 ```
 
-## Custom Properties
+### Custom Properties
 
 ```css
 :root {
@@ -1529,7 +1529,7 @@ Zmienne można nadpisywać lokalnie:
 
 ---
 
-# 15. Typografia
+## 15. Typografia
 
 Typowa baza:
 
@@ -1549,7 +1549,7 @@ body {
 }
 ```
 
-## Długość tekstu
+### Długość tekstu
 
 Bardzo szerokie akapity źle się czyta:
 
@@ -1563,7 +1563,7 @@ Bardzo szerokie akapity źle się czyta:
 
 ---
 
-# 16. Normal flow
+## 16. Normal flow
 
 HTML ma domyślny przepływ dokumentu.
 
@@ -1582,7 +1582,7 @@ Zanim użyjesz Grid, Flexbox albo `position`, sprawdź, czy zwykły flow nie wys
 
 ---
 
-# 17. Flexbox
+## 17. Flexbox
 
 Flexbox służy głównie do układania elementów w jednym wymiarze.
 
@@ -1593,7 +1593,7 @@ Flexbox służy głównie do układania elementów w jednym wymiarze.
 }
 ```
 
-## Kierunek
+### Kierunek
 
 Domyślnie:
 
@@ -1607,7 +1607,7 @@ Pionowo:
 flex-direction: column;
 ```
 
-## `justify-content`
+### `justify-content`
 
 Steruje osią główną:
 
@@ -1619,7 +1619,7 @@ justify-content: flex-start;
 justify-content: flex-end;
 ```
 
-## `align-items`
+### `align-items`
 
 Oś poprzeczna:
 
@@ -1637,14 +1637,14 @@ Typowy wzorzec:
 }
 ```
 
-## `gap`
+### `gap`
 
 ```css
 display: flex;
 gap: 1.5rem;
 ```
 
-## Zawijanie
+### Zawijanie
 
 ```css
 display: flex;
@@ -1652,7 +1652,7 @@ flex-wrap: wrap;
 gap: 1rem;
 ```
 
-## `flex`
+### `flex`
 
 ```css
 .content {
@@ -1679,7 +1679,7 @@ Przykład layoutu:
 
 ---
 
-# 18. CSS Grid
+## 18. CSS Grid
 
 Grid służy do układów dwuwymiarowych.
 
@@ -1694,7 +1694,7 @@ Grid służy do układów dwuwymiarowych.
 }
 ```
 
-## `fr`
+### `fr`
 
 ```css
 grid-template-columns:
@@ -1703,14 +1703,14 @@ grid-template-columns:
 
 Druga kolumna dostaje dwa razy więcej dostępnego miejsca.
 
-## `repeat()`
+### `repeat()`
 
 ```css
 grid-template-columns:
     repeat(3, 1fr);
 ```
 
-## `minmax()`
+### `minmax()`
 
 ```css
 grid-template-columns:
@@ -1720,7 +1720,7 @@ grid-template-columns:
     );
 ```
 
-## Responsywny Grid
+### Responsywny Grid
 
 Bardzo ważny wzorzec:
 
@@ -1744,7 +1744,7 @@ Bez media query otrzymujemy:
 - mniej kolumn na węższym,
 - jedną kolumnę na telefonie.
 
-## Grid Areas
+### Grid Areas
 
 ```css
 .layout {
@@ -1768,7 +1768,7 @@ Bez media query otrzymujemy:
 }
 ```
 
-## `subgrid`
+### `subgrid`
 
 ```css
 .cards {
@@ -1788,7 +1788,7 @@ Bez media query otrzymujemy:
 }
 ```
 
-## Flexbox czy Grid?
+### Flexbox czy Grid?
 
 Flexbox:
 
@@ -1800,7 +1800,7 @@ Grid:
 
 ---
 
-# 19. Pozycjonowanie
+## 19. Pozycjonowanie
 
 Najważniejsze wartości:
 
@@ -1812,7 +1812,7 @@ position: fixed;
 position: sticky;
 ```
 
-## `relative`
+### `relative`
 
 ```css
 .card {
@@ -1822,7 +1822,7 @@ position: sticky;
 
 Często służy jako punkt odniesienia dla elementów absolutnych.
 
-## `absolute`
+### `absolute`
 
 ```css
 .badge {
@@ -1846,7 +1846,7 @@ Typowy wzorzec:
 }
 ```
 
-## `fixed`
+### `fixed`
 
 ```css
 .cookie-button {
@@ -1856,7 +1856,7 @@ Typowy wzorzec:
 }
 ```
 
-## `sticky`
+### `sticky`
 
 ```css
 .sidebar {
@@ -1865,7 +1865,7 @@ Typowy wzorzec:
 }
 ```
 
-## `z-index`
+### `z-index`
 
 ```css
 .modal {
@@ -1881,7 +1881,7 @@ z-index: 999999999;
 
 Jeżeli `z-index` nie działa zgodnie z oczekiwaniem, sprawdź stacking context.
 
-## Overflow
+### Overflow
 
 ```css
 overflow: hidden;
@@ -1897,7 +1897,7 @@ Kod:
 }
 ```
 
-## `aspect-ratio`
+### `aspect-ratio`
 
 ```css
 .thumbnail {
@@ -1905,7 +1905,7 @@ Kod:
 }
 ```
 
-## `object-fit`
+### `object-fit`
 
 ```css
 .thumbnail img {
@@ -1915,7 +1915,7 @@ Kod:
 }
 ```
 
-## Kontener strony
+### Kontener strony
 
 ```css
 .container {
@@ -1931,7 +1931,7 @@ Kod:
 
 ---
 
-# 20. Responsywność
+## 20. Responsywność
 
 Najpraktyczniejsze podejście to mobile first.
 
@@ -1966,7 +1966,7 @@ Jeszcze szerzej:
 }
 ```
 
-## Nowoczesna składnia
+### Nowoczesna składnia
 
 Zamiast:
 
@@ -1989,7 +1989,7 @@ Zakres:
 }
 ```
 
-## Breakpointy
+### Breakpointy
 
 Breakpoint powinien wynikać z layoutu, a nie z listy konkretnych modeli telefonów.
 
@@ -2007,7 +2007,7 @@ Myśl:
 
 ---
 
-# 21. Container Queries
+## 21. Container Queries
 
 Media query reaguje na viewport.
 
@@ -2033,7 +2033,7 @@ Container query reaguje na szerokość kontenera.
 
 Dzięki temu ten sam komponent może wyglądać inaczej w sidebarze i inaczej w głównej kolumnie.
 
-## Nazwane kontenery
+### Nazwane kontenery
 
 ```css
 .products {
@@ -2050,9 +2050,9 @@ Dzięki temu ten sam komponent może wyglądać inaczej w sidebarze i inaczej w 
 
 ---
 
-# 22. Nowoczesny CSS
+## 22. Nowoczesny CSS
 
-## `@layer`
+### `@layer`
 
 Pozwala jawnie kontrolować kolejność warstw:
 
@@ -2100,7 +2100,7 @@ Pozwala jawnie kontrolować kolejność warstw:
 }
 ```
 
-## CSS Nesting
+### CSS Nesting
 
 Zamiast:
 
@@ -2154,7 +2154,7 @@ Media query wewnątrz:
 }
 ```
 
-## Prosta konwencja klas
+### Prosta konwencja klas
 
 ```css
 .card
@@ -2176,7 +2176,7 @@ Wariant:
 .card.card-featured
 ```
 
-## Design tokens
+### Design tokens
 
 ```css
 :root {
@@ -2203,7 +2203,7 @@ Wariant:
 
 ---
 
-# 23. Dark mode
+## 23. Dark mode
 
 ```css
 :root {
@@ -2234,9 +2234,9 @@ body {
 
 ---
 
-# 24. Animacje
+## 24. Animacje
 
-## Transition
+### Transition
 
 ```css
 .button {
@@ -2259,7 +2259,7 @@ Lepiej określać konkretne właściwości niż pisać:
 transition: all 1s;
 ```
 
-## Transform
+### Transform
 
 ```css
 transform: translateX(10px);
@@ -2276,7 +2276,7 @@ transform:
     scale(1.02);
 ```
 
-## `@keyframes`
+### `@keyframes`
 
 ```css
 @keyframes pulse {
@@ -2303,7 +2303,7 @@ transform:
 }
 ```
 
-## Reduced motion
+### Reduced motion
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -2321,7 +2321,7 @@ transform:
 
 ---
 
-# 25. Formularze w CSS
+## 25. Formularze w CSS
 
 ```css
 .form {
@@ -2351,7 +2351,7 @@ select {
 }
 ```
 
-## Focus
+### Focus
 
 Nie usuwaj focusa bez zastąpienia go czymś sensownym.
 
@@ -2369,7 +2369,7 @@ a:focus-visible {
 }
 ```
 
-## Stan niepoprawny
+### Stan niepoprawny
 
 ```css
 input:invalid:not(:placeholder-shown) {
@@ -2379,7 +2379,7 @@ input:invalid:not(:placeholder-shown) {
 
 ---
 
-# 26. Reset / baza CSS
+## 26. Reset / baza CSS
 
 Rozsądny punkt startowy:
 
@@ -2441,7 +2441,7 @@ h4 {
 
 ---
 
-# 27. Organizacja projektu
+## 27. Organizacja projektu
 
 Mały projekt:
 
@@ -2480,9 +2480,9 @@ Nie dziel CSS na dziesiątki plików bez realnej potrzeby.
 
 ---
 
-# 28. Kompletny przykład strony
+## 28. Kompletny przykład strony
 
-## HTML
+### HTML
 
 ```html
 <!doctype html>
@@ -2688,7 +2688,7 @@ Nie dziel CSS na dziesiątki plików bez realnej potrzeby.
 </html>
 ```
 
-## CSS
+### CSS
 
 ```css
 @layer reset, base, layout, components;
@@ -3111,9 +3111,9 @@ Nie dziel CSS na dziesiątki plików bez realnej potrzeby.
 
 ---
 
-# 29. Dobre praktyki
+## 29. Dobre praktyki
 
-## Używaj semantycznego HTML
+### Używaj semantycznego HTML
 
 Dobrze:
 
@@ -3133,7 +3133,7 @@ Zamiast:
 <div class="button">
 ```
 
-## Nie koduj layoutu w HTML
+### Nie koduj layoutu w HTML
 
 Źle:
 
@@ -3151,7 +3151,7 @@ Lepiej:
 margin-block: 3rem;
 ```
 
-## Nie używaj tabel do layoutu
+### Nie używaj tabel do layoutu
 
 Tabela służy do danych.
 
@@ -3167,7 +3167,7 @@ lub:
 display: flex;
 ```
 
-## Nie ustawiaj wszystkiego absolutnie
+### Nie ustawiaj wszystkiego absolutnie
 
 Układ typu:
 
@@ -3185,7 +3185,7 @@ Podstawa:
 - Flexbox,
 - Grid.
 
-## Nie ustawiaj wysokości bez potrzeby
+### Nie ustawiaj wysokości bez potrzeby
 
 Źle:
 
@@ -3197,7 +3197,7 @@ Podstawa:
 
 jeśli zawartość może mieć różną długość.
 
-## Nie projektuj dla jednej rozdzielczości
+### Nie projektuj dla jednej rozdzielczości
 
 Strona może działać na:
 
@@ -3208,7 +3208,7 @@ Strona może działać na:
 - połowie monitora,
 - przy powiększeniu 200%.
 
-## Nie przesadzaj z breakpointami
+### Nie przesadzaj z breakpointami
 
 Najpierw sprawdź:
 
@@ -3220,7 +3220,7 @@ flex-wrap
 container queries
 ```
 
-## Nie usuwaj focusa
+### Nie usuwaj focusa
 
 Źle:
 
@@ -3230,7 +3230,7 @@ container queries
 }
 ```
 
-## Nie buduj wszystkiego JavaScriptem
+### Nie buduj wszystkiego JavaScriptem
 
 HTML i CSS potrafią dziś bardzo dużo.
 
@@ -3258,9 +3258,9 @@ animations
 
 ---
 
-# 30. Ściąga
+## 30. Ściąga
 
-## HTML
+### HTML
 
 ```html
 <html>
@@ -3315,7 +3315,7 @@ animations
 <span>
 ```
 
-## CSS
+### CSS
 
 ```css
 color
@@ -3382,7 +3382,7 @@ clamp()
 
 ---
 
-# 31. Co trzeba umieć
+## 31. Co trzeba umieć
 
 Żeby móc powiedzieć „umiem HTML i CSS”, nie trzeba znać wszystkich właściwości na pamięć.
 
@@ -3427,7 +3427,7 @@ Przykładowo:
 
 ---
 
-# Mentalny model tworzenia strony
+## Mentalny model tworzenia strony
 
 ```text
 treść
@@ -3466,7 +3466,7 @@ CSS powinien prezentować dobrze zaprojektowaną strukturę HTML, a nie naprawia
 
 To jest bardzo dobra baza do tworzenia nowoczesnych stron bez Bootstrapa, Tailwinda czy frameworków JavaScriptowych.
 
-## Oficjalne źródła
+### Oficjalne źródła
 
 - HTML Living Standard: https://html.spec.whatwg.org/
 - CSS specifications: https://www.w3.org/Style/CSS/specs.en.html

@@ -23,7 +23,7 @@ Powiązane tematy: [SSH i zdalna administracja](techhandbook:doc-018), [Programo
 
 ---
 
-# 1. Czym jest Termux
+## 1. Czym jest Termux
 
 Termux jest aplikacją terminalową dla Androida połączoną z własnym środowiskiem uniksowym i systemem pakietów.
 
@@ -67,9 +67,9 @@ Termux jest więc czymś w rodzaju:
 
 ---
 
-# 2. Jak Termux działa od strony systemu
+## 2. Jak Termux działa od strony systemu
 
-## 2.1. Kernel
+### 2.1. Kernel
 
 Termux **nie posiada własnego kernela**.
 
@@ -115,7 +115,7 @@ Nie ma tutaj warstwy emulacji CPU.
 
 ---
 
-## 2.2. Bionic zamiast glibc
+### 2.2. Bionic zamiast glibc
 
 Typowy Debian korzysta z:
 
@@ -150,7 +150,7 @@ Termux dlatego posiada **własne pakiety skompilowane specjalnie dla Androida**.
 
 ---
 
-## 2.3. Android sandbox
+### 2.3. Android sandbox
 
 Termux dla Androida jest zwykłą aplikacją.
 
@@ -185,7 +185,7 @@ Termux normalnie nie może czytać prywatnych danych innych aplikacji.
 
 ---
 
-## 2.4. Procesy Termuxa
+### 2.4. Procesy Termuxa
 
 Termux uruchamia własne procesy potomne.
 
@@ -213,9 +213,9 @@ top
 
 ---
 
-# 3. Termux a Debian, klasyczny Linux i FreeBSD
+## 3. Termux a Debian, klasyczny Linux i FreeBSD
 
-## Termux
+### Termux
 
 ```text
 Linux kernel Androida
@@ -226,7 +226,7 @@ brak systemd
 brak klasycznego root filesystemu
 ```
 
-## Debian
+### Debian
 
 ```text
 Linux kernel
@@ -237,7 +237,7 @@ systemd
 klasyczny filesystem Unix/Linux
 ```
 
-## FreeBSD
+### FreeBSD
 
 ```text
 kernel FreeBSD
@@ -277,9 +277,9 @@ Do tego lepszy jest Debian lub FreeBSD.
 
 ---
 
-# 4. Instalacja Termuxa
+## 4. Instalacja Termuxa
 
-## 4.1. Zalecane źródła
+### 4.1. Zalecane źródła
 
 Projekt Termux udostępnia aplikację przede wszystkim przez:
 
@@ -296,7 +296,7 @@ lub
 GitHub
 ```
 
-## 4.2. Nie mieszaj źródeł
+### 4.2. Nie mieszaj źródeł
 
 Termux oraz dodatki takie jak:
 
@@ -322,7 +322,7 @@ Najprostsza zasada:
 
 ---
 
-# 5. Pierwsze uruchomienie
+## 5. Pierwsze uruchomienie
 
 Po instalacji pierwszą rzeczą powinno być:
 
@@ -374,7 +374,7 @@ echo $PATH
 
 ---
 
-# 6. Filesystem Termuxa
+## 6. Filesystem Termuxa
 
 Termux nie może stworzyć sobie klasycznego:
 
@@ -408,7 +408,7 @@ Typowy układ:
 
 ---
 
-## 6.1. HOME
+### 6.1. HOME
 
 ```bash
 echo $HOME
@@ -444,7 +444,7 @@ robią praktycznie to samo.
 
 ---
 
-## 6.2. PREFIX
+### 6.2. PREFIX
 
 Bardzo ważna zmienna:
 
@@ -480,7 +480,7 @@ z normalnej dystrybucji Linuxa.
 
 ---
 
-## 6.3. Gdzie są programy
+### 6.3. Gdzie są programy
 
 Na Debianie:
 
@@ -506,7 +506,7 @@ which python
 
 ---
 
-## 6.4. Gdzie przechowywać projekty
+### 6.4. Gdzie przechowywać projekty
 
 Najlepiej:
 
@@ -528,7 +528,7 @@ Nie trzymaj kodu, który ma być kompilowany i wykonywany, bezpośrednio we wsp�
 
 ---
 
-# 7. Pakiety: pkg i apt
+## 7. Pakiety: pkg i apt
 
 Termux wykorzystuje własne repozytoria.
 
@@ -542,7 +542,7 @@ pkg
 
 ---
 
-## Aktualizacja listy pakietów
+### Aktualizacja listy pakietów
 
 ```bash
 pkg update
@@ -550,7 +550,7 @@ pkg update
 
 ---
 
-## Aktualizacja zainstalowanych pakietów
+### Aktualizacja zainstalowanych pakietów
 
 ```bash
 pkg upgrade
@@ -558,7 +558,7 @@ pkg upgrade
 
 ---
 
-## Instalowanie
+### Instalowanie
 
 ```bash
 pkg install git
@@ -566,7 +566,7 @@ pkg install git
 
 ---
 
-## Usuwanie
+### Usuwanie
 
 ```bash
 pkg uninstall git
@@ -574,7 +574,7 @@ pkg uninstall git
 
 ---
 
-## Szukanie
+### Szukanie
 
 ```bash
 pkg search nginx
@@ -582,7 +582,7 @@ pkg search nginx
 
 ---
 
-## Informacje o pakiecie
+### Informacje o pakiecie
 
 ```bash
 pkg show openssh
@@ -590,7 +590,7 @@ pkg show openssh
 
 ---
 
-## Lista zainstalowanych
+### Lista zainstalowanych
 
 ```bash
 pkg list-installed
@@ -598,7 +598,7 @@ pkg list-installed
 
 ---
 
-## apt
+### apt
 
 Można również używać:
 
@@ -618,7 +618,7 @@ pkg
 
 ---
 
-# 8. Podstawowa konfiguracja shella
+## 8. Podstawowa konfiguracja shella
 
 Domyślnie Termux udostępnia Bash.
 
@@ -630,7 +630,7 @@ echo $SHELL
 
 ---
 
-## Bash
+### Bash
 
 Plik konfiguracyjny:
 
@@ -661,7 +661,7 @@ source ~/.bashrc
 
 ---
 
-## Zsh
+### Zsh
 
 Instalacja:
 
@@ -683,7 +683,7 @@ chsh -s zsh
 
 ---
 
-## Historia
+### Historia
 
 ```bash
 history
@@ -697,7 +697,7 @@ Ctrl+R
 
 ---
 
-## tmux
+### tmux
 
 Termux + tmux to bardzo dobre połączenie.
 
@@ -734,7 +734,7 @@ tmux attach
 
 ---
 
-# 9. Dostęp do pamięci Androida
+## 9. Dostęp do pamięci Androida
 
 Termux ma własny prywatny filesystem.
 
@@ -765,7 +765,7 @@ Przykładowo:
 
 ---
 
-## 9.1. Ważna różnica
+### 9.1. Ważna różnica
 
 Współdzielona pamięć Androida nie zachowuje się jak normalny filesystem Unix.
 
@@ -787,7 +787,7 @@ zdjęcia/dokumenty/wymiana z Androidem → ~/storage/shared
 
 ---
 
-# 10. SSH
+## 10. SSH
 
 Termux może być zarówno:
 
@@ -796,7 +796,7 @@ Termux może być zarówno:
 
 ---
 
-## 10.1. Klient SSH
+### 10.1. Klient SSH
 
 Instalacja:
 
@@ -818,7 +818,7 @@ ssh -p 2222 user@server
 
 ---
 
-## 10.2. Klucze SSH
+### 10.2. Klucze SSH
 
 Generowanie:
 
@@ -841,7 +841,7 @@ cat ~/.ssh/id_ed25519.pub
 
 ---
 
-## 10.3. SSH config
+### 10.3. SSH config
 
 ```bash
 vim ~/.ssh/config
@@ -869,7 +869,7 @@ ssh vps
 
 ---
 
-## 10.4. Termux jako serwer SSH
+### 10.4. Termux jako serwer SSH
 
 Uruchom:
 
@@ -909,7 +909,7 @@ ssh -p 8022 USER@IP_TELEFONU
 
 ---
 
-## 10.5. Ustawienie hasła
+### 10.5. Ustawienie hasła
 
 ```bash
 passwd
@@ -919,7 +919,7 @@ Lepszym rozwiązaniem jest klucz SSH.
 
 ---
 
-# 11. Git
+## 11. Git
 
 Instalacja:
 
@@ -970,9 +970,9 @@ Termux nadaje się bardzo dobrze do:
 
 ---
 
-# 12. Edytory tekstu
+## 12. Edytory tekstu
 
-## Vim
+### Vim
 
 ```bash
 pkg install vim
@@ -984,7 +984,7 @@ vim plik.md
 
 ---
 
-## Neovim
+### Neovim
 
 ```bash
 pkg install neovim
@@ -996,7 +996,7 @@ nvim plik.md
 
 ---
 
-## nano
+### nano
 
 ```bash
 pkg install nano
@@ -1004,7 +1004,7 @@ pkg install nano
 
 ---
 
-## micro
+### micro
 
 Jeśli pakiet znajduje się w aktualnym repozytorium:
 
@@ -1014,7 +1014,7 @@ pkg search micro
 
 ---
 
-## W praktyce
+### W praktyce
 
 Jeśli na Debianie i FreeBSD używasz Vima/Neovima, warto zachować to samo środowisko również w Termuxie.
 
@@ -1031,7 +1031,7 @@ mogą mieć bardzo podobny workflow.
 
 ---
 
-# 13. Programowanie i kompilacja
+## 13. Programowanie i kompilacja
 
 Termux może być pełnoprawnym lekkim środowiskiem developerskim.
 
@@ -1049,7 +1049,7 @@ Niektóre duże frameworki mogą jednak zakładać glibc lub pełny Linux i wyma
 
 ---
 
-# 14. Python
+## 14. Python
 
 Instalacja:
 
@@ -1077,7 +1077,7 @@ print("Hello z Termuxa")
 
 ---
 
-## pip
+### pip
 
 ```bash
 pip install nazwa_pakietu
@@ -1085,7 +1085,7 @@ pip install nazwa_pakietu
 
 ---
 
-## venv
+### venv
 
 ```bash
 python -m venv .venv
@@ -1105,7 +1105,7 @@ deactivate
 
 ---
 
-## Uruchomienie pliku
+### Uruchomienie pliku
 
 ```bash
 python script.py
@@ -1121,7 +1121,7 @@ Termux jest bardzo wygodnym środowiskiem do:
 
 ---
 
-# 15. Go
+## 15. Go
 
 Instalacja:
 
@@ -1184,7 +1184,7 @@ Go bardzo dobrze nadaje się w Termuxie do:
 
 ---
 
-# 16. C i C++
+## 16. C i C++
 
 Termux używa Clanga.
 
@@ -1219,7 +1219,7 @@ Uruchomienie:
 
 ---
 
-## make
+### make
 
 ```bash
 pkg install make
@@ -1227,7 +1227,7 @@ pkg install make
 
 ---
 
-## cmake
+### cmake
 
 ```bash
 pkg install cmake
@@ -1235,7 +1235,7 @@ pkg install cmake
 
 ---
 
-## Narzędzia
+### Narzędzia
 
 Przydatne:
 
@@ -1255,7 +1255,7 @@ Najczęstsze problemy:
 
 ---
 
-# 17. Node.js i JavaScript
+## 17. Node.js i JavaScript
 
 Instalacja:
 
@@ -1301,13 +1301,13 @@ Ciężkie środowiska frontendowe mogą zużywać dużo RAM-u i baterii.
 
 ---
 
-# 18. Serwery WWW
+## 18. Serwery WWW
 
 Telefon może lokalnie uruchomić serwer HTTP.
 
 ---
 
-## Python
+### Python
 
 ```bash
 python -m http.server 8000
@@ -1321,7 +1321,7 @@ http://127.0.0.1:8000
 
 ---
 
-## Go
+### Go
 
 Program:
 
@@ -1350,7 +1350,7 @@ go run .
 
 ---
 
-## nginx
+### nginx
 
 Jeżeli znajduje się w aktywnym repozytorium:
 
@@ -1363,7 +1363,7 @@ Konfiguracja znajduje się w obrębie `$PREFIX`.
 
 ---
 
-## Porty uprzywilejowane
+### Porty uprzywilejowane
 
 Bez roota nie zakładaj możliwości bindu do:
 
@@ -1383,7 +1383,7 @@ Zamiast tego używaj:
 
 ---
 
-# 19. Usługi i procesy działające w tle
+## 19. Usługi i procesy działające w tle
 
 Android nie jest klasycznym serwerem.
 
@@ -1395,7 +1395,7 @@ Może ograniczać procesy aplikacji ze względu na:
 
 ---
 
-## 19.1. termux-services
+### 19.1. termux-services
 
 Termux posiada pakiet wykorzystujący `runit`.
 
@@ -1409,7 +1409,7 @@ Po instalacji należy ponownie uruchomić shell.
 
 ---
 
-## Start usługi
+### Start usługi
 
 ```bash
 sv up NAZWA
@@ -1417,7 +1417,7 @@ sv up NAZWA
 
 ---
 
-## Stop
+### Stop
 
 ```bash
 sv down NAZWA
@@ -1425,7 +1425,7 @@ sv down NAZWA
 
 ---
 
-## Włączenie autostartu w obrębie mechanizmu usług
+### Włączenie autostartu w obrębie mechanizmu usług
 
 ```bash
 sv-enable NAZWA
@@ -1433,7 +1433,7 @@ sv-enable NAZWA
 
 ---
 
-## Wyłączenie
+### Wyłączenie
 
 ```bash
 sv-disable NAZWA
@@ -1441,7 +1441,7 @@ sv-disable NAZWA
 
 ---
 
-## Status
+### Status
 
 ```bash
 sv status NAZWA
@@ -1455,7 +1455,7 @@ $PREFIX/var/log/sv/NAZWA/current
 
 ---
 
-## 19.2. Wake lock
+### 19.2. Wake lock
 
 Jeśli aplikacja ma długo pracować:
 
@@ -1473,7 +1473,7 @@ Nie jest to gwarancja wiecznego działania procesu - Android nadal posiada włas
 
 ---
 
-# 20. Termux:API - sterowanie Androidem z shella
+## 20. Termux:API - sterowanie Androidem z shella
 
 Termux:API jest dodatkiem wystawiającym wybrane funkcje Androida do linii poleceń.
 
@@ -1488,9 +1488,9 @@ pkg install termux-api
 
 ---
 
-## Przykłady
+### Przykłady
 
-### Stan baterii
+#### Stan baterii
 
 ```bash
 termux-battery-status
@@ -1498,7 +1498,7 @@ termux-battery-status
 
 ---
 
-### Schowek
+#### Schowek
 
 Odczyt:
 
@@ -1514,7 +1514,7 @@ echo "tekst" | termux-clipboard-set
 
 ---
 
-### Powiadomienie
+#### Powiadomienie
 
 ```bash
 termux-notification \
@@ -1524,7 +1524,7 @@ termux-notification \
 
 ---
 
-### Wibracja
+#### Wibracja
 
 ```bash
 termux-vibrate
@@ -1532,7 +1532,7 @@ termux-vibrate
 
 ---
 
-### Informacje o Wi-Fi
+#### Informacje o Wi-Fi
 
 W zależności od wersji Androida i przyznanych uprawnień:
 
@@ -1542,7 +1542,7 @@ termux-wifi-connectioninfo
 
 ---
 
-## Do czego to jest przydatne
+### Do czego to jest przydatne
 
 Można tworzyć skrypty typu:
 
@@ -1568,7 +1568,7 @@ To jest jedna z najciekawszych cech Termuxa.
 
 ---
 
-# 21. proot-distro - Debian i inne dystrybucje
+## 21. proot-distro - Debian i inne dystrybucje
 
 Termux może uruchomić dodatkowy userspace dystrybucji Linux.
 
@@ -1580,7 +1580,7 @@ pkg install proot-distro
 
 ---
 
-## Lista
+### Lista
 
 ```bash
 proot-distro list
@@ -1588,7 +1588,7 @@ proot-distro list
 
 ---
 
-## Debian
+### Debian
 
 ```bash
 proot-distro install debian
@@ -1608,7 +1608,7 @@ root@localhost:~#
 
 ---
 
-## To nie jest prawdziwy root
+### To nie jest prawdziwy root
 
 Bardzo ważne:
 
@@ -1630,7 +1630,7 @@ Nadal:
 
 ---
 
-## Po co proot-distro
+### Po co proot-distro
 
 Jest przydatne, gdy potrzebujesz:
 
@@ -1641,7 +1641,7 @@ Jest przydatne, gdy potrzebujesz:
 
 ---
 
-## Koszt
+### Koszt
 
 PRoot powoduje dodatkowy narzut.
 
@@ -1659,7 +1659,7 @@ Termux → PRoot → Debian → program
 
 ---
 
-# 22. Co daje root
+## 22. Co daje root
 
 Po zrootowaniu Androida Termux może korzystać z:
 
@@ -1705,11 +1705,11 @@ Nadal istnieją:
 
 ---
 
-# 23. Czego Termux nie potrafi bez roota
+## 23. Czego Termux nie potrafi bez roota
 
 Typowe ograniczenia:
 
-## Mount
+### Mount
 
 ```bash
 mount ...
@@ -1719,7 +1719,7 @@ nie działa jak na normalnym serwerze.
 
 ---
 
-## Moduły kernela
+### Moduły kernela
 
 ```bash
 modprobe
@@ -1731,19 +1731,19 @@ w praktyce odpadają.
 
 ---
 
-## Firewall systemowy
+### Firewall systemowy
 
 Nie możesz dowolnie administrować systemowym firewallem tak jak root na Debianie.
 
 ---
 
-## Routing systemowy
+### Routing systemowy
 
 Nie masz pełnych praw administratora do tablic routingu całego Androida.
 
 ---
 
-## Sysctl
+### Sysctl
 
 Odczyt części wartości jest możliwy:
 
@@ -1755,7 +1755,7 @@ ale zmiany wymagają odpowiednich praw.
 
 ---
 
-## Inne aplikacje
+### Inne aplikacje
 
 Nie możesz po prostu:
 
@@ -1767,7 +1767,7 @@ i czytać prywatnych danych aplikacji.
 
 ---
 
-## PID 1
+### PID 1
 
 Termux nie kontroluje startu systemu.
 
@@ -1783,7 +1783,7 @@ kernel
 
 ---
 
-# 24. Docker i kontenery
+## 24. Docker i kontenery
 
 Standardowy Docker potrzebuje odpowiednich funkcji kernela i uprawnień, między innymi:
 
@@ -1806,7 +1806,7 @@ nie jest typowym rozwiązaniem dla zwykłego Termuxa.
 
 ---
 
-## PRoot to nie Docker
+### PRoot to nie Docker
 
 PRoot:
 
@@ -1830,7 +1830,7 @@ Linux kernel
 
 ---
 
-## Jeśli potrzebujesz Dockera
+### Jeśli potrzebujesz Dockera
 
 Najprościej:
 
@@ -1846,7 +1846,7 @@ Telefon staje się wtedy świetnym terminalem administracyjnym.
 
 ---
 
-# 25. Sieć
+## 25. Sieć
 
 Termux posiada wiele klasycznych narzędzi.
 
@@ -1865,7 +1865,7 @@ pkg install openssh
 
 ---
 
-## Interfejsy
+### Interfejsy
 
 ```bash
 ip addr
@@ -1873,7 +1873,7 @@ ip addr
 
 ---
 
-## Routing
+### Routing
 
 ```bash
 ip route
@@ -1883,7 +1883,7 @@ Odczyt jest czym innym niż możliwość modyfikacji.
 
 ---
 
-## DNS
+### DNS
 
 ```bash
 nslookup example.com
@@ -1897,7 +1897,7 @@ dig example.com
 
 ---
 
-## Porty
+### Porty
 
 ```bash
 ss -tulpn
@@ -1907,7 +1907,7 @@ Niektóre informacje mogą być ograniczone przez Androida.
 
 ---
 
-## curl
+### curl
 
 ```bash
 curl https://example.com
@@ -1921,7 +1921,7 @@ curl -I https://example.com
 
 ---
 
-## wget
+### wget
 
 ```bash
 wget https://example.com/file
@@ -1929,7 +1929,7 @@ wget https://example.com/file
 
 ---
 
-# 26. Backup i migracja Termuxa
+## 26. Backup i migracja Termuxa
 
 Najważniejsze dane zwykle są w:
 
@@ -1945,7 +1945,7 @@ $PREFIX/etc
 
 ---
 
-## Backup HOME
+### Backup HOME
 
 ```bash
 tar -czf termux-home.tar.gz -C "$HOME" .
@@ -1959,7 +1959,7 @@ Następnie można skopiować archiwum do:
 
 ---
 
-## Repozytoria Git
+### Repozytoria Git
 
 Najlepszy backup kodu to oczywiście również:
 
@@ -1969,7 +1969,7 @@ git push
 
 ---
 
-## Lista pakietów
+### Lista pakietów
 
 ```bash
 pkg list-installed > packages.txt
@@ -1979,7 +1979,7 @@ Można przechować ją razem z backupem.
 
 ---
 
-## Klucze SSH
+### Klucze SSH
 
 Szczególnie ważny katalog:
 
@@ -1991,13 +1991,13 @@ Nie wysyłaj prywatnych kluczy do publicznych repozytoriów.
 
 ---
 
-# 27. Bezpieczeństwo
+## 27. Bezpieczeństwo
 
 Termux ma sporą moc, mimo że działa bez roota.
 
 ---
 
-## Nie wykonuj bezmyślnie
+### Nie wykonuj bezmyślnie
 
 ```bash
 curl URL | bash
@@ -2016,7 +2016,7 @@ dopiero potem uruchamiać.
 
 ---
 
-## SSH
+### SSH
 
 Preferuj:
 
@@ -2028,7 +2028,7 @@ zamiast słabego hasła.
 
 ---
 
-## Serwer SSH w telefonie
+### Serwer SSH w telefonie
 
 Jeśli uruchamiasz:
 
@@ -2042,7 +2042,7 @@ Nie wystawiaj jej bez potrzeby do internetu.
 
 ---
 
-## Sekrety
+### Sekrety
 
 Nie przechowuj tokenów API bez potrzeby w:
 
@@ -2062,7 +2062,7 @@ lecz nawet wtedy warto rozważyć bezpieczniejszy storage, jeśli sekret ma zost
 
 ---
 
-# 28. Wydajność i bateria
+## 28. Wydajność i bateria
 
 Termux działa natywnie, więc potrafi być bardzo szybki.
 
@@ -2094,9 +2094,9 @@ Telefon dodatkowo ma ograniczenia termiczne.
 
 ---
 
-# 29. Najczęstsze problemy
+## 29. Najczęstsze problemy
 
-## `command not found`
+### `command not found`
 
 Najpierw:
 
@@ -2106,7 +2106,7 @@ pkg search NAZWA
 
 ---
 
-## Pakiety nie działają po długim czasie
+### Pakiety nie działają po długim czasie
 
 ```bash
 pkg update
@@ -2117,7 +2117,7 @@ Termux i jego biblioteki powinny być aktualizowane spójnie.
 
 ---
 
-## Program z Debiana nie uruchamia się
+### Program z Debiana nie uruchamia się
 
 Możliwy powód:
 
@@ -2134,7 +2134,7 @@ Rozwiązania:
 
 ---
 
-## Skrypt ma `#!/bin/bash`
+### Skrypt ma `#!/bin/bash`
 
 W Termuxie klasyczne:
 
@@ -2152,7 +2152,7 @@ Lepsze rozwiązanie przenośne:
 
 ---
 
-## `Permission denied` w `/sdcard`
+### `Permission denied` w `/sdcard`
 
 Współdzielona pamięć Androida ma inne zasady i może być zamontowana jako `noexec`.
 
@@ -2164,7 +2164,7 @@ Przenieś kod do:
 
 ---
 
-## Proces zniknął po pewnym czasie
+### Proces zniknął po pewnym czasie
 
 Prawdopodobnie Android ograniczył aplikację.
 
@@ -2178,7 +2178,7 @@ oraz ustawienia baterii Androida dla Termuxa.
 
 ---
 
-## Termux:API nie działa
+### Termux:API nie działa
 
 Sprawdź:
 
@@ -2189,9 +2189,9 @@ Sprawdź:
 
 ---
 
-# 30. Przykłady z prawdziwego życia
+## 30. Przykłady z prawdziwego życia
 
-## 30.1. Telefon jako awaryjny terminal do VPS
+### 30.1. Telefon jako awaryjny terminal do VPS
 
 Instalacja:
 
@@ -2222,7 +2222,7 @@ Telefon staje się pełnoprawnym terminalem administracyjnym.
 
 ---
 
-## 30.2. Szybka poprawka w projekcie Git
+### 30.2. Szybka poprawka w projekcie Git
 
 ```bash
 cd ~/projects/example-site
@@ -2236,7 +2236,7 @@ git push
 
 ---
 
-## 30.3. Test prostej strony
+### 30.3. Test prostej strony
 
 ```bash
 cd ~/projects/site
@@ -2251,7 +2251,7 @@ http://127.0.0.1:8000
 
 ---
 
-## 30.4. Lokalny backend w Go
+### 30.4. Lokalny backend w Go
 
 ```bash
 cd ~/projects/api
@@ -2272,7 +2272,7 @@ http://127.0.0.1:8080
 
 ---
 
-## 30.5. Skrypt powiadamiający o zakończeniu zadania
+### 30.5. Skrypt powiadamiający o zakończeniu zadania
 
 ```bash
 #!/usr/bin/env bash
@@ -2292,7 +2292,7 @@ fi
 
 ---
 
-## 30.6. Monitorowanie strony
+### 30.6. Monitorowanie strony
 
 Przykład bardzo prostego skryptu:
 
@@ -2313,7 +2313,7 @@ fi
 
 ---
 
-## 30.7. Telefon jako prosty serwer plików w LAN
+### 30.7. Telefon jako prosty serwer plików w LAN
 
 ```bash
 cd ~/storage/shared
@@ -2336,7 +2336,7 @@ Nie wystawiaj takiej usługi do publicznego internetu bez zabezpieczeń.
 
 ---
 
-## 30.8. Debian w kieszeni
+### 30.8. Debian w kieszeni
 
 ```bash
 pkg install proot-distro
@@ -2361,7 +2361,7 @@ root Androida
 
 ---
 
-## 30.9. Termux + tmux + SSH
+### 30.9. Termux + tmux + SSH
 
 Bardzo praktyczny workflow:
 
@@ -2380,54 +2380,54 @@ Pozwala to wygodnie pracować na małym ekranie.
 
 ---
 
-# 31. Ściąga
+## 31. Ściąga
 
-## Aktualizacja
+### Aktualizacja
 
 ```bash
 pkg update && pkg upgrade
 ```
 
-## Instalacja
+### Instalacja
 
 ```bash
 pkg install NAZWA
 ```
 
-## Szukanie
+### Szukanie
 
 ```bash
 pkg search NAZWA
 ```
 
-## HOME
+### HOME
 
 ```bash
 echo $HOME
 cd ~
 ```
 
-## PREFIX
+### PREFIX
 
 ```bash
 echo $PREFIX
 ```
 
-## Pamięć telefonu
+### Pamięć telefonu
 
 ```bash
 termux-setup-storage
 cd ~/storage/shared
 ```
 
-## SSH
+### SSH
 
 ```bash
 pkg install openssh
 ssh user@host
 ```
 
-## Serwer SSH
+### Serwer SSH
 
 ```bash
 sshd
@@ -2439,35 +2439,35 @@ Domyślny port Termuxa jest zwykle:
 8022
 ```
 
-## Git
+### Git
 
 ```bash
 pkg install git
 git clone URL
 ```
 
-## Vim
+### Vim
 
 ```bash
 pkg install vim
 vim plik
 ```
 
-## Neovim
+### Neovim
 
 ```bash
 pkg install neovim
 nvim plik
 ```
 
-## Python
+### Python
 
 ```bash
 pkg install python
 python script.py
 ```
 
-## Go
+### Go
 
 ```bash
 pkg install golang
@@ -2475,28 +2475,28 @@ go run .
 go build
 ```
 
-## C/C++
+### C/C++
 
 ```bash
 pkg install clang
 clang hello.c -o hello
 ```
 
-## Node
+### Node
 
 ```bash
 pkg install nodejs
 node app.js
 ```
 
-## tmux
+### tmux
 
 ```bash
 pkg install tmux
 tmux
 ```
 
-## Debian
+### Debian
 
 ```bash
 pkg install proot-distro
@@ -2504,21 +2504,21 @@ proot-distro install debian
 proot-distro login debian
 ```
 
-## Termux API
+### Termux API
 
 ```bash
 pkg install termux-api
 termux-battery-status
 ```
 
-## Wake lock
+### Wake lock
 
 ```bash
 termux-wake-lock
 termux-wake-unlock
 ```
 
-## Informacje o systemie
+### Informacje o systemie
 
 ```bash
 uname -a
@@ -2531,7 +2531,7 @@ echo $PREFIX
 
 ---
 
-# Model mentalny Termuxa
+## Model mentalny Termuxa
 
 Jeśli zapamiętać tylko jedną rzecz, to tę:
 
@@ -2581,9 +2581,9 @@ To właśnie jednocześnie daje mu:
 
 ---
 
-# Kiedy używać czego
+## Kiedy używać czego
 
-## Termux natywny
+### Termux natywny
 
 Najlepszy wybór do:
 
@@ -2603,7 +2603,7 @@ proste serwery
 automatyzacja
 ```
 
-## proot-distro
+### proot-distro
 
 Użyj, kiedy:
 
@@ -2614,7 +2614,7 @@ pakiet nie istnieje w Termuxie
 program zakłada klasyczny root filesystem
 ```
 
-## Debian/VPS
+### Debian/VPS
 
 Użyj, kiedy potrzebujesz:
 
@@ -2627,7 +2627,7 @@ klasyczna administracja
 stabilna praca 24/7
 ```
 
-## Rootowany Android
+### Rootowany Android
 
 Użyj jako laboratorium, kiedy chcesz badać:
 
@@ -2644,7 +2644,7 @@ kernel interfaces
 
 ---
 
-# 32. Źródła
+## 32. Źródła
 
 Oficjalne źródła projektu:
 
@@ -2671,7 +2671,7 @@ Najważniejsze techniczne fakty użyte w tym kompendium:
 
 ---
 
-# Podsumowanie
+## Podsumowanie
 
 Termux najlepiej traktować jako:
 

@@ -23,7 +23,7 @@ FreeBSD to kompletny system operacyjny z rodziny BSD, a nie dystrybucja Linuksa.
 
 Dalsze tematy: [FreeBSD - shell](techhandbook:doc-029) oraz [SSH i zdalna administracja](techhandbook:doc-018). Dla porównania z kontenerami linuksowymi przydatne jest także kompendium [Docker](techhandbook:doc-012).
 
-# 1. Jak myśleć o FreeBSD
+## 1. Jak myśleć o FreeBSD
 
 FreeBSD nie jest dystrybucją Linuksa. To kompletny system operacyjny rozwijany jako spójna całość:
 
@@ -77,7 +77,7 @@ Ta reguła bardzo często pomaga odnaleźć konfigurację usługi.
 
 ---
 
-# 2. Wersja systemu
+## 2. Wersja systemu
 
 Podstawowe polecenia:
 
@@ -117,9 +117,9 @@ Najczęściej oznacza to, że kernel został zaktualizowany, ale system nie zost
 
 ---
 
-# 3. Najważniejsze katalogi
+## 3. Najważniejsze katalogi
 
-## `/etc`
+### `/etc`
 
 Konfiguracja systemu bazowego.
 
@@ -139,7 +139,7 @@ Najważniejsze pliki:
 
 ---
 
-## `/usr/local`
+### `/usr/local`
 
 Tutaj trafia oprogramowanie instalowane z Packages/Ports.
 
@@ -162,7 +162,7 @@ Przykładowo:
 
 ---
 
-## `/var`
+### `/var`
 
 Dane zmienne:
 
@@ -183,7 +183,7 @@ jest jednym z najważniejszych logów systemowych.
 
 ---
 
-## `/home` i `/usr/home`
+### `/home` i `/usr/home`
 
 W FreeBSD katalogi domowe użytkowników często znajdują się fizycznie pod:
 
@@ -195,7 +195,7 @@ a `/home` może być dowiązaniem.
 
 ---
 
-## `/boot`
+### `/boot`
 
 Kernel, moduły i konfiguracja startu systemu.
 
@@ -209,11 +209,11 @@ Nie należy tam wpisywać rzeczy, które mogą być ustawione przez `sysctl`, je
 
 ---
 
-# 4. Minimalny shell administratora
+## 4. Minimalny shell administratora
 
 Nie jest to kurs shella. Poniższe polecenia wystarczą jednak do większości prostych zadań administracyjnych.
 
-## Poruszanie się
+### Poruszanie się
 
 ```sh
 pwd
@@ -226,7 +226,7 @@ cd ~
 
 ---
 
-## Pliki
+### Pliki
 
 ```sh
 cp plik kopia
@@ -246,7 +246,7 @@ Używać ostrożnie.
 
 ---
 
-## Podgląd plików
+### Podgląd plików
 
 ```sh
 cat plik
@@ -263,7 +263,7 @@ tail -f /var/log/messages
 
 ---
 
-## Wyszukiwanie
+### Wyszukiwanie
 
 ```sh
 grep tekst plik
@@ -273,7 +273,7 @@ find /usr/local -name "*.conf"
 
 ---
 
-## Procesy
+### Procesy
 
 ```sh
 ps aux
@@ -284,7 +284,7 @@ pkill proces
 
 ---
 
-## Pomoc
+### Pomoc
 
 Najważniejsze narzędzie FreeBSD:
 
@@ -312,7 +312,7 @@ man 8 service
 
 ---
 
-# 5. Root i uprawnienia
+## 5. Root i uprawnienia
 
 Konto `root` ma pełne prawa do systemu.
 
@@ -360,9 +360,9 @@ visudo
 
 ---
 
-# 6. Użytkownicy i grupy
+## 6. Użytkownicy i grupy
 
-## Lista użytkowników
+### Lista użytkowników
 
 ```sh
 cat /etc/passwd
@@ -370,7 +370,7 @@ cat /etc/passwd
 
 ---
 
-## Dodanie użytkownika
+### Dodanie użytkownika
 
 Interaktywnie:
 
@@ -380,7 +380,7 @@ adduser
 
 ---
 
-## Usunięcie użytkownika
+### Usunięcie użytkownika
 
 ```sh
 rmuser nazwa
@@ -388,7 +388,7 @@ rmuser nazwa
 
 ---
 
-## Narzędzie `pw`
+### Narzędzie `pw`
 
 Bardziej skryptowalne:
 
@@ -407,7 +407,7 @@ pw useradd webapp -m -s /bin/sh
 
 ---
 
-# 7. Pakiety - `pkg`
+## 7. Pakiety - `pkg`
 
 `pkg` jest podstawowym narzędziem do instalacji oprogramowania.
 
@@ -421,7 +421,7 @@ zaproponuje bootstrap.
 
 ---
 
-## Aktualizacja katalogu pakietów
+### Aktualizacja katalogu pakietów
 
 ```sh
 pkg update
@@ -429,7 +429,7 @@ pkg update
 
 ---
 
-## Aktualizacja wszystkich pakietów
+### Aktualizacja wszystkich pakietów
 
 ```sh
 pkg upgrade
@@ -444,7 +444,7 @@ pkg upgrade
 
 ---
 
-## Instalacja
+### Instalacja
 
 ```sh
 pkg install nginx
@@ -458,7 +458,7 @@ pkg install nginx git vim
 
 ---
 
-## Usuwanie
+### Usuwanie
 
 ```sh
 pkg delete nginx
@@ -466,7 +466,7 @@ pkg delete nginx
 
 ---
 
-## Lista zainstalowanych pakietów
+### Lista zainstalowanych pakietów
 
 ```sh
 pkg info
@@ -480,7 +480,7 @@ pkg info nginx
 
 ---
 
-## Wyszukiwanie
+### Wyszukiwanie
 
 ```sh
 pkg search nginx
@@ -494,7 +494,7 @@ pkg search -f nginx
 
 ---
 
-## Zależności, które nie są już potrzebne
+### Zależności, które nie są już potrzebne
 
 ```sh
 pkg autoremove
@@ -504,7 +504,7 @@ Najpierw zawsze przeczytaj, co `pkg` chce usunąć.
 
 ---
 
-## Audyt podatności
+### Audyt podatności
 
 Bardzo przydatne na serwerze:
 
@@ -516,7 +516,7 @@ pkg audit -F
 
 ---
 
-## Informacja, skąd pochodzi plik
+### Informacja, skąd pochodzi plik
 
 ```sh
 pkg which /usr/local/bin/nginx
@@ -524,7 +524,7 @@ pkg which /usr/local/bin/nginx
 
 ---
 
-## Pliki należące do pakietu
+### Pliki należące do pakietu
 
 ```sh
 pkg info -l nginx
@@ -532,7 +532,7 @@ pkg info -l nginx
 
 ---
 
-# 8. Packages a Ports
+## 8. Packages a Ports
 
 FreeBSD posiada dwa sposoby instalowania oprogramowania:
 
@@ -561,7 +561,7 @@ Na typowym serwerze nie ma powodu komplikować życia bez potrzeby.
 
 ---
 
-# 9. Najważniejsza rzecz: system usług FreeBSD
+## 9. Najważniejsza rzecz: system usług FreeBSD
 
 FreeBSD nie używa systemd.
 
@@ -579,7 +579,7 @@ To trzeba znać dobrze.
 
 ---
 
-# 10. Gdzie znajdują się skrypty usług
+## 10. Gdzie znajdują się skrypty usług
 
 Usługi systemowe:
 
@@ -610,7 +610,7 @@ service
 
 ---
 
-# 11. Lista usług
+## 11. Lista usług
 
 Wszystkie skrypty usług:
 
@@ -638,7 +638,7 @@ service -rv
 
 ---
 
-# 12. Uruchamianie usług
+## 12. Uruchamianie usług
 
 Schemat:
 
@@ -683,7 +683,7 @@ Nie każda usługa obsługuje wszystkie.
 
 ---
 
-# 13. Dlaczego `service nginx start` czasem nie działa
+## 13. Dlaczego `service nginx start` czasem nie działa
 
 We FreeBSD zwykłe:
 
@@ -703,7 +703,7 @@ nginx_enable="YES"
 
 ---
 
-# 14. `rc.conf` - centrum konfiguracji systemu
+## 14. `rc.conf` - centrum konfiguracji systemu
 
 Najważniejszy plik:
 
@@ -736,7 +736,7 @@ Własne ustawienia umieszczaj w:
 
 ---
 
-# 15. `sysrc` - najlepszy sposób zmiany `rc.conf`
+## 15. `sysrc` - najlepszy sposób zmiany `rc.conf`
 
 Zamiast ręcznie dopisywać:
 
@@ -754,7 +754,7 @@ To bezpieczne i wygodne.
 
 ---
 
-## Odczyt wartości
+### Odczyt wartości
 
 ```sh
 sysrc nginx_enable
@@ -762,7 +762,7 @@ sysrc nginx_enable
 
 ---
 
-## Sama wartość
+### Sama wartość
 
 ```sh
 sysrc -n nginx_enable
@@ -770,7 +770,7 @@ sysrc -n nginx_enable
 
 ---
 
-## Włączenie usługi
+### Włączenie usługi
 
 ```sh
 sysrc nginx_enable="YES"
@@ -778,7 +778,7 @@ sysrc nginx_enable="YES"
 
 ---
 
-## Wyłączenie
+### Wyłączenie
 
 ```sh
 sysrc nginx_enable="NO"
@@ -786,7 +786,7 @@ sysrc nginx_enable="NO"
 
 ---
 
-## Usunięcie zmiennej
+### Usunięcie zmiennej
 
 ```sh
 sysrc -x nginx_enable
@@ -794,23 +794,23 @@ sysrc -x nginx_enable
 
 ---
 
-# 16. Typowy cykl instalacji nowej usługi
+## 16. Typowy cykl instalacji nowej usługi
 
 Przykład nginx.
 
-## 1. Instalacja
+### 1. Instalacja
 
 ```sh
 pkg install nginx
 ```
 
-## 2. Sprawdzenie plików
+### 2. Sprawdzenie plików
 
 ```sh
 pkg info -l nginx
 ```
 
-## 3. Sprawdzenie skryptu usługi
+### 3. Sprawdzenie skryptu usługi
 
 ```sh
 service nginx rcvar
@@ -822,31 +822,31 @@ Najczęściej zobaczysz informację w rodzaju:
 nginx_enable="NO"
 ```
 
-## 4. Włączenie autostartu
+### 4. Włączenie autostartu
 
 ```sh
 sysrc nginx_enable="YES"
 ```
 
-## 5. Uruchomienie
+### 5. Uruchomienie
 
 ```sh
 service nginx start
 ```
 
-## 6. Status
+### 6. Status
 
 ```sh
 service nginx status
 ```
 
-## 7. Sprawdzenie portu
+### 7. Sprawdzenie portu
 
 ```sh
 sockstat -4 -6 -l
 ```
 
-## 8. Logi
+### 8. Logi
 
 Zależnie od aplikacji:
 
@@ -859,7 +859,7 @@ lub ścieżka skonfigurowana przez usługę.
 
 ---
 
-# 17. `onestart`, `onestop` i `onerestart`
+## 17. `onestart`, `onestop` i `onerestart`
 
 Czasem chcesz uruchomić usługę bez włączania jej na stałe.
 
@@ -891,7 +891,7 @@ Bardzo przydatne podczas testów.
 
 ---
 
-# 18. `force*`
+## 18. `force*`
 
 Istnieją również warianty typu:
 
@@ -911,7 +911,7 @@ Najpierw rozwiąż przyczynę problemu.
 
 ---
 
-# 19. Restart wszystkich lokalnych usług
+## 19. Restart wszystkich lokalnych usług
 
 Można wykonać:
 
@@ -925,7 +925,7 @@ Nie jest to coś, co należy robić bezmyślnie na produkcji.
 
 ---
 
-# 20. Autostart usług - zasada
+## 20. Autostart usług - zasada
 
 Jeśli usługa ma wystartować po reboot:
 
@@ -949,11 +949,11 @@ service nazwa start
 
 ---
 
-# 21. Konfiguracja usług
+## 21. Konfiguracja usług
 
 Dobra reguła:
 
-### usługa systemowa
+#### usługa systemowa
 
 szukaj w:
 
@@ -961,7 +961,7 @@ szukaj w:
 /etc
 ```
 
-### usługa z pakietu
+#### usługa z pakietu
 
 szukaj w:
 
@@ -990,7 +990,7 @@ cp plik.conf.sample plik.conf
 
 ---
 
-# 22. Sprawdzenie konfiguracji przed restartem
+## 22. Sprawdzenie konfiguracji przed restartem
 
 To bardzo ważny nawyk.
 
@@ -1024,7 +1024,7 @@ Na zdalnym serwerze może to uratować dostęp.
 
 ---
 
-# 23. Własna aplikacja jako usługa
+## 23. Własna aplikacja jako usługa
 
 Załóżmy, że masz program:
 
@@ -1101,7 +1101,7 @@ Dla własnych aplikacji Go jest to bardzo wygodny sposób integracji z FreeBSD.
 
 ---
 
-# 24. `daemon(8)`
+## 24. `daemon(8)`
 
 `daemon` uruchamia zwykły program jak proces serwerowy.
 
@@ -1133,7 +1133,7 @@ To bardzo przydatne dla małych własnych usług.
 
 ---
 
-# 25. Aktualizacje systemu
+## 25. Aktualizacje systemu
 
 FreeBSD należy aktualizować w dwóch warstwach:
 
@@ -1144,7 +1144,7 @@ To nie jest to samo.
 
 ---
 
-# 26. Aktualizacja pakietów
+## 26. Aktualizacja pakietów
 
 Standardowo:
 
@@ -1161,7 +1161,7 @@ pkg audit -F
 
 ---
 
-# 27. Aktualizacja systemu bazowego
+## 27. Aktualizacja systemu bazowego
 
 Tradycyjna instalacja FreeBSD używa:
 
@@ -1191,7 +1191,7 @@ uname -r
 
 ---
 
-# 28. Uwaga: pkgbase
+## 28. Uwaga: pkgbase
 
 FreeBSD 15 rozwija również mechanizm zarządzania systemem bazowym przez pakiety - **pkgbase**.
 
@@ -1210,7 +1210,7 @@ Jeśli administrujesz istniejącym serwerem, najpierw ustal sposób instalacji i
 
 ---
 
-# 29. Boot Environments - jedna z najlepszych rzeczy przy ZFS
+## 29. Boot Environments - jedna z najlepszych rzeczy przy ZFS
 
 Jeśli root znajduje się na ZFS, możesz korzystać z boot environments.
 
@@ -1248,7 +1248,7 @@ To bardzo dobry nawyk przed:
 
 ---
 
-# 30. Sieć - najważniejsze narzędzia
+## 30. Sieć - najważniejsze narzędzia
 
 Lista interfejsów:
 
@@ -1292,7 +1292,7 @@ www      nginx      ...      tcp4 *:80
 
 ---
 
-# 31. Konfiguracja interfejsu w `rc.conf`
+## 31. Konfiguracja interfejsu w `rc.conf`
 
 DHCP:
 
@@ -1326,7 +1326,7 @@ Często bezpieczniejszy jest reboot, jeśli masz pewny dostęp konsolowy/IPMI.
 
 ---
 
-# 32. DNS
+## 32. DNS
 
 Konfiguracja resolvera:
 
@@ -1351,7 +1351,7 @@ Jeżeli `host` nie jest dostępny, przydatne mogą być pakiety zawierające `di
 
 ---
 
-# 33. `/etc/hosts`
+## 33. `/etc/hosts`
 
 Lokalne mapowanie nazw:
 
@@ -1369,7 +1369,7 @@ getent hosts server
 
 ---
 
-# 34. SSH
+## 34. SSH
 
 FreeBSD posiada OpenSSH w systemie bazowym.
 
@@ -1399,7 +1399,7 @@ Konfiguracja:
 
 ---
 
-# 35. SSH - klucze
+## 35. SSH - klucze
 
 Na komputerze klienta:
 
@@ -1422,7 +1422,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 ---
 
-# 36. SSH - podstawowe utwardzenie
+## 36. SSH - podstawowe utwardzenie
 
 Rozważ:
 
@@ -1452,7 +1452,7 @@ service sshd reload
 
 ---
 
-# 37. Firewall
+## 37. Firewall
 
 FreeBSD zawiera kilka firewalli:
 
@@ -1466,7 +1466,7 @@ W tym kompendium używamy PF.
 
 ---
 
-# 38. PF - włączenie
+## 38. PF - włączenie
 
 Konfiguracja:
 
@@ -1494,7 +1494,7 @@ service pf start
 
 ---
 
-# 39. Minimalny PF dla serwera
+## 39. Minimalny PF dla serwera
 
 Przykład:
 
@@ -1524,7 +1524,7 @@ pass in on $ext_if proto tcp to ($ext_if) port { 80 443 } keep state
 
 ---
 
-# 40. PF - test przed przeładowaniem
+## 40. PF - test przed przeładowaniem
 
 Zawsze:
 
@@ -1560,9 +1560,9 @@ Na zdalnym serwerze błędna reguła PF może odciąć SSH. Dobrze mieć konsol�
 
 ---
 
-# 41. Procesy i zasoby
+## 41. Procesy i zasoby
 
-## `top`
+### `top`
 
 ```sh
 top
@@ -1577,7 +1577,7 @@ Pokazuje:
 
 ---
 
-## `ps`
+### `ps`
 
 ```sh
 ps aux
@@ -1597,7 +1597,7 @@ pgrep -fl nginx
 
 ---
 
-## Pamięć
+### Pamięć
 
 ```sh
 sysctl hw.physmem
@@ -1611,7 +1611,7 @@ vmstat
 
 ---
 
-## CPU
+### CPU
 
 ```sh
 sysctl hw.model
@@ -1625,7 +1625,7 @@ sysctl hw.ncpu
 
 ---
 
-# 42. Dyski
+## 42. Dyski
 
 Lista urządzeń:
 
@@ -1647,7 +1647,7 @@ df -h
 
 ---
 
-# 43. ZFS - dlaczego warto
+## 43. ZFS - dlaczego warto
 
 ZFS jest bardzo dobrym wyborem dla FreeBSD jako serwera.
 
@@ -1666,9 +1666,9 @@ Zapewnia:
 
 ---
 
-# 44. Podstawowe pojęcia ZFS
+## 44. Podstawowe pojęcia ZFS
 
-## Pool
+### Pool
 
 Najwyższy poziom magazynu:
 
@@ -1686,7 +1686,7 @@ zpool
 
 ---
 
-## Dataset
+### Dataset
 
 Logiczny filesystem wewnątrz puli:
 
@@ -1704,7 +1704,7 @@ zfs
 
 ---
 
-# 45. ZFS - najważniejsze polecenia
+## 45. ZFS - najważniejsze polecenia
 
 Lista pul:
 
@@ -1728,7 +1728,7 @@ Jeżeli wszystko jest zdrowe, ZFS poinformuje, że wszystkie pule są zdrowe.
 
 ---
 
-## Datasety
+### Datasety
 
 ```sh
 zfs list
@@ -1736,7 +1736,7 @@ zfs list
 
 ---
 
-## Utworzenie
+### Utworzenie
 
 ```sh
 zfs create tank/data
@@ -1744,7 +1744,7 @@ zfs create tank/data
 
 ---
 
-## Kompresja
+### Kompresja
 
 ```sh
 zfs set compression=lz4 tank/data
@@ -1758,7 +1758,7 @@ zfs get compression tank/data
 
 ---
 
-# 46. ZFS snapshoty
+## 46. ZFS snapshoty
 
 Snapshot:
 
@@ -1788,7 +1788,7 @@ zfs rollback tank/data@before-upgrade
 
 ---
 
-# 47. ZFS scrub
+## 47. ZFS scrub
 
 Scrub sprawdza integralność danych.
 
@@ -1814,7 +1814,7 @@ Na serwerze z ważnymi danymi okresowy scrub jest dobrą praktyką.
 
 ---
 
-# 48. ZFS send / receive
+## 48. ZFS send / receive
 
 Snapshot można wysłać do drugiej puli:
 
@@ -1832,7 +1832,7 @@ To potężna baza do backupu ZFS.
 
 ---
 
-# 49. ZFS to nie backup
+## 49. ZFS to nie backup
 
 Mirror ZFS:
 
@@ -1855,7 +1855,7 @@ RAID ≠ backup.
 
 ---
 
-# 50. SMART
+## 50. SMART
 
 Zainstaluj:
 
@@ -1891,7 +1891,7 @@ Nazwy urządzeń zależą od kontrolera i typu dysku.
 
 ---
 
-# 51. Montowanie filesystemów
+## 51. Montowanie filesystemów
 
 Aktualnie zamontowane:
 
@@ -1927,7 +1927,7 @@ Błąd w `fstab` może utrudnić boot.
 
 ---
 
-# 52. Logi
+## 52. Logi
 
 Najważniejsze miejsce:
 
@@ -1948,7 +1948,7 @@ Nie każda instalacja musi mieć dokładnie ten sam zestaw.
 
 ---
 
-# 53. Logi na żywo
+## 53. Logi na żywo
 
 ```sh
 tail -f /var/log/messages
@@ -1968,7 +1968,7 @@ grep -i error /var/log/messages
 
 ---
 
-# 54. Syslog
+## 54. Syslog
 
 Systemowy daemon:
 
@@ -1990,7 +1990,7 @@ service syslogd reload
 
 ---
 
-# 55. Rotacja logów
+## 55. Rotacja logów
 
 FreeBSD używa:
 
@@ -2015,7 +2015,7 @@ Aplikacje instalowane z pakietów mogą dostarczać własne wpisy konfiguracyjne
 
 ---
 
-# 56. Cron
+## 56. Cron
 
 Edycja crona bieżącego użytkownika:
 
@@ -2043,7 +2043,7 @@ Przykład codziennie o 03:30:
 
 ---
 
-# 57. Cron roota
+## 57. Cron roota
 
 Jako root:
 
@@ -2057,7 +2057,7 @@ Nie wpisuj tam skryptów, których właścicielem może być zwykły użytkownik
 
 ---
 
-# 58. `periodic`
+## 58. `periodic`
 
 FreeBSD ma dodatkowy mechanizm:
 
@@ -2089,7 +2089,7 @@ man periodic.conf
 
 ---
 
-# 59. `sysctl`
+## 59. `sysctl`
 
 `sysctl` pozwala odczytywać i zmieniać wiele parametrów kernela podczas pracy systemu.
 
@@ -2111,7 +2111,7 @@ sysctl hw.physmem
 
 ---
 
-# 60. Tymczasowa zmiana `sysctl`
+## 60. Tymczasowa zmiana `sysctl`
 
 Przykład:
 
@@ -2123,7 +2123,7 @@ Po restarcie zmiana znika.
 
 ---
 
-# 61. Trwała zmiana `sysctl`
+## 61. Trwała zmiana `sysctl`
 
 Plik:
 
@@ -2148,7 +2148,7 @@ man 5 sysctl.conf
 
 ---
 
-# 62. `/boot/loader.conf`
+## 62. `/boot/loader.conf`
 
 Używany głównie do ustawień wymaganych podczas startu kernela.
 
@@ -2168,7 +2168,7 @@ Jeżeli parametr można ustawić po starcie przez `sysctl`, zazwyczaj powinien t
 
 ---
 
-# 63. Moduły kernela
+## 63. Moduły kernela
 
 Lista:
 
@@ -2196,7 +2196,7 @@ kldstat -v
 
 ---
 
-# 64. Jails - podstawowa idea
+## 64. Jails - podstawowa idea
 
 Jail to natywna izolacja FreeBSD.
 
@@ -2214,7 +2214,7 @@ To jeden z najmocniejszych elementów FreeBSD jako serwera.
 
 ---
 
-# 65. Do czego używać jails
+## 65. Do czego używać jails
 
 Przykładowy serwer:
 
@@ -2236,7 +2236,7 @@ Korzyści:
 
 ---
 
-# 66. Konfiguracja jails
+## 66. Konfiguracja jails
 
 Główne miejsca:
 
@@ -2253,7 +2253,7 @@ Dobrą praktyką jest osobny plik:
 
 ---
 
-# 67. Minimalna definicja jail
+## 67. Minimalna definicja jail
 
 Zakładamy, że system jail znajduje się już w:
 
@@ -2282,7 +2282,7 @@ Szczegóły sieci zależą od architektury serwera.
 
 ---
 
-# 68. Autostart jails
+## 68. Autostart jails
 
 ```sh
 sysrc jail_enable="YES"
@@ -2296,7 +2296,7 @@ sysrc jail_parallel_start="YES"
 
 ---
 
-# 69. Zarządzanie jail
+## 69. Zarządzanie jail
 
 Lista:
 
@@ -2330,7 +2330,7 @@ service jail restart www
 
 ---
 
-# 70. Wejście do jail
+## 70. Wejście do jail
 
 ```sh
 jexec www /bin/sh
@@ -2346,7 +2346,7 @@ Wtedy pracujesz wewnątrz jail.
 
 ---
 
-# 71. Usługi w jail
+## 71. Usługi w jail
 
 Można używać:
 
@@ -2364,7 +2364,7 @@ To pozwala zarządzać usługami jail bez ręcznego `jexec`.
 
 ---
 
-# 72. ZFS i jails
+## 72. ZFS i jails
 
 Bardzo wygodny układ:
 
@@ -2390,7 +2390,7 @@ zfs create zroot/jails/www
 
 ---
 
-# 73. Service Jails w FreeBSD 15
+## 73. Service Jails w FreeBSD 15
 
 FreeBSD 15 wprowadził **service jails**.
 
@@ -2418,7 +2418,7 @@ dopiero potem eksperymentuj z service jails.
 
 ---
 
-# 74. Backup
+## 74. Backup
 
 Backup powinien obejmować co najmniej:
 
@@ -2436,7 +2436,7 @@ Nie wystarczy backup plików aplikacji.
 
 ---
 
-# 75. Backup baz danych
+## 75. Backup baz danych
 
 Nie kopiuj na żywo plików bazy PostgreSQL/MySQL jako zwykłych plików i nie zakładaj, że backup będzie spójny.
 
@@ -2453,7 +2453,7 @@ lub kontrolowanego snapshotu przy poprawnie przygotowanej procedurze.
 
 ---
 
-# 76. ZFS jako mechanizm backupu
+## 76. ZFS jako mechanizm backupu
 
 Dobry schemat:
 
@@ -2474,7 +2474,7 @@ zfs send tank/data@2026-09-19 | ssh backup zfs receive backups/server/data
 
 ---
 
-# 77. Aktualizacje - rozsądna procedura
+## 77. Aktualizacje - rozsądna procedura
 
 Dla domowego lub małego serwera:
 
@@ -2519,7 +2519,7 @@ tail -100 /var/log/messages
 
 ---
 
-# 78. Monitoring podstawowy
+## 78. Monitoring podstawowy
 
 Bez instalowania ciężkich systemów monitoringu warto regularnie sprawdzać:
 
@@ -2553,7 +2553,7 @@ pkg audit -F
 
 ---
 
-# 79. `uptime`
+## 79. `uptime`
 
 ```sh
 uptime
@@ -2569,7 +2569,7 @@ Load average nie oznacza bezpośrednio procentów CPU.
 
 ---
 
-# 80. `dmesg`
+## 80. `dmesg`
 
 Komunikaty kernela:
 
@@ -2593,7 +2593,7 @@ dmesg | tail
 
 ---
 
-# 81. Porty i nasłuchujące procesy
+## 81. Porty i nasłuchujące procesy
 
 Najważniejsze:
 
@@ -2617,7 +2617,7 @@ Jeżeli aplikacja „działa”, ale nie można się z nią połączyć:
 
 ---
 
-# 82. Typowy problem: localhost zamiast wszystkich interfejsów
+## 82. Typowy problem: localhost zamiast wszystkich interfejsów
 
 Aplikacja może nasłuchiwać tylko:
 
@@ -2645,7 +2645,7 @@ Nie wystawiaj jednak bazy danych czy paneli administracyjnych na wszystkie inter
 
 ---
 
-# 83. Reverse proxy
+## 83. Reverse proxy
 
 Typowy serwer może wyglądać tak:
 
@@ -2671,7 +2671,7 @@ To często lepsze niż bezpośrednie wystawianie aplikacji.
 
 ---
 
-# 84. Nginx - szybki przykład
+## 84. Nginx - szybki przykład
 
 Instalacja:
 
@@ -2711,7 +2711,7 @@ Konfiguracja:
 
 ---
 
-# 85. Reverse proxy nginx
+## 85. Reverse proxy nginx
 
 Przykładowa sekcja:
 
@@ -2739,7 +2739,7 @@ service nginx reload
 
 ---
 
-# 86. Bazy danych jako usługi
+## 86. Bazy danych jako usługi
 
 Pakiet zwykle instaluje:
 
@@ -2763,7 +2763,7 @@ Zawsze czytaj komunikaty wyświetlane przez `pkg install`.
 
 ---
 
-# 87. WireGuard
+## 87. WireGuard
 
 FreeBSD posiada obsługę WireGuarda.
 
@@ -2796,53 +2796,53 @@ Routing jest równie ważny jak sama konfiguracja tunelu.
 
 ---
 
-# 88. System DNS, routing i firewall - diagnostyka warstwami
+## 88. System DNS, routing i firewall - diagnostyka warstwami
 
 Jeżeli „sieć nie działa”, nie zgaduj.
 
 Sprawdzaj po kolei:
 
-## 1. Interfejs
+### 1. Interfejs
 
 ```sh
 ifconfig
 ```
 
-## 2. Adres IP
+### 2. Adres IP
 
 Czy interfejs ma poprawny adres?
 
-## 3. Routing
+### 3. Routing
 
 ```sh
 netstat -rn
 ```
 
-## 4. Brama
+### 4. Brama
 
 ```sh
 route -n get default
 ```
 
-## 5. IP bez DNS
+### 5. IP bez DNS
 
 ```sh
 ping 1.1.1.1
 ```
 
-## 6. DNS
+### 6. DNS
 
 ```sh
 host freebsd.org
 ```
 
-## 7. Firewall
+### 7. Firewall
 
 ```sh
 pfctl -sr
 ```
 
-## 8. Nasłuch
+### 8. Nasłuch
 
 ```sh
 sockstat -4 -6 -l
@@ -2852,17 +2852,17 @@ Takie podejście jest znacznie skuteczniejsze niż losowe restartowanie usług.
 
 ---
 
-# 89. Diagnostyka usługi - uniwersalny schemat
+## 89. Diagnostyka usługi - uniwersalny schemat
 
 Załóżmy, że nginx nie działa.
 
-## 1. Czy usługa istnieje?
+### 1. Czy usługa istnieje?
 
 ```sh
 service -l | grep nginx
 ```
 
-## 2. Czy jest włączona?
+### 2. Czy jest włączona?
 
 ```sh
 service nginx rcvar
@@ -2874,25 +2874,25 @@ lub:
 sysrc nginx_enable
 ```
 
-## 3. Status
+### 3. Status
 
 ```sh
 service nginx status
 ```
 
-## 4. Test konfiguracji
+### 4. Test konfiguracji
 
 ```sh
 nginx -t
 ```
 
-## 5. Próba startu
+### 5. Próba startu
 
 ```sh
 service nginx start
 ```
 
-## 6. Logi
+### 6. Logi
 
 ```sh
 tail -100 /var/log/messages
@@ -2900,19 +2900,19 @@ tail -100 /var/log/messages
 
 plus log aplikacji.
 
-## 7. Proces
+### 7. Proces
 
 ```sh
 pgrep -fl nginx
 ```
 
-## 8. Port
+### 8. Port
 
 ```sh
 sockstat -4 -6 -l
 ```
 
-## 9. Firewall
+### 9. Firewall
 
 ```sh
 pfctl -sr
@@ -2920,7 +2920,7 @@ pfctl -sr
 
 ---
 
-# 90. Co uruchamia się podczas bootowania
+## 90. Co uruchamia się podczas bootowania
 
 W uproszczeniu:
 
@@ -2954,7 +2954,7 @@ Mechanizm rc potrafi zależności uporządkować.
 
 ---
 
-# 91. Zależności w skryptach rc.d
+## 91. Zależności w skryptach rc.d
 
 Własny skrypt może zawierać:
 
@@ -2980,7 +2980,7 @@ service -r
 
 ---
 
-# 92. Awaryjny start i problemy z bootem
+## 92. Awaryjny start i problemy z bootem
 
 Jeśli system nie bootuje poprawnie, FreeBSD pozwala wejść w tryb single-user.
 
@@ -3005,7 +3005,7 @@ Nie wykonuj `fsck` na zamontowanym do zapisu filesystemie.
 
 ---
 
-# 93. Reboot i shutdown
+## 93. Reboot i shutdown
 
 Restart:
 
@@ -3029,7 +3029,7 @@ ale `shutdown` daje czytelniejszą kontrolę.
 
 ---
 
-# 94. Sprawdzanie startu po reboot
+## 94. Sprawdzanie startu po reboot
 
 Po restarcie:
 
@@ -3057,7 +3057,7 @@ To szybki sanity check.
 
 ---
 
-# 95. Bezpieczeństwo - minimum dla serwera
+## 95. Bezpieczeństwo - minimum dla serwera
 
 Przynajmniej:
 
@@ -3074,7 +3074,7 @@ Przynajmniej:
 
 ---
 
-# 96. Najważniejsza reguła bezpieczeństwa usług
+## 96. Najważniejsza reguła bezpieczeństwa usług
 
 Nie uruchamiaj aplikacji jako `root`, jeżeli nie musi działać jako root.
 
@@ -3094,7 +3094,7 @@ Jeżeli proces zostanie przejęty, atakujący nie uzyskuje automatycznie praw ro
 
 ---
 
-# 97. Użytkownik bez logowania
+## 97. Użytkownik bez logowania
 
 Dla usług dobry shell to:
 
@@ -3112,7 +3112,7 @@ Konta aplikacyjne nie potrzebują interaktywnego logowania.
 
 ---
 
-# 98. Uprawnienia plików
+## 98. Uprawnienia plików
 
 Zmiana właściciela:
 
@@ -3143,11 +3143,11 @@ To niemal zawsze zły pomysł.
 
 ---
 
-# 99. Proces instalacji nowego serwera
+## 99. Proces instalacji nowego serwera
 
 Praktyczna kolejność:
 
-## 1. Instalacja FreeBSD
+### 1. Instalacja FreeBSD
 
 Preferuj:
 
@@ -3156,7 +3156,7 @@ Preferuj:
 - poprawną sieć,
 - konto administratora.
 
-## 2. Aktualizacja
+### 2. Aktualizacja
 
 ```sh
 freebsd-update fetch
@@ -3165,26 +3165,26 @@ pkg update
 pkg upgrade
 ```
 
-## 3. SSH
+### 3. SSH
 
 - klucze,
 - test,
 - ograniczenie logowania.
 
-## 4. Firewall
+### 4. Firewall
 
 - minimalny ruleset,
 - test składni,
 - dopiero potem aktywacja.
 
-## 5. ZFS
+### 5. ZFS
 
 - datasety,
 - snapshoty,
 - plan scrub,
 - backup.
 
-## 6. Usługi
+### 6. Usługi
 
 Każda według schematu:
 
@@ -3201,7 +3201,7 @@ pkg install
 
 ---
 
-# 100. Serwer aplikacji - przykładowa architektura
+## 100. Serwer aplikacji - przykładowa architektura
 
 Prosty i czytelny układ:
 
@@ -3240,7 +3240,7 @@ Nie trzeba zaczynać od najbardziej złożonej architektury.
 
 ---
 
-# 101. Co warto instalować na nowym serwerze
+## 101. Co warto instalować na nowym serwerze
 
 Przykładowy zestaw:
 
@@ -3260,7 +3260,7 @@ FreeBSD base system zawiera bardzo dużo użytecznych narzędzi.
 
 ---
 
-# 102. Dokumentacja systemowa
+## 102. Dokumentacja systemowa
 
 Najważniejszą dokumentacją FreeBSD są manuale.
 
@@ -3290,7 +3290,7 @@ man -k jail
 
 ---
 
-# 103. Jak czytać nazwy manuali
+## 103. Jak czytać nazwy manuali
 
 W dokumentacji zobaczysz zapis:
 
@@ -3322,9 +3322,9 @@ man 5 rc.conf
 
 ---
 
-# 104. Najważniejsze komendy administratora
+## 104. Najważniejsze komendy administratora
 
-## System
+### System
 
 ```sh
 freebsd-version
@@ -3334,7 +3334,7 @@ dmesg
 sysctl
 ```
 
-## Pakiety
+### Pakiety
 
 ```sh
 pkg update
@@ -3345,7 +3345,7 @@ pkg info
 pkg audit -F
 ```
 
-## Usługi
+### Usługi
 
 ```sh
 service -l
@@ -3358,13 +3358,13 @@ service nazwa reload
 service nazwa rcvar
 ```
 
-## Autostart
+### Autostart
 
 ```sh
 sysrc nazwa_enable="YES"
 ```
 
-## Sieć
+### Sieć
 
 ```sh
 ifconfig
@@ -3373,7 +3373,7 @@ route -n get default
 sockstat -4 -6 -l
 ```
 
-## Procesy
+### Procesy
 
 ```sh
 top
@@ -3381,7 +3381,7 @@ ps aux
 pgrep -fl nazwa
 ```
 
-## Dyski
+### Dyski
 
 ```sh
 df -h
@@ -3390,7 +3390,7 @@ zpool status
 zfs list
 ```
 
-## Jails
+### Jails
 
 ```sh
 jls
@@ -3399,7 +3399,7 @@ service jail
 service -j jail usluga
 ```
 
-## Logi
+### Logi
 
 ```sh
 tail -f /var/log/messages
@@ -3408,7 +3408,7 @@ grep
 
 ---
 
-# 105. Codzienna kontrola serwera
+## 105. Codzienna kontrola serwera
 
 Nie trzeba wykonywać jej codziennie ręcznie, ale warto znać schemat:
 
@@ -3428,7 +3428,7 @@ tail -100 /var/log/messages
 
 ---
 
-# 106. Kontrola po zmianie konfiguracji
+## 106. Kontrola po zmianie konfiguracji
 
 Po każdej większej zmianie:
 
@@ -3450,7 +3450,7 @@ tail -50 /var/log/messages
 
 ---
 
-# 107. Kontrola raz na tydzień / miesiąc
+## 107. Kontrola raz na tydzień / miesiąc
 
 Warto sprawdzać:
 
@@ -3494,7 +3494,7 @@ Backup, którego nigdy nie testowano, jest tylko nadzieją.
 
 ---
 
-# 108. Najczęstsze różnice względem Debiana/Linuxa
+## 108. Najczęstsze różnice względem Debiana/Linuxa
 
 | Debian/Linux | FreeBSD |
 |---|---|
@@ -3516,9 +3516,9 @@ To inny system z inną filozofią.
 
 ---
 
-# 109. Czego nie robić
+## 109. Czego nie robić
 
-## Nie edytuj:
+### Nie edytuj:
 
 ```text
 /etc/defaults/rc.conf
@@ -3532,7 +3532,7 @@ Edytuj:
 
 ---
 
-## Nie instaluj wszystkiego ze źródeł
+### Nie instaluj wszystkiego ze źródeł
 
 Jeśli:
 
@@ -3544,25 +3544,25 @@ wystarcza, użyj pakietu.
 
 ---
 
-## Nie uruchamiaj wszystkiego jako root
+### Nie uruchamiaj wszystkiego jako root
 
 Twórz użytkowników usług.
 
 ---
 
-## Nie otwieraj każdego portu w firewallu
+### Nie otwieraj każdego portu w firewallu
 
 Otwieraj tylko to, co rzeczywiście potrzebne.
 
 ---
 
-## Nie rób `chmod 777`, żeby „zadziałało”
+### Nie rób `chmod 777`, żeby „zadziałało”
 
 Znajdź problem z uprawnieniami.
 
 ---
 
-## Nie restartuj całej maszyny przy każdym problemie
+### Nie restartuj całej maszyny przy każdym problemie
 
 Najpierw:
 
@@ -3578,63 +3578,63 @@ service nazwa reload
 
 ---
 
-## Nie zakładaj, że mirror jest backupem
+### Nie zakładaj, że mirror jest backupem
 
 Nie jest.
 
 ---
 
-# 110. Gdy usługa nie chce wystartować
+## 110. Gdy usługa nie chce wystartować
 
 Uniwersalne pytania:
 
-### Czy pakiet jest zainstalowany?
+#### Czy pakiet jest zainstalowany?
 
 ```sh
 pkg info | grep nazwa
 ```
 
-### Czy skrypt istnieje?
+#### Czy skrypt istnieje?
 
 ```sh
 service -l | grep nazwa
 ```
 
-### Czy jest włączona?
+#### Czy jest włączona?
 
 ```sh
 service nazwa rcvar
 ```
 
-### Czy config jest poprawny?
+#### Czy config jest poprawny?
 
 Użyj testera aplikacji.
 
-### Co mówi start?
+#### Co mówi start?
 
 ```sh
 service nazwa start
 ```
 
-### Co mówią logi?
+#### Co mówią logi?
 
 ```sh
 tail -100 /var/log/messages
 ```
 
-### Czy proces istnieje?
+#### Czy proces istnieje?
 
 ```sh
 pgrep -fl nazwa
 ```
 
-### Czy port jest otwarty?
+#### Czy port jest otwarty?
 
 ```sh
 sockstat -4 -6 -l
 ```
 
-### Czy firewall przepuszcza?
+#### Czy firewall przepuszcza?
 
 ```sh
 pfctl -sr
@@ -3642,7 +3642,7 @@ pfctl -sr
 
 ---
 
-# 111. Przykład: instalacja własnej aplikacji Go
+## 111. Przykład: instalacja własnej aplikacji Go
 
 Załóżmy:
 
@@ -3650,20 +3650,20 @@ Załóżmy:
 /usr/local/myapp/myapp
 ```
 
-## 1. Użytkownik
+### 1. Użytkownik
 
 ```sh
 pw useradd myapp -d /nonexistent -s /usr/sbin/nologin
 ```
 
-## 2. Katalog
+### 2. Katalog
 
 ```sh
 mkdir -p /usr/local/myapp
 chown -R myapp:myapp /usr/local/myapp
 ```
 
-## 3. Konfiguracja
+### 3. Konfiguracja
 
 ```text
 /usr/local/etc/myapp.conf
@@ -3671,25 +3671,25 @@ chown -R myapp:myapp /usr/local/myapp
 
 Ustaw właściciela i prawa odpowiednio do tego, czy plik zawiera sekrety.
 
-## 4. Skrypt rc.d
+### 4. Skrypt rc.d
 
 ```text
 /usr/local/etc/rc.d/myapp
 ```
 
-## 5. Włączenie
+### 5. Włączenie
 
 ```sh
 sysrc myapp_enable="YES"
 ```
 
-## 6. Start
+### 6. Start
 
 ```sh
 service myapp start
 ```
 
-## 7. Kontrola
+### 7. Kontrola
 
 ```sh
 service myapp status
@@ -3697,7 +3697,7 @@ pgrep -fl myapp
 sockstat -4 -6 -l
 ```
 
-## 8. Reverse proxy
+### 8. Reverse proxy
 
 nginx kieruje:
 
@@ -3713,7 +3713,7 @@ do:
 
 ---
 
-# 112. Przykład: bezpieczna zmiana nginx
+## 112. Przykład: bezpieczna zmiana nginx
 
 Edytujesz:
 
@@ -3753,7 +3753,7 @@ plus log nginx.
 
 ---
 
-# 113. Przykład: pakiet został zaktualizowany i usługa nie działa
+## 113. Przykład: pakiet został zaktualizowany i usługa nie działa
 
 Sprawdź:
 
@@ -3791,7 +3791,7 @@ Nie zakładaj automatycznie, że stary config jest kompatybilny.
 
 ---
 
-# 114. Przykład: po reboot aplikacja nie wystartowała
+## 114. Przykład: po reboot aplikacja nie wystartowała
 
 Najpierw:
 
@@ -3827,7 +3827,7 @@ service myapp start
 
 ---
 
-# 115. Przykład: serwer odpowiada lokalnie, ale nie z LAN
+## 115. Przykład: serwer odpowiada lokalnie, ale nie z LAN
 
 Na serwerze:
 
@@ -3859,7 +3859,7 @@ Jeżeli ma być za nginx, nie zmieniaj - skonfiguruj reverse proxy.
 
 ---
 
-# 116. Przykład: brak miejsca na dysku
+## 116. Przykład: brak miejsca na dysku
 
 Sprawdź:
 
@@ -3909,7 +3909,7 @@ Na dużych filesystemach `du` może działać długo.
 
 ---
 
-# 117. Przykład: podejrzenie problemu z dyskiem
+## 117. Przykład: podejrzenie problemu z dyskiem
 
 Sprawdź:
 
@@ -3936,7 +3936,7 @@ ZFS potrafi wykryć problemy, ale nie naprawi fizycznie umierającego dysku.
 
 ---
 
-# 118. Dobra filozofia administracji FreeBSD
+## 118. Dobra filozofia administracji FreeBSD
 
 FreeBSD najlepiej administruje się spokojnie i deklaratywnie:
 
@@ -3962,7 +3962,7 @@ To znaczy:
 
 ---
 
-# 119. Minimalny workflow administratora
+## 119. Minimalny workflow administratora
 
 Jeżeli masz zapamiętać tylko jeden schemat pracy:
 
@@ -3990,7 +3990,7 @@ sysrc ...
 
 ---
 
-# 120. Ściąga: usługi
+## 120. Ściąga: usługi
 
 ```sh
 service -l
@@ -4012,7 +4012,7 @@ service nginx onestop
 
 ---
 
-# 121. Ściąga: system
+## 121. Ściąga: system
 
 ```sh
 freebsd-version
@@ -4027,7 +4027,7 @@ sysctl hw.ncpu
 
 ---
 
-# 122. Ściąga: pakiety
+## 122. Ściąga: pakiety
 
 ```sh
 pkg update
@@ -4045,7 +4045,7 @@ pkg audit -F
 
 ---
 
-# 123. Ściąga: sieć
+## 123. Ściąga: sieć
 
 ```sh
 ifconfig
@@ -4058,7 +4058,7 @@ ping 1.1.1.1
 
 ---
 
-# 124. Ściąga: ZFS
+## 124. Ściąga: ZFS
 
 ```sh
 zpool list
@@ -4076,7 +4076,7 @@ zpool scrub tank
 
 ---
 
-# 125. Ściąga: jails
+## 125. Ściąga: jails
 
 ```sh
 jls
@@ -4095,7 +4095,7 @@ service -j www nginx restart
 
 ---
 
-# 126. Ściąga: PF
+## 126. Ściąga: PF
 
 ```sh
 pfctl -vnf /etc/pf.conf
@@ -4111,7 +4111,7 @@ service pf status
 
 ---
 
-# 127. Ściąga: logi
+## 127. Ściąga: logi
 
 ```sh
 tail -100 /var/log/messages
@@ -4123,7 +4123,7 @@ service syslogd status
 
 ---
 
-# 128. Ściąga: diagnostyka usługi
+## 128. Ściąga: diagnostyka usługi
 
 ```sh
 service app status
@@ -4137,7 +4137,7 @@ Plus własny test konfiguracji aplikacji.
 
 ---
 
-# 129. Co warto opanować po tym kompendium
+## 129. Co warto opanować po tym kompendium
 
 W tej kolejności:
 
@@ -4158,43 +4158,43 @@ Jeżeli te elementy masz opanowane, jesteś w stanie samodzielnie utrzymywać ma
 
 ---
 
-# 130. Dokumentacja i źródła
+## 130. Dokumentacja i źródła
 
 Oficjalna dokumentacja powinna być pierwszym źródłem informacji.
 
-## FreeBSD Handbook
+### FreeBSD Handbook
 
 https://docs.freebsd.org/en/books/handbook/
 
-## Configuration, Services, Logging and Power Management
+### Configuration, Services, Logging and Power Management
 
 https://docs.freebsd.org/en/books/handbook/config/
 
-## Packages and Ports
+### Packages and Ports
 
 https://docs.freebsd.org/en/books/handbook/ports/
 
-## Updating and Upgrading FreeBSD
+### Updating and Upgrading FreeBSD
 
 https://docs.freebsd.org/en/books/handbook/cutting-edge/
 
-## ZFS
+### ZFS
 
 https://docs.freebsd.org/en/books/handbook/zfs/
 
-## Jails and Containers
+### Jails and Containers
 
 https://docs.freebsd.org/en/books/handbook/jails/
 
-## Firewalls
+### Firewalls
 
 https://docs.freebsd.org/en/books/handbook/firewalls/
 
-## Manual pages
+### Manual pages
 
 https://man.freebsd.org/
 
-## Informacje o wydaniach
+### Informacje o wydaniach
 
 https://www.freebsd.org/releases/
 
@@ -4210,13 +4210,13 @@ Errata:
 
 https://www.freebsd.org/releases/15.1R/errata/
 
-## Informacje o wsparciu i bezpieczeństwie
+### Informacje o wsparciu i bezpieczeństwie
 
 https://www.freebsd.org/security/
 
 ---
 
-# 131. Ostatnia rzecz do zapamiętania
+## 131. Ostatnia rzecz do zapamiętania
 
 FreeBSD jako serwer robi się znacznie prostszy, kiedy zrozumiesz pięć elementów:
 

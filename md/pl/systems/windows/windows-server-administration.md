@@ -20,7 +20,7 @@ To kompendium opisuje mechanizmy administracji spotykane w środowisku domenowym
 
 Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016) oraz [DNS, domeny i routing internetowy](techhandbook:doc-017).
 
-# 1. Rola Windows Server w firmie
+## 1. Rola Windows Server w firmie
 
 Windows Server w środowisku korporacyjnym pełni najczęściej kilka podstawowych funkcji:
 
@@ -54,9 +54,9 @@ czyli usługa katalogowa przechowująca informacje o:
 
 ---
 
-# 2. Najważniejsze pojęcia
+## 2. Najważniejsze pojęcia
 
-## Domena
+### Domena
 
 Domena to logiczna struktura zarządzania komputerami i użytkownikami.
 
@@ -82,7 +82,7 @@ PC-USER01.corp.example.local
 
 ---
 
-## Domain Controller - DC
+### Domain Controller - DC
 
 Kontroler domeny to serwer obsługujący Active Directory.
 
@@ -105,7 +105,7 @@ W poważnym środowisku powinny istnieć co najmniej dwa kontrolery domeny.
 
 ---
 
-## Active Directory
+### Active Directory
 
 Active Directory jest katalogiem zasobów firmy.
 
@@ -122,7 +122,7 @@ firma
 
 ---
 
-## OU - Organizational Unit
+### OU - Organizational Unit
 
 OU służy do logicznego organizowania obiektów w Active Directory.
 
@@ -146,7 +146,7 @@ OU jest bardzo ważne, ponieważ można do niego przypisać GPO.
 
 ---
 
-## GPO - Group Policy Object
+### GPO - Group Policy Object
 
 GPO pozwala centralnie konfigurować komputery i użytkowników.
 
@@ -164,7 +164,7 @@ Przykłady:
 
 ---
 
-# 3. Active Directory Domain Services
+## 3. Active Directory Domain Services
 
 Do zarządzania Active Directory najczęściej używa się:
 
@@ -218,9 +218,9 @@ Services.
 
 ---
 
-# 4. Użytkownicy, grupy i jednostki organizacyjne
+## 4. Użytkownicy, grupy i jednostki organizacyjne
 
-## Tworzenie użytkownika
+### Tworzenie użytkownika
 
 Typowy użytkownik domenowy posiada:
 
@@ -245,7 +245,7 @@ jkowalski@example.com
 
 ---
 
-## Hasło początkowe
+### Hasło początkowe
 
 Administrator często ustawia hasło tymczasowe:
 
@@ -263,7 +263,7 @@ Dzięki temu użytkownik po pierwszym logowaniu ustawia własne hasło.
 
 ---
 
-# Grupy
+## Grupy
 
 Nie należy przydzielać praw bezpośrednio użytkownikowi, jeśli można użyć grupy.
 
@@ -287,7 +287,7 @@ To znacznie upraszcza administrację.
 
 ---
 
-## Typowe grupy
+### Typowe grupy
 
 ```text
 GRP-Marketing
@@ -306,7 +306,7 @@ FS-Marketing-Full
 
 ---
 
-# AGDLP
+## AGDLP
 
 Klasyczna metoda zarządzania uprawnieniami w domenie Microsoft:
 
@@ -333,7 +333,7 @@ Dzięki temu zmiana stanowiska użytkownika sprowadza się do zmiany członkostw
 
 ---
 
-# 5. Uprawnienia NTFS i udziały sieciowe
+## 5. Uprawnienia NTFS i udziały sieciowe
 
 Windows posiada dwa główne poziomy uprawnień do plików:
 
@@ -342,7 +342,7 @@ Windows posiada dwa główne poziomy uprawnień do plików:
 
 ---
 
-# Uprawnienia NTFS
+## Uprawnienia NTFS
 
 Najważniejsze:
 
@@ -353,7 +353,7 @@ Modify
 Full Control
 ```
 
-## Read
+### Read
 
 Pozwala:
 
@@ -363,7 +363,7 @@ Pozwala:
 
 ---
 
-## Write
+### Write
 
 Pozwala:
 
@@ -372,7 +372,7 @@ Pozwala:
 
 ---
 
-## Modify
+### Modify
 
 Pozwala:
 
@@ -385,7 +385,7 @@ Najczęściej używane uprawnienie do folderów roboczych.
 
 ---
 
-## Full Control
+### Full Control
 
 Pozwala dodatkowo:
 
@@ -396,7 +396,7 @@ Full Control powinno być przydzielane ostrożnie.
 
 ---
 
-# Dziedziczenie
+## Dziedziczenie
 
 Folder może dziedziczyć uprawnienia z folderu nadrzędnego.
 
@@ -414,7 +414,7 @@ Jeżeli `Marketing` ma odpowiednie uprawnienia, folder `Kampanie` może je odzie
 
 ---
 
-# Effective Permissions
+## Effective Permissions
 
 Jeśli użytkownik należy do kilku grup, jego końcowe prawa mogą wynikać z wielu źródeł.
 
@@ -442,7 +442,7 @@ nie przydzielać Allow
 
 ---
 
-# 6. Przydzielanie zasobów użytkownikom
+## 6. Przydzielanie zasobów użytkownikom
 
 Typowe zasoby:
 
@@ -456,7 +456,7 @@ Typowe zasoby:
 
 ---
 
-# Mapowanie dysków
+## Mapowanie dysków
 
 Przykład:
 
@@ -478,7 +478,7 @@ który wskazuje na:
 
 ---
 
-## Mapowanie przez GPO
+### Mapowanie przez GPO
 
 Najczęściej:
 
@@ -513,7 +513,7 @@ M:
 
 ---
 
-# 7. Group Policy - GPO
+## 7. Group Policy - GPO
 
 GPO jest jednym z najważniejszych narzędzi administratora Windows.
 
@@ -525,7 +525,7 @@ gpmc.msc
 
 ---
 
-# Struktura GPO
+## Struktura GPO
 
 GPO posiada dwie części:
 
@@ -534,7 +534,7 @@ Computer Configuration
 User Configuration
 ```
 
-## Computer Configuration
+### Computer Configuration
 
 Dotyczy komputera.
 
@@ -548,7 +548,7 @@ Przykłady:
 
 ---
 
-## User Configuration
+### User Configuration
 
 Dotyczy użytkownika.
 
@@ -562,7 +562,7 @@ Przykłady:
 
 ---
 
-# Aktualizacja GPO
+## Aktualizacja GPO
 
 Na komputerze:
 
@@ -572,7 +572,7 @@ gpupdate /force
 
 ---
 
-# Sprawdzenie zastosowanych GPO
+## Sprawdzenie zastosowanych GPO
 
 ```powershell
 gpresult /r
@@ -586,7 +586,7 @@ gpresult /h report.html
 
 ---
 
-# RSOP
+## RSOP
 
 Resultant Set of Policy.
 
@@ -600,7 +600,7 @@ Pokazuje polityki faktycznie zastosowane do komputera i użytkownika.
 
 ---
 
-# Kolejność przetwarzania GPO
+## Kolejność przetwarzania GPO
 
 Klasyczna kolejność:
 
@@ -619,7 +619,7 @@ OU
 
 ---
 
-# 8. Instalacja i wdrażanie stacji roboczych
+## 8. Instalacja i wdrażanie stacji roboczych
 
 W małej firmie komputer można przygotować ręcznie.
 
@@ -645,7 +645,7 @@ konfiguracja zabezpieczeń
 
 ---
 
-# Dołączenie komputera do domeny
+## Dołączenie komputera do domeny
 
 Przykładowa domena:
 
@@ -669,7 +669,7 @@ Marketing
 
 ---
 
-# Nazewnictwo komputerów
+## Nazewnictwo komputerów
 
 W firmie warto stosować jednolity schemat.
 
@@ -693,7 +693,7 @@ DT    desktop
 
 ---
 
-# Narzędzia wdrożeniowe
+## Narzędzia wdrożeniowe
 
 W środowiskach Microsoft można spotkać między innymi:
 
@@ -723,7 +723,7 @@ Configuration Manager
 
 ---
 
-# 9. Instalacja oprogramowania na końcówkach
+## 9. Instalacja oprogramowania na końcówkach
 
 Administrator rzadko powinien instalować program ręcznie na setkach komputerów.
 
@@ -738,7 +738,7 @@ Typowe metody:
 
 ---
 
-# Silent installation
+## Silent installation
 
 W korporacji bardzo ważna jest instalacja bez interakcji użytkownika.
 
@@ -758,7 +758,7 @@ oznacza instalację bez interfejsu.
 
 ---
 
-# Odinstalowanie
+## Odinstalowanie
 
 ```powershell
 msiexec /x app.msi /qn
@@ -766,7 +766,7 @@ msiexec /x app.msi /qn
 
 ---
 
-# Log instalacji
+## Log instalacji
 
 ```powershell
 msiexec /i app.msi /qn /L*v install.log
@@ -774,7 +774,7 @@ msiexec /i app.msi /qn /L*v install.log
 
 ---
 
-# Instalacja EXE
+## Instalacja EXE
 
 Każdy instalator może mieć inne przełączniki.
 
@@ -791,9 +791,9 @@ Zawsze trzeba sprawdzić dokumentację producenta.
 
 ---
 
-# 10. DNS i DHCP
+## 10. DNS i DHCP
 
-# DNS
+## DNS
 
 DNS tłumaczy nazwy na adresy IP.
 
@@ -823,7 +823,7 @@ Resolve-DnsName fileserver
 
 ---
 
-# DHCP
+## DHCP
 
 DHCP automatycznie przydziela komputerom:
 
@@ -841,7 +841,7 @@ zakres:
 
 ---
 
-# Rezerwacja DHCP
+## Rezerwacja DHCP
 
 Można przypisać stały adres urządzeniu na podstawie MAC.
 
@@ -857,7 +857,7 @@ IP:
 
 ---
 
-# 11. Serwer plików
+## 11. Serwer plików
 
 Typowy serwer:
 
@@ -876,7 +876,7 @@ Udziały:
 
 ---
 
-# Hidden shares
+## Hidden shares
 
 Udział zakończony `$` jest ukryty.
 
@@ -888,7 +888,7 @@ Przykład:
 
 ---
 
-# Administrative shares
+## Administrative shares
 
 Windows posiada między innymi:
 
@@ -908,7 +908,7 @@ pozwala administratorowi dostać się do dysku C zdalnego komputera.
 
 ---
 
-# 12. Drukarki sieciowe
+## 12. Drukarki sieciowe
 
 Windows Server może działać jako Print Server.
 
@@ -926,7 +926,7 @@ Drukarka:
 
 ---
 
-# Dystrybucja przez GPO
+## Dystrybucja przez GPO
 
 Drukarki można przypisywać użytkownikom automatycznie.
 
@@ -940,7 +940,7 @@ HP-Marketing
 
 ---
 
-# 13. RDP i administracja zdalna
+## 13. RDP i administracja zdalna
 
 Remote Desktop Protocol:
 
@@ -962,7 +962,7 @@ mstsc
 
 ---
 
-# Bezpieczne używanie RDP
+## Bezpieczne używanie RDP
 
 Nie należy wystawiać RDP bezpośrednio do Internetu.
 
@@ -976,7 +976,7 @@ zero-trust access
 
 ---
 
-# Windows Admin Center
+## Windows Admin Center
 
 Windows Admin Center umożliwia zarządzanie serwerami przez przeglądarkę.
 
@@ -991,7 +991,7 @@ Pozwala między innymi na:
 
 ---
 
-# 14. PowerShell dla administratora
+## 14. PowerShell dla administratora
 
 PowerShell jest podstawowym narzędziem administratora Windows.
 
@@ -1003,7 +1003,7 @@ $PSVersionTable
 
 ---
 
-# Get-Help
+## Get-Help
 
 ```powershell
 Get-Help Get-Service
@@ -1023,7 +1023,7 @@ Get-Help Get-Service -Examples
 
 ---
 
-# Get-Command
+## Get-Command
 
 ```powershell
 Get-Command
@@ -1037,7 +1037,7 @@ Get-Command *service*
 
 ---
 
-# Pipeline
+## Pipeline
 
 PowerShell przekazuje obiekty między poleceniami.
 
@@ -1049,7 +1049,7 @@ Get-Service | Where-Object Status -eq "Running"
 
 ---
 
-# Lista procesów
+## Lista procesów
 
 ```powershell
 Get-Process
@@ -1057,7 +1057,7 @@ Get-Process
 
 ---
 
-# Lista usług
+## Lista usług
 
 ```powershell
 Get-Service
@@ -1065,7 +1065,7 @@ Get-Service
 
 ---
 
-# Restart usługi
+## Restart usługi
 
 ```powershell
 Restart-Service Spooler
@@ -1073,7 +1073,7 @@ Restart-Service Spooler
 
 ---
 
-# Informacje o komputerze
+## Informacje o komputerze
 
 ```powershell
 Get-ComputerInfo
@@ -1081,7 +1081,7 @@ Get-ComputerInfo
 
 ---
 
-# Konfiguracja IP
+## Konfiguracja IP
 
 ```powershell
 Get-NetIPConfiguration
@@ -1089,7 +1089,7 @@ Get-NetIPConfiguration
 
 ---
 
-# Adaptery sieciowe
+## Adaptery sieciowe
 
 ```powershell
 Get-NetAdapter
@@ -1097,7 +1097,7 @@ Get-NetAdapter
 
 ---
 
-# Test połączenia
+## Test połączenia
 
 ```powershell
 Test-Connection server01
@@ -1105,7 +1105,7 @@ Test-Connection server01
 
 ---
 
-# Test portu
+## Test portu
 
 ```powershell
 Test-NetConnection server01 -Port 443
@@ -1113,7 +1113,7 @@ Test-NetConnection server01 -Port 443
 
 ---
 
-# 15. Zarządzanie usługami
+## 15. Zarządzanie usługami
 
 GUI:
 
@@ -1147,7 +1147,7 @@ Restart-Service Spooler
 
 ---
 
-# Startup Type
+## Startup Type
 
 Typowe wartości:
 
@@ -1160,7 +1160,7 @@ Disabled
 
 ---
 
-# 16. Logi i diagnostyka
+## 16. Logi i diagnostyka
 
 Najważniejsze narzędzie:
 
@@ -1176,7 +1176,7 @@ eventvwr.msc
 
 ---
 
-# Najważniejsze logi
+## Najważniejsze logi
 
 ```text
 Windows Logs
@@ -1188,13 +1188,13 @@ Windows Logs
 
 ---
 
-# Application
+## Application
 
 Problemy aplikacji.
 
 ---
 
-# System
+## System
 
 Problemy:
 
@@ -1205,7 +1205,7 @@ Problemy:
 
 ---
 
-# Security
+## Security
 
 Zdarzenia bezpieczeństwa:
 
@@ -1215,7 +1215,7 @@ Zdarzenia bezpieczeństwa:
 
 ---
 
-# PowerShell
+## PowerShell
 
 Ostatnie błędy systemowe:
 
@@ -1225,7 +1225,7 @@ Get-WinEvent -LogName System -MaxEvents 50
 
 ---
 
-# 17. Aktualizacje i patch management
+## 17. Aktualizacje i patch management
 
 W firmie aktualizacje powinny być kontrolowane centralnie.
 
@@ -1240,7 +1240,7 @@ WSUS
 
 ---
 
-# Podejście falowe
+## Podejście falowe
 
 Dobra praktyka:
 
@@ -1255,7 +1255,7 @@ Dzięki temu problematyczna aktualizacja nie trafia od razu do wszystkich komput
 
 ---
 
-# 18. Bezpieczeństwo
+## 18. Bezpieczeństwo
 
 Administrator Windows powinien przestrzegać zasady:
 
@@ -1271,7 +1271,7 @@ minimalnych potrzebnych uprawnień
 
 ---
 
-# Konto administratora
+## Konto administratora
 
 Nie powinno się używać konta administratora do zwykłej pracy.
 
@@ -1291,7 +1291,7 @@ konto administracyjne.
 
 ---
 
-# Tiering
+## Tiering
 
 W większych organizacjach konta administracyjne bywają rozdzielone:
 
@@ -1305,7 +1305,7 @@ Nie należy używać Domain Admin do codziennych zadań.
 
 ---
 
-# Local Administrator
+## Local Administrator
 
 Dostęp administratora lokalnego powinien być ograniczony.
 
@@ -1313,7 +1313,7 @@ Microsoft LAPS pozwala zarządzać unikalnymi hasłami lokalnych kont administra
 
 ---
 
-# BitLocker
+## BitLocker
 
 Szyfrowanie dysków:
 
@@ -1325,7 +1325,7 @@ Powinno być stosowane szczególnie na laptopach.
 
 ---
 
-# Microsoft Defender
+## Microsoft Defender
 
 Wbudowane zabezpieczenia obejmują między innymi:
 
@@ -1336,7 +1336,7 @@ Wbudowane zabezpieczenia obejmują między innymi:
 
 ---
 
-# Firewall
+## Firewall
 
 Sprawdzenie profili:
 
@@ -1352,13 +1352,13 @@ Get-NetFirewallRule
 
 ---
 
-# MFA
+## MFA
 
 Dla kont administracyjnych MFA powinno być standardem tam, gdzie infrastruktura je obsługuje.
 
 ---
 
-# 19. Backup i odtwarzanie
+## 19. Backup i odtwarzanie
 
 Najważniejsza zasada:
 
@@ -1368,7 +1368,7 @@ backup nie istnieje, dopóki nie przetestowano restore
 
 ---
 
-# Reguła 3-2-1
+## Reguła 3-2-1
 
 Minimum:
 
@@ -1380,7 +1380,7 @@ Minimum:
 
 ---
 
-# Active Directory
+## Active Directory
 
 W środowisku domenowym należy zapewnić backup:
 
@@ -1392,7 +1392,7 @@ W środowisku domenowym należy zapewnić backup:
 
 ---
 
-# 20. Wirtualizacja Hyper-V
+## 20. Wirtualizacja Hyper-V
 
 Windows Server może działać jako hypervisor.
 
@@ -1416,7 +1416,7 @@ HOST01
 
 ---
 
-# Virtual Switch
+## Virtual Switch
 
 Hyper-V posiada przełączniki:
 
@@ -1428,9 +1428,9 @@ Private
 
 ---
 
-# 21. Podstawowa administracja domeną
+## 21. Podstawowa administracja domeną
 
-## Sprawdzenie użytkownika
+### Sprawdzenie użytkownika
 
 PowerShell:
 
@@ -1446,7 +1446,7 @@ Get-ADUser jkowalski -Properties *
 
 ---
 
-# Utworzenie użytkownika
+## Utworzenie użytkownika
 
 Przykład:
 
@@ -1461,7 +1461,7 @@ New-ADUser `
 
 ---
 
-# Wyłączenie konta
+## Wyłączenie konta
 
 ```powershell
 Disable-ADAccount jkowalski
@@ -1469,7 +1469,7 @@ Disable-ADAccount jkowalski
 
 ---
 
-# Włączenie
+## Włączenie
 
 ```powershell
 Enable-ADAccount jkowalski
@@ -1477,7 +1477,7 @@ Enable-ADAccount jkowalski
 
 ---
 
-# Reset hasła
+## Reset hasła
 
 ```powershell
 Set-ADAccountPassword jkowalski -Reset
@@ -1485,7 +1485,7 @@ Set-ADAccountPassword jkowalski -Reset
 
 ---
 
-# Odblokowanie konta
+## Odblokowanie konta
 
 ```powershell
 Unlock-ADAccount jkowalski
@@ -1493,7 +1493,7 @@ Unlock-ADAccount jkowalski
 
 ---
 
-# Sprawdzenie grup
+## Sprawdzenie grup
 
 ```powershell
 Get-ADPrincipalGroupMembership jkowalski
@@ -1501,7 +1501,7 @@ Get-ADPrincipalGroupMembership jkowalski
 
 ---
 
-# Dodanie do grupy
+## Dodanie do grupy
 
 ```powershell
 Add-ADGroupMember GG-Marketing jkowalski
@@ -1509,7 +1509,7 @@ Add-ADGroupMember GG-Marketing jkowalski
 
 ---
 
-# Usunięcie z grupy
+## Usunięcie z grupy
 
 ```powershell
 Remove-ADGroupMember GG-Marketing jkowalski
@@ -1517,9 +1517,9 @@ Remove-ADGroupMember GG-Marketing jkowalski
 
 ---
 
-# 22. Typowe zadania z życia administratora
+## 22. Typowe zadania z życia administratora
 
-## Przypadek 1 - nowy pracownik
+### Przypadek 1 - nowy pracownik
 
 Przychodzi nowa osoba do Marketingu.
 
@@ -1550,7 +1550,7 @@ DL-Marketing-RW
 
 ---
 
-# Przypadek 2 - użytkownik zmienia dział
+## Przypadek 2 - użytkownik zmienia dział
 
 Użytkownik przechodzi:
 
@@ -1582,7 +1582,7 @@ Reszta powinna wynikać z członkostwa w grupach.
 
 ---
 
-# Przypadek 3 - użytkownik nie ma dysku sieciowego
+## Przypadek 3 - użytkownik nie ma dysku sieciowego
 
 Najpierw:
 
@@ -1611,7 +1611,7 @@ Test-Path \\FS01\Marketing
 
 ---
 
-# Przypadek 4 - komputer nie widzi domeny
+## Przypadek 4 - komputer nie widzi domeny
 
 Sprawdzamy:
 
@@ -1641,7 +1641,7 @@ Test-Connection DC01
 
 ---
 
-# Przypadek 5 - konto jest zablokowane
+## Przypadek 5 - konto jest zablokowane
 
 PowerShell:
 
@@ -1661,7 +1661,7 @@ Częste powody:
 
 ---
 
-# Przypadek 6 - użytkownik nie ma dostępu do folderu
+## Przypadek 6 - użytkownik nie ma dostępu do folderu
 
 Sprawdzamy:
 
@@ -1673,7 +1673,7 @@ Sprawdzamy:
 
 ---
 
-# Przypadek 7 - nowa aplikacja dla całej firmy
+## Przypadek 7 - nowa aplikacja dla całej firmy
 
 Najpierw test:
 
@@ -1703,9 +1703,9 @@ i posiadać możliwość automatycznego odinstalowania.
 
 ---
 
-# 23. Najważniejsze polecenia
+## 23. Najważniejsze polecenia
 
-## Sieć
+### Sieć
 
 ```powershell
 ipconfig
@@ -1720,7 +1720,7 @@ netstat -ano
 
 ---
 
-# Nowoczesne odpowiedniki PowerShell
+## Nowoczesne odpowiedniki PowerShell
 
 ```powershell
 Get-NetIPConfiguration
@@ -1733,7 +1733,7 @@ Test-NetConnection
 
 ---
 
-# Domena
+## Domena
 
 ```powershell
 whoami
@@ -1745,7 +1745,7 @@ nltest /dsgetdc:corp.example.local
 
 ---
 
-# Komputer
+## Komputer
 
 ```powershell
 hostname
@@ -1755,7 +1755,7 @@ Get-ComputerInfo
 
 ---
 
-# Użytkownicy
+## Użytkownicy
 
 ```powershell
 Get-ADUser
@@ -1765,7 +1765,7 @@ Get-ADComputer
 
 ---
 
-# Usługi
+## Usługi
 
 ```powershell
 Get-Service
@@ -1776,7 +1776,7 @@ Restart-Service
 
 ---
 
-# Procesy
+## Procesy
 
 ```powershell
 Get-Process
@@ -1785,7 +1785,7 @@ Stop-Process
 
 ---
 
-# Pliki
+## Pliki
 
 ```powershell
 Get-ChildItem
@@ -1797,7 +1797,7 @@ Test-Path
 
 ---
 
-# 24. Checklista nowego użytkownika
+## 24. Checklista nowego użytkownika
 
 ```text
 [ ] utworzyć konto AD
@@ -1819,7 +1819,7 @@ Test-Path
 
 ---
 
-# 25. Checklista nowego komputera
+## 25. Checklista nowego komputera
 
 ```text
 [ ] sprawdzić BIOS/UEFI
@@ -1842,11 +1842,11 @@ Test-Path
 
 ---
 
-# 26. Co warto umieć dalej
+## 26. Co warto umieć dalej
 
 Administrator Windows powinien stopniowo poznać:
 
-## Active Directory
+### Active Directory
 
 - struktura domeny,
 - OU,
@@ -1858,7 +1858,7 @@ Administrator Windows powinien stopniowo poznać:
 
 ---
 
-## Group Policy
+### Group Policy
 
 - Security Filtering,
 - WMI Filtering,
@@ -1869,7 +1869,7 @@ Administrator Windows powinien stopniowo poznać:
 
 ---
 
-## PowerShell
+### PowerShell
 
 Szczególnie:
 
@@ -1887,7 +1887,7 @@ REST API
 
 ---
 
-## Sieci
+### Sieci
 
 Minimum:
 
@@ -1904,7 +1904,7 @@ firewall
 
 ---
 
-## Microsoft 365
+### Microsoft 365
 
 W nowoczesnej firmie administrator Windows często pracuje także z:
 
@@ -1919,7 +1919,7 @@ Windows Autopilot
 
 ---
 
-## Bezpieczeństwo
+### Bezpieczeństwo
 
 Warto znać:
 
@@ -1937,7 +1937,7 @@ Privileged Access
 
 ---
 
-# Mentalny model administratora Windows
+## Mentalny model administratora Windows
 
 Przy większości problemów warto myśleć w tej kolejności:
 
@@ -1989,7 +1989,7 @@ Takie uporządkowane podejście jest znacznie skuteczniejsze niż przypadkowe kl
 
 ---
 
-# Najważniejsza zasada administracji korporacyjnej
+## Najważniejsza zasada administracji korporacyjnej
 
 Nie zarządzaj pojedynczym użytkownikiem, jeśli możesz zarządzać grupą.
 
@@ -2003,7 +2003,7 @@ Nie zakładaj, że backup działa, dopóki nie przetestujesz odtwarzania.
 
 Dobrze zaprojektowane środowisko Windows powinno pozwalać administratorowi zarządzać tysiącem komputerów niemal tak samo łatwo jak dziesięcioma.
 
-## Oficjalne źródła
+### Oficjalne źródła
 
 - Windows Server documentation: https://learn.microsoft.com/windows-server/
 - Active Directory Domain Services: https://learn.microsoft.com/windows-server/identity/ad-ds/
