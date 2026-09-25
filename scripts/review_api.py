@@ -16,6 +16,7 @@ PORT = int(os.environ.get("REVIEW_API_PORT", "8081"))
 ENABLED = os.environ.get("REVIEW_API_ENABLED", "false").strip().lower() in {"1", "true", "yes", "on"}
 STAMP_SECRET = os.environ.get("REVIEW_STAMP_SECRET", "")
 ACCESS_TOKEN = os.environ.get("REVIEW_ACCESS_TOKEN", "")
+ADMIN_ACCESS_TOKEN = os.environ.get("ADMIN_ACCESS_TOKEN", "")
 MAX_BODY_BYTES = 16 * 1024
 RATE_LIMIT_PER_HOUR = int(os.environ.get("REVIEW_RATE_LIMIT_PER_HOUR", "30"))
 
@@ -104,12 +105,17 @@ def reporter_stamp(client_ip, user_agent):
     return hashlib.sha256(source.encode("utf-8")).hexdigest()
 
 
-def authorized(headers):
+def token_from_headers(headers):
     auth = headers.get("Authorization", "")
-    if not auth.startswith("Bearer "):
-        return False
-    supplied = auth[7:]
+    return auth[7:] if auth.startswith("Bearer ") else ""
+
+def authorized(headers):
+    supplied = token_from_headers(headers)
     return bool(ACCESS_TOKEN) and hmac.compare_digest(supplied, ACCESS_TOKEN)
+
+def admin_authorized(headers):
+    supplied = token_from_headers(headers)
+    return bool(ADMIN_ACCESS_TOKEN) and hmac.compare_digest(supplied, ADMIN_ACCESS_TOKEN)
 
 
 def validate(payload):
@@ -247,6 +253,7 @@ class Handler(BaseHTTPRequestHandler):
                     "enabled": ENABLED,
                     "stamp_secret_configured": bool(STAMP_SECRET),
                     "access_token_configured": bool(ACCESS_TOKEN),
+                    "admin_access_token_configured": bool(ADMIN_ACCESS_TOKEN),
                 },
             )
             return
@@ -261,9 +268,61 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(200, {"review_mode": True})
             return
 
+        if self.path.startswith("/admin/reports"):
+            if not admin_authorized(self.headers):
+                self.send_json(401, {"error": "Unauthorized"})
+                return
+            status = "open"
+            if "?" in self.path:
+                from urllib.parse import parse_qs, urlsplit
+                status = parse_qs(urlsplit(self.path).query).get("status", ["open"])[0]
+            if status not in {"open", "resolved", "dismissed", "all"}:
+                self.send_json(422, {"error": "Invalid status"})
+                return
+            try:
+                with connect() as connection:
+                    if status == "all":
+                        rows = connection.execute("SELECT * FROM reports ORDER BY created_at DESC LIMIT 200").fetchall()
+                    else:
+                        rows = connection.execute("SELECT * FROM reports WHERE status = ? ORDER BY created_at DESC LIMIT 200", (status,)).fetchall()
+                    self.send_json(200, {"reports": [dict(row) for row in rows]})
+            except sqlite3.Error:
+                self.send_json(500, {"error": "Could not read reports"})
+            return
+
         self.send_json(404, {"error": "Not found"})
 
     def do_POST(self):
+        if self.path == "/admin/report-status":
+            if not admin_authorized(self.headers):
+                self.send_json(401, {"error": "Unauthorized"})
+                return
+            try:
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length))
+            except Exception:
+                self.send_json(400, {"error": "Invalid JSON"})
+                return
+            report_id = payload.get("id")
+            status = payload.get("status")
+            if not isinstance(report_id, str) or status not in {"resolved", "dismissed"}:
+                self.send_json(422, {"error": "Invalid id or status"})
+                return
+            resolved_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+            try:
+                with connect() as connection:
+                    cursor = connection.execute(
+                        "UPDATE reports SET status = ?, resolved_at = ? WHERE id = ?",
+                        (status, resolved_at, report_id),
+                    )
+                    if cursor.rowcount != 1:
+                        self.send_json(404, {"error": "Report not found"})
+                        return
+                self.send_json(200, {"id": report_id, "status": status, "resolved_at": resolved_at})
+            except sqlite3.Error:
+                self.send_json(500, {"error": "Could not update report"})
+            return
+
         if self.path != "/report":
             self.send_json(404, {"error": "Not found"})
             return
