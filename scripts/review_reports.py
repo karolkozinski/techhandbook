@@ -2,7 +2,7 @@
 import argparse
 import sqlite3
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 DEFAULT_DB = "/data/reviews.sqlite3"
@@ -122,6 +122,23 @@ def cmd_dismiss(args):
     set_status(args, "dismissed")
 
 
+def cmd_prune_stamps(args):
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=args.days)).isoformat().replace("+00:00", "Z")
+    with connect(args.db) as connection:
+        cursor = connection.execute(
+            """
+            UPDATE reports
+            SET reporter_stamp = ''
+            WHERE status IN ('resolved', 'dismissed')
+              AND resolved_at IS NOT NULL
+              AND resolved_at < ?
+              AND reporter_stamp <> ''
+            """,
+            (cutoff,),
+        )
+    print(f"Anonymized reporter stamps: {cursor.rowcount}")
+
+
 def build_parser():
     parser = argparse.ArgumentParser(description="TechHandbook review report CLI")
     parser.add_argument("--db", default=DEFAULT_DB, help=f"SQLite database path (default: {DEFAULT_DB})")
@@ -147,6 +164,10 @@ def build_parser():
     dismiss_parser.add_argument("id")
     dismiss_parser.set_defaults(func=cmd_dismiss)
 
+    prune_parser = sub.add_parser("prune-stamps", help="Anonymize old reporter stamps on closed reports")
+    prune_parser.add_argument("--days", type=int, default=90, help="Retention period in days (default: 90)")
+    prune_parser.set_defaults(func=cmd_prune_stamps)
+
     return parser
 
 
@@ -155,6 +176,8 @@ def main():
     args = parser.parse_args()
     if getattr(args, "limit", 1) < 1:
         parser.error("--limit must be >= 1")
+    if getattr(args, "days", 1) < 1:
+        parser.error("--days must be >= 1")
     args.func(args)
 
 
