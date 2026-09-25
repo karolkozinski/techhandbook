@@ -40,7 +40,12 @@ CREATE TABLE IF NOT EXISTS reports (
     reporter_stamp TEXT NOT NULL,
     created_at TEXT NOT NULL,
     status TEXT NOT NULL DEFAULT 'open',
-    resolved_at TEXT
+    resolved_at TEXT,
+    analysis_status TEXT,
+    analysis_result TEXT,
+    analysis_model TEXT,
+    analyzed_at TEXT,
+    analysis_error TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_reports_status_created
@@ -69,6 +74,17 @@ def init_db():
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     with connect() as connection:
         connection.executescript(SCHEMA)
+        columns = {row["name"] for row in connection.execute("PRAGMA table_info(reports)")}
+        migrations = {
+            "analysis_status": "ALTER TABLE reports ADD COLUMN analysis_status TEXT",
+            "analysis_result": "ALTER TABLE reports ADD COLUMN analysis_result TEXT",
+            "analysis_model": "ALTER TABLE reports ADD COLUMN analysis_model TEXT",
+            "analyzed_at": "ALTER TABLE reports ADD COLUMN analyzed_at TEXT",
+            "analysis_error": "ALTER TABLE reports ADD COLUMN analysis_error TEXT",
+        }
+        for column, statement in migrations.items():
+            if column not in columns:
+                connection.execute(statement)
 
 
 def error(message, field=None):
