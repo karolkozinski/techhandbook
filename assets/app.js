@@ -321,6 +321,7 @@
       ["unclear", "Niejasne"],
       ["incomplete", "Brakuje informacji"],
       ["broken", "Nie działa"],
+      ["translation", "Tłumaczenie"],
       ["typo-format", "Literówka / formatowanie"]
     ],
     en: [
@@ -329,6 +330,7 @@
       ["unclear", "Unclear"],
       ["incomplete", "Missing information"],
       ["broken", "Does not work"],
+      ["translation", "Translation"],
       ["typo-format", "Typo / formatting"]
     ]
   };
