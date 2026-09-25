@@ -198,6 +198,35 @@ Dopiero wtedy włącz indeksowanie i wygeneruj artefakty ponownie:
 
 Zmianę `indexingEnabled` i wygenerowane pliki commituj razem.
 
+## Przegląd zgłoszeń review
+
+CLI jest dostępne wewnątrz kontenera `review-api`.
+
+Lista otwartych zgłoszeń:
+
+    sudo docker compose exec review-api python3 /app/review_reports.py list
+
+Pełny podgląd jednego zgłoszenia:
+
+    sudo docker compose exec review-api python3 /app/review_reports.py show <REPORT_ID>
+
+Filtrowanie:
+
+    sudo docker compose exec review-api python3 /app/review_reports.py list --article doc-023
+    sudo docker compose exec review-api python3 /app/review_reports.py list --reason outdated
+    sudo docker compose exec review-api python3 /app/review_reports.py list --language pl
+    sudo docker compose exec review-api python3 /app/review_reports.py list --status all
+
+Zamknięcie zgłoszenia po poprawce:
+
+    sudo docker compose exec review-api python3 /app/review_reports.py resolve <REPORT_ID>
+
+Odrzucenie zgłoszenia:
+
+    sudo docker compose exec review-api python3 /app/review_reports.py dismiss <REPORT_ID>
+
+Rekordy nie są kasowane. Status przechodzi z `open` do `resolved` albo `dismissed`, a CLI zapisuje czas zamknięcia.
+
 ## Review API - konfiguracja prywatnego stampa
 
 Review API pozostaje domyślnie wyłączone. Przed jego świadomym włączeniem trzeba ustawić lokalny sekret na VPS, poza repozytorium:
