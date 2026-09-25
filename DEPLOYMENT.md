@@ -25,13 +25,13 @@ Hostowy nginx obsługuje domenę i TLS. Kontener obsługuje wyłącznie statyczn
 - publiczny entry point: hostowy nginx
 - indeksowanie przed smoke testem: wyłączone
 
-Port 8092 został wybrany po sprawdzeniu rzeczywistego VPS. Porty 8080 i 8091 są już używane przez inne usługi Null Yard.
+Port hostowy można zmienić zmienną `TECHHANDBOOK_PORT`; domyślna wartość projektu to `8092`.
 
 ## 2. DNS
 
 W DNS utwórz rekord:
 
-    techhandbook.nullyard.com  A  145.239.89.57
+    techhandbook.nullyard.com  A  <VPS_IP>
 
 Nie dodawaj rekordu AAAA, dopóki IPv6 nie zostanie świadomie skonfigurowane dla tej usługi.
 
@@ -233,9 +233,10 @@ Review API pozostaje domyślnie wyłączone. Przed jego świadomym włączeniem 
 
     REVIEW_STAMP_SECRET=<losowy-sekret>
     REVIEW_ACCESS_TOKEN=<losowy-token-review>
+    ADMIN_ACCESS_TOKEN=<losowy-token-admin>
     REVIEW_API_ENABLED=true
 
-REVIEW_ACCESS_TOKEN służy do wejścia w zaufany tryb review. Nie tworzymy kont ani logowania. Reviewer otwiera stronę jednorazowo z fragmentem URL:
+REVIEW_ACCESS_TOKEN służy do wejścia w zaufany tryb review. `ADMIN_ACCESS_TOKEN` jest osobnym sekretem dla panelu administracyjnego i nie może być równy tokenowi review. Nie tworzymy kont ani logowania. Reviewer otwiera stronę jednorazowo z fragmentem URL:
 
     https://techhandbook.nullyard.com/#review=<token>
 
@@ -251,7 +252,17 @@ Domyślny limit wynosi 30 nowych zgłoszeń na godzinę dla jednego stampa i mo�
 
     REVIEW_RATE_LIMIT_PER_HOUR=30
 
-Zmienne należy przekazać Docker Compose z lokalnego środowiska lub pliku `.env`, którego nie commitujemy.
+Zmienne należy przekazać Docker Compose z lokalnego środowiska lub pliku `.env`, którego nie commitujemy. Repo zawiera wyłącznie bezpieczny szablon `.env.example`.
+
+Na serwerze plik z sekretami powinien mieć ograniczone uprawnienia:
+
+    chmod 600 .env
+
+Do wygenerowania niezależnych sekretów można użyć np.:
+
+    openssl rand -hex 32
+
+Uruchom polecenie osobno dla `REVIEW_STAMP_SECRET`, `REVIEW_ACCESS_TOKEN` i `ADMIN_ACCESS_TOKEN`.
 
 ## 11. Port
 
