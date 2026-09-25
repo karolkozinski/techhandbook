@@ -235,7 +235,7 @@ Instrukcja znajduje się w DEPLOYMENT.md.
 
 ## Stan produkcyjny
 
-Stan na 2026-09-24:
+Stan na 2026-09-25:
 
 - produkcja: `https://techhandbook.nullyard.com/`,
 - deployment: Docker Compose + unprivileged nginx za hostowym nginx,
@@ -255,7 +255,12 @@ Stan na 2026-09-24:
 - Google Consent Mode: skonfigurowany,
 - `ads.txt`: opublikowany na `nullyard.com`,
 - AdSense loader: aktywny wyłącznie w Tech Handbook,
-- AdSense: witryna oczekuje na zakończenie review po stronie Google.
+- AdSense: witryna oczekuje na zakończenie review po stronie Google,
+- review API: aktywne jako izolowany backend pomocniczy bez publicznego portu hosta,
+- panel administracyjny zgłoszeń: prywatny i jawnie routowany,
+- tokeny review/admin: rozdzielone,
+- `reporter_stamp`: anonimizowany po 90 dniach od zamknięcia zgłoszenia,
+- secret scanning i security hardening publicznego repozytorium: wdrożone.
 
 Główna strona `nullyard.com` nie zawiera kodu reklamowego Tech Handbooka. Plik `ads.txt` na domenie głównej służy wyłącznie autoryzacji wydawcy.
 
