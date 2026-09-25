@@ -6,7 +6,7 @@ description: "Docker runs applications in repeatable, isolated containers. The c
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-20"
+updated: "2026-09-25"
 tags:
   - "docker"
   - "containers"
@@ -23,61 +23,6 @@ The handbook uses the modern `docker compose` command provided by the Compose pl
 
 Related topics: [Debian 13 - Desktop + Server Handbook](techhandbook:doc-033), [systemd, cron and Schedulers](techhandbook:doc-052), [Linux Permissions and Server Security](techhandbook:doc-025), and [nginx and reverse proxy](techhandbook:doc-045).
 
-## Handbook map
-
-- [What Docker is](#1-what-docker-is)
-- [Containers and images](#7-first-container)
-- [Ports and networking](#16-ports)
-- [Volumes and persistent data](#27-volumes)
-- [Dockerfile and builds](#37-dockerfile)
-- [Docker Compose](#45-docker-compose)
-- [Deployment and updates](#69-typical-deployment-through-a-registry)
-- [Backups and cleanup](#76-backing-up-a-volume)
-- [Troubleshooting](#91-step-by-step-debugging)
-- [Security](#93-security)
-
-# 1. What Docker is
-Docker runs applications in containers. A container is an isolated process environment that shares the host kernel but can have its own filesystem, libraries, configuration, environment variables, ports, networks and resource limits.
-It is not a full virtual machine.
-```text
-Linux host
-│
-├── Docker Engine
-├── application container A
-├── application container B
-└── database container
-```
-Core concepts: image = application template, container = running image instance, Dockerfile = image build recipe, volume = persistent data, network = container connectivity, registry = image storage, Compose = multi-container application definition.
-# 2. Docker vs virtual machines
-A VM includes its own kernel and operating system. Containers share the host kernel and therefore start faster and usually use fewer resources.
-```text
-Virtual machine: Host → Hypervisor → Guest Kernel + OS + app
-Docker: Linux Host → Docker Engine → isolated application containers
-```
-Containers are especially useful for backend services, web applications, databases used in development, CI jobs and reproducible runtime environments.
-# 3. Operating systems
-Docker is fundamentally a Linux container technology. It runs natively on Linux distributions such as Debian, Ubuntu, Fedora, Rocky Linux and AlmaLinux.
-Docker Desktop on Windows and macOS uses a Linux environment underneath. FreeBSD does not use Docker as a native container technology; its native isolation mechanism is jails.
-# 4. Check installation
-```bash
-docker --version
-docker info
-```
-`docker info` shows engine version, images, containers, storage driver, runtimes and other daemon details.
-# 5. Start and stop Docker
-```bash
-sudo systemctl start docker
-sudo systemctl stop docker
-sudo systemctl restart docker
-sudo systemctl status docker
-sudo systemctl enable --now docker
-```
-# 6. Docker without sudo
-```bash
-sudo usermod -aG docker "$USER"
-newgrp docker
-docker ps
-```
 ## Security note
 Membership in the `docker` group is effectively root-equivalent on a normal Docker host. Treat it as privileged access.
 # 7. First container

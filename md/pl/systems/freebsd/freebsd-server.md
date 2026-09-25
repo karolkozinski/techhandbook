@@ -6,7 +6,7 @@ description: "FreeBSD to kompletny system operacyjny z rodziny BSD, a nie dystry
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-20"
+updated: "2026-09-25"
 tags:
   - "freebsd"
   - "server"
@@ -22,118 +22,6 @@ FreeBSD to kompletny system operacyjny z rodziny BSD, a nie dystrybucja Linuksa.
 **Punkt odniesienia:** FreeBSD **15.1-RELEASE**, aktualne wydanie Production w chwili audytu. Wiele opisanych mechanizmów administracyjnych pozostaje również wspólnych dla wspieranych wydań gałęzi 14.
 
 Dalsze tematy: [FreeBSD - shell](techhandbook:doc-029) oraz [SSH i zdalna administracja](techhandbook:doc-018). Dla porównania z kontenerami linuksowymi przydatne jest także kompendium [Docker](techhandbook:doc-012).
-
-## Mapa kompendium
-
-- [Model systemu FreeBSD](#1-jak-myslec-o-freebsd)
-- [Pakiety i Ports](#7-pakiety-pkg)
-- [Usługi, rc.conf i sysrc](#9-najwazniejsza-rzecz-system-usug-freebsd)
-- [Aktualizacje systemu](#25-aktualizacje-systemu)
-- [Sieć](#30-siec-najwazniejsze-narzedzia)
-- [SSH i firewall](#34-ssh)
-- [ZFS](#43-zfs-dlaczego-warto)
-- [Cron](#56-cron)
-- [Jails](#64-jails-podstawowa-idea)
-- [Diagnostyka usług](#89-diagnostyka-usugi-uniwersalny-schemat)
-- [Dokumentacja i źródła](#130-dokumentacja-i-zroda)
-
----
-
-# 1. Jak myśleć o FreeBSD
-
-FreeBSD nie jest dystrybucją Linuksa. To kompletny system operacyjny rozwijany jako spójna całość:
-
-- kernel,
-- podstawowe narzędzia systemowe,
-- biblioteki,
-- system startowy,
-- narzędzia sieciowe,
-- dokumentacja,
-- mechanizmy aktualizacji.
-
-To, co w Linuksie często pochodzi z wielu osobnych projektów, we FreeBSD w dużej części należy do jednego **base system**.
-
-Oprogramowanie dodatkowe - nginx, PostgreSQL, Git, Vim, Samba itd. - pochodzi natomiast z systemu **Packages/Ports**.
-
-To rozróżnienie jest fundamentalne:
-
-```text
-FreeBSD base system
-├── kernel
-├── /bin
-├── /sbin
-├── /usr/bin
-├── /usr/sbin
-├── /etc
-└── podstawowe biblioteki
-
-Pakiety dodatkowe
-├── /usr/local/bin
-├── /usr/local/sbin
-├── /usr/local/etc
-├── /usr/local/lib
-└── /usr/local/etc/rc.d
-```
-
-Dlatego typowa konfiguracja wygląda tak:
-
-```text
-/etc/ssh/sshd_config
-```
-
-dla OpenSSH należącego do systemu bazowego, ale:
-
-```text
-/usr/local/etc/nginx/nginx.conf
-```
-
-dla nginx zainstalowanego przez `pkg`.
-
-Ta reguła bardzo często pomaga odnaleźć konfigurację usługi.
-
----
-
-# 2. Wersja systemu
-
-Podstawowe polecenia:
-
-```sh
-freebsd-version
-```
-
-Pokazuje wersję zainstalowanego userlandu.
-
-```sh
-uname -r
-```
-
-Pokazuje wersję uruchomionego kernela.
-
-```sh
-uname -a
-```
-
-Pokazuje więcej informacji o systemie.
-
-Po aktualizacji może się zdarzyć, że:
-
-```sh
-freebsd-version
-```
-
-i:
-
-```sh
-uname -r
-```
-
-pokazują różne wersje.
-
-Najczęściej oznacza to, że kernel został zaktualizowany, ale system nie został jeszcze zrestartowany.
-
----
-
-# 3. Najważniejsze katalogi
 
 ## `/etc`
 

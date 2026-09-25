@@ -6,7 +6,7 @@ description: "Debian is a stable, general-purpose GNU/Linux distribution used on
 lang: "en"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-20"
+updated: "2026-09-25"
 tags:
   - "debian"
   - "linux"
@@ -25,21 +25,6 @@ Debian is a stable, general-purpose GNU/Linux distribution used on desktops, wor
 
 Related handbooks: [SSH and Remote Administration](techhandbook:doc-018), [Docker](techhandbook:doc-012), [systemd, cron and Schedulers](techhandbook:doc-052), and [Linux Permissions and Server Security](techhandbook:doc-025).
 
-## Handbook map
-
-- [What Debian is](#1-what-debian-actually-is)
-- [Packages and APT](#8-package-management-apt)
-- [Debian as a desktop](#18-debian-as-a-desktop)
-- [Networking and NetworkManager](#25-networkmanager)
-- [Services and logs](#39-systemd-service-startup-core)
-- [Disks and filesystems](#53-disks)
-- [Debian as a server](#60-debian-as-a-server)
-- [Troubleshooting](#112-troubleshooting-step-by-step-method)
-- [Documentation and help](#206-where-to-get-help)
-
-# 1. What Debian actually is
-Debian is a community-developed GNU/Linux distribution known for stability, broad architecture support, large repositories and a strong server ecosystem.
-# 2. Debian branches
 ## stable
 Stable is the production-oriented branch with conservative updates.
 ## testing

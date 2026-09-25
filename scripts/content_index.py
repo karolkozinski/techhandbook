@@ -23,6 +23,7 @@ SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 LINK_RE = re.compile(r"techhandbook:([a-z][a-z0-9-]*-[0-9]{3,})")
 H1_RE = re.compile(r"^#\s+(.+?)\s*$", re.MULTILINE)
+MANUAL_TOC_RE = re.compile(r"^##\s+(?:Spis treści|Mapa kompendium|Table of contents|Handbook map)\s*$", re.MULTILINE | re.IGNORECASE)
 
 
 class ContentError(Exception):
@@ -125,6 +126,11 @@ def validate_meta(path: Path, meta: dict, body: str) -> None:
         raise ContentError(f"{path}: missing H1")
     if h1.group(1).strip() != meta["title"].strip():
         raise ContentError(f"{path}: H1 does not match title")
+
+    if MANUAL_TOC_RE.search(body):
+        raise ContentError(
+            f"{path}: manual table of contents is not allowed; TOC is generated automatically"
+        )
 
 
 def load_relations() -> dict:

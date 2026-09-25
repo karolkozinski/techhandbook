@@ -43,6 +43,7 @@
       toTop: "Do góry",
       close: "Zamknij",
       relatedArticles: "Powiązane artykuły",
+      tableOfContents: "Spis treści",
       juniorWelcomeTitle: "Technologia bez strachu.",
       juniorWelcomeText: "Krótko, prosto i praktycznie. Wybierz temat i od razu spróbuj czegoś sam."
     },
@@ -87,6 +88,7 @@
       toTop: "To top",
       close: "Close",
       relatedArticles: "Related articles",
+      tableOfContents: "Table of contents",
       juniorWelcomeTitle: "Technology without the scary bits.",
       juniorWelcomeText: "Short, clear and practical. Pick a topic and try something yourself."
     }
@@ -287,6 +289,64 @@
       .trim()
       .replace(/\s+/g, "-")
       .replace(/-+/g, "-");
+
+  function headingPlainText(value) {
+    return value
+      .replace(/`([^`]+)`/g, "$1")
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .replace(/[*_~]/g, "")
+      .replace(/<[^>]+>/g, "")
+      .trim();
+  }
+
+  function buildHeadingIndex(markdown) {
+    const lines = markdown.replace(/\r\n?/g, "\n").split("\n");
+    const ids = new Map();
+    const headings = [];
+    const used = new Map();
+    let inFence = false;
+
+    lines.forEach((line, index) => {
+      if (/^```/.test(line)) {
+        inFence = !inFence;
+        return;
+      }
+      if (inFence) return;
+
+      const match = line.match(/^(#{1,6})\s+(.+)$/);
+      if (!match) return;
+
+      const level = match[1].length;
+      const text = match[2].replace(/\s+#+\s*$/, "");
+      const base = slugify(headingPlainText(text)) || "section";
+      const count = (used.get(base) || 0) + 1;
+      used.set(base, count);
+      const id = count === 1 ? base : `${base}-${count}`;
+
+      ids.set(index, id);
+      headings.push({ level, text, id });
+    });
+
+    return { ids, headings };
+  }
+
+  function renderArticleToc(headings) {
+    const items = headings.filter(item => item.level === 2 || item.level === 3);
+    if (items.filter(item => item.level === 2).length < 3) return "";
+
+    return `
+      <nav class="article-toc" aria-label="${escapeHtml(t("tableOfContents"))}">
+        <details>
+          <summary>${escapeHtml(t("tableOfContents"))}</summary>
+          <ol class="article-toc-list">
+            ${items.map(item =>
+              `<li class="article-toc-level-${item.level}"><a href="#${escapeHtml(item.id)}" data-heading-id="${escapeHtml(item.id)}">${escapeHtml(headingPlainText(item.text))}</a></li>`
+            ).join("")}
+          </ol>
+        </details>
+      </nav>
+    `;
+  }
 
 
   function findHeadingTarget(fragment) {
@@ -580,6 +640,9 @@
   function renderMarkdown(markdown) {
     const lines = markdown.replace(/\r\n?/g, "\n").split("\n");
     const out = [];
+    const headingIndex = buildHeadingIndex(markdown);
+    const tocHtml = renderArticleToc(headingIndex.headings);
+    let tocInserted = false;
     let i = 0;
     let listType = null;
 
@@ -620,8 +683,12 @@
         closeList();
         const level = heading[1].length;
         const text = heading[2].replace(/\s+#+\s*$/, "");
-        const id = slugify(text);
+        const id = headingIndex.ids.get(i) || slugify(headingPlainText(text)) || "section";
         out.push(`<h${level} id="${id}">${inlineMarkdown(text)}</h${level}>`);
+        if (level === 1 && tocHtml && !tocInserted) {
+          out.push(tocHtml);
+          tocInserted = true;
+        }
         i++;
         continue;
       }
@@ -1733,7 +1800,16 @@
     if (headingLink) {
       e.preventDefault();
       const target = findHeadingTarget(headingLink.dataset.headingId || "");
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (target) {
+        const url = new URL(location.href);
+        url.hash = target.id;
+        history.replaceState(
+          { ...currentHistoryState(), scrollY: window.scrollY },
+          "",
+          url.pathname + url.search + url.hash
+        );
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
   });
 

@@ -6,7 +6,7 @@ description: "Praktyczne kompendium Termuxa na Androidzie: czym jest, jak dział
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-20"
+updated: "2026-09-25"
 tags:
   - "android"
   - "termux"
@@ -22,89 +22,6 @@ Powiązane tematy: [SSH i zdalna administracja](techhandbook:doc-018), [Programo
 > Stan wiedzy: wrzesień 2026.
 
 ---
-
-## Spis treści
-
-1. [Czym jest Termux](#1-czym-jest-termux)
-2. [Jak Termux działa od strony systemu](#2-jak-termux-działa-od-strony-systemu)
-3. [Termux a Debian, klasyczny Linux i FreeBSD](#3-termux-a-debian-klasyczny-linux-i-freebsd)
-4. [Instalacja Termuxa](#4-instalacja-termuxa)
-5. [Pierwsze uruchomienie](#5-pierwsze-uruchomienie)
-6. [Filesystem Termuxa](#6-filesystem-termuxa)
-7. [Pakiety: pkg i apt](#7-pakiety-pkg-i-apt)
-8. [Podstawowa konfiguracja shella](#8-podstawowa-konfiguracja-shella)
-9. [Dostęp do pamięci Androida](#9-dostęp-do-pamięci-androida)
-10. [SSH](#10-ssh)
-11. [Git](#11-git)
-12. [Edytory tekstu](#12-edytory-tekstu)
-13. [Programowanie i kompilacja](#13-programowanie-i-kompilacja)
-14. [Python](#14-python)
-15. [Go](#15-go)
-16. [C i C++](#16-c-i-c)
-17. [Node.js i JavaScript](#17-nodejs-i-javascript)
-18. [Serwery WWW](#18-serwery-www)
-19. [Usługi i procesy działające w tle](#19-usługi-i-procesy-działające-w-tle)
-20. [Termux:API - sterowanie Androidem z shella](#20-termuxapi--sterowanie-androidem-z-shella)
-21. [proot-distro - Debian i inne dystrybucje](#21-proot-distro--debian-i-inne-dystrybucje)
-22. [Co daje root](#22-co-daje-root)
-23. [Czego Termux nie potrafi bez roota](#23-czego-termux-nie-potrafi-bez-roota)
-24. [Docker i kontenery](#24-docker-i-kontenery)
-25. [Sieć](#25-sieć)
-26. [Backup i migracja Termuxa](#26-backup-i-migracja-termuxa)
-27. [Bezpieczeństwo](#27-bezpieczeństwo)
-28. [Wydajność i bateria](#28-wydajność-i-bateria)
-29. [Najczęstsze problemy](#29-najczęstsze-problemy)
-30. [Przykłady z prawdziwego życia](#30-przykłady-z-prawdziwego-życia)
-31. [Ściąga](#31-ściąga)
-32. [Źródła](#32-źródła)
-
----
-
-# 1. Czym jest Termux
-
-Termux jest aplikacją terminalową dla Androida połączoną z własnym środowiskiem uniksowym i systemem pakietów.
-
-Najważniejsze jest to, czym Termux **nie jest**:
-
-- nie jest maszyną wirtualną,
-- nie jest emulatorem procesora,
-- nie uruchamia osobnego kernela Linux,
-- nie jest Dockerem,
-- nie jest pełną dystrybucją Debian/Ubuntu,
-- nie wymaga roota do normalnego działania.
-
-Domyślnie programy Termuxa działają **natywnie na procesorze telefonu** i korzystają z **tego samego jądra Linux**, którego używa Android.
-
-Schemat:
-
-```text
-Android
-│
-├── aplikacje Androida
-│
-├── framework Androida
-│
-├── Termux
-│   ├── bash / zsh
-│   ├── ssh
-│   ├── git
-│   ├── vim / neovim
-│   ├── Python
-│   ├── Go
-│   ├── clang
-│   ├── Node.js
-│   └── inne pakiety
-│
-└── kernel Linux Androida
-```
-
-Termux jest więc czymś w rodzaju:
-
-> „uniksowego userspace działającego jako zwykła aplikacja Androida”.
-
----
-
-# 2. Jak Termux działa od strony systemu
 
 ## 2.1. Kernel
 

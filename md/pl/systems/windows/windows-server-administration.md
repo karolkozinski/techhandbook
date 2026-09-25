@@ -6,7 +6,7 @@ description: "Windows Server w środowisku korporacyjnym pełni najczęściej ki
 lang: "pl"
 audience: "standard"
 published: "2026-09-19"
-updated: "2026-09-20"
+updated: "2026-09-25"
 tags:
   - "windows"
   - "server"
@@ -19,73 +19,6 @@ tags:
 To kompendium opisuje mechanizmy administracji spotykane w środowisku domenowym Windows: Active Directory Domain Services, Group Policy, uprawnienia, DNS, DHCP, PowerShell, wdrażanie stacji i podstawy bezpieczeństwa. Skupia się na mechanizmach wspólnych dla współczesnych wydań Windows Server, zamiast na jednej konkretnej wersji.
 
 Powiązane tematy: [Sieci komputerowe dla developera](techhandbook:doc-016) oraz [DNS, domeny i routing internetowy](techhandbook:doc-017).
-
-## Spis treści
-
-1. [Rola Windows Server w firmie](#1-rola-windows-server-w-firmie)
-2. [Najważniejsze pojęcia](#2-najważniejsze-pojęcia)
-3. [Active Directory Domain Services](#3-active-directory-domain-services)
-4. [Użytkownicy, grupy i jednostki organizacyjne](#4-użytkownicy-grupy-i-jednostki-organizacyjne)
-5. [Uprawnienia NTFS i udziały sieciowe](#5-uprawnienia-ntfs-i-udziały-sieciowe)
-6. [Przydzielanie zasobów użytkownikom](#6-przydzielanie-zasobów-użytkownikom)
-7. [Group Policy - GPO](#7-group-policy--gpo)
-8. [Instalacja i wdrażanie stacji roboczych](#8-instalacja-i-wdrażanie-stacji-roboczych)
-9. [Instalacja oprogramowania na końcówkach](#9-instalacja-oprogramowania-na-końcówkach)
-10. [DNS i DHCP](#10-dns-i-dhcp)
-11. [Serwer plików](#11-serwer-plików)
-12. [Drukarki sieciowe](#12-drukarki-sieciowe)
-13. [RDP i administracja zdalna](#13-rdp-i-administracja-zdalna)
-14. [PowerShell dla administratora](#14-powershell-dla-administratora)
-15. [Zarządzanie usługami](#15-zarządzanie-usługami)
-16. [Logi i diagnostyka](#16-logi-i-diagnostyka)
-17. [Aktualizacje i patch management](#17-aktualizacje-i-patch-management)
-18. [Bezpieczeństwo](#18-bezpieczeństwo)
-19. [Backup i odtwarzanie](#19-backup-i-odtwarzanie)
-20. [Wirtualizacja Hyper-V](#20-wirtualizacja-hyper-v)
-21. [Podstawowa administracja domeną](#21-podstawowa-administracja-domeną)
-22. [Typowe zadania z życia administratora](#22-typowe-zadania-z-życia-administratora)
-23. [Najważniejsze polecenia](#23-najważniejsze-polecenia)
-24. [Checklista nowego użytkownika](#24-checklista-nowego-użytkownika)
-25. [Checklista nowego komputera](#25-checklista-nowego-komputera)
-26. [Co warto umieć dalej](#26-co-warto-umieć-dalej)
-
----
-
-# 1. Rola Windows Server w firmie
-
-Windows Server w środowisku korporacyjnym pełni najczęściej kilka podstawowych funkcji:
-
-- zarządzanie kontami użytkowników,
-- centralne uwierzytelnianie,
-- zarządzanie komputerami firmowymi,
-- przydzielanie zasobów,
-- kontrolowanie uprawnień,
-- przechowywanie plików,
-- udostępnianie drukarek,
-- automatyczna konfiguracja stacji roboczych,
-- centralne wdrażanie oprogramowania,
-- zarządzanie politykami bezpieczeństwa,
-- obsługa DNS i DHCP,
-- uruchamianie aplikacji biznesowych,
-- hosting usług,
-- wirtualizacja.
-
-W klasycznym środowisku Microsoft podstawowym elementem infrastruktury jest:
-
-**Active Directory Domain Services - AD DS**
-
-czyli usługa katalogowa przechowująca informacje o:
-
-- użytkownikach,
-- komputerach,
-- grupach,
-- serwerach,
-- uprawnieniach,
-- zasadach konfiguracji.
-
----
-
-# 2. Najważniejsze pojęcia
 
 ## Domena
 

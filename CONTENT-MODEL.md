@@ -252,6 +252,32 @@ Link do sekcji:
 
 Ścieżka pliku nie jest tożsamością artykułu i nie powinna być używana jako podstawowy mechanizm referencji między kompendiami.
 
+## Spis treści i anchory
+
+Spis treści nie jest częścią ręcznie redagowanej treści artykułu.
+
+Generator tworzy go automatycznie z nagłówków Markdown według jednego standardu:
+
+- H1 jest tytułem artykułu i nie trafia do spisu,
+- H2 tworzy główny poziom spisu,
+- H3 tworzy poziom pomocniczy,
+- H4 i niższe poziomy nie trafiają do spisu,
+- spis jest pokazywany, gdy artykuł ma co najmniej 3 nagłówki H2,
+- każdy nagłówek dostaje automatyczny anchor,
+- powtarzające się anchory dostają sufiksy `-2`, `-3` itd.,
+- runtime JavaScript i prerender muszą używać tego samego algorytmu anchorów.
+
+Nie dodajemy do Markdownów ręcznych sekcji typu `## Spis treści`, `## Mapa kompendium`, `## Table of contents` ani `## Handbook map`. Walidator traktuje je jako błąd.
+
+Link do konkretnej sekcji nadal może używać anchoru, np.:
+
+```markdown
+[Instalacja](#instalacja)
+[Konfiguracja nginx](techhandbook:doc-045#konfiguracja-nginx)
+```
+
+Dzięki temu źródłem prawdy są wyłącznie nagłówki artykułu, a spis treści zawsze aktualizuje się wraz z nimi.
+
 ## Co trafia do content-index.json
 
 Po migracji wpis runtime jest składany z trzech źródeł:
