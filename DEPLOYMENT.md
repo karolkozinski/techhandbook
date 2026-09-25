@@ -10,9 +10,13 @@ Docelowy układ produkcyjny:
        |
     127.0.0.1:8092
        |
-    Docker: Tech Handbook + unprivileged nginx :8080
+    Docker Compose
+       |
+       +--> Tech Handbook / unprivileged nginx :8080
+       |
+       +--> review-api :8081 (internal only)
 
-Hostowy nginx obsługuje domenę i TLS. Kontener obsługuje wyłącznie statyczny Tech Handbook i nie jest wystawiony bezpośrednio do Internetu.
+Hostowy nginx obsługuje domenę i TLS. Publiczny frontend pozostaje statyczny. Pomocniczy `review-api` jest osobnym komponentem backendowym i nie publikuje portu na hoście. Kontenerowy nginx przekazuje do niego wyłącznie jawnie skonfigurowane ścieżki review/admin.
 
 ## 1. Stan docelowy
 
@@ -21,9 +25,12 @@ Hostowy nginx obsługuje domenę i TLS. Kontener obsługuje wyłącznie statyczn
 - runtime: Docker Compose
 - host loopback: `127.0.0.1:8092`
 - port w kontenerze: `8080`
-- kontener: NGINX unprivileged
+- frontend container: NGINX unprivileged
+- backend pomocniczy: `review-api`, sieć wewnętrzna Compose
 - publiczny entry point: hostowy nginx
-- indeksowanie przed smoke testem: wyłączone
+- review/admin: wyłącznie jawnie skonfigurowane trasy
+- sekrety: runtime configuration poza repozytorium
+- indeksowanie: włączone na produkcji
 
 Port hostowy można zmienić zmienną `TECHHANDBOOK_PORT`; domyślna wartość projektu to `8092`.
 
@@ -251,7 +258,9 @@ Sprawdzenie:
 
 ## Review API - konfiguracja prywatnego stampa
 
-Review API pozostaje domyślnie wyłączone. Przed jego świadomym włączeniem trzeba ustawić lokalny sekret na VPS, poza repozytorium:
+Review API jest funkcją opcjonalną z punktu widzenia konfiguracji projektu i domyślnie pozostaje wyłączone w czystym środowisku. Na produkcji Tech Handbooka jest świadomie włączone.
+
+Do jego uruchomienia trzeba ustawić lokalne sekrety na VPS, poza repozytorium:
 
     REVIEW_STAMP_SECRET=<losowy-sekret>
     REVIEW_ACCESS_TOKEN=<losowy-token-review>
@@ -340,3 +349,19 @@ Docelowy prosty cron raz dziennie, np. o 03:15:
     15 3 * * * cd /srv/apps/techhandbook && /usr/bin/docker compose exec -T review-api python3 /app/review_analyze.py >> /var/log/techhandbook-review.log 2>&1
 
 Analyzer korzysta z aktualnego `content-index.json` i katalogu `md/` zamontowanych read-only do kontenera. Próbuje odnaleźć sekcję po tym samym anchorze, którego używa spis treści. Jeśli fakt wymaga aktualnego zewnętrznego potwierdzenia, model ma zaznaczyć `needs_external_verification=true` zamiast udawać pewność.
+
+
+## 12. Security closure - 2026-09-25
+
+Po końcowym audycie bezpieczeństwa publicznego repozytorium przyjęto następujące zasady operacyjne:
+
+- publiczne repozytorium traktujemy jako publiczne od pierwszej linijki;
+- żaden sekret produkcyjny nie trafia do Git ani Docker build context;
+- `REVIEW_ACCESS_TOKEN` i `ADMIN_ACCESS_TOKEN` są zawsze niezależne;
+- `review-api` nie publikuje portu hosta;
+- nowe ścieżki API/admin wymagają jawnej konfiguracji nginx;
+- panel administracyjny używa `no-store`, `noindex` i restrykcyjnych security headers;
+- `reporter_stamp` ma skończoną retencję i jest anonimizowany przez timer systemd;
+- zmiany produkcyjne muszą przejść content checks, deployment checks i secret scan.
+
+Przed wdrożeniem zmiany obejmującej review/admin/API należy ponownie sprawdzić routing nginx, ekspozycję portów, konfigurację sekretów i politykę retencji.
