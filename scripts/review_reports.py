@@ -7,7 +7,7 @@ from pathlib import Path
 
 DEFAULT_DB = "/data/reviews.sqlite3"
 STATUSES = ("open", "resolved", "dismissed")
-REASONS = ("outdated", "incorrect", "unclear", "incomplete", "broken", "typo-format")
+REASONS = ("outdated", "incorrect", "unclear", "incomplete", "broken", "translation", "typo-format")
 
 
 def connect(path):
