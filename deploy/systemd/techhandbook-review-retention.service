@@ -1,0 +1,7 @@
+[Unit]
+Description=TechHandbook review reporter stamp retention
+
+[Service]
+Type=oneshot
+WorkingDirectory=/srv/apps/techhandbook
+ExecStart=/usr/bin/docker compose exec -T review-api python3 /app/review_reports.py prune-stamps --days 90
