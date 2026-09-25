@@ -349,7 +349,10 @@
   function reviewSectionId(element) {
     if (/^H[2-4]$/.test(element.tagName) && element.id) return element.id;
 
-    let previous = element.previousElementSibling;
+    const sectionOrigin = element.tagName === "TABLE" && element.closest(".review-table-target")
+      ? element.closest(".review-table-target")
+      : element;
+    let previous = sectionOrigin.previousElementSibling;
     while (previous) {
       if (/^H[1-6]$/.test(previous.tagName) && previous.id) return previous.id;
       previous = previous.previousElementSibling;
