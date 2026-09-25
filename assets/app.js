@@ -1076,14 +1076,32 @@
   }
 
   async function openDocument(file, context = null, { focusReader = false, fragment = "", historyMode = "replace", targetDir = null } = {}) {
-    const protectsSourceHistory = historyMode === "push";
-    if (protectsSourceHistory) {
+    const pushesHistory = historyMode === "push";
+    if (pushesHistory) {
       saveCurrentHistoryState();
       navigationInProgress = true;
     }
     if (targetDir !== null) renderDirectory(targetDir, { clearContent: false });
     if (context) setNavigationContext(context);
     state.currentDoc = file;
+
+    const documentUrl = file.id === "__readme__" ? aboutUrl() : articleUrl(file, fragment);
+
+    if (pushesHistory) {
+      history.pushState(
+        {
+          ...currentHistoryState(),
+          view: "article",
+          docId: file.id,
+          directory: state.currentDir,
+          context: { ...state.navigationContext },
+          scrollY: 0
+        },
+        "",
+        documentUrl
+      );
+    }
+
     els.welcome.hidden = true;
     els.error.hidden = true;
     els.reader.hidden = false;
@@ -1114,13 +1132,13 @@
           docId: file.id,
           directory: state.currentDir,
           context: { ...state.navigationContext },
-          scrollY: focusReader ? 0 : window.scrollY
+          scrollY: pushesHistory || focusReader ? 0 : window.scrollY
         },
-        file.id === "__readme__" ? aboutUrl() : articleUrl(file, fragment),
-        historyMode === "push" ? "pushPrepared" : historyMode
+        documentUrl,
+        pushesHistory ? "replace" : historyMode
       );
 
-      if (protectsSourceHistory) {
+      if (pushesHistory) {
         navigationInProgress = false;
       }
 
@@ -1143,7 +1161,7 @@
         }
       }
     } catch (err) {
-      if (protectsSourceHistory) {
+      if (pushesHistory) {
         navigationInProgress = false;
       }
       els.reader.hidden = true;
