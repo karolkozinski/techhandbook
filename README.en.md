@@ -10,9 +10,9 @@ The goal is not to replace official vendor documentation or create an academic t
 
 Tech Handbook is also available as a lightweight static website:
 
-**https://karolkozinski.github.io/techhandbook/**
+**https://techhandbook.nullyard.com/**
 
-The web version provides directory browsing, search, a Markdown reader and language switching between Polish and English.
+The web version provides directory browsing, search, a Markdown reader and language switching between Polish and English. GitHub Pages remains an additional preview environment; the canonical production domain is `techhandbook.nullyard.com`.
 
 ## Principles
 
@@ -143,6 +143,22 @@ Polish and English STANDARD counterparts intentionally share the same document I
 The production layout uses an nginx container bound only to the VPS loopback interface, with a host nginx instance handling the public domain and TLS.
 
 See DEPLOYMENT.md for the deployment procedure.
+
+## Production status
+
+Status as of 2026-09-25:
+
+- production: `https://techhandbook.nullyard.com/`,
+- deployment: Docker Compose behind host nginx,
+- public frontend: static, served by an unprivileged nginx container,
+- review API: isolated auxiliary backend with no published host port,
+- private review administration panel: enabled,
+- review and admin credentials: separated,
+- reporter pseudonym retention: 90 days after report closure,
+- HTTPS and indexing: enabled,
+- Umami, GTM and GA4: enabled,
+- Google CMP and Consent Mode: configured,
+- secret scanning and repository security hardening: enabled.
 
 ## Information freshness
 
