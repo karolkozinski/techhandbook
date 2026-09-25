@@ -43,7 +43,9 @@ def render_robots(config: dict) -> str:
     base = base_url(config)
     return (
         "User-agent: *\n"
-        "Allow: /\n\n"
+        "Allow: /\n"
+        "Disallow: /admin/\n"
+        "Disallow: /api/admin/\n\n"
         f"Sitemap: {base}/sitemap.xml\n"
     )
 
