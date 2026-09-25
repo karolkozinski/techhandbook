@@ -1076,7 +1076,11 @@
   }
 
   async function openDocument(file, context = null, { focusReader = false, fragment = "", historyMode = "replace", targetDir = null } = {}) {
-    if (historyMode === "push") saveCurrentHistoryState();
+    const protectsSourceHistory = historyMode === "push";
+    if (protectsSourceHistory) {
+      saveCurrentHistoryState();
+      navigationInProgress = true;
+    }
     if (targetDir !== null) renderDirectory(targetDir, { clearContent: false });
     if (context) setNavigationContext(context);
     state.currentDoc = file;
@@ -1115,6 +1119,11 @@
         file.id === "__readme__" ? aboutUrl() : articleUrl(file, fragment),
         historyMode === "push" ? "pushPrepared" : historyMode
       );
+
+      if (protectsSourceHistory) {
+        navigationInProgress = false;
+      }
+
       if (els.readerTop) {
         els.readerTop.hidden = false;
         els.readerTopLabel.textContent = t("toTop");
@@ -1134,6 +1143,9 @@
         }
       }
     } catch (err) {
+      if (protectsSourceHistory) {
+        navigationInProgress = false;
+      }
       els.reader.hidden = true;
       els.error.hidden = false;
       els.errorText.textContent =
@@ -1789,14 +1801,15 @@
   history.scrollRestoration = "manual";
 
   let restoringHistory = false;
+  let navigationInProgress = false;
   let scrollSaveQueued = false;
 
   window.addEventListener("scroll", () => {
-    if (restoringHistory || scrollSaveQueued || !history.state) return;
+    if (restoringHistory || navigationInProgress || scrollSaveQueued || !history.state) return;
     scrollSaveQueued = true;
     requestAnimationFrame(() => {
       scrollSaveQueued = false;
-      if (restoringHistory || !history.state) return;
+      if (restoringHistory || navigationInProgress || !history.state) return;
       history.replaceState(
         { ...history.state, scrollY: window.scrollY },
         "",
