@@ -181,9 +181,9 @@ def inject_head(template: str, *, language: str, title: str, description: str, c
         count=1,
     )
     out = re.sub(r"<title>.*?</title>", f"<title>{html.escape(title)}</title>", out, count=1)
-    out = re.sub(r'\\n?\\s*<link id="techhandbook-home-canonical"[^>]*>', '', out, count=1)
+    out = re.sub(r'\n?\s*<link id="techhandbook-home-canonical"[^>]*>', '', out, count=1)
     out = re.sub(
-        r'\\n?\\s*<script id="techhandbook-home-jsonld"[^>]*>.*?</script>',
+        r'\n?\s*<script id="techhandbook-home-jsonld"[^>]*>.*?</script>',
         '',
         out,
         count=1,
